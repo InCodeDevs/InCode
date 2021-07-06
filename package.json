@@ -1,0 +1,11 @@
+{
+  "name": "incode-editor",
+  "version": "1.0.0",
+  "description": "The Editor for the InCode Programming Language",
+  "main": "",
+  "scripts": {
+    "build": ""
+  },
+  "author": "The InCode Developers",
+  "license": "GPL-3.0-only"
+}
