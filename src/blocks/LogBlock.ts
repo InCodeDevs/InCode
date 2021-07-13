@@ -3,7 +3,7 @@
  * @copyright 2018-2021 Ben Siebert. All rights reserved.
  */
 
-import * as Blockly from "blockly/core";
+import * as Blockly from "blockly";
 
 export class LogBlock {
 
