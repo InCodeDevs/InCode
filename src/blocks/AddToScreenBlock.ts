@@ -4,19 +4,14 @@
  */
 import * as Blockly from "blockly";
 
-export class AskBlock {
+export class AddToScreenBlock {
 
     public static registerBlock(){
         Blockly.defineBlocksWithJsonArray([
             {
-                "type": "ask",
-                "message0": "Frage %1 und speicher die Antwort in %2",
+                "type": "add_to_screen",
+                "message0": "Füge %1 zum Bildschirm hinzu",
                 "args0": [
-                    {
-                        "type": "field_input",
-                        "name": "QUESTION",
-                        "text": "eine Frage"
-                    },
                     {
                         "type": "field_input",
                         "name": "VARIABLE_NAME",

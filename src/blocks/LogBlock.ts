@@ -24,11 +24,11 @@ export class LogBlock {
                         "options": [
                             [
                                 "Konsole",
-                                "OPTIONNAME"
+                                "CONSOLE"
                             ],
                             [
                                 "Dialogbox",
-                                "OPTIONNAME"
+                                "DIALOG_BOX"
                             ]
                         ]
                     }

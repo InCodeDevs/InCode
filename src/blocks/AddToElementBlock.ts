@@ -4,23 +4,23 @@
  */
 import * as Blockly from "blockly";
 
-export class AskBlock {
+export class AddToElementBlock {
 
-    public static registerBlock(){
+    public static registerBlock() {
         Blockly.defineBlocksWithJsonArray([
             {
-                "type": "ask",
-                "message0": "Frage %1 und speicher die Antwort in %2",
+                "type": "add_to_element",
+                "message0": "Füge %1 zu %2 hinzu",
                 "args0": [
                     {
                         "type": "field_input",
-                        "name": "QUESTION",
-                        "text": "eine Frage"
+                        "name": "CHILD",
+                        "text": "x"
                     },
                     {
                         "type": "field_input",
-                        "name": "VARIABLE_NAME",
-                        "text": "x"
+                        "name": "PARENT",
+                        "text": "y"
                     }
                 ],
                 "previousStatement": null,

@@ -4,7 +4,6 @@
  */
 
 import * as Blockly from 'blockly'
-import {Categories} from "../categories/Categories";
 
 export class StartBlock {
 
@@ -14,7 +13,7 @@ export class StartBlock {
                 "type": "start",
                 "message0": "Start",
                 "nextStatement": null,
-                "colour": Categories.COLORS.Programm,
+                "colour": 210,
             }
         ]);
     }

@@ -4,19 +4,14 @@
  */
 import * as Blockly from "blockly";
 
-export class AskBlock {
+export class CreateVarBlock {
 
-    public static registerBlock(){
+    public static registerBlock() {
         Blockly.defineBlocksWithJsonArray([
             {
-                "type": "ask",
-                "message0": "Frage %1 und speicher die Antwort in %2",
+                "type": "var_create",
+                "message0": "Erstelle %1",
                 "args0": [
-                    {
-                        "type": "field_input",
-                        "name": "QUESTION",
-                        "text": "eine Frage"
-                    },
                     {
                         "type": "field_input",
                         "name": "VARIABLE_NAME",
@@ -25,7 +20,7 @@ export class AskBlock {
                 ],
                 "previousStatement": null,
                 "nextStatement": null,
-                "colour": 120,
+                "colour": 30,
                 "tooltip": "",
                 "helpUrl": ""
             }

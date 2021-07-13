@@ -4,28 +4,23 @@
  */
 import * as Blockly from "blockly";
 
-export class AskBlock {
+export class CallMethodBlock {
 
     public static registerBlock(){
         Blockly.defineBlocksWithJsonArray([
             {
-                "type": "ask",
-                "message0": "Frage %1 und speicher die Antwort in %2",
+                "type": "call_method",
+                "message0": "Rufe die Methode %1 auf",
                 "args0": [
                     {
                         "type": "field_input",
-                        "name": "QUESTION",
-                        "text": "eine Frage"
-                    },
-                    {
-                        "type": "field_input",
-                        "name": "VARIABLE_NAME",
-                        "text": "x"
+                        "name": "METHOD_NAME",
+                        "text": "methodenName"
                     }
                 ],
                 "previousStatement": null,
                 "nextStatement": null,
-                "colour": 120,
+                "colour": 290,
                 "tooltip": "",
                 "helpUrl": ""
             }
