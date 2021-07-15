@@ -3,7 +3,13 @@
  * @copyright 2018-2021 Ben Siebert. All rights reserved.
  */
 
-html, body {
-  padding: 0;
+html,
+body {
+  height: 100%;
   margin: 0;
+}
+
+#blocklyDiv {
+  height: 100%;
+  display: none;
 }

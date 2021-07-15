@@ -1,6 +1,7 @@
 import "./styles/_index.scss"
 
 import * as Blockly from 'blockly';
+import * as DE from 'blockly/msg/de';
 import ToolboxDefinition = Blockly.utils.toolbox.ToolboxDefinition;
 import * as DarkTheme from './themes/dark'
 
@@ -26,6 +27,7 @@ import {IfEventBlock} from "./blocks/IfEventBlock";
 import {ElseIfTextBlock} from "./blocks/ElseIfTextBlock";
 import {ElseIfNumberBlock} from "./blocks/ElseIfNumberBlock";
 import {ElseBlock} from "./blocks/ElseBlock";
+import {Block} from "blockly/blockly";
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -57,10 +59,59 @@ document.addEventListener("DOMContentLoaded", function () {
     ElseIfNumberBlock.registerBlock();
     ElseBlock.registerBlock();
 
+    Blockly.setLocale(DE)
+
     const workspace = Blockly.inject('blocklyDiv',
         {
             toolbox: document.getElementById('toolbox') as ToolboxDefinition,
-            sounds: true,
-            theme: DarkTheme.default
+            theme: DarkTheme.default,
+            renderer: 'zelos'
         });
+
+    document.addEventListener('keydown', (e) => {
+        if(e.keyCode === 59){
+            compileWS()
+        }
+    })
 });
+
+const compileWS = () => {
+    let code = ""
+    Blockly.getMainWorkspace().getAllBlocks(true).forEach(block => {
+        let c = getPreTabs(block);
+        block.inputList.forEach(i => {
+            i.fieldRow.forEach(r => {
+                c += r.value_ + " "
+            })
+        })
+        code += c + "\n"
+    })
+    download("Programm.ic", code)
+}
+
+const getPreTabs = (block: Block): string => {
+    let tabs = 0;
+    let currentElement = block;
+    while(currentElement.parentBlock_){
+        tabs++;
+        currentElement = currentElement.parentBlock_;
+    }
+    let c = "";
+    for (let i = 0; i < tabs; i++) {
+        c += "\t";
+    }
+    return c;
+}
+
+function download(filename: string, text: string) {
+    const element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
