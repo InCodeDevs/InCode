@@ -6,6 +6,27 @@
     <title>InCode Editor</title>
 </head>
 <body>
+<div id="menus">
+    <div class="menu">
+        <div class="menu-title">InCode Editor</div>
+        <div class="editors">
+            <div class="editor-type">
+                <h1 class="editor-title">Block Editor</h1>
+                <h3 class="editor-description">Blockly basierter InCode Editor</h3>
+                <img class="editor-icon" src="https://developers.google.com/blockly/images/logos/logo_only.png" width="128" height="128">
+                <br>
+                <button class="button" onclick="document.getElementById('menus').classList.add('display-none'); document.getElementById('blockly').style.visibility = 'visible'">Editor Öffnen</button>
+            </div>
+            <div class="editor-type">
+                <h1 class="editor-title">Text Editor</h1>
+                <h3 class="editor-description">VSCode basierter InCode Editor</h3>
+                <img class="editor-icon" src="https://code.visualstudio.com/assets/images/code-stable.png" width="128" height="128">
+                <br>
+                <button class="button">Editor Öffnen</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="blockly">
     <div id="blocklyDiv"></div>
     <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">

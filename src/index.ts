@@ -72,7 +72,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if(e.keyCode === 59){
             compileWS()
         }
-    })
+    });
+
+    (document.getElementById('blockly') as HTMLDivElement).style.visibility = 'hidden';
 });
 
 const compileWS = () => {
