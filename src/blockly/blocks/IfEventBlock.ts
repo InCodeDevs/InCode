@@ -11,7 +11,7 @@ export class IfEventBlock {
         Blockly.defineBlocksWithJsonArray([
             {
                 "type": "if_event",
-                "message0": "Wenn %1 %2 führe die Methode %3 aus",
+                "message0": "Wenn %1 %2 wird rufe %3 auf",
                 "args0": [
                     {
                         "type": "field_input",
@@ -24,15 +24,15 @@ export class IfEventBlock {
                         "options": [
                             [
                                 "Gedrück",
-                                "PRESSED"
+                                "gedrückt"
                             ],
                             [
                                 "Berührt",
-                                "HOVERED"
+                                "berührt"
                             ],
                             [
                                 "Nicht Berührt",
-                                "NOT_HOVERED"
+                                "nicht-berührt"
                             ]
                         ]
                     },

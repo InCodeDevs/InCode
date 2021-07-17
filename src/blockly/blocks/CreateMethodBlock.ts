@@ -10,7 +10,7 @@ export class CreateMethodBlock {
         Blockly.defineBlocksWithJsonArray([
             {
                 "type": "create_method",
-                "message0": "Erstelle die Methode %1",
+                "message0": "Erstelle %1 als Methode",
                 "args0": [
                     {
                         "type": "field_input",

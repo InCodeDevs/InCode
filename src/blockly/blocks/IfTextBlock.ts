@@ -11,7 +11,7 @@ export class IfTextBlock {
         Blockly.defineBlocksWithJsonArray([
             {
                 "type": "if_text",
-                "message0": "Wenn %1 %2 %3 ist %4",
+                "message0": "Wenn %1 %2 \"%3\" ist %4",
                 "args0": [
                     {
                         "type": "field_input",
@@ -24,23 +24,23 @@ export class IfTextBlock {
                         "options": [
                             [
                                 "Gleich",
-                                "EQUALS"
+                                "gleich"
                             ],
                             [
                                 "Kleiner",
-                                "SMALLER"
+                                "kleiner"
                             ],
                             [
                                 "Größer",
-                                "BIGGER"
+                                "größer"
                             ],
                             [
                                 "Kleiner oder gleich",
-                                "SMALLER_EQUALS"
+                                "kleiner-gleich"
                             ],
                             [
                                 "Größer oder gleich",
-                                "BIGGER_EQUALS"
+                                "größer-gleich"
                             ]
                         ]
                     },

@@ -24,23 +24,23 @@ export class IfNumberBlock {
                         "options": [
                             [
                                 "Gleich",
-                                "EQUALS"
+                                "gleich"
                             ],
                             [
                                 "Kleiner",
-                                "SMALLER"
+                                "kleiner"
                             ],
                             [
                                 "Größer",
-                                "BIGGER"
+                                "größer"
                             ],
                             [
                                 "Kleiner oder gleich",
-                                "SMALLER_EQUALS"
+                                "kleiner-gleich"
                             ],
                             [
                                 "Größer oder gleich",
-                                "BIGGER_EQUALS"
+                                "größer-gleich"
                             ]
                         ]
                     },

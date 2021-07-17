@@ -10,7 +10,7 @@ export class AskBlock {
         Blockly.defineBlocksWithJsonArray([
             {
                 "type": "ask",
-                "message0": "Frage %1 und speicher die Antwort in %2",
+                "message0": "Frage \"%1\" und speicher die Antwort in %2",
                 "args0": [
                     {
                         "type": "field_input",

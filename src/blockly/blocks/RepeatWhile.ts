@@ -23,11 +23,11 @@ export class RepeatWhile {
                         "options": [
                             [
                                 "Gleich",
-                                "EQUALS"
+                                "gleich"
                             ],
                             [
                                 "Nicht gleich",
-                                "NOT_EQUALS"
+                                "nicht-gleich"
                             ]
                         ]
                     },

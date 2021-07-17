@@ -13,11 +13,12 @@ body {
 
 #blockly {
   height: 95%;
+  width: 55%;
 }
 
 #monaco {
   height: 95%;
-  width: 100%;
+  width: 55%;
 }
 
 #blocklyDiv {
@@ -27,4 +28,18 @@ body {
   width: 100%;
   min-height: 5%;
   height: 10%;
+}
+
+#livePreviewFrame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+#livePreview {
+  width: 45%;
+  height: 90%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

@@ -24,39 +24,39 @@ export class CreateVarTypeBlock {
                         "options": [
                             [
                                 "Knopf",
-                                "BUTTON"
+                                "Knopf"
                             ],
                             [
                                 "Absatz",
-                                "PARAGRAPH"
+                                "Absatz"
                             ],
                             [
                                 "Text",
-                                "SPAN"
+                                "Text"
                             ],
                             [
                                 "Bild",
-                                "IMG"
+                                "Bild"
                             ],
                             [
                                 "Überschrift",
-                                "H1"
+                                "Überschrift"
                             ],
                             [
                                 "Eingabefeld",
-                                "INPUT"
+                                "Eingabefeld"
                             ],
                             [
                                 "Tabelle",
-                                "TABLE"
+                                "Tabelle"
                             ],
                             [
                                 "Zeile",
-                                "TR"
+                                "Zeile"
                             ],
                             [
                                 "Spalte",
-                                "TB"
+                                "Spalte"
                             ]
                         ]
                     }

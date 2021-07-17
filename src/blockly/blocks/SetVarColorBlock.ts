@@ -23,27 +23,27 @@ export class SetVarColorBlock {
                         "options": [
                             [
                                 "Schwarz",
-                                "BLACK"
+                                "Schwarz"
                             ],
                             [
                                 "Weiß",
-                                "WHITE"
+                                "Weiß"
                             ],
                             [
                                 "Blau",
-                                "BLUE"
+                                "Blau"
                             ],
                             [
                                 "Grün",
-                                "GREEN"
+                                "Grün"
                             ],
                             [
                                 "Gelb",
-                                "YELLOW"
+                                "Gelb"
                             ],
                             [
                                 "Grau",
-                                "GRAY"
+                                "Grau"
                             ]
                         ]
                     }

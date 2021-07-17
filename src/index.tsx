@@ -1,6 +1,5 @@
 import "./styles/_index.scss"
 
-
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as Blockly from 'blockly';
@@ -8,6 +7,7 @@ import * as DE from 'blockly/msg/de';
 import ToolboxDefinition = Blockly.utils.toolbox.ToolboxDefinition;
 import * as DarkTheme from './blockly/themes/BlocklyDark'
 import * as monaco from 'monaco-editor'
+import * as WebCompiler from './incode/compiler/WebCompiler'
 
 import {MainMenu} from "./components/MainMenu";
 import {StartBlock} from "./blockly/blocks/StartBlock";
@@ -36,9 +36,27 @@ import {Block} from "blockly/blockly";
 import {MenuBar} from "./components/MenuBar";
 import {InCodeLanguage} from "./monaco/languages/InCodeLanguage";
 
-document.addEventListener("DOMContentLoaded", function () {
+export class Options {
+    public static enableLivePreview = false;
+    public static currentLiveJS = '';
+    public static currentEditor = '';
+    public static recompileInterval = 4000;
+}
 
-    // React
+export const preview = () => {
+    if(Options.currentEditor != '' && Options.enableLivePreview){
+        compileWS(false);
+        if(document.getElementById('livePreviewFrame') != undefined){
+            (document.getElementById('livePreview') as HTMLDivElement).removeChild((document.getElementById('livePreviewFrame') as HTMLIFrameElement))
+        }
+        let previewFrame = document.createElement('iframe');
+        previewFrame.src = 'preview.html?code=' + Options.currentLiveJS;
+        previewFrame.id = 'livePreviewFrame';
+        (document.getElementById('livePreview') as HTMLDivElement).appendChild(previewFrame);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
 
     const menuContainer = document.querySelector("#menu");
     const menuBarContainer = document.querySelector("#menuBar");
@@ -53,26 +71,52 @@ document.addEventListener("DOMContentLoaded", function () {
     deleteMonaco();
 });
 
-export const compileWS = () => {
+export const compileWS = (dl: boolean = true) => {
     let code = ""
-    if ((document.getElementById('blockly') as HTMLDivElement).style.display === 'none') {
-        // @ts-ignore
-        code = window.editor.getValue();
-    } else {
-        Blockly.getMainWorkspace().getAllBlocks(true).forEach(block => {
-            let c = getPreTabs(block);
-            block.inputList.forEach(i => {
-                i.fieldRow.forEach(r => {
-                    c += r.value_ + " "
+    if(Options.currentEditor != ''){
+        if (Options.currentEditor === 'vscode') {
+            // @ts-ignore
+            code = window.editor.getValue();
+        } else {
+            Blockly.getMainWorkspace().getAllBlocks(true).forEach(block => {
+                let c = getPreTabs(block);
+                block.inputList.forEach(i => {
+                    i.fieldRow.forEach(r => {
+                        if(r.value_ != "Start"){
+                            c += r.value_ + " "
+                        }
+                    })
                 })
+                code += c + "\n"
             })
-            code += c + "\n"
-        })
+        }
+
+        code = WebCompiler.WebCompiler.compile(code);
+
+        Options.currentLiveJS = btoa(code);
+
+        console.log(Options.currentLiveJS)
+
+        if(dl){
+            download("Programm.ic", code)
+        }
     }
-    download("Programm.ic", code)
+}
+
+export const remakeSizes = () => {
+    if (!Options.enableLivePreview) {
+        (document.getElementById('blockly') as HTMLDivElement).style.width = "100%";
+        (document.getElementById('monaco') as HTMLDivElement).style.width = "100%";
+    } else {
+        (document.getElementById('blockly') as HTMLDivElement).style.width = "55%";
+        (document.getElementById('monaco') as HTMLDivElement).style.width = "55%";
+        (document.getElementById('livePreview') as HTMLDivElement).style.width = "45%";
+    }
 }
 
 export const createBlockly = () => {
+    Options.currentEditor = 'blockly'
+    remakeSizes();
     (document.getElementById('blockly') as HTMLDivElement).style.display = 'block'
     StartBlock.registerBlock();
 
@@ -120,6 +164,8 @@ export const deleteBlockly = () => {
 }
 
 export const createMonaco = () => {
+    Options.currentEditor = 'vscode'
+    remakeSizes();
     (document.getElementById('monaco') as HTMLDivElement).style.display = 'block'
     // @ts-ignore
     self.MonacoEnvironment = {
@@ -171,6 +217,7 @@ export const hideMenuBar = () => {
 
 export const showMenu = () => {
     (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
+    Options.currentEditor = '';
 }
 
 export const hideMenu = () => {

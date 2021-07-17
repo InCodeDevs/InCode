@@ -1,0 +1,26 @@
+<!-- Copyright (c) 2018-2021 Ben Siebert. All rights reserved. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    let searchParams = new URLSearchParams(window.location.search);
+    if (!searchParams.has("code")) {
+        document.body.innerText = 'Please set code search parameter to a base64 encoded string'
+    } else {
+        window.onload = () => {
+            document.body.innerHTML = '';
+            document.body.style.backgroundColor = "#fff";
+            let realJS = atob(searchParams.get('code'));
+            let scr = document.createElement('script')
+            scr.innerHTML = realJS;
+            document.body.appendChild(scr)
+        }
+    }
+</script>

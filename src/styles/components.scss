@@ -24,3 +24,20 @@
   padding: 0.5rem 1.5rem;
   font-size: 1.5rem;
 }
+
+.menu-choose-editors-root {
+  display: flex;
+}
+
+.menu-choose-editor {
+  margin: 2rem;
+  padding: 1.75rem 1.75rem;
+  border-radius: 24px;
+  flex: 50%;
+  transition: 0.25s;
+}
+
+.menu-choose-editor:hover {
+  background-color: rgba(76, 76, 76, 0.45);
+  cursor: pointer;
+}

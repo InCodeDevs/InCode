@@ -11,7 +11,7 @@ export class LogBlock {
         Blockly.defineBlocksWithJsonArray([
             {
                 "type": "log",
-                "message0": "Gib %1 in der %2 aus",
+                "message0": "Gib \"%1\" in der %2 aus",
                 "args0": [
                     {
                         "type": "field_input",
@@ -24,11 +24,11 @@ export class LogBlock {
                         "options": [
                             [
                                 "Konsole",
-                                "CONSOLE"
+                                "Konsole"
                             ],
                             [
                                 "Dialogbox",
-                                "DIALOG_BOX"
+                                "Dialogbox"
                             ]
                         ]
                     }
