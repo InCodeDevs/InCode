@@ -15,12 +15,16 @@ body {
   height: 95%;
 }
 
+#monaco {
+  height: 95%;
+  width: 100%;
+}
+
 #blocklyDiv {
   height: 95%;
 }
 #menuBar {
   width: 100%;
-  // min-height: 5%;
+  min-height: 5%;
   height: 10%;
-  display: none;
 }
