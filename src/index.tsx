@@ -113,8 +113,8 @@ export const createBlockly = () => {
 }
 
 export const deleteBlockly = () => {
-    (document.getElementById('blockly') as HTMLDivElement).childNodes.forEach(c => {
-        (document.getElementById('blockly') as HTMLDivElement).removeChild(c)
+    (document.getElementById('blocklyDiv') as HTMLDivElement).childNodes.forEach(c => {
+        (document.getElementById('blocklyDiv') as HTMLDivElement).removeChild(c)
     });
     (document.getElementById('blockly') as HTMLDivElement).style.display = 'none'
 }
