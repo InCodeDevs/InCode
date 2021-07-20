@@ -89,7 +89,7 @@ export class InCodeLanguage {
             rules: [
 
                 {token: 'root-kw', foreground: '#05900d', fontStyle: 'bold'},
-                {token: 'sub-kw', foreground: '#8d8e8e'},
+                {token: 'sub-kw', foreground: '#8d8e8e', fontStyle: 'italic'},
                 {token: 'comment', foreground: '#575757', fontStyle: 'italic'},
                 {token: 'type', foreground: '#FFA500'},
                 {token: 'operator', foreground: '#c61d1d'},

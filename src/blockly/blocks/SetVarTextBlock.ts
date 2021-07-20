@@ -11,7 +11,7 @@ export class SetVarTextBlock {
         Blockly.defineBlocksWithJsonArray([
             {
                 "type": "var_set_text",
-                "message0": "Setze den Text von %1 auf %2",
+                "message0": "Setze den Text von %1 auf \"%2\"",
                 "args0": [
                     {
                         "type": "field_input",

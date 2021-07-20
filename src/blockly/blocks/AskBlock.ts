@@ -30,5 +30,9 @@ export class AskBlock {
                 "helpUrl": ""
             }
         ])
+        // @ts-ignore
+        Blockly.JavaScript['ask'] = function(block: Blockly.Block) {
+            
+        }
     }
 }

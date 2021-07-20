@@ -79,6 +79,7 @@ export const compileWS = (dl: boolean = true) => {
             code = window.editor.getValue();
         } else {
             Blockly.getMainWorkspace().getAllBlocks(true).forEach(block => {
+                console.log(block.parentBlock_)
                 let c = getPreTabs(block);
                 block.inputList.forEach(i => {
                     i.fieldRow.forEach(r => {
@@ -90,6 +91,8 @@ export const compileWS = (dl: boolean = true) => {
                 code += c + "\n"
             })
         }
+
+        console.log(code)
 
         code = WebCompiler.WebCompiler.compile(code);
 
@@ -229,7 +232,13 @@ const getPreTabs = (block: Block): string => {
     let tabs = 0;
     let currentElement = block;
     while (currentElement.parentBlock_) {
-        tabs++;
+        let hasStatementInput = false;
+        currentElement.inputList.forEach(i => {
+            hasStatementInput = i.type == 3;
+        })
+        if(hasStatementInput){
+            tabs++;
+        }
         currentElement = currentElement.parentBlock_;
     }
     let c = "";
