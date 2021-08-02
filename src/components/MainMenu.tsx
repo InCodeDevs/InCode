@@ -22,17 +22,19 @@ export class MainMenu extends React.Component {
                             <img
                                 src={"https://developers.google.com/blockly/images/logos/logo_only.png"} width={128}
                                 height={128}/>
+                            <p className={"menu-editor-description"}>
+                                Block <br /> Editor
+                            </p>
                         </div>
                         <div className={"menu-choose-editor"} onClick={this.openMonaco}>
                             <img
-                                src={"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/1200px-Visual_Studio_Code_1.35_icon.svg.png"}
-                                width={128} height={128}/>
+                                src={"https://developers.google.com/blockly/images/logos/logo_only.png"} width={128}
+                                height={128}/>
+                            <p className={"menu-editor-description"}>
+                                Code <br /> Editor
+                            </p>
                         </div>
                     </div>
-                    <InputGroup className="mb-3">
-                        <InputGroup.Checkbox onChange={this.toggleLivePreview} />
-                        <FormControl disabled={true} value={"Preview aktivieren"}/>
-                    </InputGroup>
                 </div>
             </>
         )

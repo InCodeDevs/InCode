@@ -37,7 +37,7 @@ import {MenuBar} from "./components/MenuBar";
 import {InCodeLanguage} from "./monaco/languages/InCodeLanguage";
 
 export class Options {
-    public static enableLivePreview = false;
+    public static enableLivePreview = true;
     public static currentLiveJS = '';
     public static currentEditor = '';
     public static recompileInterval = 4000;
@@ -101,7 +101,7 @@ export const compileWS = (dl: boolean = true) => {
         console.log(Options.currentLiveJS)
 
         if(dl){
-            download("Programm.ic", code)
+            download("Programm.js", code)
         }
     }
 }

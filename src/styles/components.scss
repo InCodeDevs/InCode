@@ -40,4 +40,16 @@
 .menu-choose-editor:hover {
   background-color: rgba(76, 76, 76, 0.45);
   cursor: pointer;
+  .menu-editor-description {
+    opacity: .7;
+  }
+}
+
+.menu-editor-description {
+  color: #fff;
+  font-size: 1.1em;
+  opacity: .25;
+  font-style: italic;
+  letter-spacing: 4px;
+  transition: opacity .25s;
 }
