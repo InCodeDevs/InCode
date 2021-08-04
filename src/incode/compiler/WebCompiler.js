@@ -494,8 +494,8 @@ class WebCompiler {
         return r;
     }
     static compileStatement(statement) {
-        if (statement.startsWith("@"))
-            return statement.slice(statement.indexOf("@") + 2, statement.length);
+        if (this.trimStatement(statement).startsWith("@"))
+            return this.trimStatement(statement).slice(statement.indexOf("@") + 1, statement.length);
         let r = this.trimStatement(statement);
         let args = r.split(" ");
         r = "";
@@ -526,11 +526,15 @@ class WebCompiler {
                             }
                             else {
                                 this.errorCodes.prettyPrint(3, statement);
+                                console.log("A line was ignored because it contained errors.");
+                                r = "";
                             }
                         }
                     }
                     else {
                         this.errorCodes.prettyPrint(2, statement);
+                        console.log("A line was ignored because it contained errors.");
+                        r = "";
                     }
                 }
                 break;
@@ -564,6 +568,8 @@ class WebCompiler {
                     }
                     else {
                         this.errorCodes.prettyPrint(3, statement);
+                        console.log("A line was ignored because it contained errors.");
+                        r = "";
                     }
                 }
                 break;
@@ -574,6 +580,8 @@ class WebCompiler {
                 else {
                     this.errorCodes.prettyPrint(2, statement);
                     console.log("Missing KeyWord: als. In statement: " + JSON.stringify(statement));
+                    console.log("A line was ignored because it contained errors.");
+                    r = "";
                 }
                 break;
             case "füge":
@@ -585,6 +593,8 @@ class WebCompiler {
                 }
                 else {
                     this.errorCodes.prettyPrint(2, statement);
+                    console.log("A line was ignored because it contained errors.");
+                    r = "";
                 }
                 break;
             case "wiederhole":
@@ -606,10 +616,14 @@ class WebCompiler {
                         }
                         else {
                             this.errorCodes.prettyPrint(5, statement);
+                            console.log("A line was ignored because it contained errors.");
+                            r = "";
                         }
                     }
                     else {
                         this.errorCodes.prettyPrint(2, statement);
+                        console.log("A line was ignored because it contained errors.");
+                        r = "";
                     }
                 }
                 break;
@@ -620,6 +634,8 @@ class WebCompiler {
                     }
                     else {
                         this.errorCodes.prettyPrint(5, statement);
+                        console.log("A line was ignored because it contained errors.");
+                        r = "";
                     }
                 }
                 else {
@@ -631,10 +647,14 @@ class WebCompiler {
                         else {
                             console.log(args[2]);
                             this.errorCodes.prettyPrint(6, statement);
+                            console.log("A line was ignored because it contained errors.");
+                            r = "";
                         }
                     }
                     else {
                         this.errorCodes.prettyPrint(2, statement);
+                        console.log("A line was ignored because it contained errors.");
+                        r = "";
                     }
                 }
                 break;
@@ -649,10 +669,14 @@ class WebCompiler {
                         }
                         else {
                             this.errorCodes.prettyPrint(5, statement);
+                            console.log("A line was ignored because it contained errors.");
+                            r = "";
                         }
                     }
                     else {
                         this.errorCodes.prettyPrint(2, statement);
+                        console.log("A line was ignored because it contained errors.");
+                        r = "";
                     }
                 }
                 break;
@@ -666,10 +690,14 @@ class WebCompiler {
                     }
                     else {
                         this.errorCodes.prettyPrint(3, statement);
+                        console.log("A line was ignored because it contained errors.");
+                        r = "";
                     }
                 }
                 else {
                     this.errorCodes.prettyPrint(2, statement);
+                    console.log("A line was ignored because it contained errors.");
+                    r = "";
                 }
                 break;
             case "frage":
@@ -678,11 +706,17 @@ class WebCompiler {
                 }
                 else {
                     this.errorCodes.prettyPrint(2, statement);
+                    console.log("A line was ignored because it contained errors.");
+                    r = "";
                 }
                 break;
             default:
-                console.log("KeyWord: " + args[0] + ". In statement: " + JSON.stringify(statement));
-                this.errorCodes.prettyPrint(2, statement);
+                if (args[0] != "//") {
+                    console.log("KeyWord: " + args[0] + ". In statement: " + JSON.stringify(statement));
+                    this.errorCodes.prettyPrint(2, statement);
+                    console.log("A line was ignored because it contained errors.");
+                    r = "";
+                }
         }
         return r + "\n";
     }

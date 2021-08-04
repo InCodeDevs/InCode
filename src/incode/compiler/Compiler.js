@@ -1,10 +1,11 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Compiler = void 0;
 /**
  * @author Ben Siebert
  * @copyright 2018-2021 Ben Siebert. All rights reserved.
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Compiler = void 0;
+const WebCompiler_1 = require("./WebCompiler");
 class Compiler {
     static extractCodeBlocks(code) {
         // prepare the code
@@ -23,7 +24,7 @@ class Compiler {
         for (let i = 0; i < Object.keys(expressions).length; i++) {
             // get the current expression
             let expression = expressions[i];
-            if (!expression.startsWith("//") && !expression.startsWith("@")) {
+            if (!WebCompiler_1.WebCompiler.trimStatement(expression).startsWith("//") && !WebCompiler_1.WebCompiler.trimStatement(expression).trim().startsWith("@")) {
                 // check if the expression is not \r
                 if (expression != "\r" && !ignoredLines.includes(i)) {
                     // get the position of this expression
@@ -90,7 +91,7 @@ class Compiler {
                 }
             }
             else {
-                if (expression.startsWith("@")) {
+                if (!WebCompiler_1.WebCompiler.trimStatement(expression).startsWith("@")) {
                     codeBlocks.push({
                         statement: expression,
                         line: i,

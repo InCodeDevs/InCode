@@ -48,7 +48,6 @@ class ErrorCodes {
             console.log('Error in statement: ' + expression);
         }
         console.log("error: ic-" + code + ": " + this.getDescription("ic-" + code) + ". please visit " + this.getHelpLink("ic-" + code) + " for help");
-        process.exit(1);
     }
 }
 exports.ErrorCodes = ErrorCodes;
