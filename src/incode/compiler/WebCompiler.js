@@ -43,7 +43,7 @@ class WebCompiler {
                     "rosa": "pink",
                     "pink": "pink",
                     "lila": "violet",
-                    "violet": "violet",
+                    "violett": "violet",
                     "orange": "orange"
                 },
                 append: ""
@@ -63,7 +63,7 @@ class WebCompiler {
                     "rosa": "pink",
                     "pink": "pink",
                     "lila": "violet",
-                    "violet": "violet",
+                    "violett": "violet",
                     "orange": "orange"
                 },
                 append: ""
@@ -363,7 +363,7 @@ class WebCompiler {
                     "rosa": "pink",
                     "pink": "pink",
                     "lila": "violet",
-                    "violet": "violet",
+                    "violett": "violet",
                     "orange": "orange"
                 },
                 append: ""
@@ -383,7 +383,7 @@ class WebCompiler {
                     "rosa": "pink",
                     "pink": "pink",
                     "lila": "violet",
-                    "violet": "violet",
+                    "violett": "violet",
                     "orange": "orange"
                 },
                 append: ""
@@ -403,7 +403,7 @@ class WebCompiler {
                     "rosa": "pink",
                     "pink": "pink",
                     "lila": "violet",
-                    "violet": "violet",
+                    "violett": "violet",
                     "orange": "orange"
                 },
                 append: ""
@@ -423,7 +423,7 @@ class WebCompiler {
                     "rosa": "pink",
                     "pink": "pink",
                     "lila": "violet",
-                    "violet": "violet",
+                    "violett": "violet",
                     "orange": "orange"
                 },
                 append: ""
@@ -443,7 +443,7 @@ class WebCompiler {
                     "rosa": "pink",
                     "pink": "pink",
                     "lila": "violet",
-                    "violet": "violet",
+                    "violett": "violet",
                     "orange": "orange"
                 },
                 append: ""
