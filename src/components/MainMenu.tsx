@@ -1,11 +1,6 @@
 import * as React from "react";
-import Button from 'react-bootstrap/Button';
-import {createBlockly, createMonaco, hideMenu, showMenuBar, Options} from "../index";
-import {List} from "react-bootstrap-icons";
-import {Dropdown, FormControl, InputGroup} from "react-bootstrap";
 
 export class MainMenu extends React.Component {
-
     render() {
         return (
             <>
@@ -16,44 +11,27 @@ export class MainMenu extends React.Component {
                     position: "absolute",
                     textAlign: "center"
                 }}>
-                    <h1 style={{color: "#F8F9FAFF"}}>Editor auswählen</h1>
+                    <h1 style={{color: "#F8F9FAFF"}}>InCode Editor</h1>
                     <div className={"menu-choose-editors-root"}>
-                        <div className={"menu-choose-editor"} onClick={this.openBlockEditor}>
+                        <div className={"menu-choose-editor"}>
                             <img
-                                src={"https://developers.google.com/blockly/images/logos/logo_only.png"} width={128}
+                                src={"assets/editor-create-project.png"} width={128}
                                 height={128}/>
                             <p className={"menu-editor-description"}>
-                                Block <br /> Editor
+                                Projekt <br /> Erstellen
                             </p>
                         </div>
-                        <div className={"menu-choose-editor"} onClick={this.openMonaco}>
+                        <div className={"menu-choose-editor"}>
                             <img
-                                src={"https://developers.google.com/blockly/images/logos/logo_only.png"} width={128}
+                                src={"assets/editor-open-project.png"} width={128}
                                 height={128}/>
                             <p className={"menu-editor-description"}>
-                                Code <br /> Editor
+                                Projekt <br /> Öffnen
                             </p>
                         </div>
                     </div>
                 </div>
             </>
         )
-    }
-
-    toggleLivePreview(){
-        console.log(!Options.enableLivePreview)
-        Options.enableLivePreview = !Options.enableLivePreview;
-    }
-
-    openBlockEditor() {
-        hideMenu();
-        showMenuBar();
-        createBlockly();
-    }
-
-    openMonaco() {
-        hideMenu();
-        showMenuBar()
-        createMonaco()
     }
 }

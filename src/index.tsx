@@ -9,7 +9,7 @@ import * as DarkTheme from './blockly/themes/BlocklyDark'
 import * as monaco from 'monaco-editor'
 import * as WebCompiler from './incode/compiler/WebCompiler'
 
-import {MainMenu} from "./components/MainMenu";
+import {ChooseEditorMenu} from "./components/ChooseEditorMenu";
 import {StartBlock} from "./blockly/blocks/StartBlock";
 import {LogBlock} from "./blockly/blocks/LogBlock";
 import {AskBlock} from "./blockly/blocks/AskBlock";
@@ -36,12 +36,12 @@ import {Block} from "blockly/blockly";
 import {MenuBar} from "./components/MenuBar";
 import {InCodeLanguage} from "./monaco/languages/InCodeLanguage";
 import {BlocklyCompiler} from "./blockly/BlocklyCompiler";
+import {MainMenu} from "./components/MainMenu";
 
 export class Options {
     public static enableLivePreview = true;
     public static currentLiveJS = '';
     public static currentEditor = '';
-    public static recompileInterval = 4000;
 }
 
 export const preview = () => {
