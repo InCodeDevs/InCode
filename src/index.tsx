@@ -35,6 +35,7 @@ import {ElseBlock} from "./blockly/blocks/ElseBlock";
 import {Block} from "blockly/blockly";
 import {MenuBar} from "./components/MenuBar";
 import {InCodeLanguage} from "./monaco/languages/InCodeLanguage";
+import {BlocklyCompiler} from "./blockly/BlocklyCompiler";
 
 export class Options {
     public static enableLivePreview = true;
@@ -78,6 +79,8 @@ export const compileWS = (dl: boolean = true) => {
             // @ts-ignore
             code = window.editor.getValue();
         } else {
+            code = new BlocklyCompiler().compile();
+            /*
             Blockly.getMainWorkspace().getAllBlocks(true).forEach(block => {
                 console.log(block.parentBlock_)
                 let c = getPreTabs(block);
@@ -89,10 +92,10 @@ export const compileWS = (dl: boolean = true) => {
                     })
                 })
                 code += c + "\n"
-            })
+            })*/
         }
 
-        console.log(code)
+        console.log("Code: \n\n" + code)
 
         code = WebCompiler.WebCompiler.compile(code);
 

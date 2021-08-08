@@ -15,7 +15,7 @@ export class ElseBlock {
                 "args0": [
                     {
                         "type": "input_statement",
-                        "name": "EXEC_STATEMENT"
+                        "name": "STATEMENT"
                     }
                 ],
                 "previousStatement": null,

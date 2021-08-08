@@ -51,7 +51,7 @@ export class ElseIfTextBlock {
                     },
                     {
                         "type": "input_statement",
-                        "name": "EXEC_STATEMENT"
+                        "name": "STATEMENT"
                     }
                 ],
                 "previousStatement": null,

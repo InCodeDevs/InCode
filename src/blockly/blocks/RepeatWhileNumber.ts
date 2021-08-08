@@ -51,7 +51,7 @@ export class RepeatWhileNumber {
                     },
                     {
                         "type": "input_statement",
-                        "name": "REPEAT_STATEMENT"
+                        "name": "STATEMENT"
                     }
                 ],
                 "previousStatement": null,

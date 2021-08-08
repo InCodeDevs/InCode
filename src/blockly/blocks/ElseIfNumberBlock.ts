@@ -51,7 +51,7 @@ export class ElseIfNumberBlock {
                     },
                     {
                         "type": "input_statement",
-                        "name": "EXEC_STATEMENT"
+                        "name": "STATEMENT"
                     }
                 ],
                 "previousStatement": null,
