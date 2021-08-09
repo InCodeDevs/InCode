@@ -249,7 +249,6 @@ export class UIManager {
     }
 
     private static handleAlert0() {
-        console.log("Hello World");
         (document.querySelector(".alert-popup-button-confirm") as HTMLButtonElement).removeEventListener('click', UIManager.handleAlert0, true)
         UIManager.alert0CallBack()
     }

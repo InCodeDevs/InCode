@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import {ProjectManager} from "../utils/ProjectManager";
+import {UIManager} from "../utils/UIManager";
 
 export class MainMenu extends React.Component {
 
@@ -57,6 +58,13 @@ export class MainMenu extends React.Component {
      * Creates a new Project
      */
     public createNewProject() {
-
+        let projectName: string;
+        UIManager.prompt(
+            "<h1 style='text-align: center'>Projekt Erstellen</h1>" +
+            "<h4 style='text-align: center'>Bitte gib den Namen deines neuen Projektes ein!</h4>",
+            (value: string) => {
+                projectName = value;
+            }
+        )
     }
 }
