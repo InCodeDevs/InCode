@@ -7,6 +7,9 @@ import * as monaco from 'monaco-editor'
 
 export class InCodeLanguage {
 
+    /**
+     * Registers the InCode Syntax-Highlighting
+     */
     public static register() {
         monaco.languages.register({
             id: "incode"

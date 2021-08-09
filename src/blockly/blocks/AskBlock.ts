@@ -6,6 +6,9 @@ import * as Blockly from "blockly";
 
 export class AskBlock {
 
+    /**
+     * Registers the "Ask" block to the blockly registry
+     */
     public static registerBlock(){
         Blockly.defineBlocksWithJsonArray([
             {
@@ -32,7 +35,7 @@ export class AskBlock {
         ])
         // @ts-ignore
         Blockly.JavaScript['ask'] = function(block: Blockly.Block) {
-            
+
         }
     }
 }

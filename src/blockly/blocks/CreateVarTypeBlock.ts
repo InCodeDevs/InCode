@@ -6,6 +6,9 @@ import * as Blockly from "blockly";
 
 export class CreateVarTypeBlock {
 
+    /**
+     * Registers the "CreateVarType" block to the blockly registry
+     */
     public static registerBlock() {
 
         Blockly.defineBlocksWithJsonArray([

@@ -6,6 +6,9 @@ import * as Blockly from "blockly";
 
 export class AddToElementBlock {
 
+    /**
+     * Registers the "AddToElement" block to the blockly registry
+     */
     public static registerBlock() {
         Blockly.defineBlocksWithJsonArray([
             {

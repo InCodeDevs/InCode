@@ -10,6 +10,10 @@ import {Networking} from "./Networking";
 
 export class Workspace {
 
+    /**
+     * Compiles the current Workspace
+     * @param dl If this is true the output will be downloaded as "Programm.js"
+     */
     public static compile(dl: boolean = true) {
         let code = ""
         if(Options.currentEditor != ''){
@@ -34,6 +38,9 @@ export class Workspace {
         }
     }
 
+    /**
+     * Compiles the code and opens it in the preview window
+     */
     public static preview = () => {
         if(Options.currentEditor != '' && Options.enableLivePreview){
             Workspace.compile(false);

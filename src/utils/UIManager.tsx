@@ -40,6 +40,9 @@ import {ChooseEditorMenu} from "../components/ChooseEditorMenu";
 
 export class UIManager {
 
+    /**
+     * Loads all basic components and renders the Main Menu
+     */
     public static onLoad() {
         const menuContainer = document.querySelector("#menu");
         const menuBarContainer = document.querySelector("#menuBar");
@@ -54,6 +57,9 @@ export class UIManager {
         UIManager.deleteMonaco();
     }
 
+    /**
+     * Removes the monaco (vscode) editor
+     */
     public static deleteMonaco = () => {
         (document.getElementById('monaco') as HTMLDivElement).childNodes.forEach(c => {
             (document.getElementById('monaco') as HTMLDivElement).removeChild(c)
@@ -61,23 +67,40 @@ export class UIManager {
         (document.getElementById('monaco') as HTMLDivElement).style.display = 'none'
     }
 
+    /**
+     * Shows the Menu Bar
+     */
     public static showMenuBar = () => {
         (document.getElementById('menuBar') as HTMLDivElement).style.display = 'block'
     }
 
+    /**
+     * Hides the Menu Bar
+     */
     public static hideMenuBar = () => {
         (document.getElementById('menuBar') as HTMLDivElement).style.display = 'none'
     }
 
+    /**
+     * Shows the Menu
+     * may be removed.
+     */
     public static showMenu = () => {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
         Options.currentEditor = '';
     }
 
+    /**
+     * Hides the menu
+     * may be removed.
+     */
     public static hideMenu = () => {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'none'
     }
 
+    /**
+     * Creates the blockly editor
+     */
     public static createBlockly = () => {
         Options.currentEditor = 'blockly'
         UIManager.remakeSizes();
@@ -120,6 +143,9 @@ export class UIManager {
             });
     }
 
+    /**
+     * Removes the blockly editor
+     */
     public static deleteBlockly = () => {
         (document.getElementById('blocklyDiv') as HTMLDivElement).childNodes.forEach(c => {
             (document.getElementById('blocklyDiv') as HTMLDivElement).removeChild(c)
@@ -127,6 +153,9 @@ export class UIManager {
         (document.getElementById('blockly') as HTMLDivElement).style.display = 'none'
     }
 
+    /**
+     * Creates the monaco (vscode) editor
+     */
     public static createMonaco = () => {
         Options.currentEditor = 'vscode'
         UIManager.remakeSizes();
@@ -164,15 +193,13 @@ export class UIManager {
         });
     }
 
+    /**
+     * Sets the sizes of everything
+     */
     public static remakeSizes = () => {
-        if (!Options.enableLivePreview) {
-            (document.getElementById('blockly') as HTMLDivElement).style.width = "100%";
-            (document.getElementById('monaco') as HTMLDivElement).style.width = "100%";
-        } else {
-            (document.getElementById('blockly') as HTMLDivElement).style.width = "55%";
-            (document.getElementById('monaco') as HTMLDivElement).style.width = "55%";
-            (document.getElementById('livePreview') as HTMLDivElement).style.width = "45%";
-        }
+        (document.getElementById('blockly') as HTMLDivElement).style.width = "55%";
+        (document.getElementById('monaco') as HTMLDivElement).style.width = "55%";
+        (document.getElementById('livePreview') as HTMLDivElement).style.width = "45%";
     }
 
 }

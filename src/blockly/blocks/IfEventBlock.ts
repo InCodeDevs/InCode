@@ -7,6 +7,9 @@ import * as Blockly from "blockly";
 
 export class IfEventBlock {
 
+    /**
+     * Registers the "IfEvent" block to the blockly registry
+     */
     public static registerBlock() {
         Blockly.defineBlocksWithJsonArray([
             {

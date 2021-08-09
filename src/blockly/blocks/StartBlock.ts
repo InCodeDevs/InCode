@@ -7,6 +7,10 @@ import * as Blockly from 'blockly'
 
 export class StartBlock {
 
+    /**
+     * Registers the "Start" block to the blockly registry
+     * Attention: This block is ignored when compiling
+     */
     public static registerBlock(){
         Blockly.defineBlocksWithJsonArray([
             {

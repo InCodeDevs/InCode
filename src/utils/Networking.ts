@@ -5,6 +5,11 @@
 
 export class Networking {
 
+    /**
+     * Downloads a file
+     * @param filename The name of the file
+     * @param text The content of the file
+     */
     public static download(filename: string, text: string) {
         const element = document.createElement('a');
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));

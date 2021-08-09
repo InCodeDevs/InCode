@@ -6,6 +6,11 @@
 import * as React from "react";
 
 export class MainMenu extends React.Component {
+
+    /**
+     * Renders the Main Menu
+     * @return The Menu
+     */
     render() {
         return (
             <>
@@ -40,9 +45,15 @@ export class MainMenu extends React.Component {
         )
     }
 
+    /**
+     * Opens a Project
+     */
     public openProject() {
     }
 
+    /**
+     * Creates a new Project
+     */
     public createNewProject() {
     }
 }

@@ -9,6 +9,11 @@ import {UIManager} from "../utils/UIManager";
 import {Workspace} from "../utils/Workspace";
 
 export class MenuBar extends React.Component {
+
+    /**
+     * Renders the Menu Bar
+     * @return The Menu Bar
+     */
     render() {
         return (
             <>
@@ -42,6 +47,9 @@ export class MenuBar extends React.Component {
         );
     }
 
+    /**
+     * Shows the Main Menu
+     */
     showMainMenu() {
         if(document.getElementById('livePreviewFrame') != undefined){
             (document.getElementById('livePreview') as HTMLDivElement).removeChild((document.getElementById('livePreviewFrame') as HTMLIFrameElement))

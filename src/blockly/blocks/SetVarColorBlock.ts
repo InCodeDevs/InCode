@@ -6,6 +6,9 @@ import * as Blockly from "blockly";
 
 export class SetVarColorBlock {
 
+    /**
+     * Registers the "SetVarColor" block to the blockly registry
+     */
     public static registerBlock() {
         Blockly.defineBlocksWithJsonArray([
             {

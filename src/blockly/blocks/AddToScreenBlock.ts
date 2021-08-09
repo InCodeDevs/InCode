@@ -6,6 +6,9 @@ import * as Blockly from "blockly";
 
 export class AddToScreenBlock {
 
+    /**
+     * Registers the "AddToScreen" block to the blockly registry
+     */
     public static registerBlock(){
         Blockly.defineBlocksWithJsonArray([
             {

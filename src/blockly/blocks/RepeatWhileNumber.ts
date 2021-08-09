@@ -7,6 +7,9 @@ import * as Blockly from 'blockly'
 
 export class RepeatWhileNumber {
 
+    /**
+     * Registers the "RepeatWhileNumber" block to the blockly registry
+     */
     public static registerBlock() {
         Blockly.defineBlocksWithJsonArray([
             {

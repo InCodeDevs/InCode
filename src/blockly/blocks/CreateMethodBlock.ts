@@ -6,6 +6,9 @@ import * as Blockly from "blockly";
 
 export class CreateMethodBlock {
 
+    /**
+     * Registers the "CreateMethod" block to the blockly registry
+     */
     public static registerBlock(){
         Blockly.defineBlocksWithJsonArray([
             {

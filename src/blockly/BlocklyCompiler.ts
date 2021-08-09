@@ -9,6 +9,10 @@ export class BlocklyCompiler {
 
     private compiledBlocks: any[] = [];
 
+    /**
+     * Compiles the current blockly workspace
+     * @return The compiled code
+     */
     compile(): string {
         let code = "";
         Blockly.getMainWorkspace().getAllBlocks(true).forEach(block => {
@@ -19,6 +23,10 @@ export class BlocklyCompiler {
         return code;
     }
 
+    /**
+     * Compiles a single block given by the compile method
+     * @param block The block to be compiled
+     */
     private compileBlock(block: Blockly.Block): string {
 
         this.compiledBlocks.push(block);
@@ -40,6 +48,12 @@ export class BlocklyCompiler {
         return code;
     }
 
+    /**
+     * Calculates the TABS (\t) for a given block
+     * @param block The block which should be calculated
+     * @param log Log the TABS (\t) to the console DEFAULT = false. DEBUGGING ONLY
+     * @param b1 Ignore this boolean, idiot. Just kidding, basically I created it for debugging and it now has no sense anymore
+     */
     private getBlockTabs(block: Blockly.Block, log: boolean = false, b1: boolean = true): string {
         let tabs = "";
 
@@ -75,16 +89,10 @@ export class BlocklyCompiler {
         return tabs;
     }
 
-    private canHasInnerCode(block: Blockly.Block): boolean {
-        let canHasInnerCode = false;
-        block.inputList.forEach(i => {
-            if (!canHasInnerCode) {
-                canHasInnerCode = i.type === 3;
-            }
-        })
-        return canHasInnerCode
-    }
-
+    /**
+     * Actually compiles a block
+     * @param block The block to be compiled
+     */
     private getBlockText(block: Blockly.Block): string {
         let c = "";
         block.inputList.forEach(i => {

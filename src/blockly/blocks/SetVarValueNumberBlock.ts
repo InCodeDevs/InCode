@@ -6,6 +6,9 @@ import * as Blockly from "blockly";
 
 export class SetVarValueNumberBlock {
 
+    /**
+     * Registers the "SetVarValueNumber" block to the blockly registry
+     */
     public static registerBlock(){
         Blockly.defineBlocksWithJsonArray([
             {

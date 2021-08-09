@@ -10,6 +10,10 @@ import {UIManager} from "../utils/UIManager";
 
 export class ChooseEditorMenu extends React.Component {
 
+    /**
+     * Renders the Menu where the user can choose his favorite editor. (may be removed in feature versions)
+     * @return The Menu
+     */
     render() {
         return (
             <>
@@ -44,17 +48,18 @@ export class ChooseEditorMenu extends React.Component {
         )
     }
 
-    toggleLivePreview(){
-        console.log(!Options.enableLivePreview)
-        Options.enableLivePreview = !Options.enableLivePreview;
-    }
-
+    /**
+     * Opens the blockly editor
+     */
     openBlockEditor() {
         UIManager.hideMenu();
         UIManager.showMenuBar();
         UIManager.createBlockly();
     }
 
+    /**
+     * Opens the monaco (vscode) editor
+     */
     openMonaco() {
         UIManager.hideMenu();
         UIManager.showMenuBar()
