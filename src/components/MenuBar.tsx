@@ -1,3 +1,8 @@
+/**
+ * @author The InCode Devs
+ * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
+ */
+
 import * as React from "react";
 import Button from "react-bootstrap/Button";
 import {UIManager} from "../utils/UIManager";
