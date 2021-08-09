@@ -28,13 +28,13 @@ export class BlocklyCompiler {
         let b = block.getInputTargetBlock("STATEMENT");
 
         if (b) {
-            code += this.getBlockTabs(block, true) + this.getBlockText(block) + "\n\r"
+            code += this.getBlockTabs(block, true) + this.getBlockText(block) + "\n"
             do {
                 this.compiledBlocks.push(b);
-                code += this.getBlockTabs(b, true) + this.compileBlock(b) + "\n\r";
+                code += this.getBlockTabs(b, true) + this.compileBlock(b) + "\n";
             } while (b = b.getNextBlock());
         } else {
-            code += this.getBlockTabs(block, true) + this.getBlockText(block) + "\n\r"
+            code += this.getBlockTabs(block, true) + this.getBlockText(block) + "\n"
         }
 
         return code;

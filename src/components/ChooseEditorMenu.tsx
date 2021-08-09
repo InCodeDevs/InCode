@@ -1,5 +1,7 @@
 import * as React from "react";
-import {createBlockly, createMonaco, hideMenu, showMenuBar, Options} from "../index";
+import { Options } from "../Options";
+
+import {UIManager} from "../utils/UIManager";
 
 export class ChooseEditorMenu extends React.Component {
 
@@ -43,14 +45,14 @@ export class ChooseEditorMenu extends React.Component {
     }
 
     openBlockEditor() {
-        hideMenu();
-        showMenuBar();
-        createBlockly();
+        UIManager.hideMenu();
+        UIManager.showMenuBar();
+        UIManager.createBlockly();
     }
 
     openMonaco() {
-        hideMenu();
-        showMenuBar()
-        createMonaco()
+        UIManager.hideMenu();
+        UIManager.showMenuBar()
+        UIManager.createMonaco()
     }
 }

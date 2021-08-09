@@ -1,6 +1,7 @@
 import * as React from "react";
 import Button from "react-bootstrap/Button";
-import {compileWS, deleteBlockly, deleteMonaco, hideMenu, hideMenuBar, Options, preview, showMenu} from '../index'
+import {UIManager} from "../utils/UIManager";
+import {Workspace} from "../utils/Workspace";
 
 export class MenuBar extends React.Component {
     render() {
@@ -15,10 +16,10 @@ export class MenuBar extends React.Component {
                 }}>
                     <div style={{flex: "33%", textAlign: "center", display: 'flex'}}>
                         <div style={{flex: "50%", textAlign: "center"}} id={"export-btn"}>
-                            <Button variant={"outline-flat"} size={"xxl"} onClick={compileWS}>Exportieren</Button>
+                            <Button variant={"outline-flat"} size={"xxl"} onClick={Workspace.compile}>Exportieren</Button>
                         </div>
                         <div style={{flex: "50%", textAlign: "center"}} id={"rl-preview-btn"}>
-                            <Button variant={"outline-flat"} size={"xxl"} onClick={preview}>Preview neu laden</Button>
+                            <Button variant={"outline-flat"} size={"xxl"} onClick={Workspace.preview}>Preview neu laden</Button>
                         </div>
                     </div>
                     <div style={{flex: "33%"}}>
@@ -40,9 +41,9 @@ export class MenuBar extends React.Component {
         if(document.getElementById('livePreviewFrame') != undefined){
             (document.getElementById('livePreview') as HTMLDivElement).removeChild((document.getElementById('livePreviewFrame') as HTMLIFrameElement))
         }
-        deleteBlockly();
-        deleteMonaco();
-        showMenu()
-        hideMenuBar()
+        UIManager.deleteBlockly();
+        UIManager.deleteMonaco();
+        UIManager.showMenu()
+        UIManager.hideMenuBar()
     }
 }
