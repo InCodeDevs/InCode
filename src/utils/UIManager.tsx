@@ -36,7 +36,6 @@ import * as DE from "blockly/msg/de";
 import * as DarkTheme from "../blockly/themes/BlocklyDark";
 import {InCodeLanguage} from "../monaco/languages/InCodeLanguage";
 import * as monaco from "monaco-editor";
-import {ChooseEditorMenu} from "../components/ChooseEditorMenu";
 
 export class UIManager {
 
@@ -55,6 +54,18 @@ export class UIManager {
 
         UIManager.deleteBlockly();
         UIManager.deleteMonaco();
+
+        (document.querySelector('.popup-button') as HTMLButtonElement).addEventListener('click', (e) => {
+            (document.querySelector('.popup') as HTMLDivElement).style.display = 'none';
+        });
+        (document.querySelector('#copyright') as HTMLDivElement).addEventListener('click', (e) => {
+            UIManager.alert("<h1>InCode-Editor</h1>" +
+                "<span><strong>By:</strong> <span style='font-family: monospace'>The InCode Developers</span><br>" +
+                "<strong>Version:</strong> <span style='font-family: monospace'>Beta 2.0.0</span><br>" +
+                "<strong>License:</strong> <span style='font-family: monospace'>GNU General Public License 3.0</span><br>" +
+                "<a href='http://github.com/InCodeDevs/InCode-Editor' target='_blank'>GitHub</a>\t<a href='http://incodedevs.github.io/InCode-Editor' target='_blank'>Website</a></span>"
+            )
+        })
     }
 
     /**
@@ -183,7 +194,7 @@ export class UIManager {
 
         // @ts-ignore
         window.editor = monaco.editor.create((document.getElementById('monaco') as HTMLDivElement), {
-            value: 'Erstelle x als Knopf\nSetze den Text von x auf "Klick mich"\nFüge x zum Bildschirm hinzu',
+            value: '',
             language: 'incode',
             theme: "incode-lang-theme",
             insertSpaces: false,
@@ -200,6 +211,15 @@ export class UIManager {
         (document.getElementById('blockly') as HTMLDivElement).style.width = "55%";
         (document.getElementById('monaco') as HTMLDivElement).style.width = "55%";
         (document.getElementById('livePreview') as HTMLDivElement).style.width = "45%";
+    }
+
+    /**
+     * Alert a message using react-popups
+     * @param msg The message that should be printed
+     */
+    public static alert(msg: string) {
+        (document.querySelector(".popup") as HTMLDivElement).style.display = 'block';
+        (document.querySelector(".popup-content") as HTMLDivElement).innerHTML = msg;
     }
 
 }
