@@ -13,7 +13,7 @@ export class MainMenu extends React.Component {
                 }}>
                     <h1 style={{color: "#F8F9FAFF"}}>InCode Editor</h1>
                     <div className={"menu-choose-editors-root"}>
-                        <div className={"menu-choose-editor"}>
+                        <div className={"menu-choose-editor"} onClick={this.createNewProject}>
                             <img
                                 src={"assets/editor-create-project.png"} width={128}
                                 height={128}/>
@@ -21,7 +21,7 @@ export class MainMenu extends React.Component {
                                 Projekt <br /> Erstellen
                             </p>
                         </div>
-                        <div className={"menu-choose-editor"}>
+                        <div className={"menu-choose-editor"} onClick={this.openProject}>
                             <img
                                 src={"assets/editor-open-project.png"} width={128}
                                 height={128}/>
@@ -33,5 +33,13 @@ export class MainMenu extends React.Component {
                 </div>
             </>
         )
+    }
+
+    public openProject() {
+
+    }
+
+    public createNewProject() {
+        
     }
 }
