@@ -2,6 +2,7 @@
  * @author The InCode Devs
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
+import {UIManager} from "./UIManager";
 
 export class ProjectManager {
 
@@ -28,7 +29,7 @@ export class ProjectManager {
         if (localStorage.getItem("incode-editor.projects." + name) != null) {
 
         } else {
-
+            UIManager.alert("<h1>Fehler</h1><span>Das Projekt konnte nicht gefunden werden!</span>")
         }
     }
 

@@ -7,6 +7,8 @@
 </head>
 <body>
 
+<div id="topScreen"></div>
+
 <div id="copyright">
     Copyright © 2018-2021 The InCode Developers.
 </div>
@@ -14,9 +16,21 @@
 <div id="menuBar"></div>
 <div id="menu"></div>
 <div id="popup">
-    <div class="popup">
-        <div class="popup-content"></div>
-        <button class="normal-outline-btn popup-button" type="button">Schließen</button>
+    <div class="popup alert-popup">
+        <div class="alert-popup-content"></div>
+        <div class="popup-buttons">
+            <button class="normal-outline-btn popup-button alert-popup-button alert-popup-button-confirm" type="button" onclick="document.querySelector('.alert-popup').style.display = 'none'">Schließen</button>
+        </div>
+    </div>
+    <div class="popup prompt-popup">
+        <div class="prompt-popup-content">
+            <div class="prompt-popup-content-text"></div>
+            <input type="text" placeholder="Wert eingeben" class="prompt-popup-input">
+        </div>
+        <div class="popup-buttons">
+            <button class="normal-outline-btn popup-button prompt-popup-button" type="button" onclick="document.querySelector('.prompt-popup').style.display = 'none'">Abbrechen</button>
+            <button class="normal-outline-btn popup-button prompt-popup-button prompt-popup-button-confirm" type="button" onclick="document.querySelector('.prompt-popup').style.display = 'none'">Bestätigen</button>
+        </div>
     </div>
 </div>
 

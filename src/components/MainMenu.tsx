@@ -4,6 +4,7 @@
  */
 
 import * as React from "react";
+import {ProjectManager} from "../utils/ProjectManager";
 
 export class MainMenu extends React.Component {
 
@@ -49,11 +50,13 @@ export class MainMenu extends React.Component {
      * Opens a Project
      */
     public openProject() {
+
     }
 
     /**
      * Creates a new Project
      */
     public createNewProject() {
+
     }
 }

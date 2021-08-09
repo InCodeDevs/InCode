@@ -43,6 +43,7 @@ export class UIManager {
      * Loads all basic components and renders the Main Menu
      */
     public static onLoad() {
+
         const menuContainer = document.querySelector("#menu");
         const menuBarContainer = document.querySelector("#menuBar");
 
@@ -55,15 +56,12 @@ export class UIManager {
         UIManager.deleteBlockly();
         UIManager.deleteMonaco();
 
-        (document.querySelector('.popup-button') as HTMLButtonElement).addEventListener('click', (e) => {
-            (document.querySelector('.popup') as HTMLDivElement).style.display = 'none';
-        });
         (document.querySelector('#copyright') as HTMLDivElement).addEventListener('click', (e) => {
             UIManager.alert("<h1>InCode-Editor</h1>" +
                 "<span><strong>By:</strong> <span style='font-family: monospace'>The InCode Developers</span><br>" +
                 "<strong>Version:</strong> <span style='font-family: monospace'>Beta 2.0.0</span><br>" +
                 "<strong>License:</strong> <span style='font-family: monospace'>GNU General Public License 3.0</span><br>" +
-                "<a href='http://github.com/InCodeDevs/InCode-Editor' target='_blank'>GitHub</a>\t<a href='http://incodedevs.github.io/InCode-Editor' target='_blank'>Website</a></span>"
+                "<a href='https://github.com/InCodeDevs/InCode-Editor' target='_blank'>GitHub</a>\t<a href='https://incodedevs.github.io/InCode-Editor' target='_blank'>Website</a></span>"
             )
         })
     }
@@ -213,13 +211,47 @@ export class UIManager {
         (document.getElementById('livePreview') as HTMLDivElement).style.width = "45%";
     }
 
+    private static prompt0CallBack = (value: string) => {
+    };
+    private static alert0CallBack = () => {
+    };
+
     /**
-     * Alert a message using react-popups
+     * Alert a message
      * @param msg The message that should be printed
+     * @param callback The function that will be called after the alert is finished.
      */
-    public static alert(msg: string) {
-        (document.querySelector(".popup") as HTMLDivElement).style.display = 'block';
-        (document.querySelector(".popup-content") as HTMLDivElement).innerHTML = msg;
+    public static alert(msg: string, callback: () => void = () => {
+    }) {
+        (document.querySelector(".alert-popup") as HTMLDivElement).style.display = 'block';
+        (document.querySelector(".alert-popup-content") as HTMLDivElement).innerHTML = msg;
+        UIManager.alert0CallBack = callback;
+        (document.querySelector(".alert-popup-button-confirm") as HTMLButtonElement).addEventListener('click', UIManager.handleAlert0, true)
+    }
+
+    /**
+     * Prompt a question
+     * @param msg The question that should be printed
+     * @param callback The function that will be called after the prompt is finished. Will be called with the answer
+     */
+    public static prompt(msg: string, callback: (value: string) => void) {
+        UIManager.prompt0CallBack = callback;
+        (document.querySelector(".prompt-popup") as HTMLDivElement).style.display = 'block';
+        (document.querySelector(".prompt-popup-input") as HTMLInputElement).value = '';
+        (document.querySelector(".prompt-popup-content-text") as HTMLDivElement).innerHTML = msg;
+        (document.querySelector(".prompt-popup-button-confirm") as HTMLButtonElement).addEventListener('click', UIManager.handlePrompt0, true)
+    }
+
+    private static handlePrompt0(e: MouseEvent) {
+        console.log("Hello World");
+        (document.querySelector(".prompt-popup-button-confirm") as HTMLButtonElement).removeEventListener('click', UIManager.handlePrompt0, true)
+        UIManager.prompt0CallBack((document.querySelector('.prompt-popup-input') as HTMLInputElement).value);
+    }
+
+    private static handleAlert0() {
+        console.log("Hello World");
+        (document.querySelector(".alert-popup-button-confirm") as HTMLButtonElement).removeEventListener('click', UIManager.handleAlert0, true)
+        UIManager.alert0CallBack()
     }
 
 }
