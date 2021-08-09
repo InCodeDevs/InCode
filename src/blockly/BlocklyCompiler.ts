@@ -45,10 +45,10 @@ export class BlocklyCompiler {
 
         let currentBlock = block;
 
-        if(block.getParent() != null && b1) {
+        if (block.getParent() != null && b1) {
             let neededTabs = -1;
             neededTabs = neededTabs + this.getBlockTabs(block.getParent(), log, true).length;
-            if(block.getParent().getInputTargetBlock("STATEMENT"))
+            if (block.getParent().getInputTargetBlock("STATEMENT"))
                 neededTabs++;
             console.log(neededTabs)
             // tabs = this.getBlockTabs(block.getParent(), log, false);
@@ -57,18 +57,18 @@ export class BlocklyCompiler {
             }
         }
 
-        while(currentBlock.getParent() != null) {
+        while (currentBlock.getParent() != null) {
             let b = currentBlock.getParent().getInputTargetBlock("STATEMENT");
 
-            if(b){
+            if (b) {
                 do {
-                    if(b === block) tabs += "\t";
-                } while(b = b.getNextBlock());
+                    if (b === block) tabs += "\t";
+                } while (b = b.getNextBlock());
             }
             currentBlock = currentBlock.getParent();
         }
         // debug
-        if(log){
+        if (log) {
             console.log(JSON.stringify(tabs))
         }
 
