@@ -7,6 +7,10 @@ import {BlocklyCompiler} from "../blockly/BlocklyCompiler";
 import * as WebCompiler from "../incode/compiler/WebCompiler";
 import {Options} from "../Options";
 import {Networking} from "./Networking";
+import {TempOptions} from "../TempOptions";
+import {ProjectManager} from "./ProjectManager";
+import {UIManager} from "./UIManager";
+import * as Blockly from "blockly/blockly";
 
 export class Workspace {
 
@@ -16,7 +20,7 @@ export class Workspace {
      */
     public static compile(dl: boolean = true) {
         let code = ""
-        if(Options.currentEditor != ''){
+        if (Options.currentEditor != '') {
             if (Options.currentEditor === 'vscode') {
                 // @ts-ignore
                 code = window.editor.getValue();
@@ -32,7 +36,7 @@ export class Workspace {
 
             console.log(Options.currentLiveJS)
 
-            if(dl){
+            if (dl) {
                 Networking.download("Programm.js", code)
             }
         }
@@ -42,9 +46,9 @@ export class Workspace {
      * Compiles the code and opens it in the preview window
      */
     public static preview = () => {
-        if(Options.currentEditor != '' && Options.enableLivePreview){
+        if (Options.currentEditor != '' && Options.enableLivePreview) {
             Workspace.compile(false);
-            if(document.getElementById('livePreviewFrame') != undefined){
+            if (document.getElementById('livePreviewFrame') != undefined) {
                 (document.getElementById('livePreview') as HTMLDivElement).removeChild((document.getElementById('livePreviewFrame') as HTMLIFrameElement))
             }
             let previewFrame = document.createElement('iframe');
@@ -52,5 +56,70 @@ export class Workspace {
             previewFrame.id = 'livePreviewFrame';
             (document.getElementById('livePreview') as HTMLDivElement).appendChild(previewFrame);
         }
+    }
+
+    /**
+     * Saves the current Workspace
+     */
+    public static save(showSucceedMessage: boolean = true) {
+        ProjectManager.saveProject(TempOptions.options[0x10AD], Workspace.getWorkspaceCode()); // 0x10AD => magic value
+        if(showSucceedMessage)
+            UIManager.alert("<h1 style='text-align: center;'>Erfolgreich</h1><h4 style='text-align: center; color: limegreen'>Das Projekt wurde gespeichert!</h4>")
+    }
+
+    /**
+     * Switches the editor of the current Workspace
+     */
+    public static switchEditor() {
+        Workspace.save(false);
+        UIManager.deleteMonaco();
+        UIManager.deleteBlockly();
+        UIManager.hideMenuBar();
+        UIManager.showEditorSelector();
+    }
+
+    /**
+     * Deletes the Project associated to the current Workspace
+     */
+    public static delete() {
+        UIManager.ask("<h1 style='text-align: center'>Fortfahren?</h1>" +
+            "<h4>Willst du dein Projekt wirklich löschen (Dies kann nicht rückgängig gemacht werden)</h4>",
+            () => {
+                UIManager.hideMenuBar();
+                UIManager.showMainMenu();
+                UIManager.deleteBlockly();
+                UIManager.deleteMonaco();
+                ProjectManager.deleteProject(TempOptions.options[0x10AD]);
+            }
+        );
+    }
+
+    /**
+     * Changes the name of the Projects associated to the current Workspace
+     */
+    public static rename() {
+        Workspace.save(false)
+        UIManager.prompt("<h1 style='text-align: center;'>Projekt Umbenennen</h1>" +
+            "<h4 style='text-align: center'>Bitte gib den neuen Namen für dein Projekt ein</h4>",
+            (value: string) => {
+                ProjectManager.renameProject(TempOptions.options[0x10AD], value, Workspace.getWorkspaceCode())
+                TempOptions.options[0x10AD] = value; // 0x10AD -> magic value :)
+            }
+        );
+    }
+
+    /**
+     * Returns the Code of the current Workspace
+     * @return The code
+     */
+    public static getWorkspaceCode(): string {
+        let code = "";
+        if ((document.getElementById("monaco") as HTMLDivElement).style.display != "none") {
+            // @ts-ignore
+            code = window.editor.getValue();
+        } else {
+            code = new BlocklyCompiler().compile();
+        }
+        return code;
     }
 }

@@ -36,6 +36,7 @@ import * as DE from "blockly/msg/de";
 import * as DarkTheme from "../blockly/themes/BlocklyDark";
 import {InCodeLanguage} from "../monaco/languages/InCodeLanguage";
 import * as monaco from "monaco-editor";
+import {EditorSelector} from "../components/EditorSelector";
 
 export class UIManager {
 
@@ -51,7 +52,7 @@ export class UIManager {
         ReactDOM.render((<MenuBar/>), menuBarContainer);
 
         UIManager.hideMenuBar();
-        UIManager.showMenu();
+        UIManager.showMainMenu();
 
         UIManager.deleteBlockly();
         UIManager.deleteMonaco();
@@ -91,11 +92,22 @@ export class UIManager {
     }
 
     /**
-     * Shows the Menu
+     * Shows the current Menu
      * may be removed.
      */
-    public static showMenu = () => {
+    public static showCurrentMenu = () => {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
+        Options.currentEditor = '';
+    }
+
+    /**
+     * Shows the Main Menu
+     * may be removed.
+     */
+    public static showMainMenu = () => {
+        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
+        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
+        ReactDOM.render((<MainMenu />), document.querySelector('#menu'));
         Options.currentEditor = '';
     }
 
@@ -105,6 +117,16 @@ export class UIManager {
      */
     public static hideMenu = () => {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'none'
+    }
+
+    /**
+     * Shows the Menu
+     * may be removed.
+     */
+    public static showEditorSelector = () => {
+        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
+        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
+        ReactDOM.render((<EditorSelector />), document.querySelector('#menu'));
     }
 
     /**
@@ -215,6 +237,8 @@ export class UIManager {
     };
     private static alert0CallBack = () => {
     };
+    private static question0CallBack = () => {
+    };
 
     /**
      * Alert a message
@@ -242,6 +266,19 @@ export class UIManager {
         (document.querySelector(".prompt-popup-button-confirm") as HTMLButtonElement).addEventListener('click', UIManager.handlePrompt0, true)
     }
 
+    /**
+     * Prompt a question
+     * @param msg The question that should be printed
+     * @param callback The function that will be called after the prompt is finished. Will be called with the answer
+     */
+    public static ask(msg: string, callback: () => void) {
+        UIManager.question0CallBack = callback;
+        (document.querySelector(".question-popup") as HTMLDivElement).style.display = 'block';
+        (document.querySelector(".question-popup-content-text") as HTMLDivElement).innerHTML = msg;
+        (document.querySelector(".question-popup-button-confirm") as HTMLButtonElement).addEventListener('click', UIManager.handleAsk0, true)
+    }
+
+
     private static handlePrompt0(e: MouseEvent) {
         console.log("Hello World");
         (document.querySelector(".prompt-popup-button-confirm") as HTMLButtonElement).removeEventListener('click', UIManager.handlePrompt0, true)
@@ -252,5 +289,11 @@ export class UIManager {
         (document.querySelector(".alert-popup-button-confirm") as HTMLButtonElement).removeEventListener('click', UIManager.handleAlert0, true)
         UIManager.alert0CallBack()
     }
+
+    private static handleAsk0() {
+        (document.querySelector(".question-popup-button-confirm") as HTMLButtonElement).removeEventListener('click', UIManager.handleAsk0, true)
+        UIManager.question0CallBack()
+    }
+
 
 }

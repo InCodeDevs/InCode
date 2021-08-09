@@ -5,10 +5,12 @@
 
 import * as React from "react";
 import { Options } from "../Options";
+import { TempOptions } from "../TempOptions";
 
 import {UIManager} from "../utils/UIManager";
+import {ProjectManager} from "../utils/ProjectManager";
 
-export class ChooseEditorMenu extends React.Component {
+export class EditorSelector extends React.Component {
 
     /**
      * Renders the Menu where the user can choose his favorite editor. (may be removed in feature versions)
@@ -25,6 +27,7 @@ export class ChooseEditorMenu extends React.Component {
                     textAlign: "center"
                 }}>
                     <h1 style={{color: "#F8F9FAFF"}}>Editor auswählen</h1>
+                    <h5 style={{color: "#F8F9FAFF"}}>Das Projekt "{TempOptions.options[0x10AD]}" wird mit dem ausgewählten Editor geöffnet. Du kannst jederzeit den Editor wieder wechseln.</h5>
                     <div className={"menu-choose-editors-root"}>
                         <div className={"menu-choose-editor"} onClick={this.openBlockEditor}>
                             <img
@@ -36,7 +39,7 @@ export class ChooseEditorMenu extends React.Component {
                         </div>
                         <div className={"menu-choose-editor"} onClick={this.openMonaco}>
                             <img
-                                src={"https://developers.google.com/blockly/images/logos/logo_only.png"} width={128}
+                                src={"assets/code-editor.png"} width={128}
                                 height={128}/>
                             <p className={"menu-editor-description"}>
                                 Code <br /> Editor
@@ -52,17 +55,18 @@ export class ChooseEditorMenu extends React.Component {
      * Opens the blockly editor
      */
     openBlockEditor() {
-        UIManager.hideMenu();
-        UIManager.showMenuBar();
-        UIManager.createBlockly();
+        UIManager.alert("<h1 style='text-align: center'>Fehler</h1>" +
+            "<h4 style='text-align: center; color: red'>Der Block Editor ist momentan nicht verfügbar!</h4>",
+            () => {
+            ProjectManager.openProject(TempOptions.options[0x10AD], "monaco");
+        })
+        // ProjectManager.openProject(TempOptions.options[0x10AD], "blockly")
     }
 
     /**
      * Opens the monaco (vscode) editor
      */
     openMonaco() {
-        UIManager.hideMenu();
-        UIManager.showMenuBar()
-        UIManager.createMonaco()
+        ProjectManager.openProject(TempOptions.options[0x10AD], "monaco")
     }
 }

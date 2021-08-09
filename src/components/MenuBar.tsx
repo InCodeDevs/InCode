@@ -4,9 +4,11 @@
  */
 
 import * as React from "react";
+import { Dropdown } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import {UIManager} from "../utils/UIManager";
 import {Workspace} from "../utils/Workspace";
+import {ProjectManager} from "../utils/ProjectManager";
 
 export class MenuBar extends React.Component {
 
@@ -25,9 +27,19 @@ export class MenuBar extends React.Component {
                     transform: "translate(-50%, -50%)"
                 }}>
                     <div style={{flex: "33%", textAlign: "center", display: 'flex'}}>
-                        <div style={{flex: "50%", textAlign: "center"}} id={"export-btn"}>
-                            <Button variant={"outline-flat"} size={"xxl"} onClick={Workspace.compile}>Exportieren</Button>
-                        </div>
+                        <Dropdown style={{flex: "50%", textAlign: "center"}}>
+                            <Dropdown.Toggle variant="outline-flat" size={"xxl"}>
+                                Projekt
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item onClick={Workspace.save}>Speichern</Dropdown.Item>
+                                <Dropdown.Item onClick={Workspace.compile}>Exportieren</Dropdown.Item>
+                                <Dropdown.Item onClick={Workspace.switchEditor}>Editor wechseln</Dropdown.Item>
+                                <Dropdown.Item onClick={Workspace.rename}>Namen ändern</Dropdown.Item>
+                                <Dropdown.Item onClick={Workspace.delete}>Projekt löschen</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
                         <div style={{flex: "50%", textAlign: "center"}} id={"rl-preview-btn"}>
                             <Button variant={"outline-flat"} size={"xxl"} onClick={Workspace.preview}>Preview neu laden</Button>
                         </div>
@@ -56,7 +68,7 @@ export class MenuBar extends React.Component {
         }
         UIManager.deleteBlockly();
         UIManager.deleteMonaco();
-        UIManager.showMenu()
+        UIManager.showMainMenu()
         UIManager.hideMenuBar()
     }
 }
