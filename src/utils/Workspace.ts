@@ -83,7 +83,7 @@ export class Workspace {
      */
     public static delete() {
         UIManager.ask("<h1 style='text-align: center'>Fortfahren?</h1>" +
-            "<h4>Willst du dein Projekt wirklich löschen (Dies kann nicht rückgängig gemacht werden)</h4>",
+            "<h4>Willst du dein Projekt wirklich löschen <span style='color: red'>(Dies kann nicht rückgängig gemacht werden</span></h4>",
             () => {
                 UIManager.hideMenuBar();
                 UIManager.showMainMenu();

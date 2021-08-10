@@ -52,7 +52,57 @@ export class MainMenu extends React.Component {
      * Opens a Project
      */
     public static openProject() {
-        UIManager.prompt(
+
+        let projects = [];
+        for (let i = 0; i < localStorage.length; i++) {
+            if(JSON.parse(localStorage.getItem(localStorage.key(i) as string) as string).name){
+                projects.push(JSON.parse(localStorage.getItem(localStorage.key(i) as string) as string).name)
+            }
+        }
+
+        let div = document.createElement('div');
+
+        let list = document.createElement('ul')
+
+        div.style.overflowY = 'scroll';
+        div.style.height = '57%';
+        div.style.width = '100%';
+
+        projects.forEach(p => {
+            let li = document.createElement('li')
+            let a = document.createElement('a')
+            a.innerText = p
+            a.href = "#"
+            a.addEventListener('click', () => {
+                UIManager.hideAllPopups();
+                MainMenu.openProject0(p);
+            })
+            li.appendChild(a);
+            list.appendChild(li);
+        })
+
+        if(projects.length === 0){
+            let li = document.createElement('li')
+            let p = document.createElement('p')
+            let a = document.createElement('a')
+            p.innerHTML = "Du hast noch keine Projekte erstellt<br><br>"
+            a.innerText = "Projekt Erstellen"
+            a.href = "#"
+            a.addEventListener('click', () => {
+                UIManager.hideAllPopups();
+                MainMenu.createNewProject();
+            })
+            p.appendChild(a);
+            li.appendChild(p);
+            list.appendChild(li);
+        }
+
+        UIManager.alert("<h1 style='text-align: center'>Projekt Öffnen</h1><br>");
+
+        div.appendChild(list);
+        (document.querySelector('.alert-popup-content') as HTMLDivElement).appendChild(div);
+
+/*        UIManager.prompt(
             "<h1 style='text-align: center'>Projekt Öffnen</h1>" +
             "<h4 style='text-align: center'>Bitte gib den Namen deines bestehenden Projektes ein!</h4>",
             (value: string) => {
@@ -63,7 +113,7 @@ export class MainMenu extends React.Component {
                     MainMenu.openProject0(value)
                 }
             }
-        )
+        )*/
     }
 
     /**

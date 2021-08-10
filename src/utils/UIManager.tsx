@@ -295,5 +295,14 @@ export class UIManager {
         UIManager.question0CallBack()
     }
 
+    /**
+     * Hides all open Popups (alert, prompt and question/ask)
+     */
+    public static hideAllPopups(){
+        document.querySelectorAll(".popup").forEach(s => {
+            (s as HTMLDivElement).style.display = 'none';
+        })
+    }
+
 
 }

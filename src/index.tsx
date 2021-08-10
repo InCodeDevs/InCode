@@ -10,6 +10,8 @@ import * as React from "react";
 import {IncompatibleScreenSize} from "./components/IncompatibleScreenSize";
 
 let needIncompatibleScreenSizeScreen = false;
+let lastInnerWidth = window.innerWidth;
+let lastInnerHeight = window.innerHeight;
 
 setInterval(() => {
     needIncompatibleScreenSizeScreen = window.innerHeight < 880 || window.innerWidth < 1400;
@@ -22,6 +24,11 @@ setInterval(() => {
         ReactDOM.unmountComponentAtNode((document.querySelector('#topScreen') as HTMLDivElement))
     }
 
+    if(lastInnerWidth != window.innerWidth || lastInnerHeight != window.innerHeight){
+        UIManager.remakeSizes();
+    }
+    lastInnerHeight = window.innerHeight;
+    lastInnerWidth = window.innerWidth;
 }, 10)
 
 document.addEventListener("DOMContentLoaded", UIManager.onLoad);

@@ -63,6 +63,7 @@ export class MenuBar extends React.Component {
      * Shows the Main Menu
      */
     showMainMenu() {
+        Workspace.save(false);
         if(document.getElementById('livePreviewFrame') != undefined){
             (document.getElementById('livePreview') as HTMLDivElement).removeChild((document.getElementById('livePreviewFrame') as HTMLIFrameElement))
         }
