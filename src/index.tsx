@@ -9,6 +9,7 @@ import {UIManager} from "./utils/UIManager";
 import * as React from "react";
 import {IncompatibleScreenSize} from "./components/IncompatibleScreenSize";
 import { Workspace } from "./utils/Workspace";
+import {TemplateSelector} from "./components/TemplateSelector";
 
 let needIncompatibleScreenSizeScreen = false;
 let lastInnerWidth = window.innerWidth;
@@ -32,9 +33,12 @@ setInterval(() => {
     lastInnerWidth = window.innerWidth;
 }, 10)
 
-window.onbeforeunload = confirmExit;
+// window.onbeforeunload = confirmExit;
 function confirmExit() {
     return "You have attempted to leave this page. If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
 }
 
-document.addEventListener("DOMContentLoaded", UIManager.onLoad);
+ document.addEventListener("DOMContentLoaded", UIManager.onLoad);
+document.addEventListener("DOMContentLoaded", () => {
+//    ReactDOM.render((<TemplateSelector />), document.querySelector('#menu'))
+})

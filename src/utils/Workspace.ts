@@ -111,4 +111,34 @@ export class Workspace {
         }
         return code;
     }
+
+    /**
+     * Deploys the current Workspace to the template registry
+     */
+    public static deploy() {
+        UIManager.ask(
+            "<h1 style='text-align: center'>Veröffentlichen</h1>" +
+            "<h4>Wenn du dein Template veröffentlichsts, kann jeder auf dieses nutzen." +
+            "<span style='color: red'>Die Veröffentlichung kann nicht rückgängig gemacht werden.</span>" +
+            "</h4>",
+            () => {
+                let x: XMLHttpRequest = new XMLHttpRequest();
+                let c = Workspace.getWorkspaceCode();
+                /*c = c.replace('\n', '##n##')
+                c = c.replace('\r', '##r##')
+                c = c.replace('\t', '##t##')*/
+                x.open("GET", "https://templates.incode.craftions.net/api/upload?name="
+                    + TempOptions.options[0x10AD]
+                    + "&type="
+                    + ProjectManager.getProjectType(TempOptions.options[0x10AD])
+                    + "&code="
+                    + JSON.stringify(
+                        {code: c}
+                    ),
+                    false);
+                x.send(null)
+
+            }
+        )
+    }
 }
