@@ -9,6 +9,7 @@ import { TempOptions } from "../TempOptions";
 
 import {UIManager} from "../utils/UIManager";
 import {ProjectManager} from "../utils/ProjectManager";
+import {MainMenu} from "./MainMenu";
 
 export class EditorSelector extends React.Component {
 
@@ -27,9 +28,9 @@ export class EditorSelector extends React.Component {
                     textAlign: "center"
                 }}>
                     <h1 style={{color: "#F8F9FAFF"}}>Editor auswählen</h1>
-                    <h5 style={{color: "#F8F9FAFF"}}>Das Projekt "{TempOptions.options[0x10AD]}" wird mit dem ausgewählten Editor geöffnet. Du kannst jederzeit den Editor wieder wechseln.</h5>
+                    <h5 style={{color: "#F8F9FAFF"}}>Das Projekt "{TempOptions.options[0x10AD]}" wird mit dem ausgewählten Editor geöffnet. <br /><span style={{color: "red"}}>ACHTUNG: </span>Du kannst den Editor nicht mehr wechseln.</h5>
                     <div className={"menu-choose-editors-root"}>
-                        <div className={"menu-choose-editor"} onClick={this.openBlockEditor}>
+                        <div className={"menu-choose-editor"} onClick={this.selectBlockly}>
                             <img
                                 src={"https://developers.google.com/blockly/images/logos/logo_only.png"} width={128}
                                 height={128}/>
@@ -37,7 +38,7 @@ export class EditorSelector extends React.Component {
                                 Block <br /> Editor
                             </p>
                         </div>
-                        <div className={"menu-choose-editor"} onClick={this.openMonaco}>
+                        <div className={"menu-choose-editor"} onClick={this.selectMonaco}>
                             <img
                                 src={"assets/code-editor.png"} width={128}
                                 height={128}/>
@@ -54,19 +55,16 @@ export class EditorSelector extends React.Component {
     /**
      * Opens the blockly editor
      */
-    openBlockEditor() {
-        UIManager.alert("<h1 style='text-align: center'>Fehler</h1>" +
-            "<h4 style='text-align: center; color: red'>Der Block Editor ist momentan nicht verfügbar!</h4>",
-            () => {
-            ProjectManager.openProject(TempOptions.options[0x10AD], "monaco");
-        })
+    selectBlockly() {
+        TempOptions.options[0x10AF](TempOptions.options[0x10AD], "blockly", "");
         // ProjectManager.openProject(TempOptions.options[0x10AD], "blockly")
     }
 
     /**
      * Opens the monaco (vscode) editor
      */
-    openMonaco() {
-        ProjectManager.openProject(TempOptions.options[0x10AD], "monaco")
+    selectMonaco() {
+        TempOptions.options[0x10AF](TempOptions.options[0x10AD], "monaco", "");
+        // ProjectManager.openProject(TempOptions.options[0x10AD], "monaco")
     }
 }

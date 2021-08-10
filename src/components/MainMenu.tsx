@@ -55,7 +55,7 @@ export class MainMenu extends React.Component {
 
         let projects = [];
         for (let i = 0; i < localStorage.length; i++) {
-            if(JSON.parse(localStorage.getItem(localStorage.key(i) as string) as string).name){
+            if (JSON.parse(localStorage.getItem(localStorage.key(i) as string) as string).name) {
                 projects.push(JSON.parse(localStorage.getItem(localStorage.key(i) as string) as string).name)
             }
         }
@@ -74,14 +74,15 @@ export class MainMenu extends React.Component {
             a.innerText = p
             a.href = "#"
             a.addEventListener('click', () => {
+                TempOptions.options[0x10AD] = p
                 UIManager.hideAllPopups();
-                MainMenu.openProject0(p);
+                MainMenu.openProject0(p, ProjectManager.getProjectType(p));
             })
             li.appendChild(a);
             list.appendChild(li);
         })
 
-        if(projects.length === 0){
+        if (projects.length === 0) {
             let li = document.createElement('li')
             let p = document.createElement('p')
             let a = document.createElement('a')
@@ -101,19 +102,6 @@ export class MainMenu extends React.Component {
 
         div.appendChild(list);
         (document.querySelector('.alert-popup-content') as HTMLDivElement).appendChild(div);
-
-/*        UIManager.prompt(
-            "<h1 style='text-align: center'>Projekt Öffnen</h1>" +
-            "<h4 style='text-align: center'>Bitte gib den Namen deines bestehenden Projektes ein!</h4>",
-            (value: string) => {
-                if (!ProjectManager.doesProjectExist(value)) {
-                    UIManager.alert("<h1 style='text-align: center; color: red'>Fehler</h1>" +
-                        "<h4 style='text-align: center;'>Ein Projekt mit diesem Namen konnte nicht gefunden werden!</h4>", MainMenu.openProject);
-                }else {
-                    MainMenu.openProject0(value)
-                }
-            }
-        )*/
     }
 
     /**
@@ -124,21 +112,32 @@ export class MainMenu extends React.Component {
             "<h1 style='text-align: center'>Projekt Erstellen</h1>" +
             "<h4 style='text-align: center'>Bitte gib den Namen deines neuen Projektes ein!</h4>",
             (value: string) => {
-                if (ProjectManager.createProject(value)) {
-                    MainMenu.openProject0(value)
-                    // ProjectManager.openProject(value)
-                } else {
+                if (ProjectManager.doesProjectExist(value)) {
                     UIManager.alert("<h1 style='text-align: center; color: red'>Fehler</h1>" +
                         "<h4 style='text-align: center;'>Dieser Name ist bereits vergeben!</h4>", MainMenu.createNewProject);
+                } else {
+                    UIManager.hideAllPopups();
+                    TempOptions.options[0x10AD] = value;
+                    TempOptions.options[0x10AF] = MainMenu.createProject0
+                    UIManager.showEditorSelector();
                 }
             }
         )
     }
 
-    private static openProject0(value: string){
-        // 0x10AD is the internal identifier of the temporary project name address in the TempOptions.options array
-        TempOptions.options[0x10AD] = value;
+    public static createProject0(name: string, type: string, code: string = "") { // code is used for templates (coming soon)
+        TempOptions.options[0x10AD] = name;
+        ProjectManager.createProject(name, type, code);
         UIManager.hideMenu();
-        UIManager.showEditorSelector();
+        UIManager.showMenuBar();
+        ProjectManager.openProject(name, type);
+    }
+
+    private static openProject0(name: string, type: string) {
+        // 0x10AD is the internal identifier of the temporary project name address in the TempOptions.options object
+        TempOptions.options[0x10AD] = name;
+        UIManager.hideMenu();
+        UIManager.showMenuBar();
+        ProjectManager.openProject(name, type);
     }
 }

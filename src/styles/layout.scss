@@ -12,8 +12,11 @@ body {
 }
 
 #blockly {
-  height: 95%;
+  height: 90%;
   width: 55%;
+  bottom: 0;
+  left: 0;
+  position: fixed;
 }
 
 #monaco {
@@ -25,7 +28,7 @@ body {
 }
 
 #blocklyDiv {
-  height: 95%;
+  height: 100%;
 }
 #menuBar {
   width: 100%;

@@ -8,6 +8,6 @@ export class TempOptions {
     public static options: ObjectDefinition = {};
 }
 
-interface ObjectDefinition {
+export interface ObjectDefinition {
     [key: string]: any
 }

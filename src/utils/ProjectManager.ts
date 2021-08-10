@@ -3,6 +3,7 @@
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 import {UIManager} from "./UIManager";
+import * as Blockly from 'blockly'
 
 export class ProjectManager {
 
@@ -11,12 +12,16 @@ export class ProjectManager {
     /**
      * Creates a blank Project
      * @param name The name of the Project
+     * @param type The Editor type of the Project (monaco or blockly)
+     * @param code The starter code of the Project (used for templates)
+     * @return True if the creation was successful
      */
-    public static createProject(name: string): boolean {
+    public static createProject(name: string, type: string = 'monaco', code: string = ''): boolean {
         if (localStorage.getItem("incode-editor.projects." + name) == null) {
             localStorage.setItem("incode-editor.projects." + name, JSON.stringify({
                 name: name,
-                code: ""
+                code: code,
+                type: type
             }));
             return true
         } else {
@@ -33,9 +38,14 @@ export class ProjectManager {
         if (localStorage.getItem("incode-editor.projects." + name) != null) {
             UIManager.hideMenu();
             UIManager.showMenuBar();
-            UIManager.createMonaco();
-            // @ts-ignore
-            window.editor.setValue(JSON.parse(localStorage.getItem("incode-editor.projects." + name)).code);
+            if (editor === 'monaco') {
+                UIManager.createMonaco();
+                // @ts-ignore
+                window.editor.setValue(JSON.parse(localStorage.getItem("incode-editor.projects." + name)).code);
+            } else {
+                UIManager.createBlockly();
+                Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(JSON.parse(localStorage.getItem("incode-editor.projects." + name) as string).code), Blockly.getMainWorkspace());
+            }
             return true
         } else {
             return false;
@@ -61,7 +71,8 @@ export class ProjectManager {
             JSON.stringify(
                 {
                     name: JSON.parse(localStorage.getItem("incode-editor.projects." + name) as string).name,
-                    code: code
+                    code: code,
+                    type: JSON.parse(localStorage.getItem("incode-editor.projects." + name) as string).type,
                 })
         );
     }
@@ -87,10 +98,12 @@ export class ProjectManager {
     }
 
     /**
-     * @return The current Project or "" if no project is open
+     * Get the Editor Type of a Project
+     * @param name The name of the Project
+     * @return 'monaco' or 'blockly'
      */
-    public static getCurrentProjectName(): object {
-        return this.currentProject;
+    public static getProjectType(name: string): string {
+        return JSON.parse(localStorage.getItem("incode-editor.projects." + name) as string).type || null
     }
 
 }

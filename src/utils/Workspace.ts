@@ -68,17 +68,6 @@ export class Workspace {
     }
 
     /**
-     * Switches the editor of the current Workspace
-     */
-    public static switchEditor() {
-        Workspace.save(false);
-        UIManager.deleteMonaco();
-        UIManager.deleteBlockly();
-        UIManager.hideMenuBar();
-        UIManager.showEditorSelector();
-    }
-
-    /**
      * Deletes the Project associated to the current Workspace
      */
     public static delete() {
@@ -118,7 +107,7 @@ export class Workspace {
             // @ts-ignore
             code = window.editor.getValue();
         } else {
-            code = new BlocklyCompiler().compile();
+            code = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace()).outerHTML;
         }
         return code;
     }
