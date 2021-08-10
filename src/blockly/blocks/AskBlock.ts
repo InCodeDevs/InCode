@@ -1,11 +1,14 @@
 /**
- * @author Ben Siebert
- * @copyright 2018-2021 Ben Siebert. All rights reserved.
+ * @author The InCode Devs
+ * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 import * as Blockly from "blockly";
 
 export class AskBlock {
 
+    /**
+     * Registers the "Ask" block to the blockly registry
+     */
     public static registerBlock(){
         Blockly.defineBlocksWithJsonArray([
             {
@@ -32,7 +35,7 @@ export class AskBlock {
         ])
         // @ts-ignore
         Blockly.JavaScript['ask'] = function(block: Blockly.Block) {
-            
+
         }
     }
 }

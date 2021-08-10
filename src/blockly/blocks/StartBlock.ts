@@ -1,12 +1,16 @@
 /**
- * @author Ben Siebert
- * @copyright 2018-2021 Ben Siebert. All rights reserved.
+ * @author The InCode Devs
+ * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 
 import * as Blockly from 'blockly'
 
 export class StartBlock {
 
+    /**
+     * Registers the "Start" block to the blockly registry
+     * Attention: This block is ignored when compiling
+     */
     public static registerBlock(){
         Blockly.defineBlocksWithJsonArray([
             {

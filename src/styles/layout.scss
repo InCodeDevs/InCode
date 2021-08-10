@@ -1,6 +1,6 @@
 /**
- * @author Ben Siebert
- * @copyright 2018-2021 Ben Siebert. All rights reserved.
+ * @author The InCode Devs
+ * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 
 html,
@@ -12,22 +12,32 @@ body {
 }
 
 #blockly {
-  height: 95%;
+  height: 90%;
   width: 55%;
+  bottom: 0;
+  left: 0;
+  position: fixed;
 }
 
 #monaco {
-  height: 95%;
+  height: 90%;
   width: 55%;
+  bottom: 0;
+  left: 0;
+  position: fixed;
 }
 
 #blocklyDiv {
-  height: 95%;
+  height: 100%;
 }
 #menuBar {
   width: 100%;
   min-height: 5%;
   height: 10%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 42;
 }
 
 #livePreviewFrame {

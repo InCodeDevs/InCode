@@ -1,14 +1,47 @@
 <!-- Copyright (c) 2018-2021 Ben Siebert. All rights reserved. -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%; width: 100%;">
 <head>
     <meta charset="UTF-8">
     <title>InCode Editor</title>
 </head>
-<body>
+<body style="height: 100%; width: 100%;">
+
+<div id="topScreen"></div>
+
+<div id="copyright">
+    Copyright © 2018-2021 The InCode Developers.
+</div>
 
 <div id="menuBar"></div>
 <div id="menu"></div>
+<div id="popup">
+    <div class="popup alert-popup">
+        <div class="alert-popup-content" style="height: 100%; width: 100%;"></div>
+        <div class="popup-buttons">
+            <button class="normal-outline-btn popup-button alert-popup-button alert-popup-button-confirm" type="button" onclick="document.querySelector('.alert-popup').style.display = 'none'">Schließen</button>
+        </div>
+    </div>
+    <div class="popup prompt-popup">
+        <div class="prompt-popup-content">
+            <div class="prompt-popup-content-text"></div>
+            <input type="text" placeholder="Wert eingeben" class="prompt-popup-input">
+        </div>
+        <div class="popup-buttons">
+            <button class="normal-outline-btn popup-button prompt-popup-button" type="button" onclick="document.querySelector('.prompt-popup').style.display = 'none'">Abbrechen</button>
+            <button class="normal-outline-btn popup-button prompt-popup-button prompt-popup-button-confirm" type="button" onclick="document.querySelector('.prompt-popup').style.display = 'none'">Bestätigen</button>
+        </div>
+    </div>
+    <div class="popup question-popup">
+        <div class="question-popup-content">
+            <div class="question-popup-content-text"></div>
+        </div>
+        <div class="popup-buttons">
+            <button class="normal-outline-btn popup-button question-popup-button" type="button" onclick="document.querySelector('.question-popup').style.display = 'none'">Nein</button>
+            <button class="normal-outline-btn popup-button question-popup-button question-popup-button-confirm" type="button" onclick="document.querySelector('.question-popup').style.display = 'none'">Ja</button>
+        </div>
+    </div>
+</div>
 
 <div id="livePreview">
 </div>
