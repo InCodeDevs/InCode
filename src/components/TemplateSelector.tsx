@@ -73,6 +73,19 @@ export class TemplateSelector extends React.Component {
 
             element.addEventListener('click', () => {
                 const p = () => {
+                    if(!template.verified){
+                        UIManager.ask(
+                            "<h1 style='text-align: center'>Achtung</h1>" +
+                            "<h4 style='text-align: center; color: red;'>Diese Vorlage ist nicht offiziell und funktioniert möglicherweise nicht. Willst du die Vorlage trotzdem verwenden?</h4>",
+                            () => {
+                            p0();
+                        })
+                    }else {
+                        p0();
+                    }
+                }
+
+                const p0 = () => {
                     UIManager.prompt(
                         "<h1 style='text-align: center'>Projekt Erstellen</h1>" +
                         "<h4 style='text-align: center'>Bitte gib den Namen deines neuen Projektes ein!</h4>",
@@ -97,6 +110,7 @@ export class TemplateSelector extends React.Component {
                         }
                     )
                 }
+
                 p()
             })
 
