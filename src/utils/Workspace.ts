@@ -63,7 +63,7 @@ export class Workspace {
      */
     public static save(showSucceedMessage: boolean = true) {
         ProjectManager.saveProject(TempOptions.options[0x10AD], Workspace.getWorkspaceCode()); // 0x10AD => magic value
-        if(showSucceedMessage)
+        if (showSucceedMessage)
             UIManager.alert("<h1 style='text-align: center;'>Erfolgreich</h1><h4 style='text-align: center; color: limegreen'>Das Projekt wurde gespeichert!</h4>")
     }
 
@@ -118,15 +118,12 @@ export class Workspace {
     public static deploy() {
         UIManager.ask(
             "<h1 style='text-align: center'>Veröffentlichen</h1>" +
-            "<h4>Wenn du dein Template veröffentlichsts, kann jeder auf dieses nutzen." +
+            "<h4 style='text-align: center;'>Wenn du dein Template veröffentlichsts, kann jeder auf dieses nutzen." +
             "<span style='color: red'>Die Veröffentlichung kann nicht rückgängig gemacht werden.</span>" +
             "</h4>",
             () => {
                 let x: XMLHttpRequest = new XMLHttpRequest();
                 let c = Workspace.getWorkspaceCode();
-                /*c = c.replace('\n', '##n##')
-                c = c.replace('\r', '##r##')
-                c = c.replace('\t', '##t##')*/
                 x.open("GET", "https://templates.incode.craftions.net/api/upload?name="
                     + TempOptions.options[0x10AD]
                     + "&type="
@@ -137,7 +134,17 @@ export class Workspace {
                     ),
                     false);
                 x.send(null)
-
+                if (x.responseText === "Successful") {
+                    UIManager.alert(
+                        "<h1 style='text-align: center'>Erfolgreich</h1>" +
+                        "<h4 style='text-align: center;'>Deine Vorlage wurde soeben veröffentlicht!</h4>"
+                    )
+                } else {
+                    UIManager.alert(
+                        "<h1 style='text-align: center; color: red'>Fehler</h1>" +
+                        "<h4 style='text-align: center;'>Dieser Name ist bereits vorhanden! Ändere den Namen deines Projektes und versuche es erneut!</h4>"
+                    )
+                }
             }
         )
     }

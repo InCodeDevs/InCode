@@ -116,10 +116,15 @@ export class MainMenu extends React.Component {
                     UIManager.alert("<h1 style='text-align: center; color: red'>Fehler</h1>" +
                         "<h4 style='text-align: center;'>Dieser Name ist bereits vergeben!</h4>", MainMenu.createNewProject);
                 } else {
-                    UIManager.hideAllPopups();
-                    TempOptions.options[0x10AD] = value;
-                    TempOptions.options[0x10AF] = MainMenu.createProject0
-                    UIManager.showEditorSelector();
+                    if (value.length < 4) {
+                        UIManager.alert("<h1 style='text-align: center; color: red'>Fehler</h1>" +
+                            "<h4 style='text-align: center;'>Der Name ist zu kurz! Er muss mindestens 4 Zeichen lang sein!</h4>", MainMenu.createNewProject)
+                    } else {
+                        UIManager.hideAllPopups();
+                        TempOptions.options[0x10AD] = value;
+                        TempOptions.options[0x10AF] = MainMenu.createProject0
+                        UIManager.showEditorSelector();
+                    }
                 }
             }
         )
