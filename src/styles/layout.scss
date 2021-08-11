@@ -8,7 +8,11 @@ body {
   height: 100%;
   margin: 0;
   background-color: #1E1E1E;
-  overflow: hidden;
+  overflow: auto;
+}
+
+a {
+  color: #0071FF
 }
 
 #blockly {

@@ -51,6 +51,33 @@ export class MainMenu extends React.Component {
                             </p>
                         </div>
                     </div>
+                    <h1 style={{color: "#F8F9FAFF"}}>How to InCode</h1>
+                    <div className={"menu-choose-editors-root"}>
+                        <div className={"menu-choose-editor"} onClick={MainMenu.openProject}>
+                            <img
+                                src={"assets/play.png"} width={128}
+                                height={128}/>
+                            <p className={"menu-editor-description"}>
+                                Lernen
+                            </p>
+                        </div>
+                        <div className={"menu-choose-editor"} onClick={MainMenu.openProject}>
+                            <img
+                                src={"assets/tutorials.png"} width={128}
+                                height={128}/>
+                            <p className={"menu-editor-description"}>
+                                Tutorials
+                            </p>
+                        </div>
+                        <div className={"menu-choose-editor"} onClick={MainMenu.openProject}>
+                            <img
+                                src={"assets/documentation.png"} width={128}
+                                height={128}/>
+                            <p className={"menu-editor-description"}>
+                                Dokumentation
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </>
         )
@@ -60,6 +87,9 @@ export class MainMenu extends React.Component {
      * Opens a Project
      */
     public static openProject() {
+        UIManager.showProjectSelector()
+
+        return;
 
         let projects = [];
         for (let i = 0; i < localStorage.length; i++) {
@@ -84,7 +114,7 @@ export class MainMenu extends React.Component {
             a.addEventListener('click', () => {
                 TempOptions.options[0x10AD] = p
                 UIManager.hideAllPopups();
-                MainMenu.openProject0(p, ProjectManager.getProjectType(p));
+                // MainMenu.openProject0(p, ProjectManager.getProjectType(p));
             })
             li.appendChild(a);
             list.appendChild(li);
@@ -141,14 +171,6 @@ export class MainMenu extends React.Component {
     public static createProject0(name: string, type: string, code: string = "") { // code is used for templates (coming soon)
         TempOptions.options[0x10AD] = name;
         ProjectManager.createProject(name, type, code);
-        UIManager.hideMenu();
-        UIManager.showMenuBar();
-        ProjectManager.openProject(name, type);
-    }
-
-    private static openProject0(name: string, type: string) {
-        // 0x10AD is the internal identifier of the temporary project name address in the TempOptions.options object
-        TempOptions.options[0x10AD] = name;
         UIManager.hideMenu();
         UIManager.showMenuBar();
         ProjectManager.openProject(name, type);

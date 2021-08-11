@@ -38,6 +38,7 @@ import {InCodeLanguage} from "../monaco/languages/InCodeLanguage";
 import * as monaco from "monaco-editor";
 import {EditorSelector} from "../components/EditorSelector";
 import {TemplateSelector} from "../components/TemplateSelector";
+import {ProjectSelector} from "../components/ProjectSelector";
 
 export class UIManager {
 
@@ -136,6 +137,15 @@ export class UIManager {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
         ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
         ReactDOM.render((<TemplateSelector />), document.querySelector('#menu'));
+    }
+
+    /**
+     * Shows the Menu
+     */
+    public static showProjectSelector = () => {
+        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
+        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
+        ReactDOM.render((<ProjectSelector />), document.querySelector('#menu'));
     }
 
     /**

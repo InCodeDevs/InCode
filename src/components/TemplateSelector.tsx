@@ -5,8 +5,7 @@
 
 import * as React from "react";
 import {Form} from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import {ObjectDefinition, TempOptions} from "../TempOptions";
+import {ObjectDefinition} from "../TempOptions";
 import {UIManager} from "../utils/UIManager";
 import {ProjectManager} from "../utils/ProjectManager";
 import {MainMenu} from "./MainMenu";
@@ -21,14 +20,14 @@ export class TemplateSelector extends React.Component {
         return (
             <>
                 <div style={{textAlign: 'center'}}>
-                    <h1 style={{color: "#F8F9FAFF", margin: "2%"}}>Vorlagen</h1>
+                    <h1 style={{color: "#F8F9FAFF", marginTop: "2%"}}>Vorlagen</h1>
                     <div style={{textAlign: 'center', display: "flex", justifyContent: "center"}}>
                         <Form.Control type={"text"} placeholder={"Suchen..."} style={{
                             width: "30%",
                             fontSize: "1.5rem"
                         }} id={"search-bar"} onChange={TemplateSelector.search}/>
                     </div>
-                    <div style={{display: "flex", width: "100%", margin: "2%"}}>
+                    <div style={{display: "flex", width: "100%", marginTop: "2%"}}>
                         <div style={{flex: "50%", color: "white"}} id={"blockly-templates"}>
                             <h2>Blockly Vorlagen</h2>
                         </div>
@@ -42,13 +41,6 @@ export class TemplateSelector extends React.Component {
     }
 
     componentDidMount() {
-
-        /*(document.getElementById('search-bar') as HTMLInputElement).addEventListener('keydown', event => {
-            if (event.keyCode === 13) {
-                this.search();
-            }
-        });*/
-
         TemplateSelector.downloadTemplates();
         TemplateSelector.updateTemplates()
     }
@@ -168,7 +160,7 @@ export class TemplateSelector extends React.Component {
             let templates: ObjectDefinition = {};
             Object.keys(TemplateSelector.getTemplates()).forEach(t => {
                 let template = TemplateSelector.getTemplates()[t];
-                if (t.includes(term))
+                if (t.toLowerCase().includes(term.toLowerCase()))
                     templates[t] = template;
             })
             TemplateSelector.updateTemplates(templates);

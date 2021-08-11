@@ -93,7 +93,7 @@
 
 .popup {
   margin: 0;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   background-color: $light;
@@ -107,18 +107,18 @@
 
 .normal-outline-btn {
   border: none;
-  border-top: 2px solid #333333;
+  border-top: 2px solid #0071FF;
   background: #ffffff;
   padding: 1rem 1.5rem;
   border-radius: 0 0 10px 10px;
 }
 
 .normal-outline-btn:hover {
-  background: darken(#ffffff, 40%);
+  background: darken(#ffffff, 20%);
 }
 
 .normal-outline-btn:active {
-  background: darken(#ffffff, 80%);
+  background: darken(#ffffff, 40%);
 }
 
 .popup-content {
@@ -142,12 +142,19 @@
 .popup-button {
   text-align: center;
   flex: 50%;
+  color: #0071FF;
+}
+
+.popup {
+  h1 {
+    color: #0071FF;
+  }
 }
 
 #copyright {
   bottom: 0;
   right: 0;
-  position: absolute;
+  position: fixed;
   color: $light;
   opacity: 0.4;
   z-index: 4269 !important;
@@ -173,6 +180,10 @@
 .prompt-popup-input {
   width: 96%;
   margin: 2%;
-  outline: 0;
+  transition: outline .1s;
+}
+
+.prompt-popup-input:focus {
+  outline: #0071FF solid 3px;
 }
 

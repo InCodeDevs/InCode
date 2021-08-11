@@ -16,7 +16,8 @@ let lastInnerWidth = window.innerWidth;
 let lastInnerHeight = window.innerHeight;
 
 setInterval(() => {
-    needIncompatibleScreenSizeScreen = window.innerHeight < 880 || window.innerWidth < 1400;
+    // needIncompatibleScreenSizeScreen = window.innerHeight < 880 || window.innerWidth < 1400;
+    needIncompatibleScreenSizeScreen = window.innerHeight < 768 || window.innerWidth < 1024;
 
     if (needIncompatibleScreenSizeScreen) {
         (document.querySelector('#topScreen') as HTMLDivElement).style.display = 'block';
