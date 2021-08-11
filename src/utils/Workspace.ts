@@ -129,9 +129,7 @@ export class Workspace {
                     + "&type="
                     + ProjectManager.getProjectType(TempOptions.options[0x10AD])
                     + "&code="
-                    + JSON.stringify(
-                        {code: c}
-                    ),
+                    + btoa(c),
                     false);
                 x.send(null)
                 if (x.responseText === "Successful") {
