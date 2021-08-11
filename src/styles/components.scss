@@ -58,9 +58,37 @@
 }
 
 .template {
-  margin: 4%;
+  margin: 2rem;
+  padding: 1.75rem 1.75rem;
   display: inline-block;
+  border-radius: 24px;
   color: #ffffff;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.verified {
+  border-radius: 50%;
+  color: #000000;
+  background-color: #13ff2f;
+  padding: 5% 7.5% 5% 7.5%;
+  font-weight: bolder;
+  text-align: right;
+  position: relative;
+  float: left;
+  top: 20px;
+}
+
+.template-name {
+  margin: 2%;
+  opacity: 0.4;
+}
+
+.template:hover {
+  background-color: rgba(76, 76, 76, 0.45);
+  .template-name {
+    opacity: 0.7;
+  }
 }
 
 .popup {
@@ -147,3 +175,4 @@
   margin: 2%;
   outline: 0;
 }
+

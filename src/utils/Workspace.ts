@@ -74,10 +74,10 @@ export class Workspace {
         UIManager.ask("<h1 style='text-align: center'>Fortfahren?</h1>" +
             "<h4>Willst du dein Projekt wirklich löschen <span style='color: red'>(Dies kann nicht rückgängig gemacht werden</span></h4>",
             () => {
-                UIManager.hideMenuBar();
-                UIManager.showMainMenu();
                 UIManager.deleteBlockly();
                 UIManager.deleteMonaco();
+                UIManager.hideMenuBar();
+                UIManager.showMainMenu();
                 ProjectManager.deleteProject(TempOptions.options[0x10AD]);
             }
         );

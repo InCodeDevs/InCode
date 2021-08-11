@@ -34,6 +34,14 @@ export class MainMenu extends React.Component {
                                 Projekt <br/> Erstellen
                             </p>
                         </div>
+                        <div className={"menu-choose-editor"} onClick={UIManager.showTemplateSelector}>
+                            <img
+                                src={"assets/editor-create-project.png"} width={128}
+                                height={128}/>
+                            <p className={"menu-editor-description"}>
+                                Projekt <br/> mit Vorlage Erstellen
+                            </p>
+                        </div>
                         <div className={"menu-choose-editor"} onClick={MainMenu.openProject}>
                             <img
                                 src={"assets/editor-open-project.png"} width={128}

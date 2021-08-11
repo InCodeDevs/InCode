@@ -37,6 +37,7 @@ import * as DarkTheme from "../blockly/themes/BlocklyDark";
 import {InCodeLanguage} from "../monaco/languages/InCodeLanguage";
 import * as monaco from "monaco-editor";
 import {EditorSelector} from "../components/EditorSelector";
+import {TemplateSelector} from "../components/TemplateSelector";
 
 export class UIManager {
 
@@ -60,7 +61,7 @@ export class UIManager {
         (document.querySelector('#copyright') as HTMLDivElement).addEventListener('click', (e) => {
             UIManager.alert("<h1>InCode-Editor</h1>" +
                 "<span><strong>By:</strong> <span style='font-family: monospace'>The InCode Developers</span><br>" +
-                "<strong>Version:</strong> <span style='font-family: monospace'>Beta 2.0.0</span><br>" +
+                "<strong>Version:</strong> <span style='font-family: monospace'>Beta 2.1.0</span><br>" +
                 "<strong>License:</strong> <span style='font-family: monospace'>GNU General Public License 3.0</span><br>" +
                 "<a href='https://github.com/InCodeDevs/InCode-Editor' target='_blank'>GitHub</a>\t<a href='https://incodedevs.github.io/InCode-Editor' target='_blank'>Website</a></span>"
             )
@@ -121,12 +122,20 @@ export class UIManager {
 
     /**
      * Shows the Menu
-     * may be removed.
      */
     public static showEditorSelector = () => {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
         ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
         ReactDOM.render((<EditorSelector />), document.querySelector('#menu'));
+    }
+
+    /**
+     * Shows the Menu
+     */
+    public static showTemplateSelector = () => {
+        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
+        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
+        ReactDOM.render((<TemplateSelector />), document.querySelector('#menu'));
     }
 
     /**
@@ -303,6 +312,4 @@ export class UIManager {
             (s as HTMLDivElement).style.display = 'none';
         })
     }
-
-
 }
