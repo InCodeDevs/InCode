@@ -48,7 +48,7 @@ class WebCompiler {
                 },
                 append: ""
             },
-            "hintergrungfarbe": {
+            "hintergrundfarbe": {
                 name: "backgroundColor",
                 type: "style",
                 values: {
@@ -282,7 +282,8 @@ class WebCompiler {
                     "3d": "ridge",
                     "eingesetzt": "inset",
                     "draufgelegt": "outset"
-                }
+                },
+                append: ""
             },
             "umrandungsstil-rechts": {
                 name: "borderRightStyle",
@@ -298,7 +299,8 @@ class WebCompiler {
                     "3d": "ridge",
                     "eingesetzt": "inset",
                     "draufgelegt": "outset"
-                }
+                },
+                append: ""
             },
             "umrandungsstil-unten": {
                 name: "borderBottomStyle",
@@ -314,7 +316,8 @@ class WebCompiler {
                     "3d": "ridge",
                     "eingesetzt": "inset",
                     "draufgelegt": "outset"
-                }
+                },
+                append: ""
             },
             "umrandungsstil-links": {
                 name: "borderLeftStyle",
@@ -330,7 +333,8 @@ class WebCompiler {
                     "3d": "ridge",
                     "eingesetzt": "inset",
                     "draufgelegt": "outset"
-                }
+                },
+                append: ""
             },
             "umrandungsstil": {
                 name: "borderStyle",
@@ -346,7 +350,8 @@ class WebCompiler {
                     "3d": "ridge",
                     "eingesetzt": "inset",
                     "draufgelegt": "outset"
-                }
+                },
+                append: ""
             },
             "umrandungsfarbe-oben": {
                 name: "borderTopColor",
