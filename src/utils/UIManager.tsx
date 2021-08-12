@@ -247,33 +247,68 @@ export class UIManager {
 
         document.addEventListener('contextmenu', (e) => {
             e.preventDefault();
-            let rootURL = "";
+            let docURL = "";
+            let tutURL = "https://incode.craftions.net/docs/Tutorials/";
 
             if(((e.target as HTMLElement).classList as DOMTokenList).contains("mtk24") && ((e.target as HTMLElement).classList as DOMTokenList).contains("mtkb")){
-                rootURL = "https://incode.craftions.net/docs/Bezug/Befehle/";
+                docURL = "https://incode.craftions.net/docs/Bezug/Befehle/";
             } else if(((e.target as HTMLElement).classList as DOMTokenList).contains("mtk29")){
-                rootURL = "https://incode.craftions.net/docs/Bezug/Typen/"
+                docURL = "https://incode.craftions.net/docs/Bezug/Typen/"
             } else if(((e.target as HTMLElement).classList as DOMTokenList).contains("mtk22")){
-                rootURL = "https://incode.craftions.net/docs/Bezug/Eigenschaften/"
+                docURL = "https://incode.craftions.net/docs/Bezug/Eigenschaften/"
             }
 
-            if(rootURL != ""){
+            if(docURL != ""){
 
-                let x = new XMLHttpRequest();
-                x.open("GET", rootURL + (e.target as HTMLElement).innerText, true);
-                x.send(null);
+                let hasDocumentation    = false;
+                let hasTutorial         = false;
 
-                x.onreadystatechange = () => {
-                    if(x.readyState != 4) return;
+                let x0 = new XMLHttpRequest();
+                x0.open("GET", docURL + (e.target as HTMLElement).innerText, true);
+                x0.send(null);
 
-                    if(x.status === 200){
-                        UIManager.ask(
-                            "<h1 style='text-align: center'>Dokumentation</h1>" +
-                            "<h4 style='text-align: center'>Willst du dir die Dokumentation zu '" + (e.target as HTMLElement).innerText + "' anschauen?</h4>",
-                            () => {
-                                window.open(rootURL + (e.target as HTMLElement).innerText, "_blank")
-                            }
-                        )
+
+                x0.onreadystatechange = () => {
+                    if(x0.readyState != 4) return;
+
+                    if(x0.status === 200){
+                        hasDocumentation = true;
+                    }
+
+                    let x1 = new XMLHttpRequest();
+                    x1.open("GET", tutURL + (e.target as HTMLElement).innerText, true);
+                    x1.send(null);
+                    x1.onreadystatechange = () => {
+                        if(x1.readyState != 4) return;
+
+                        if(x1.status === 200){
+                            hasTutorial = true;
+                        }
+
+                        if(hasDocumentation && !hasTutorial){
+                            UIManager.ask(
+                                "<h1 style='text-align: center'>Dokumentation gefunden</h1>" +
+                                "<h4 style='text-align: center'>Willst du dir die Dokumentation zu '" + (e.target as HTMLElement).innerText + "' anschauen?</h4>",
+                                () => {
+                                    window.open(docURL + (e.target as HTMLElement).innerText, "_blank")
+                                }
+                            )
+                        }else if(hasTutorial && !hasDocumentation){
+                            UIManager.ask(
+                                "<h1 style='text-align: center'>Tutorial gefunden</h1>" +
+                                "<h4 style='text-align: center'>Willst du dir das Tutorial zu '" + (e.target as HTMLElement).innerText + "' anschauen?</h4>",
+                                () => {
+                                    window.open(tutURL + (e.target as HTMLElement).innerText, "_blank")
+                                }
+                            )
+                        } else if(hasDocumentation && hasTutorial){
+                            UIManager.alert(
+                                "<h1 style='text-align: center'>Dokumentation und Tutorial gefunden</h1>" +
+                                "<ul>" +
+                                "<li><a href='" + docURL + (e.target as HTMLElement).innerText + "' target='_blank'>Dokumentation öffnen</a></li>" +
+                                "<li><a href='" + tutURL + (e.target as HTMLElement).innerText + "' target='_blank'>Tutorial öffnen</a></li>" +
+                                "</ul>")
+                        }
                     }
                 }
 
