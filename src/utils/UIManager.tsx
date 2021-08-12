@@ -39,6 +39,7 @@ import * as monaco from "monaco-editor";
 import {EditorSelector} from "../components/EditorSelector";
 import {TemplateSelector} from "../components/TemplateSelector";
 import {ProjectSelector} from "../components/ProjectSelector";
+import {IPosition, Position} from "monaco-editor";
 
 export class UIManager {
 
@@ -238,9 +239,46 @@ export class UIManager {
             theme: "incode-lang-theme",
             insertSpaces: false,
             autoClosingQuotes: "always",
+            autoClosingBrackets: "always",
             acceptSuggestionOnEnter: "on",
-            fontSize: 25
+            contextmenu: false,
+            fontSize: 25,
         });
+
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            let rootURL = "";
+
+            if(((e.target as HTMLElement).classList as DOMTokenList).contains("mtk24") && ((e.target as HTMLElement).classList as DOMTokenList).contains("mtkb")){
+                rootURL = "https://incode.craftions.net/docs/Bezug/Befehle/";
+            } else if(((e.target as HTMLElement).classList as DOMTokenList).contains("mtk29")){
+                rootURL = "https://incode.craftions.net/docs/Bezug/Typen/"
+            } else if(((e.target as HTMLElement).classList as DOMTokenList).contains("mtk22")){
+                rootURL = "https://incode.craftions.net/docs/Bezug/Eigenschaften/"
+            }
+
+            if(rootURL != ""){
+
+                let x = new XMLHttpRequest();
+                x.open("GET", rootURL + (e.target as HTMLElement).innerText, true);
+                x.send(null);
+
+                x.onreadystatechange = () => {
+                    if(x.readyState != 4) return;
+
+                    if(x.status === 200){
+                        UIManager.ask(
+                            "<h1 style='text-align: center'>Dokumentation</h1>" +
+                            "<h4 style='text-align: center'>Willst du dir die Dokumentation zu '" + (e.target as HTMLElement).innerText + "' anschauen?</h4>",
+                            () => {
+                                window.open(rootURL + (e.target as HTMLElement).innerText, "_blank")
+                            }
+                        )
+                    }
+                }
+
+            }
+        })
     }
 
     /**

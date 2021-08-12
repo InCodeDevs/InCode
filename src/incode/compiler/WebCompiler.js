@@ -545,7 +545,7 @@ class WebCompiler {
                 break;
             case "setze":
                 if (args[2].toLowerCase() === "wert") {
-                    r = args[4] + " = " + "\"" + this.getArgsInRange(args, 6, args.length) + "\"";
+                    r = args[4] + " = " + this.getArgsInRange(args, 6, args.length);
                 }
                 else {
                     if (this.options.settable[args[2].toLowerCase()]) {

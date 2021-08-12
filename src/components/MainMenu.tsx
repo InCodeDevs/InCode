@@ -53,7 +53,7 @@ export class MainMenu extends React.Component {
                     </div>
                     <h1 style={{color: "#F8F9FAFF"}}>How to InCode</h1>
                     <div className={"menu-choose-editors-root"}>
-                        <div className={"menu-choose-editor"} onClick={MainMenu.openProject}>
+                        <div className={"menu-choose-editor"} onClick={MainMenu.openGame}>
                             <img
                                 src={"assets/play.png"} width={128}
                                 height={128}/>
@@ -61,7 +61,7 @@ export class MainMenu extends React.Component {
                                 Lernen
                             </p>
                         </div>
-                        <div className={"menu-choose-editor"} onClick={MainMenu.openProject}>
+                        <div className={"menu-choose-editor"} onClick={MainMenu.openTutorials}>
                             <img
                                 src={"assets/tutorials.png"} width={128}
                                 height={128}/>
@@ -69,7 +69,7 @@ export class MainMenu extends React.Component {
                                 Tutorials
                             </p>
                         </div>
-                        <div className={"menu-choose-editor"} onClick={MainMenu.openProject}>
+                        <div className={"menu-choose-editor"} onClick={MainMenu.openDocumentation}>
                             <img
                                 src={"assets/documentation.png"} width={128}
                                 height={128}/>
@@ -174,5 +174,23 @@ export class MainMenu extends React.Component {
         UIManager.hideMenu();
         UIManager.showMenuBar();
         ProjectManager.openProject(name, type);
+    }
+
+    public static openDocumentation() {
+        window.open("https://incode.craftions.net/docs/intro", "_blank")
+    }
+
+    public static openTutorials() {
+        UIManager.alert(
+            "<h1 style='text-align: center'>Achtung!</h1>" +
+            "<h4 style='text-align:center;'>Dieses Feature ist aktuell in Arbeit!</h4>"
+        )
+    }
+
+    public static openGame() {
+        UIManager.alert(
+            "<h1 style='text-align: center'>Achtung!</h1>" +
+            "<h4 style='text-align:center;'>Dieses Feature ist aktuell in Arbeit!</h4>"
+        )
     }
 }
