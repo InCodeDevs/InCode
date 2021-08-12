@@ -48,7 +48,7 @@ class WebCompiler {
                 },
                 append: ""
             },
-            "hinterdrungfarbe": {
+            "hintergrungfarbe": {
                 name: "backgroundColor",
                 type: "style",
                 values: {
@@ -452,7 +452,7 @@ class WebCompiler {
                 name: "borderRadius",
                 type: "style",
                 useSetAttribute: false,
-                append: ""
+                append: "px"
             }
         },
         operators: {
