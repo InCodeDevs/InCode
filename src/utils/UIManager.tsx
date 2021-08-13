@@ -66,7 +66,7 @@ export class UIManager {
         (document.querySelector('#copyright') as HTMLDivElement).addEventListener('click', (e) => {
             UIManager.alert("<h1>InCode-Editor</h1>" +
                 "<span><strong>By:</strong> <span style='font-family: monospace'>The InCode Developers</span><br>" +
-                "<strong>Version:</strong> <span style='font-family: monospace'>Beta 2.1.0</span><br>" +
+                "<strong>Version:</strong> <span style='font-family: monospace'>" + Options.formattedVersion + "</span><br>" +
                 "<strong>License:</strong> <span style='font-family: monospace'>GNU General Public License 3.0</span><br>" +
                 "<a href='https://github.com/InCodeDevs/InCode-Editor' target='_blank'>GitHub</a>\t<a href='https://incodedevs.github.io/InCode-Editor' target='_blank'>Website</a></span>"
             )

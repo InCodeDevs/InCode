@@ -6,4 +6,8 @@ export class Options {
     public static enableLivePreview = true;
     public static currentLiveJS = '';
     public static currentEditor = '';
+
+    public static readonly version = '2.1.0';
+
+    public static readonly formattedVersion = 'InCode Editor v' + Options.version;
 }

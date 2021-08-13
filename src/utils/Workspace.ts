@@ -11,6 +11,7 @@ import {TempOptions} from "../TempOptions";
 import {ProjectManager} from "./ProjectManager";
 import {UIManager} from "./UIManager";
 import * as Blockly from "blockly/blockly";
+import * as JSZip from 'jszip';
 
 export class Workspace {
 
@@ -145,5 +146,55 @@ export class Workspace {
                 }
             }
         )
+    }
+
+    /**
+     * Exports the current workspace
+     */
+    public static export() {
+        Workspace.compile(false)
+        let code = atob(Options.currentLiveJS);
+
+        let incode = "";
+        if (Options.currentEditor === 'vscode') {
+            // @ts-ignore
+            incode = window.editor.getValue();
+        } else {
+            incode = new BlocklyCompiler().compile();
+        }
+
+        let zipFile = new JSZip();
+        zipFile.file(TempOptions.options[0x10AD] + ".js", code + "\n" );
+        zipFile.file(TempOptions.options[0x10AD] + ".ic", incode + "\n" );
+        zipFile.file("index.html", `
+            <!DOCTYPE html>
+            <html lang="de">
+                <head>
+                    <title>${TempOptions.options[0x10AD]}</title>
+                    <script defer src="${TempOptions.options[0x10AD]}.js"></script>
+                </head>
+                <body></body>
+            </html>
+        ` + "\n");
+        zipFile.file("Ließ mich.txt",
+            "Vielen Dank, dass du den offiziellen InCode Editor benutzt!\n" +
+            "\n" +
+            "Dein exportiertes Programm findest du in der Datei \"index.html\".\n" +
+            "Außerdem findest du in der .ic Datei deinen geschriebenen InCode und in der .js\n" +
+            "Datei den dazu gehörigen JavaScript Code!\n" +
+            "\n" +
+            "Wir wünschen dir weiterhin noch viel Spaß mit InCode.\n" +
+            "\n" +
+            "Das InCode Team"
+        )
+        zipFile.generateAsync(
+            {
+                type: 'base64',
+                compressionOptions: {
+                    level: 6
+            }
+        }).then((content) => {
+            Networking.downloadCustom("data:application/zip; base64," + content, TempOptions.options[0x10AD] + ".zip")
+        })
     }
 }
