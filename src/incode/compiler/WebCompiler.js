@@ -119,7 +119,8 @@ class WebCompiler {
                     "fett": "bold",
                     "normal": "normal",
                     "nichts": "normal"
-                }
+                },
+                append: ""
             },
             "schriftart": {
                 name: "fontFamily",

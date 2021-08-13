@@ -13,8 +13,42 @@ export class SetVarColorBlock {
         Blockly.defineBlocksWithJsonArray([
             {
                 "type": "var_set_color",
-                "message0": "Setze die Farbe von %1 auf %2",
+                "message0": "Setze die %1 von %2 auf %3",
                 "args0": [
+                    {
+                        "type": "field_dropdown",
+                        "name": "TYPE",
+                        "options": [
+                            [
+                                "Farbe",
+                                "Farbe"
+                            ],
+                            [
+                                "Hintergrundfarbe",
+                                "Hintergrundfarbe"
+                            ],
+                            [
+                                "Umrandungsfarbe",
+                                "Umrandungsfarbe"
+                            ],
+                            [
+                                "Umrandungsfarbe-Oben",
+                                "Umrandungsfarbe-Oben"
+                            ],
+                            [
+                                "Umrandungsfarbe-Unten",
+                                "Umrandungsfarbe-Unten"
+                            ],
+                            [
+                                "Umrandungsfarbe-Rechts",
+                                "Umrandungsfarbe-Rechts"
+                            ],
+                            [
+                                "Umrandungsfarbe-Links",
+                                "Umrandungsfarbe-Links"
+                            ]
+                        ]
+                    },
                     {
                         "type": "field_input",
                         "name": "VARIABLE_NAME",

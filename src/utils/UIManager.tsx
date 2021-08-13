@@ -18,9 +18,7 @@ import {CreateMethodBlock} from "../blockly/blocks/CreateMethodBlock";
 import {CallMethodBlock} from "../blockly/blocks/CallMethodBlock";
 import {CreateVarBlock} from "../blockly/blocks/CreateVarBlock";
 import {CreateVarTypeBlock} from "../blockly/blocks/CreateVarTypeBlock";
-import {SetVarValueBlock} from "../blockly/blocks/SetVarValueBlock";
-import {SetVarValueNumberBlock} from "../blockly/blocks/SetVarValueNumberBlock";
-import {SetVarTextBlock} from "../blockly/blocks/SetVarTextBlock";
+import {SetVarPropertyBlock} from "../blockly/blocks/SetVarPropertyBlock";
 import {SetVarColorBlock} from "../blockly/blocks/SetVarColorBlock";
 import {RepeatXTimesBlock} from "../blockly/blocks/RepeatXTimesBlock";
 import {RepeatWhile} from "../blockly/blocks/RepeatWhile";
@@ -40,6 +38,11 @@ import {EditorSelector} from "../components/EditorSelector";
 import {TemplateSelector} from "../components/TemplateSelector";
 import {ProjectSelector} from "../components/ProjectSelector";
 import {IPosition, Position} from "monaco-editor";
+import {SetVarDecorationPropsBlock} from "../blockly/blocks/SetVarDecorationPropsBlock";
+import {SetVarTextAlign} from "../blockly/blocks/SetVarTextAlign";
+import {SetVarPositionBlock} from "../blockly/blocks/SetVarPositionBlock";
+import {SetVarBorderStyle} from "../blockly/blocks/SetVarBorderStyle";
+import {SetVarFontWeight} from "../blockly/blocks/SetVarFontWeight";
 
 export class UIManager {
 
@@ -168,10 +171,13 @@ export class UIManager {
 
         CreateVarBlock.registerBlock();
         CreateVarTypeBlock.registerBlock();
-        SetVarValueBlock.registerBlock();
-        SetVarValueNumberBlock.registerBlock();
-        SetVarTextBlock.registerBlock();
+        SetVarPropertyBlock.registerBlock();
         SetVarColorBlock.registerBlock();
+        SetVarDecorationPropsBlock.registerBlock()
+        SetVarTextAlign.registerBlock()
+        SetVarPositionBlock.registerBlock()
+        SetVarBorderStyle.registerBlock();
+        SetVarFontWeight.registerBlock();
 
         RepeatXTimesBlock.registerBlock()
         RepeatWhile.registerBlock();
