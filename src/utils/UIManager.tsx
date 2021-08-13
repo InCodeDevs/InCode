@@ -345,6 +345,7 @@ export class UIManager {
      */
     public static alert(msg: string, callback: () => void = () => {
     }) {
+        (document.querySelector("#popup") as HTMLDivElement).style.display = 'block';
         (document.querySelector(".alert-popup") as HTMLDivElement).style.display = 'block';
         (document.querySelector(".alert-popup-content") as HTMLDivElement).innerHTML = msg;
         UIManager.alert0CallBack = callback;
@@ -358,6 +359,7 @@ export class UIManager {
      */
     public static prompt(msg: string, callback: (value: string) => void) {
         UIManager.prompt0CallBack = callback;
+        (document.querySelector("#popup") as HTMLDivElement).style.display = 'block';
         (document.querySelector(".prompt-popup") as HTMLDivElement).style.display = 'block';
         (document.querySelector(".prompt-popup-input") as HTMLInputElement).value = '';
         (document.querySelector(".prompt-popup-content-text") as HTMLDivElement).innerHTML = msg;
@@ -371,6 +373,7 @@ export class UIManager {
      */
     public static ask(msg: string, callback: () => void) {
         UIManager.question0CallBack = callback;
+        (document.querySelector("#popup") as HTMLDivElement).style.display = 'block';
         (document.querySelector(".question-popup") as HTMLDivElement).style.display = 'block';
         (document.querySelector(".question-popup-content-text") as HTMLDivElement).innerHTML = msg;
         (document.querySelector(".question-popup-button-confirm") as HTMLButtonElement).addEventListener('click', UIManager.handleAsk0, true)
