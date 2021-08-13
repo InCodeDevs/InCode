@@ -197,4 +197,9 @@ export class Workspace {
             Networking.downloadCustom("data:application/zip; base64," + content, TempOptions.options[0x10AD] + ".zip")
         })
     }
+
+    public static saveProjectFile() {
+        Workspace.save(false);
+        Networking.download(TempOptions.options[0x10AD] + ".json", localStorage.getItem("incode-editor.projects." + TempOptions.options[0x10AD]) as string, "application/json");
+    }
 }

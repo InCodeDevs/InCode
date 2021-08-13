@@ -34,6 +34,7 @@ export class MenuBar extends React.Component {
 
                             <Dropdown.Menu>
                                 <Dropdown.Item onClick={Workspace.save}>Speichern</Dropdown.Item>
+                                <Dropdown.Item onClick={Workspace.saveProjectFile}>Projektdatei Speichern</Dropdown.Item>
                                 <Dropdown.Item onClick={Workspace.export}>Exportieren</Dropdown.Item>
                                 <Dropdown.Item onClick={Workspace.rename}>Namen ändern</Dropdown.Item>
                                 <Dropdown.Item onClick={Workspace.deploy}>Vorlage veröffentlichen</Dropdown.Item>
