@@ -3,17 +3,7 @@
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  background-color: #1E1E1E;
-  overflow: auto;
-}
-
-a {
-  color: #0071FF
-}
+@use "~bootstrap/scss/bootstrap";
 
 #blockly {
   height: 90%;

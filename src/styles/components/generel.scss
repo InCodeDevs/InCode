@@ -1,0 +1,48 @@
+/**
+ * @author The InCode Devs
+ * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
+ */
+
+@use "~bootstrap/scss/bootstrap";
+
+* {
+  font-family: sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-color: #1E1E1E;
+  overflow: auto;
+}
+
+a {
+  color: #0071FF
+}
+
+#copyright {
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  color: $light;
+  opacity: 0.4;
+  z-index: 4269 !important;
+}
+
+#copyright:hover {
+  user-select: none;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+#topScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 424242;
+  display: none;
+  background: #1E1E1E;
+}

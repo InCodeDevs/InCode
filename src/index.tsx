@@ -3,20 +3,17 @@
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 
-import "./styles/_index.scss"
+import "./styles/editor.scss"
 import * as ReactDOM from "react-dom";
 import {UIManager} from "./utils/UIManager";
 import * as React from "react";
 import {IncompatibleScreenSize} from "./components/IncompatibleScreenSize";
-import { Workspace } from "./utils/Workspace";
-import {TemplateSelector} from "./components/TemplateSelector";
 
 let needIncompatibleScreenSizeScreen = false;
 let lastInnerWidth = window.innerWidth;
 let lastInnerHeight = window.innerHeight;
 
 setInterval(() => {
-    // needIncompatibleScreenSizeScreen = window.innerHeight < 880 || window.innerWidth < 1400;
     needIncompatibleScreenSizeScreen = window.innerHeight < 768 || window.innerWidth < 1024;
 
     if (needIncompatibleScreenSizeScreen) {
@@ -34,7 +31,7 @@ setInterval(() => {
     lastInnerWidth = window.innerWidth;
 }, 10)
 
-window.onbeforeunload = confirmExit;
+// window.onbeforeunload = confirmExit;
 function confirmExit() {
     return "You have attempted to leave this page. If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
 }
