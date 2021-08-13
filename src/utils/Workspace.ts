@@ -187,6 +187,7 @@ export class Workspace {
             "\n" +
             "Das InCode Team"
         )
+        zipFile.file(TempOptions.options[0x10AD] + ".json", localStorage.getItem("incode-editor.projects." + TempOptions.options[0x10AD]) as string)
         zipFile.generateAsync(
             {
                 type: 'base64',
