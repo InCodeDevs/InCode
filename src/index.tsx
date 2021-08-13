@@ -34,12 +34,9 @@ setInterval(() => {
     lastInnerWidth = window.innerWidth;
 }, 10)
 
-// window.onbeforeunload = confirmExit; // removed for debugging :)
+window.onbeforeunload = confirmExit;
 function confirmExit() {
     return "You have attempted to leave this page. If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
 }
 
- document.addEventListener("DOMContentLoaded", UIManager.onLoad);
-document.addEventListener("DOMContentLoaded", () => {
-//    ReactDOM.render((<TemplateSelector />), document.querySelector('#menu'))
-})
+document.addEventListener("DOMContentLoaded", UIManager.onLoad);

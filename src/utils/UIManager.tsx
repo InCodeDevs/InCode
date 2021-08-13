@@ -64,11 +64,13 @@ export class UIManager {
         UIManager.deleteMonaco();
 
         (document.querySelector('#copyright') as HTMLDivElement).addEventListener('click', (e) => {
-            UIManager.alert("<h1>InCode-Editor</h1>" +
+            UIManager.alert("<div style='text-align: center'>" +
+                "<h1>InCode-Editor</h1>" +
                 "<span><strong>By:</strong> <span style='font-family: monospace'>The InCode Developers</span><br>" +
                 "<strong>Version:</strong> <span style='font-family: monospace'>" + Options.formattedVersion + "</span><br>" +
                 "<strong>License:</strong> <span style='font-family: monospace'>GNU General Public License 3.0</span><br>" +
-                "<a href='https://github.com/InCodeDevs/InCode-Editor' target='_blank'>GitHub</a>\t<a href='https://incodedevs.github.io/InCode-Editor' target='_blank'>Website</a></span>"
+                "<a href='https://github.com/InCodeDevs/InCode-Editor' target='_blank'>GitHub</a>\t<a href='https://incode.craftions.net' target='_blank'>Website</a></span>" +
+                "</div>"
             )
         })
     }

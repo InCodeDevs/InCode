@@ -75,6 +75,9 @@ export class Workspace {
         UIManager.ask("<h1 style='text-align: center'>Fortfahren?</h1>" +
             "<h4>Willst du dein Projekt wirklich löschen <span style='color: red'>(Dies kann nicht rückgängig gemacht werden</span></h4>",
             () => {
+                if(document.getElementById('livePreviewFrame') != undefined){
+                    (document.getElementById('livePreview') as HTMLDivElement).removeChild((document.getElementById('livePreviewFrame') as HTMLIFrameElement))
+                }
                 UIManager.deleteBlockly();
                 UIManager.deleteMonaco();
                 UIManager.hideMenuBar();
