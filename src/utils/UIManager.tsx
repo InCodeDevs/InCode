@@ -304,10 +304,10 @@ export class UIManager {
                         } else if(hasDocumentation && hasTutorial){
                             UIManager.alert(
                                 "<h1 style='text-align: center'>Dokumentation und Tutorial gefunden</h1>" +
-                                "<ul>" +
-                                "<li><a href='" + docURL + (e.target as HTMLElement).innerText + "' target='_blank'>Dokumentation öffnen</a></li>" +
-                                "<li><a href='" + tutURL + (e.target as HTMLElement).innerText + "' target='_blank'>Tutorial öffnen</a></li>" +
-                                "</ul>")
+                                "<div style='text-align: center; margin-top: 4%;'>" +
+                                "<h3><a href='" + docURL + (e.target as HTMLElement).innerText + "' target='_blank' style='color: #FF7700'>Dokumentation öffnen</a></h3>" +
+                                "<h3 style='margin-top: 3%;'><a href='" + tutURL + (e.target as HTMLElement).innerText + "' target='_blank' style='color: #FF7700'>Tutorial öffnen</a></h3>" +
+                                "</div>")
                         }
                     }
                 }

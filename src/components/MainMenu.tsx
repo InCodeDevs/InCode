@@ -181,10 +181,7 @@ export class MainMenu extends React.Component {
     }
 
     public static openTutorials() {
-        UIManager.alert(
-            "<h1 style='text-align: center'>Achtung!</h1>" +
-            "<h4 style='text-align:center;'>Dieses Feature ist aktuell in Arbeit!</h4>"
-        )
+        window.open("https://incode.craftions.net/docs/Tutorials/Tutorials");
     }
 
     public static openGame() {
