@@ -29,7 +29,7 @@ export class ProjectSelector extends React.Component {
                             </div>
                             <div style={{flex: "25%"}}>
                                 <Button variant={"outline-flat"} size={"xxl"}
-                                        onClick={this.showMainMenu}>Hautpmenü</Button>
+                                        onClick={this.showMainMenu}>Hauptmenü</Button>
                             </div>
                         </div>
                     </div>

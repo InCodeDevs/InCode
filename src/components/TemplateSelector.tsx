@@ -4,7 +4,7 @@
  */
 
 import * as React from "react";
-import {Form} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 import {ObjectDefinition} from "../TempOptions";
 import {UIManager} from "../utils/UIManager";
 import {ProjectManager} from "../utils/ProjectManager";
@@ -20,7 +20,16 @@ export class TemplateSelector extends React.Component {
         return (
             <>
                 <div style={{textAlign: 'center'}}>
-                    <h1 style={{color: "#F8F9FAFF", marginTop: "2%"}}>Vorlagen</h1>
+                    <div style={{display: 'flex', width: "100%", marginTop: "2%", marginBottom: "2%"}}>
+                        <h1 style={{color: "#F8F9FAFF", flex: "55%", textAlign: "right"}}>Online Vorlagen</h1>
+                        <div style={{flex: "45%", display: "flex"}}>
+                            <span style={{flex: "75%"}}/>
+                            <div style={{flex: "25%"}}>
+                                <Button variant={"outline-flat"} size={"xxl"}
+                                        onClick={this.showMainMenu}>Hauptmenü</Button>
+                            </div>
+                        </div>
+                    </div>
                     <div style={{textAlign: 'center', display: "flex", justifyContent: "center"}}>
                         <Form.Control type={"text"} placeholder={"Suchen..."} style={{
                             width: "30%",
@@ -39,6 +48,15 @@ export class TemplateSelector extends React.Component {
             </>
         )
     }
+
+    /**
+     * Shows the Main Menu
+     */
+    showMainMenu() {
+        UIManager.showMainMenu()
+        UIManager.hideMenuBar()
+    }
+
 
     componentDidMount() {
         TemplateSelector.downloadTemplates();
