@@ -37,4 +37,12 @@ export class Networking {
 
         document.body.removeChild(element);
     }
+
+
+    public static getURLContent(url: string): string {
+        let x = new XMLHttpRequest();
+        x.open("GET", url, false)
+        x.send(null)
+        return x.responseText;
+    }
 }

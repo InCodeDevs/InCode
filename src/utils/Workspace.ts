@@ -155,6 +155,7 @@ export class Workspace {
      * Exports the current workspace
      */
     public static export() {
+
         Workspace.compile(false)
         let code = atob(Options.currentLiveJS);
 
@@ -166,15 +167,100 @@ export class Workspace {
             incode = new BlocklyCompiler().compile();
         }
 
+        switch (ProjectManager.getProjectEnv(TempOptions.options[0x10AD])){
+            case "website":
+                Workspace.exportFinal(code, incode);
+                break;
+            case "styled-website":
+                Workspace.exportFinal(code, incode, true);
+                break;
+            case "desktop":
+                Workspace.exportFinalDesktop(code)
+                break;
+            case "styled-desktop":
+                Workspace.exportFinalDesktop(code, true)
+            case "game":
+                Workspace.exportFinal(code, incode, false, true)
+                break;
+            default:
+                Workspace.exportFinal(code, incode)
+                break;
+        }
+    }
+
+    public static exportFinalDesktop(code: string, styled: boolean = false) {
+        let zipFile = new JSZip();
+
+        zipFile.folder("scripts");
+        zipFile.folder("resources");
+
+        zipFile.file("exporter.bat", Networking.getURLContent("https://incode-cdn.craftions.net/export/exporter/exporter.bat"))
+        zipFile.file("scripts/updateApp.js", Networking.getURLContent("https://incode-cdn.craftions.net/export/exporter/scripts/updateApp.js"))
+
+
+        let inCodeCSS = "";
+
+        if(styled) {
+            let inCodeStyleSheet = Networking.getURLContent("https://incode-cdn.craftions.net/export/incode.css");
+
+            zipFile.file("resources/incode.css", inCodeStyleSheet + "\n");
+            inCodeCSS = "\n<link rel='stylesheet' type='text/css' href='incode.css'>\n";
+        }
+
+        zipFile.file("resources/index.js", Networking.getURLContent("https://incode-cdn.craftions.net/export/exporter/default/index.js"))
+
+        zipFile.file("resources/index.html", `
+            <!DOCTYPE html>
+            <html lang="de">
+                <head>
+                    <title>${TempOptions.options[0x10AD]}</title>
+                    <script defer src="${TempOptions.options[0x10AD]}.js"></script>${inCodeCSS}
+                </head>
+                <body></body>
+            </html>
+        ` + "\n");
+
+        zipFile.file("resources/" + TempOptions.options[0x10AD] + ".js", code);
+
+        zipFile.generateAsync(
+            {
+                type: 'base64',
+                compressionOptions: {
+                    level: 6
+                }
+            }).then((content) => {
+            Networking.downloadCustom("data:application/zip; base64," + content, TempOptions.options[0x10AD] + ".zip")
+        })
+    }
+
+    public static exportFinal(code: string, inCode: string, styled: boolean = false, game: boolean = false) {
         let zipFile = new JSZip();
         zipFile.file(TempOptions.options[0x10AD] + ".js", code + "\n" );
-        zipFile.file(TempOptions.options[0x10AD] + ".ic", incode + "\n" );
+        zipFile.file(TempOptions.options[0x10AD] + ".ic", inCode + "\n" );
+
+        let inCodeCSS = "";
+        let inCodeJS = "";
+
+        if(styled) {
+            let inCodeStyleSheet = Networking.getURLContent("https://incode-cdn.craftions.net/export/incode.css");
+
+            zipFile.file("incode.css", inCodeStyleSheet + "\n");
+            inCodeCSS = "\n<link rel='stylesheet' type='text/css' href='incode.css'>\n";
+        }
+
+        if(game) {
+            let inCodeScript = Networking.getURLContent("https://incode-cdn.craftions.net/export/incode.js");
+
+            zipFile.file("incode.js", inCodeScript + "\n");
+            inCodeJS = "\n<script defer src='incode.js'></script>\n";
+        }
+
         zipFile.file("index.html", `
             <!DOCTYPE html>
             <html lang="de">
                 <head>
                     <title>${TempOptions.options[0x10AD]}</title>
-                    <script defer src="${TempOptions.options[0x10AD]}.js"></script>
+                    <script defer src="${TempOptions.options[0x10AD]}.js"></script>${inCodeCSS}${inCodeJS}
                 </head>
                 <body></body>
             </html>
@@ -191,13 +277,14 @@ export class Workspace {
             "Das InCode Team"
         )
         zipFile.file(TempOptions.options[0x10AD] + ".json", localStorage.getItem("incode-editor.projects." + TempOptions.options[0x10AD]) as string)
+
         zipFile.generateAsync(
             {
                 type: 'base64',
                 compressionOptions: {
                     level: 6
-            }
-        }).then((content) => {
+                }
+            }).then((content) => {
             Networking.downloadCustom("data:application/zip; base64," + content, TempOptions.options[0x10AD] + ".zip")
         })
     }
@@ -205,5 +292,20 @@ export class Workspace {
     public static saveProjectFile() {
         Workspace.save(false);
         Networking.download(TempOptions.options[0x10AD] + ".json", localStorage.getItem("incode-editor.projects." + TempOptions.options[0x10AD]) as string, "application/json");
+    }
+
+    public static changeEnvType() {
+        Workspace.save(false);
+        if(document.getElementById('livePreviewFrame') != undefined){
+            (document.getElementById('livePreview') as HTMLDivElement).removeChild((document.getElementById('livePreviewFrame') as HTMLIFrameElement))
+        }
+        UIManager.hideMenuBar();
+        UIManager.deleteMonaco();
+        UIManager.deleteBlockly();
+        TempOptions.options[0x10AF] = (env: string) => {
+            ProjectManager.setProjectEnv(TempOptions.options[0x10AD], env);
+            ProjectManager.openProject(TempOptions.options[0x10AD], ProjectManager.getProjectType(TempOptions.options[0x10AD]))
+        }
+        UIManager.showEnvSelector();
     }
 }

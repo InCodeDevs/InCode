@@ -25,7 +25,7 @@ export class ProjectTypeSelector extends React.Component {
                 }}>
                     <h1 style={{color: "#F8F9FAFF"}}>Projekt Typ auswählen</h1>
                     <div className={"menu-choose-editors-root"}>
-                        <div className={"menu-choose-editor"}>
+                        <div className={"menu-choose-editor"} onClick={this.useWebsite}>
                             <img
                                 src={"/assets/website.png"} width={128}
                                 height={128}/>
@@ -34,7 +34,7 @@ export class ProjectTypeSelector extends React.Component {
                                 <span style={{fontFamily: "Comic Sans MS"}}>Eine einfache Website</span>
                             </p>
                         </div>
-                        <div className={"menu-choose-editor"}>
+                        <div className={"menu-choose-editor"} onClick={this.useStyledWebsite}>
                             <img
                                 src={"/assets/website.png"} width={128}
                                 height={128}/>
@@ -43,7 +43,7 @@ export class ProjectTypeSelector extends React.Component {
                                 <span style={{fontFamily: "Comic Sans MS"}}>Eine vordesignte Website</span>
                             </p>
                         </div>
-                        <div className={"menu-choose-editor"}>
+                        <div className={"menu-choose-editor"} onClick={this.useDesktop}>
                             <img
                                 src={"/assets/desktop.png"} width={128}
                                 height={128}/>
@@ -54,7 +54,7 @@ export class ProjectTypeSelector extends React.Component {
                         </div>
                     </div>
                     <div className={"menu-choose-editors-root"}>
-                        <div className={"menu-choose-editor"}>
+                        <div className={"menu-choose-editor"} onClick={this.useStyledDesktop}>
                             <img
                                 src={"/assets/desktop.png"} width={128}
                                 height={128}/>
@@ -63,7 +63,7 @@ export class ProjectTypeSelector extends React.Component {
                                 <span style={{fontFamily: "Comic Sans MS"}}>Eine vordesignte Desktop Anwendung</span>
                             </p>
                         </div>
-                        <div className={"menu-choose-editor"}>
+                        <div className={"menu-choose-editor"} onClick={this.useGame}>
                             <img
                                 src={"/assets/game.png"} width={128}
                                 height={128}/>
@@ -76,5 +76,25 @@ export class ProjectTypeSelector extends React.Component {
                 </div>
             </>
         )
+    }
+
+    useWebsite(){
+        TempOptions.options[0x10AF]("website");
+    }
+
+    useStyledWebsite(){
+        TempOptions.options[0x10AF]("styled-website");
+    }
+
+    useDesktop(){
+        TempOptions.options[0x10AF]("desktop");
+    }
+
+    useStyledDesktop(){
+        TempOptions.options[0x10AF]("styled-desktop");
+    }
+
+    useGame(){
+        TempOptions.options[0x10AF]("game");
     }
 }

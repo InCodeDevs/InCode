@@ -43,6 +43,7 @@ import {SetVarTextAlign} from "../blockly/blocks/SetVarTextAlign";
 import {SetVarPositionBlock} from "../blockly/blocks/SetVarPositionBlock";
 import {SetVarBorderStyle} from "../blockly/blocks/SetVarBorderStyle";
 import {SetVarFontWeight} from "../blockly/blocks/SetVarFontWeight";
+import {ProjectTypeSelector} from "../components/ProjectTypeSelector";
 
 export class UIManager {
 
@@ -152,6 +153,15 @@ export class UIManager {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
         ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
         ReactDOM.render((<ProjectSelector />), document.querySelector('#menu'));
+    }
+
+    /**
+     * Shows the Menu
+     */
+    public static showEnvSelector = () => {
+        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
+        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
+        ReactDOM.render((<ProjectTypeSelector />), document.querySelector('#menu'));
     }
 
     /**

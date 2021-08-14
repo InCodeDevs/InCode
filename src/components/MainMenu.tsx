@@ -116,12 +116,27 @@ export class MainMenu extends React.Component {
         )
     }
 
-    public static createProject0(name: string, type: string, code: string = "") { // code is used for templates (coming soon)
+    public static createProject0(name: string, type: string, code: string = "") {
+        if(type === 'blockly' && code === '')
+            code = '<xml><block type=\"start\" id=\"|(^9%DCME)E4UEoWv~G]\" x=\"134\" y=\"70\"></block></xml>'
+
         TempOptions.options[0x10AD] = name;
-        ProjectManager.createProject(name, type, code);
+        TempOptions.options[0x10AA] = type;
+        TempOptions.options[0x10AB] = code;
+        TempOptions.options[0x10AF] = MainMenu.createProject1;
+        UIManager.showEnvSelector();
+    }
+
+    public static createProject1(env: string){
+        ProjectManager.createProject(
+            TempOptions.options[0x10AD],
+            TempOptions.options[0x10AA],
+            TempOptions.options[0x10AB],
+            env
+        )
         UIManager.hideMenu();
         UIManager.showMenuBar();
-        ProjectManager.openProject(name, type);
+        ProjectManager.openProject(TempOptions.options[0x10AD], TempOptions.options[0x10AA]);
     }
 
     public static openDocumentation() {
