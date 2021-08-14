@@ -8,6 +8,7 @@ import * as ReactDOM from "react-dom";
 import {UIManager} from "./utils/UIManager";
 import * as React from "react";
 import {IncompatibleScreenSize} from "./components/IncompatibleScreenSize";
+import {ProjectTypeSelector} from "./components/ProjectTypeSelector";
 
 let needIncompatibleScreenSizeScreen = false;
 let lastInnerWidth = window.innerWidth;
@@ -37,3 +38,7 @@ function confirmExit() {
 }
 
 document.addEventListener("DOMContentLoaded", UIManager.onLoad);
+
+function tempLoad() {
+    ReactDOM.render((<ProjectTypeSelector/>), document.querySelector("#menu"))
+}

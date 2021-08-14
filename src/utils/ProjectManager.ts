@@ -7,21 +7,21 @@ import * as Blockly from 'blockly'
 
 export class ProjectManager {
 
-    private static currentProject: object = {}
-
     /**
      * Creates a blank Project
      * @param name The name of the Project
      * @param type The Editor type of the Project (monaco or blockly)
      * @param code The starter code of the Project (used for templates)
+     * @param env The environment type of the project (used for exports)
      * @return True if the creation was successful
      */
-    public static createProject(name: string, type: string = 'monaco', code: string = ''): boolean {
+    public static createProject(name: string, type: string = 'monaco', code: string = '', env: string = 'website'): boolean {
         if (localStorage.getItem("incode-editor.projects." + name) == null) {
             localStorage.setItem("incode-editor.projects." + name, JSON.stringify({
                 name: name,
                 code: code,
-                type: type
+                type: type,
+                env: env
             }));
             return true
         } else {
@@ -70,9 +70,10 @@ export class ProjectManager {
         localStorage.setItem("incode-editor.projects." + name,
             JSON.stringify(
                 {
-                    name: JSON.parse(localStorage.getItem("incode-editor.projects." + name) as string).name,
+                    name: name,
                     code: code,
                     type: JSON.parse(localStorage.getItem("incode-editor.projects." + name) as string).type,
+                    env: ProjectManager.getProjectEnv(name)
                 })
         );
     }
@@ -84,8 +85,10 @@ export class ProjectManager {
      * @param code The code of the Project
      */
     public static renameProject(name: string, newName: string, code: string) {
+        let type = ProjectManager.getProjectType(name);
+        let env = ProjectManager.getProjectEnv(name);
         ProjectManager.deleteProject(name);
-        ProjectManager.createProject(newName);
+        ProjectManager.createProject(newName, type, code, env);
         ProjectManager.saveProject(newName, code);
     }
 
@@ -104,6 +107,32 @@ export class ProjectManager {
      */
     public static getProjectType(name: string): string {
         return JSON.parse(localStorage.getItem("incode-editor.projects." + name) as string).type || null
+    }
+
+    /**
+     * Get the environment type of a Project
+     * @param name The name of the Project
+     * @return The environment type
+     */
+    public static getProjectEnv(name: string): string {
+        return JSON.parse(localStorage.getItem('incode-editor.projects.' + name) as string).env || null
+    }
+
+    /**
+     * Sets the environment type of a Project
+     * @param name The name of the Project
+     * @param env The new environment type
+     */
+    public static setProjectEnv(name: string, env: string) {
+        localStorage.setItem("incode-editor.projects." + name,
+            JSON.stringify(
+                {
+                    name: name,
+                    code: JSON.parse(localStorage.getItem("incode-editor.projects." + name) as string).code,
+                    type: JSON.parse(localStorage.getItem("incode-editor.projects." + name) as string).type,
+                    env: env
+                })
+        );
     }
 
 }

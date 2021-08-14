@@ -102,6 +102,7 @@ export class ProjectSelector extends React.Component {
                                     if (ProjectManager.createProject(pName, pType, pCode)) {
                                         ProjectSelector.search()
                                         UIManager.ask("<h1 style='text-align:center;'>Erfolgreich</h1><h4 style='text-align:center;'>Das Projekt wurde erfolgreich importiert! Willst du es jetzt öffnen?</h4>", () => {
+                                            TempOptions.options[0x10AD] = pName;
                                             ProjectManager.openProject(pName, pType);
                                         })
                                     } else {

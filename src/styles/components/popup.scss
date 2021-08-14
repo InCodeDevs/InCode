@@ -19,7 +19,6 @@
   display: none;
 }
 
-
 .popup-content {
   position: relative;
   text-align: center;
@@ -52,10 +51,10 @@
 .prompt-popup-input {
   width: 96%;
   margin: 2%;
-  transition: outline .1s;
 }
 
 .prompt-popup-input:focus {
-  outline: #0071FF solid 3px;
+  box-shadow: none;
+  outline: none;
 }
 
