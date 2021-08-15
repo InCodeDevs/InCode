@@ -16,7 +16,6 @@ if (localStorage.getItem("incode-editor.theme") === 'dark' ||
     require("./styles/editor-light.scss");
 }
 
-
 import * as ReactDOM from "react-dom";
 import {UIManager} from "./utils/UIManager";
 import * as React from "react";

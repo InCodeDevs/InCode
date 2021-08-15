@@ -50,6 +50,14 @@ export class MainMenu extends React.Component {
                                 Projekt <br/> Öffnen
                             </p>
                         </div>
+                        <div className={"menu-choose-editor"} onClick={MainMenu.openSettings}>
+                            <img
+                                src={"assets/settings.png"} width={128}
+                                height={128}/>
+                            <p className={"menu-editor-description"}>
+                                Einstellungen
+                            </p>
+                        </div>
                     </div>
                     <h1 style={{color: "#F8F9FAFF"}}>How to InCode</h1>
                     <div className={"menu-choose-editors-root"}>
@@ -137,6 +145,13 @@ export class MainMenu extends React.Component {
         UIManager.hideMenu();
         UIManager.showMenuBar();
         ProjectManager.openProject(Registry.getRegister(0x10AD), Registry.getRegister(0x10AA));
+    }
+
+    public static openSettings() {
+        UIManager.alert(
+            "<h1 style='text-align: center'>Achtung!</h1>" +
+            "<h4 style='text-align:center;'>Dieses Feature ist aktuell in Arbeit!</h4>"
+        )
     }
 
     public static openDocumentation() {
