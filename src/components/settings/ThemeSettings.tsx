@@ -35,6 +35,22 @@ export class ThemeSettings extends React.Component {
                                 Dunkel
                             </p>
                         </div>
+                        <div className={"menu-choose-editor"} onClick={this.useDiscord}>
+                            <img
+                                src={"/assets/website.png"} width={128}
+                                height={128}/>
+                            <p className={"menu-editor-description"}>
+                                Discord
+                            </p>
+                        </div>
+                        <div className={"menu-choose-editor"} onClick={this.useTwitch}>
+                            <img
+                                src={"/assets/website.png"} width={128}
+                                height={128}/>
+                            <p className={"menu-editor-description"}>
+                                Twitch
+                            </p>
+                        </div>
                     </div>
                 </div>
             </>
@@ -48,6 +64,16 @@ export class ThemeSettings extends React.Component {
 
     useDark(){
         localStorage.setItem("incode-editor.theme", "dark");
+        window.location.reload();
+    }
+
+    useDiscord() {
+        localStorage.setItem("incode-editor.theme", "discord");
+        window.location.reload();
+    }
+
+    useTwitch(){
+        localStorage.setItem("incode-editor.theme", "twitch");
         window.location.reload();
     }
 
