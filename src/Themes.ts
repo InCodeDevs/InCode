@@ -16,5 +16,8 @@ export class Themes {
         "twitch": {
             scheme:  "dark"
         },
+        "discord": {
+            scheme:  "dark"
+        },
     }
 }
