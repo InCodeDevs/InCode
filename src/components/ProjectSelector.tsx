@@ -202,8 +202,10 @@ export class ProjectSelector extends React.Component {
     public static getProjects(): ObjectDefinition {
         let projects: ObjectDefinition = {};
         for (let i = 0; i < localStorage.length; i++) {
-            if (JSON.parse(localStorage.getItem(localStorage.key(i) as string) as string).name) {
-                projects[JSON.parse(localStorage.getItem(localStorage.key(i) as string) as string).name] = JSON.parse(localStorage.getItem(localStorage.key(i) as string) as string);
+            if((localStorage.key(i) as string).startsWith("incode-editor.projects")) {
+                if (JSON.parse(localStorage.getItem(localStorage.key(i) as string) as string).name) {
+                    projects[JSON.parse(localStorage.getItem(localStorage.key(i) as string) as string).name] = JSON.parse(localStorage.getItem(localStorage.key(i) as string) as string);
+                }
             }
         }
         return projects;

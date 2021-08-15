@@ -47,7 +47,7 @@ export class Workspace {
      * Compiles the code and opens it in the preview window
      */
     public static preview = () => {
-        if (Options.currentEditor != '' && Options.enableLivePreview) {
+        if (Options.currentEditor != '') {
             Workspace.compile(false);
             if (document.getElementById('livePreviewFrame') != undefined) {
                 (document.getElementById('livePreview') as HTMLDivElement).removeChild((document.getElementById('livePreviewFrame') as HTMLIFrameElement))

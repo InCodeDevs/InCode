@@ -44,6 +44,7 @@ import {SetVarPositionBlock} from "../blockly/blocks/SetVarPositionBlock";
 import {SetVarBorderStyle} from "../blockly/blocks/SetVarBorderStyle";
 import {SetVarFontWeight} from "../blockly/blocks/SetVarFontWeight";
 import {ProjectTypeSelector} from "../components/ProjectTypeSelector";
+import {ObjectDefinition} from "../Registry";
 
 export class UIManager {
 
@@ -65,13 +66,13 @@ export class UIManager {
         UIManager.deleteMonaco();
 
         (document.querySelector('#copyright') as HTMLDivElement).addEventListener('click', (e) => {
-            UIManager.alert("<div style='text-align: center'>" +
+            UIManager.alert("" +
                 "<h1>InCode-Editor</h1>" +
                 "<span><strong>By:</strong> <span style='font-family: monospace'>The InCode Developers</span><br>" +
                 "<strong>Version:</strong> <span style='font-family: monospace'>" + Options.formattedVersion + "</span><br>" +
                 "<strong>License:</strong> <span style='font-family: monospace'>GNU General Public License 3.0</span><br>" +
                 "<a href='https://github.com/InCodeDevs/InCode-Editor' target='_blank'>GitHub</a>\t<a href='https://incode.craftions.net' target='_blank'>Website</a></span>" +
-                "</div>"
+                ""
             )
         })
     }
@@ -204,12 +205,19 @@ export class UIManager {
 
         Blockly.setLocale(DE)
 
-        const workspace = Blockly.inject('blocklyDiv',
-            {
-                toolbox: document.getElementById('toolbox') as ToolboxDefinition,
-                theme: DarkTheme.default,
-                renderer: 'zelos'
-            });
+        let options: ObjectDefinition = {
+            toolbox: document.getElementById('toolbox') as ToolboxDefinition,
+            renderer: 'zelos'
+        }
+
+        if(localStorage.getItem("incode-editor.theme") === "dark" ||
+            localStorage.getItem("incode-editor.theme") === "default"
+        ){
+            options.theme = DarkTheme.default;
+        }
+
+        Blockly.inject('blocklyDiv',
+            options);
     }
 
     /**
@@ -250,18 +258,26 @@ export class UIManager {
 
         InCodeLanguage.register();
 
-        // @ts-ignore
-        window.editor = monaco.editor.create((document.getElementById('monaco') as HTMLDivElement), {
+        let options: ObjectDefinition = {
             value: '',
             language: 'incode',
-            theme: "incode-lang-theme",
+            theme: "incode-light",
             insertSpaces: false,
             autoClosingQuotes: "always",
             autoClosingBrackets: "always",
             acceptSuggestionOnEnter: "on",
             contextmenu: false,
             fontSize: 25,
-        });
+        }
+
+        if(localStorage.getItem("incode-editor.theme") === "dark" ||
+            localStorage.getItem("incode-editor.theme") === "default"
+        ){
+            options.theme = 'incode-dark';
+        }
+
+        // @ts-ignore
+        window.editor = monaco.editor.create((document.getElementById('monaco') as HTMLDivElement), options);
 
         document.addEventListener('contextmenu', (e) => {
             e.preventDefault();

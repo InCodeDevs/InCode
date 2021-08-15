@@ -15,13 +15,13 @@
 
 <div id="popup" style="width: 100%; height: 100%; background-color:rgba(0, 0, 0, 0.9); z-index: 100; position: fixed; top: 0; left: 0; display: none;">
     <div class="popup alert-popup">
-        <div class="alert-popup-content" style="height: 100%; width: 100%;"></div>
+        <div class="alert-popup-content popup-content"></div>
         <div class="popup-buttons">
             <button class="normal-outline-btn popup-button alert-popup-button alert-popup-button-confirm" type="button" onclick="document.querySelector('.alert-popup').style.display = 'none'; document.querySelector('#popup').style.display = 'none'">Schließen</button>
         </div>
     </div>
     <div class="popup prompt-popup">
-        <div class="prompt-popup-content">
+        <div class="prompt-popup-content popup-content">
             <div class="prompt-popup-content-text"></div>
             <input type="text" placeholder="Wert eingeben" class="prompt-popup-input form-control">
         </div>
@@ -31,7 +31,7 @@
         </div>
     </div>
     <div class="popup question-popup">
-        <div class="question-popup-content">
+        <div class="question-popup-content popup-content">
             <div class="question-popup-content-text"></div>
         </div>
         <div class="popup-buttons">

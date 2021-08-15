@@ -167,11 +167,26 @@ export class InCodeLanguage {
         })
 
         // @ts-ignore
-        monaco.editor.defineTheme('incode-lang-theme', {
+        monaco.editor.defineTheme('incode-dark', {
             base: 'vs-dark',
             inherit: true,
             rules: [
+                {token: 'root-kw', foreground: '#05900d', fontStyle: 'bold'},
+                {token: 'sub-kw', foreground: '#8d8e8e', fontStyle: 'italic'},
+                {token: 'comment', foreground: '#575757', fontStyle: 'italic'},
+                {token: 'type', foreground: '#FFA500'},
+                {token: 'property', foreground: '#0fd3c7'},
+                {token: 'operator', foreground: '#c61d1d'},
+                {token: 'event', foreground: '#e5ec1f'},
+                {token: 'var', foreground: '#27d1d4'}
+            ]
+        });
 
+        // @ts-ignore
+        monaco.editor.defineTheme('incode-light', {
+            base: 'vs',
+            inherit: true,
+            rules: [
                 {token: 'root-kw', foreground: '#05900d', fontStyle: 'bold'},
                 {token: 'sub-kw', foreground: '#8d8e8e', fontStyle: 'italic'},
                 {token: 'comment', foreground: '#575757', fontStyle: 'italic'},

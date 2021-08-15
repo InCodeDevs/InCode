@@ -3,6 +3,12 @@
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 
-.display-none {
-  display: none;
+@use "~bootstrap/scss/bootstrap";
+
+.popup {
+  background-color: $dark;
+}
+
+.popup-content {
+  color: $light;
 }

@@ -3,7 +3,20 @@
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 
-import "./styles/editor.scss"
+
+if(localStorage.getItem("incode-editor.theme") === null){
+    localStorage.setItem("incode-editor.theme", "default")
+}
+
+if (localStorage.getItem("incode-editor.theme") === 'dark' ||
+    localStorage.getItem("incode-editor.theme") === 'default'
+) {
+    require("./styles/editor-dark.scss");
+} else {
+    require("./styles/editor-light.scss");
+}
+
+
 import * as ReactDOM from "react-dom";
 import {UIManager} from "./utils/UIManager";
 import * as React from "react";
@@ -25,7 +38,7 @@ setInterval(() => {
         ReactDOM.unmountComponentAtNode((document.querySelector('#topScreen') as HTMLDivElement))
     }
 
-    if(lastInnerWidth != window.innerWidth || lastInnerHeight != window.innerHeight){
+    if (lastInnerWidth != window.innerWidth || lastInnerHeight != window.innerHeight) {
         UIManager.remakeSizes();
     }
     lastInnerHeight = window.innerHeight;

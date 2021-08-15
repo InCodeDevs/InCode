@@ -3,9 +3,11 @@
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 export class Options {
-    public static enableLivePreview = true;
+
     public static currentLiveJS = '';
     public static currentEditor = '';
+
+    public static theme = 'dark';
 
     public static readonly version = '2.1.0';
 

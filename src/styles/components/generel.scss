@@ -13,7 +13,6 @@ html,
 body {
   height: 100%;
   margin: 0;
-  background-color: #1E1E1E;
   overflow: auto;
 }
 
@@ -25,7 +24,6 @@ a {
   bottom: 0;
   right: 0;
   position: fixed;
-  color: $light;
   opacity: 0.4;
   z-index: 4269 !important;
 }
@@ -44,5 +42,4 @@ a {
   right: 0;
   z-index: 424242;
   display: none;
-  background: #1E1E1E;
 }
