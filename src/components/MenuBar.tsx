@@ -54,7 +54,7 @@ export class MenuBar extends React.Component {
                         </h1>
                     </div>
                     <div style={{flex: "25%", textAlign: "center"}}>
-                        <Button variant={"outline-flat"} size={"xxl"} onClick={this.showMainMenu}>Hautpmenü</Button>
+                        <Button variant={"outline-flat"} size={"xxl"} onClick={this.showMainMenu}>Hauptmenü</Button>
                     </div>
                 </div>
             </>
