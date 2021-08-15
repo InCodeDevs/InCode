@@ -3,17 +3,22 @@
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 
+require('./styles/incode.scss')
 
 if(localStorage.getItem("incode-editor.theme") === null){
-    localStorage.setItem("incode-editor.theme", "default")
+    localStorage.setItem("incode-editor.theme", "dark")
 }
 
-if (localStorage.getItem("incode-editor.theme") === 'dark' ||
-    localStorage.getItem("incode-editor.theme") === 'default'
-) {
-    require("./styles/editor-dark.scss");
-} else {
-    require("./styles/editor-light.scss");
+switch (localStorage.getItem("incode-editor.theme")){
+    case "dark":
+        require("./styles/themes/dark/_index.scss");
+        break;
+    case "light":
+        require("./styles/themes/light/_index.scss");
+        break;
+    default:
+        require("./styles/themes/dark/_index.scss");
+        break;
 }
 
 import * as ReactDOM from "react-dom";

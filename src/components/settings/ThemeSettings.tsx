@@ -4,12 +4,6 @@
  */
 
 import * as React from "react";
-import { Options } from "../../Options";
-import { Registry } from "../../Registry";
-
-import {UIManager} from "../../utils/UIManager";
-import {ProjectManager} from "../../utils/ProjectManager";
-import {MainMenu} from "../MainMenu";
 
 export class ThemeSettings extends React.Component {
 
@@ -23,14 +17,14 @@ export class ThemeSettings extends React.Component {
                     position: "absolute",
                     textAlign: "center"
                 }}>
-                    <h1 style={{color: "#F8F9FAFF"}}>Darstellung</h1>
+                    <h1 style={{color: "#F8F9FAFF"}}>Erscheinungsbild</h1>
                     <div className={"menu-choose-editors-root"}>
                         <div className={"menu-choose-editor"} onClick={this.useLight}>
                             <img
                                 src={"/assets/website.png"} width={128}
                                 height={128}/>
                             <p className={"menu-editor-description"}>
-                                Helles Design
+                                Hell
                             </p>
                         </div>
                         <div className={"menu-choose-editor"} onClick={this.useDark}>
@@ -38,7 +32,7 @@ export class ThemeSettings extends React.Component {
                                 src={"/assets/website.png"} width={128}
                                 height={128}/>
                             <p className={"menu-editor-description"}>
-                                Dunkles Design
+                                Dunkel
                             </p>
                         </div>
                     </div>

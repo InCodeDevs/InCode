@@ -30,8 +30,7 @@ export class Settings extends React.Component {
                                 src={"/assets/website.png"} width={128}
                                 height={128}/>
                             <p className={"menu-editor-description"}>
-                                Website <br/>
-                                <span style={{fontFamily: "Comic Sans MS"}}>Darstellung</span>
+                                Erscheinungsbild
                             </p>
                         </div>
                     </div>
