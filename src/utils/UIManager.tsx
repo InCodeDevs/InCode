@@ -45,6 +45,8 @@ import {SetVarBorderStyle} from "../blockly/blocks/SetVarBorderStyle";
 import {SetVarFontWeight} from "../blockly/blocks/SetVarFontWeight";
 import {ProjectTypeSelector} from "../components/ProjectTypeSelector";
 import {ObjectDefinition} from "../Registry";
+import {Settings} from "../components/Settings";
+import {ThemeSettings} from "../components/settings/ThemeSettings";
 
 export class UIManager {
 
@@ -163,6 +165,24 @@ export class UIManager {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
         ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
         ReactDOM.render((<ProjectTypeSelector />), document.querySelector('#menu'));
+    }
+
+    /**
+     * Shows the Menu
+     */
+    public static showSettings = () => {
+        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
+        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
+        ReactDOM.render((<Settings />), document.querySelector('#menu'));
+    }
+
+    /**
+     * Shows the Menu
+     */
+    public static showThemeSettings = () => {
+        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
+        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
+        ReactDOM.render((<ThemeSettings />), document.querySelector('#menu'));
     }
 
     /**
