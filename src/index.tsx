@@ -3,8 +3,6 @@
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 
-require('./styles/incode.scss')
-
 if(localStorage.getItem("incode-editor.theme") === null){
     localStorage.setItem("incode-editor.theme", "dark")
 }
@@ -16,10 +14,15 @@ switch (localStorage.getItem("incode-editor.theme")){
     case "light":
         require("./styles/themes/light/_index.scss");
         break;
+    case "twitch":
+        require("./styles/themes/twitch/_index.scss");
+        break;
     default:
         require("./styles/themes/dark/_index.scss");
         break;
 }
+
+require('./styles/incode.scss')
 
 import * as ReactDOM from "react-dom";
 import {UIManager} from "./utils/UIManager";

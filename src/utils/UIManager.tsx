@@ -47,6 +47,7 @@ import {ProjectTypeSelector} from "../components/ProjectTypeSelector";
 import {ObjectDefinition} from "../Registry";
 import {Settings} from "../components/Settings";
 import {ThemeSettings} from "../components/settings/ThemeSettings";
+import {Themes} from "../Themes";
 
 export class UIManager {
 
@@ -230,9 +231,7 @@ export class UIManager {
             renderer: 'zelos'
         }
 
-        if(localStorage.getItem("incode-editor.theme") === "dark" ||
-            localStorage.getItem("incode-editor.theme") === "default"
-        ){
+        if(Themes.themes[localStorage.getItem('incode-editor.theme') as string].scheme === 'dark'){
             options.theme = DarkTheme.default;
         }
 
@@ -290,9 +289,7 @@ export class UIManager {
             fontSize: 25,
         }
 
-        if(localStorage.getItem("incode-editor.theme") === "dark" ||
-            localStorage.getItem("incode-editor.theme") === "default"
-        ){
+        if(Themes.themes[localStorage.getItem('incode-editor.theme') as string].scheme === 'dark'){
             options.theme = 'incode-dark';
         }
 

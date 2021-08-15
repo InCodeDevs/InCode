@@ -3,5 +3,12 @@
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 
-@import "components";
-@import "layout";
+@use "../colors";
+
+.popup {
+  background-color: $dark !important;
+}
+
+.popup-content {
+  color: $light;
+}
