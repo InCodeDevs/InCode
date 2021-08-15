@@ -52,6 +52,13 @@ export class Workspace {
             if (document.getElementById('livePreviewFrame') != undefined) {
                 (document.getElementById('livePreview') as HTMLDivElement).removeChild((document.getElementById('livePreviewFrame') as HTMLIFrameElement))
             }
+            if(ProjectManager.getProjectEnv(TempOptions.options[0x10AD]).includes("styled")){
+                Options.currentLiveJS = btoa(
+                    "let incode_style_tag = document.createElement('link'); incode_style_tag.type = 'text/css'; incode_style_tag.rel = 'stylesheet'; incode_style_tag.href = \"https://incode-cdn.craftions.net/export/incode.css\"; document.head.appendChild(incode_style_tag);"
+                    + atob(Options.currentLiveJS)
+                )
+            }
+            console.log(atob(Options.currentLiveJS))
             let previewFrame = document.createElement('iframe');
             previewFrame.src = 'preview.html?code=' + Options.currentLiveJS;
             previewFrame.id = 'livePreviewFrame';
@@ -179,6 +186,7 @@ export class Workspace {
                 break;
             case "styled-desktop":
                 Workspace.exportFinalDesktop(code, true)
+                break;
             case "game":
                 Workspace.exportFinal(code, incode, false, true)
                 break;
@@ -194,9 +202,8 @@ export class Workspace {
         zipFile.folder("scripts");
         zipFile.folder("resources");
 
-        zipFile.file("exporter.bat", Networking.getURLContent("https://incode-cdn.craftions.net/export/exporter/exporter.bat"))
+        zipFile.file("exporter.bat", Networking.getURLContent("https://incode-cdn.craftions.net/export/exporter/exporter.bat").replace("PROJECT_NAME=Pupsi", "PROJECT_NAME=" + TempOptions.options[0x10AD]))
         zipFile.file("scripts/updateApp.js", Networking.getURLContent("https://incode-cdn.craftions.net/export/exporter/scripts/updateApp.js"))
-
 
         let inCodeCSS = "";
 

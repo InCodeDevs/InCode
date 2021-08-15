@@ -49,7 +49,7 @@ export class ProjectTypeSelector extends React.Component {
                                 height={128}/>
                             <p className={"menu-editor-description"}>
                                 Desktop App <br/>
-                                <span style={{fontFamily: "Comic Sans MS"}}>Eine einfache Desktop Anwendung</span>
+                                <span style={{fontFamily: "Comic Sans MS"}}>Eine einfache Desktop Anwendung <strong>(Windows only)</strong></span>
                             </p>
                         </div>
                     </div>
@@ -60,7 +60,7 @@ export class ProjectTypeSelector extends React.Component {
                                 height={128}/>
                             <p className={"menu-editor-description"}>
                                 Styled Desktop App <br/>
-                                <span style={{fontFamily: "Comic Sans MS"}}>Eine vordesignte Desktop Anwendung</span>
+                                <span style={{fontFamily: "Comic Sans MS"}}>Eine vordesignte Desktop Anwendung <strong>(Windows only)</strong></span>
                             </p>
                         </div>
                         <div className={"menu-choose-editor"} onClick={this.useGame}>
@@ -95,6 +95,9 @@ export class ProjectTypeSelector extends React.Component {
     }
 
     useGame(){
-        TempOptions.options[0x10AF]("game");
+        UIManager.alert(
+            "<h1 style='text-align: center'>Achtung!</h1>" +
+            "<h4 style='text-align:center;'>Dieses Feature ist aktuell in Arbeit!</h4>"
+        )
     }
 }
