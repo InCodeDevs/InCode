@@ -5,7 +5,7 @@
 
 import * as React from "react";
 import {Button, Form} from "react-bootstrap";
-import {ObjectDefinition, TempOptions} from "../TempOptions";
+import {ObjectDefinition, Registry} from "../Registry";
 import {UIManager} from "../utils/UIManager";
 import {ProjectManager} from "../utils/ProjectManager";
 import {Workspace} from "../utils/Workspace";
@@ -102,7 +102,7 @@ export class ProjectSelector extends React.Component {
                                     if (ProjectManager.createProject(pName, pType, pCode)) {
                                         ProjectSelector.search()
                                         UIManager.ask("<h1 style='text-align:center;'>Erfolgreich</h1><h4 style='text-align:center;'>Das Projekt wurde erfolgreich importiert! Willst du es jetzt öffnen?</h4>", () => {
-                                            TempOptions.options[0x10AD] = pName;
+                                            Registry.putRegister(0x10AD, pName);
                                             ProjectManager.openProject(pName, pType);
                                         })
                                     } else {
@@ -164,10 +164,9 @@ export class ProjectSelector extends React.Component {
 
             element.addEventListener('click', () => {
 
-                TempOptions.options[0x10AD] = p
+                Registry.putRegister(0x10AD, p);
                 UIManager.hideAllPopups();
                 // 0x10AD is the internal identifier of the temporary project name address in the TempOptions.options object
-                TempOptions.options[0x10AD] = p;
                 UIManager.hideMenu();
                 UIManager.showMenuBar();
                 ProjectManager.openProject(p, ProjectManager.getProjectType(p));

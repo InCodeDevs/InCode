@@ -5,7 +5,7 @@
 
 import * as React from "react";
 import {Button, Form} from "react-bootstrap";
-import {ObjectDefinition} from "../TempOptions";
+import {ObjectDefinition} from "../Registry";
 import {UIManager} from "../utils/UIManager";
 import {ProjectManager} from "../utils/ProjectManager";
 import {MainMenu} from "./MainMenu";

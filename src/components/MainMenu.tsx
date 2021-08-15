@@ -6,7 +6,7 @@
 import * as React from "react";
 import {ProjectManager} from "../utils/ProjectManager";
 import {UIManager} from "../utils/UIManager";
-import {TempOptions} from "../TempOptions";
+import {Registry} from "../Registry";
 
 export class MainMenu extends React.Component {
 
@@ -107,8 +107,8 @@ export class MainMenu extends React.Component {
                             "<h4 style='text-align: center;'>Der Name ist zu kurz! Er muss mindestens 4 Zeichen lang sein!</h4>", MainMenu.createNewProject)
                     } else {
                         UIManager.hideAllPopups();
-                        TempOptions.options[0x10AD] = value;
-                        TempOptions.options[0x10AF] = MainMenu.createProject0
+                        Registry.putRegister(0x10AD, value);
+                        Registry.putRegister(0x10AF, MainMenu.createProject0)
                         UIManager.showEditorSelector();
                     }
                 }
@@ -120,23 +120,23 @@ export class MainMenu extends React.Component {
         if(type === 'blockly' && code === '')
             code = '<xml><block type=\"start\" id=\"|(^9%DCME)E4UEoWv~G]\" x=\"134\" y=\"70\"></block></xml>'
 
-        TempOptions.options[0x10AD] = name;
-        TempOptions.options[0x10AA] = type;
-        TempOptions.options[0x10AB] = code;
-        TempOptions.options[0x10AF] = MainMenu.createProject1;
+        Registry.putRegister(0x10AD, name);
+        Registry.putRegister(0x10AA, type);
+        Registry.putRegister(0x10AB, code);
+        Registry.putRegister(0x10AF, MainMenu.createProject1);
         UIManager.showEnvSelector();
     }
 
     public static createProject1(env: string){
         ProjectManager.createProject(
-            TempOptions.options[0x10AD],
-            TempOptions.options[0x10AA],
-            TempOptions.options[0x10AB],
+            Registry.getRegister(0x10AD),
+            Registry.getRegister(0x10AA),
+            Registry.getRegister(0x10AB),
             env
         )
         UIManager.hideMenu();
         UIManager.showMenuBar();
-        ProjectManager.openProject(TempOptions.options[0x10AD], TempOptions.options[0x10AA]);
+        ProjectManager.openProject(Registry.getRegister(0x10AD), Registry.getRegister(0x10AA));
     }
 
     public static openDocumentation() {

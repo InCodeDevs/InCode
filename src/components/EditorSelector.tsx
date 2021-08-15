@@ -5,7 +5,7 @@
 
 import * as React from "react";
 import { Options } from "../Options";
-import { TempOptions } from "../TempOptions";
+import { Registry } from "../Registry";
 
 import {UIManager} from "../utils/UIManager";
 import {ProjectManager} from "../utils/ProjectManager";
@@ -28,7 +28,7 @@ export class EditorSelector extends React.Component {
                     textAlign: "center"
                 }}>
                     <h1 style={{color: "#F8F9FAFF"}}>Editor auswählen</h1>
-                    <h5 style={{color: "#F8F9FAFF"}}>Das Projekt "{TempOptions.options[0x10AD]}" wird mit dem ausgewählten Editor geöffnet. <br /><span style={{color: "red"}}>ACHTUNG: </span>Du kannst den Editor nicht mehr wechseln.</h5>
+                    <h5 style={{color: "#F8F9FAFF"}}>Das Projekt "{Registry.getRegister(0x10AD)}" wird mit dem ausgewählten Editor geöffnet. <br /><span style={{color: "red"}}>ACHTUNG: </span>Du kannst den Editor nicht mehr wechseln.</h5>
                     <div className={"menu-choose-editors-root"}>
                         <div className={"menu-choose-editor"} onClick={this.selectBlockly}>
                             <img
@@ -56,15 +56,13 @@ export class EditorSelector extends React.Component {
      * Opens the blockly editor
      */
     selectBlockly() {
-        TempOptions.options[0x10AF](TempOptions.options[0x10AD], "blockly", "");
-        // ProjectManager.openProject(TempOptions.options[0x10AD], "blockly")
+        Registry.getRegister(0x10AF)(Registry.getRegister(0x10AD), "blockly", "");
     }
 
     /**
      * Opens the monaco (vscode) editor
      */
     selectMonaco() {
-        TempOptions.options[0x10AF](TempOptions.options[0x10AD], "monaco", "");
-        // ProjectManager.openProject(TempOptions.options[0x10AD], "monaco")
+        Registry.getRegister(0x10AF)(Registry.getRegister(0x10AD), "monaco", "");
     }
 }

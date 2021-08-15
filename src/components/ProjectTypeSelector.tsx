@@ -5,7 +5,7 @@
 
 import * as React from "react";
 import { Options } from "../Options";
-import { TempOptions } from "../TempOptions";
+import { Registry } from "../Registry";
 
 import {UIManager} from "../utils/UIManager";
 import {ProjectManager} from "../utils/ProjectManager";
@@ -79,19 +79,19 @@ export class ProjectTypeSelector extends React.Component {
     }
 
     useWebsite(){
-        TempOptions.options[0x10AF]("website");
+        Registry.getRegister(0x10AF)("website");
     }
 
     useStyledWebsite(){
-        TempOptions.options[0x10AF]("styled-website");
+        Registry.getRegister(0x10AF)("styled-website");
     }
 
     useDesktop(){
-        TempOptions.options[0x10AF]("desktop");
+        Registry.getRegister(0x10AF)("desktop");
     }
 
     useStyledDesktop(){
-        TempOptions.options[0x10AF]("styled-desktop");
+        Registry.getRegister(0x10AF)("styled-desktop");
     }
 
     useGame(){

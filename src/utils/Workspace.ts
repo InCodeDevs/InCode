@@ -7,7 +7,7 @@ import {BlocklyCompiler} from "../blockly/BlocklyCompiler";
 import * as WebCompiler from "../incode/compiler/WebCompiler";
 import {Options} from "../Options";
 import {Networking} from "./Networking";
-import {TempOptions} from "../TempOptions";
+import {Registry} from "../Registry";
 import {ProjectManager} from "./ProjectManager";
 import {UIManager} from "./UIManager";
 import * as Blockly from "blockly/blockly";
@@ -52,7 +52,7 @@ export class Workspace {
             if (document.getElementById('livePreviewFrame') != undefined) {
                 (document.getElementById('livePreview') as HTMLDivElement).removeChild((document.getElementById('livePreviewFrame') as HTMLIFrameElement))
             }
-            if(ProjectManager.getProjectEnv(TempOptions.options[0x10AD]).includes("styled")){
+            if(ProjectManager.getProjectEnv(Registry.getRegister(0x10AD)).includes("styled")){
                 Options.currentLiveJS = btoa(
                     "let incode_style_tag = document.createElement('link'); incode_style_tag.type = 'text/css'; incode_style_tag.rel = 'stylesheet'; incode_style_tag.href = \"https://incode-cdn.craftions.net/export/incode.css\"; document.head.appendChild(incode_style_tag);"
                     + atob(Options.currentLiveJS)
@@ -70,7 +70,7 @@ export class Workspace {
      * Saves the current Workspace
      */
     public static save(showSucceedMessage: boolean = true) {
-        ProjectManager.saveProject(TempOptions.options[0x10AD], Workspace.getWorkspaceCode()); // 0x10AD => magic value
+        ProjectManager.saveProject(Registry.getRegister(0x10AD), Workspace.getWorkspaceCode()); // 0x10AD => magic value
         if (showSucceedMessage)
             UIManager.alert("<h1 style='text-align: center;'>Erfolgreich</h1><h4 style='text-align: center; color: limegreen'>Das Projekt wurde gespeichert!</h4>")
     }
@@ -89,7 +89,7 @@ export class Workspace {
                 UIManager.deleteMonaco();
                 UIManager.hideMenuBar();
                 UIManager.showMainMenu();
-                ProjectManager.deleteProject(TempOptions.options[0x10AD]);
+                ProjectManager.deleteProject(Registry.getRegister(0x10AD));
             }
         );
     }
@@ -102,8 +102,8 @@ export class Workspace {
         UIManager.prompt("<h1 style='text-align: center;'>Projekt Umbenennen</h1>" +
             "<h4 style='text-align: center'>Bitte gib den neuen Namen für dein Projekt ein</h4>",
             (value: string) => {
-                ProjectManager.renameProject(TempOptions.options[0x10AD], value, Workspace.getWorkspaceCode())
-                TempOptions.options[0x10AD] = value; // 0x10AD -> magic value :)
+                ProjectManager.renameProject(Registry.getRegister(0x10AD), value, Workspace.getWorkspaceCode())
+                Registry.putRegister(0x10AD, value);
             }
         );
     }
@@ -136,9 +136,9 @@ export class Workspace {
                 let x: XMLHttpRequest = new XMLHttpRequest();
                 let c = Workspace.getWorkspaceCode();
                 x.open("GET", "https://templates.incode.craftions.net/api/upload?name="
-                    + TempOptions.options[0x10AD]
+                    + Registry.getRegister(0x10AD)
                     + "&type="
-                    + ProjectManager.getProjectType(TempOptions.options[0x10AD])
+                    + ProjectManager.getProjectType(Registry.getRegister(0x10AD))
                     + "&code="
                     + btoa(c),
                     false);
@@ -174,7 +174,7 @@ export class Workspace {
             incode = new BlocklyCompiler().compile();
         }
 
-        switch (ProjectManager.getProjectEnv(TempOptions.options[0x10AD])){
+        switch (ProjectManager.getProjectEnv(Registry.getRegister(0x10AD))){
             case "website":
                 Workspace.exportFinal(code, incode);
                 break;
@@ -202,7 +202,7 @@ export class Workspace {
         zipFile.folder("scripts");
         zipFile.folder("resources");
 
-        zipFile.file("exporter.bat", Networking.getURLContent("https://incode-cdn.craftions.net/export/exporter/exporter.bat").replace("PROJECT_NAME=Pupsi", "PROJECT_NAME=" + TempOptions.options[0x10AD]))
+        zipFile.file("exporter.bat", Networking.getURLContent("https://incode-cdn.craftions.net/export/exporter/exporter.bat").replace("PROJECT_NAME=Pupsi", "PROJECT_NAME=" + Registry.getRegister(0x10AD)))
         zipFile.file("scripts/updateApp.js", Networking.getURLContent("https://incode-cdn.craftions.net/export/exporter/scripts/updateApp.js"))
 
         let inCodeCSS = "";
@@ -220,14 +220,14 @@ export class Workspace {
             <!DOCTYPE html>
             <html lang="de">
                 <head>
-                    <title>${TempOptions.options[0x10AD]}</title>
-                    <script defer src="${TempOptions.options[0x10AD]}.js"></script>${inCodeCSS}
+                    <title>${Registry.getRegister(0x10AD)}</title>
+                    <script defer src="${Registry.getRegister(0x10AD)}.js"></script>${inCodeCSS}
                 </head>
                 <body></body>
             </html>
         ` + "\n");
 
-        zipFile.file("resources/" + TempOptions.options[0x10AD] + ".js", code);
+        zipFile.file("resources/" + Registry.getRegister(0x10AD) + ".js", code);
 
         zipFile.generateAsync(
             {
@@ -236,14 +236,14 @@ export class Workspace {
                     level: 6
                 }
             }).then((content) => {
-            Networking.downloadCustom("data:application/zip; base64," + content, TempOptions.options[0x10AD] + ".zip")
+            Networking.downloadCustom("data:application/zip; base64," + content, Registry.getRegister(0x10AD) + ".zip")
         })
     }
 
     public static exportFinal(code: string, inCode: string, styled: boolean = false, game: boolean = false) {
         let zipFile = new JSZip();
-        zipFile.file(TempOptions.options[0x10AD] + ".js", code + "\n" );
-        zipFile.file(TempOptions.options[0x10AD] + ".ic", inCode + "\n" );
+        zipFile.file(Registry.getRegister(0x10AD) + ".js", code + "\n" );
+        zipFile.file(Registry.getRegister(0x10AD) + ".ic", inCode + "\n" );
 
         let inCodeCSS = "";
         let inCodeJS = "";
@@ -266,8 +266,8 @@ export class Workspace {
             <!DOCTYPE html>
             <html lang="de">
                 <head>
-                    <title>${TempOptions.options[0x10AD]}</title>
-                    <script defer src="${TempOptions.options[0x10AD]}.js"></script>${inCodeCSS}${inCodeJS}
+                    <title>${Registry.getRegister(0x10AD)}</title>
+                    <script defer src="${Registry.getRegister(0x10AD)}.js"></script>${inCodeCSS}${inCodeJS}
                 </head>
                 <body></body>
             </html>
@@ -283,7 +283,7 @@ export class Workspace {
             "\n" +
             "Das InCode Team"
         )
-        zipFile.file(TempOptions.options[0x10AD] + ".json", localStorage.getItem("incode-editor.projects." + TempOptions.options[0x10AD]) as string)
+        zipFile.file(Registry.getRegister(0x10AD) + ".json", localStorage.getItem("incode-editor.projects." + Registry.getRegister(0x10AD)) as string)
 
         zipFile.generateAsync(
             {
@@ -292,13 +292,13 @@ export class Workspace {
                     level: 6
                 }
             }).then((content) => {
-            Networking.downloadCustom("data:application/zip; base64," + content, TempOptions.options[0x10AD] + ".zip")
+            Networking.downloadCustom("data:application/zip; base64," + content, Registry.getRegister(0x10AD) + ".zip")
         })
     }
 
     public static saveProjectFile() {
         Workspace.save(false);
-        Networking.download(TempOptions.options[0x10AD] + ".json", localStorage.getItem("incode-editor.projects." + TempOptions.options[0x10AD]) as string, "application/json");
+        Networking.download(Registry.getRegister(0x10AD) + ".json", localStorage.getItem("incode-editor.projects." + Registry.getRegister(0x10AD)) as string, "application/json");
     }
 
     public static changeEnvType() {
@@ -309,10 +309,10 @@ export class Workspace {
         UIManager.hideMenuBar();
         UIManager.deleteMonaco();
         UIManager.deleteBlockly();
-        TempOptions.options[0x10AF] = (env: string) => {
-            ProjectManager.setProjectEnv(TempOptions.options[0x10AD], env);
-            ProjectManager.openProject(TempOptions.options[0x10AD], ProjectManager.getProjectType(TempOptions.options[0x10AD]))
-        }
+        Registry.putRegister(0x10AF, (env: string) => {
+            ProjectManager.setProjectEnv(Registry.getRegister(0x10AD), env);
+            ProjectManager.openProject(Registry.getRegister(0x10AD), ProjectManager.getProjectType(Registry.getRegister(0x10AD)))
+        });
         UIManager.showEnvSelector();
     }
 }
