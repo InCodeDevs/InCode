@@ -73,6 +73,8 @@ export class BlocklyCompiler {
 
         while (currentBlock.getParent() != null) {
             let b = currentBlock.getParent().getInputTargetBlock("STATEMENT");
+            if(this.getBlockText(currentBlock.getParent()).includes("Methode"))
+                tabs += "\t";
 
             if (b) {
                 do {

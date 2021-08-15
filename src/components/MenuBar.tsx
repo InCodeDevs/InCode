@@ -34,8 +34,11 @@ export class MenuBar extends React.Component {
 
                             <Dropdown.Menu>
                                 <Dropdown.Item onClick={Workspace.save}>Speichern</Dropdown.Item>
-                                <Dropdown.Item onClick={Workspace.compile}>Exportieren</Dropdown.Item>
+                                <Dropdown.Item onClick={Workspace.saveProjectFile}>Projektdatei Speichern</Dropdown.Item>
+                                <Dropdown.Item onClick={Workspace.export}>Exportieren</Dropdown.Item>
                                 <Dropdown.Item onClick={Workspace.rename}>Namen ändern</Dropdown.Item>
+                                <Dropdown.Item onClick={Workspace.changeEnvType}>Projekttyp ändern</Dropdown.Item>
+                                <Dropdown.Item onClick={Workspace.deploy}>Vorlage veröffentlichen</Dropdown.Item>
                                 <Dropdown.Item onClick={Workspace.delete}>Projekt löschen</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
@@ -51,7 +54,7 @@ export class MenuBar extends React.Component {
                         </h1>
                     </div>
                     <div style={{flex: "25%", textAlign: "center"}}>
-                        <Button variant={"outline-flat"} size={"xxl"} onClick={this.showMainMenu}>Hautpmenü</Button>
+                        <Button variant={"outline-flat"} size={"xxl"} onClick={this.showMainMenu}>Hauptmenü</Button>
                     </div>
                 </div>
             </>

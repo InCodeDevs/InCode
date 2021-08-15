@@ -31,8 +31,8 @@ npm run build-dev
 
 | Description   | Version          |
 |---------------|------------------|
-| Current Stable Version  | 2.0.0  |
-| Current Development Version  | 2.1.0  |
+| Current Stable Version  | 2.1.0  |
+| Current Development Version  | 3.0.0  |
 | Legacy Version(s)  | 1.0.0  |
 
 <span style="font-family: monospace">Copyright © 2018-2021 The InCode Developers.</span>

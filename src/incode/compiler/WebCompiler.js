@@ -48,7 +48,7 @@ class WebCompiler {
                 },
                 append: ""
             },
-            "hinterdrungfarbe": {
+            "hintergrundfarbe": {
                 name: "backgroundColor",
                 type: "style",
                 values: {
@@ -119,7 +119,8 @@ class WebCompiler {
                     "fett": "bold",
                     "normal": "normal",
                     "nichts": "normal"
-                }
+                },
+                append: ""
             },
             "schriftart": {
                 name: "fontFamily",
@@ -282,7 +283,8 @@ class WebCompiler {
                     "3d": "ridge",
                     "eingesetzt": "inset",
                     "draufgelegt": "outset"
-                }
+                },
+                append: ""
             },
             "umrandungsstil-rechts": {
                 name: "borderRightStyle",
@@ -298,7 +300,8 @@ class WebCompiler {
                     "3d": "ridge",
                     "eingesetzt": "inset",
                     "draufgelegt": "outset"
-                }
+                },
+                append: ""
             },
             "umrandungsstil-unten": {
                 name: "borderBottomStyle",
@@ -314,7 +317,8 @@ class WebCompiler {
                     "3d": "ridge",
                     "eingesetzt": "inset",
                     "draufgelegt": "outset"
-                }
+                },
+                append: ""
             },
             "umrandungsstil-links": {
                 name: "borderLeftStyle",
@@ -330,7 +334,8 @@ class WebCompiler {
                     "3d": "ridge",
                     "eingesetzt": "inset",
                     "draufgelegt": "outset"
-                }
+                },
+                append: ""
             },
             "umrandungsstil": {
                 name: "borderStyle",
@@ -346,7 +351,8 @@ class WebCompiler {
                     "3d": "ridge",
                     "eingesetzt": "inset",
                     "draufgelegt": "outset"
-                }
+                },
+                append: ""
             },
             "umrandungsfarbe-oben": {
                 name: "borderTopColor",
@@ -452,7 +458,7 @@ class WebCompiler {
                 name: "borderRadius",
                 type: "style",
                 useSetAttribute: false,
-                append: ""
+                append: "px"
             }
         },
         operators: {
@@ -540,7 +546,7 @@ class WebCompiler {
                 break;
             case "setze":
                 if (args[2].toLowerCase() === "wert") {
-                    r = args[4] + " = " + "\"" + this.getArgsInRange(args, 6, args.length) + "\"";
+                    r = args[4] + " = " + this.getArgsInRange(args, 6, args.length);
                 }
                 else {
                     if (this.options.settable[args[2].toLowerCase()]) {

@@ -9,10 +9,11 @@ export class Networking {
      * Downloads a file
      * @param filename The name of the file
      * @param text The content of the file
+     * @param mimeType The mimeType of the file
      */
-    public static download(filename: string, text: string) {
+    public static download(filename: string, text: string, mimeType: string = "text/plain") {
         const element = document.createElement('a');
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('href', 'data:' + mimeType + ';charset=utf-8,' + encodeURIComponent(text));
         element.setAttribute('download', filename);
 
         element.style.display = 'none';
@@ -23,4 +24,25 @@ export class Networking {
         document.body.removeChild(element);
     }
 
+
+    public static downloadCustom(href: string, filename: string){
+        const element = document.createElement('a');
+        element.setAttribute('href', href);
+        element.setAttribute('download', filename);
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+    }
+
+
+    public static getURLContent(url: string): string {
+        let x = new XMLHttpRequest();
+        x.open("GET", url, false)
+        x.send(null)
+        return x.responseText;
+    }
 }

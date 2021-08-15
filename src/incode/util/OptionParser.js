@@ -1,7 +1,7 @@
 "use strict";
 /**
- * @author The InCode Devs
- * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
+ * @author Ben Siebert
+ * @copyright 2018-2021 Ben Siebert. All rights reserved.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OptionParser = void 0;

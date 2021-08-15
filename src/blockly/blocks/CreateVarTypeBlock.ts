@@ -60,6 +60,22 @@ export class CreateVarTypeBlock {
                             [
                                 "Spalte",
                                 "Spalte"
+                            ],
+                            [
+                                "Zeilenumbruch",
+                                "Zeilenumbruch"
+                            ],
+                            [
+                                "Video",
+                                "Video"
+                            ],
+                            [
+                                "Ton",
+                                "Ton"
+                            ],
+                            [
+                                "Fenster",
+                                "Fenster"
                             ]
                         ]
                     }

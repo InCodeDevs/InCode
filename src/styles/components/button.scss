@@ -1,0 +1,42 @@
+/**
+ * @author The InCode Devs
+ * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
+ */
+
+@use "~bootstrap/scss/bootstrap";
+
+.btn-outline-flat {
+  color: $light;
+  border-color: $light;
+}
+
+.btn-outline-flat:hover {
+  color: $dark;
+  background-color: $light;
+  border-color: $light;
+}
+
+.btn-outline-flat:focus {
+  box-shadow: none;
+}
+
+.btn-xxl {
+  padding: 0.5rem 1.5rem;
+  font-size: 1.5rem;
+}
+
+.normal-outline-btn {
+  border: none;
+  border-top: 2px solid #0071FF;
+  background: #ffffff;
+  padding: 1rem 1.5rem;
+  border-radius: 0 0 10px 10px;
+}
+
+.normal-outline-btn:hover {
+  background: darken(#ffffff, 20%);
+}
+
+.normal-outline-btn:active {
+  background: darken(#ffffff, 40%);
+}

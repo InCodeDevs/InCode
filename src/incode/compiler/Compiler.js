@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Compiler = void 0;
 /**
- * @author The InCode Devs
- * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
+ * @author Ben Siebert
+ * @copyright 2018-2021 Ben Siebert. All rights reserved.
  */
 const WebCompiler_1 = require("./WebCompiler");
 class Compiler {
