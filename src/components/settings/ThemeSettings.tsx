@@ -5,9 +5,8 @@
 
 import * as React from "react";
 import {Button, Form} from "react-bootstrap";
-import {ObjectDefinition, Registry} from "../../Registry";
+import {ObjectDefinition} from "../../Registry";
 import {UIManager} from "../../utils/UIManager";
-import {ProjectManager} from "../../utils/ProjectManager";
 import {Themes} from "../../Themes";
 
 export class ThemeSettings extends React.Component {
@@ -17,9 +16,12 @@ export class ThemeSettings extends React.Component {
             <>
                 <div style={{textAlign: 'center'}}>
                     <div style={{display: 'flex', width: "100%", marginTop: "2%", marginBottom: "2%"}}>
-                        <h1 style={{color: "#F8F9FAFF", flex: "55%", textAlign: "right"}}>Meine Projekte</h1>
+                        <h1 style={{color: "#F8F9FAFF", flex: "55%", textAlign: "right"}}>InCode Editor</h1>
                         <div style={{flex: "45%", display: "flex"}}>
-                            <span style={{flex: "75%"}}/>
+                            <span style={{flex: "50%"}}/>
+                            <div style={{flex: "25%"}}>
+                                <Button variant={"outline-flat"} size={"xxl"} onClick={UIManager.showSettings}>Zurück</Button>
+                            </div>
                             <div style={{flex: "25%"}}>
                                 <Button variant={"outline-flat"} size={"xxl"} onClick={UIManager.showMainMenu}>Hauptmenü</Button>
                             </div>
@@ -97,7 +99,7 @@ export class ThemeSettings extends React.Component {
             let themes: ObjectDefinition = {};
             Object.keys(Themes.themes).forEach(t => {
                 let theme = Themes.themes[t];
-                if (t.toLowerCase().includes(term.toLowerCase()) || theme.display.includes(term.toLowerCase()))
+                if (t.toLowerCase().includes(term.toLowerCase()) || theme.display.toLowerCase().includes(term.toLowerCase()))
                     themes[t] = theme;
             })
             ThemeSettings.updateThemes(themes);
