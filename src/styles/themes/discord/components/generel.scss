@@ -32,6 +32,10 @@ body {
   color: $light;
 }
 
+a {
+  color: $primary !important;
+}
+
 h1, h2 {
   color: $primary !important;
 }
