@@ -21,6 +21,9 @@ export class Workspace {
      */
     public static compile(dl: boolean = true) {
         let code = ""
+
+        let errors = "";
+
         if (Options.currentEditor != '') {
             if (Options.currentEditor === 'vscode') {
                 // @ts-ignore
@@ -29,13 +32,31 @@ export class Workspace {
                 code = new BlocklyCompiler().compile();
             }
 
-            console.log("Code: \n\n" + code)
+            let oldLog = console.log;
+
+            console.log = function(message: string) {
+                if(message.startsWith("Error in statement:")){
+                    errors += "Fehlerhaft: " + message.split("Error in statement: ")[1] + "\n";
+                }
+                oldLog(message);
+            }
 
             code = WebCompiler.WebCompiler.compile(code);
 
             Options.currentLiveJS = btoa(code);
 
-            console.log(Options.currentLiveJS)
+            console.log = oldLog;
+
+            if(errors.length !== 0 && !dl) {
+                let jsCode = "";
+                for(let i = 0; i < errors.split("\n").length; i++){
+                    jsCode +="document.body.style.backgroundColor = '#fff';document.write('" + errors.split("\n")[i] + "\\n');"
+                }
+                UIManager.alert(
+                    "<h1 style='text-align: center;'>Fehler gefunden</h1>"+
+                    "<iframe src='preview.html?code=" + btoa(jsCode) + "' width='100%' height='100%'></iframe>"
+                )
+            }
 
             if (dl) {
                 Networking.download("Programm.js", code)
