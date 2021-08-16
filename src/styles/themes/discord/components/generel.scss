@@ -7,7 +7,7 @@
 
 html,
 body {
-  background-color: #2F3136;
+  background-color: $dark !important;
 }
 
 #copyright {
@@ -15,7 +15,7 @@ body {
 }
 
 #topScreen {
-  background: #2F3136;
+  background: $dark !important;
 }
 
 .dropdown-menu {
