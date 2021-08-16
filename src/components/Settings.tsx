@@ -29,6 +29,13 @@ export class Settings extends React.Component {
                 UIManager.showAnimationSettings();
             },
             icon: "https://user-images.githubusercontent.com/53553315/116579197-71484800-a912-11eb-8d6e-17cc50d8027d.png"
+        },
+        "storage": {
+            display: "Speicher",
+            callback: () => {
+                UIManager.showStorageSettings();
+            },
+            icon: "assets/settings.png"
         }
     }
 

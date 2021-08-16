@@ -49,6 +49,7 @@ import {Settings} from "../components/Settings";
 import {ThemeSettings} from "../components/settings/ThemeSettings";
 import {Themes} from "../Themes";
 import {AnimationSettings} from "../components/settings/AnimationSettings";
+import {StorageSettings} from "../components/settings/StorageSettings";
 
 export class UIManager {
 
@@ -194,6 +195,15 @@ export class UIManager {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
         ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
         ReactDOM.render((<AnimationSettings />), document.querySelector('#menu'));
+    }
+
+    /**
+     * Shows the Menu
+     */
+    public static showStorageSettings = () => {
+        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
+        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
+        ReactDOM.render((<StorageSettings />), document.querySelector('#menu'));
     }
 
     /**
