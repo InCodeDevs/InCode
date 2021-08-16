@@ -4,52 +4,36 @@
  */
 
 import * as React from "react";
+import {Button, Form} from "react-bootstrap";
+import {ObjectDefinition, Registry} from "../../Registry";
+import {UIManager} from "../../utils/UIManager";
+import {ProjectManager} from "../../utils/ProjectManager";
+import {Themes} from "../../Themes";
 
 export class ThemeSettings extends React.Component {
 
     render() {
         return (
             <>
-                <div style={{
-                    top: "50%",
-                    left: "50%",
-                    transform: 'translate(-50%, -50%)',
-                    position: "absolute",
-                    textAlign: "center"
-                }}>
-                    <h1 style={{color: "#F8F9FAFF"}}>Erscheinungsbild</h1>
-                    <div className={"menu-choose-editors-root"}>
-                        <div className={"menu-choose-editor"} onClick={this.useLight}>
-                            <img
-                                src={"/assets/website.png"} width={128}
-                                height={128}/>
-                            <p className={"menu-editor-description"}>
-                                Hell
-                            </p>
+                <div style={{textAlign: 'center'}}>
+                    <div style={{display: 'flex', width: "100%", marginTop: "2%", marginBottom: "2%"}}>
+                        <h1 style={{color: "#F8F9FAFF", flex: "55%", textAlign: "right"}}>Meine Projekte</h1>
+                        <div style={{flex: "45%", display: "flex"}}>
+                            <span style={{flex: "75%"}}/>
+                            <div style={{flex: "25%"}}>
+                                <Button variant={"outline-flat"} size={"xxl"} onClick={UIManager.showMainMenu}>Hauptmenü</Button>
+                            </div>
                         </div>
-                        <div className={"menu-choose-editor"} onClick={this.useDark}>
-                            <img
-                                src={"/assets/website.png"} width={128}
-                                height={128}/>
-                            <p className={"menu-editor-description"}>
-                                Dunkel
-                            </p>
-                        </div>
-                        <div className={"menu-choose-editor"} onClick={this.useDiscord}>
-                            <img
-                                src={"/assets/website.png"} width={128}
-                                height={128}/>
-                            <p className={"menu-editor-description"}>
-                                Discord
-                            </p>
-                        </div>
-                        <div className={"menu-choose-editor"} onClick={this.useTwitch}>
-                            <img
-                                src={"/assets/website.png"} width={128}
-                                height={128}/>
-                            <p className={"menu-editor-description"}>
-                                Twitch
-                            </p>
+                    </div>
+                    <div style={{textAlign: 'center', display: "flex", justifyContent: "center"}}>
+                        <Form.Control type={"text"} placeholder={"Erscheinungsbild Suchen..."} style={{
+                            width: "30%",
+                            fontSize: "1.5rem"
+                        }} id={"search-bar"} onChange={ThemeSettings.search}/>
+                    </div>
+                    <div style={{display: "flex", width: "100%", marginTop: "2%"}}>
+                        <div style={{flex: "100%", color: "white"}} id={"themes"}>
+                            <h2>Erscheinungsbilder</h2>
                         </div>
                     </div>
                 </div>
@@ -57,24 +41,69 @@ export class ThemeSettings extends React.Component {
         )
     }
 
-    useLight() {
-        localStorage.setItem("incode-editor.theme", "light");
-        window.location.reload();
+    componentDidMount() {
+        ThemeSettings.updateThemes();
     }
 
-    useDark(){
-        localStorage.setItem("incode-editor.theme", "dark");
-        window.location.reload();
+
+    public static updateThemes(themes: ObjectDefinition = {ex: true}) {
+
+        (document.getElementById('themes') as HTMLDivElement).innerHTML = "<h2>Erscheinungsbilder</h2>";
+
+        let a2u: ObjectDefinition;
+
+        if (themes.ex !== true) {
+            a2u = themes;
+        } else {
+            a2u = Themes.themes;
+        }
+
+        Object.keys(a2u).forEach(t => {
+            let theme = a2u[t];
+
+            let element = document.createElement('div');
+            element.classList.add('template');
+
+            element.addEventListener('click', () => {
+                localStorage.setItem("incode-editor.theme", t);
+                window.location.reload();
+            })
+
+            let image = document.createElement('img');
+            image.width = 128
+            image.height = 128
+
+            if (theme.scheme === 'dark') {
+                image.src = "assets/code-editor.png";
+            } else {
+                image.src = "assets/code-editor-light.png";
+            }
+
+            let h5 = document.createElement('h5');
+            h5.classList.add('template-name')
+            h5.innerText = theme.display;
+
+            element.appendChild(image)
+            element.appendChild(h5);
+
+            (document.getElementById('themes') as HTMLDivElement).appendChild(element)
+
+        });
     }
 
-    useDiscord() {
-        localStorage.setItem("incode-editor.theme", "discord");
-        window.location.reload();
-    }
-
-    useTwitch(){
-        localStorage.setItem("incode-editor.theme", "twitch");
-        window.location.reload();
+    public static search() {
+        let term = (document.getElementById('search-bar') as HTMLInputElement).value.trim();
+        if (term.length > 0) {
+            let themes: ObjectDefinition = {};
+            Object.keys(Themes.themes).forEach(t => {
+                let theme = Themes.themes[t];
+                if (t.toLowerCase().includes(term.toLowerCase()) || theme.display.includes(term.toLowerCase()))
+                    themes[t] = theme;
+            })
+            ThemeSettings.updateThemes(themes);
+        } else {
+            ThemeSettings.updateThemes();
+        }
     }
 
 }

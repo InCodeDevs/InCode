@@ -8,15 +8,19 @@ export class Themes {
 
     public static themes: ObjectDefinition = {
         "dark": {
+            display: "Dunkel",
             scheme:  "dark"
         },
         "light": {
+            display: "Hell",
             scheme: "light"
         },
         "twitch": {
+            display: "Twitch",
             scheme:  "dark"
         },
         "discord": {
+            display: "Discord",
             scheme:  "dark"
         },
     }
