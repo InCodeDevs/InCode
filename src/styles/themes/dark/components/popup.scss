@@ -6,9 +6,10 @@
 @use "~bootstrap/scss/bootstrap";
 
 .popup {
-  background-color: $dark;
+  background-color: $dark !important;
 }
 
 .popup-content {
+  background-color: $dark !important;
   color: $light;
 }
