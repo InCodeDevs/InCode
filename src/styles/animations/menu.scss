@@ -1,0 +1,24 @@
+/**
+ * @author The InCode Devs
+ * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
+ */
+
+#menu {
+  div {
+    animation-name: grow;
+    animation-duration: 1.5s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+  }
+}
+
+@keyframes grow {
+
+  from {
+    scale: 0.8;
+  }
+
+  to {
+    scale: 1;
+  }
+}
