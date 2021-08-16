@@ -23,6 +23,12 @@ switch (localStorage.getItem("incode-editor.theme")){
     case "youtube":
         require("./styles/themes/youtube/_index.scss");
         break;
+    case "vscode-dark":
+        require("./styles/themes/vscode-dark/_index.scss");
+        break;
+    case "whatsapp":
+        require("./styles/themes/whatsapp/_index.scss");
+        break;
     default:
         require("./styles/themes/dark/_index.scss");
         break;

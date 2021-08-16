@@ -27,5 +27,13 @@ export class Themes {
             display: "YouTube",
             scheme:  "dark"
         },
+        "vscode-dark": {
+            display: "VSCode",
+            scheme:  "dark"
+        },
+        "whatsapp": {
+            display: "WhatsApp",
+            scheme:  "dark"
+        },
     }
 }
