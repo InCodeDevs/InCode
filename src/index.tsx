@@ -20,6 +20,9 @@ switch (localStorage.getItem("incode-editor.theme")){
     case "discord":
         require("./styles/themes/discord/_index.scss");
         break;
+    case "youtube":
+        require("./styles/themes/youtube/_index.scss");
+        break;
     default:
         require("./styles/themes/dark/_index.scss");
         break;

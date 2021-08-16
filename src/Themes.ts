@@ -23,5 +23,9 @@ export class Themes {
             display: "Discord",
             scheme:  "dark"
         },
+        "youtube": {
+            display: "YouTube",
+            scheme:  "dark"
+        },
     }
 }
