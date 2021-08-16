@@ -277,7 +277,7 @@ export class UIManager {
 
         InCodeLanguage.register();
 
-        let options: ObjectDefinition = {
+        let options: monaco.editor.IStandaloneEditorConstructionOptions = {
             value: '',
             language: 'incode',
             theme: "incode-light",
@@ -286,7 +286,7 @@ export class UIManager {
             autoClosingBrackets: "always",
             acceptSuggestionOnEnter: "on",
             contextmenu: false,
-            fontSize: 25,
+            fontSize: 25
         }
 
         if(Themes.themes[localStorage.getItem('incode-editor.theme') as string].scheme === 'dark'){

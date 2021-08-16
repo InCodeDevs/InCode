@@ -23,8 +23,8 @@ body {
 }
 
 .dropdown-item {
-  background-color: $dark;
-  color: $light;
+  background-color: $dark !important;
+  color: $light !important;
 }
 
 .dropdown-item:hover {
