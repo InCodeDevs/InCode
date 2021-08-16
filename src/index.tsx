@@ -7,6 +7,10 @@ if(localStorage.getItem("incode-editor.theme") === null){
     localStorage.setItem("incode-editor.theme", "dark")
 }
 
+if(localStorage.getItem("incode-editor.enableAnimations") === null){
+    localStorage.setItem("incode-editor.enableAnimations", "true")
+}
+
 switch (localStorage.getItem("incode-editor.theme")){
     case "dark":
         require("./styles/themes/dark/_index.scss");
@@ -32,6 +36,10 @@ switch (localStorage.getItem("incode-editor.theme")){
     default:
         require("./styles/themes/dark/_index.scss");
         break;
+}
+
+if(localStorage.getItem("incode-editor.enableAnimations") === "true"){
+    require('./styles/animations/_index.scss')
 }
 
 require('./styles/incode.scss')

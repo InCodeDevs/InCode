@@ -22,6 +22,13 @@ export class Settings extends React.Component {
                 UIManager.showThemeSettings();
             },
             icon: "assets/code-editor.png"
+        },
+        "animations": {
+            display: "Animationen",
+            callback: () => {
+                UIManager.showAnimationSettings();
+            },
+            icon: "https://user-images.githubusercontent.com/53553315/116579197-71484800-a912-11eb-8d6e-17cc50d8027d.png"
         }
     }
 
