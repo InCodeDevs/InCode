@@ -22,7 +22,7 @@ export class Workspace {
     public static compile(dl: boolean = true) {
         let code = ""
 
-        let errors = "";
+        let errors: string[] = [];
 
         if (Options.currentEditor != '') {
             if (Options.currentEditor === 'vscode') {
@@ -36,7 +36,7 @@ export class Workspace {
 
             console.log = function(message: string) {
                 if(message.startsWith("Error in statement:")){
-                    errors += "Fehlerhaft: " + message.split("Error in statement: ")[1] + "\n";
+                    errors.push(message.split("Error in statement: ")[1]);
                 }
                 oldLog(message);
             }
@@ -48,10 +48,27 @@ export class Workspace {
             console.log = oldLog;
 
             if(errors.length !== 0 && !dl) {
-                let jsCode = "";
-                for(let i = 0; i < errors.split("\n").length; i++){
-                    jsCode +="document.body.style.backgroundColor = '#fff';document.write('" + errors.split("\n")[i] + "\\n');"
+                let jsCode = "document.body.style.backgroundColor = '#fff';" +
+                    "let list = document.createElement('ol'); let l = null;";
+                errors.forEach(error => {
+                    while(error.includes("\r") || error.includes("\t") || error.includes("\n")){
+                        error = error.replace(/\r/g, "");
+                        error = error.replace(/\t/g, "");
+                        error = error.replace(/\n/g, "");
+                    }
+                    jsCode += "l = document.createElement('li');" +
+                        "l.innerText = '" + JSON.stringify(error) + "';" +
+                        "list.appendChild(l);";
+                })
+
+                jsCode += "document.body.appendChild(list);"
+
+                while(jsCode.includes("\r") || jsCode.includes("\t") || jsCode.includes("\n")){
+                    jsCode = jsCode.replace(/\r/g, "");
+                    jsCode = jsCode.replace(/\t/g, "");
+                    jsCode = jsCode.replace(/\n/g, "");
                 }
+
                 UIManager.alert(
                     "<h1 style='text-align: center;'>Fehler gefunden</h1>"+
                     "<iframe src='preview.html?code=" + btoa(jsCode) + "' width='100%' height='100%'></iframe>"
