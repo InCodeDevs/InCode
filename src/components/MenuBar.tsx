@@ -17,6 +17,7 @@ export class MenuBar extends React.Component {
      * @return The Menu Bar
      */
     render() {
+
         return (
             <>
                 <div style={{
@@ -27,7 +28,7 @@ export class MenuBar extends React.Component {
                     transform: "translate(-50%, -50%)"
                 }}>
                     <div style={{flex: "33%", textAlign: "center", display: 'flex'}}>
-                        <Dropdown style={{flex: "50%", textAlign: "center"}}>
+                        <Dropdown style={{flex: "50%", textAlign: "center"}} id={"projectButton"}>
                             <Dropdown.Toggle variant="outline-flat" size={"xxl"}>
                                 Projekt
                             </Dropdown.Toggle>
@@ -43,7 +44,7 @@ export class MenuBar extends React.Component {
                             </Dropdown.Menu>
                         </Dropdown>
                         <div style={{flex: "50%", textAlign: "center"}} id={"rl-preview-btn"}>
-                            <Button variant={"outline-flat"} size={"xxl"} onClick={Workspace.preview}>Preview neu laden</Button>
+                            <Button id={"previewButton"} variant={"outline-flat"} size={"xxl"} onClick={Workspace.preview}>Preview neu laden</Button>;
                         </div>
                     </div>
                     <div style={{flex: "33%"}}>

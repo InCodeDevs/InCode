@@ -7,6 +7,7 @@ import * as React from "react";
 import {ProjectManager} from "../utils/ProjectManager";
 import {UIManager} from "../utils/UIManager";
 import {Registry} from "../Registry";
+import {MenuBar} from "./MenuBar";
 
 export class MainMenu extends React.Component {
 
@@ -160,9 +161,6 @@ export class MainMenu extends React.Component {
     }
 
     public static openGame() {
-        UIManager.alert(
-            "<h1 style='text-align: center'>Achtung!</h1>" +
-            "<h4 style='text-align:center;'>Dieses Feature ist aktuell in Arbeit!</h4>"
-        )
+        UIManager.showGameMenu();
     }
 }

@@ -50,6 +50,7 @@ import {ThemeSettings} from "../components/settings/ThemeSettings";
 import {Themes} from "../Themes";
 import {AnimationSettings} from "../components/settings/AnimationSettings";
 import {StorageSettings} from "../components/settings/StorageSettings";
+import {GameMenu} from "../components/game/GameMenu";
 
 export class UIManager {
 
@@ -122,7 +123,7 @@ export class UIManager {
     public static showMainMenu = () => {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
         ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<MainMenu />), document.querySelector('#menu'));
+        ReactDOM.render((<MainMenu/>), document.querySelector('#menu'));
         Options.currentEditor = '';
     }
 
@@ -140,7 +141,7 @@ export class UIManager {
     public static showEditorSelector = () => {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
         ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<EditorSelector />), document.querySelector('#menu'));
+        ReactDOM.render((<EditorSelector/>), document.querySelector('#menu'));
     }
 
     /**
@@ -149,7 +150,7 @@ export class UIManager {
     public static showTemplateSelector = () => {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
         ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<TemplateSelector />), document.querySelector('#menu'));
+        ReactDOM.render((<TemplateSelector/>), document.querySelector('#menu'));
     }
 
     /**
@@ -158,7 +159,7 @@ export class UIManager {
     public static showProjectSelector = () => {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
         ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<ProjectSelector />), document.querySelector('#menu'));
+        ReactDOM.render((<ProjectSelector/>), document.querySelector('#menu'));
     }
 
     /**
@@ -167,7 +168,7 @@ export class UIManager {
     public static showEnvSelector = () => {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
         ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<ProjectTypeSelector />), document.querySelector('#menu'));
+        ReactDOM.render((<ProjectTypeSelector/>), document.querySelector('#menu'));
     }
 
     /**
@@ -176,7 +177,7 @@ export class UIManager {
     public static showSettings = () => {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
         ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<Settings />), document.querySelector('#menu'));
+        ReactDOM.render((<Settings/>), document.querySelector('#menu'));
     }
 
     /**
@@ -185,7 +186,7 @@ export class UIManager {
     public static showThemeSettings = () => {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
         ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<ThemeSettings />), document.querySelector('#menu'));
+        ReactDOM.render((<ThemeSettings/>), document.querySelector('#menu'));
     }
 
     /**
@@ -194,7 +195,7 @@ export class UIManager {
     public static showAnimationSettings = () => {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
         ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<AnimationSettings />), document.querySelector('#menu'));
+        ReactDOM.render((<AnimationSettings/>), document.querySelector('#menu'));
     }
 
     /**
@@ -203,16 +204,84 @@ export class UIManager {
     public static showStorageSettings = () => {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
         ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<StorageSettings />), document.querySelector('#menu'));
+        ReactDOM.render((<StorageSettings/>), document.querySelector('#menu'));
+    }
+
+    /**
+     * Shows the Menu
+     */
+    public static showGameMenu = () => {
+        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
+        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
+        ReactDOM.render((<GameMenu/>), document.querySelector('#menu'));
     }
 
     /**
      * Creates the blockly editor
      */
-    public static createBlockly = () => {
+    public static createBlockly = (blocks: ObjectDefinition = {}) => {
+
+        if (blocks.categories !== null) {
+            alert("ge")
+            let html = '';
+            Object.keys(blocks.categories).forEach(cat => {
+                let c = blocks.categories[cat];
+                html += `<category name="${c.name}" colour="${c.color}">`;
+
+                Object.keys(c.blocks).forEach(b => {
+                    let block = c.blocks[b];
+                    html += `<block type="${block.type}"></block>`;
+                })
+
+                html += '</category>';
+            });
+
+            (document.getElementById('toolbox') as HTMLElement).innerHTML = html;
+
+        } else {
+            (document.getElementById('toolbox') as HTMLElement).innerHTML = '<category name="Programm" colour="210">\n' +
+                '                <block type="start"></block>\n' +
+                '            </category>\n' +
+                '            <category name="Anzeige" colour="120">\n' +
+                '                <block type="log"></block>\n' +
+                '                <block type="ask"></block>\n' +
+                '                <block type="add_to_screen"></block>\n' +
+                '                <block type="add_to_element"></block>\n' +
+                '            </category>\n' +
+                '            <category name="Funktionen" colour="290">\n' +
+                '                <block type="create_method"></block>\n' +
+                '                <block type="call_method"></block>\n' +
+                '            </category>\n' +
+                '            <category name="Variabeln" colour="30">\n' +
+                '                <block type="var_create"></block>\n' +
+                '                <block type="var_create_type"></block>\n' +
+                '                <block type="var_set_text"></block>\n' +
+                '                <block type="var_set_color"></block>\n' +
+                '                <block type="var_set_decor_props"></block>\n' +
+                '                <block type="var_set_text_align"></block>\n' +
+                '                <block type="var_set_pos"></block>\n' +
+                '                <block type="var_set_border_style"></block>\n' +
+                '                <block type="var_set_font_weight"></block>\n' +
+                '            </category>\n' +
+                '            <category name="Schleifen" colour="210">\n' +
+                '                <block type="repeat_x_times"></block>\n' +
+                '                <block type="repeat_while"></block>\n' +
+                '                <block type="repeat_while_number"></block>\n' +
+                '            </category>\n' +
+                '            <category name="Abfragen" colour="#5577EE">\n' +
+                '                <block type="if_text"></block>\n' +
+                '                <block type="if_number"></block>\n' +
+                '                <block type="if_event"></block>\n' +
+                '                <block type="else_if_text"></block>\n' +
+                '                <block type="else_if_number"></block>\n' +
+                '                <block type="else"></block>\n' +
+                '            </category>';
+        }
+
         Options.currentEditor = 'blockly'
         UIManager.remakeSizes();
         (document.getElementById('blockly') as HTMLDivElement).style.display = 'block'
+
         StartBlock.registerBlock();
 
         LogBlock.registerBlock();
@@ -251,7 +320,7 @@ export class UIManager {
             renderer: 'zelos'
         }
 
-        if(Themes.themes[localStorage.getItem('incode-editor.theme') as string].scheme === 'dark'){
+        if (Themes.themes[localStorage.getItem('incode-editor.theme') as string].scheme === 'dark') {
             options.theme = DarkTheme.default;
         }
 
@@ -309,7 +378,7 @@ export class UIManager {
             fontSize: 25
         }
 
-        if(Themes.themes[localStorage.getItem('incode-editor.theme') as string].scheme === 'dark'){
+        if (Themes.themes[localStorage.getItem('incode-editor.theme') as string].scheme === 'dark') {
             options.theme = 'incode-dark';
         }
 
@@ -321,18 +390,18 @@ export class UIManager {
             let docURL = "";
             let tutURL = "https://incode.craftions.net/docs/Tutorials/";
 
-            if(((e.target as HTMLElement).classList as DOMTokenList).contains("mtk24") && ((e.target as HTMLElement).classList as DOMTokenList).contains("mtkb")){
+            if (((e.target as HTMLElement).classList as DOMTokenList).contains("mtk24") && ((e.target as HTMLElement).classList as DOMTokenList).contains("mtkb")) {
                 docURL = "https://incode.craftions.net/docs/Bezug/Befehle/";
-            } else if(((e.target as HTMLElement).classList as DOMTokenList).contains("mtk29")){
+            } else if (((e.target as HTMLElement).classList as DOMTokenList).contains("mtk29")) {
                 docURL = "https://incode.craftions.net/docs/Bezug/Typen/"
-            } else if(((e.target as HTMLElement).classList as DOMTokenList).contains("mtk22")){
+            } else if (((e.target as HTMLElement).classList as DOMTokenList).contains("mtk22")) {
                 docURL = "https://incode.craftions.net/docs/Bezug/Eigenschaften/"
             }
 
-            if(docURL != ""){
+            if (docURL != "") {
 
-                let hasDocumentation    = false;
-                let hasTutorial         = false;
+                let hasDocumentation = false;
+                let hasTutorial = false;
 
                 let x0 = new XMLHttpRequest();
                 x0.open("GET", docURL + (e.target as HTMLElement).innerText, true);
@@ -340,9 +409,9 @@ export class UIManager {
 
 
                 x0.onreadystatechange = () => {
-                    if(x0.readyState != 4) return;
+                    if (x0.readyState != 4) return;
 
-                    if(x0.status === 200){
+                    if (x0.status === 200) {
                         hasDocumentation = true;
                     }
 
@@ -350,13 +419,13 @@ export class UIManager {
                     x1.open("GET", tutURL + (e.target as HTMLElement).innerText, true);
                     x1.send(null);
                     x1.onreadystatechange = () => {
-                        if(x1.readyState != 4) return;
+                        if (x1.readyState != 4) return;
 
-                        if(x1.status === 200){
+                        if (x1.status === 200) {
                             hasTutorial = true;
                         }
 
-                        if(hasDocumentation && !hasTutorial){
+                        if (hasDocumentation && !hasTutorial) {
                             UIManager.ask(
                                 "<h1 style='text-align: center'>Dokumentation gefunden</h1>" +
                                 "<h4 style='text-align: center'>Willst du dir die Dokumentation zu '" + (e.target as HTMLElement).innerText + "' anschauen?</h4>",
@@ -364,7 +433,7 @@ export class UIManager {
                                     window.open(docURL + (e.target as HTMLElement).innerText, "_blank")
                                 }
                             )
-                        }else if(hasTutorial && !hasDocumentation){
+                        } else if (hasTutorial && !hasDocumentation) {
                             UIManager.ask(
                                 "<h1 style='text-align: center'>Tutorial gefunden</h1>" +
                                 "<h4 style='text-align: center'>Willst du dir das Tutorial zu '" + (e.target as HTMLElement).innerText + "' anschauen?</h4>",
@@ -372,7 +441,7 @@ export class UIManager {
                                     window.open(tutURL + (e.target as HTMLElement).innerText, "_blank")
                                 }
                             )
-                        } else if(hasDocumentation && hasTutorial){
+                        } else if (hasDocumentation && hasTutorial) {
                             UIManager.alert(
                                 "<h1 style='text-align: center'>Dokumentation und Tutorial gefunden</h1>" +
                                 "<div style='text-align: center; margin-top: 4%;'>" +
@@ -464,7 +533,7 @@ export class UIManager {
     /**
      * Hides all open Popups (alert, prompt and question/ask)
      */
-    public static hideAllPopups(){
+    public static hideAllPopups() {
         document.querySelectorAll(".popup").forEach(s => {
             (s as HTMLDivElement).style.display = 'none';
         })
