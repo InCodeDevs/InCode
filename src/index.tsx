@@ -47,7 +47,7 @@ require('./styles/incode.scss')
 import * as ReactDOM from "react-dom";
 import {UIManager} from "./utils/UIManager";
 import * as React from "react";
-import {IncompatibleScreenSize} from "./components/IncompatibleScreenSize";
+import {IncompatibleScreen} from "./components/IncompatibleScreen";
 import {ProjectTypeSelector} from "./components/ProjectTypeSelector";
 
 let needIncompatibleScreenSizeScreen = false;
@@ -59,7 +59,7 @@ setInterval(() => {
 
     if (needIncompatibleScreenSizeScreen) {
         (document.querySelector('#topScreen') as HTMLDivElement).style.display = 'block';
-        ReactDOM.render((<IncompatibleScreenSize/>), document.querySelector("#topScreen"));
+        ReactDOM.render((<IncompatibleScreen title={"Inkompatible Bildschirmgröße erkannt"} message={"Dein Bildschirm ist zu klein, bitte verwende einen größeren!"}/>), document.querySelector("#topScreen"));
     } else {
         (document.querySelector('#topScreen') as HTMLDivElement).style.display = 'none';
         ReactDOM.unmountComponentAtNode((document.querySelector('#topScreen') as HTMLDivElement))

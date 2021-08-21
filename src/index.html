@@ -2,6 +2,30 @@
 <!DOCTYPE html>
 <html lang="en" style="height: 100%; width: 100%;">
 <head>
+
+    <script>
+
+        let o = window.onerror;
+
+        window.onerror = function() {
+            window.location.assign("incompatible.html");
+        }
+
+        let isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+        let isFirefox = typeof InstallTrigger !== 'undefined';
+        let isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && window['safari'].pushNotification));
+        let isIE = /*@cc_on!@*/!!document.documentMode;
+        let isEdge = !isIE && !!window.StyleMedia;
+        let isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
+        let isEdgeChromium = isChrome && (navigator.userAgent.indexOf("Edg") != -1);
+        let isBlink = (isChrome || isOpera) && !!window.CSS;
+
+        if(isSafari || isIE || (isEdge && !isEdgeChromium)){
+            window.location.assign("incompatible.html");
+        }
+
+        window.onerror = o;
+    </script>
     <meta charset="UTF-8">
     <title>InCode Editor</title>
 </head>
