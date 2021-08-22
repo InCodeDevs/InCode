@@ -4,7 +4,7 @@
  */
 
 import {BlocklyCompiler} from "../blockly/BlocklyCompiler";
-import * as WebCompiler from "../incode/compiler/WebCompiler";
+import {WebCompiler} from 'incode-language/dist/compiler/WebCompiler';
 import {Options} from "../Options";
 import {Networking} from "./Networking";
 import {Registry} from "../Registry";
@@ -41,7 +41,7 @@ export class Workspace {
                 oldLog(message);
             }
 
-            code = WebCompiler.WebCompiler.compile(code);
+            code = WebCompiler.compile(code);
 
             Options.currentLiveJS = btoa(code);
 
