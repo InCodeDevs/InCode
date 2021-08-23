@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    registries:
+      - craftions-npm
+    schedule:
+      interval: "daily"
+registries:
+  craftions-npm:
+    type: npm-registry
+    url: https://npm.craftions.net
