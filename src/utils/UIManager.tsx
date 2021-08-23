@@ -80,6 +80,12 @@ export class UIManager {
                 "<a href='https://github.com/InCodeDevs/InCode-Editor' target='_blank'>GitHub</a>\t<a href='https://incode.craftions.net' target='_blank'>Website</a></span>" +
                 ""
             )
+        });
+
+        (document.querySelector('.prompt-popup-input') as HTMLInputElement).addEventListener('keydown', (e) => {
+            if(e.keyCode === 13){
+                (document.querySelector('.prompt-popup-button-confirm') as HTMLButtonElement).click();
+            }
         })
     }
 

@@ -126,7 +126,7 @@ export class MainMenu extends React.Component {
     }
 
     public static createProject0(name: string, type: string, code: string = "") {
-        if(type === 'blockly' && code === '')
+        if (type === 'blockly' && code === '')
             code = '<xml><block type=\"start\" id=\"|(^9%DCME)E4UEoWv~G]\" x=\"134\" y=\"70\"></block></xml>'
 
         Registry.putRegister(0x10AD, name);
@@ -136,7 +136,7 @@ export class MainMenu extends React.Component {
         UIManager.showEnvSelector();
     }
 
-    public static createProject1(env: string){
+    public static createProject1(env: string) {
         ProjectManager.createProject(
             Registry.getRegister(0x10AD),
             Registry.getRegister(0x10AA),
@@ -161,6 +161,16 @@ export class MainMenu extends React.Component {
     }
 
     public static openGame() {
-        UIManager.showGameMenu();
+
+        // Only for debugging!
+        // We should remove this later.
+
+        UIManager.prompt("<h1>In Arbeit</h1><h4>Bitte gib das richtige Passwort ein um diese Funktion nutzen zu können!</h4>", (value) => {
+            if (value === "passwort") {
+                UIManager.showGameMenu();
+            } else {
+                MainMenu.openGame();
+            }
+        })
     }
 }
