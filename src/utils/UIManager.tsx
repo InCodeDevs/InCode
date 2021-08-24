@@ -87,6 +87,12 @@ export class UIManager {
                 (document.querySelector('.prompt-popup-button-confirm') as HTMLButtonElement).click();
             }
         })
+
+        document.addEventListener('keydown', (e) => {
+            if(e.keyCode === 27){
+                UIManager.hideAllPopups();
+            }
+        })
     }
 
     /**
@@ -542,6 +548,8 @@ export class UIManager {
     public static hideAllPopups() {
         document.querySelectorAll(".popup").forEach(s => {
             (s as HTMLDivElement).style.display = 'none';
-        })
+        });
+
+        (document.getElementById('popup') as HTMLDivElement).style.display = 'none';
     }
 }
