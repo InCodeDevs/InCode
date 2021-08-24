@@ -8,6 +8,12 @@ import {ProjectManager} from "../utils/ProjectManager";
 import {UIManager} from "../utils/UIManager";
 import {Registry} from "../Registry";
 import {MenuBar} from "./MenuBar";
+import {GameMenu} from "./game/GameMenu";
+import {Settings} from "./Settings";
+import {ProjectTypeSelector} from "./selector/ProjectTypeSelector";
+import {EditorSelector} from "./selector/EditorSelector";
+import {TemplateSelector} from "./selector/TemplateSelector";
+import {ProjectSelector} from "./selector/ProjectSelector";
 
 export class MainMenu extends React.Component {
 
@@ -35,7 +41,9 @@ export class MainMenu extends React.Component {
                                 Projekt <br/> Erstellen
                             </p>
                         </div>
-                        <div className={"menu-choose-editor"} onClick={UIManager.showTemplateSelector}>
+                        <div className={"menu-choose-editor"} onClick={() => {
+                            UIManager.showComponent(<TemplateSelector />);
+                        }}>
                             <img
                                 src={"assets/editor-create-project.png"} width={128}
                                 height={128}/>
@@ -96,7 +104,7 @@ export class MainMenu extends React.Component {
      * Opens a Project
      */
     public static openProject() {
-        UIManager.showProjectSelector()
+        UIManager.showComponent(<ProjectSelector/>)
     }
 
     /**
@@ -118,7 +126,7 @@ export class MainMenu extends React.Component {
                         UIManager.hideAllPopups();
                         Registry.putRegister(0x10AD, value);
                         Registry.putRegister(0x10AF, MainMenu.createProject0)
-                        UIManager.showEditorSelector();
+                        UIManager.showComponent(<EditorSelector/>)
                     }
                 }
             }
@@ -133,7 +141,7 @@ export class MainMenu extends React.Component {
         Registry.putRegister(0x10AA, type);
         Registry.putRegister(0x10AB, code);
         Registry.putRegister(0x10AF, MainMenu.createProject1);
-        UIManager.showEnvSelector();
+        UIManager.showComponent(<ProjectTypeSelector/>);
     }
 
     public static createProject1(env: string) {
@@ -149,7 +157,7 @@ export class MainMenu extends React.Component {
     }
 
     public static openSettings() {
-        UIManager.showSettings();
+        UIManager.showComponent(<Settings/>);
     }
 
     public static openDocumentation() {
@@ -167,7 +175,7 @@ export class MainMenu extends React.Component {
 
         UIManager.prompt("<h1>In Arbeit</h1><h4>Bitte gib das richtige Passwort ein um diese Funktion nutzen zu können!</h4>", (value) => {
             if (value === "passwort") {
-                UIManager.showGameMenu();
+                UIManager.showComponent(<GameMenu/>);
             } else {
                 MainMenu.openGame();
             }

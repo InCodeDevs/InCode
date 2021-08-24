@@ -47,8 +47,8 @@ require('./styles/incode.scss')
 import * as ReactDOM from "react-dom";
 import {UIManager} from "./utils/UIManager";
 import * as React from "react";
-import {IncompatibleScreen} from "./components/IncompatibleScreen";
-import {ProjectTypeSelector} from "./components/ProjectTypeSelector";
+import {IncompatibleScreen} from "./components/util/IncompatibleScreen";
+import {ProjectTypeSelector} from "./components/selector/ProjectTypeSelector";
 
 let needIncompatibleScreenSizeScreen = false;
 let lastInnerWidth = window.innerWidth;

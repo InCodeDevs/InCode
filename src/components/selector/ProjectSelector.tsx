@@ -5,10 +5,11 @@
 
 import * as React from "react";
 import {Button, Form} from "react-bootstrap";
-import {ObjectDefinition, Registry} from "../Registry";
-import {UIManager} from "../utils/UIManager";
-import {ProjectManager} from "../utils/ProjectManager";
-import {Workspace} from "../utils/Workspace";
+import {ObjectDefinition, Registry} from "../../Registry";
+import {UIManager} from "../../utils/UIManager";
+import {ProjectManager} from "../../utils/ProjectManager";
+import {Workspace} from "../../utils/Workspace";
+import {MainMenu} from "../MainMenu";
 
 export class ProjectSelector extends React.Component {
 
@@ -60,7 +61,7 @@ export class ProjectSelector extends React.Component {
      * Shows the Main Menu
      */
     showMainMenu() {
-        UIManager.showMainMenu()
+        UIManager.showComponent(<MainMenu/>)
         UIManager.hideMenuBar()
     }
 

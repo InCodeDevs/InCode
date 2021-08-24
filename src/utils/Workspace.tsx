@@ -12,6 +12,9 @@ import {ProjectManager} from "./ProjectManager";
 import {UIManager} from "./UIManager";
 import * as Blockly from "blockly/blockly";
 import * as JSZip from 'jszip';
+import {MainMenu} from "../components/MainMenu";
+import * as React from "react";
+import { ProjectTypeSelector } from "../components/selector/ProjectTypeSelector";
 
 export class Workspace {
 
@@ -126,7 +129,7 @@ export class Workspace {
                 UIManager.deleteBlockly();
                 UIManager.deleteMonaco();
                 UIManager.hideMenuBar();
-                UIManager.showMainMenu();
+                UIManager.showComponent(<MainMenu />);
                 ProjectManager.deleteProject(Registry.getRegister(0x10AD));
             }
         );
@@ -351,6 +354,6 @@ export class Workspace {
             ProjectManager.setProjectEnv(Registry.getRegister(0x10AD), env);
             ProjectManager.openProject(Registry.getRegister(0x10AD), ProjectManager.getProjectType(Registry.getRegister(0x10AD)))
         });
-        UIManager.showEnvSelector();
+        UIManager.showComponent(<ProjectTypeSelector />);
     }
 }

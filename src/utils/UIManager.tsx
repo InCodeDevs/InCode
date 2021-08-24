@@ -34,16 +34,16 @@ import * as DE from "blockly/msg/de";
 import * as DarkTheme from "../blockly/themes/BlocklyDark";
 import {InCodeLanguage} from "../monaco/languages/InCodeLanguage";
 import * as monaco from "monaco-editor";
-import {EditorSelector} from "../components/EditorSelector";
-import {TemplateSelector} from "../components/TemplateSelector";
-import {ProjectSelector} from "../components/ProjectSelector";
+import {EditorSelector} from "../components/selector/EditorSelector";
+import {TemplateSelector} from "../components/selector/TemplateSelector";
+import {ProjectSelector} from "../components/selector/ProjectSelector";
 import {IPosition, Position} from "monaco-editor";
 import {SetVarDecorationPropsBlock} from "../blockly/blocks/SetVarDecorationPropsBlock";
 import {SetVarTextAlign} from "../blockly/blocks/SetVarTextAlign";
 import {SetVarPositionBlock} from "../blockly/blocks/SetVarPositionBlock";
 import {SetVarBorderStyle} from "../blockly/blocks/SetVarBorderStyle";
 import {SetVarFontWeight} from "../blockly/blocks/SetVarFontWeight";
-import {ProjectTypeSelector} from "../components/ProjectTypeSelector";
+import {ProjectTypeSelector} from "../components/selector/ProjectTypeSelector";
 import {ObjectDefinition} from "../Registry";
 import {Settings} from "../components/Settings";
 import {ThemeSettings} from "../components/settings/ThemeSettings";
@@ -51,6 +51,7 @@ import {Themes} from "../Themes";
 import {AnimationSettings} from "../components/settings/AnimationSettings";
 import {StorageSettings} from "../components/settings/StorageSettings";
 import {GameMenu} from "../components/game/GameMenu";
+import {IncompatibleScreen} from "../components/util/IncompatibleScreen";
 
 export class UIManager {
 
@@ -62,11 +63,10 @@ export class UIManager {
         const menuContainer = document.querySelector("#menu");
         const menuBarContainer = document.querySelector("#menuBar");
 
-        ReactDOM.render((<MainMenu/>), menuContainer);
         ReactDOM.render((<MenuBar/>), menuBarContainer);
 
         UIManager.hideMenuBar();
-        UIManager.showMainMenu();
+        UIManager.showComponent(<MainMenu/>)
 
         UIManager.deleteBlockly();
         UIManager.deleteMonaco();
@@ -119,113 +119,17 @@ export class UIManager {
         (document.getElementById('menuBar') as HTMLDivElement).style.display = 'none'
     }
 
-    /**
-     * Shows the current Menu
-     * may be removed.
-     */
-    public static showCurrentMenu = () => {
-        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
-        Options.currentEditor = '';
-    }
-
-    /**
-     * Shows the Main Menu
-     * may be removed.
-     */
-    public static showMainMenu = () => {
+    public static showComponent = (component: React.ReactElement) => {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
         ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<MainMenu/>), document.querySelector('#menu'));
-        Options.currentEditor = '';
+        ReactDOM.render(component, document.querySelector('#menu'));
     }
 
     /**
      * Hides the menu
-     * may be removed.
      */
     public static hideMenu = () => {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'none'
-    }
-
-    /**
-     * Shows the Menu
-     */
-    public static showEditorSelector = () => {
-        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
-        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<EditorSelector/>), document.querySelector('#menu'));
-    }
-
-    /**
-     * Shows the Menu
-     */
-    public static showTemplateSelector = () => {
-        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
-        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<TemplateSelector/>), document.querySelector('#menu'));
-    }
-
-    /**
-     * Shows the Menu
-     */
-    public static showProjectSelector = () => {
-        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
-        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<ProjectSelector/>), document.querySelector('#menu'));
-    }
-
-    /**
-     * Shows the Menu
-     */
-    public static showEnvSelector = () => {
-        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
-        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<ProjectTypeSelector/>), document.querySelector('#menu'));
-    }
-
-    /**
-     * Shows the Menu
-     */
-    public static showSettings = () => {
-        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
-        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<Settings/>), document.querySelector('#menu'));
-    }
-
-    /**
-     * Shows the Menu
-     */
-    public static showThemeSettings = () => {
-        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
-        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<ThemeSettings/>), document.querySelector('#menu'));
-    }
-
-    /**
-     * Shows the Menu
-     */
-    public static showAnimationSettings = () => {
-        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
-        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<AnimationSettings/>), document.querySelector('#menu'));
-    }
-
-    /**
-     * Shows the Menu
-     */
-    public static showStorageSettings = () => {
-        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
-        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<StorageSettings/>), document.querySelector('#menu'));
-    }
-
-    /**
-     * Shows the Menu
-     */
-    public static showGameMenu = () => {
-        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
-        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<GameMenu/>), document.querySelector('#menu'));
     }
 
     /**

@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import {UIManager} from "../utils/UIManager";
 import {Workspace} from "../utils/Workspace";
 import {ProjectManager} from "../utils/ProjectManager";
+import {MainMenu} from "./MainMenu";
 
 export class MenuBar extends React.Component {
 
@@ -72,7 +73,7 @@ export class MenuBar extends React.Component {
         }
         UIManager.deleteBlockly();
         UIManager.deleteMonaco();
-        UIManager.showMainMenu()
+        UIManager.showComponent(<MainMenu/>)
         UIManager.hideMenuBar()
     }
 }

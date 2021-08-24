@@ -5,10 +5,10 @@
 
 import * as React from "react";
 import {Button, Form} from "react-bootstrap";
-import {ObjectDefinition} from "../Registry";
-import {UIManager} from "../utils/UIManager";
-import {ProjectManager} from "../utils/ProjectManager";
-import {MainMenu} from "./MainMenu";
+import {ObjectDefinition} from "../../Registry";
+import {UIManager} from "../../utils/UIManager";
+import {ProjectManager} from "../../utils/ProjectManager";
+import {MainMenu} from "../MainMenu";
 
 export class TemplateSelector extends React.Component {
 
@@ -53,7 +53,7 @@ export class TemplateSelector extends React.Component {
      * Shows the Main Menu
      */
     showMainMenu() {
-        UIManager.showMainMenu()
+        UIManager.showComponent(<MainMenu/>)
         UIManager.hideMenuBar()
     }
 

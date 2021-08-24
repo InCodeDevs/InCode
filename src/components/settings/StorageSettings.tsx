@@ -8,6 +8,8 @@ import {Button, Form} from "react-bootstrap";
 import {ObjectDefinition} from "../../Registry";
 import {UIManager} from "../../utils/UIManager";
 import {Themes} from "../../Themes";
+import {Settings} from "../Settings";
+import {MainMenu} from "../MainMenu";
 
 export class StorageSettings extends React.Component {
 
@@ -21,11 +23,15 @@ export class StorageSettings extends React.Component {
                             <span style={{flex: "50%"}}/>
                             <div style={{flex: "25%"}}>
                                 <Button variant={"outline-flat"} size={"xxl"}
-                                        onClick={UIManager.showSettings}>Zurück</Button>
+                                        onClick={() => {
+                                            UIManager.showComponent(<Settings />)
+                                        }}>Zurück</Button>
                             </div>
                             <div style={{flex: "25%"}}>
                                 <Button variant={"outline-flat"} size={"xxl"}
-                                        onClick={UIManager.showMainMenu}>Hauptmenü</Button>
+                                        onClick={() => {
+                                            UIManager.showComponent(<MainMenu />)
+                                        }}>Hauptmenü</Button>
                             </div>
                         </div>
                     </div>

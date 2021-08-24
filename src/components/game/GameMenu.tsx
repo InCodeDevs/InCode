@@ -46,6 +46,5 @@ export class GameMenu extends React.Component {
     }
 
     loadCode() {
-
     }
 }

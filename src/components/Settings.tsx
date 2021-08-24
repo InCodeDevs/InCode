@@ -12,6 +12,9 @@ import {ProjectManager} from "../utils/ProjectManager";
 import {MainMenu} from "./MainMenu";
 import {Button, Form} from "react-bootstrap";
 import {Themes} from "../Themes";
+import {ThemeSettings} from "./settings/ThemeSettings";
+import {AnimationSettings} from "./settings/AnimationSettings";
+import {StorageSettings} from "./settings/StorageSettings";
 
 export class Settings extends React.Component {
 
@@ -19,21 +22,21 @@ export class Settings extends React.Component {
         "theme": {
             display: "Erscheinungsbild",
             callback: () => {
-                UIManager.showThemeSettings();
+                UIManager.showComponent(<ThemeSettings />);
             },
             icon: "assets/code-editor.png"
         },
         "animations": {
             display: "Animationen",
             callback: () => {
-                UIManager.showAnimationSettings();
+                UIManager.showComponent(<AnimationSettings />);
             },
             icon: "https://user-images.githubusercontent.com/53553315/116579197-71484800-a912-11eb-8d6e-17cc50d8027d.png"
         },
         "storage": {
             display: "Speicher",
             callback: () => {
-                UIManager.showStorageSettings();
+                UIManager.showComponent(<StorageSettings />);
             },
             icon: "assets/settings.png"
         }
@@ -48,7 +51,9 @@ export class Settings extends React.Component {
                         <div style={{flex: "45%", display: "flex"}}>
                             <span style={{flex: "75%"}}/>
                             <div style={{flex: "25%"}}>
-                                <Button variant={"outline-flat"} size={"xxl"} onClick={UIManager.showMainMenu}>Hauptmenü</Button>
+                                <Button variant={"outline-flat"} size={"xxl"} onClick={() => {
+                                    UIManager.showComponent(<MainMenu />)
+                                }}>Hauptmenü</Button>
                             </div>
                         </div>
                     </div>
