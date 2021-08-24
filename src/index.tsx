@@ -3,6 +3,8 @@
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 
+import {Avatar} from "./components/game/animations/Avatar";
+
 if(localStorage.getItem("incode-editor.theme") === null){
     localStorage.setItem("incode-editor.theme", "dark")
 }
@@ -49,6 +51,7 @@ import {UIManager} from "./utils/UIManager";
 import * as React from "react";
 import {IncompatibleScreen} from "./components/util/IncompatibleScreen";
 import {ProjectTypeSelector} from "./components/selector/ProjectTypeSelector";
+import {CodeGame} from "./components/game/code/CodeGame";
 
 let needIncompatibleScreenSizeScreen = false;
 let lastInnerWidth = window.innerWidth;
@@ -72,12 +75,21 @@ setInterval(() => {
     lastInnerWidth = window.innerWidth;
 }, 10)
 
+document.addEventListener("DOMContentLoaded", UIManager.onLoad);
+
+// debug
+
+document.addEventListener("DOMContentLoaded", () => {
+    // UIManager.showComponent(<CodeGame />)
+});
+
+Avatar.disable();
+Avatar.render();
+
 // window.onbeforeunload = confirmExit;
 function confirmExit() {
     return "You have attempted to leave this page. If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
 }
-
-document.addEventListener("DOMContentLoaded", UIManager.onLoad);
 
 function tempLoad() {
     ReactDOM.render((<ProjectTypeSelector/>), document.querySelector("#menu"))

@@ -1,0 +1,27 @@
+/**
+ * @author The InCode Devs
+ * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
+ */
+
+.avatar {
+  left: 0;
+  bottom: 0;
+  margin: 2em;
+  position: fixed;
+  transition: scale .25s;
+  border-radius: 50%;
+  border: solid 7px #2eb6b6;
+  background-color: darken(#2eb6b6, 20%);
+
+  #avatar-display {
+    border-radius: 50%;
+    transition: transform .25s;
+  }
+}
+.avatar:hover {
+  scale: 1.2;
+
+  #avatar-display {
+    transform: rotate(20deg);
+  }
+}

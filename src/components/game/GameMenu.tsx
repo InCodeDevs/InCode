@@ -4,6 +4,8 @@
  */
 
 import * as React from "react";
+import {UIManager} from "../../utils/UIManager";
+import {CodeGame} from "./code/CodeGame";
 
 export class GameMenu extends React.Component {
 
@@ -46,5 +48,6 @@ export class GameMenu extends React.Component {
     }
 
     loadCode() {
+        UIManager.showComponent(<CodeGame />)
     }
 }
