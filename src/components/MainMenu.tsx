@@ -173,12 +173,9 @@ export class MainMenu extends React.Component {
         // Only for debugging!
         // We should remove this later.
 
-        UIManager.prompt("<h1>In Arbeit</h1><h4>Bitte gib das richtige Passwort ein um diese Funktion nutzen zu können!</h4>", (value) => {
-            if (value === "passwort") {
-                UIManager.showComponent(<GameMenu/>);
-            } else {
-                MainMenu.openGame();
-            }
+        UIManager.alert("<h1>In Arbeit</h1><h4>Diese Funktion ist aktuell in Arbeit und kann Fehler enthalten.</h4>", () => {
+            UIManager.showComponent(<GameMenu />);
         })
+
     }
 }

@@ -77,7 +77,7 @@ export class UIManager {
                 "<span><strong>By:</strong> <span style='font-family: monospace'>The InCode Developers</span><br>" +
                 "<strong>Version:</strong> <span style='font-family: monospace'>" + Options.formattedVersion + "</span><br>" +
                 "<strong>License:</strong> <span style='font-family: monospace'>GNU General Public License 3.0</span><br>" +
-                "<a href='https://github.com/InCodeDevs/InCode-Editor' target='_blank'>GitHub</a>\t<a href='https://incode.craftions.net' target='_blank'>Website</a></span>" +
+                "<a href='https://github.com/InCodeDevs/Editor' target='_blank'>GitHub</a>\t<a href='https://incode.craftions.net' target='_blank'>Website</a></span>" +
                 ""
             )
         });
