@@ -122,7 +122,6 @@ export class InCodeLanguage {
                     [/Umrandungsradius/, "property"],
                     // vars
                     [/(["'])(?:(?=(\\?))\2.)*?\1/, "var"],
-                    // [/(?<=\s|^)\d+(?=\s|$)/, "var"],
                     [/^\d+$/, "var"],
                     [/Schwarz/, "var"],
                     [/Weiß/, "var"],
