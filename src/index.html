@@ -1,33 +1,11 @@
 <!-- Copyright (c) 2018-2021 Ben Siebert. All rights reserved. -->
 <!DOCTYPE html>
 <html lang="en" style="height: 100%; width: 100%;">
+<script src="util/browser/check.js"></script>
 <head>
-
-    <script>
-
-        let o = window.onerror;
-
-        window.onerror = function () {
-            window.location.assign("incompatible.html");
-        }
-
-        let isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
-        let isFirefox = typeof InstallTrigger !== 'undefined';
-        let isSafari = /constructor/i.test(window.HTMLElement) || (function (p) {
-            return p.toString() === "[object SafariRemoteNotification]";
-        })(!window['safari'] || (typeof safari !== 'undefined' && window['safari'].pushNotification));
-        let isIE = /*@cc_on!@*/!!document.documentMode;
-        let isEdge = !isIE && !!window.StyleMedia;
-        let isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
-        let isEdgeChromium = isChrome && (navigator.userAgent.indexOf("Edg") != -1);
-        let isBlink = (isChrome || isOpera) && !!window.CSS;
-
-        if (isSafari || isIE || (isEdge && !isEdgeChromium)) {
-            window.location.assign("incompatible.html");
-        }
-
-        window.onerror = o;
-    </script>
+    <div id="noscript">
+        <h1 style="color: red; font-family: sans-serif; text-align: center">Dein Browser unterstützt kein JavaScript!</h1>
+    </div>
     <meta charset="UTF-8">
     <title>InCode Editor</title>
 </head>
@@ -35,8 +13,8 @@
 
 <div id="topScreen"></div>
 
-<div id="copyright">
-    Copyright © 2018-2021 The InCode Developers.
+<div id="copyright" style="display: none">
+    Copyright © <script>document.write(new Date().getFullYear().toString())</script> The InCode Developers.
 </div>
 
 <div id="popup"
