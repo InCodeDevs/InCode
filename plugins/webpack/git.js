@@ -7,6 +7,5 @@ const commitHash = {
     short: child_process.execSync('git rev-parse --short HEAD').toString().trim()
 };
 const branch = child_process.execSync(`git branch --contains ${commitHash.short}`).toString().trim().split("* ")[1];
-const version = branch.split("dev-v")[1];
 
-module.exports = {commitHash, branch, version, repo};
+module.exports = {commitHash, branch, repo};
