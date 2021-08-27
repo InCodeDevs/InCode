@@ -4,14 +4,25 @@
  */
 
 import * as React from "react";
-import {Button, Form} from "react-bootstrap";
-import {ObjectDefinition} from "../../Registry";
+import {Button} from "react-bootstrap";
 import {UIManager} from "../../utils/UIManager";
-import {Themes} from "../../Themes";
 import {Settings} from "../Settings";
 import {MainMenu} from "../MainMenu";
 
-export class AnimationSettings extends React.Component {
+type Props = {
+    title: string
+    settings: Entry[]
+}
+
+export type Entry = {
+    title: string,
+    imageURL: string,
+    callback: () => void
+}
+
+type State = {}
+
+export class SettingsScreen extends React.Component<Props, State> {
 
     render() {
         return (
@@ -37,30 +48,21 @@ export class AnimationSettings extends React.Component {
                     </div>
                     <div style={{display: "flex", width: "100%", marginTop: "2%"}}>
                         <div style={{flex: "100%", color: "white"}} id={"themes"}>
-                            <h2>Animationen</h2>
-                            <div className={"template"} onClick={this.enable}>
-                                <img src={"assets/check.png"} width={128} height={128} />
-                                <h5 className={"template-name"}>Aktivieren</h5>
-                            </div>
-                            <div className={"template"} onClick={this.disable}>
-                                <img src={"assets/x.png"} width={128} height={128} />
-                                <h5 className={"template-name"}>Deaktivieren</h5>
-                            </div>
+                            <h2>{this.props.title}</h2>
+                            {
+                                this.props.settings.map(e => {
+                                    return (
+                                        <div className={"template"} onClick={e.callback}>
+                                            <img src={e.imageURL} width={128} height={128} />
+                                            <h5 className={"template-name"}>{e.title}</h5>
+                                        </div>
+                                    );
+                                })
+                            }
                         </div>
                     </div>
                 </div>
             </>
-        )
+        );
     }
-
-    enable() {
-        localStorage.setItem("incode-editor.enableAnimations", "true")
-        window.location.reload();
-    }
-
-    disable() {
-        localStorage.setItem("incode-editor.enableAnimations", "false")
-        window.location.reload();
-    }
-
 }

@@ -4,17 +4,13 @@
  */
 
 import * as React from "react";
-import { Options } from "../Options";
-import {ObjectDefinition, Registry} from "../Registry";
+import {ObjectDefinition} from "../Registry";
 
 import {UIManager} from "../utils/UIManager";
-import {ProjectManager} from "../utils/ProjectManager";
 import {MainMenu} from "./MainMenu";
 import {Button, Form} from "react-bootstrap";
+import {Entry, SettingsScreen} from "./settings/SettingsScreen";
 import {Themes} from "../Themes";
-import {ThemeSettings} from "./settings/ThemeSettings";
-import {AnimationSettings} from "./settings/AnimationSettings";
-import {StorageSettings} from "./settings/StorageSettings";
 
 export class Settings extends React.Component {
 
@@ -22,21 +18,88 @@ export class Settings extends React.Component {
         "theme": {
             display: "Erscheinungsbild",
             callback: () => {
-                UIManager.showComponent(<ThemeSettings />);
+                let themes: Entry[] = [];
+
+                Object.keys(Themes.themes).forEach(t => {
+                    let theme = Themes.themes[t];
+
+                    let entry: Entry = {
+                        title: theme.display,
+                        imageURL: 'assets/code-editor-light.png',
+                        callback: () => {
+                            localStorage.setItem("incode-editor.theme", t);
+                            window.location.reload();
+                        }
+                    };
+
+                    if(theme.scheme === 'dark')
+                        entry.imageURL = 'assets/code-editor.png';
+
+                    themes.push(entry);
+                })
+
+                UIManager.showComponent(<SettingsScreen title={"Erscheinungsbild"} settings={themes}/>);
             },
             icon: "assets/code-editor.png"
         },
         "animations": {
             display: "Animationen",
             callback: () => {
-                UIManager.showComponent(<AnimationSettings />);
+                UIManager.showComponent(<SettingsScreen title={"Animationen"} settings={[
+                    {
+                        title: "Aktivieren",
+                        callback: () => {
+                            localStorage.setItem("incode-editor.enableAnimations", "true")
+                            window.location.reload();
+                        },
+                        imageURL: "assets/check.png"
+                    },
+                    {
+                        title: "Deaktivieren",
+                        callback: () => {
+                            localStorage.setItem("incode-editor.enableAnimations", "false")
+                            window.location.reload();
+                        },
+                        imageURL: "assets/x.png"
+                    }
+                ]}/>);
             },
             icon: "https://user-images.githubusercontent.com/53553315/116579197-71484800-a912-11eb-8d6e-17cc50d8027d.png"
         },
         "storage": {
             display: "Speicher",
             callback: () => {
-                UIManager.showComponent(<StorageSettings />);
+                UIManager.showComponent(<SettingsScreen title={"Speicher"} settings={[
+                    {
+                        title: "Speicher löschen",
+                        callback: () => {
+                            UIManager.ask(
+                                "<h1>Fortfahren?</h1>" +
+                                "<h4>Durch diese Aktion werden alle Einstellungen, sowie all deine Projekte unwiederuflich gelöscht! Willst du wirklich fortfahren?</h4>",
+                                () => {
+                                    for (let i = 0; i < localStorage.length; i++) {
+                                        localStorage.removeItem(localStorage.key(i) as string);
+                                    }
+                                    window.location.reload();
+                                })
+                        },
+                        imageURL: "assets/x.png"
+                    },
+                    {
+                        title: "Einstellungen zurücksetzen",
+                        callback: () => {
+                            UIManager.ask(
+                                "<h1>Fortfahren?</h1>" +
+                                "<h4>Durch diese Aktion werden alle Einstellungen zurückgesetzt! Willst du wirklich fortfahren?</h4>",
+                                () => {
+                                    localStorage.removeItem('incode-editor.theme');
+                                    localStorage.removeItem('incode-editor.enableAnimations');
+                                    window.location.reload();
+                                })
+                        },
+                        imageURL: "assets/x.png"
+                    }
+                ]}/>);
             },
             icon: "assets/settings.png"
         }
@@ -52,7 +115,7 @@ export class Settings extends React.Component {
                             <span style={{flex: "75%"}}/>
                             <div style={{flex: "25%"}}>
                                 <Button variant={"outline-flat"} size={"xxl"} onClick={() => {
-                                    UIManager.showComponent(<MainMenu />)
+                                    UIManager.showComponent(<MainMenu/>)
                                 }}>Hauptmenü</Button>
                             </div>
                         </div>
@@ -76,7 +139,6 @@ export class Settings extends React.Component {
     componentDidMount() {
         Settings.updateSettings();
     }
-
 
     public static updateSettings(settings: ObjectDefinition = {ex: true}) {
 
