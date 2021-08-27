@@ -137,63 +137,6 @@ export class UIManager {
      */
     public static createBlockly = (blocks: ObjectDefinition = {}) => {
 
-        if (blocks.categories !== null) {
-            alert("ge")
-            let html = '';
-            Object.keys(blocks.categories).forEach(cat => {
-                let c = blocks.categories[cat];
-                html += `<category name="${c.name}" colour="${c.color}">`;
-
-                Object.keys(c.blocks).forEach(b => {
-                    let block = c.blocks[b];
-                    html += `<block type="${block.type}"></block>`;
-                })
-
-                html += '</category>';
-            });
-
-            (document.getElementById('toolbox') as HTMLElement).innerHTML = html;
-
-        } else {
-            (document.getElementById('toolbox') as HTMLElement).innerHTML = '<category name="Programm" colour="210">\n' +
-                '                <block type="start"></block>\n' +
-                '            </category>\n' +
-                '            <category name="Anzeige" colour="120">\n' +
-                '                <block type="log"></block>\n' +
-                '                <block type="ask"></block>\n' +
-                '                <block type="add_to_screen"></block>\n' +
-                '                <block type="add_to_element"></block>\n' +
-                '            </category>\n' +
-                '            <category name="Funktionen" colour="290">\n' +
-                '                <block type="create_method"></block>\n' +
-                '                <block type="call_method"></block>\n' +
-                '            </category>\n' +
-                '            <category name="Variabeln" colour="30">\n' +
-                '                <block type="var_create"></block>\n' +
-                '                <block type="var_create_type"></block>\n' +
-                '                <block type="var_set_text"></block>\n' +
-                '                <block type="var_set_color"></block>\n' +
-                '                <block type="var_set_decor_props"></block>\n' +
-                '                <block type="var_set_text_align"></block>\n' +
-                '                <block type="var_set_pos"></block>\n' +
-                '                <block type="var_set_border_style"></block>\n' +
-                '                <block type="var_set_font_weight"></block>\n' +
-                '            </category>\n' +
-                '            <category name="Schleifen" colour="210">\n' +
-                '                <block type="repeat_x_times"></block>\n' +
-                '                <block type="repeat_while"></block>\n' +
-                '                <block type="repeat_while_number"></block>\n' +
-                '            </category>\n' +
-                '            <category name="Abfragen" colour="#5577EE">\n' +
-                '                <block type="if_text"></block>\n' +
-                '                <block type="if_number"></block>\n' +
-                '                <block type="if_event"></block>\n' +
-                '                <block type="else_if_text"></block>\n' +
-                '                <block type="else_if_number"></block>\n' +
-                '                <block type="else"></block>\n' +
-                '            </category>';
-        }
-
         Options.currentEditor = 'blockly'
         UIManager.remakeSizes();
         (document.getElementById('blockly') as HTMLDivElement).style.display = 'block'
