@@ -6,7 +6,14 @@
 import * as React from "react";
 import {ProjectManager} from "../utils/ProjectManager";
 import {UIManager} from "../utils/UIManager";
-import {TempOptions} from "../TempOptions";
+import {Registry} from "../Registry";
+import {MenuBar} from "./MenuBar";
+import {GameMenu} from "./game/GameMenu";
+import {Settings} from "./Settings";
+import {ProjectTypeSelector} from "./selector/ProjectTypeSelector";
+import {EditorSelector} from "./selector/EditorSelector";
+import {TemplateSelector} from "./selector/TemplateSelector";
+import {ProjectSelector} from "./selector/ProjectSelector";
 
 export class MainMenu extends React.Component {
 
@@ -34,7 +41,9 @@ export class MainMenu extends React.Component {
                                 Projekt <br/> Erstellen
                             </p>
                         </div>
-                        <div className={"menu-choose-editor"} onClick={UIManager.showTemplateSelector}>
+                        <div className={"menu-choose-editor"} onClick={() => {
+                            UIManager.showComponent(<TemplateSelector />);
+                        }}>
                             <img
                                 src={"assets/editor-create-project.png"} width={128}
                                 height={128}/>
@@ -48,6 +57,14 @@ export class MainMenu extends React.Component {
                                 height={128}/>
                             <p className={"menu-editor-description"}>
                                 Projekt <br/> Öffnen
+                            </p>
+                        </div>
+                        <div className={"menu-choose-editor"} onClick={MainMenu.openSettings}>
+                            <img
+                                src={"assets/settings.png"} width={128}
+                                height={128}/>
+                            <p className={"menu-editor-description"}>
+                                Einstellungen
                             </p>
                         </div>
                     </div>
@@ -87,7 +104,7 @@ export class MainMenu extends React.Component {
      * Opens a Project
      */
     public static openProject() {
-        UIManager.showProjectSelector()
+        UIManager.showComponent(<ProjectSelector/>)
     }
 
     /**
@@ -107,9 +124,9 @@ export class MainMenu extends React.Component {
                             "<h4 style='text-align: center;'>Der Name ist zu kurz! Er muss mindestens 4 Zeichen lang sein!</h4>", MainMenu.createNewProject)
                     } else {
                         UIManager.hideAllPopups();
-                        TempOptions.options[0x10AD] = value;
-                        TempOptions.options[0x10AF] = MainMenu.createProject0
-                        UIManager.showEditorSelector();
+                        Registry.putRegister(0x10AD, value);
+                        Registry.putRegister(0x10AF, MainMenu.createProject0)
+                        UIManager.showComponent(<EditorSelector/>)
                     }
                 }
             }
@@ -117,26 +134,30 @@ export class MainMenu extends React.Component {
     }
 
     public static createProject0(name: string, type: string, code: string = "") {
-        if(type === 'blockly' && code === '')
+        if (type === 'blockly' && code === '')
             code = '<xml><block type=\"start\" id=\"|(^9%DCME)E4UEoWv~G]\" x=\"134\" y=\"70\"></block></xml>'
 
-        TempOptions.options[0x10AD] = name;
-        TempOptions.options[0x10AA] = type;
-        TempOptions.options[0x10AB] = code;
-        TempOptions.options[0x10AF] = MainMenu.createProject1;
-        UIManager.showEnvSelector();
+        Registry.putRegister(0x10AD, name);
+        Registry.putRegister(0x10AA, type);
+        Registry.putRegister(0x10AB, code);
+        Registry.putRegister(0x10AF, MainMenu.createProject1);
+        UIManager.showComponent(<ProjectTypeSelector/>);
     }
 
-    public static createProject1(env: string){
+    public static createProject1(env: string) {
         ProjectManager.createProject(
-            TempOptions.options[0x10AD],
-            TempOptions.options[0x10AA],
-            TempOptions.options[0x10AB],
+            Registry.getRegister(0x10AD),
+            Registry.getRegister(0x10AA),
+            Registry.getRegister(0x10AB),
             env
         )
         UIManager.hideMenu();
         UIManager.showMenuBar();
-        ProjectManager.openProject(TempOptions.options[0x10AD], TempOptions.options[0x10AA]);
+        ProjectManager.openProject(Registry.getRegister(0x10AD), Registry.getRegister(0x10AA));
+    }
+
+    public static openSettings() {
+        UIManager.showComponent(<Settings/>);
     }
 
     public static openDocumentation() {
@@ -148,9 +169,13 @@ export class MainMenu extends React.Component {
     }
 
     public static openGame() {
-        UIManager.alert(
-            "<h1 style='text-align: center'>Achtung!</h1>" +
-            "<h4 style='text-align:center;'>Dieses Feature ist aktuell in Arbeit!</h4>"
-        )
+
+        // Only for debugging!
+        // We should remove this later.
+
+        UIManager.alert("<h1>In Arbeit</h1><h4>Diese Funktion ist aktuell in Arbeit und kann Fehler enthalten.</h4>", () => {
+            UIManager.showComponent(<GameMenu />);
+        })
+
     }
 }

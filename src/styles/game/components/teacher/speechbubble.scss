@@ -1,0 +1,58 @@
+/**
+ * @author The InCode Devs
+ * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
+ */
+
+.speech-bubble {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  margin-left: 25rem;
+  margin-bottom: 15rem;
+  background-color: #F9FAFF;
+  padding: 4em;
+  border-radius: 25% 50% 40% 60%;
+  max-width: 25%;
+  max-height: 25%;
+  height: 25%;
+  width: 25%;
+  border: solid 7px #2eb6b6;
+}
+
+.speech-bubble-content {
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+}
+
+.speech-bubble-circle-one {
+  border: 5px solid #2eb6b6;
+  position: absolute;
+  width: 25px;
+  padding: 20px;
+  border-radius: 50%;
+  left: -10px;
+  bottom: 10px;
+}
+
+.speech-bubble-circle-one:before {
+  content: "";
+  position: absolute;
+  width: 25px;
+  padding: 20px;
+  border-radius: 50%;
+  right: 0;
+  bottom: 0;
+  background: #F9FAFF;
+}
+
+.speech-bubble-circle-two {
+  border: 5px solid #2eb6b6;
+  position: absolute;
+  width: 5px;
+  padding: 15px 15px;
+  border-radius: 50%;
+  left: -60px;
+  bottom: 5px;
+  background: #F9FAFF;
+}

@@ -10,7 +10,6 @@
   padding: 1.75rem 1.75rem;
   display: inline-block;
   border-radius: 24px;
-  color: #ffffff;
   transition: 0.25s;
   cursor: pointer;
 }
@@ -33,7 +32,6 @@
 }
 
 .template:hover {
-  background-color: rgba(76, 76, 76, 0.45);
   .template-name {
     opacity: 0.7;
   }

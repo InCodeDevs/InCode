@@ -3,11 +3,18 @@
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 export class Options {
-    public static enableLivePreview = true;
+
     public static currentLiveJS = '';
     public static currentEditor = '';
 
-    public static readonly version = '2.1.0';
+    public static theme = 'dark';
 
-    public static readonly formattedVersion = 'InCode Editor v' + Options.version;
+    // @ts-ignore
+    public static readonly version = _GIT_VERSION;
+
+    // @ts-ignore
+    public static readonly formattedVersion = 'InCode Editor v' + Options.version + " at " + _GIT_SHORT_COMMIT;
+
+    // @ts-ignore
+    public static readonly formattedDOMVersion = `InCode Editor <a target="_blank" href='${_GIT_REPO}/tree/${_GIT_BRANCH}'>v${_GIT_VERSION}</a> at <a target="_blank" href='${_GIT_REPO}/commit/${_GIT_LONG_COMMIT}'>${_GIT_SHORT_COMMIT}</a>`;
 }

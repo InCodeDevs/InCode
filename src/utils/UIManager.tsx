@@ -34,16 +34,13 @@ import * as DE from "blockly/msg/de";
 import * as DarkTheme from "../blockly/themes/BlocklyDark";
 import {InCodeLanguage} from "../monaco/languages/InCodeLanguage";
 import * as monaco from "monaco-editor";
-import {EditorSelector} from "../components/EditorSelector";
-import {TemplateSelector} from "../components/TemplateSelector";
-import {ProjectSelector} from "../components/ProjectSelector";
-import {IPosition, Position} from "monaco-editor";
 import {SetVarDecorationPropsBlock} from "../blockly/blocks/SetVarDecorationPropsBlock";
 import {SetVarTextAlign} from "../blockly/blocks/SetVarTextAlign";
 import {SetVarPositionBlock} from "../blockly/blocks/SetVarPositionBlock";
 import {SetVarBorderStyle} from "../blockly/blocks/SetVarBorderStyle";
 import {SetVarFontWeight} from "../blockly/blocks/SetVarFontWeight";
-import {ProjectTypeSelector} from "../components/ProjectTypeSelector";
+import {ObjectDefinition} from "../Registry";
+import {Themes} from "../Themes";
 
 export class UIManager {
 
@@ -55,24 +52,35 @@ export class UIManager {
         const menuContainer = document.querySelector("#menu");
         const menuBarContainer = document.querySelector("#menuBar");
 
-        ReactDOM.render((<MainMenu/>), menuContainer);
         ReactDOM.render((<MenuBar/>), menuBarContainer);
 
         UIManager.hideMenuBar();
-        UIManager.showMainMenu();
+        UIManager.showComponent(<MainMenu/>)
 
         UIManager.deleteBlockly();
         UIManager.deleteMonaco();
 
         (document.querySelector('#copyright') as HTMLDivElement).addEventListener('click', (e) => {
-            UIManager.alert("<div style='text-align: center'>" +
+            UIManager.alert("" +
                 "<h1>InCode-Editor</h1>" +
                 "<span><strong>By:</strong> <span style='font-family: monospace'>The InCode Developers</span><br>" +
-                "<strong>Version:</strong> <span style='font-family: monospace'>" + Options.formattedVersion + "</span><br>" +
+                "<strong>Version:</strong> <span style='font-family: monospace'>" + Options.formattedDOMVersion + "</span><br>" +
                 "<strong>License:</strong> <span style='font-family: monospace'>GNU General Public License 3.0</span><br>" +
-                "<a href='https://github.com/InCodeDevs/InCode-Editor' target='_blank'>GitHub</a>\t<a href='https://incode.craftions.net' target='_blank'>Website</a></span>" +
-                "</div>"
+                "<a href='https://github.com/InCodeDevs/Editor' target='_blank'>GitHub</a>\t<a href='https://incode.craftions.net' target='_blank'>Website</a></span>" +
+                ""
             )
+        });
+
+        (document.querySelector('.prompt-popup-input') as HTMLInputElement).addEventListener('keydown', (e) => {
+            if(e.keyCode === 13){
+                (document.querySelector('.prompt-popup-button-confirm') as HTMLButtonElement).click();
+            }
+        })
+
+        document.addEventListener('keydown', (e) => {
+            if(e.keyCode === 27){
+                UIManager.hideAllPopups();
+            }
         })
     }
 
@@ -100,77 +108,28 @@ export class UIManager {
         (document.getElementById('menuBar') as HTMLDivElement).style.display = 'none'
     }
 
-    /**
-     * Shows the current Menu
-     * may be removed.
-     */
-    public static showCurrentMenu = () => {
-        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
-        Options.currentEditor = '';
-    }
-
-    /**
-     * Shows the Main Menu
-     * may be removed.
-     */
-    public static showMainMenu = () => {
+    public static showComponent = (component: React.ReactElement) => {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
         ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<MainMenu />), document.querySelector('#menu'));
-        Options.currentEditor = '';
+        ReactDOM.render(component, document.querySelector('#menu'));
     }
 
     /**
      * Hides the menu
-     * may be removed.
      */
     public static hideMenu = () => {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'none'
     }
 
     /**
-     * Shows the Menu
-     */
-    public static showEditorSelector = () => {
-        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
-        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<EditorSelector />), document.querySelector('#menu'));
-    }
-
-    /**
-     * Shows the Menu
-     */
-    public static showTemplateSelector = () => {
-        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
-        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<TemplateSelector />), document.querySelector('#menu'));
-    }
-
-    /**
-     * Shows the Menu
-     */
-    public static showProjectSelector = () => {
-        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
-        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<ProjectSelector />), document.querySelector('#menu'));
-    }
-
-    /**
-     * Shows the Menu
-     */
-    public static showEnvSelector = () => {
-        (document.getElementById('menu') as HTMLDivElement).style.display = 'block'
-        ReactDOM.unmountComponentAtNode((document.querySelector('#menu') as HTMLDivElement))
-        ReactDOM.render((<ProjectTypeSelector />), document.querySelector('#menu'));
-    }
-
-    /**
      * Creates the blockly editor
      */
-    public static createBlockly = () => {
+    public static createBlockly = (blocks: ObjectDefinition = {}) => {
+
         Options.currentEditor = 'blockly'
         UIManager.remakeSizes();
         (document.getElementById('blockly') as HTMLDivElement).style.display = 'block'
+
         StartBlock.registerBlock();
 
         LogBlock.registerBlock();
@@ -204,12 +163,17 @@ export class UIManager {
 
         Blockly.setLocale(DE)
 
-        const workspace = Blockly.inject('blocklyDiv',
-            {
-                toolbox: document.getElementById('toolbox') as ToolboxDefinition,
-                theme: DarkTheme.default,
-                renderer: 'zelos'
-            });
+        let options: ObjectDefinition = {
+            toolbox: document.getElementById('toolbox') as ToolboxDefinition,
+            renderer: 'zelos'
+        }
+
+        if (Themes.themes[localStorage.getItem('incode-editor.theme') as string].scheme === 'dark') {
+            options.theme = DarkTheme.default;
+        }
+
+        Blockly.inject('blocklyDiv',
+            options);
     }
 
     /**
@@ -250,36 +214,42 @@ export class UIManager {
 
         InCodeLanguage.register();
 
-        // @ts-ignore
-        window.editor = monaco.editor.create((document.getElementById('monaco') as HTMLDivElement), {
+        let options: monaco.editor.IStandaloneEditorConstructionOptions = {
             value: '',
             language: 'incode',
-            theme: "incode-lang-theme",
+            theme: "incode-light",
             insertSpaces: false,
             autoClosingQuotes: "always",
             autoClosingBrackets: "always",
             acceptSuggestionOnEnter: "on",
             contextmenu: false,
-            fontSize: 25,
-        });
+            fontSize: 25
+        }
+
+        if (Themes.themes[localStorage.getItem('incode-editor.theme') as string].scheme === 'dark') {
+            options.theme = 'incode-dark';
+        }
+
+        // @ts-ignore
+        window.editor = monaco.editor.create((document.getElementById('monaco') as HTMLDivElement), options);
 
         document.addEventListener('contextmenu', (e) => {
             e.preventDefault();
             let docURL = "";
             let tutURL = "https://incode.craftions.net/docs/Tutorials/";
 
-            if(((e.target as HTMLElement).classList as DOMTokenList).contains("mtk24") && ((e.target as HTMLElement).classList as DOMTokenList).contains("mtkb")){
+            if (((e.target as HTMLElement).classList as DOMTokenList).contains("mtk24") && ((e.target as HTMLElement).classList as DOMTokenList).contains("mtkb")) {
                 docURL = "https://incode.craftions.net/docs/Bezug/Befehle/";
-            } else if(((e.target as HTMLElement).classList as DOMTokenList).contains("mtk29")){
+            } else if (((e.target as HTMLElement).classList as DOMTokenList).contains("mtk29")) {
                 docURL = "https://incode.craftions.net/docs/Bezug/Typen/"
-            } else if(((e.target as HTMLElement).classList as DOMTokenList).contains("mtk22")){
+            } else if (((e.target as HTMLElement).classList as DOMTokenList).contains("mtk22")) {
                 docURL = "https://incode.craftions.net/docs/Bezug/Eigenschaften/"
             }
 
-            if(docURL != ""){
+            if (docURL != "") {
 
-                let hasDocumentation    = false;
-                let hasTutorial         = false;
+                let hasDocumentation = false;
+                let hasTutorial = false;
 
                 let x0 = new XMLHttpRequest();
                 x0.open("GET", docURL + (e.target as HTMLElement).innerText, true);
@@ -287,9 +257,9 @@ export class UIManager {
 
 
                 x0.onreadystatechange = () => {
-                    if(x0.readyState != 4) return;
+                    if (x0.readyState != 4) return;
 
-                    if(x0.status === 200){
+                    if (x0.status === 200) {
                         hasDocumentation = true;
                     }
 
@@ -297,13 +267,13 @@ export class UIManager {
                     x1.open("GET", tutURL + (e.target as HTMLElement).innerText, true);
                     x1.send(null);
                     x1.onreadystatechange = () => {
-                        if(x1.readyState != 4) return;
+                        if (x1.readyState != 4) return;
 
-                        if(x1.status === 200){
+                        if (x1.status === 200) {
                             hasTutorial = true;
                         }
 
-                        if(hasDocumentation && !hasTutorial){
+                        if (hasDocumentation && !hasTutorial) {
                             UIManager.ask(
                                 "<h1 style='text-align: center'>Dokumentation gefunden</h1>" +
                                 "<h4 style='text-align: center'>Willst du dir die Dokumentation zu '" + (e.target as HTMLElement).innerText + "' anschauen?</h4>",
@@ -311,7 +281,7 @@ export class UIManager {
                                     window.open(docURL + (e.target as HTMLElement).innerText, "_blank")
                                 }
                             )
-                        }else if(hasTutorial && !hasDocumentation){
+                        } else if (hasTutorial && !hasDocumentation) {
                             UIManager.ask(
                                 "<h1 style='text-align: center'>Tutorial gefunden</h1>" +
                                 "<h4 style='text-align: center'>Willst du dir das Tutorial zu '" + (e.target as HTMLElement).innerText + "' anschauen?</h4>",
@@ -319,7 +289,7 @@ export class UIManager {
                                     window.open(tutURL + (e.target as HTMLElement).innerText, "_blank")
                                 }
                             )
-                        } else if(hasDocumentation && hasTutorial){
+                        } else if (hasDocumentation && hasTutorial) {
                             UIManager.alert(
                                 "<h1 style='text-align: center'>Dokumentation und Tutorial gefunden</h1>" +
                                 "<div style='text-align: center; margin-top: 4%;'>" +
@@ -411,9 +381,11 @@ export class UIManager {
     /**
      * Hides all open Popups (alert, prompt and question/ask)
      */
-    public static hideAllPopups(){
+    public static hideAllPopups() {
         document.querySelectorAll(".popup").forEach(s => {
             (s as HTMLDivElement).style.display = 'none';
-        })
+        });
+
+        (document.getElementById('popup') as HTMLDivElement).style.display = 'none';
     }
 }

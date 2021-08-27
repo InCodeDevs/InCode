@@ -1,0 +1,52 @@
+/**
+ * @author The InCode Devs
+ * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
+ */
+
+@use "~bootstrap/scss/bootstrap";
+
+.menu-choose-editor:hover {
+  background-color: rgba(76, 76, 76, 0.45);
+}
+
+.menu-editor-description {
+  color: #000000;
+  opacity: 1;
+}
+
+.menu-editor-description:hover {
+  color: #000000;
+  opacity: 1;
+}
+
+#menu {
+  div {
+    h1 {
+      color: #000000 !important;
+    }
+  }
+}
+
+#code-projects {
+  h2 {
+    color: #000000 !important;
+  }
+}
+
+#blockly-projects {
+  h2 {
+    color: #000000 !important;
+  }
+}
+
+#menuBar {
+  div {
+    div {
+      h1 {
+        div {
+          color: #000000 !important;
+        }
+      }
+    }
+  }
+}

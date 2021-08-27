@@ -3,42 +3,10 @@
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 
-import "./styles/editor.scss"
-import * as ReactDOM from "react-dom";
-import {UIManager} from "./utils/UIManager";
-import * as React from "react";
-import {IncompatibleScreenSize} from "./components/IncompatibleScreenSize";
-import {ProjectTypeSelector} from "./components/ProjectTypeSelector";
+console.log("HELLO WORLD")
 
-let needIncompatibleScreenSizeScreen = false;
-let lastInnerWidth = window.innerWidth;
-let lastInnerHeight = window.innerHeight;
+import {PreInit} from "./system/preinit/PreInit";
+import {ScreenScaling} from "./system/workers/ScreenScaling";
 
-setInterval(() => {
-    needIncompatibleScreenSizeScreen = window.innerHeight < 768 || window.innerWidth < 1024;
-
-    if (needIncompatibleScreenSizeScreen) {
-        (document.querySelector('#topScreen') as HTMLDivElement).style.display = 'block';
-        ReactDOM.render((<IncompatibleScreenSize/>), document.querySelector("#topScreen"));
-    } else {
-        (document.querySelector('#topScreen') as HTMLDivElement).style.display = 'none';
-        ReactDOM.unmountComponentAtNode((document.querySelector('#topScreen') as HTMLDivElement))
-    }
-
-    if(lastInnerWidth != window.innerWidth || lastInnerHeight != window.innerHeight){
-        UIManager.remakeSizes();
-    }
-    lastInnerHeight = window.innerHeight;
-    lastInnerWidth = window.innerWidth;
-}, 10)
-
-// window.onbeforeunload = confirmExit;
-function confirmExit() {
-    return "You have attempted to leave this page. If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
-}
-
-document.addEventListener("DOMContentLoaded", UIManager.onLoad);
-
-function tempLoad() {
-    ReactDOM.render((<ProjectTypeSelector/>), document.querySelector("#menu"))
-}
+new PreInit();
+new ScreenScaling().run();

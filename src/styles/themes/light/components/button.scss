@@ -1,0 +1,29 @@
+/**
+ * @author The InCode Devs
+ * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
+ */
+
+@use "~bootstrap/scss/bootstrap";
+
+.btn-outline-flat {
+  color: $dark;
+  border-color: $dark;
+}
+
+.btn-outline-flat:hover {
+  color: $light;
+  background-color: $dark;
+  border-color: $dark;
+}
+
+.normal-outline-btn {
+  background: $light;
+}
+
+.normal-outline-btn:hover {
+  background: darken($light, 10%);
+}
+
+.normal-outline-btn:active {
+  background: darken($light, 12%);
+}

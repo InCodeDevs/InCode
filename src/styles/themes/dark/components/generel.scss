@@ -1,0 +1,28 @@
+/**
+ * @author The InCode Devs
+ * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
+ */
+
+@use "~bootstrap/scss/bootstrap";
+
+html,
+body {
+  background-color: #1E1E1E;
+}
+
+#copyright {
+  color: $light;
+}
+
+#topScreen {
+  background: #1E1E1E;
+}
+
+.dropdown-menu {
+  background-color: $dark;
+}
+
+.dropdown-item {
+  background-color: $dark;
+  color: $light;
+}

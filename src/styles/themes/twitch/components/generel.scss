@@ -1,0 +1,37 @@
+/**
+ * @author The InCode Devs
+ * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
+ */
+
+@use "../colors";
+
+html,
+body {
+  background-color: #1E1E1E !important;
+}
+
+#copyright {
+  color: $light;
+}
+
+#topScreen {
+  background: #1E1E1E !important;
+}
+
+.dropdown-menu {
+  background-color: $dark;
+}
+
+.dropdown-item {
+  background-color: $dark;
+  color: $light;
+}
+
+.dropdown-item:hover {
+  background-color: $primary !important;
+  color: $light;
+}
+
+h1, h2 {
+  color: $primary !important;
+}
