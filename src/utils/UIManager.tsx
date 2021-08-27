@@ -34,24 +34,13 @@ import * as DE from "blockly/msg/de";
 import * as DarkTheme from "../blockly/themes/BlocklyDark";
 import {InCodeLanguage} from "../monaco/languages/InCodeLanguage";
 import * as monaco from "monaco-editor";
-import {EditorSelector} from "../components/selector/EditorSelector";
-import {TemplateSelector} from "../components/selector/TemplateSelector";
-import {ProjectSelector} from "../components/selector/ProjectSelector";
-import {IPosition, Position} from "monaco-editor";
 import {SetVarDecorationPropsBlock} from "../blockly/blocks/SetVarDecorationPropsBlock";
 import {SetVarTextAlign} from "../blockly/blocks/SetVarTextAlign";
 import {SetVarPositionBlock} from "../blockly/blocks/SetVarPositionBlock";
 import {SetVarBorderStyle} from "../blockly/blocks/SetVarBorderStyle";
 import {SetVarFontWeight} from "../blockly/blocks/SetVarFontWeight";
-import {ProjectTypeSelector} from "../components/selector/ProjectTypeSelector";
 import {ObjectDefinition} from "../Registry";
-import {Settings} from "../components/Settings";
-import {ThemeSettings} from "../components/settings/ThemeSettings";
 import {Themes} from "../Themes";
-import {AnimationSettings} from "../components/settings/AnimationSettings";
-import {StorageSettings} from "../components/settings/StorageSettings";
-import {GameMenu} from "../components/game/GameMenu";
-import {IncompatibleScreen} from "../components/util/IncompatibleScreen";
 
 export class UIManager {
 

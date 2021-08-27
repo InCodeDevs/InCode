@@ -7,6 +7,7 @@ const git = require('./plugins/webpack/git')
 const config = {
     entry: './src/index.tsx',
     mode: 'development',
+    devtool: false,
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js'
@@ -47,6 +48,11 @@ const config = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: ["babel-loader"]
             },
             {
                 test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
