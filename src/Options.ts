@@ -9,7 +9,12 @@ export class Options {
 
     public static theme = 'dark';
 
-    public static readonly version = '3.0.0';
+    // @ts-ignore
+    public static readonly version = _GIT_VERSION;
 
-    public static readonly formattedVersion = 'InCode Editor v' + Options.version;
+    // @ts-ignore
+    public static readonly formattedVersion = 'InCode Editor v' + Options.version + " at " + _GIT_SHORT_COMMIT;
+
+    // @ts-ignore
+    public static readonly formattedDOMVersion = `InCode Editor <a target="_blank" href='${_GIT_REPO}/tree/${_GIT_BRANCH}'>v${_GIT_VERSION}</a> at <a target="_blank" href='${_GIT_REPO}/commit/${_GIT_LONG_COMMIT}'>${_GIT_SHORT_COMMIT}</a>`;
 }

@@ -75,7 +75,7 @@ export class UIManager {
             UIManager.alert("" +
                 "<h1>InCode-Editor</h1>" +
                 "<span><strong>By:</strong> <span style='font-family: monospace'>The InCode Developers</span><br>" +
-                "<strong>Version:</strong> <span style='font-family: monospace'>" + Options.formattedVersion + "</span><br>" +
+                "<strong>Version:</strong> <span style='font-family: monospace'>" + Options.formattedDOMVersion + "</span><br>" +
                 "<strong>License:</strong> <span style='font-family: monospace'>GNU General Public License 3.0</span><br>" +
                 "<a href='https://github.com/InCodeDevs/Editor' target='_blank'>GitHub</a>\t<a href='https://incode.craftions.net' target='_blank'>Website</a></span>" +
                 ""

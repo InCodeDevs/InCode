@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
+const git = require('./plugins/webpack/git')
 
 const config = {
     entry: './src/index.tsx',
@@ -69,6 +70,13 @@ const config = {
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            _GIT_SHORT_COMMIT: JSON.stringify(git.commitHash.short),
+            _GIT_LONG_COMMIT: JSON.stringify(git.commitHash.long),
+            _GIT_BRANCH: JSON.stringify(git.branch),
+            _GIT_VERSION: JSON.stringify(git.version),
+            _GIT_REPO: JSON.stringify(git.repo)
+        }),
         new HtmlWebpackPlugin({
             appMountId: 'app',
             filename: 'index.html',
