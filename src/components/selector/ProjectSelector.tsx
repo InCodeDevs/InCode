@@ -21,9 +21,13 @@ export class ProjectSelector extends React.Component {
                 let j = JSON.parse(localStorage.getItem((localStorage.key(i) as string)) as string);
                 entries.push({
                     title: j.name,
-                    callback: () => null,
+                    callback: () => {
+                        Registry.putRegister(0x10AD, j.name)
+                        ProjectManager.openProject(j.name, j.type);
+                    },
                     imageURL: j.type === 'monaco' ? 'assets/code-editor.png' : 'https://developers.google.com/blockly/images/logos/logo_only.png',
-                    area: j.type === 'monaco' ? 'code-projects' : 'block-projects'
+                    area: j.type === 'monaco' ? 'code-projects' : 'block-projects',
+                    badge: false
                 })
             }
         }

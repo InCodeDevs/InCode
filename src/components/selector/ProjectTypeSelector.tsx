@@ -49,7 +49,7 @@ export class ProjectTypeSelector extends React.Component {
                                 height={128}/>
                             <p className={"menu-editor-description"}>
                                 Desktop App <br/>
-                                <span style={{fontFamily: "Comic Sans MS"}}>Eine einfache Desktop Anwendung <strong>(Windows only)</strong></span>
+                                <span style={{fontFamily: "Comic Sans MS"}}>Eine einfache Desktop Anwendung</span>
                             </p>
                         </div>
                     </div>

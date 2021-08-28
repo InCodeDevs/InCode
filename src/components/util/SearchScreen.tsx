@@ -93,6 +93,14 @@ export class SearchScreen extends React.Component<Props, State> {
 
             element.addEventListener('click', e.callback)
 
+            let badge = document.createElement('span')
+            badge.className = 'verified';
+            badge.innerText = "✓"
+
+            if (!e.badge) {
+                badge.style.visibility = 'hidden'
+            }
+
             let image = document.createElement('img');
             image.width = 128
             image.height = 128
@@ -101,7 +109,8 @@ export class SearchScreen extends React.Component<Props, State> {
             let h5 = document.createElement('h5');
             h5.classList.add('template-name')
             h5.innerText = e.title;
-            
+
+            element.appendChild(badge);
             element.appendChild(image);
             element.appendChild(h5);
 

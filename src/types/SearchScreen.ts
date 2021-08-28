@@ -27,7 +27,8 @@ export type Entry = {
     title: string,
     area: string,
     imageURL: string,
-    callback: () => void
+    callback: () => void,
+    badge: boolean
 }
 
 export type State = {}
