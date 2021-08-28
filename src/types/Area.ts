@@ -4,7 +4,8 @@
  */
 
 export type AreaProps = {
-    title: string
+    title: string,
+    id: string
 }
 
 export type AreaState = {}

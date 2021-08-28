@@ -10,7 +10,7 @@ export class Area extends React.Component<AreaProps, AreaState> {
 
     render() {
         return (
-            <div style={{flex: "50%", color: "white"}} id={this.props.title.toLowerCase()}>
+            <div style={{flex: "50%", color: "white"}} id={this.props.id}>
                     <h2>{this.props.title}</h2>
             </div>
         )

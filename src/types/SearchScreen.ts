@@ -4,7 +4,7 @@
  */
 
 export type Props = {
-    title: string
+    title: string,
     areas: Area[],
     entries: Entry[],
     buttons: {
@@ -19,7 +19,8 @@ export type Button = {
 }
 
 export type Area = {
-    title: string
+    title: string,
+    id: string
 }
 
 export type Entry = {

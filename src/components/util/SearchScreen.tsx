@@ -67,7 +67,7 @@ export class SearchScreen extends React.Component<Props, State> {
                         {
                             this.props.areas.map(a => {
                                 return (
-                                    <Area title={a.title} />
+                                    <Area title={a.title} id={a.id}/>
                                 )
                             })
                         }
@@ -77,14 +77,13 @@ export class SearchScreen extends React.Component<Props, State> {
         )
     }
 
-
     componentDidMount() {
-        this.updateEntries(this.props.entries);
+        this.updateEntries(this.props.entries)
     }
 
     updateEntries(entries: Entry[]) {
         this.props.areas.forEach(area => {
-            (document.getElementById(area.title.toLowerCase()) as HTMLDivElement).innerHTML = "<h2>" + area.title + "</h2>"
+            (document.getElementById(area.id) as HTMLDivElement).innerHTML = "<h2>" + area.title + "</h2>"
         })
 
         entries.forEach(e => {

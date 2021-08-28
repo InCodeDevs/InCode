@@ -4,64 +4,52 @@
  */
 
 import * as React from "react";
-import {Button, Form} from "react-bootstrap";
 import {ObjectDefinition, Registry} from "../../Registry";
 import {UIManager} from "../../utils/UIManager";
 import {ProjectManager} from "../../utils/ProjectManager";
-import {MainMenu} from "../MainMenu";
+import {SearchScreen} from "../util/SearchScreen";
+import {Entry} from "../../types/SearchScreen";
 
 export class ProjectSelector extends React.Component {
 
-    /**
-     * Renders the Menu where you can choose a template
-     * @return The Menu
-     */
     render() {
+
+        let entries: Entry[] = [];
+
+        for (let i = 0; i < localStorage.length; i++) {
+            if((localStorage.key(i) as string).startsWith("incode-editor.projects")){
+                let j = JSON.parse(localStorage.getItem((localStorage.key(i) as string)) as string);
+                entries.push({
+                    title: j.name,
+                    callback: () => null,
+                    imageURL: j.type === 'monaco' ? 'assets/code-editor.png' : 'https://developers.google.com/blockly/images/logos/logo_only.png',
+                    area: j.type === 'monaco' ? 'code-projects' : 'block-projects'
+                })
+            }
+        }
+
         return (
             <>
-                <div style={{textAlign: 'center'}}>
-                    <div style={{display: 'flex', width: "100%", marginTop: "2%", marginBottom: "2%"}}>
-                        <h1 style={{color: "#F8F9FAFF", flex: "55%", textAlign: "right"}}>Meine Projekte</h1>
-                        <div style={{flex: "45%", display: "flex"}}>
-                            <span style={{flex: "50%"}}/>
-                            <div style={{flex: "25%"}}>
-                                <Button variant={"outline-flat"} size={"xxl"} onClick={this.import}>Importieren</Button>
-                            </div>
-                            <div style={{flex: "25%"}}>
-                                <Button variant={"outline-flat"} size={"xxl"}
-                                        onClick={this.showMainMenu}>Hauptmenü</Button>
-                            </div>
-                        </div>
-                    </div>
-                    <div style={{textAlign: 'center', display: "flex", justifyContent: "center"}}>
-                        <Form.Control type={"text"} placeholder={"Suchen..."} style={{
-                            width: "30%",
-                            fontSize: "1.5rem"
-                        }} id={"search-bar"} onChange={ProjectSelector.search}/>
-                    </div>
-                    <div style={{display: "flex", width: "100%", marginTop: "2%"}}>
-                        <div style={{flex: "50%", color: "white"}} id={"blockly-projects"}>
-                            <h2>Blockly Projekte</h2>
-                        </div>
-                        <div style={{flex: "50%", color: "white"}} id={"code-projects"}>
-                            <h2>Code Projekte</h2>
-                        </div>
-                    </div>
-                </div>
+                <SearchScreen title={"Meine Projekte"} areas={[
+                    {
+                        title: "Block Projekte",
+                        id: "block-projects"
+                    },
+                    {
+                        title: "Code Projekte",
+                        id: "code-projects"
+                    }
+                ]} entries={entries} buttons={{
+                    mainMenu: true,
+                    custom: [
+                        {
+                            title: "Importieren",
+                            callback: () => this.import()
+                        }
+                    ]
+                }} />
             </>
         )
-    }
-
-    componentDidMount() {
-        ProjectSelector.updateProjects()
-    }
-
-    /**
-     * Shows the Main Menu
-     */
-    showMainMenu() {
-        UIManager.showComponent(<MainMenu/>)
-        UIManager.hideMenuBar()
     }
 
     /**
@@ -100,7 +88,7 @@ export class ProjectSelector extends React.Component {
 
                                 const c = () => {
                                     if (ProjectManager.createProject(pName, pType, pCode)) {
-                                        ProjectSelector.search()
+                                        UIManager.showComponent(<ProjectSelector />);
                                         UIManager.ask("<h1 style='text-align:center;'>Erfolgreich</h1><h4 style='text-align:center;'>Das Projekt wurde erfolgreich importiert! Willst du es jetzt öffnen?</h4>", () => {
                                             Registry.putRegister(0x10AD, pName);
                                             ProjectManager.openProject(pName, pType);
@@ -144,60 +132,6 @@ export class ProjectSelector extends React.Component {
         }
     }
 
-    public static updateProjects(projects: ObjectDefinition = {ex: true}) {
-
-        (document.getElementById('code-projects') as HTMLDivElement).innerHTML = "<h2>Code Projekte</h2>";
-        (document.getElementById('blockly-projects') as HTMLDivElement).innerHTML = "<h2>Blockly Projekte</h2>";
-
-        let a2u: ObjectDefinition;
-
-        if (!projects.ex) {
-            a2u = projects;
-        } else {
-            a2u = this.getProjects();
-        }
-        Object.keys(a2u).forEach(p => {
-            let project = this.getProjects()[p];
-
-            let element = document.createElement('div');
-            element.classList.add('template');
-
-            element.addEventListener('click', () => {
-
-                Registry.putRegister(0x10AD, p);
-                UIManager.hideAllPopups();
-                // 0x10AD is the internal identifier of the temporary project name address in the TempOptions.options object
-                UIManager.hideMenu();
-                UIManager.showMenuBar();
-                ProjectManager.openProject(p, ProjectManager.getProjectType(p));
-
-            })
-
-            let image = document.createElement('img');
-            image.width = 128
-            image.height = 128
-
-            let h5 = document.createElement('h5');
-            h5.classList.add('template-name')
-            h5.innerText = p;
-
-            if (project.type === 'monaco') {
-                image.src = "assets/code-editor.png"
-            } else {
-                image.src = "https://developers.google.com/blockly/images/logos/logo_only.png"
-            }
-
-            element.appendChild(image)
-            element.appendChild(h5)
-
-            if (project.type === 'monaco') {
-                (document.getElementById('code-projects') as HTMLDivElement).appendChild(element)
-            } else {
-                (document.getElementById('blockly-projects') as HTMLDivElement).appendChild(element)
-            }
-
-        })
-    }
 
     public static getProjects(): ObjectDefinition {
         let projects: ObjectDefinition = {};
@@ -209,20 +143,5 @@ export class ProjectSelector extends React.Component {
             }
         }
         return projects;
-    }
-
-    public static search() {
-        let term = (document.getElementById('search-bar') as HTMLInputElement).value.trim();
-        if (term.length > 0) {
-            let projects: ObjectDefinition = {};
-            Object.keys(ProjectSelector.getProjects()).forEach(p => {
-                let project = ProjectSelector.getProjects()[p];
-                if (p.toLowerCase().includes(term.toLowerCase()))
-                    projects[p] = project;
-            })
-            ProjectSelector.updateProjects(projects);
-        } else {
-            ProjectSelector.updateProjects();
-        }
     }
 }
