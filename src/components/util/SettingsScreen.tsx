@@ -8,19 +8,7 @@ import {Button} from "react-bootstrap";
 import {UIManager} from "../../utils/UIManager";
 import {Settings} from "../Settings";
 import {MainMenu} from "../MainMenu";
-
-type Props = {
-    title: string
-    settings: Entry[]
-}
-
-export type Entry = {
-    title: string,
-    imageURL: string,
-    callback: () => void
-}
-
-type State = {}
+import {Props, State, Entry} from '../../types/SettingsScreen';
 
 export class SettingsScreen extends React.Component<Props, State> {
 

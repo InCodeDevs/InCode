@@ -41,6 +41,7 @@ import {SetVarBorderStyle} from "../blockly/blocks/SetVarBorderStyle";
 import {SetVarFontWeight} from "../blockly/blocks/SetVarFontWeight";
 import {ObjectDefinition} from "../Registry";
 import {Themes} from "../Themes";
+import { SearchScreen } from "../components/util/SearchScreen";
 
 export class UIManager {
 
@@ -55,7 +56,33 @@ export class UIManager {
         ReactDOM.render((<MenuBar/>), menuBarContainer);
 
         UIManager.hideMenuBar();
-        UIManager.showComponent(<MainMenu/>)
+        UIManager.showComponent(<SearchScreen areas={[
+            {
+                title: "MyArea"
+            },
+            {
+                title: "MyArea2"
+            }
+        ]} title={"Search"} entries={
+            [
+                {
+                    title: "Test",
+                    imageURL: "assets/code-editor.png",
+                    area: 'MyArea',
+                    callback: () => {
+                        alert("Hello World")
+                    }
+                },
+                {
+                    title: "Test2",
+                    imageURL: "assets/code-editor.png",
+                    area: 'MyArea2',
+                    callback: () => {
+                        alert("Hello World")
+                    }
+                }
+            ]
+        }/>)
 
         UIManager.deleteBlockly();
         UIManager.deleteMonaco();
