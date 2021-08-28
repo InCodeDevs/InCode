@@ -9,7 +9,7 @@ import {ObjectDefinition} from "../Registry";
 import {UIManager} from "../utils/UIManager";
 import {MainMenu} from "./MainMenu";
 import {Button, Form} from "react-bootstrap";
-import {Entry, SettingsScreen} from "./settings/SettingsScreen";
+import {Entry, SettingsScreen} from "./util/SettingsScreen";
 import {Themes} from "../Themes";
 
 export class Settings extends React.Component {
