@@ -16,7 +16,6 @@ export class SearchScreen extends React.Component<Props, State> {
 
     render() {
         return (
-            <>
             <div style={{textAlign: 'center'}}>
                     <div style={{display: 'flex', width: "100%", marginTop: "2%", marginBottom: "2%"}}>
                         <h1 style={{color: "#F8F9FAFF", flex: "55%", textAlign: "right"}}>{this.props.title}</h1>
@@ -73,7 +72,6 @@ export class SearchScreen extends React.Component<Props, State> {
                         }
                     </div>
                 </div>
-            </>
         )
     }
 
