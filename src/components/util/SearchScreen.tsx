@@ -9,6 +9,8 @@ import { ObjectDefinition } from '../../Registry';
 
 import {Props, Entry, State} from '../../types/SearchScreen';
 import {Area} from './SearchScreen/Area';
+import {UIManager} from "../../utils/UIManager";
+import { MainMenu } from '../MainMenu';
 
 export class SearchScreen extends React.Component<Props, State> {
 
@@ -18,15 +20,27 @@ export class SearchScreen extends React.Component<Props, State> {
             <div style={{textAlign: 'center'}}>
                     <div style={{display: 'flex', width: "100%", marginTop: "2%", marginBottom: "2%"}}>
                         <h1 style={{color: "#F8F9FAFF", flex: "55%", textAlign: "right"}}>{this.props.title}</h1>
-                        <div style={{flex: "45%", display: "flex"}}>
-                            <span style={{flex: "50%"}}/>
-                            <div style={{flex: "25%"}}>
-                                <Button variant={"outline-flat"} size={"xxl"}>Importieren</Button>
-                            </div>
-                            <div style={{flex: "25%"}}>
-                                <Button variant={"outline-flat"} size={"xxl"}
-                                        >Hauptmenü</Button>
-                            </div>
+                        <div style={{flex: "45%", display: "flex", justifyContent: "right"}}>
+                            {
+                                this.props.buttons.custom.map(b => {
+                                    return (
+                                        <Button variant={"outline-flat"} size={"xxl"}
+                                                style={{
+                                                    marginRight: "1.5rem"
+                                                }}
+                                                onClick={b.callback}>{b.title}</Button>
+                                    )
+                                })
+                            }
+                            {
+                                this.props.buttons.mainMenu && <Button  variant={"outline-flat"} size={"xxl"}
+                                                                        style={{
+                                                                            marginRight: "1.5rem"
+                                                                        }}
+                                                                        onClick={() => {
+                                                                            UIManager.showComponent(<MainMenu />)
+                                                                        }}>Hauptmenü</Button>
+                            }
                         </div>
                     </div>
                     <div style={{textAlign: 'center', display: "flex", justifyContent: "center"}}>

@@ -56,33 +56,7 @@ export class UIManager {
         ReactDOM.render((<MenuBar/>), menuBarContainer);
 
         UIManager.hideMenuBar();
-        UIManager.showComponent(<SearchScreen areas={[
-            {
-                title: "MyArea"
-            },
-            {
-                title: "MyArea2"
-            }
-        ]} title={"Search"} entries={
-            [
-                {
-                    title: "Test",
-                    imageURL: "assets/code-editor.png",
-                    area: 'MyArea',
-                    callback: () => {
-                        alert("Hello World")
-                    }
-                },
-                {
-                    title: "Test2",
-                    imageURL: "assets/code-editor.png",
-                    area: 'MyArea2',
-                    callback: () => {
-                        alert("Hello World")
-                    }
-                }
-            ]
-        }/>)
+        UIManager.showComponent(<MainMenu/>)
 
         UIManager.deleteBlockly();
         UIManager.deleteMonaco();
