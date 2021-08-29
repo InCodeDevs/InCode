@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import {Avatar} from "../animations/Avatar";
+import {YouTubeUtil} from "./YouTubeUtil";
 
 export class CodeGame extends React.Component {
 
@@ -12,15 +13,8 @@ export class CodeGame extends React.Component {
         Avatar.disable();
         return (
             <div style={{textAlign: 'center'}}>
-                <iframe width="1280"
-                        height="720"
-                        src="https://www.youtube.com/embed/znyESveH0Pk"
-                        title="YouTube video player"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        id="yt_vid"
-                />
+                <h1 style={{color: "#F9FAFF"}} id={"yt-video-name"}>Einführung</h1>
+                <div id={"yt-video"}/>
                 <div className={"teacher"} style={{display: 'none'}}>
                     <div className={"avatar"}>
                         <img id={"avatar-display"} src={"assets/game/new_avatar_1.png"} width={256} height={256}/>
@@ -39,33 +33,11 @@ export class CodeGame extends React.Component {
         );
     }
 
-    public static playVideo(id: string) {
-        (document.getElementById('yt_vid') as HTMLIFrameElement).src = 'https://youtube.com/embed/' + id + "?autoplay=1&vq=720hd";
-    }
-
-    onVideoEnd() {
-        alert("Hello World")
-    }
-
     componentDidMount() {
-
-        (document.getElementById('yt_vid') as HTMLIFrameElement).addEventListener('onStateChange', (state) => {
-            alert(state)
-            // @ts-ignore
-            if(state as number === 0){
-                this.onVideoEnd();
-            }
+        YouTubeUtil.init()
+        YouTubeUtil.play("znyESveH0Pk", () => {
+            alert("Hello World")
         })
-        CodeGame.playVideo('znyESveH0Pk');
-        return;
-        let t = "";
-
-        t = document.querySelectorAll('.speech-bubble-content').item(0).innerHTML;
-
-        (async () => {
-            Avatar.enable()
-            // await Avatar.speak(t)
-            Avatar.disable()
-        })();
     }
+
 }

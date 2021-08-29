@@ -32,6 +32,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@types/youtube-player": "^5.5.4",
     "blockly": "^6.20210701.0",
     "bootstrap": "^5.0.2",
     "incode-language": "^1.0.5",
@@ -40,6 +41,7 @@
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
     "react-bootstrap-icons": "^1.5.0",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "youtube-player": "^5.5.2"
   }
 }
