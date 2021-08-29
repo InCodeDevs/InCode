@@ -5,7 +5,7 @@
 
 export class Avatar {
 
-    protected static readonly INTERVAL: number = 500;
+    protected static readonly INTERVAL: number = 650;
 
     protected static enabled: boolean = false;
 
@@ -22,12 +22,27 @@ export class Avatar {
             if(this.enabled){
                 let s = (document.getElementById('avatar-display') as HTMLImageElement).src;
 
-                if (s.endsWith("_speaking.png")) {
-                    (document.getElementById('avatar-display') as HTMLImageElement).src = 'assets/game/avatar.png';
+                if (s.endsWith("_speaking_0.png")) {
+                    (document.getElementById('avatar-display') as HTMLImageElement).src = 'assets/game/new_avatar_1.png';
                 } else {
-                    (document.getElementById('avatar-display') as HTMLImageElement).src = 'assets/game/avatar_speaking.png';
+                    (document.getElementById('avatar-display') as HTMLImageElement).src = 'assets/game/new_avatar_speaking_0.png';
                 }
             }
         }, this.INTERVAL)
+    }
+
+    public static speak(text: string){
+        let msg = new SpeechSynthesisUtterance();
+        msg.text = text;
+        msg.volume = 1;
+        msg.lang = "de-DE";
+        console.log(speechSynthesis.getVoices());
+        msg.voice = speechSynthesis.getVoices()[0]
+        msg.rate = 1;
+        msg.pitch = 1;
+        speechSynthesis.speak(msg);
+        msg.onend = function(){
+            return true;
+        }
     }
 }

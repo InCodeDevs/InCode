@@ -169,13 +169,6 @@ export class MainMenu extends React.Component {
     }
 
     public static openGame() {
-
-        // Only for debugging!
-        // We should remove this later.
-
-        UIManager.alert("<h1>In Arbeit</h1><h4>Diese Funktion ist aktuell in Arbeit und kann Fehler enthalten.</h4>", () => {
-            UIManager.showComponent(<GameMenu />);
-        })
-
+        UIManager.showComponent(<GameMenu />);
     }
 }

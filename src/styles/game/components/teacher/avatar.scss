@@ -15,13 +15,8 @@
 
   #avatar-display {
     border-radius: 50%;
-    transition: transform .25s;
   }
 }
 .avatar:hover {
   scale: 1.2;
-
-  #avatar-display {
-    transform: rotate(20deg);
-  }
 }
