@@ -12,8 +12,8 @@ This is the official Editor for the InCode Programming Language by Ben Siebert a
 
 # For stable code
 git clone https://github.com/InCodeDevs/InCode-Editor.git
-# For development
-git clone --branch dev-v[version_here] https://github.com/InCodeDevs/InCode-Editor.git
+# For development (UNSTABLE)
+git clone --branch latest https://github.com/InCodeDevs/InCode-Editor.git
 
 cd InCode-Editor
 
