@@ -4,21 +4,15 @@
  */
 
 import * as React from "react";
-
-type ScreenProps = {
-    title: string,
-    message: string
-}
-
-type ScreenState = {};
+import { ScreenProps, ScreenState } from '../../types/IncompatibleScreen'
 
 export class IncompatibleScreen extends React.Component<ScreenProps, ScreenState> {
 
     render() {
         return (
-            <div style={{top: "50%", left: "50%", position: 'absolute', transform: 'translate(-50%, -50%)'}}>
-                <h1 style={{textAlign: 'center', color: 'red'}}>{this.props.title}</h1>
-                <h2 style={{textAlign: 'center', color: 'white'}}>{this.props.message}</h2>
+            <div style={{ top: "50%", left: "50%", position: 'absolute', transform: 'translate(-50%, -50%)' }}>
+                <h1 style={{ textAlign: 'center', color: 'red' }}>{this.props.title}</h1>
+                <h2 style={{ textAlign: 'center', color: 'white' }}>{this.props.message}</h2>
             </div>
         );
     }

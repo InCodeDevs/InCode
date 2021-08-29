@@ -1,6 +1,6 @@
 {
   "name": "incode-editor",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "The InCode Editor",
   "main": "",
   "keywords": [],
@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@types/react": "^17.0.19",
+    "@types/react-bootstrap": "^0.32.26",
     "@types/react-dom": "^17.0.9",
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^5.2.7",

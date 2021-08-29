@@ -9,7 +9,10 @@
         "moduleResolution": "node",
         "target": "ES2016",
         "allowJs": true,
-        "jsx": "react"
+        "jsx": "react",
+        "typeRoots": [
+            "node_modules/@types"
+        ]
     },
     "include": [
         "./src/**/*"

@@ -41,6 +41,7 @@ import {SetVarBorderStyle} from "../blockly/blocks/SetVarBorderStyle";
 import {SetVarFontWeight} from "../blockly/blocks/SetVarFontWeight";
 import {ObjectDefinition} from "../Registry";
 import {Themes} from "../Themes";
+import { SearchScreen } from "../components/util/SearchScreen";
 
 export class UIManager {
 
