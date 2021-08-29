@@ -120,7 +120,6 @@ export class UIManager {
      */
     public static hideMenu = () => {
         (document.getElementById('menu') as HTMLDivElement).style.display = 'none';
-        (document.getElementById('menu') as HTMLDivElement).innerHTML = '';
     }
 
     /**
