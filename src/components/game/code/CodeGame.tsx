@@ -6,6 +6,7 @@
 import * as React from "react";
 import {Avatar} from "../animations/Avatar";
 import {YouTubeUtil} from "./YouTubeUtil";
+import {Button} from "react-bootstrap";
 
 export class CodeGame extends React.Component {
 
@@ -14,21 +15,26 @@ export class CodeGame extends React.Component {
         return (
             <div style={{textAlign: 'center'}}>
                 <h1 style={{color: "#F9FAFF"}} id={"yt-video-name"}>Einführung</h1>
-                <div id={"yt-video"}/>
-                <div className={"teacher"} style={{display: 'none'}}>
-                    <div className={"avatar"}>
-                        <img id={"avatar-display"} src={"assets/game/new_avatar_1.png"} width={256} height={256}/>
-                    </div>
-                    <div className={"speech-bubble"}>
-                        <div className={"pre-speech-bubble"}>
-                            <div className={"speech-bubble-circle-one"}/>
-                            <div className={"speech-bubble-circle-two"}/>
+                <div id={"yt-video"}/><br />
+                <Button variant={"outline-success"} size={"xxl"} id={"tutorial-forward"} style={{visibility: 'hidden'}}>Weiter</Button>
+                {
+                    /*
+                    <div className={"teacher"} style={{display: 'none'}}>
+                        <div className={"avatar"}>
+                            <img id={"avatar-display"} src={"assets/game/new_avatar_1.png"} width={256} height={256}/>
                         </div>
-                        <h4 className={"speech-bubble-content"}>
-                            Hallo ich bin Lukas und ja
-                        </h4>
+                        <div className={"speech-bubble"}>
+                            <div className={"pre-speech-bubble"}>
+                                <div className={"speech-bubble-circle-one"}/>
+                                <div className={"speech-bubble-circle-two"}/>
+                            </div>
+                            <h4 className={"speech-bubble-content"}>
+
+                            </h4>
+                        </div>
                     </div>
-                </div>
+                     */
+                }
             </div>
         );
     }
@@ -36,7 +42,7 @@ export class CodeGame extends React.Component {
     componentDidMount() {
         YouTubeUtil.init()
         YouTubeUtil.play("znyESveH0Pk", () => {
-            alert("Hello World")
+            (document.getElementById('tutorial-forward') as HTMLButtonElement).style.visibility = 'visible'
         })
     }
 
