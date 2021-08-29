@@ -5,15 +5,17 @@
 
 import * as React from "react";
 import {Avatar} from "../animations/Avatar";
-import {YouTubeUtil} from "./YouTubeUtil";
+import {YouTubePlayerAPI} from "../../../utils/youtube/YouTubePlayerAPI";
 import {Button} from "react-bootstrap";
+import {YouTubeAPI} from "../../../utils/youtube/YouTubeAPI";
 
 export class CodeGame extends React.Component {
 
     render() {
         Avatar.disable();
         return (
-            <div style={{textAlign: 'center'}}>
+            <div style={{display: 'flex'}}>
+                <div className={""}></div>
                 <h1 style={{color: "#F9FAFF"}} id={"yt-video-name"}>Einführung</h1>
                 <div id={"yt-video"}/><br />
                 <Button variant={"outline-success"} size={"xxl"} id={"tutorial-forward"} style={{visibility: 'hidden'}}>Weiter</Button>
@@ -40,10 +42,11 @@ export class CodeGame extends React.Component {
     }
 
     componentDidMount() {
-        YouTubeUtil.init()
-        YouTubeUtil.play("znyESveH0Pk", () => {
+        // YouTubePlayer.init()
+        /*
+        YouTubePlayer.play("znyESveH0Pk", () => {
             (document.getElementById('tutorial-forward') as HTMLButtonElement).style.visibility = 'visible'
-        })
+        })*/
     }
 
 }

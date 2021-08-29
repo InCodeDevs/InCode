@@ -3,9 +3,9 @@
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 
-@import "button";
-@import "generel";
-@import "menu";
-@import "popup";
-@import "templates";
-@import "course";
+export type CourseProps = {
+    type: string,
+    title: string
+}
+
+export type CourseState = {}

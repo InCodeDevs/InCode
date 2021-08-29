@@ -6,6 +6,7 @@
 import * as React from "react";
 import {UIManager} from "../../utils/UIManager";
 import {CodeGame} from "./code/CodeGame";
+import {Course} from "./Course";
 
 export class GameMenu extends React.Component {
 
@@ -44,10 +45,10 @@ export class GameMenu extends React.Component {
     }
 
     loadBlocks() {
-        
+
     }
 
     loadCode() {
-        UIManager.showComponent(<CodeGame />)
+        UIManager.showComponent(<Course type={"code"} title={"Code Tutorials"}/>)
     }
 }
