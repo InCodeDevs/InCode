@@ -43,7 +43,8 @@
 #livePreview {
   width: 45%;
   height: 90%;
-  position: absolute;
+  position: fixed;
+  animation-name: none;
   bottom: 0;
   right: 0;
   z-index: 1;
