@@ -34,7 +34,7 @@ export class Course extends React.Component<CourseProps, CourseState> {
 
         (document.getElementById('yt-video') as HTMLElement).style.display = 'none'
 
-        let playlistId = this.props.type === 'code' ? 'PLacRKOx6ODPLn8O4krv2qg0QHY2jAXvOc' : ''
+        let playlistId = this.props.type === 'code' ? 'PLacRKOx6ODPLn8O4krv2qg0QHY2jAXvOc' : 'PLacRKOx6ODPJk8AAxht35g87XhNLLboDO'
 
         YouTubeAPI.getPlayListVideos(playlistId, (videos) => {
             videos.forEach(id => {
@@ -81,7 +81,8 @@ export class Course extends React.Component<CourseProps, CourseState> {
 
                         let w = JSON.parse(localStorage.getItem("incode-editor.tutorials.watched") as string);
 
-                        w.videos.push(id);
+                        if(!w.videos.includes(id))
+                            w.videos.push(id);
 
                         localStorage.setItem("incode-editor.tutorials.watched", JSON.stringify(w));
                         title.style.textDecoration = 'line-through'

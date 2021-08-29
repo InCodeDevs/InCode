@@ -45,7 +45,7 @@ export class GameMenu extends React.Component {
     }
 
     loadBlocks() {
-
+        UIManager.showComponent(<Course type={"blocks"} title={"Block Tutorials"}/>)
     }
 
     loadCode() {
