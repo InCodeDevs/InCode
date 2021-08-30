@@ -4,31 +4,31 @@
  */
 
 export type Props = {
-    title: string,
-    areas: Area[],
-    entries: Entry[],
-    buttons: {
-        mainMenu: boolean,
-        custom: Button[]
-    }
-}
+  title: string;
+  areas: Area[];
+  entries: Entry[];
+  buttons: {
+    mainMenu: boolean;
+    custom: Button[];
+  };
+};
 
 export type Button = {
-    title: string,
-    callback: () => void
-}
+  title: string;
+  callback: () => void;
+};
 
 export type Area = {
-    title: string,
-    id: string
-}
+  title: string;
+  id: string;
+};
 
 export type Entry = {
-    title: string,
-    area: string,
-    imageURL: string,
-    callback: () => void,
-    badge: boolean
-}
+  title: string;
+  area: string;
+  imageURL: string;
+  callback: () => void;
+  badge: boolean;
+};
 
-export type State = {}
+export type State = {};

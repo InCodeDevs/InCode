@@ -4,8 +4,8 @@
  */
 
 export type CourseProps = {
-    type: string,
-    title: string
-}
+  type: string;
+  title: string;
+};
 
-export type CourseState = {}
+export type CourseState = {};

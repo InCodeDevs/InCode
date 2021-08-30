@@ -4,6 +4,5 @@
  */
 
 export abstract class Worker {
-
-    abstract run(): void;
+  abstract run(): void;
 }

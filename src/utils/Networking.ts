@@ -4,45 +4,49 @@
  */
 
 export class Networking {
+  /**
+   * Downloads a file
+   * @param filename The name of the file
+   * @param text The content of the file
+   * @param mimeType The mimeType of the file
+   */
+  public static download(
+    filename: string,
+    text: string,
+    mimeType = "text/plain"
+  ) {
+    const element = document.createElement("a");
+    element.setAttribute(
+      "href",
+      "data:" + mimeType + ";charset=utf-8," + encodeURIComponent(text)
+    );
+    element.setAttribute("download", filename);
 
-    /**
-     * Downloads a file
-     * @param filename The name of the file
-     * @param text The content of the file
-     * @param mimeType The mimeType of the file
-     */
-    public static download(filename: string, text: string, mimeType = "text/plain") {
-        const element = document.createElement('a');
-        element.setAttribute('href', 'data:' + mimeType + ';charset=utf-8,' + encodeURIComponent(text));
-        element.setAttribute('download', filename);
+    element.style.display = "none";
+    document.body.appendChild(element);
 
-        element.style.display = 'none';
-        document.body.appendChild(element);
+    element.click();
 
-        element.click();
+    document.body.removeChild(element);
+  }
 
-        document.body.removeChild(element);
-    }
+  public static downloadCustom(href: string, filename: string) {
+    const element = document.createElement("a");
+    element.setAttribute("href", href);
+    element.setAttribute("download", filename);
 
+    element.style.display = "none";
+    document.body.appendChild(element);
 
-    public static downloadCustom(href: string, filename: string){
-        const element = document.createElement('a');
-        element.setAttribute('href', href);
-        element.setAttribute('download', filename);
+    element.click();
 
-        element.style.display = 'none';
-        document.body.appendChild(element);
+    document.body.removeChild(element);
+  }
 
-        element.click();
-
-        document.body.removeChild(element);
-    }
-
-
-    public static getURLContent(url: string): string {
-        const x = new XMLHttpRequest();
-        x.open("GET", url, false)
-        x.send(null)
-        return x.responseText;
-    }
+  public static getURLContent(url: string): string {
+    const x = new XMLHttpRequest();
+    x.open("GET", url, false);
+    x.send(null);
+    return x.responseText;
+  }
 }
