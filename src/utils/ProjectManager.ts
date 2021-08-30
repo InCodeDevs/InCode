@@ -49,8 +49,9 @@ export class ProjectManager {
         UIManager.createMonaco();
         // @ts-ignore
         window.editor.setValue(
-          JSON.parse(localStorage.getItem("incode-editor.projects." + name) as string)
-            .code
+          JSON.parse(
+            localStorage.getItem("incode-editor.projects." + name) as string
+          ).code
         );
       } else {
         UIManager.createBlockly();
