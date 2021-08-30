@@ -24,9 +24,13 @@ jobs:
         with:
           images: mctzock/incode-editor
       
-      - name: Build Web App
+      - name: Build on Node.js 14.x
         uses: actions/setup-node@v2
-        - run: 'npm run npm:install-dependencies && npm run webpack:build-prod'
+        with:
+          node-version: 14.x
+          cache: 'npm'
+      - run: npm run npm:install-dependencies
+      - run: npm run webpack:build-prod
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
