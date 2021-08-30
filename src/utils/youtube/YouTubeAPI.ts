@@ -16,7 +16,7 @@ export class YouTubeAPI {
 
     public static getPlayListVideos(playListId: string, callback: (videos: string[]) => void) {
         this.getPlayListContent(playListId, (d) => {
-            let videos: string[] = [];
+            const videos: string[] = [];
 
             (d.items as ObjectDefinition[]).forEach(x => {
                 videos.push(x.contentDetails.videoId)

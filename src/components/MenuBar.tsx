@@ -8,7 +8,6 @@ import { Dropdown } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import {UIManager} from "../utils/UIManager";
 import {Workspace} from "../utils/Workspace";
-import {ProjectManager} from "../utils/ProjectManager";
 import {MainMenu} from "./MainMenu";
 
 export class MenuBar extends React.Component {

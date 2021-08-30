@@ -34,13 +34,13 @@ export class Course extends React.Component<CourseProps, CourseState> {
 
         (document.getElementById('yt-video') as HTMLElement).style.display = 'none'
 
-        let playlistId = this.props.type === 'code' ? 'PLacRKOx6ODPLn8O4krv2qg0QHY2jAXvOc' : 'PLacRKOx6ODPJk8AAxht35g87XhNLLboDO'
+        const playlistId = this.props.type === 'code' ? 'PLacRKOx6ODPLn8O4krv2qg0QHY2jAXvOc' : 'PLacRKOx6ODPJk8AAxht35g87XhNLLboDO'
 
         YouTubeAPI.getPlayListVideos(playlistId, (videos) => {
             videos.forEach(id => {
-                let div = document.createElement('div');
-                let title = document.createElement('span')
-                let img = document.createElement('img');
+                const div = document.createElement('div');
+                const title = document.createElement('span')
+                const img = document.createElement('img');
 
                 if(JSON.parse(localStorage.getItem('incode-editor.tutorials.watched') as string).videos.includes(id)){
                     title.style.textDecoration = 'line-through'
@@ -79,7 +79,7 @@ export class Course extends React.Component<CourseProps, CourseState> {
                             "<h4 style='color: #08d008'>Herzlichen Glückwunsch!</h4>" +
                             "<h5>Du hast die Lektion <code>" + title.innerText + "</code> abgeschlossen! </h5>"
 
-                        let w = JSON.parse(localStorage.getItem("incode-editor.tutorials.watched") as string);
+                        const w = JSON.parse(localStorage.getItem("incode-editor.tutorials.watched") as string);
 
                         if(!w.videos.includes(id))
                             w.videos.push(id);

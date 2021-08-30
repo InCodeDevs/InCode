@@ -5,8 +5,6 @@
 
 import * as React from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { ObjectDefinition } from '../../Registry';
-
 import {Props, Entry, State} from '../../types/SearchScreen';
 import {Area} from './SearchScreen/Area';
 import {UIManager} from "../../utils/UIManager";
@@ -47,9 +45,9 @@ export class SearchScreen extends React.Component<Props, State> {
                             width: "30%",
                             fontSize: "1.5rem"
                         }} id={"search-bar"} onChange={() => {
-                            let term = (document.getElementById('search-bar') as HTMLInputElement).value.trim();
+                            const term = (document.getElementById('search-bar') as HTMLInputElement).value.trim();
                             if (term.length > 0) {
-                                let ent: Entry[] = [];
+                                const ent: Entry[] = [];
                                 this.props.entries.forEach(e => {
                                     if(e.title.toLowerCase().includes(term.toLowerCase())){
                                         ent.push(e)
@@ -86,12 +84,12 @@ export class SearchScreen extends React.Component<Props, State> {
 
         entries.forEach(e => {
             
-            let element = document.createElement('div');
+            const element = document.createElement('div');
             element.classList.add('template');
 
             element.addEventListener('click', e.callback)
 
-            let badge = document.createElement('span')
+            const badge = document.createElement('span')
             badge.className = 'verified';
             badge.innerText = "✓"
 
@@ -99,12 +97,12 @@ export class SearchScreen extends React.Component<Props, State> {
                 badge.style.visibility = 'hidden'
             }
 
-            let image = document.createElement('img');
+            const image = document.createElement('img');
             image.width = 128
             image.height = 128
             image.src = e.imageURL;
 
-            let h5 = document.createElement('h5');
+            const h5 = document.createElement('h5');
             h5.classList.add('template-name')
             h5.innerText = e.title;
 

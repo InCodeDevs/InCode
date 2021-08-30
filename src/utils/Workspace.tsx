@@ -22,10 +22,10 @@ export class Workspace {
      * Compiles the current Workspace
      * @param dl If this is true the output will be downloaded as "Programm.js"
      */
-    public static compile(dl: boolean = true) {
+    public static compile(dl = true) {
         let code = ""
 
-        let errors: string[] = [];
+        const errors: string[] = [];
 
         if (Options.currentEditor != '') {
             if (Options.currentEditor === 'vscode') {
@@ -35,7 +35,7 @@ export class Workspace {
                 code = new BlocklyCompiler().compile();
             }
 
-            let oldLog = console.log;
+            const oldLog = console.log;
 
             console.log = function(message: string) {
                 if(message.startsWith("Error in statement:")){
@@ -100,7 +100,7 @@ export class Workspace {
                 )
             }
             console.log(atob(Options.currentLiveJS))
-            let previewFrame = document.createElement('iframe');
+            const previewFrame = document.createElement('iframe');
             previewFrame.src = 'preview.html?code=' + Options.currentLiveJS;
             previewFrame.id = 'livePreviewFrame';
             (document.getElementById('livePreview') as HTMLDivElement).appendChild(previewFrame);
@@ -110,7 +110,7 @@ export class Workspace {
     /**
      * Saves the current Workspace
      */
-    public static save(showSucceedMessage: boolean = true) {
+    public static save(showSucceedMessage = true) {
         ProjectManager.saveProject(Registry.getRegister(0x10AD), Workspace.getWorkspaceCode()); // 0x10AD => magic value
         if (showSucceedMessage)
             UIManager.alert("<h1 style='text-align: center;'>Erfolgreich</h1><h4 style='text-align: center; color: limegreen'>Das Projekt wurde gespeichert!</h4>")
@@ -174,8 +174,8 @@ export class Workspace {
             "<span style='color: red'>Die Veröffentlichung kann nicht rückgängig gemacht werden.</span>" +
             "</h4>",
             () => {
-                let x: XMLHttpRequest = new XMLHttpRequest();
-                let c = Workspace.getWorkspaceCode();
+                const x: XMLHttpRequest = new XMLHttpRequest();
+                const c = Workspace.getWorkspaceCode();
                 x.open("GET", "https://templates.incode.craftions.net/api/upload?name="
                     + Registry.getRegister(0x10AD)
                     + "&type="
@@ -205,7 +205,7 @@ export class Workspace {
     public static export() {
 
         Workspace.compile(false)
-        let code = atob(Options.currentLiveJS);
+        const code = atob(Options.currentLiveJS);
 
         let incode = "";
         if (Options.currentEditor === 'vscode') {
@@ -237,8 +237,8 @@ export class Workspace {
         }
     }
 
-    public static exportFinalDesktop(code: string, styled: boolean = false) {
-        let zipFile = new JSZip();
+    public static exportFinalDesktop(code: string, styled = false) {
+        const zipFile = new JSZip();
 
         zipFile.folder("scripts");
         zipFile.folder("resources");
@@ -249,7 +249,7 @@ export class Workspace {
         let inCodeCSS = "";
 
         if(styled) {
-            let inCodeStyleSheet = Networking.getURLContent("https://incode-cdn.craftions.net/export/incode.css");
+            const inCodeStyleSheet = Networking.getURLContent("https://incode-cdn.craftions.net/export/incode.css");
 
             zipFile.file("resources/incode.css", inCodeStyleSheet + "\n");
             inCodeCSS = "\n<link rel='stylesheet' type='text/css' href='incode.css'>\n";
@@ -281,8 +281,8 @@ export class Workspace {
         })
     }
 
-    public static exportFinal(code: string, inCode: string, styled: boolean = false, game: boolean = false) {
-        let zipFile = new JSZip();
+    public static exportFinal(code: string, inCode: string, styled = false, game = false) {
+        const zipFile = new JSZip();
         zipFile.file(Registry.getRegister(0x10AD) + ".js", code + "\n" );
         zipFile.file(Registry.getRegister(0x10AD) + ".ic", inCode + "\n" );
 
@@ -290,14 +290,14 @@ export class Workspace {
         let inCodeJS = "";
 
         if(styled) {
-            let inCodeStyleSheet = Networking.getURLContent("https://incode-cdn.craftions.net/export/incode.css");
+            const inCodeStyleSheet = Networking.getURLContent("https://incode-cdn.craftions.net/export/incode.css");
 
             zipFile.file("incode.css", inCodeStyleSheet + "\n");
             inCodeCSS = "\n<link rel='stylesheet' type='text/css' href='incode.css'>\n";
         }
 
         if(game) {
-            let inCodeScript = Networking.getURLContent("https://incode-cdn.craftions.net/export/incode.js");
+            const inCodeScript = Networking.getURLContent("https://incode-cdn.craftions.net/export/incode.js");
 
             zipFile.file("incode.js", inCodeScript + "\n");
             inCodeJS = "\n<script defer src='incode.js'></script>\n";

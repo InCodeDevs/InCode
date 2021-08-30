@@ -11,7 +11,7 @@ export class Networking {
      * @param text The content of the file
      * @param mimeType The mimeType of the file
      */
-    public static download(filename: string, text: string, mimeType: string = "text/plain") {
+    public static download(filename: string, text: string, mimeType = "text/plain") {
         const element = document.createElement('a');
         element.setAttribute('href', 'data:' + mimeType + ';charset=utf-8,' + encodeURIComponent(text));
         element.setAttribute('download', filename);
@@ -40,7 +40,7 @@ export class Networking {
 
 
     public static getURLContent(url: string): string {
-        let x = new XMLHttpRequest();
+        const x = new XMLHttpRequest();
         x.open("GET", url, false)
         x.send(null)
         return x.responseText;

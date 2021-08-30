@@ -14,11 +14,11 @@ export class ProjectSelector extends React.Component {
 
     render() {
 
-        let entries: Entry[] = [];
+        const entries: Entry[] = [];
 
         for (let i = 0; i < localStorage.length; i++) {
             if((localStorage.key(i) as string).startsWith("incode-editor.projects")){
-                let j = JSON.parse(localStorage.getItem((localStorage.key(i) as string)) as string);
+                const j = JSON.parse(localStorage.getItem((localStorage.key(i) as string)) as string);
                 entries.push({
                     title: j.name,
                     callback: () => {
@@ -71,21 +71,21 @@ export class ProjectSelector extends React.Component {
         element.onchange = () => {
 
             // @ts-ignore
-            let file = element.files[0];
+            const file = element.files[0];
 
             if (file) {
-                let reader = new FileReader();
+                const reader = new FileReader();
                 reader.readAsText(file, "UTF-8");
                 reader.onload = function (evt) {
                     // @ts-ignore
-                    let result: string = evt.target.result;
+                    const result: string = evt.target.result;
 
-                    if (/^[\],:{}\s]*$/.test(result.replace(/\\["\\\/bfnrtu]/g, '@').replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
-                        let o = JSON.parse(result);
+                    if (/^[\],:{}\s]*$/.test(result.replace(/\\["\\/bfnrtu]/g, '@').replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?/g, ']').replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
+                        const o = JSON.parse(result);
 
                         let pName = o.name;
-                        let pType = o.type;
-                        let pCode = o.code;
+                        const pType = o.type;
+                        const pCode = o.code;
 
                         const create = () => {
                             if (pName && pType && pCode) {
@@ -138,7 +138,7 @@ export class ProjectSelector extends React.Component {
 
 
     public static getProjects(): ObjectDefinition {
-        let projects: ObjectDefinition = {};
+        const projects: ObjectDefinition = {};
         for (let i = 0; i < localStorage.length; i++) {
             if((localStorage.key(i) as string).startsWith("incode-editor.projects")) {
                 if (JSON.parse(localStorage.getItem(localStorage.key(i) as string) as string).name) {

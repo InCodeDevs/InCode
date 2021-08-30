@@ -41,7 +41,6 @@ import {SetVarBorderStyle} from "../blockly/blocks/SetVarBorderStyle";
 import {SetVarFontWeight} from "../blockly/blocks/SetVarFontWeight";
 import {ObjectDefinition} from "../Registry";
 import {Themes} from "../Themes";
-import { SearchScreen } from "../components/util/SearchScreen";
 
 export class UIManager {
 
@@ -50,7 +49,6 @@ export class UIManager {
      */
     public static onLoad() {
 
-        const menuContainer = document.querySelector("#menu");
         const menuBarContainer = document.querySelector("#menuBar");
 
         ReactDOM.render((<MenuBar/>), menuBarContainer);
@@ -61,7 +59,7 @@ export class UIManager {
         UIManager.deleteBlockly();
         UIManager.deleteMonaco();
 
-        (document.querySelector('#copyright') as HTMLDivElement).addEventListener('click', (e) => {
+        (document.querySelector('#copyright') as HTMLDivElement).addEventListener('click', () => {
             UIManager.alert("" +
                 "<h1>InCode-Editor</h1>" +
                 "<span><strong>By:</strong> <span style='font-family: monospace'>The InCode Developers</span><br>" +
@@ -125,7 +123,7 @@ export class UIManager {
     /**
      * Creates the blockly editor
      */
-    public static createBlockly = (blocks: ObjectDefinition = {}) => {
+    public static createBlockly = () => {
 
         Options.currentEditor = 'blockly'
         UIManager.remakeSizes();
@@ -164,7 +162,7 @@ export class UIManager {
 
         Blockly.setLocale(DE)
 
-        let options: ObjectDefinition = {
+        const options: ObjectDefinition = {
             toolbox: document.getElementById('toolbox') as ToolboxDefinition,
             renderer: 'zelos'
         }
@@ -215,7 +213,7 @@ export class UIManager {
 
         InCodeLanguage.register();
 
-        let options: monaco.editor.IStandaloneEditorConstructionOptions = {
+        const options: monaco.editor.IStandaloneEditorConstructionOptions = {
             value: '',
             language: 'incode',
             theme: "incode-light",
@@ -237,13 +235,13 @@ export class UIManager {
         document.addEventListener('contextmenu', (e) => {
             e.preventDefault();
             let docURL = "";
-            let tutURL = "https://incode.craftions.net/docs/Tutorials/";
+            const tutURL = "https://incode.craftions.net/docs/Tutorials/";
 
-            if (((e.target as HTMLElement).classList as DOMTokenList).contains("mtk24") && ((e.target as HTMLElement).classList as DOMTokenList).contains("mtkb")) {
+            if (((e.target as HTMLElement).classList ).contains("mtk24") && ((e.target as HTMLElement).classList ).contains("mtkb")) {
                 docURL = "https://incode.craftions.net/docs/Bezug/Befehle/";
-            } else if (((e.target as HTMLElement).classList as DOMTokenList).contains("mtk29")) {
+            } else if (((e.target as HTMLElement).classList ).contains("mtk29")) {
                 docURL = "https://incode.craftions.net/docs/Bezug/Typen/"
-            } else if (((e.target as HTMLElement).classList as DOMTokenList).contains("mtk22")) {
+            } else if (((e.target as HTMLElement).classList ).contains("mtk22")) {
                 docURL = "https://incode.craftions.net/docs/Bezug/Eigenschaften/"
             }
 
@@ -252,7 +250,7 @@ export class UIManager {
                 let hasDocumentation = false;
                 let hasTutorial = false;
 
-                let x0 = new XMLHttpRequest();
+                const x0 = new XMLHttpRequest();
                 x0.open("GET", docURL + (e.target as HTMLElement).innerText, true);
                 x0.send(null);
 
@@ -264,7 +262,7 @@ export class UIManager {
                         hasDocumentation = true;
                     }
 
-                    let x1 = new XMLHttpRequest();
+                    const x1 = new XMLHttpRequest();
                     x1.open("GET", tutURL + (e.target as HTMLElement).innerText, true);
                     x1.send(null);
                     x1.onreadystatechange = () => {
@@ -314,10 +312,14 @@ export class UIManager {
         (document.getElementById('livePreview') as HTMLDivElement).style.width = "45%";
     }
 
+    /* eslint-disable @typescript-eslint/no-unused-vars */
+    /* eslint-disable @typescript-eslint/no-empty-function */
     private static prompt0CallBack = (value: string) => {
     };
+    /* eslint-disable @typescript-eslint/no-empty-function */
     private static alert0CallBack = () => {
     };
+    /* eslint-disable @typescript-eslint/no-empty-function */
     private static question0CallBack = () => {
     };
 

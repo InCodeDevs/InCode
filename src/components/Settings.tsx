@@ -10,7 +10,7 @@ import {UIManager} from "../utils/UIManager";
 import {MainMenu} from "./MainMenu";
 import {Button, Form} from "react-bootstrap";
 import {SettingsScreen} from "./util/SettingsScreen";
-import { Props, State, Entry } from "../types/SettingsScreen";
+import { Entry } from "../types/SettingsScreen";
 import {Themes} from "../Themes";
 
 export class Settings extends React.Component {
@@ -19,12 +19,12 @@ export class Settings extends React.Component {
         "theme": {
             display: "Erscheinungsbild",
             callback: () => {
-                let themes: Entry[] = [];
+                const themes: Entry[] = [];
 
                 Object.keys(Themes.themes).forEach(t => {
-                    let theme = Themes.themes[t];
+                    const theme = Themes.themes[t];
 
-                    let entry: Entry = {
+                    const entry: Entry = {
                         title: theme.display,
                         imageURL: 'assets/code-editor-light.png',
                         callback: () => {
@@ -154,22 +154,22 @@ export class Settings extends React.Component {
         }
 
         Object.keys(a2u).forEach(s => {
-            let setting = a2u[s];
+            const setting = a2u[s];
 
-            let element = document.createElement('div');
+            const element = document.createElement('div');
             element.classList.add('template');
 
             element.addEventListener('click', () => {
                 setting.callback();
             })
 
-            let image = document.createElement('img');
+            const image = document.createElement('img');
             image.width = 128
             image.height = 128
 
             image.src = setting.icon;
 
-            let h5 = document.createElement('h5');
+            const h5 = document.createElement('h5');
             h5.classList.add('template-name')
             h5.innerText = setting.display;
 
@@ -182,11 +182,11 @@ export class Settings extends React.Component {
     }
 
     public static search() {
-        let term = (document.getElementById('search-bar') as HTMLInputElement).value.trim();
+        const term = (document.getElementById('search-bar') as HTMLInputElement).value.trim();
         if (term.length > 0) {
-            let settings: ObjectDefinition = {};
+            const settings: ObjectDefinition = {};
             Object.keys(Settings.config).forEach(t => {
-                let setting = Settings.config[t];
+                const setting = Settings.config[t];
                 if (t.toLowerCase().includes(term.toLowerCase()) || setting.display.toLowerCase().includes(term.toLowerCase()))
                     settings[t] = setting;
             })

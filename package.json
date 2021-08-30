@@ -7,11 +7,14 @@
   "author": "The InCode Developers",
   "license": "GPL-3.0-only",
   "scripts": {
-    "clean": "rm dist/bundle.js",
-    "build-dev": "webpack --mode development",
-    "build-prod": "webpack --mode production",
-    "start": "npx webpack serve",
-    "install-dependencies": "npm i --registry https://npm.craftions.net"
+    "webpack:clean": "rm dist/bundle.js",
+    "webpack:build-dev": "webpack --mode development",
+    "webpack:build-prod": "webpack --mode production",
+    "webpack:start": "npx webpack serve",
+    "npm:install-dependencies": "npm i --registry https://npm.craftions.net",
+    "eslint:lint": "eslint . --ext .ts,.tsx",
+    "deploy:npm": "npm publish --registry https://npm.craftions.net",
+    "deploy:firebase": "npm run webpack:build-prod && firebase deploy"
   },
   "devDependencies": {
     "@types/react": "^17.0.19",
@@ -38,6 +41,7 @@
     "@types/youtube-player": "^5.5.4",
     "blockly": "^6.20210701.0",
     "bootstrap": "^5.0.2",
+    "firebase-tools": "^9.16.6",
     "incode-language": "^1.0.5",
     "jszip": "^3.7.1",
     "monaco-editor": "^0.26.1",

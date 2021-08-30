@@ -4,7 +4,6 @@
  */
 
 import * as React from "react";
-import {Button, Form} from "react-bootstrap";
 import {ObjectDefinition} from "../../Registry";
 import {UIManager} from "../../utils/UIManager";
 import {ProjectManager} from "../../utils/ProjectManager";
@@ -20,15 +19,15 @@ export class TemplateSelector extends React.Component {
      */
     render() {
 
-        let x = new XMLHttpRequest();
+        const x = new XMLHttpRequest();
         x.open("GET", "https://templates.incode.craftions.net/templates.json", false)
         x.send(null)
-        let templates = JSON.parse(x.responseText) as ObjectDefinition
+        const templates = JSON.parse(x.responseText) as ObjectDefinition
 
-        let entries: Entry[] = [];
+        const entries: Entry[] = [];
 
         Object.keys(templates).forEach(k => {
-            let template = templates[k]
+            const template = templates[k]
             entries.push({
                 title: k,
                 badge: template.verified,
@@ -61,7 +60,7 @@ export class TemplateSelector extends React.Component {
                                     } else {
                                         UIManager.hideAllPopups();
 
-                                        let x = new XMLHttpRequest();
+                                        const x = new XMLHttpRequest();
                                         x.open("GET", "https://templates.incode.craftions.net/" + template.directURL, false)
                                         x.send(null)
 

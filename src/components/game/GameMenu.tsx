@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import {UIManager} from "../../utils/UIManager";
-import {CodeGame} from "./code/CodeGame";
 import {Course} from "./Course";
 
 export class GameMenu extends React.Component {

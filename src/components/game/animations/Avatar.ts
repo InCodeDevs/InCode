@@ -7,7 +7,7 @@ export class Avatar {
 
     protected static readonly INTERVAL: number = 650;
 
-    protected static enabled: boolean = false;
+    protected static enabled = false;
 
     public static enable() {
         this.enabled = true;
@@ -20,7 +20,7 @@ export class Avatar {
     public static render() {
         setInterval(() => {
             if(this.enabled){
-                let s = (document.getElementById('avatar-display') as HTMLImageElement).src;
+                const s = (document.getElementById('avatar-display') as HTMLImageElement).src;
 
                 if (s.endsWith("_speaking_0.png")) {
                     (document.getElementById('avatar-display') as HTMLImageElement).src = 'assets/game/new_avatar_1.png';
@@ -32,7 +32,7 @@ export class Avatar {
     }
 
     public static speak(text: string){
-        let msg = new SpeechSynthesisUtterance();
+        const msg = new SpeechSynthesisUtterance();
         msg.text = text;
         msg.volume = 1;
         msg.lang = "de-DE";

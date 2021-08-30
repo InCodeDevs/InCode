@@ -15,7 +15,7 @@ export class ProjectManager {
      * @param env The environment type of the project (used for exports)
      * @return True if the creation was successful
      */
-    public static createProject(name: string, type: string = 'monaco', code: string = '', env: string = 'website'): boolean {
+    public static createProject(name: string, type = 'monaco', code = '', env = 'website'): boolean {
         if (localStorage.getItem("incode-editor.projects." + name) == null) {
             localStorage.setItem("incode-editor.projects." + name, JSON.stringify({
                 name: name,
@@ -34,7 +34,7 @@ export class ProjectManager {
      * @param name The name of the Project
      * @param editor The editor which should be opened ("monaco" (default) or "blockly")
      */
-    public static openProject(name: string, editor: string = "monaco"): boolean {
+    public static openProject(name: string, editor = "monaco"): boolean {
         if (localStorage.getItem("incode-editor.projects." + name) != null) {
             UIManager.hideMenu();
             UIManager.showMenuBar();
@@ -85,8 +85,8 @@ export class ProjectManager {
      * @param code The code of the Project
      */
     public static renameProject(name: string, newName: string, code: string) {
-        let type = ProjectManager.getProjectType(name);
-        let env = ProjectManager.getProjectEnv(name);
+        const type = ProjectManager.getProjectType(name);
+        const env = ProjectManager.getProjectEnv(name);
         ProjectManager.deleteProject(name);
         ProjectManager.createProject(newName, type, code, env);
         ProjectManager.saveProject(newName, code);

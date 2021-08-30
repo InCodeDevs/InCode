@@ -7,7 +7,6 @@ import * as React from "react";
 import {ProjectManager} from "../utils/ProjectManager";
 import {UIManager} from "../utils/UIManager";
 import {Registry} from "../Registry";
-import {MenuBar} from "./MenuBar";
 import {GameMenu} from "./game/GameMenu";
 import {Settings} from "./Settings";
 import {ProjectTypeSelector} from "./selector/ProjectTypeSelector";
@@ -133,9 +132,9 @@ export class MainMenu extends React.Component {
         )
     }
 
-    public static createProject0(name: string, type: string, code: string = "") {
+    public static createProject0(name: string, type: string, code = "") {
         if (type === 'blockly' && code === '')
-            code = '<xml><block type=\"start\" id=\"|(^9%DCME)E4UEoWv~G]\" x=\"134\" y=\"70\"></block></xml>'
+            code = '<xml><block type="start" id="|(^9%DCME)E4UEoWv~G]" x="134" y="70"></block></xml>'
 
         Registry.putRegister(0x10AD, name);
         Registry.putRegister(0x10AA, type);

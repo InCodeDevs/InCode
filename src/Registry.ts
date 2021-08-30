@@ -12,7 +12,7 @@ export class Registry {
     // 0x10AF => Callbacks
     private static options: ObjectDefinition = {};
 
-    public static putRegister(register: number, content: any){
+    public static putRegister(register: number, content: any): void {
         this.options[register] = content;
     }
 

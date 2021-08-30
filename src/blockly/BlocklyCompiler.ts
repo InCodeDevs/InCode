@@ -40,6 +40,7 @@ export class BlocklyCompiler {
             do {
                 this.compiledBlocks.push(b);
                 code += this.getBlockTabs(b, true) + this.compileBlock(b) + "\n";
+            /* eslint-disable  no-cond-assign */
             } while (b = b.getNextBlock());
         } else {
             code += this.getBlockTabs(block, true) + this.getBlockText(block) + "\n"
@@ -54,7 +55,7 @@ export class BlocklyCompiler {
      * @param log Log the TABS (\t) to the console DEFAULT = false. DEBUGGING ONLY
      * @param b1 Ignore this boolean, idiot. Just kidding, basically I created it for debugging and it now has no sense anymore
      */
-    private getBlockTabs(block: Blockly.Block, log: boolean = false, b1: boolean = true): string {
+    private getBlockTabs(block: Blockly.Block, log = false, b1 = true): string {
         let tabs = "";
 
         let currentBlock = block;
@@ -65,7 +66,6 @@ export class BlocklyCompiler {
             if (block.getParent().getInputTargetBlock("STATEMENT"))
                 neededTabs++;
             console.log(neededTabs)
-            // tabs = this.getBlockTabs(block.getParent(), log, false);
             for (let i = 0; i < neededTabs; i++) {
                 tabs += "\t";
             }
@@ -79,6 +79,7 @@ export class BlocklyCompiler {
             if (b) {
                 do {
                     if (b === block) tabs += "\t";
+                    /* eslint-disable  no-cond-assign */
                 } while (b = b.getNextBlock());
             }
             currentBlock = currentBlock.getParent();
