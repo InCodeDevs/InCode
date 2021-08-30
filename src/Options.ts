@@ -11,8 +11,8 @@ export class Options {
   // @ts-ignore
   public static readonly version = _VERSION;
 
-  // @ts-ignore
   public static readonly formattedVersion =
+    // @ts-ignore
     "InCode Editor v" + Options.version + " at " + _GIT_SHORT_COMMIT;
 
   // @ts-ignore

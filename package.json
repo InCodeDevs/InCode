@@ -11,12 +11,14 @@
     "webpack:build-dev": "webpack --mode development",
     "webpack:build-prod": "webpack --mode production",
     "webpack:start": "npx webpack serve",
+    "docker:build": "docker build . -t\"mctzock/incode-editor\"",
     "npm:install-dependencies": "npm i --registry https://npm.craftions.net",
     "eslint:lint": "eslint . --ext .ts,.tsx",
     "prettier:check": "prettier --check src",
     "prettier:write": "prettier --write src",
     "deploy:npm": "npm publish --registry https://npm.craftions.net",
-    "deploy:firebase": "npm run webpack:build-prod && firebase deploy"
+    "deploy:firebase": "npm run webpack:build-prod && firebase deploy",
+    "deploy:docker": "docker push mctzock/incode-editor"
   },
   "devDependencies": {
     "@types/react": "^17.0.19",
