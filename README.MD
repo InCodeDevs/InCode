@@ -4,6 +4,7 @@ This is the official Editor for the InCode Programming Language by Ben Siebert a
 [![ESLint](https://github.com/InCodeDevs/Editor/actions/workflows/eslint.yml/badge.svg)](https://github.com/InCodeDevs/Editor/actions/workflows/eslint.yml)
 [![Prettier](https://github.com/InCodeDevs/Editor/actions/workflows/prettier.yml/badge.svg)](https://github.com/InCodeDevs/Editor/actions/workflows/prettier.yml)
 [![Webpack Build](https://github.com/InCodeDevs/Editor/actions/workflows/build.yml/badge.svg)](https://github.com/InCodeDevs/Editor/actions/workflows/build.yml)
+[![Firebase Deploy](https://github.com/InCodeDevs/Editor/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/InCodeDevs/Editor/actions/workflows/firebase-hosting-merge.yml)
 
 ## Features
 - A monaco based Code Editor
