@@ -1,6 +1,10 @@
 # InCode Editor
 This is the official Editor for the InCode Programming Language by Ben Siebert and Lukas Birke.
 
+[![ESLint](https://github.com/InCodeDevs/Editor/actions/workflows/eslint.yml/badge.svg)](https://github.com/InCodeDevs/Editor/actions/workflows/eslint.yml)
+[![Prettier](https://github.com/InCodeDevs/Editor/actions/workflows/prettier.yml/badge.svg)](https://github.com/InCodeDevs/Editor/actions/workflows/prettier.yml)
+[![Webpack Build](https://github.com/InCodeDevs/Editor/actions/workflows/build.yml/badge.svg)](https://github.com/InCodeDevs/Editor/actions/workflows/build.yml)
+
 ## Features
 - A monaco based Code Editor
 - A blockly based Block Editor
