@@ -20,5 +20,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-        - run: npm run npm:install-dependencies
-        - run: npm run prettier:check
+      - run: npm run npm:install-dependencies
+      - run: npm run prettier:check
