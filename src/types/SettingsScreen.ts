@@ -4,14 +4,14 @@
  */
 
 export type Props = {
-    title: string
-    settings: Entry[]
-}
+  title: string;
+  settings: Entry[];
+};
 
 export type Entry = {
-    title: string,
-    imageURL: string,
-    callback: () => void
-}
+  title: string;
+  imageURL: string;
+  callback: () => void;
+};
 
-export type State = {}
+export type State = {};

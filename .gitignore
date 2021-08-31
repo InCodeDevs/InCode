@@ -2,9 +2,11 @@
 .cache/
 coverage/
 dist/*
-!dist/index.html
+/.firebase/*
 node_modules/
 *.log
+
+/doc/
 
 # OS generated files
 .DS_Store
@@ -14,3 +16,4 @@ node_modules/
 .Trashes
 ehthumbs.db
 Thumbs.db
+/dist/

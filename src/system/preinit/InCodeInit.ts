@@ -4,6 +4,5 @@
  */
 
 export abstract class InCodeInit {
-
-    public abstract init(): void;
+  public abstract init(): void;
 }

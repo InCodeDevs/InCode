@@ -4,8 +4,8 @@
  */
 
 export type ScreenProps = {
-    title: string,
-    message: string
-}
+  title: string;
+  message: string;
+};
 
 export type ScreenState = {};
