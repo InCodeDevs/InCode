@@ -28,6 +28,9 @@ export class ThemeLoader extends InCodeInit {
       case "whatsapp":
         require("../../styles/themes/whatsapp/_index.scss");
         break;
+      case "pride":
+        require("../../styles/themes/pride/_index.scss");
+        break;
       default:
         require("../../styles/themes/dark/_index.scss");
         break;

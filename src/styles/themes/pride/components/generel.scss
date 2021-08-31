@@ -1,0 +1,57 @@
+/**
+ * @author The InCode Devs
+ * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
+ */
+
+@use "../colors";
+
+html,
+body {
+  font-family: basic-sans, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.125em;
+  line-height: 1.6;
+  background-size: 300%;
+  background-image: $pride-gradient;
+  animation: bg-animation 10s infinite;
+}
+
+@keyframes bg-animation {
+  0% {background-position: left}
+  50% {background-position: right}
+  100% {background-position: left}
+}
+
+#copyright {
+  color: $light;
+}
+
+#topScreen {
+  background: $dark !important;
+}
+
+.dropdown-menu {
+  background-color: $dark;
+}
+
+.dropdown-item {
+  background-color: $dark !important;
+  color: $light !important;
+}
+
+.dropdown-item:hover {
+  background-color: $primary !important;
+  color: $light;
+}
+
+a {
+  color: $primary !important;
+}
+
+h1,
+h2 {
+  color: $dark !important;
+}

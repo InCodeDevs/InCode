@@ -34,5 +34,9 @@ export class Themes {
       display: "WhatsApp",
       scheme: "dark",
     },
+    pride: {
+      display: "Pride",
+      scheme: "pride"
+    }
   };
 }
