@@ -36,7 +36,7 @@ export class Themes {
     },
     pride: {
       display: "Pride",
-      scheme: "pride"
-    }
+      scheme: "pride",
+    },
   };
 }

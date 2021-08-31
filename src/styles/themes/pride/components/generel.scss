@@ -20,9 +20,15 @@ body {
 }
 
 @keyframes bg-animation {
-  0% {background-position: left}
-  50% {background-position: right}
-  100% {background-position: left}
+  0% {
+    background-position: left;
+  }
+  50% {
+    background-position: right;
+  }
+  100% {
+    background-position: left;
+  }
 }
 
 #copyright {

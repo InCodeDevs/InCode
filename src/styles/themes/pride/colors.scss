@@ -3,15 +3,23 @@
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 
-$primary: #F9FAFF;
+$primary: #f9faff;
 $light: #f8f9fa;
 $dark: black;
 
-$red: rgba(255, 0, 24, 1.0);
-$orange: rgba(255, 165, 44, 1.0);
-$yellow: rgba(255, 255, 65, 1.0);
-$green: rgba(0, 128, 24, 1.0);
-$blue: rgba(0, 0, 249, 1.0);
-$purple: rgba(134, 0, 125, 1.0);
+$red: rgba(255, 0, 24, 1);
+$orange: rgba(255, 165, 44, 1);
+$yellow: rgba(255, 255, 65, 1);
+$green: rgba(0, 128, 24, 1);
+$blue: rgba(0, 0, 249, 1);
+$purple: rgba(134, 0, 125, 1);
 
-$pride-gradient: linear-gradient(to bottom right, $red, $orange, $yellow, $green, $blue, $purple);
+$pride-gradient: linear-gradient(
+  to bottom right,
+  $red,
+  $orange,
+  $yellow,
+  $green,
+  $blue,
+  $purple
+);

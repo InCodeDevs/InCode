@@ -34,8 +34,9 @@ export class Settings extends React.Component {
 
           if (theme.scheme === "dark") {
             entry.imageURL = "assets/code-editor.png";
-          } else if(theme.scheme === 'pride') {
-            entry.imageURL = "https://pixabay.com/get/g2f8cbfe1c3ff6a6b0c625280d00f7ed1f2a5c2dbbc2ac1415174176efc0110faf7ec1cef6bf867296ce1edfae66a1b1e_640.png"
+          } else if (theme.scheme === "pride") {
+            entry.imageURL =
+              "https://pixabay.com/get/g2f8cbfe1c3ff6a6b0c625280d00f7ed1f2a5c2dbbc2ac1415174176efc0110faf7ec1cef6bf867296ce1edfae66a1b1e_640.png";
           }
 
           themes.push(entry);
