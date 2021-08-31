@@ -19,6 +19,7 @@ export class InCodeLanguage {
       tokenizer: {
         root: [
           // root
+          [/Importiere/, "root-kw"],
           [/Erstelle/, "root-kw"],
           [/Setze/, "root-kw"],
           [/Rufe/, "root-kw"],
@@ -122,6 +123,10 @@ export class InCodeLanguage {
           // vars
           [/(["'])(?:(?=(\\?))\2.)*?\1/, "var"],
           [/^\d+$/, "var"],
+          [
+            /(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/gim,
+            "var",
+          ],
           [/Schwarz/, "var"],
           [/Weiß/, "var"],
           [/Blau/, "var"],

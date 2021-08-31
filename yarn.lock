@@ -4746,10 +4746,10 @@ imurmurhash@^0.1.4:
   resolved "https://npm.craftions.net/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
   integrity sha1-khi5srkoojixPcT7a21XbyMUU+o=
 
-incode-language@^1.0.5:
-  version "1.0.5"
-  resolved "https://npm.craftions.net/incode-language/-/incode-language-1.0.5.tgz#ce00b1306f02b37f1227282f416ff68d7dc71501"
-  integrity sha512-KTqQcQUm52NR9e8VQ4cJnswnQ/w/oAVdznlp0JbYDoi0zSuvC374EPa/dEdCgjWeOfKkgSbwHWQifiVbBzk09A==
+incode-language@^1.0.6:
+  version "1.0.6"
+  resolved "https://npm.craftions.net/incode-language/-/incode-language-1.0.6.tgz#d8b09840942cff99689edb8f46416b636fdadce6"
+  integrity sha512-9s3R7OFLhmEdBFiTAyDtRHJ9XIZvgT18zrDCIQGS1PtktEIxbSeGyl463KGByL8OLGh7wfR67sLARNlCEhrLNg==
 
 indent-string@^4.0.0:
   version "4.0.0"
