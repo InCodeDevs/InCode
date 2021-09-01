@@ -4,14 +4,14 @@
  */
 
 @use "../colors";
+@use "../animation";
 
 .btn-outline-flat {
-  color: $primary !important;
-  border-color: $primary !important;
+  color: $light !important;
+  border-color: $light !important;
 }
 
 .btn-outline-flat:hover {
-  color: $black !important;
   background-color: $primary !important;
   border-color: $primary !important;
 }

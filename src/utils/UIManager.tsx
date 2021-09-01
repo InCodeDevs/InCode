@@ -250,7 +250,7 @@ export class UIManager {
 
     if (
       Themes.themes[localStorage.getItem("incode-editor.theme") as string]
-        .scheme === "dark"
+        .scheme === "dark" || "pride"
     ) {
       options.theme = "incode-dark";
     }

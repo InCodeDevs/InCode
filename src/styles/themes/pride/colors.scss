@@ -3,9 +3,8 @@
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 
-$primary: #f9faff;
 $light: #f8f9fa;
-$dark: black;
+$dark: #1E1E1E;
 
 $red: rgba(255, 0, 24, 1);
 $orange: rgba(255, 165, 44, 1);
@@ -15,11 +14,16 @@ $blue: rgba(0, 0, 249, 1);
 $purple: rgba(134, 0, 125, 1);
 
 $pride-gradient: linear-gradient(
-  to bottom right,
+  to right,
   $red,
   $orange,
   $yellow,
   $green,
   $blue,
-  $purple
+  $purple,
+  $blue,
+  $green,
+  $yellow,
+  $orange,
+  $red
 );

@@ -4,31 +4,11 @@
  */
 
 @use "../colors";
+@use "../animation";
 
 html,
 body {
-  font-family: basic-sans, sans-serif;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.125em;
-  line-height: 1.6;
-  background-size: 300%;
-  background-image: $pride-gradient;
-  animation: bg-animation 10s infinite;
-}
-
-@keyframes bg-animation {
-  0% {
-    background-position: left;
-  }
-  50% {
-    background-position: right;
-  }
-  100% {
-    background-position: left;
-  }
+  background-color: $dark !important;
 }
 
 #copyright {
@@ -54,10 +34,10 @@ body {
 }
 
 a {
-  color: $primary !important;
+  @include prideText();
 }
 
 h1,
 h2 {
-  color: $dark !important;
+  @include prideText();
 }
