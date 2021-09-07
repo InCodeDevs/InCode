@@ -5,6 +5,7 @@ dist/*
 /.firebase/*
 node_modules/
 *.log
+.idea
 
 /doc/
 
