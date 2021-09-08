@@ -9,7 +9,8 @@ import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     UserCredential,
-    signInWithPopup
+    signInWithPopup,
+    signOut
 } from 'firebase/auth';
 import { GoogleAuthProvider } from "firebase/auth";
 
@@ -18,6 +19,7 @@ const provider = new GoogleAuthProvider();
 export class Firebase {
 
     protected static instance: Firebase;
+    protected static currentUser: UserCredential | null;
 
     constructor() {
         const app = firebase.initializeApp({
@@ -37,20 +39,31 @@ export class Firebase {
         signInWithEmailAndPassword(getAuth(), email, password)
             .then((user) => {
                 callback(user)
+                Firebase.currentUser = user;
             })
             .catch((error) => {
                 callback(null)
+                Firebase.currentUser = null;
             })
     }
 
     public loginGoogle(callback: (user: UserCredential | null) => void) {
         signInWithPopup(getAuth(), provider)
-            .then((result) => {
-                callback(result)
+            .then((user) => {
+                callback(user)
+                Firebase.currentUser = user;
             })
             .catch((error) => {
                 callback(null)
+                Firebase.currentUser = null;
             })
+    }
+
+    public logout(user: UserCredential | null, callback: () => void) {
+        signOut(getAuth()).then(callback).catch((error) => {
+                console.log(error)
+            }
+        )
     }
 
     public static getInstance(): Firebase {

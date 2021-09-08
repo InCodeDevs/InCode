@@ -22,6 +22,15 @@ export class MainMenu extends React.Component {
   render() {
     return (
       <>
+        <div id="userIndicator">
+          <div id="userImage">
+            <img src="https://us.123rf.com/450wm/tuktukdesign/tuktukdesign1608/tuktukdesign160800043/61010830-user-icon-mann-profil-gesch%C3%A4ftsmann-avatar-person-glyph-vektor-illustration.jpg" />
+            <div>
+              <span id="userIndicatorAs">Eingeloggt als X</span>
+            </div>
+          </div>
+          <a id={"userIndicatorLogin"}>Anmelden</a>
+        </div>
         <div
           style={{
             top: "50%",
