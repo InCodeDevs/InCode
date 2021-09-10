@@ -66,6 +66,8 @@
   position: fixed;
   z-index: 4268;
   #userImage {
+    text-align: center;
+
     img {
       border-radius: 50%;
       width: 64px;
@@ -75,22 +77,14 @@
     &:hover {
       cursor: pointer;
       div {
-        display: block;
+        visibility: visible;
       }
     }
 
     div {
-      display: none;
-      position: absolute;
-      top: 100%;
-      width: 125%;
+      visibility: hidden;
+      width: 100%;
       color: #f8f9fa;
     }
-  }
-  a {
-    text-decoration: none;
-    font-weight: 900;
-    font-size: x-large;
-    display: none;
   }
 }

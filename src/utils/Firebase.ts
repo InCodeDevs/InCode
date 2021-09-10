@@ -12,13 +12,13 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider, OAuthProvider } from "firebase/auth";
 
-const provider = new GoogleAuthProvider();
+const gProvider = new GoogleAuthProvider();
+const aProvider = new OAuthProvider("apple.com");
 
 export class Firebase {
   protected static instance: Firebase;
-  protected static currentUser: UserCredential | null;
 
   constructor() {
     const app = firebase.initializeApp({
@@ -34,40 +34,28 @@ export class Firebase {
     Firebase.instance = this;
   }
 
-  public loginEmail(
-    email: string,
-    password: string,
-    callback: (user: UserCredential | null) => void
-  ) {
-    signInWithEmailAndPassword(getAuth(), email, password)
-      .then((user) => {
-        callback(user);
-        Firebase.currentUser = user;
-      })
-      .catch((error) => {
-        callback(null);
-        Firebase.currentUser = null;
-      });
-  }
-
   public loginGoogle(callback: (user: UserCredential | null) => void) {
-    signInWithPopup(getAuth(), provider)
+    signInWithPopup(getAuth(), gProvider)
       .then((user) => {
         callback(user);
-        Firebase.currentUser = user;
       })
       .catch((error) => {
         callback(null);
-        Firebase.currentUser = null;
       });
   }
 
-  public logout(user: UserCredential | null, callback: () => void) {
+  public logout(callback: () => void) {
     signOut(getAuth())
-      .then(callback)
+      .then(() => {
+        callback();
+      })
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  public isLoggedIn(): boolean {
+    return !(getAuth().currentUser === null);
   }
 
   public static getInstance(): Firebase {

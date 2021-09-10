@@ -13,6 +13,7 @@ import { ProjectTypeSelector } from "./selector/ProjectTypeSelector";
 import { EditorSelector } from "./selector/EditorSelector";
 import { TemplateSelector } from "./selector/TemplateSelector";
 import { ProjectSelector } from "./selector/ProjectSelector";
+import { Firebase } from "../utils/Firebase";
 
 export class MainMenu extends React.Component {
   /**
@@ -22,14 +23,14 @@ export class MainMenu extends React.Component {
   render() {
     return (
       <>
-        <div id="userIndicator" style={{ display: "none" }}>
+        <div id="userIndicator" onClick={MainMenu.checkLogin}>
           <div id="userImage">
-            <img src="https://us.123rf.com/450wm/tuktukdesign/tuktukdesign1608/tuktukdesign160800043/61010830-user-icon-mann-profil-gesch%C3%A4ftsmann-avatar-person-glyph-vektor-illustration.jpg" />
-            <div>
-              <span id="userIndicatorAs">Eingeloggt als X</span>
-            </div>
+            <img
+              src="https://us.123rf.com/450wm/tuktukdesign/tuktukdesign1608/tuktukdesign160800043/61010830-user-icon-mann-profil-gesch%C3%A4ftsmann-avatar-person-glyph-vektor-illustration.jpg"
+              id={"userIndicatorPicture"}
+            />
+            <div id={"userIndicatorAs"}>Anmelden</div>
           </div>
-          <a id={"userIndicatorLogin"}>Anmelden</a>
         </div>
         <div
           style={{
@@ -197,5 +198,37 @@ export class MainMenu extends React.Component {
 
   public static openGame() {
     UIManager.showComponent(<GameMenu />);
+  }
+
+  public static checkLogin() {
+    if (Firebase.getInstance().isLoggedIn()) {
+      UIManager.ask(
+        "<h1>Abmelden?</h1><h4>Willst du dich wirklich abmelden?</h4>",
+        () => {
+          Firebase.getInstance().logout(() => {
+            (
+              document.getElementById(
+                "userIndicatorPicture"
+              ) as HTMLImageElement
+            ).src =
+              "https://us.123rf.com/450wm/tuktukdesign/tuktukdesign1608/tuktukdesign160800043/61010830-user-icon-mann-profil-gesch%C3%A4ftsmann-avatar-person-glyph-vektor-illustration.jpg";
+            (
+              document.getElementById("userIndicatorAs") as HTMLDivElement
+            ).innerText = "Anmelden";
+          });
+        }
+      );
+    } else {
+      Firebase.getInstance().loginGoogle((user) => {
+        if (user != null) {
+          (
+            document.getElementById("userIndicatorPicture") as HTMLImageElement
+          ).src = user.user.photoURL as string;
+          (
+            document.getElementById("userIndicatorAs") as HTMLDivElement
+          ).innerText = user.user.displayName as string;
+        }
+      });
+    }
   }
 }
