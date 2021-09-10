@@ -5161,9 +5161,9 @@ imurmurhash@^0.1.4:
   integrity sha1-khi5srkoojixPcT7a21XbyMUU+o=
 
 incode-language@^1.0.6:
-  version "1.0.6"
-  resolved "https://npm.craftions.net/incode-language/-/incode-language-1.0.6.tgz#d8b09840942cff99689edb8f46416b636fdadce6"
-  integrity sha512-9s3R7OFLhmEdBFiTAyDtRHJ9XIZvgT18zrDCIQGS1PtktEIxbSeGyl463KGByL8OLGh7wfR67sLARNlCEhrLNg==
+  version "1.0.7"
+  resolved "https://npm.craftions.net/incode-language/-/incode-language-1.0.7.tgz#5d18578bf346e1dbb478aadd843d27c5bd81495a"
+  integrity sha512-KJHjfSAfGIoK6H1MIm2dbpm93Q7v62Z2bdKX1+X6oi+AC2NyUzPMRT0h+AaTTJlSUuRIQ5fAce0DIy1qjxw46Q==
 
 indent-string@^4.0.0:
   version "4.0.0"
