@@ -17,6 +17,7 @@ import {Firebase} from "../utils/Firebase";
 
 export class MainMenu extends React.Component {
 
+
     /**
      * Renders the Main Menu
      * @return The Menu
