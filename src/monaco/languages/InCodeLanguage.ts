@@ -29,6 +29,7 @@ export class InCodeLanguage {
           [/Sonst/, "root-kw"],
           [/Gib/, "root-kw"],
           [/Frage/, "root-kw"],
+          [/Warte/, "root-kw"],
           // sub
           [/den/, "sub-kw"],
           [/die/, "sub-kw"],
