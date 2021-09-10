@@ -18,7 +18,6 @@ const gProvider = new GoogleAuthProvider();
 const aProvider = new OAuthProvider("apple.com");
 
 export class Firebase {
-
   protected static instance: Firebase;
 
   constructor() {
