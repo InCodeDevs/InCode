@@ -2,9 +2,9 @@ name: Webpack Build
 
 on:
   push:
-    branches: [ latest ]
+    branches: [ latest, main ]
   pull_request:
-    branches: [ latest ]
+    branches: [ latest, main ]
 
 jobs:
   build:
