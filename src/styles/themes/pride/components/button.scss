@@ -1,0 +1,31 @@
+/**
+ * @author The InCode Devs
+ * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
+ */
+
+@use "../colors";
+@use "../animation";
+
+.btn-outline-flat {
+  color: $light !important;
+  border-color: $light !important;
+}
+
+.btn-outline-flat:hover {
+  background-color: $primary !important;
+  border-color: $primary !important;
+}
+
+.normal-outline-btn {
+  border-top: 2px solid $primary !important;
+  background: $dark;
+  color: $primary !important;
+}
+
+.normal-outline-btn:hover {
+  background: darken($dark, 10%);
+}
+
+.normal-outline-btn:active {
+  background: darken($dark, 12%);
+}

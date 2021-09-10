@@ -32,8 +32,11 @@ export class Settings extends React.Component {
             },
           };
 
-          if (theme.scheme === "dark")
+          if (theme.scheme === "dark") {
             entry.imageURL = "assets/code-editor.png";
+          } else if (theme.scheme === "pride") {
+            entry.imageURL = "assets/pride.png";
+          }
 
           themes.push(entry);
         });

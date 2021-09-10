@@ -1,0 +1,32 @@
+/**
+ * @author The InCode Devs
+ * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
+ */
+
+@use "colors";
+
+@keyframes prideAnimation {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+
+@mixin pride {
+  background-size: 300%;
+  background-image: $pride-gradient;
+  animation: prideAnimation 7.5s infinite linear;
+}
+
+@mixin prideText {
+  @include pride;
+  background-clip: text;
+
+  color: transparent !important;
+}
+
+@mixin prideBackground {
+  @include pride;
+}
