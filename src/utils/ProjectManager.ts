@@ -6,6 +6,7 @@ import { UIManager } from "./UIManager";
 import * as Blockly from "blockly";
 
 export class ProjectManager {
+  
   /**
    * Creates a blank Project
    * @param name The name of the Project
