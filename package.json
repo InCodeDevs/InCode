@@ -1,5 +1,5 @@
 {
-  "name": "incode-editor",
+  "name": "@incodelang/editor",
   "version": "3.2.0",
   "description": "The InCode Editor",
   "main": "",
