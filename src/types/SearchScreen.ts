@@ -6,7 +6,7 @@
 export type Props = {
   title: string;
   areas: Area[];
-  entries: Entry[];
+  // entries: Entry[];
   buttons: {
     mainMenu: boolean;
     custom: Button[];
@@ -29,6 +29,7 @@ export type Entry = {
   imageURL: string;
   callback: () => void;
   badge: boolean;
+  badgeType?: "verified" | "cloud",
 };
 
 export type State = {};

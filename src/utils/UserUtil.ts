@@ -6,7 +6,7 @@ import {User} from "./User";
 
 export class UserUtil {
 
-    public static async loginAndSave(username: string, password: string): Promise<number> {
+    public static async loginAndSave(username: string, password: string): Promise<boolean> {
         const success = await User.login(username, password);
         if(success) {
             localStorage.setItem("accounts.actualAccount", JSON.stringify({
@@ -14,7 +14,7 @@ export class UserUtil {
                 password: password
             }))
         }
-        return 0;
+        return success;
     }
 
     public static getSavedUser(): object {

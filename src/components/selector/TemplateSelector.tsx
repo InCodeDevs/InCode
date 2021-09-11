@@ -98,6 +98,8 @@ export class TemplateSelector extends React.Component {
       });
     });
 
+    SearchScreen.entries = entries;
+
     return (
       <>
         <SearchScreen
@@ -112,7 +114,6 @@ export class TemplateSelector extends React.Component {
               id: "code-templates",
             },
           ]}
-          entries={entries}
           buttons={{
             mainMenu: true,
             custom: [],
