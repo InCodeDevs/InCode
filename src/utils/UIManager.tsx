@@ -68,7 +68,7 @@ export class UIManager {
             Options.formattedDOMVersion +
             "</span><br>" +
             "<strong>License:</strong> <span style='font-family: monospace'>GNU General Public License 3.0</span><br>" +
-            "<a href='https://github.com/InCodeDevs/Editor' target='_blank'>GitHub</a>\t<a href='https://incode.craftions.net' target='_blank'>Website</a></span>" +
+            "<a href='https://github.com/InCodeDevs/Editor' target='_blank'>GitHub</a>\t<a href='https://incodelang.de' target='_blank'>Website</a></span>" +
             ""
         );
       }
@@ -266,17 +266,17 @@ export class UIManager {
     document.addEventListener("contextmenu", (e) => {
       e.preventDefault();
       let docURL = "";
-      const tutURL = "https://incode.craftions.net/docs/Tutorials/";
+      const tutURL = "https://docs.incodelang.de/docs/Tutorials/";
 
       if (
         (e.target as HTMLElement).classList.contains("mtk24") &&
         (e.target as HTMLElement).classList.contains("mtkb")
       ) {
-        docURL = "https://incode.craftions.net/docs/Bezug/Befehle/";
+        docURL = "https://docs.incodelang.de/docs/Bezug/Befehle/";
       } else if ((e.target as HTMLElement).classList.contains("mtk29")) {
-        docURL = "https://incode.craftions.net/docs/Bezug/Typen/";
+        docURL = "https://docs.incodelang.de/docs/Bezug/Typen/";
       } else if ((e.target as HTMLElement).classList.contains("mtk22")) {
-        docURL = "https://incode.craftions.net/docs/Bezug/Eigenschaften/";
+        docURL = "https://docs.incodelang.de/docs/Bezug/Eigenschaften/";
       }
 
       if (docURL != "") {
