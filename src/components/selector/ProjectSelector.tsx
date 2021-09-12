@@ -49,7 +49,7 @@ export class ProjectSelector extends React.Component<Props, State> {
         // @ts-ignore
         if (UserUtil.getSavedUser().username && UserUtil.getSavedUser().password) {
             const currentUser = UserUtil.getSavedUser();
-            const data = User.getAllData_u(
+            User.getAllData_u(
                 // @ts-ignore
                 currentUser.username,
                 // @ts-ignore
@@ -67,6 +67,7 @@ export class ProjectSelector extends React.Component<Props, State> {
                         entries.push({
                             title: j.name,
                             callback: () => {
+                                ProjectManager.createProject(j.name, j.type, j.code, j.env);
                                 Registry.putRegister(0x10ad, j.name);
                                 ProjectManager.openProject(j.name, j.type);
                             },
@@ -79,11 +80,12 @@ export class ProjectSelector extends React.Component<Props, State> {
                             badgeType: "cloud"
                         })
                     }
+                    SearchScreen.manualUpdate();
                 })
-                SearchScreen.entries = entries;
-                SearchScreen.manualUpdate();
             })
         }
+
+        SearchScreen.entries = entries;
 
         return (
             <>
@@ -112,6 +114,12 @@ export class ProjectSelector extends React.Component<Props, State> {
             </>
         );
     }
+
+
+    componentDidMount() {
+        SearchScreen.manualUpdate();
+    }
+
 
     /**
      * Imports a project

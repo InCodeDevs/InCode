@@ -136,6 +136,15 @@ export class ProjectManager {
      * @param name The name of the Project
      */
     public static deleteProject(name: string) {
+        let projectConfig = JSON.parse(localStorage.getItem("incode-editor.projects." + name) as string);
+        let currentUser = UserUtil.getSavedUser();
+        // @ts-ignore
+        let username = currentUser.username;
+        // @ts-ignore
+        let password = currentUser.password;
+        if(projectConfig.save === "cloud") {
+            User.deleteData_u(username, password, "project-" + name);
+        }
         localStorage.removeItem("incode-editor.projects." + name);
     }
 

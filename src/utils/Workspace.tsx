@@ -151,7 +151,7 @@ export class Workspace {
     public static delete() {
         UIManager.ask(
             "<h1 style='text-align: center'>Fortfahren?</h1>" +
-            "<h4>Willst du dein Projekt wirklich löschen <span style='color: red'>(Dies kann nicht rückgängig gemacht werden</span></h4>",
+            "<h4>Willst du dein Projekt wirklich löschen <span style='color: red'>(Dies kann nicht rückgängig gemacht werden)</span></h4>",
             () => {
                 if (document.getElementById("livePreviewFrame") != undefined) {
                     (
@@ -240,8 +240,7 @@ export class Workspace {
                         "<h4 style='text-align: center;'>Dieser Name ist bereits vorhanden! Ändere den Namen deines Projektes und versuche es erneut!</h4>"
                     );
                 }
-            }
-    return code;
+            });
   }
 
     public static deployProject() {
