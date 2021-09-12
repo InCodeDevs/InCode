@@ -14,8 +14,8 @@ export class ConfigInit extends InCodeInit {
             localStorage.setItem("incode-editor.enableAnimations", "true");
         }
 
-        if (localStorage.getItem("accounts.actualAccount") === null) {
-            localStorage.setItem("accounts.actualAccount", "{}");
+        if (sessionStorage.getItem("accounts.actualAccount") === null) {
+            sessionStorage.setItem("accounts.actualAccount", "{}");
         }
     }
 }

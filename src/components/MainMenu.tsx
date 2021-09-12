@@ -32,7 +32,7 @@ export class MainMenu extends React.Component {
                         />
                         <div id={"userIndicatorAs"}>
                             {
-                                JSON.parse(localStorage.getItem("accounts.actualAccount") as string).username || "Anmelden"
+                                JSON.parse(sessionStorage.getItem("accounts.actualAccount") as string).username || "Anmelden"
                             }
                         </div>
                     </div>

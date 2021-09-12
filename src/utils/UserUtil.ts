@@ -9,7 +9,7 @@ export class UserUtil {
     public static async loginAndSave(username: string, password: string): Promise<boolean> {
         const success = await User.login(username, password);
         if(success) {
-            localStorage.setItem("accounts.actualAccount", JSON.stringify({
+            sessionStorage.setItem("accounts.actualAccount", JSON.stringify({
                 username: username,
                 password: password
             }))
@@ -18,6 +18,6 @@ export class UserUtil {
     }
 
     public static getSavedUser(): object {
-        return JSON.parse(localStorage.getItem("accounts.actualAccount") as string);
+        return JSON.parse(sessionStorage.getItem("accounts.actualAccount") as string);
     }
 }
