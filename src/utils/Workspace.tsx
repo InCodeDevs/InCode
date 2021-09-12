@@ -217,7 +217,7 @@ export class Workspace {
         const c = Workspace.getWorkspaceCode();
         x.open(
           "GET",
-          "https://templates.incode.craftions.net/api/upload?name=" +
+          "https://templates.incodelang.de/api/upload?name=" +
             Registry.getRegister(0x10ad) +
             "&type=" +
             ProjectManager.getProjectType(Registry.getRegister(0x10ad)) +

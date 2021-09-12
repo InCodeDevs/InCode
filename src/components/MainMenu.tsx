@@ -194,11 +194,11 @@ export class MainMenu extends React.Component {
     }
 
     public static openDocumentation() {
-        window.open("https://incode.craftions.net/docs/intro", "_blank");
+        window.open("https://docs.incodelang.de/docs/intro", "_blank");
     }
 
     public static openTutorials() {
-        window.open("https://incode.craftions.net/docs/Tutorials/Tutorials");
+        window.open("https://docs.incodelang.de/docs/Tutorials/Tutorials");
     }
 
     public static openGame() {
