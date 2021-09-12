@@ -209,7 +209,7 @@ export class MainMenu extends React.Component {
         // @ts-ignore
         if (UserUtil.getSavedUser().username && UserUtil.getSavedUser().password) {
             UIManager.ask("<h1>Abmelden?</h1><h4>Willst du dich wirklich abmelden?</h4>", () => {
-                localStorage.removeItem("accounts.actualAccount");
+                sessionStorage.removeItem("accounts.actualAccount");
 
                 for (let localStorageKey in localStorage) {
                     if(localStorageKey.startsWith("incode-editor.projects")) {
