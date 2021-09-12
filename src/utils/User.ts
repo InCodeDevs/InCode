@@ -115,7 +115,7 @@ export class User {
 
     public static async getData_u(username: string, password: string, dataName: string) {
         let config = this.fetchConfig;
-        config.method = "GET"
+        
         config.body = JSON.stringify({
             username: username,
             password: password,
@@ -128,9 +128,23 @@ export class User {
         return j.message;
     }
 
+    public static async getAllData_u(username: string, password: string) {
+        let config = this.fetchConfig;
+        
+        config.body = JSON.stringify({
+            username: username,
+            password: password
+        })
+
+        const r = await fetch("https://apis.craftions.net/incode/accounts/users/data/all", config as RequestInit)
+        const j = await r.json();
+
+        return j.message;
+    }
+
     public static async existsUser(username: string) {
         let config = this.fetchConfig;
-        config.method = "GET"
+        
         config.body = JSON.stringify({
             username: username
         })
@@ -172,7 +186,7 @@ export class User {
 
     public static async getData(username: string, password: string, dataName: string, hash: boolean = false) {
         let config = this.fetchConfig;
-        config.method = "GET"
+        
         config.body = JSON.stringify({
             username: username,
             password: password,

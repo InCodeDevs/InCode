@@ -8,6 +8,8 @@ import {UIManager} from "../../utils/UIManager";
 import {User} from "../../utils/User";
 import {UserUtil} from "../../utils/UserUtil";
 import {MainMenu} from "../MainMenu";
+import {Options} from "../../Options";
+import {Registry} from "../../Registry";
 
 export class SelectLoginOption extends React.Component {
 
@@ -55,7 +57,11 @@ export class SelectLoginOption extends React.Component {
                     let status = await UserUtil.loginAndSave(username, password)
                     if (status) {
                         UIManager.alert("<h1>Erfolgreich!</h1><h4>Du bist nun als " + username + " angemeldet.</h4>", () => {
-                            UIManager.showComponent(<MainMenu/>)
+                            if (Registry.getRegister(0x10AF)) {
+                                Registry.getRegister(0x10AF)();
+                            } else {
+                                UIManager.showComponent(<MainMenu/>)
+                            }
                         })
                     } else {
                         UIManager.alert("<h1>Fehler</h1><h4>Das Passwort oder der Nutzername ist falsch!</h4>", x)
@@ -63,6 +69,7 @@ export class SelectLoginOption extends React.Component {
                 })
             })
         }
+
         x();
     }
 
@@ -91,7 +98,11 @@ export class SelectLoginOption extends React.Component {
                     if (createStatus) {
                         await UserUtil.loginAndSave(username, password);
                         UIManager.alert("<h1>Erfolgreich!</h1><h4>Du bist nun als " + username + " angemeldet.</h4>", () => {
-                            UIManager.showComponent(<MainMenu/>)
+                            if (Registry.getRegister(0x10AF)) {
+                                Registry.getRegister(0x10AF)();
+                            } else {
+                                UIManager.showComponent(<MainMenu/>)
+                            }
                         })
                     } else {
                         UIManager.alert("<h1>Fehler</h1><h4>Der Nutzername ist vergeben!</h4>", () => {
