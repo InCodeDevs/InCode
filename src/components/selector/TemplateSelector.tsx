@@ -10,6 +10,7 @@ import { ProjectManager } from "../../utils/ProjectManager";
 import { MainMenu } from "../MainMenu";
 import { SearchScreen } from "../util/SearchScreen";
 import { Entry } from "../../types/SearchScreen";
+import {CreateProject} from "./CrateProject";
 
 export class TemplateSelector extends React.Component {
   /**
@@ -78,7 +79,7 @@ export class TemplateSelector extends React.Component {
                     );
                     x.send(null);
 
-                    MainMenu.createProject0(
+                    CreateProject.createProject0(
                       value,
                       template.type,
                       atob(x.responseText)
