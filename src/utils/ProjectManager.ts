@@ -105,7 +105,7 @@ export class ProjectManager {
         );
 
         if (JSON.parse(localStorage.getItem("incode-editor.projects." + name) as string).save === 'cloud') {
-            let currentUser = UserUtil.getSavedUser();
+            const currentUser = UserUtil.getSavedUser();
             User.storeData_u(
                 // @ts-ignore
                 currentUser.username,
@@ -136,12 +136,12 @@ export class ProjectManager {
      * @param name The name of the Project
      */
     public static deleteProject(name: string) {
-        let projectConfig = JSON.parse(localStorage.getItem("incode-editor.projects." + name) as string);
-        let currentUser = UserUtil.getSavedUser();
+        const projectConfig = JSON.parse(localStorage.getItem("incode-editor.projects." + name) as string);
+        const currentUser = UserUtil.getSavedUser();
         // @ts-ignore
-        let username = currentUser.username;
+        const username = currentUser.username;
         // @ts-ignore
-        let password = currentUser.password;
+        const password = currentUser.password;
         if(projectConfig.save === "cloud") {
             User.deleteData_u(username, password, "project-" + name);
         }

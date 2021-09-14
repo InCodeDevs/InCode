@@ -8,7 +8,6 @@ import {UIManager} from "../../utils/UIManager";
 import {User} from "../../utils/User";
 import {UserUtil} from "../../utils/UserUtil";
 import {MainMenu} from "../MainMenu";
-import {Options} from "../../Options";
 import {Registry} from "../../Registry";
 
 export class SelectLoginOption extends React.Component {
@@ -54,7 +53,7 @@ export class SelectLoginOption extends React.Component {
         function x() {
             UIManager.prompt("<h1>Anmelden</h1><h4>Bitte gib deinen Nutzernamen ein</h4>", (username) => {
                 UIManager.prompt("<h1>Anmelden</h1><h4>Bitte gib dein Passwort ein</h4>", async (password) => {
-                    let status = await UserUtil.loginAndSave(username, password)
+                    const status = await UserUtil.loginAndSave(username, password)
                     if (status) {
                         UIManager.alert("<h1>Erfolgreich!</h1><h4>Du bist nun als " + username + " angemeldet.</h4>", () => {
                             if (Registry.getRegister(0x10AF)) {
@@ -94,7 +93,7 @@ export class SelectLoginOption extends React.Component {
                 }
 
                 async function c(username: string, password: string) {
-                    let createStatus = await User.create(username, password)
+                    const createStatus = await User.create(username, password)
                     if (createStatus) {
                         await UserUtil.loginAndSave(username, password);
                         UIManager.alert("<h1>Erfolgreich!</h1><h4>Du bist nun als " + username + " angemeldet.</h4>", () => {

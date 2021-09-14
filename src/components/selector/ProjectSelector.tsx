@@ -57,7 +57,7 @@ export class ProjectSelector extends React.Component<Props, State> {
             ).then(r => {
                 Object.keys(r).forEach(key => {
                     if(key.startsWith("project-")){
-                        let j = r[key];
+                        const j = r[key];
                         entries.forEach(e => {
                             if(e.title === j.name){
                                 entries.splice(entries.indexOf(e), 1)

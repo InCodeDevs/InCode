@@ -7,7 +7,6 @@ import * as React from "react";
 import {Registry} from "../../Registry";
 import {UIManager} from "../../utils/UIManager";
 import {TemplateSelector} from "./TemplateSelector";
-import {MainMenu} from "../MainMenu";
 import {ProjectManager} from "../../utils/ProjectManager";
 import {EditorSelector} from "./EditorSelector";
 import {ProjectTypeSelector} from "./ProjectTypeSelector";
@@ -44,7 +43,6 @@ export class CreateProject extends React.Component {
                             </div>
                             <div
                                 className={"menu-choose-editor"}
-                                onClick={CreateProject.createShared}
                             >
                                 <img
                                     src={"assets/editor-create-project.png"}
@@ -131,9 +129,5 @@ export class CreateProject extends React.Component {
             Registry.getRegister(0x10ad),
             Registry.getRegister(0x10aa)
         );
-    }
-
-    public static createShared() {
-
     }
 }

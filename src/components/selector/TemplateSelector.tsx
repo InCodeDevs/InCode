@@ -7,7 +7,6 @@ import * as React from "react";
 import { ObjectDefinition } from "../../Registry";
 import { UIManager } from "../../utils/UIManager";
 import { ProjectManager } from "../../utils/ProjectManager";
-import { MainMenu } from "../MainMenu";
 import { SearchScreen } from "../util/SearchScreen";
 import { Entry } from "../../types/SearchScreen";
 import {CreateProject} from "./CrateProject";

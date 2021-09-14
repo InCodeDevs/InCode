@@ -4,14 +4,9 @@
  */
 
 import * as React from "react";
-import {ProjectManager} from "../utils/ProjectManager";
 import {UIManager} from "../utils/UIManager";
-import {Registry} from "../Registry";
 import {GameMenu} from "./game/GameMenu";
 import {Settings} from "./Settings";
-import {ProjectTypeSelector} from "./selector/ProjectTypeSelector";
-import {EditorSelector} from "./selector/EditorSelector";
-import {TemplateSelector} from "./selector/TemplateSelector";
 import {ProjectSelector} from "./selector/ProjectSelector";
 import {SelectLoginOption} from "./login/SelectLoginOption";
 import {UserUtil} from "../utils/UserUtil";
@@ -140,7 +135,7 @@ export class MainMenu extends React.Component {
                 sessionStorage.removeItem("accounts.actualAccount");
 
                 for (let i = 0; i < localStorage.length; i++) {
-                    let localStorageKey = localStorage.key(i) as string
+                    const localStorageKey = localStorage.key(i) as string
                     if(localStorageKey.startsWith("incode-editor.projects")) {
                         if (JSON.parse(localStorage.getItem(localStorageKey) as string).save === "cloud") {
                             localStorage.removeItem(localStorageKey)

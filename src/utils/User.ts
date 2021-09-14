@@ -18,7 +18,7 @@ export class User {
     }
 
     public static async login(username: string, password: string) {
-        let config = this.fetchConfig;
+        const config = this.fetchConfig;
         config.body = JSON.stringify({
             username: username,
             password: password
@@ -31,7 +31,7 @@ export class User {
     }
 
     public static async create(username: string, password: string) {
-        let config = this.fetchConfig;
+        const config = this.fetchConfig;
         config.body = JSON.stringify({
             username: username,
             password: password
@@ -44,7 +44,7 @@ export class User {
     }
 
     public static async delete(username: string, password: string) {
-        let config = this.fetchConfig;
+        const config = this.fetchConfig;
         config.body = JSON.stringify({
             username: username,
             password: password
@@ -57,7 +57,7 @@ export class User {
     }
 
     public static async updateUsername(username: string, password: string, newUsername: string) {
-        let config = this.fetchConfig;
+        const config = this.fetchConfig;
         config.body = JSON.stringify({
             old: username,
             username: newUsername,
@@ -71,7 +71,7 @@ export class User {
     }
 
     public static async updatePassword(username: string, password: string, newPassword: string) {
-        let config = this.fetchConfig;
+        const config = this.fetchConfig;
         config.body = JSON.stringify({
             old: password,
             username: username,
@@ -85,7 +85,7 @@ export class User {
     }
 
     public static async storeData_u(username: string, password: string, data: object, dataName: string) {
-        let config = this.fetchConfig;
+        const config = this.fetchConfig;
         config.body = JSON.stringify({
             username: username,
             password: password,
@@ -100,7 +100,7 @@ export class User {
     }
 
     public static async deleteData_u(username: string, password: string, dataName: string) {
-        let config = this.fetchConfig;
+        const config = this.fetchConfig;
         config.body = JSON.stringify({
             username: username,
             password: password,
@@ -114,7 +114,7 @@ export class User {
     }
 
     public static async getData_u(username: string, password: string, dataName: string) {
-        let config = this.fetchConfig;
+        const config = this.fetchConfig;
         
         config.body = JSON.stringify({
             username: username,
@@ -129,7 +129,7 @@ export class User {
     }
 
     public static async getAllData_u(username: string, password: string) {
-        let config = this.fetchConfig;
+        const config = this.fetchConfig;
         
         config.body = JSON.stringify({
             username: username,
@@ -143,7 +143,7 @@ export class User {
     }
 
     public static async existsUser(username: string) {
-        let config = this.fetchConfig;
+        const config = this.fetchConfig;
         
         config.body = JSON.stringify({
             username: username
@@ -156,7 +156,7 @@ export class User {
     }
 
     public static async storeData(username: string, password: string, data: object, dataName: string) {
-        let config = this.fetchConfig;
+        const config = this.fetchConfig;
         config.body = JSON.stringify({
             username: username,
             password: password,
@@ -171,7 +171,7 @@ export class User {
     }
 
     public static async deleteData(username: string, password: string, dataName: string) {
-        let config = this.fetchConfig;
+        const config = this.fetchConfig;
         config.body = JSON.stringify({
             username: username,
             password: password,
@@ -184,8 +184,8 @@ export class User {
         return !j.error;
     }
 
-    public static async getData(username: string, password: string, dataName: string, hash: boolean = false) {
-        let config = this.fetchConfig;
+    public static async getData(username: string, password: string, dataName: string, hash = false) {
+        const config = this.fetchConfig;
         
         config.body = JSON.stringify({
             username: username,
@@ -205,7 +205,7 @@ export class User {
     }
 
     public static async allowDataAccess(username: string, password: string, dataName: string, newUser: string) {
-        let config = this.fetchConfig;
+        const config = this.fetchConfig;
         config.body = JSON.stringify({
             username: username,
             password: password,
@@ -220,7 +220,7 @@ export class User {
     }
 
     public static async disallowDataAccess(username: string, password: string, dataName: string, newUser: string) {
-        let config = this.fetchConfig;
+        const config = this.fetchConfig;
         config.body = JSON.stringify({
             username: username,
             password: password,

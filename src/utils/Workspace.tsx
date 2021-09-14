@@ -251,11 +251,11 @@ export class Workspace {
     public static deployAccount() {
         // @ts-ignore
         if (UserUtil.getSavedUser().username && UserUtil.getSavedUser().password) {
-            let currentUser = UserUtil.getSavedUser();
+            const currentUser = UserUtil.getSavedUser();
 
             console.log(localStorage.getItem("incode-editor.projects." + Registry.getRegister(0x10AD)) as string)
 
-            let config = JSON.parse(localStorage.getItem("incode-editor.projects." + Registry.getRegister(0x10AD)) as string)
+            const config = JSON.parse(localStorage.getItem("incode-editor.projects." + Registry.getRegister(0x10AD)) as string)
             config.save = 'cloud';
 
             localStorage.setItem("incode-editor.projects." + Registry.getRegister(0x10AD),
