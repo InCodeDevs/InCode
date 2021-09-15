@@ -128,6 +128,67 @@ export class Settings extends React.Component {
     },
   };
 
+  public static updateSettings(settings: ObjectDefinition = { ex: true }) {
+    (document.getElementById("settings") as HTMLDivElement).innerHTML =
+      "<h2>Einstellungen</h2>";
+
+    let a2u: ObjectDefinition;
+
+    if (settings.ex !== true) {
+      a2u = settings;
+    } else {
+      a2u = Settings.config;
+    }
+
+    Object.keys(a2u).forEach((s) => {
+      const setting = a2u[s];
+
+      const element = document.createElement("div");
+      element.classList.add("template");
+
+      element.addEventListener("click", () => {
+        setting.callback();
+      });
+
+      const image = document.createElement("img");
+      image.width = 128;
+      image.height = 128;
+
+      image.src = setting.icon;
+
+      const h5 = document.createElement("h5");
+      h5.classList.add("template-name");
+      h5.innerText = setting.display;
+
+      element.appendChild(image);
+      element.appendChild(h5);
+
+      (document.getElementById("settings") as HTMLDivElement).appendChild(
+        element
+      );
+    });
+  }
+
+  public static search() {
+    const term = (
+      document.getElementById("search-bar") as HTMLInputElement
+    ).value.trim();
+    if (term.length > 0) {
+      const settings: ObjectDefinition = {};
+      Object.keys(Settings.config).forEach((t) => {
+        const setting = Settings.config[t];
+        if (
+          t.toLowerCase().includes(term.toLowerCase()) ||
+          setting.display.toLowerCase().includes(term.toLowerCase())
+        )
+          settings[t] = setting;
+      });
+      Settings.updateSettings(settings);
+    } else {
+      Settings.updateSettings();
+    }
+  }
+
   render() {
     return (
       <>
@@ -188,66 +249,5 @@ export class Settings extends React.Component {
 
   componentDidMount() {
     Settings.updateSettings();
-  }
-
-  public static updateSettings(settings: ObjectDefinition = { ex: true }) {
-    (document.getElementById("settings") as HTMLDivElement).innerHTML =
-      "<h2>Einstellungen</h2>";
-
-    let a2u: ObjectDefinition;
-
-    if (settings.ex !== true) {
-      a2u = settings;
-    } else {
-      a2u = Settings.config;
-    }
-
-    Object.keys(a2u).forEach((s) => {
-      const setting = a2u[s];
-
-      const element = document.createElement("div");
-      element.classList.add("template");
-
-      element.addEventListener("click", () => {
-        setting.callback();
-      });
-
-      const image = document.createElement("img");
-      image.width = 128;
-      image.height = 128;
-
-      image.src = setting.icon;
-
-      const h5 = document.createElement("h5");
-      h5.classList.add("template-name");
-      h5.innerText = setting.display;
-
-      element.appendChild(image);
-      element.appendChild(h5);
-
-      (document.getElementById("settings") as HTMLDivElement).appendChild(
-        element
-      );
-    });
-  }
-
-  public static search() {
-    const term = (
-      document.getElementById("search-bar") as HTMLInputElement
-    ).value.trim();
-    if (term.length > 0) {
-      const settings: ObjectDefinition = {};
-      Object.keys(Settings.config).forEach((t) => {
-        const setting = Settings.config[t];
-        if (
-          t.toLowerCase().includes(term.toLowerCase()) ||
-          setting.display.toLowerCase().includes(term.toLowerCase())
-        )
-          settings[t] = setting;
-      });
-      Settings.updateSettings(settings);
-    } else {
-      Settings.updateSettings();
-    }
   }
 }

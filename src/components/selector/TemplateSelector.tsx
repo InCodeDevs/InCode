@@ -9,7 +9,7 @@ import { UIManager } from "../../utils/UIManager";
 import { ProjectManager } from "../../utils/ProjectManager";
 import { SearchScreen } from "../util/SearchScreen";
 import { Entry } from "../../types/SearchScreen";
-import {CreateProject} from "./CrateProject";
+import { CreateProject } from "./CrateProject";
 
 export class TemplateSelector extends React.Component {
   /**
@@ -18,11 +18,7 @@ export class TemplateSelector extends React.Component {
    */
   render() {
     const x = new XMLHttpRequest();
-    x.open(
-      "GET",
-      "https://templates.incodelang.de/templates.json",
-      false
-    );
+    x.open("GET", "https://templates.incodelang.de/templates.json", false);
     x.send(null);
     const templates = JSON.parse(x.responseText) as ObjectDefinition;
 
@@ -72,8 +68,7 @@ export class TemplateSelector extends React.Component {
                     const x = new XMLHttpRequest();
                     x.open(
                       "GET",
-                      "https://templates.incodelang.de/" +
-                        template.directURL,
+                      "https://templates.incodelang.de/" + template.directURL,
                       false
                     );
                     x.send(null);

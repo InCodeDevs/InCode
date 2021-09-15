@@ -9,43 +9,67 @@ import { IncompatibleScreen } from "../../components/util/IncompatibleScreen";
 import { UIManager } from "../../utils/UIManager";
 
 export class ScreenScaling extends Worker {
+
+  protected static enabled = true;
+
+  public static enable() {
+    this.enabled = true;
+  }
+
+  public static disable() {
+    this.enabled = false;
+  }
+
   run() {
     let needIncompatibleScreenSizeScreen = false;
     let lastInnerWidth = window.innerWidth;
     let lastInnerHeight = window.innerHeight;
 
     setInterval(() => {
-      needIncompatibleScreenSizeScreen =
-        window.innerHeight < 768 || window.innerWidth < 1024;
+      if (ScreenScaling.enabled) {
+        needIncompatibleScreenSizeScreen =
+          window.innerHeight < 768 || window.innerWidth < 1024;
 
-      if (needIncompatibleScreenSizeScreen) {
-        (document.querySelector("#topScreen") as HTMLDivElement).style.display =
-          "block";
-        ReactDOM.render(
-          <IncompatibleScreen
-            title={"Inkompatible Bildschirmgröße erkannt"}
-            message={
-              "Dein Bildschirm ist zu klein, bitte verwende einen größeren!"
-            }
-          />,
-          document.querySelector("#topScreen")
-        );
-      } else {
-        (document.querySelector("#topScreen") as HTMLDivElement).style.display =
-          "none";
-        ReactDOM.unmountComponentAtNode(
-          document.querySelector("#topScreen") as HTMLDivElement
-        );
-      }
+        if (needIncompatibleScreenSizeScreen) {
+          (
+            document.querySelector("#topScreen") as HTMLDivElement
+          ).style.display = "block";
+          ReactDOM.render(
+            <IncompatibleScreen
+              title={"Inkompatible Bildschirmgröße erkannt"}
+              message={
+                "Dein Bildschirm ist zu klein, bitte verwende einen größeren!"
+              }
+              ignore={() => {
+                ScreenScaling.disable();
+                (
+                    document.querySelector("#topScreen") as HTMLDivElement
+                ).style.display = "none";
+                ReactDOM.unmountComponentAtNode(
+                    document.querySelector("#topScreen") as HTMLDivElement
+                );
+              }}
+            />,
+            document.querySelector("#topScreen")
+          );
+        } else {
+          (
+            document.querySelector("#topScreen") as HTMLDivElement
+          ).style.display = "none";
+          ReactDOM.unmountComponentAtNode(
+            document.querySelector("#topScreen") as HTMLDivElement
+          );
+        }
 
-      if (
-        lastInnerWidth != window.innerWidth ||
-        lastInnerHeight != window.innerHeight
-      ) {
-        UIManager.remakeSizes();
+        if (
+          lastInnerWidth != window.innerWidth ||
+          lastInnerHeight != window.innerHeight
+        ) {
+          UIManager.remakeSizes();
+        }
+        lastInnerHeight = window.innerHeight;
+        lastInnerWidth = window.innerWidth;
       }
-      lastInnerHeight = window.innerHeight;
-      lastInnerWidth = window.innerWidth;
     }, 10);
   }
 }

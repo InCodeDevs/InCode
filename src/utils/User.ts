@@ -115,7 +115,7 @@ export class User {
 
     public static async getData_u(username: string, password: string, dataName: string) {
         const config = this.fetchConfig;
-        
+
         config.body = JSON.stringify({
             username: username,
             password: password,
@@ -130,7 +130,7 @@ export class User {
 
     public static async getAllData_u(username: string, password: string) {
         const config = this.fetchConfig;
-        
+
         config.body = JSON.stringify({
             username: username,
             password: password
@@ -144,7 +144,7 @@ export class User {
 
     public static async existsUser(username: string) {
         const config = this.fetchConfig;
-        
+
         config.body = JSON.stringify({
             username: username
         })
@@ -186,7 +186,7 @@ export class User {
 
     public static async getData(username: string, password: string, dataName: string, hash = false) {
         const config = this.fetchConfig;
-        
+
         config.body = JSON.stringify({
             username: username,
             password: password,

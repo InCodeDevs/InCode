@@ -24,6 +24,7 @@
 #blocklyDiv {
   height: 100%;
 }
+
 #menuBar {
   width: 100%;
   min-height: 5%;
@@ -65,6 +66,7 @@
   margin: 1rem;
   position: fixed;
   z-index: 4268;
+
   #userImage {
     text-align: center;
 
@@ -76,6 +78,7 @@
 
     &:hover {
       cursor: pointer;
+
       div {
         visibility: visible;
       }

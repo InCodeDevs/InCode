@@ -7,7 +7,6 @@ import * as ReactDOM from "react-dom";
 import { MainMenu } from "../components/MainMenu";
 import { MenuBar } from "../components/MenuBar";
 import * as React from "react";
-import ToolboxDefinition = Blockly.utils.toolbox.ToolboxDefinition;
 import { Options } from "../Options";
 import { StartBlock } from "../blockly/blocks/StartBlock";
 import { LogBlock } from "../blockly/blocks/LogBlock";
@@ -41,6 +40,7 @@ import { SetVarBorderStyle } from "../blockly/blocks/SetVarBorderStyle";
 import { SetVarFontWeight } from "../blockly/blocks/SetVarFontWeight";
 import { ObjectDefinition } from "../Registry";
 import { Themes } from "../Themes";
+import ToolboxDefinition = Blockly.utils.toolbox.ToolboxDefinition;
 
 export class UIManager {
   /**
@@ -362,12 +362,6 @@ export class UIManager {
   };
 
   /* eslint-disable @typescript-eslint/no-unused-vars */
-  /* eslint-disable @typescript-eslint/no-empty-function */
-  private static prompt0CallBack = (value: string) => {};
-  /* eslint-disable @typescript-eslint/no-empty-function */
-  private static alert0CallBack = () => {};
-  /* eslint-disable @typescript-eslint/no-empty-function */
-  private static question0CallBack = () => {};
 
   /**
    * Alert a message
@@ -433,6 +427,26 @@ export class UIManager {
     ).addEventListener("click", UIManager.handleAsk0, true);
   }
 
+  /**
+   * Hides all open Popups (alert, prompt and question/ask)
+   */
+  public static hideAllPopups() {
+    document.querySelectorAll(".popup").forEach((s) => {
+      (s as HTMLDivElement).style.display = "none";
+    });
+
+    (document.getElementById("popup") as HTMLDivElement).style.display = "none";
+  }
+
+  /* eslint-disable @typescript-eslint/no-empty-function */
+  private static prompt0CallBack = (value: string) => {};
+
+  /* eslint-disable @typescript-eslint/no-empty-function */
+  private static alert0CallBack = () => {};
+
+  /* eslint-disable @typescript-eslint/no-empty-function */
+  private static question0CallBack = () => {};
+
   private static handlePrompt0(e: MouseEvent) {
     console.log("Hello World");
     (
@@ -459,16 +473,5 @@ export class UIManager {
       ) as HTMLButtonElement
     ).removeEventListener("click", UIManager.handleAsk0, true);
     UIManager.question0CallBack();
-  }
-
-  /**
-   * Hides all open Popups (alert, prompt and question/ask)
-   */
-  public static hideAllPopups() {
-    document.querySelectorAll(".popup").forEach((s) => {
-      (s as HTMLDivElement).style.display = "none";
-    });
-
-    (document.getElementById("popup") as HTMLDivElement).style.display = "none";
   }
 }

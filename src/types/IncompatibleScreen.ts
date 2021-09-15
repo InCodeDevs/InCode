@@ -6,6 +6,7 @@
 export type ScreenProps = {
   title: string;
   message: string;
+  ignore: () => void;
 };
 
 export type ScreenState = {};

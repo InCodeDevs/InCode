@@ -13,69 +13,7 @@ import {ProjectTypeSelector} from "./ProjectTypeSelector";
 
 export class CreateProject extends React.Component {
 
-    render() {
-        return (
-            <>
-                <div
-                    style={{
-                        top: "50%",
-                        left: "50%",
-                        transform: "translate(-50%, -50%)",
-                        position: "absolute",
-                        textAlign: "center",
-                    }}
-                >
-                    <h1 style={{color: "#F8F9FAFF"}}>Projekt erstellen</h1>
-                    <div className={"menu-choose-editors-root"}>
-                        <div className={"menu-choose-editors-root"}>
-                            <div
-                                className={"menu-choose-editor"}
-                                onClick={CreateProject.createProject}
-                            >
-                                <img
-                                    src={"assets/editor-create-project.png"}
-                                    width={128}
-                                    height={128}
-                                />
-                                <p className={"menu-editor-description"}>
-                                    Projekt <br/> Erstellen
-                                </p>
-                            </div>
-                            <div
-                                className={"menu-choose-editor"}
-                            >
-                                <img
-                                    src={"assets/editor-create-project.png"}
-                                    width={128}
-                                    height={128}
-                                />
-                                <p className={"menu-editor-description"}>
-                                    Geteiltes Projekt <br /> Erstellen
-                                </p>
-                            </div>
-                            <div
-                                className={"menu-choose-editor"}
-                                onClick={() => {
-                                    UIManager.showComponent(<TemplateSelector/>);
-                                }}
-                            >
-                                <img
-                                    src={"assets/editor-create-project.png"}
-                                    width={128}
-                                    height={128}
-                                />
-                                <p className={"menu-editor-description"}>
-                                    Projekt <br/> mit Vorlage Erstellen
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </>
-        );
-    }
-
-    public static createProject() {
+  public static createProject() {
         UIManager.prompt(
             "<h1 style='text-align: center'>Projekt Erstellen</h1>" +
             "<h4 style='text-align: center'>Bitte gib den Namen deines neuen Projektes ein!</h4>",
@@ -128,6 +66,66 @@ export class CreateProject extends React.Component {
         ProjectManager.openProject(
             Registry.getRegister(0x10ad),
             Registry.getRegister(0x10aa)
+        );
+    }
+
+    render() {
+        return (
+            <>
+                <div
+                    style={{
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        position: "absolute",
+                        textAlign: "center",
+                    }}
+                >
+                    <h1 style={{color: "#F8F9FAFF"}}>Projekt erstellen</h1>
+                    <div className={"menu-choose-editors-root"}>
+                        <div className={"menu-choose-editors-root"}>
+                            <div
+                                className={"menu-choose-editor"}
+                                onClick={CreateProject.createProject}
+                            >
+                                <img
+                                    src={"assets/editor-create-project.png"}
+                                    width={128}
+                                    height={128}
+                                />
+                                <p className={"menu-editor-description"}>
+                                    Projekt <br/> Erstellen
+                                </p>
+                            </div>
+                            <div className={"menu-choose-editor"} style={{display: "none"}}>
+                                <img
+                                    src={"assets/editor-create-project.png"}
+                                    width={128}
+                                    height={128}
+                                />
+                                <p className={"menu-editor-description"}>
+                                    Geteiltes Projekt <br/> Erstellen
+                                </p>
+                            </div>
+                            <div
+                                className={"menu-choose-editor"}
+                                onClick={() => {
+                                    UIManager.showComponent(<TemplateSelector/>);
+                                }}
+                            >
+                                <img
+                                    src={"assets/editor-create-project.png"}
+                                    width={128}
+                                    height={128}
+                                />
+                                <p className={"menu-editor-description"}>
+                                    Projekt <br/> mit Vorlage Erstellen
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </>
         );
     }
 }
