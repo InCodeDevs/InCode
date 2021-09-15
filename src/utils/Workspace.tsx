@@ -121,13 +121,21 @@ export class Workspace {
             atob(Options.currentLiveJS)
         );
       }
-      console.log(atob(Options.currentLiveJS));
+
       const previewFrame = document.createElement("iframe");
-      previewFrame.src = "preview.html?code=" + Options.currentLiveJS;
+      previewFrame.src = "preview.html?code=" + toBinary(Options.currentLiveJS);
       previewFrame.id = "livePreviewFrame";
       (document.getElementById("livePreview") as HTMLDivElement).appendChild(
         previewFrame
       );
+    }
+
+    function toBinary(s: string) {
+      const codeUnits = new Uint16Array(s.length);
+      for (let i = 0; i < codeUnits.length; i++) {
+        codeUnits[i] = s.charCodeAt(i);
+      }
+      return btoa(String.fromCharCode(...new Uint8Array(codeUnits.buffer)));
     }
   };
 

@@ -11,6 +11,15 @@
 </html>
 <script>
 
+    function fromBinary(encoded) {
+        let binary = atob(encoded)
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return String.fromCharCode(...new Uint16Array(bytes.buffer));
+    }
+
     (async () => {
         let searchParams = new URLSearchParams(window.location.search);
         if (!searchParams.has("code")) {
@@ -19,12 +28,14 @@
             window.onload = () => {
                 document.body.innerHTML = '';
                 document.body.style.backgroundColor = "#fff";
-                let realJS = atob(searchParams.get('code'));
+
+                let code = fromBinary(searchParams.get('code'));
+
+                let realJS = atob(code);
+
+                console.log(realJS)
                 let src = document.createElement('script')
-                realJS = "(async () => {" + realJS
-                realJS += "})();"
                 src.innerHTML = realJS;
-                src.async = "true";
                 document.body.appendChild(src)
             }
         }

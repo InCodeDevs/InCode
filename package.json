@@ -53,7 +53,7 @@
     "bootstrap": "^5.0.2",
     "firebase": "^9.0.1",
     "firebase-tools": "^9.16.6",
-    "incode-language": "^1.0.7",
+    "incode-language": "^1.0.11",
     "jszip": "^3.7.1",
     "monaco-editor": "^0.26.1",
     "react": "^17.0.2",
