@@ -38,7 +38,6 @@ import { SetVarTextAlign } from "../blockly/blocks/SetVarTextAlign";
 import { SetVarPositionBlock } from "../blockly/blocks/SetVarPositionBlock";
 import { SetVarBorderStyle } from "../blockly/blocks/SetVarBorderStyle";
 import { SetVarFontWeight } from "../blockly/blocks/SetVarFontWeight";
-import { Registry } from "./Registry";
 import { IObject } from "./interface/IObject";
 import { Themes } from "./Themes";
 import ToolboxDefinition = Blockly.utils.toolbox.ToolboxDefinition;
