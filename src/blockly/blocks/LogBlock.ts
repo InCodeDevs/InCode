@@ -18,7 +18,7 @@ export class LogBlock {
           {
             type: "field_input",
             name: "MESSAGE",
-            text: "eine Nachricht",
+            text: "\"Wert\"",
           },
           {
             type: "field_dropdown",
