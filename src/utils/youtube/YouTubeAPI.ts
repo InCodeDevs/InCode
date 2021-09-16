@@ -2,14 +2,15 @@
  * @author The InCode Devs
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
-import { ObjectDefinition } from "../../Registry";
+
+import {IObject} from "../interface/IObject";
 
 export class YouTubeAPI {
   public static readonly API_KEY = "AIzaSyAddGuPMEao5Ngv60cX9iXn3pziHclmLnI";
 
   public static getPlayListContent(
     playListId: string,
-    callback: (data: ObjectDefinition) => void
+    callback: (data: IObject) => void
   ) {
     fetch(
       `https://content-youtube.googleapis.com/youtube/v3/playlistItems?playlistId=${playListId}&part=contentDetails&maxResults=128&key=${this.API_KEY}`
@@ -25,7 +26,7 @@ export class YouTubeAPI {
     this.getPlayListContent(playListId, (d) => {
       const videos: string[] = [];
 
-      (d.items as ObjectDefinition[]).forEach((x) => {
+      (d.items as IObject[]).forEach((x) => {
         videos.push(x.contentDetails.videoId);
       });
 

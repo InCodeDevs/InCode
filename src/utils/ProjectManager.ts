@@ -5,7 +5,7 @@
 import { UIManager } from "./UIManager";
 import * as Blockly from "blockly";
 import { User } from "./User";
-import { Registry } from "../Registry";
+import { Registry } from "./Registry";
 import { UserUtil } from "./UserUtil";
 
 export class ProjectManager {

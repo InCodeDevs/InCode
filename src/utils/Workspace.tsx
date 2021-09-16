@@ -5,9 +5,9 @@
 
 import { BlocklyCompiler } from "../blockly/BlocklyCompiler";
 import { WebCompiler } from "incode-language/dist/incode";
-import { Options } from "../Options";
+import { Options } from "./Options";
 import { Networking } from "./Networking";
-import { Registry } from "../Registry";
+import { Registry } from "./Registry";
 import { ProjectManager } from "./ProjectManager";
 import { UIManager } from "./UIManager";
 import * as Blockly from "blockly/blockly";

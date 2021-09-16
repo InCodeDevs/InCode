@@ -2,10 +2,10 @@
  * @author The InCode Devs
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
-import { ObjectDefinition } from "./Registry";
+import {IObject} from "./interface/IObject";
 
 export class Themes {
-  public static themes: ObjectDefinition = {
+  public static themes: IObject = {
     dark: {
       display: "Dunkel",
       scheme: "dark",

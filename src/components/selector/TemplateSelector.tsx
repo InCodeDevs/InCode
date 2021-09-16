@@ -4,7 +4,7 @@
  */
 
 import * as React from "react";
-import { ObjectDefinition } from "../../Registry";
+import {IObject} from "../../utils/interface/IObject";
 import { UIManager } from "../../utils/UIManager";
 import { ProjectManager } from "../../utils/ProjectManager";
 import { SearchScreen } from "../util/SearchScreen";
@@ -20,7 +20,7 @@ export class TemplateSelector extends React.Component {
     const x = new XMLHttpRequest();
     x.open("GET", "https://templates.incodelang.de/templates.json", false);
     x.send(null);
-    const templates = JSON.parse(x.responseText) as ObjectDefinition;
+    const templates = JSON.parse(x.responseText) as IObject;
 
     const entries: Entry[] = [];
 

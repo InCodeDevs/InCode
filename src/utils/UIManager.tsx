@@ -7,7 +7,7 @@ import * as ReactDOM from "react-dom";
 import { MainMenu } from "../components/MainMenu";
 import { MenuBar } from "../components/MenuBar";
 import * as React from "react";
-import { Options } from "../Options";
+import { Options } from "./Options";
 import { StartBlock } from "../blockly/blocks/StartBlock";
 import { LogBlock } from "../blockly/blocks/LogBlock";
 import { AskBlock } from "../blockly/blocks/AskBlock";
@@ -38,8 +38,9 @@ import { SetVarTextAlign } from "../blockly/blocks/SetVarTextAlign";
 import { SetVarPositionBlock } from "../blockly/blocks/SetVarPositionBlock";
 import { SetVarBorderStyle } from "../blockly/blocks/SetVarBorderStyle";
 import { SetVarFontWeight } from "../blockly/blocks/SetVarFontWeight";
-import { ObjectDefinition } from "../Registry";
-import { Themes } from "../Themes";
+import { Registry } from "./Registry";
+import { IObject } from "./interface/IObject";
+import { Themes } from "./Themes";
 import ToolboxDefinition = Blockly.utils.toolbox.ToolboxDefinition;
 
 export class UIManager {
@@ -179,7 +180,7 @@ export class UIManager {
 
     Blockly.setLocale(DE);
 
-    const options: ObjectDefinition = {
+    const options: IObject = {
       toolbox: document.getElementById("toolbox") as ToolboxDefinition,
       renderer: "zelos",
     };

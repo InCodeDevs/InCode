@@ -4,7 +4,7 @@
  */
 
 import * as React from "react";
-import { Registry } from "../../Registry";
+import { Registry } from "../../utils/Registry";
 
 export class EditorSelector extends React.Component {
   /**

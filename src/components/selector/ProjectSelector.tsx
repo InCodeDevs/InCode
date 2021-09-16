@@ -4,13 +4,14 @@
  */
 
 import * as React from "react";
-import { ObjectDefinition, Registry } from "../../Registry";
+import {IObject} from "../../utils/interface/IObject";
 import { UIManager } from "../../utils/UIManager";
 import { ProjectManager } from "../../utils/ProjectManager";
 import { SearchScreen } from "../util/SearchScreen";
 import { Entry } from "../../types/SearchScreen";
 import { UserUtil } from "../../utils/UserUtil";
 import { User } from "../../utils/User";
+import {Registry} from "../../utils/Registry";
 
 type Props = {};
 
@@ -19,8 +20,8 @@ type State = {
 };
 
 export class ProjectSelector extends React.Component<Props, State> {
-  public static getProjects(): ObjectDefinition {
-    const projects: ObjectDefinition = {};
+  public static getProjects(): IObject {
+    const projects: IObject = {};
     for (let i = 0; i < localStorage.length; i++) {
       if (
         (localStorage.key(i) as string).startsWith("incode-editor.projects")

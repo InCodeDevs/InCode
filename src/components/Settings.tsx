@@ -4,17 +4,17 @@
  */
 
 import * as React from "react";
-import { ObjectDefinition } from "../Registry";
+import {IObject} from "../utils/interface/IObject";
 
 import { UIManager } from "../utils/UIManager";
 import { MainMenu } from "./MainMenu";
 import { Button, Form } from "react-bootstrap";
 import { SettingsScreen } from "./util/SettingsScreen";
 import { Entry } from "../types/SettingsScreen";
-import { Themes } from "../Themes";
+import { Themes } from "../utils/Themes";
 
 export class Settings extends React.Component {
-  public static readonly config: ObjectDefinition = {
+  public static readonly config: IObject = {
     theme: {
       display: "Erscheinungsbild",
       callback: () => {
@@ -128,11 +128,11 @@ export class Settings extends React.Component {
     },
   };
 
-  public static updateSettings(settings: ObjectDefinition = { ex: true }) {
+  public static updateSettings(settings: IObject = { ex: true }) {
     (document.getElementById("settings") as HTMLDivElement).innerHTML =
       "<h2>Einstellungen</h2>";
 
-    let a2u: ObjectDefinition;
+    let a2u: IObject;
 
     if (settings.ex !== true) {
       a2u = settings;
@@ -174,7 +174,7 @@ export class Settings extends React.Component {
       document.getElementById("search-bar") as HTMLInputElement
     ).value.trim();
     if (term.length > 0) {
-      const settings: ObjectDefinition = {};
+      const settings: IObject = {};
       Object.keys(Settings.config).forEach((t) => {
         const setting = Settings.config[t];
         if (

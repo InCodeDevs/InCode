@@ -8,7 +8,7 @@ import { UIManager } from "../../utils/UIManager";
 import { User } from "../../utils/User";
 import { UserUtil } from "../../utils/UserUtil";
 import { MainMenu } from "../MainMenu";
-import { Registry } from "../../Registry";
+import { Registry } from "../../utils/Registry";
 
 export class SelectLoginOption extends React.Component {
   render() {
