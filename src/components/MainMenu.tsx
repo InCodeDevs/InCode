@@ -11,6 +11,7 @@ import { ProjectSelector } from "./selector/ProjectSelector";
 import { SelectLoginOption } from "./login/SelectLoginOption";
 import { UserUtil } from "../utils/UserUtil";
 import { CreateProject } from "./selector/CrateProject";
+import {Language} from "../utils/international/Language";
 
 export class MainMenu extends React.Component {
   /**
@@ -80,7 +81,7 @@ export class MainMenu extends React.Component {
             <div id={"userIndicatorAs"}>
               {JSON.parse(
                 sessionStorage.getItem("accounts.actualAccount") as string
-              ).username || "Anmelden"}
+              ).username || Language.a("menu.account.login")}
             </div>
           </div>
         </div>
@@ -93,7 +94,9 @@ export class MainMenu extends React.Component {
             textAlign: "center",
           }}
         >
-          <h1 style={{ color: "#F8F9FAFF" }}>InCode Editor</h1>
+          <h1 style={{ color: "#F8F9FAFF" }}>
+            {Language.a("product.name")}
+          </h1>
           <div className={"menu-choose-editors-root"}>
             <div
               className={"menu-choose-editor"}
@@ -105,7 +108,7 @@ export class MainMenu extends React.Component {
                 height={128}
               />
               <p className={"menu-editor-description"}>
-                Projekt <br /> Erstellen
+                {Language.a("project.create")}
               </p>
             </div>
             <div
@@ -118,7 +121,7 @@ export class MainMenu extends React.Component {
                 height={128}
               />
               <p className={"menu-editor-description"}>
-                Projekt <br /> Öffnen
+                {Language.a("project.open")}
               </p>
             </div>
             <div
@@ -126,28 +129,38 @@ export class MainMenu extends React.Component {
               onClick={MainMenu.openSettings}
             >
               <img src={"assets/settings.png"} width={128} height={128} />
-              <p className={"menu-editor-description"}>Einstellungen</p>
+              <p className={"menu-editor-description"}>
+                {Language.a("settings.name")}
+              </p>
             </div>
           </div>
-          <h1 style={{ color: "#F8F9FAFF" }}>How to InCode</h1>
+          <h1 style={{ color: "#F8F9FAFF" }}>
+            {Language.a("menu.howto")}
+          </h1>
           <div className={"menu-choose-editors-root"}>
             <div className={"menu-choose-editor"} onClick={MainMenu.openGame}>
               <img src={"assets/play.png"} width={128} height={128} />
-              <p className={"menu-editor-description"}>Lernen</p>
+              <p className={"menu-editor-description"}>
+                {Language.a("videos.name")}
+              </p>
             </div>
             <div
               className={"menu-choose-editor"}
               onClick={MainMenu.openTutorials}
             >
               <img src={"assets/tutorials.png"} width={128} height={128} />
-              <p className={"menu-editor-description"}>Tutorials</p>
+              <p className={"menu-editor-description"}>
+                {Language.a("tutorials.name")}
+              </p>
             </div>
             <div
               className={"menu-choose-editor"}
               onClick={MainMenu.openDocumentation}
             >
               <img src={"assets/documentation.png"} width={128} height={128} />
-              <p className={"menu-editor-description"}>Dokumentation</p>
+              <p className={"menu-editor-description"}>
+                {Language.a("documentation.name")}
+              </p>
             </div>
           </div>
         </div>

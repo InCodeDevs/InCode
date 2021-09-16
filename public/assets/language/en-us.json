@@ -1,0 +1,20 @@
+{
+  "__author": "Ben Siebert",
+  "__version": "1.0",
+  "__gen_name": "Englisch",
+
+  "product.name": "InCode Editor",
+  "product.copyright": "Copyright © %1 The InCode Developers.",
+
+  "menu.howto": "How to InCode",
+  "menu.account.login": "Login",
+
+  "project.create": "Create Project",
+  "project.open": "Open Project",
+
+  "settings.name": "Settings",
+
+  "videos.name": "Videos (German)",
+  "tutorials.name": "Tutorials (German)",
+  "documentation.name": "Documentation (German)"
+}

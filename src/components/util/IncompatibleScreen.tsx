@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import {ScreenProps, ScreenState} from "../../types/IncompatibleScreen";
+import {Language} from "../../utils/international/Language";
 
 export class IncompatibleScreen extends React.Component<ScreenProps, ScreenState> {
     render() {
@@ -23,7 +24,11 @@ export class IncompatibleScreen extends React.Component<ScreenProps, ScreenState
                 <h2 style={{textAlign: "center", color: "white"}}>
                     {this.props.message}
                 </h2>
-                <h5 style={{textAlign: "center", color: "red", cursor: "pointer"}} onClick={this.props.ignore}>Trotzdem fortfahren (nicht empfohlen)</h5>
+                <h5 style={{textAlign: "center", color: "red", cursor: "pointer"}} onClick={this.props.ignore}>
+                    {
+                        Language.a("incompatible.ignore")
+                    }
+                </h5>
             </div>
         );
     }

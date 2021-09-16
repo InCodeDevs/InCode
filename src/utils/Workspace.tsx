@@ -18,6 +18,7 @@ import { ProjectTypeSelector } from "../components/selector/ProjectTypeSelector"
 import { UserUtil } from "./UserUtil";
 import { SelectLoginOption } from "../components/login/SelectLoginOption";
 import { User } from "./User";
+import {Language} from "./international/Language";
 
 export class Workspace {
   /**
@@ -87,7 +88,7 @@ export class Workspace {
         }
 
         UIManager.alert(
-          "<h1 style='text-align: center;'>Fehler gefunden</h1>" +
+          "<h1 style='text-align: center;'>" + Language.a("menu.failed") + "</h1>" +
             "<iframe src='preview.html?code=" +
             btoa(jsCode) +
             "' width='100%' height='100%'></iframe>"
@@ -149,7 +150,7 @@ export class Workspace {
     ); // 0x10AD => magic value
     if (showSucceedMessage)
       UIManager.alert(
-        "<h1 style='text-align: center;'>Erfolgreich</h1><h4 style='text-align: center; color: limegreen'>Das Projekt wurde gespeichert!</h4>"
+        "<h1 style='text-align: center;'>" + Language.a("menu.success") + "</h1><h4 style='text-align: center; color: limegreen'>" + Language.a("project.save") + "</h4>"
       );
   }
 
@@ -158,8 +159,8 @@ export class Workspace {
    */
   public static delete() {
     UIManager.ask(
-      "<h1 style='text-align: center'>Fortfahren?</h1>" +
-        "<h4>Willst du dein Projekt wirklich löschen <span style='color: red'>(Dies kann nicht rückgängig gemacht werden)</span></h4>",
+      "<h1 style='text-align: center'>" + Language.a("menu.confirm") + "</h1>" +
+        "<h4>" + Language.a("project.delete") + "</h4>",
       () => {
         if (document.getElementById("livePreviewFrame") != undefined) {
           (
@@ -183,8 +184,8 @@ export class Workspace {
   public static rename() {
     Workspace.save(false);
     UIManager.prompt(
-      "<h1 style='text-align: center;'>Projekt Umbenennen</h1>" +
-        "<h4 style='text-align: center'>Bitte gib den neuen Namen für dein Projekt ein</h4>",
+      "<h1 style='text-align: center;'>" + Language.a("project.rename") + "</h1>" +
+        "<h4 style='text-align: center'>" + Language.a("project.rename.new.name") + "</h4>",
       (value: string) => {
         ProjectManager.renameProject(
           Registry.getRegister(0x10ad),
@@ -219,9 +220,8 @@ export class Workspace {
    */
   public static deployTemplate() {
     UIManager.ask(
-      "<h1 style='text-align: center'>Veröffentlichen</h1>" +
-        "<h4 style='text-align: center;'>Wenn du dein Template veröffentlichsts, kann jeder auf dieses nutzen." +
-        "<span style='color: red'> Die Veröffentlichung kann nicht rückgängig gemacht werden.</span>" +
+      "<h1 style='text-align: center'>" + Language.a("deploy") + "</h1>" +
+        "<h4 style='text-align: center;'>" + Language.a("deploy.warning") +
         "</h4>",
       () => {
         const x: XMLHttpRequest = new XMLHttpRequest();
@@ -239,13 +239,13 @@ export class Workspace {
         x.send(null);
         if (x.responseText === "Successful") {
           UIManager.alert(
-            "<h1 style='text-align: center'>Erfolgreich</h1>" +
-              "<h4 style='text-align: center;'>Deine Vorlage wurde soeben veröffentlicht!</h4>"
+            "<h1 style='text-align: center'>" + Language.a("menu.success") + "</h1>" +
+              "<h4 style='text-align: center;'>" + Language.a("deploy.success") + "</h4>"
           );
         } else {
           UIManager.alert(
-            "<h1 style='text-align: center; color: red'>Fehler</h1>" +
-              "<h4 style='text-align: center;'>Dieser Name ist bereits vorhanden! Ändere den Namen deines Projektes und versuche es erneut!</h4>"
+            "<h1 style='text-align: center; color: red'>" + Language.a("menu.failed") + "</h1>" +
+              "<h4 style='text-align: center;'>" + Language.a("project.create.name.failed.exists") + "</h4>"
           );
         }
       }
@@ -255,9 +255,9 @@ export class Workspace {
   public static deployProject() {
     Workspace.preview();
     UIManager.alert(
-      "<h1>Projekt Veröffentlicht!</h1><h4><pre><code><a target='_blank' href='preview.html?code=" +
+      "<h1>" + Language.a("deploy.project") + "</h1><h4><pre><code><a target='_blank' href='preview.html?code=" +
         Options.currentLiveJS +
-        "'>Öffnen</a></code></pre></h4>"
+        "'>" + Language.a("menu.open") + "</a></code></pre></h4>"
     );
   }
 
@@ -297,13 +297,13 @@ export class Workspace {
       ).then((r) => {
         if (r) {
           UIManager.alert(
-            "<h1>Erfolgreich</h1><h4>Das Projekt wurde in deinem Account gespeichert.</h4>"
+            "<h1>" + Language.a("menu.success") + "</h1><h4>" + Language.a("deploy.account.success") + "</h4>"
           );
         }
       });
     } else {
       UIManager.ask(
-        "<h1>Achtung!</h1><h4>Du bist nicht angemeldet! Willst du dich anmelden?</h4>",
+        "<h1>" + Language.a("menu.attention") + "</h1><h4>" + Language.a("deploy.account.failed") + "</h4>",
         () => {
           Workspace.save(false);
           Registry.putRegister(0x10af, () => {

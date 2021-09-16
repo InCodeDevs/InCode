@@ -41,6 +41,7 @@ import { SetVarFontWeight } from "../blockly/blocks/SetVarFontWeight";
 import { IObject } from "./interface/IObject";
 import { Themes } from "./Themes";
 import ToolboxDefinition = Blockly.utils.toolbox.ToolboxDefinition;
+import {Language} from "./international/Language";
 
 export class UIManager {
   /**
@@ -57,19 +58,23 @@ export class UIManager {
     UIManager.deleteBlockly();
     UIManager.deleteMonaco();
 
+    let copyright = Language.a("product.copyright");
+
+    copyright = copyright.replace("%1", new Date().getFullYear().toString());
+
+    (document.querySelector("#copyright") as HTMLDivElement).innerText = copyright;
+
     (document.querySelector("#copyright") as HTMLDivElement).addEventListener(
       "click",
       () => {
         UIManager.alert(
-          "" +
-            "<h1>InCode-Editor</h1>" +
+            "<h1>" + Language.a("product.name") + "</h1>" +
             "<span><strong>By:</strong> <span style='font-family: monospace'>The InCode Developers</span><br>" +
             "<strong>Version:</strong> <span style='font-family: monospace'>" +
             Options.formattedDOMVersion +
             "</span><br>" +
             "<strong>License:</strong> <span style='font-family: monospace'>GNU General Public License 3.0</span><br>" +
-            "<a href='https://github.com/InCodeDevs/Editor' target='_blank'>GitHub</a>\t<a href='https://incodelang.de' target='_blank'>Website</a></span>" +
-            ""
+            "<a href='https://github.com/InCodeDevs/Editor' target='_blank'>GitHub</a>\t<a href='https://incodelang.de' target='_blank'>Website</a></span>"
         );
       }
     );

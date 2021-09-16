@@ -6,6 +6,7 @@
 import * as React from "react";
 import { Registry } from "../../utils/Registry";
 import { UIManager } from "../../utils/UIManager";
+import {Language} from "../../utils/international/Language";
 
 export class ProjectTypeSelector extends React.Component {
   render() {
@@ -20,14 +21,14 @@ export class ProjectTypeSelector extends React.Component {
             textAlign: "center",
           }}
         >
-          <h1 style={{ color: "#F8F9FAFF" }}>Projekt Typ auswählen</h1>
+          <h1 style={{ color: "#F8F9FAFF" }}>{Language.a("project.type.name")}</h1>
           <div className={"menu-choose-editors-root"}>
             <div className={"menu-choose-editor"} onClick={this.useWebsite}>
               <img src={"/assets/website.png"} width={128} height={128} />
               <p className={"menu-editor-description"}>
                 Website <br />
                 <span style={{ fontFamily: "Comic Sans MS" }}>
-                  Eine einfache Website
+                  {Language.a("project.type.website")}
                 </span>
               </p>
             </div>
@@ -39,7 +40,7 @@ export class ProjectTypeSelector extends React.Component {
               <p className={"menu-editor-description"}>
                 Styled Website <br />
                 <span style={{ fontFamily: "Comic Sans MS" }}>
-                  Eine vordesignte Website
+                  {Language.a("project.type.website.styled")}
                 </span>
               </p>
             </div>
@@ -48,7 +49,7 @@ export class ProjectTypeSelector extends React.Component {
               <p className={"menu-editor-description"}>
                 Desktop App <br />
                 <span style={{ fontFamily: "Comic Sans MS" }}>
-                  Eine einfache Desktop Anwendung
+                  {Language.a("project.type.desktop")}
                 </span>
               </p>
             </div>
@@ -62,8 +63,7 @@ export class ProjectTypeSelector extends React.Component {
               <p className={"menu-editor-description"}>
                 Styled Desktop App <br />
                 <span style={{ fontFamily: "Comic Sans MS" }}>
-                  Eine vordesignte Desktop Anwendung{" "}
-                  <strong>(Windows only)</strong>
+                  {Language.a("project.type.desktop.styled")}
                 </span>
               </p>
             </div>
@@ -72,7 +72,7 @@ export class ProjectTypeSelector extends React.Component {
               <p className={"menu-editor-description"}>
                 Game <br />
                 <span style={{ fontFamily: "Comic Sans MS" }}>
-                  Ein einfaches Spiel
+                  {Language.a("project.type.game")}
                 </span>
               </p>
             </div>
@@ -100,8 +100,8 @@ export class ProjectTypeSelector extends React.Component {
 
   useGame() {
     UIManager.alert(
-      "<h1 style='text-align: center'>Achtung!</h1>" +
-        "<h4 style='text-align:center;'>Dieses Feature ist aktuell in Arbeit!</h4>"
+      "<h1 style='text-align: center'>" + Language.a("menu.attention") + "</h1>" +
+        "<h4 style='text-align:center;'>" + Language.a("menu.working") + "</h4>"
     );
   }
 }

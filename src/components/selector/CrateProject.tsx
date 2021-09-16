@@ -10,25 +10,26 @@ import {TemplateSelector} from "./TemplateSelector";
 import {ProjectManager} from "../../utils/ProjectManager";
 import {EditorSelector} from "./EditorSelector";
 import {ProjectTypeSelector} from "./ProjectTypeSelector";
+import {Language} from "../../utils/international/Language";
 
 export class CreateProject extends React.Component {
 
   public static createProject() {
         UIManager.prompt(
-            "<h1 style='text-align: center'>Projekt Erstellen</h1>" +
-            "<h4 style='text-align: center'>Bitte gib den Namen deines neuen Projektes ein!</h4>",
+            "<h1 style='text-align: center'>" + Language.a("project.create") + "</h1>" +
+            "<h4 style='text-align: center'>" + Language.a("project.create.enter.name") + "</h4>",
             (value: string) => {
                 if (ProjectManager.doesProjectExist(value)) {
                     UIManager.alert(
-                        "<h1 style='text-align: center; color: red'>Fehler</h1>" +
-                        "<h4 style='text-align: center;'>Dieser Name ist bereits vergeben!</h4>",
+                        "<h1 style='text-align: center; color: red'>" + Language.a("menu.failed") + "</h1>" +
+                        "<h4 style='text-align: center;'>" + Language.a("project.create.failed.name.exists") + "</h4>",
                         CreateProject.createProject
                     );
                 } else {
                     if (value.length < 4) {
                         UIManager.alert(
-                            "<h1 style='text-align: center; color: red'>Fehler</h1>" +
-                            "<h4 style='text-align: center;'>Der Name ist zu kurz! Er muss mindestens 4 Zeichen lang sein!</h4>",
+                            "<h1 style='text-align: center; color: red'>" + Language.a("menu.failed") + "</h1>" +
+                            "<h4 style='text-align: center;'>" + Language.a("project.create.failed.name.length") + "</h4>",
                             CreateProject.createProject
                         );
                     } else {
@@ -81,7 +82,7 @@ export class CreateProject extends React.Component {
                         textAlign: "center",
                     }}
                 >
-                    <h1 style={{color: "#F8F9FAFF"}}>Projekt erstellen</h1>
+                    <h1 style={{color: "#F8F9FAFF"}}>{Language.a("project.create")}</h1>
                     <div className={"menu-choose-editors-root"}>
                         <div className={"menu-choose-editors-root"}>
                             <div
@@ -94,7 +95,7 @@ export class CreateProject extends React.Component {
                                     height={128}
                                 />
                                 <p className={"menu-editor-description"}>
-                                    Projekt <br/> Erstellen
+                                    {Language.a("project.create")}
                                 </p>
                             </div>
                             <div className={"menu-choose-editor"} style={{display: "none"}}>
@@ -104,7 +105,7 @@ export class CreateProject extends React.Component {
                                     height={128}
                                 />
                                 <p className={"menu-editor-description"}>
-                                    Geteiltes Projekt <br/> Erstellen
+                                    {Language.a("project.create.shared")}
                                 </p>
                             </div>
                             <div
@@ -119,7 +120,7 @@ export class CreateProject extends React.Component {
                                     height={128}
                                 />
                                 <p className={"menu-editor-description"}>
-                                    Projekt <br/> mit Vorlage Erstellen
+                                    {Language.a("project.create.template")}
                                 </p>
                             </div>
                         </div>

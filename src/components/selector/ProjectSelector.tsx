@@ -12,6 +12,7 @@ import { Entry } from "../../types/SearchScreen";
 import { UserUtil } from "../../utils/UserUtil";
 import { User } from "../../utils/User";
 import {Registry} from "../../utils/Registry";
+import {Language} from "../../utils/international/Language";
 
 type Props = {};
 
@@ -117,11 +118,11 @@ export class ProjectSelector extends React.Component<Props, State> {
           title={"Meine Projekte"}
           areas={[
             {
-              title: "Block Projekte",
+              title: Language.a("project.select.block"),
               id: "block-projects",
             },
             {
-              title: "Code Projekte",
+              title: Language.a("project.select.code"),
               id: "code-projects",
             },
           ]}
@@ -129,7 +130,7 @@ export class ProjectSelector extends React.Component<Props, State> {
             mainMenu: true,
             custom: [
               {
-                title: "Importieren",
+                title: Language.a("project.import"),
                 callback: () => this.import(),
               },
             ],
@@ -189,7 +190,7 @@ export class ProjectSelector extends React.Component<Props, State> {
                   if (ProjectManager.createProject(pName, pType, pCode)) {
                     UIManager.showComponent(<ProjectSelector />);
                     UIManager.ask(
-                      "<h1 style='text-align:center;'>Erfolgreich</h1><h4 style='text-align:center;'>Das Projekt wurde erfolgreich importiert! Willst du es jetzt öffnen?</h4>",
+                      "<h1 style='text-align:center;'>" + Language.a("menu.success") + "</h1><h4 style='text-align:center;'>" + Language.a("project.import.success") + "</h4>",
                       () => {
                         Registry.putRegister(0x10ad, pName);
                         ProjectManager.openProject(pName, pType);
@@ -197,7 +198,7 @@ export class ProjectSelector extends React.Component<Props, State> {
                     );
                   } else {
                     UIManager.alert(
-                      "<h1 style='text-align:center; color: red;'>Fehler</h1><h4 style='text-align:center;'>Das Projekt konnte nicht importiert werden!</h4>"
+                      "<h1 style='text-align:center; color: red;'>" + Language.a("menu.failed") + "</h1><h4 style='text-align:center;'>" + Language.a("project.import.failed") + "</h4>"
                     );
                   }
                 };
@@ -207,7 +208,7 @@ export class ProjectSelector extends React.Component<Props, State> {
                   pName.length < 4
                 ) {
                   UIManager.prompt(
-                    "<h1 style='text-align:center; color: red;'>Fehler</h1><h4 style='text-align:center;'>Der Projektname ist bereits vergeben (oder zu kurz), bitte gib einen anderen Namen ein!</h4>",
+                    "<h1 style='text-align:center; color: red;'>" + Language.a("menu.failed") + "</h1><h4 style='text-align:center;'>" + Language.a("project.import.failed.name") + "</h4>",
                     (value) => {
                       if (
                         ProjectManager.doesProjectExist(value) ||
@@ -224,7 +225,7 @@ export class ProjectSelector extends React.Component<Props, State> {
                 } else c();
               } else {
                 UIManager.alert(
-                  "<h1 style='text-align: center; color: red'>Fehler</h1><h4 style='text-align:center;'>Die Datei ist keine InCode Projekt Datei!</h4>"
+                  "<h1 style='text-align: center; color: red'>" + Language.a("menu.failed") + "</h1><h4 style='text-align:center;'>" + Language.a("project.import.failed.file") + "</h4>"
                 );
               }
             };
@@ -232,14 +233,14 @@ export class ProjectSelector extends React.Component<Props, State> {
             create();
           } else {
             UIManager.alert(
-              "<h1 style='text-align: center; color: red'>Fehler</h1><h4 style='text-align:center;'>Die Datei ist keine InCode Projekt Datei!</h4>"
+              "<h1 style='text-align: center; color: red'>" + Language.a("menu.failed") + "</h1><h4 style='text-align:center;'>" + Language.a("project.import.failed.file") + "</h4>"
             );
           }
         };
 
         reader.onerror = () => {
           UIManager.alert(
-            "<h1 style='text-align: center; color: red'>Fehler</h1><h4 style='text-align:center;'>Die Datei konnte nicht gelesen werden!</h4>"
+            "<h1 style='text-align: center; color: red'>" + Language.a("menu.failed") + "</h1><h4 style='text-align:center;'>" + Language.a("project.import.failed.read") + "</h4>"
           );
         };
       }

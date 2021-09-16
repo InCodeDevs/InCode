@@ -9,6 +9,7 @@ import { UIManager } from "../../utils/UIManager";
 import { Settings } from "../Settings";
 import { MainMenu } from "../MainMenu";
 import { Props, State } from "../../types/SettingsScreen";
+import {Language} from "../../utils/international/Language";
 
 export class SettingsScreen extends React.Component<Props, State> {
   render() {
@@ -24,7 +25,7 @@ export class SettingsScreen extends React.Component<Props, State> {
             }}
           >
             <h1 style={{ color: "#F8F9FAFF", flex: "55%", textAlign: "right" }}>
-              InCode Editor
+              {Language.a("product.name")}
             </h1>
             <div style={{ flex: "45%", display: "flex" }}>
               <span style={{ flex: "50%" }} />
@@ -36,7 +37,9 @@ export class SettingsScreen extends React.Component<Props, State> {
                     UIManager.showComponent(<Settings />);
                   }}
                 >
-                  Zurück
+                  {
+                    Language.a("menu.back")
+                  }
                 </Button>
               </div>
               <div style={{ flex: "25%" }}>
@@ -47,7 +50,9 @@ export class SettingsScreen extends React.Component<Props, State> {
                     UIManager.showComponent(<MainMenu />);
                   }}
                 >
-                  Hauptmenü
+                  {
+                    Language.a("menu.main")
+                  }
                 </Button>
               </div>
             </div>

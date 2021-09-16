@@ -8,6 +8,7 @@ import { ThemeLoader } from "./ThemeLoader";
 import { ConfigInit } from "./ConfigInit";
 import { BrowserInit } from "./BrowserInit";
 import { UIManager } from "../../utils/UIManager";
+import {LanguageInit} from "./LanguageInit";
 
 export class PreInit {
   constructor() {
@@ -20,10 +21,10 @@ export class PreInit {
     // Import themes
     new ThemeLoader().init();
 
-    document.addEventListener("DOMContentLoaded", UIManager.onLoad);
+    // Load Language
+    new LanguageInit().init();
 
-    // Render Game Teacher
-    Avatar.disable();
-    Avatar.render();
+    document.addEventListener('DOMContentLoaded', UIManager.onLoad);
+
   }
 }

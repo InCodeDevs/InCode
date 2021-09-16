@@ -7,6 +7,7 @@ import * as ReactDOM from "react-dom";
 import * as React from "react";
 import { IncompatibleScreen } from "../../components/util/IncompatibleScreen";
 import { UIManager } from "../../utils/UIManager";
+import {Language} from "../../utils/international/Language";
 
 export class ScreenScaling extends Worker {
 
@@ -36,9 +37,11 @@ export class ScreenScaling extends Worker {
           ).style.display = "block";
           ReactDOM.render(
             <IncompatibleScreen
-              title={"Inkompatible Bildschirmgröße erkannt"}
+              title={
+                Language.a("incompatible.screen.title")
+              }
               message={
-                "Dein Bildschirm ist zu klein, bitte verwende einen größeren!"
+                Language.a("incompatible.screen.description")
               }
               ignore={() => {
                 ScreenScaling.disable();

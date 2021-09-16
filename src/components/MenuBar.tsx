@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import { UIManager } from "../utils/UIManager";
 import { Workspace } from "../utils/Workspace";
 import { MainMenu } from "./MainMenu";
+import {Language} from "../utils/international/Language";
 
 export class MenuBar extends React.Component {
   /**
@@ -33,39 +34,39 @@ export class MenuBar extends React.Component {
               id={"projectButton"}
             >
               <Dropdown.Toggle variant="outline-flat" size={"xxl"}>
-                Projekt
+                {Language.a("menubar.project")}
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
                 <Dropdown.Item onClick={Workspace.save}>
-                  Speichern
+                  {Language.a("menubar.save")}
                 </Dropdown.Item>
                 <Dropdown.Item onClick={Workspace.saveProjectFile}>
-                  Projektdatei Speichern
+                  {Language.a("menubar.save.file")}
                 </Dropdown.Item>
                 <Dropdown.Item onClick={Workspace.export}>
-                  Exportieren
+                  {Language.a("menubar.export")}
                 </Dropdown.Item>
                 <Dropdown.Item onClick={Workspace.deployAccount}>
-                  Im Account speichern
+                  {Language.a("menubar.save.account")}
                 </Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item onClick={Workspace.rename}>
-                  Namen ändern
+                  {Language.a("menubar.change.name")}
                 </Dropdown.Item>
                 <Dropdown.Item onClick={Workspace.changeEnvType}>
-                  Projekttyp ändern
+                  {Language.a("menubar.change.type")}
                 </Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item onClick={Workspace.deployProject}>
-                  Projekt veröffentlichen
+                  {Language.a("menubar.deploy.project")}
                 </Dropdown.Item>
                 <Dropdown.Item onClick={Workspace.deployTemplate}>
-                  Vorlage veröffentlichen
+                  {Language.a("menubar.deploy.template")}
                 </Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item onClick={Workspace.delete}>
-                  Projekt löschen
+                  {Language.a("menubar.delete")}
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
@@ -79,14 +80,14 @@ export class MenuBar extends React.Component {
                 size={"xxl"}
                 onClick={Workspace.preview}
               >
-                Preview neu laden
+                {Language.a("menubar.preview")}
               </Button>
               ;
             </div>
           </div>
           <div style={{ flex: "33%" }}>
             <h1 style={{ color: "#F8F9FAFF", textAlign: "center" }}>
-              <div style={{ textAlign: "center" }}>InCode Editor</div>
+              <div style={{ textAlign: "center" }}>{Language.a("product.name")}</div>
             </h1>
           </div>
           <div style={{ flex: "25%", textAlign: "center" }}>
@@ -95,7 +96,7 @@ export class MenuBar extends React.Component {
               size={"xxl"}
               onClick={this.showMainMenu}
             >
-              Hauptmenü
+              {Language.a("menu.main")}
             </Button>
           </div>
         </div>

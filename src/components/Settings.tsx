@@ -12,11 +12,12 @@ import { Button, Form } from "react-bootstrap";
 import { SettingsScreen } from "./util/SettingsScreen";
 import { Entry } from "../types/SettingsScreen";
 import { Themes } from "../utils/Themes";
+import {Language} from "../utils/international/Language";
 
 export class Settings extends React.Component {
   public static readonly config: IObject = {
     theme: {
-      display: "Erscheinungsbild",
+      display: Language.a("settings.theme"),
       callback: () => {
         const themes: Entry[] = [];
 
@@ -42,20 +43,20 @@ export class Settings extends React.Component {
         });
 
         UIManager.showComponent(
-          <SettingsScreen title={"Erscheinungsbild"} settings={themes} />
+          <SettingsScreen title={Language.a("settings.theme")} settings={themes} />
         );
       },
       icon: "assets/code-editor.png",
     },
     animations: {
-      display: "Animationen",
+      display: Language.a("settings.animation"),
       callback: () => {
         UIManager.showComponent(
           <SettingsScreen
-            title={"Animationen"}
+            title={Language.a("settings.animation")}
             settings={[
               {
-                title: "Aktivieren",
+                title: Language.a("settings.activate"),
                 callback: () => {
                   localStorage.setItem(
                     "incode-editor.enableAnimations",
@@ -66,7 +67,7 @@ export class Settings extends React.Component {
                 imageURL: "assets/check.png",
               },
               {
-                title: "Deaktivieren",
+                title: Language.a("settings.deactivate"),
                 callback: () => {
                   localStorage.setItem(
                     "incode-editor.enableAnimations",
@@ -83,18 +84,18 @@ export class Settings extends React.Component {
       icon: "https://user-images.githubusercontent.com/53553315/116579197-71484800-a912-11eb-8d6e-17cc50d8027d.png",
     },
     storage: {
-      display: "Speicher",
+      display: Language.a("settings.storage"),
       callback: () => {
         UIManager.showComponent(
           <SettingsScreen
-            title={"Speicher"}
+            title={Language.a("settings.storage")}
             settings={[
               {
-                title: "Speicher löschen",
+                title: Language.a("settings.storage.delete"),
                 callback: () => {
                   UIManager.ask(
-                    "<h1>Fortfahren?</h1>" +
-                      "<h4>Durch diese Aktion werden alle Einstellungen, sowie all deine Projekte unwiederuflich gelöscht! Willst du wirklich fortfahren?</h4>",
+                    "<h1>" + Language.a("menu.continue") + "</h1>" +
+                      "<h4>" + Language.a("settings.storage.delete.confirm") + "</h4>",
                     () => {
                       for (let i = 0; i < localStorage.length; i++) {
                         localStorage.removeItem(localStorage.key(i) as string);
@@ -106,11 +107,11 @@ export class Settings extends React.Component {
                 imageURL: "assets/x.png",
               },
               {
-                title: "Einstellungen zurücksetzen",
+                title: Language.a("settings.settings.delete"),
                 callback: () => {
                   UIManager.ask(
-                    "<h1>Fortfahren?</h1>" +
-                      "<h4>Durch diese Aktion werden alle Einstellungen zurückgesetzt! Willst du wirklich fortfahren?</h4>",
+                    "<h1>" + Language.a("menu.continue") + "</h1>" +
+                      "<h4>" + Language.a("settings.settings.delete.confirm") + "</h4>",
                     () => {
                       localStorage.removeItem("incode-editor.theme");
                       localStorage.removeItem("incode-editor.enableAnimations");
@@ -130,7 +131,7 @@ export class Settings extends React.Component {
 
   public static updateSettings(settings: IObject = { ex: true }) {
     (document.getElementById("settings") as HTMLDivElement).innerHTML =
-      "<h2>Einstellungen</h2>";
+      "<h2>" + Language.a("settings.name") + "</h2>";
 
     let a2u: IObject;
 
@@ -190,6 +191,11 @@ export class Settings extends React.Component {
   }
 
   render() {
+
+    Settings.config.theme.display = Language.a("settings.theme")
+    Settings.config.animations.display = Language.a("settings.animation")
+    Settings.config.storage.display = Language.a("settings.storage")
+
     return (
       <>
         <div style={{ textAlign: "center" }}>
@@ -202,7 +208,9 @@ export class Settings extends React.Component {
             }}
           >
             <h1 style={{ color: "#F8F9FAFF", flex: "55%", textAlign: "right" }}>
-              InCode Editor
+              {
+                Language.a("product.name")
+              }
             </h1>
             <div style={{ flex: "45%", display: "flex" }}>
               <span style={{ flex: "75%" }} />
@@ -214,7 +222,7 @@ export class Settings extends React.Component {
                     UIManager.showComponent(<MainMenu />);
                   }}
                 >
-                  Hauptmenü
+                  {Language.a("menu.main")}
                 </Button>
               </div>
             </div>
@@ -228,7 +236,7 @@ export class Settings extends React.Component {
           >
             <Form.Control
               type={"text"}
-              placeholder={"Einstellung Suchen..."}
+              placeholder={Language.a("menu.search.placeholder")}
               style={{
                 width: "30%",
                 fontSize: "1.5rem",
@@ -239,7 +247,7 @@ export class Settings extends React.Component {
           </div>
           <div style={{ display: "flex", width: "100%", marginTop: "2%" }}>
             <div style={{ flex: "100%", color: "white" }} id={"settings"}>
-              <h2>Erscheinungsbilder</h2>
+              <h2>{Language.a("settings.name")}</h2>
             </div>
           </div>
         </div>
