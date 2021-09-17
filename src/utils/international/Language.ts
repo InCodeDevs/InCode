@@ -28,7 +28,7 @@ export class Language {
         let current: IObject = {};
 
         for (let i = 0; i < Language.languages.length; i++) {
-            let l = Language.languages[i];
+            const l = Language.languages[i];
             l.codes.forEach((code: any) => {
                 if (lang === code) {
                     current = l;
@@ -42,7 +42,7 @@ export class Language {
             downloadURL = current.languageFile;
         }
 
-        let x = new XMLHttpRequest();
+        const x = new XMLHttpRequest();
         x.open("GET", downloadURL, false);
         x.send( null );
 
