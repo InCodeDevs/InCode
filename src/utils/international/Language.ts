@@ -23,7 +23,7 @@ export class Language {
     public static currentLanguage: IObject = {};
 
     public static fetchCurrentLanguage() {
-        const lang = window.navigator.language;
+        const lang = localStorage.getItem("incode-editor.overwrite.language") || navigator.language;
 
         let current: IObject = {};
 
