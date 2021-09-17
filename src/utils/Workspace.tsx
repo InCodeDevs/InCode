@@ -21,6 +21,7 @@ import { User } from "./User";
 import {Language} from "./international/Language";
 
 export class Workspace {
+
   /**
    * Compiles the current Workspace
    * @param dl If this is true the output will be downloaded as "Programm.js"

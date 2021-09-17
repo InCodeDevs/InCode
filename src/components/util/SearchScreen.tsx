@@ -67,7 +67,9 @@ export class SearchScreen extends React.Component<Props, State> {
                   UIManager.showComponent(<MainMenu />);
                 }}
               >
-                Hauptmenü
+                  {
+                      Language.a("menu.main")
+                  }
               </Button>
             )}
           </div>

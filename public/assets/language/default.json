@@ -19,10 +19,9 @@
   "menu.open": "Öffnen",
 
   "deploy": "Veröffentlichen",
-  "deploy.warning": "Wenn du deine Verlage veröffentlichsts, kann jeder auf dieses nutzen.",
+  "deploy.warning": "Wenn du deine Vorlage veröffentlichsts, kann jeder auf dieses nutzen.",
   "deploy.success": "Deine Vorlage wurde veröffentlicht",
   "deploy.project": "Projekt Veröffentlichen",
-  "deploy.project.warning": "Wenn du deine Verlage veröffentlichsts, kann jeder auf dieses nutzen.",
   "deploy.project.success": "Deine Vorlage wurde veröffentlicht",
   "deploy.account.success": "Das Projekt wurde in deinem Account gespeichert.",
   "deploy.account.failed": "Du bist nicht angemeldet. Willst du dich anmelden?",
@@ -107,5 +106,12 @@
 
   "incompatible.screen.title": "Inkompatible Bildschirmgröße erkannt",
   "incompatible.screen.description": "Dein Bildschirm ist zu klein, bitte verwende einen größeren!",
-  "incompatible.ignore": "Trotzdem fortfahren (nicht empfohlen)"
+  "incompatible.ignore": "Trotzdem fortfahren (nicht empfohlen)",
+
+  "popups.buttons.close": "Schließen",
+  "popups.buttons.abort": "Abbrechen",
+  "popups.buttons.proceed": "Bestätigen",
+  "popups.buttons.yes": "Ja",
+  "popups.buttons.no": "Nein",
+  "popups.inputs.prompt.placeholder": "Wert eingeben..."
 }
