@@ -10,6 +10,7 @@ import { UIManager } from "../utils/UIManager";
 import { Workspace } from "../utils/Workspace";
 import { MainMenu } from "./MainMenu";
 import {Language} from "../utils/international/Language";
+import {ShareProject} from "./selector/ShareProject";
 
 export class MenuBar extends React.Component {
   /**
@@ -63,6 +64,20 @@ export class MenuBar extends React.Component {
                 </Dropdown.Item>
                 <Dropdown.Item onClick={Workspace.deployTemplate}>
                   {Language.a("menubar.deploy.template")}
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => {
+                  Workspace.save(false);
+                  UIManager.deleteBlockly();
+                  UIManager.deleteMonaco();
+                  UIManager.hideMenuBar();
+                  UIManager.showComponent(<ShareProject project={{
+                    name: "",
+                    shared: true
+                    ,
+                    owner: ""
+                  }} />)
+                }}>
+                  {Language.a("menubar.deploy.share")}
                 </Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item onClick={Workspace.delete}>

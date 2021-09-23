@@ -98,16 +98,6 @@ export class CreateProject extends React.Component {
                                     {Language.a("project.create")}
                                 </p>
                             </div>
-                            <div className={"menu-choose-editor"} style={{display: "none"}}>
-                                <img
-                                    src={"assets/editor-create-project.png"}
-                                    width={128}
-                                    height={128}
-                                />
-                                <p className={"menu-editor-description"}>
-                                    {Language.a("project.create.shared")}
-                                </p>
-                            </div>
                             <div
                                 className={"menu-choose-editor"}
                                 onClick={() => {

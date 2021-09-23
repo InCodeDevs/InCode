@@ -35,6 +35,7 @@
   "menubar.change.type": "Change Project Type",
   "menubar.deploy.project": "Publish Project",
   "menubar.deploy.template": "Publish Template",
+  "menubar.deploy.share": "Share Project",
   "menubar.delete": "Delete Project",
   "menubar.preview": "Reload Preview",
 

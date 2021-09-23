@@ -35,6 +35,7 @@
   "menubar.change.type": "Projekttyp ändern",
   "menubar.deploy.project": "Projekt veröffentlichen",
   "menubar.deploy.template": "Vorlage veröffentlichen",
+  "menubar.deploy.share": "Projekt teilen",
   "menubar.delete": "Projekt löschen",
   "menubar.preview": "Preview neu Laden",
 

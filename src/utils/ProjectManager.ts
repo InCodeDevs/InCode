@@ -122,6 +122,33 @@ export class ProjectManager {
         ),
         "project-" + Registry.getRegister(0x10ad)
       );
+    } else if(
+        JSON.parse(
+            localStorage.getItem("incode-editor.projects." + name) as string
+        ).save === "shared"
+    ) {
+      const currentUser = UserUtil.getSavedUser();
+      User.storeData_u(
+          // @ts-ignore
+          currentUser.username,
+          // @ts-ignore
+          currentUser.password,
+          (
+              JSON.parse(localStorage.getItem("incode-editor.shared-projects") as string).includes(name)
+                  ? JSON.parse(localStorage.getItem("incode-editor.shared-projects") as string)
+                  : JSON.parse(localStorage.getItem("incode-editor.shared-projects") as string).push(name)
+          ),
+          "shared-projects"
+      ).then(() => {
+        User.storeData(
+            // @ts-ignore
+            currentUser.username,
+            // @ts-ignore
+            currentUser.password,
+            {},
+            ""
+        )
+      })
     }
   }
 
