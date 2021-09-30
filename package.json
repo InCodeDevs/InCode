@@ -5,6 +5,9 @@
   "main": "",
   "keywords": [],
   "author": "The InCode Developers",
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "GPL-3.0-only",
   "scripts": {
     "webpack:clean": "rm dist/bundle.js",
@@ -12,12 +15,12 @@
     "webpack:build-prod": "webpack --mode production",
     "webpack:start": "npx webpack serve",
     "docker:build": "docker build . -t\"mctzock/incode-editor\"",
-    "npm:install-dependencies": "npm i --registry https://npm.craftions.net",
+    "npm:install-dependencies": "npm i",
     "eslint:lint": "eslint . --ext .ts,.tsx",
     "prettier:check": "prettier --check src",
     "prettier:write": "prettier --write src",
     "jest:test": "jest",
-    "deploy:npm": "npm publish --registry https://npm.craftions.net",
+    "deploy:npm": "npm publish",
     "deploy:firebase": "npm run webpack:build-prod && firebase deploy",
     "deploy:docker": "docker push mctzock/incode-editor"
   },
