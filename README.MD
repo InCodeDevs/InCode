@@ -26,10 +26,10 @@ cd InCode-Editor
 npm start
 
 # Build (for production)
-npm run build-prod 
+yarn webpack:build-prod 
 
 # Build (for development)
-npm run build-dev
+yarn webpack:build-dev
 ```
 
 ### Versions
