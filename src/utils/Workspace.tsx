@@ -4,7 +4,7 @@
  */
 
 import { BlocklyCompiler } from "../blockly/BlocklyCompiler";
-import { WebCompiler } from "incode-language/dist/incode";
+import { WebCompiler } from "@incodelang/language/dist/incode";
 import { Options } from "./Options";
 import { Networking } from "./Networking";
 import { Registry } from "./Registry";
