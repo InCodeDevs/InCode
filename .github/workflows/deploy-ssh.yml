@@ -1,0 +1,27 @@
+name: SSH Deploy
+
+on:
+  push:
+    branches: [ latest ]
+  pull_request:
+    branches: [ latest ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to Remote Server
+          uses: appleboy/ssh-action@master
+          with:
+            host: ${{ secrets.SSH_HOST }}
+            username: ${{ secrets.SSH_USERNAME }}
+            password: ${{ secrets.SSH_PASSWORD }}
+            port: ${{ secrets.SSH_PORT }}
+            script: "cd /var/www/node-srv/incode-editor &&
+             screen -S \"incode-editor\" -X quit
+             git checkout latest &&
+             git pull origin &&
+             yarn &&
+             screen -S \"incode-editor\" yarn express:prod-start"
