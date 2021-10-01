@@ -20,5 +20,5 @@ Thumbs.db
 
 # Editor Files
 /dist/
-private
+/private/
 template-public
