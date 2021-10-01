@@ -10,6 +10,10 @@ const express = require("express");
 const serverIndex = require('serve-index');
 const url = require("url");
 
+if(!fs.existsSync(path.join(__dirname, '../../../template-public'))) {
+    fs.mkdirSync(path.join(__dirname, '../../../template-public'));
+}
+
 if(!fs.existsSync(path.join(__dirname, '../../../template-public', 'templates.json'))) {
     fs.writeFileSync(path.join(__dirname, '../../../template-public', 'templates.json'), "{}")
 }
