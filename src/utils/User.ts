@@ -1,6 +1,6 @@
 /**
- * @author Ben Siebert <ben@mctzock.de>
- * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
+ * @author The InCode Devs
+ * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 
 export class User {
@@ -24,7 +24,7 @@ export class User {
             password: password
         })
 
-        const r = await fetch("https://apis.craftions.net/incode/accounts/users/login", config as RequestInit)
+        const r = await fetch("/api/v1/user/users/login", config as RequestInit)
         const j = await r.json();
 
         return !j.error
@@ -37,7 +37,7 @@ export class User {
             password: password
         })
 
-        const r = await fetch("https://apis.craftions.net/incode/accounts/users/create", config as RequestInit)
+        const r = await fetch("/api/v1/user/users/create", config as RequestInit)
         const j = await r.json();
 
         return !j.error;
@@ -50,7 +50,7 @@ export class User {
             password: password
         })
 
-        const r = await fetch("https://apis.craftions.net/incode/accounts/users/delete", config as RequestInit)
+        const r = await fetch("/api/v1/user/users/delete", config as RequestInit)
         const j = await r.json();
 
         return !j.error;
@@ -64,7 +64,7 @@ export class User {
             password: password
         })
 
-        const r = await fetch("https://apis.craftions.net/incode/accounts/users/update/username", config as RequestInit)
+        const r = await fetch("/api/v1/user/users/update/username", config as RequestInit)
         const j = await r.json();
 
         return !j.error;
@@ -78,7 +78,7 @@ export class User {
             password: newPassword
         })
 
-        const r = await fetch("https://apis.craftions.net/incode/accounts/users/update/password", config as RequestInit)
+        const r = await fetch("/api/v1/user/users/update/password", config as RequestInit)
         const j = await r.json();
 
         return !j.error;
@@ -93,7 +93,7 @@ export class User {
             dataName: dataName
         })
 
-        const r = await fetch("https://apis.craftions.net/incode/accounts/users/data/store", config as RequestInit)
+        const r = await fetch("/api/v1/user/users/data/store", config as RequestInit)
         const j = await r.json();
 
         return !j.error;
@@ -107,7 +107,7 @@ export class User {
             dataName: dataName
         })
 
-        const r = await fetch("https://apis.craftions.net/incode/accounts/users/data/delete", config as RequestInit)
+        const r = await fetch("/api/v1/user/users/data/delete", config as RequestInit)
         const j = await r.json();
 
         return !j.error;
@@ -122,7 +122,7 @@ export class User {
             dataName: dataName
         })
 
-        const r = await fetch("https://apis.craftions.net/incode/accounts/users/data", config as RequestInit)
+        const r = await fetch("/api/v1/user/users/data", config as RequestInit)
         const j = await r.json();
 
         return j.message;
@@ -136,7 +136,7 @@ export class User {
             password: password
         })
 
-        const r = await fetch("https://apis.craftions.net/incode/accounts/users/data/all", config as RequestInit)
+        const r = await fetch("/api/v1/user/users/data/all", config as RequestInit)
         const j = await r.json();
 
         return j.message;
@@ -149,7 +149,7 @@ export class User {
             username: username
         })
 
-        const r = await fetch("https://apis.craftions.net/incode/accounts/users/exists", config as RequestInit)
+        const r = await fetch("/api/v1/user/users/exists", config as RequestInit)
         const j = await r.json();
 
         return j.message;
@@ -164,7 +164,7 @@ export class User {
             key: dataName
         })
 
-        const r = await fetch("https://apis.craftions.net/incode/accounts/data/set", config as RequestInit)
+        const r = await fetch("/api/v1/user/data/set", config as RequestInit)
         const j = await r.json();
 
         return !j.error;
@@ -178,7 +178,7 @@ export class User {
             key: dataName
         })
 
-        const r = await fetch("https://apis.craftions.net/incode/accounts/data/delete", config as RequestInit)
+        const r = await fetch("/api/v1/user/data/delete", config as RequestInit)
         const j = await r.json();
 
         return !j.error;
@@ -194,7 +194,7 @@ export class User {
             hash: hash
         })
 
-        const r = await fetch("https://apis.craftions.net/incode/accounts/data/get", config as RequestInit)
+        const r = await fetch("/api/v1/user/data/get", config as RequestInit)
         const j = await r.json();
 
         if (hash) {
@@ -213,7 +213,7 @@ export class User {
             newUser: newUser
         })
 
-        const r = await fetch("https://apis.craftions.net/incode/accounts/data/allow", config as RequestInit)
+        const r = await fetch("/api/v1/user/data/allow", config as RequestInit)
         const j = await r.json();
 
         return !j.error;
@@ -228,7 +228,7 @@ export class User {
             newUser: newUser
         })
 
-        const r = await fetch("https://apis.craftions.net/incode/accounts/data/allow", config as RequestInit)
+        const r = await fetch("/api/v1/user/data/allow", config as RequestInit)
         const j = await r.json();
 
         return !j.error;

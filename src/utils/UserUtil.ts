@@ -1,6 +1,6 @@
 /**
- * @author Ben Siebert <ben@mctzock.de>
- * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
+ * @author The InCode Devs
+ * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 import { User } from "./User";
 
