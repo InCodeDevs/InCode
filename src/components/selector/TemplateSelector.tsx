@@ -19,7 +19,7 @@ export class TemplateSelector extends React.Component {
    */
   render() {
     const x = new XMLHttpRequest();
-    x.open("GET", "https://templates.incodelang.de/templates.json", false);
+    x.open("GET", "/api/v1/template/data/templates.json", false);
     x.send(null);
     const templates = JSON.parse(x.responseText) as IObject;
 
@@ -69,7 +69,7 @@ export class TemplateSelector extends React.Component {
                     const x = new XMLHttpRequest();
                     x.open(
                       "GET",
-                      "https://templates.incodelang.de/" + template.directURL,
+                      template.directURL,
                       false
                     );
                     x.send(null);

@@ -15,13 +15,16 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {})
 
+app.use("/api/v1/template/data", express.static(path.join(__dirname, '../template-public')))
+
 app.use(express.static(path.join(__dirname, "../dist")));
 
 app.use(cors())
 app.use(bodyParser())
 
-httpServer.listen(3000);
-
 module.exports = {app, io, httpServer}
 
 require('./api/v1/user')
+require('./api/v1/template')
+
+httpServer.listen(3000);

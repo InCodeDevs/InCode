@@ -17,4 +17,8 @@ node_modules/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Editor Files
 /dist/
+private
+template-public
