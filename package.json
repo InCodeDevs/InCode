@@ -17,13 +17,13 @@
     "express:dev-start": "yarn webpack:build-dev && node server/server.js",
     "express:prod-start": "yarn webpack:build-prod && node server/server.js",
     "express:only-start": "node server/server.js",
-    "docker:build": "docker build . -t\"mctzock/incode-editor\"",
     "eslint:lint": "eslint . --ext .ts,.tsx",
     "prettier:check": "prettier --check src",
     "prettier:write": "prettier --write src",
     "jest:test": "jest",
-    "deploy:npm": "npm publish",
-    "deploy:docker": "docker push mctzock/incode-editor",
+    "npm:deploy": "npm publish",
+    "docker:build": "docker build . -t\"mctzock/incode-editor\"",
+    "docker:deploy": "docker push mctzock/incode-editor",
     "nodemon:start": "nodemon --config nodemon.json"
   },
   "devDependencies": {
