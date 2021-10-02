@@ -16,6 +16,7 @@
     "webpack:start": "webpack serve",
     "express:dev-start": "yarn webpack:build-dev && node server/server.js",
     "express:prod-start": "yarn webpack:build-prod && node server/server.js",
+    "express:only-start": "node server/server.js",
     "docker:build": "docker build . -t\"mctzock/incode-editor\"",
     "eslint:lint": "eslint . --ext .ts,.tsx",
     "prettier:check": "prettier --check src",

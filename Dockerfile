@@ -1,4 +1,7 @@
-FROM httpd
-RUN rm -rf /usr/local/apache2/htdocs/*
-COPY dist/ /usr/local/apache2/htdocs/
-EXPOSE 80
+FROM node:16
+EXPOSE 3000
+WORKDIR /incode-editor
+COPY . /incode-editor
+RUN yarn
+RUN yarn webpack:build-prod
+ENTRYPOINT yarn express:only-start
