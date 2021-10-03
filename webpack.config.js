@@ -89,7 +89,25 @@ const config = {
         new HtmlWebpackPlugin({
             appMountId: 'app',
             filename: 'index.html',
-            template: './src/index.html'
+            template: './src/index.html',
+            title: "InCode Editor",
+            meta: {
+                viewport: {
+                    name: "viewport",
+                    content: "width=device-width, initial-scale=1.0"
+                },
+                robots: {
+                    name: "robots",
+                    content: "INDEX,FOLLOW"
+                },
+                description: "Der offizielle Editor für die InCode Programmiersprache von Ben Siebert und Lukas Birke.",
+                keywords: "InCode, Editor, IDE, Ben Siebert, Lukas Birke",
+                author: "The InCode Developers",
+                publisher: "The InCode Developers",
+                copyright: "Copyright © 2021 The InCode Developers.",
+                expires: "",
+                "revisit-after": "2 days"
+            }
         }),
         new CopyPlugin({
             patterns: [
