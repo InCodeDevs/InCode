@@ -91,6 +91,7 @@ const config = {
             filename: 'index.html',
             template: './src/index.html',
             title: "InCode Editor",
+
             meta: {
                 viewport: {
                     name: "viewport",
