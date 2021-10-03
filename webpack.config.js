@@ -3,7 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 const git = require('./plugins/webpack/git')
-const package = require('./plugins/webpack/package')
+const pkg = require('./plugins/webpack/package');
 
 const config = {
     entry: './src/index.tsx',
@@ -84,7 +84,7 @@ const config = {
             _GIT_REPO: JSON.stringify(git.repo)
         }),
         new webpack.DefinePlugin({
-            _VERSION: JSON.stringify(package.version)
+            _VERSION: JSON.stringify(pkg.version)
         }),
         new HtmlWebpackPlugin({
             appMountId: 'app',
