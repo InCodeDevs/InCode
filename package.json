@@ -53,6 +53,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@incodelang/accounts": "^1.0.0",
     "@incodelang/language": "^1.0.11",
     "@types/firebase": "^3.2.1",
     "@types/youtube-player": "^5.5.4",

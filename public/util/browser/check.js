@@ -19,7 +19,7 @@ let isEdge = !isIE && !!window.StyleMedia;
 let isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
 let isEdgeChromium = isChrome && (navigator.userAgent.indexOf("Edg") != -1);
 let isBlink = (isChrome || isOpera) && !!window.CSS;
-if (isIE || (isEdge && !isEdgeChromium)) {
+if (!isFirefox) {
     window.location.assign("incompatible.html");
 }
 window.onerror = o;

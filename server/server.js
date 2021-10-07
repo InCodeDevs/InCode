@@ -8,6 +8,7 @@ const {Server} = require('socket.io');
 const {createServer} = require('http');
 const path = require("path");
 const kill = require('kill-port');
+const {accountServer} = require('@incodelang/accounts')
 
 const cors = require('cors')
 const bodyParser = require('body-parser');
@@ -16,8 +17,6 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {})
 
-app.use("/api/v1/template/data", express.static(path.join(__dirname, '../template-public')))
-
 app.use(express.static(path.join(__dirname, "../dist")));
 
 app.use(cors())
@@ -25,7 +24,10 @@ app.use(bodyParser())
 
 module.exports = {app, io, httpServer}
 
-require('./api/v1/user')
+accountServer({
+    app
+})
+
 require('./api/v1/template')
 
 const port = 3000;

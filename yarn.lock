@@ -728,6 +728,15 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
+"@incodelang/accounts@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@incodelang/accounts/-/accounts-1.0.0.tgz#d5a5cc770963b178f0f82d8d13eb0f623b0b914f"
+  integrity sha512-tBcyO+8c8Q+QvTqkbGDgKUCcdn7ZmzWiC2nqknPZue4UdC8NsKDSXCFSfvH/mBISl+3Mc9ORjMvGNXTT9S5Ddw==
+  dependencies:
+    body-parser "^1.19.0"
+    cors "^2.8.5"
+    express "^4.17.1"
+
 "@incodelang/language@^1.0.11":
   version "1.0.12"
   resolved "https://registry.npmjs.org/@incodelang/language/-/language-1.0.12.tgz"
