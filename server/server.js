@@ -10,6 +10,7 @@ const path = require("path");
 const kill = require('kill-port');
 const {accountServer} = require('@incodelang/accounts')
 const {templateServer} = require('@incodelang/templates')
+const {urlServer} = require("@incodelang/urlshorter");
 
 const cors = require('cors')
 const bodyParser = require('body-parser');
@@ -31,6 +32,11 @@ accountServer({
 
 templateServer({
     app
+})
+
+urlServer({
+    app,
+    "prefix": "app",
 })
 
 const port = 3000;

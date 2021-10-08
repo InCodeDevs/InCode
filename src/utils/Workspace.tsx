@@ -105,7 +105,7 @@ export class Workspace {
   /**
    * Compiles the code and opens it in the preview window
    */
-  public static preview = () => {
+  public static preview = (withFrame: boolean = true) => {
     if (Options.currentEditor != "") {
       Workspace.compile(false);
       if (document.getElementById("livePreviewFrame") != undefined) {
@@ -124,22 +124,25 @@ export class Workspace {
         );
       }
 
-      const previewFrame = document.createElement("iframe");
-      previewFrame.src = "preview.html?code=" + toBinary(Options.currentLiveJS);
-      previewFrame.id = "livePreviewFrame";
-      (document.getElementById("livePreview") as HTMLDivElement).appendChild(
-        previewFrame
-      );
+      if(withFrame) {
+        const previewFrame = document.createElement("iframe");
+        previewFrame.src = "preview.html?code=" + Workspace.toBinary(Options.currentLiveJS);
+        previewFrame.id = "livePreviewFrame";
+        (document.getElementById("livePreview") as HTMLDivElement).appendChild(
+            previewFrame
+        );
+      }
     }
 
-    function toBinary(s: string) {
-      const codeUnits = new Uint16Array(s.length);
-      for (let i = 0; i < codeUnits.length; i++) {
-        codeUnits[i] = s.charCodeAt(i);
-      }
-      return btoa(String.fromCharCode(...new Uint8Array(codeUnits.buffer)));
-    }
   };
+
+  public static toBinary(s: string) {
+    const codeUnits = new Uint16Array(s.length);
+    for (let i = 0; i < codeUnits.length; i++) {
+      codeUnits[i] = s.charCodeAt(i);
+    }
+    return btoa(String.fromCharCode(...new Uint8Array(codeUnits.buffer)));
+  }
 
   /**
    * Saves the current Workspace
@@ -254,10 +257,16 @@ export class Workspace {
   }
 
   public static deployProject() {
-    Workspace.preview();
+
+    Workspace.compile(false);
+
+    let x: XMLHttpRequest = new XMLHttpRequest();
+    x.open("POST", location.href + "api/v1/url/create", false);
+    x.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    x.send("{\"target\": \"" + location.href + "preview.html?code=" + Workspace.toBinary(Options.currentLiveJS) + "\"}")
+
     UIManager.alert(
-      "<h1>" + Language.a("deploy.project") + "</h1><h4><pre><code><a target='_blank' href='preview.html?code=" +
-        Options.currentLiveJS +
+      "<h1>" + Language.a("deploy.project") + "</h1><h4><pre><code><a target='_blank' href='" + JSON.parse(x.responseText).url +
         "'>" + Language.a("menu.open") + "</a></code></pre></h4>"
     );
   }

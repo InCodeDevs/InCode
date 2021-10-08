@@ -22,3 +22,5 @@ Thumbs.db
 /dist/
 /private/
 template-public
+
+url-public/

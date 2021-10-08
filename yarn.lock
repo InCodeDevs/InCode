@@ -753,6 +753,16 @@
     serve-index "^1.9.1"
     typescript "^4.4.3"
 
+"@incodelang/urlshorter@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/@incodelang/urlshorter/-/urlshorter-1.0.1.tgz#a008acf81a5b22d16eeda14ab12535e8f94448f4"
+  integrity sha512-j4Pn55bANA97McJnnWbEExJrHF2Q6dmK34TaidIXPkYoDnyxbszDL4q1wrg65wQVkJmU36SCXtsqjmATRrQEcQ==
+  dependencies:
+    body-parser "^1.19.0"
+    cors "^2.8.5"
+    express "^4.17.1"
+    typescript "^4.4.3"
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.npmjs.org/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz"
