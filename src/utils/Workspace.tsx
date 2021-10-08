@@ -105,7 +105,7 @@ export class Workspace {
   /**
    * Compiles the code and opens it in the preview window
    */
-  public static preview = (withFrame: boolean = true) => {
+  public static preview = (withFrame = true) => {
     if (Options.currentEditor != "") {
       Workspace.compile(false);
       if (document.getElementById("livePreviewFrame") != undefined) {
@@ -260,7 +260,7 @@ export class Workspace {
 
     Workspace.compile(false);
 
-    let x: XMLHttpRequest = new XMLHttpRequest();
+    const x: XMLHttpRequest = new XMLHttpRequest();
     x.open("POST", location.href + "api/v1/url/create", false);
     x.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     x.send("{\"target\": \"" + location.href + "preview.html?code=" + Workspace.toBinary(Options.currentLiveJS) + "\"}")
