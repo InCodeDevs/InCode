@@ -9,6 +9,7 @@ const {createServer} = require('http');
 const path = require("path");
 const kill = require('kill-port');
 const {accountServer} = require('@incodelang/accounts')
+const {templateServer} = require('@incodelang/templates')
 
 const cors = require('cors')
 const bodyParser = require('body-parser');
@@ -28,7 +29,9 @@ accountServer({
     app
 })
 
-require('./api/v1/template')
+templateServer({
+    app
+})
 
 const port = 3000;
 

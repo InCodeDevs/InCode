@@ -742,6 +742,16 @@
   resolved "https://registry.npmjs.org/@incodelang/language/-/language-1.0.12.tgz"
   integrity sha512-sq2evcrfYuIVSdjKCkj0q7mGtDGtBgezZKa1zj0S+EEN+ZSufyiSS1GhUV4Z+IzSMPazrUYVquyGyY715rnBAw==
 
+"@incodelang/templates@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@incodelang/templates/-/templates-1.0.0.tgz#efe073850bf85a2c54a8c4a5a5c4599553e086b3"
+  integrity sha512-RzmDVLSYDdKfbrsgYtpt49TQOaj2vip/WU1Re6UiNQF5Dh23sih4NCHuUoS/biPWKaMUkxtAT1xvTljdWkWP4Q==
+  dependencies:
+    body-parser "^1.19.0"
+    cors "^2.8.5"
+    express "^4.17.1"
+    serve-index "^1.9.1"
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.npmjs.org/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz"
