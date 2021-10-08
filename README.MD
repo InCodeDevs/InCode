@@ -105,224 +105,13 @@ Deploy with npm
 
 ## API Reference
 
-The parameters must be send in the request body as JSON format.
-
 ### User API
 
-| Response | Description                |
-| :-------- | :------------------------- |
-| `{"error": false, "message": "response message, e.g. data"}` | The request was successful |
-| `{"error": true, "message": "errror message"}` | The request failed |
-
-
-#### Create a user
-
-```http
-  POST /api/v1/user/users/create
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `username` | `string` | The name of the user |
-| `password` | `string` | The password of the user |
-
-#### Delete a user
-
-```http
-  POST /api/v1/user/users/delete
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `username` | `string` | The name of the user |
-| `password` | `string` | The password of the user |
-
-#### Login
-
-```http
-  POST /api/v1/user/users/login
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `username` | `string` | The name of the user |
-| `password` | `string` | The password of the user |
-
-#### Check if a User exists
-
-```http
-  POST /api/v1/user/users/exists
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `username` | `string` | The name of the user |
-
-#### Update Username
-
-```http
-  POST /api/v1/user/users/update/username
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `old` | `string` | The current name of the user |
-| `username` | `string` | The new name of the user |
-| `password` | `string` | The password of the user |
-
-#### Update Password
-
-```http
-  POST /api/v1/user/users/update/password
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `username` | `string` | The name of the user |
-| `password` | `string` | The new password of the user |
-| `old` | `string` | The current password of the user |
-
-#### User Data API
-
-#### Store Data
-
-```http
-  POST /api/v1/user/users/data/store
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `username` | `string` | The name of the user |
-| `password` | `string` | The password of the user |
-| `data` | `string` | The actual data |
-| `dataName` | `string` | The name of the data |
-
-#### Delete Data
-
-```http
-  POST /api/v1/user/users/data/delete
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `username` | `string` | The name of the user |
-| `password` | `string` | The password of the user |
-| `dataName` | `string` | The name of the data |
-
-#### Get Data
-
-```http
-  POST /api/v1/user/users/data
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `username` | `string` | The name of the user |
-| `password` | `string` | The password of the user |
-| `dataName` | `string` | The name of the data |
-
-#### Get All Data
-
-```http
-  POST /api/v1/user/users/data/delete
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `username` | `string` | The name of the user |
-| `password` | `string` | The password of the user |
-
-#### Global Data API
-
-#### Set Data
-
-```http
-  POST /api/v1/user/data/set
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `username` | `string` | The name of the user |
-| `password` | `string` | The password of the user |
-| `value` | `string` | The actual data |
-| `key` | `string` | The name of the data |
-
-#### Delete Data
-
-```http
-  POST /api/v1/user/data/delete
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `username` | `string` | The name of the user |
-| `password` | `string` | The password of the user |
-| `key` | `string` | The name of the data |
-
-#### Grant Access
-
-```http
-  POST /api/v1/user/data/allow
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `username` | `string` | The name of the user |
-| `password` | `string` | The password of the user |
-| `key` | `string` | The name of the data |
-| `newUser` | `string` | The name of the new user |
-
-#### Revoke Access
-
-```http
-  POST /api/v1/user/data/disallow
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `username` | `string` | The name of the user |
-| `password` | `string` | The password of the user |
-| `key` | `string` | The name of the data |
-| `newUser` | `string` | The name of the new user |
-
-#### Get Public Data
-
-```http
-  POST /api/v1/user/data/get
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `username` | `string` | The name of the user |
-| `password` | `string` | The password of the user |
-| `key` | `string` | The name of the data |
+The User API can be found in the [@incodelang/accounts](https://github.com/InCodeDevs/Accounts#api-reference) package
 
 ### Template API
 
-#### Upload Template
-
-```http
-  GET /api/v1/template/upload
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `type` | `monaco` or `blockly` | The type of the template |
-| `name` | `string` | The name of the template |
-| `code` | `string` | The actual code |
-
-#### Download Template
-
-```http
-  GET /api/v1/template/data/templates/{name}.ic
-```
-
-#### List all Templates
-
-```http
-  GET /api/v1/template/data/templates.json
-```
-
+The Template API can be found in the [@incodelang/templates](https://github.com/InCodeDevs/Templates#api-reference) package
 
 ## License
 
@@ -333,11 +122,14 @@ The parameters must be send in the request body as JSON format.
 
 - [@mctzock](https://www.github.com/MCTzOCK)
 - [@mistermysticofficial](https://www.github.com/MisterMysticOfficial)
+
 ## Related
 
 Here are some related projects
 
 - [InCode](https://github.com/InCodeDevs/Language)
 - [InCode CLI](https://github.com/InCodeDevs/CLI)
+- [Account Server](https://github.com/InCodeDevs/Accounts)
+- [Template Server](https://github.com/InCodeDevs/Templates)
 
   

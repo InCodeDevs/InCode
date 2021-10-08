@@ -728,10 +728,10 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@incodelang/accounts@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/@incodelang/accounts/-/accounts-1.0.0.tgz#d5a5cc770963b178f0f82d8d13eb0f623b0b914f"
-  integrity sha512-tBcyO+8c8Q+QvTqkbGDgKUCcdn7ZmzWiC2nqknPZue4UdC8NsKDSXCFSfvH/mBISl+3Mc9ORjMvGNXTT9S5Ddw==
+"@incodelang/accounts@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/@incodelang/accounts/-/accounts-1.0.1.tgz#62a599e321ac190d7a3ae57076a2e61b81ce1938"
+  integrity sha512-HO8mdsHnKSWDcJrnFP1JM8nBIEkJVxbUrVvmaCyHCaSU0G4MwC6gjxVRPJ9u6Uw47FJfkYouyo4aGR7Zq99vgg==
   dependencies:
     body-parser "^1.19.0"
     cors "^2.8.5"
@@ -742,15 +742,16 @@
   resolved "https://registry.npmjs.org/@incodelang/language/-/language-1.0.12.tgz"
   integrity sha512-sq2evcrfYuIVSdjKCkj0q7mGtDGtBgezZKa1zj0S+EEN+ZSufyiSS1GhUV4Z+IzSMPazrUYVquyGyY715rnBAw==
 
-"@incodelang/templates@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/@incodelang/templates/-/templates-1.0.0.tgz#efe073850bf85a2c54a8c4a5a5c4599553e086b3"
-  integrity sha512-RzmDVLSYDdKfbrsgYtpt49TQOaj2vip/WU1Re6UiNQF5Dh23sih4NCHuUoS/biPWKaMUkxtAT1xvTljdWkWP4Q==
+"@incodelang/templates@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/@incodelang/templates/-/templates-1.0.1.tgz#ce27e4c99ccd958ec312241043c9460703fe2950"
+  integrity sha512-1+q7yBsUNrAZpY7ZYIF0Ow1TXXVLdBxMf4Qs5+DlxXLCquqBGq7gQS0lx7F37GepJNCTyCRUeN7ZUbmywg1sCg==
   dependencies:
     body-parser "^1.19.0"
     cors "^2.8.5"
     express "^4.17.1"
     serve-index "^1.9.1"
+    typescript "^4.4.3"
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
@@ -7967,9 +7968,9 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typescript@^4.4.2:
+typescript@^4.4.2, typescript@^4.4.3:
   version "4.4.3"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-4.4.3.tgz"
+  resolved "https://registry.npmjs.org/typescript/-/typescript-4.4.3.tgz#bdc5407caa2b109efd4f82fe130656f977a29324"
   integrity sha512-4xfscpisVgqqDfPaJo5vkd+Qd/ItkoagnHpufr+i2QCHBsNYp+G7UAoyFl8aPtx879u38wPV65rZ8qbGZijalA==
 
 uncontrollable@^7.2.1:
