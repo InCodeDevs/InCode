@@ -14,6 +14,7 @@ const {urlServer} = require("@incodelang/urlshorter");
 
 const cors = require('cors')
 const bodyParser = require('body-parser');
+const fs = require("fs");
 
 const app = express();
 const httpServer = createServer(app);
@@ -23,6 +24,22 @@ app.use(express.static(path.join(__dirname, "../dist")));
 
 app.use(cors())
 app.use(bodyParser())
+
+
+app.use((req, res, next) => {
+    res.status(404)
+
+    if (req.accepts('html')) {
+        res.end(fs.readFileSync(path.join("public", "404.html")))
+        return;
+    }
+
+    if (req.accepts('json')) {
+        res.json({ error: 'Not found', code: 404 });
+        return;
+    }
+    res.type('txt').send('Not found');
+})
 
 module.exports = {app, io, httpServer}
 
