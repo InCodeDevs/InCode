@@ -9,6 +9,7 @@ import { Registry } from "./Registry";
 import { UserUtil } from "./UserUtil";
 
 export class ProjectManager {
+
   /**
    * Creates a blank Project
    * @param name The name of the Project
@@ -30,7 +31,7 @@ export class ProjectManager {
           name: name,
           code: code,
           type: type,
-          env: env,
+          env: env
         })
       );
       return true;

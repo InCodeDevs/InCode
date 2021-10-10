@@ -4,134 +4,152 @@
  */
 
 import * as React from "react";
-import { Dropdown } from "react-bootstrap";
+import {Dropdown} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import { UIManager } from "../utils/UIManager";
-import { Workspace } from "../utils/Workspace";
-import { MainMenu } from "./MainMenu";
+import {UIManager} from "../utils/UIManager";
+import {Workspace} from "../utils/Workspace";
+import {MainMenu} from "./MainMenu";
 import {Language} from "../utils/international/Language";
 import {ShareProject} from "./selector/ShareProject";
+import {UserUtil} from "../utils/UserUtil";
+import {Registry} from "../utils/Registry";
+import {SelectLoginOption} from "./login/SelectLoginOption";
 
 export class MenuBar extends React.Component {
-  /**
-   * Renders the Menu Bar
-   * @return The Menu Bar
-   */
-  render() {
-    return (
-      <>
-        <div
-          style={{
-            display: "flex",
-            top: "50%",
-            left: "50%",
-            position: "relative",
-            transform: "translate(-50%, -50%)",
-          }}
-        >
-          <div style={{ flex: "33%", textAlign: "center", display: "flex" }}>
-            <Dropdown
-              style={{ flex: "50%", textAlign: "center" }}
-              id={"projectButton"}
-            >
-              <Dropdown.Toggle variant="outline-flat" size={"xxl"}>
-                {Language.a("menubar.project")}
-              </Dropdown.Toggle>
+    /**
+     * Renders the Menu Bar
+     * @return The Menu Bar
+     */
+    render() {
+        return (
+            <>
+                <div
+                    style={{
+                        display: "flex",
+                        top: "50%",
+                        left: "50%",
+                        position: "relative",
+                        transform: "translate(-50%, -50%)",
+                    }}
+                >
+                    <div style={{flex: "33%", textAlign: "center", display: "flex"}}>
+                        <Dropdown
+                            style={{flex: "50%", textAlign: "center"}}
+                            id={"projectButton"}
+                        >
+                            <Dropdown.Toggle variant="outline-flat" size={"xxl"}>
+                                {Language.a("menubar.project")}
+                            </Dropdown.Toggle>
 
-              <Dropdown.Menu>
-                <Dropdown.Item onClick={Workspace.save}>
-                  {Language.a("menubar.save")}
-                </Dropdown.Item>
-                <Dropdown.Item onClick={Workspace.saveProjectFile}>
-                  {Language.a("menubar.save.file")}
-                </Dropdown.Item>
-                <Dropdown.Item onClick={Workspace.export}>
-                  {Language.a("menubar.export")}
-                </Dropdown.Item>
-                <Dropdown.Item onClick={Workspace.deployAccount}>
-                  {Language.a("menubar.save.account")}
-                </Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item onClick={Workspace.rename}>
-                  {Language.a("menubar.change.name")}
-                </Dropdown.Item>
-                <Dropdown.Item onClick={Workspace.changeEnvType}>
-                  {Language.a("menubar.change.type")}
-                </Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item onClick={Workspace.deployProject}>
-                  {Language.a("menubar.deploy.project")}
-                </Dropdown.Item>
-                <Dropdown.Item onClick={Workspace.deployTemplate}>
-                  {Language.a("menubar.deploy.template")}
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => {
-                  Workspace.save(false);
-                  UIManager.deleteBlockly();
-                  UIManager.deleteMonaco();
-                  UIManager.hideMenuBar();
-                  UIManager.showComponent(<ShareProject project={{
-                    name: "",
-                    shared: true
-                    ,
-                    owner: ""
-                  }} />)
-                }}>
-                  {Language.a("menubar.deploy.share")}
-                </Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item onClick={Workspace.delete}>
-                  {Language.a("menubar.delete")}
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <div
-              style={{ flex: "50%", textAlign: "center" }}
-              id={"rl-preview-btn"}
-            >
-              <Button
-                id={"previewButton"}
-                variant={"outline-flat"}
-                size={"xxl"}
-                onClick={Workspace.preview}
-              >
-                {Language.a("menubar.preview")}
-              </Button>
-              ;
-            </div>
-          </div>
-          <div style={{ flex: "33%" }}>
-            <h1 style={{ color: "#F8F9FAFF", textAlign: "center" }}>
-              <div style={{ textAlign: "center" }}>{Language.a("product.name")}</div>
-            </h1>
-          </div>
-          <div style={{ flex: "25%", textAlign: "center" }}>
-            <Button
-              variant={"outline-flat"}
-              size={"xxl"}
-              onClick={this.showMainMenu}
-            >
-              {Language.a("menu.main")}
-            </Button>
-          </div>
-        </div>
-      </>
-    );
-  }
+                            <Dropdown.Menu>
+                                <Dropdown.Item onClick={Workspace.save}>
+                                    {Language.a("menubar.save")}
+                                </Dropdown.Item>
+                                <Dropdown.Item onClick={Workspace.saveProjectFile}>
+                                    {Language.a("menubar.save.file")}
+                                </Dropdown.Item>
+                                <Dropdown.Item onClick={Workspace.export}>
+                                    {Language.a("menubar.export")}
+                                </Dropdown.Item>
+                                <Dropdown.Item onClick={Workspace.deployAccount}>
+                                    {Language.a("menubar.save.account")}
+                                </Dropdown.Item>
+                                <Dropdown.Divider/>
+                                <Dropdown.Item onClick={Workspace.rename}>
+                                    {Language.a("menubar.change.name")}
+                                </Dropdown.Item>
+                                <Dropdown.Item onClick={Workspace.changeEnvType}>
+                                    {Language.a("menubar.change.type")}
+                                </Dropdown.Item>
+                                <Dropdown.Divider/>
+                                <Dropdown.Item onClick={Workspace.deployProject}>
+                                    {Language.a("menubar.deploy.project")}
+                                </Dropdown.Item>
+                                <Dropdown.Item onClick={Workspace.deployTemplate}>
+                                    {Language.a("menubar.deploy.template")}
+                                </Dropdown.Item>
+                                <Dropdown.Item onClick={function __btn_on_click() {
+                                    Workspace.save(false);
+                                    __n();
 
-  /**
-   * Shows the Main Menu
-   */
-  showMainMenu() {
-    Workspace.save(false);
-    if (document.getElementById("livePreviewFrame") != undefined) {
-      (document.getElementById("livePreview") as HTMLDivElement).removeChild(
-        document.getElementById("livePreviewFrame") as HTMLIFrameElement
-      );
+                                    function __n (){
+                                        // @ts-ignore
+                                        if (UserUtil.getSavedUser().username && UserUtil.getSavedUser().password) {
+                                            UIManager.deleteBlockly();
+                                            UIManager.deleteMonaco();
+                                            UIManager.hideMenuBar();
+                                            UIManager.showComponent(<ShareProject/>)
+                                        } else {
+                                            UIManager.ask(
+                                                "<h1>" + Language.a("menu.attention") + "</h1><h4>" + Language.a("deploy.account.failed") + "</h4>",
+                                                () => {
+                                                    UIManager.deleteBlockly();
+                                                    UIManager.deleteMonaco();
+                                                    UIManager.hideMenuBar();
+                                                    Registry.putRegister(0x10af, () => {
+                                                        __n()
+                                                    });
+                                                    UIManager.showComponent(<SelectLoginOption/>)
+                                                }
+                                            );
+                                        }
+                                    }
+                                }}>
+                                    {Language.a("menubar.deploy.share")}
+                                </Dropdown.Item>
+                                <Dropdown.Divider/>
+                                <Dropdown.Item onClick={Workspace.delete}>
+                                    {Language.a("menubar.delete")}
+                                </Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                        <div
+                            style={{flex: "50%", textAlign: "center"}}
+                            id={"rl-preview-btn"}
+                        >
+                            <Button
+                                id={"previewButton"}
+                                variant={"outline-flat"}
+                                size={"xxl"}
+                                onClick={Workspace.preview}
+                            >
+                                {Language.a("menubar.preview")}
+                            </Button>
+                            ;
+                        </div>
+                    </div>
+                    <div style={{flex: "33%"}}>
+                        <h1 style={{color: "#F8F9FAFF", textAlign: "center"}}>
+                            <div style={{textAlign: "center"}}>{Language.a("product.name")}</div>
+                        </h1>
+                    </div>
+                    <div style={{flex: "25%", textAlign: "center"}}>
+                        <Button
+                            variant={"outline-flat"}
+                            size={"xxl"}
+                            onClick={this.showMainMenu}
+                        >
+                            {Language.a("menu.main")}
+                        </Button>
+                    </div>
+                </div>
+            </>
+        );
     }
-    UIManager.deleteBlockly();
-    UIManager.deleteMonaco();
-    UIManager.showComponent(<MainMenu />);
-    UIManager.hideMenuBar();
-  }
+
+    /**
+     * Shows the Main Menu
+     */
+    showMainMenu() {
+        Workspace.save(false);
+        if (document.getElementById("livePreviewFrame") != undefined) {
+            (document.getElementById("livePreview") as HTMLDivElement).removeChild(
+                document.getElementById("livePreviewFrame") as HTMLIFrameElement
+            );
+        }
+        UIManager.deleteBlockly();
+        UIManager.deleteMonaco();
+        UIManager.showComponent(<MainMenu/>);
+        UIManager.hideMenuBar();
+    }
 }

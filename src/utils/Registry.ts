@@ -5,6 +5,7 @@
 import {IObject} from "./interface/IObject";
 
 export class Registry {
+
   // 0x10AA => Project types
   // 0x10AB => Project Code
   // 0x10AD => Project name

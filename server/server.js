@@ -25,6 +25,18 @@ app.use(express.static(path.join(__dirname, "../dist")));
 app.use(cors())
 app.use(bodyParser())
 
+accountServer({
+    app
+})
+
+templateServer({
+    app
+})
+
+urlServer({
+    app,
+    "prefix": "app",
+})
 
 app.use((req, res, next) => {
     res.status(404)
@@ -43,18 +55,6 @@ app.use((req, res, next) => {
 
 module.exports = {app, io, httpServer}
 
-accountServer({
-    app
-})
-
-templateServer({
-    app
-})
-
-urlServer({
-    app,
-    "prefix": "app",
-})
 
 const port = 3000;
 

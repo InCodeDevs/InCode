@@ -114,18 +114,22 @@ export class User {
     }
 
     public static async getData_u(username: string, password: string, dataName: string) {
-        const config = this.fetchConfig;
+        try {
+            const config = this.fetchConfig;
 
-        config.body = JSON.stringify({
-            username: username,
-            password: password,
-            dataName: dataName
-        })
+            config.body = JSON.stringify({
+                username: username,
+                password: password,
+                dataName: dataName
+            })
 
-        const r = await fetch("/api/v1/user/users/data", config as RequestInit)
-        const j = await r.json();
+            const r = await fetch("/api/v1/user/users/data", config as RequestInit)
+            const j = await r.json();
 
-        return j.message;
+            return j.message;
+        } catch {
+            return {};
+        }
     }
 
     public static async getAllData_u(username: string, password: string) {

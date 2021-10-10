@@ -4,13 +4,9 @@
  */
 
 export type Props = {
-    project: Project
 };
 
 export type Project = {
-    name: string,
-    shared: boolean,
-    owner: string
 }
 
 export type State = {};

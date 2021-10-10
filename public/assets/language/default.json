@@ -114,5 +114,11 @@
   "popups.buttons.proceed": "Bestätigen",
   "popups.buttons.yes": "Ja",
   "popups.buttons.no": "Nein",
-  "popups.inputs.prompt.placeholder": "Wert eingeben..."
+  "popups.inputs.prompt.placeholder": "Wert eingeben...",
+
+  "menu.share.title": "Projekt Teilen",
+  "menu.share.who": "Mit wem willst du dieses Projekt teilen?",
+  "menu.share.who.failed": "Der Nutzer konnte nicht gefunden werden!",
+  "menu.share.who.failed.self": "Du kannst das Projekt nicht mit dir selbst teilen!",
+  "menu.share.success": "Das Projekt wurde geteilt!"
 }
