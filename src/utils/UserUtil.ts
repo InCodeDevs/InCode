@@ -22,9 +22,18 @@ export class UserUtil {
     return success;
   }
 
-  public static getSavedUser(): object {
-    return JSON.parse(
-      sessionStorage.getItem("accounts.actualAccount") as string
+  public static getSavedUser(): IUser {
+    const user = JSON.parse(
+        sessionStorage.getItem("accounts.actualAccount") as string
     );
+    return {
+      username: user.username,
+      password: user.password
+    }
   }
+}
+
+export interface IUser {
+  username: string;
+  password: string;
 }

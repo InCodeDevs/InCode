@@ -12,6 +12,7 @@ import {SelectLoginOption} from "./login/SelectLoginOption";
 import {UserUtil} from "../utils/UserUtil";
 import {CreateProject} from "./selector/CrateProject";
 import {Language} from "../utils/international/Language";
+import { Dashboard } from "./login/Dashboard";
 
 export class MainMenu extends React.Component {
   
@@ -41,26 +42,7 @@ export class MainMenu extends React.Component {
     public static checkLogin() {
         // @ts-ignore
         if (UserUtil.getSavedUser().username && UserUtil.getSavedUser().password) {
-            UIManager.ask(
-                "<h1>Abmelden?</h1><h4>Willst du dich wirklich abmelden?</h4>",
-                () => {
-                    sessionStorage.removeItem("accounts.actualAccount");
-
-                    for (let i = 0; i < localStorage.length; i++) {
-                        const localStorageKey = localStorage.key(i) as string;
-                        if (localStorageKey.startsWith("incode-editor.projects")) {
-                            if (
-                                JSON.parse(localStorage.getItem(localStorageKey) as string)
-                                    .save === "cloud"
-                            ) {
-                                localStorage.removeItem(localStorageKey);
-                            }
-                        }
-                    }
-
-                    window.location.reload();
-                }
-            );
+            UIManager.showComponent(<Dashboard/>)
         } else {
             UIManager.showComponent(<SelectLoginOption/>);
         }
