@@ -16,8 +16,6 @@ export class Dashboard extends React.Component {
     render() {
 
         const username: string = UserUtil.getSavedUser().username;
-        const password: string = UserUtil.getSavedUser().password;
-
 
         return (
             <>

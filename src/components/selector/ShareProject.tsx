@@ -98,13 +98,10 @@ export class ShareProject extends React.Component<Props, State> {
                                         onClick={function __btn__on_click() {
                                             UIManager.prompt("<h1>" + Language.a("menu.share.title") + "</h1><h4>" + Language.a("menu.share.who") + "</h4>",
                                                 (value) => {
-                                                    // @ts-ignore
-                                                    let username = UserUtil.getSavedUser().username;
-                                                    // @ts-ignore
-                                                    let password = UserUtil.getSavedUser().password;
+                                                    const username = UserUtil.getSavedUser().username;
+                                                    const password = UserUtil.getSavedUser().password;
 
-                                                    // @ts-ignore
-                                                    if (value === UserUtil.getSavedUser().username) {
+                                                    if (value === username) {
                                                         UIManager.alert("<h1>" + Language.a("menu.failed") + "</h1><h4>" + Language.a("menu.share.who.failed.self") + "</h4>", () => {
                                                             __btn__on_click();
                                                         })
