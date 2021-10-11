@@ -9,13 +9,17 @@ import {Language} from "../../utils/international/Language";
 import {UIManager} from "../../utils/UIManager";
 import {MainMenu} from "../MainMenu";
 import {UserUtil} from "../../utils/UserUtil";
-import {User} from "../../utils/User";
+import {WebClient} from "@incodelang/accounts-client";
+
+const User = new WebClient();
 
 export class Dashboard extends React.Component {
 
-    render() {
+    async render() {
 
         const username: string = UserUtil.getSavedUser().username;
+
+        await User.init("");
 
         return (
             <>

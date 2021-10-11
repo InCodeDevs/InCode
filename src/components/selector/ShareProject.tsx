@@ -11,12 +11,16 @@ import {Button} from "react-bootstrap";
 import {UIManager} from "../../utils/UIManager";
 import {MainMenu} from "../MainMenu";
 import {ProjectManager} from "../../utils/ProjectManager";
-import {User} from "../../utils/User";
+import {WebClient} from "@incodelang/accounts-client";
 import {UserUtil} from "../../utils/UserUtil";
+
+const User = new WebClient();
 
 export class ShareProject extends React.Component<Props, State> {
 
-    render() {
+    async render() {
+
+        await User.init("");
 
         const projectName = Registry.getRegister(0x10AD)
 

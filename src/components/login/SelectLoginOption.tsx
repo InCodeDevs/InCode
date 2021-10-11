@@ -5,14 +5,18 @@
 
 import * as React from "react";
 import {UIManager} from "../../utils/UIManager";
-import {User} from "../../utils/User";
+import {WebClient} from '@incodelang/accounts-client';
 import {UserUtil} from "../../utils/UserUtil";
 import {MainMenu} from "../MainMenu";
 import {Registry} from "../../utils/Registry";
 import {Language} from "../../utils/international/Language";
 
+const User = new WebClient();
+
 export class SelectLoginOption extends React.Component {
-    render() {
+
+    async render() {
+        await User.init("");
         return (
             <>
                 <div
