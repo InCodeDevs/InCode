@@ -1,23 +1,24 @@
 <!-- Copyright (c) 2018-2021 The InCode Developers. All rights reserved. -->
 <!DOCTYPE html>
 <html lang="de" style="height: 100%; width: 100%">
-<head>
+  <head>
     <div id="noscript">
-        <h1 style="text-align: center; color: red">Dein Browser unterstützt kein JavaScript!</h1>
+      <h1 style="text-align: center; color: red">
+        Dein Browser unterstützt kein JavaScript!
+      </h1>
     </div>
     <script src="util/browser/check.js"></script>
-    <link href="assets/incode-400.png" rel="icon" type="image/png"/>
+    <link href="assets/incode-400.png" rel="icon" type="image/png" />
     <title>InCode Editor</title>
-</head>
-<body style="height: 100%; width: 100%">
-<div id="topScreen"></div>
+  </head>
+  <body style="height: 100%; width: 100%">
+    <div id="topScreen"></div>
 
-<div id="copyright" style="display: none">
-</div>
+    <div id="copyright" style="display: none"></div>
 
-<div
-        id="popup"
-        style="
+    <div
+      id="popup"
+      style="
         width: 100%;
         height: 100%;
         background-color: rgba(0, 0, 0, 0.9);
@@ -27,132 +28,133 @@
         left: 0;
         display: none;
       "
->
-    <div class="popup alert-popup">
+    >
+      <div class="popup alert-popup">
         <div class="alert-popup-content popup-content"></div>
         <div class="popup-buttons">
-            <button
-                    class="
+          <button
+            class="
               normal-outline-btn
               popup-button
               alert-popup-button alert-popup-button-confirm
             "
-                    onclick="document.querySelector('.alert-popup').style.display = 'none'; document.querySelector('#popup').style.display = 'none'"
-                    type="button"
-            >
-                Schließen
-            </button>
+            onclick="document.querySelector('.alert-popup').style.display = 'none'; document.querySelector('#popup').style.display = 'none'"
+            type="button"
+          >
+            Schließen
+          </button>
         </div>
-    </div>
-    <div class="popup prompt-popup">
+      </div>
+      <div class="popup prompt-popup">
         <div class="prompt-popup-content popup-content">
-            <div class="prompt-popup-content-text"></div>
-            <input
-                    class="prompt-popup-input form-control"
-                    placeholder="Wert eingeben"
-                    type="text"
-            />
+          <div class="prompt-popup-content-text"></div>
+          <input
+            class="prompt-popup-input form-control"
+            placeholder="Wert eingeben"
+            type="text"
+          />
         </div>
         <div class="popup-buttons">
-            <button
-                    class="normal-outline-btn popup-button prompt-popup-button" id="__ic_w_t_about_xx_0"
-                    onclick="document.querySelector('.prompt-popup').style.display = 'none'; document.querySelector('#popup').style.display = 'none'"
-                    type="button"
-            >
-                Abbrechen
-            </button>
-            <button
-                    class="
+          <button
+            class="normal-outline-btn popup-button prompt-popup-button"
+            id="__ic_w_t_about_xx_0"
+            onclick="document.querySelector('.prompt-popup').style.display = 'none'; document.querySelector('#popup').style.display = 'none'"
+            type="button"
+          >
+            Abbrechen
+          </button>
+          <button
+            class="
               normal-outline-btn
               popup-button
               prompt-popup-button prompt-popup-button-confirm
             "
-                    onclick="document.querySelector('.prompt-popup').style.display = 'none'; document.querySelector('#popup').style.display = 'none'"
-                    type="button"
-            >
-                Bestätigen
-            </button>
+            onclick="document.querySelector('.prompt-popup').style.display = 'none'; document.querySelector('#popup').style.display = 'none'"
+            type="button"
+          >
+            Bestätigen
+          </button>
         </div>
-    </div>
-    <div class="popup question-popup">
+      </div>
+      <div class="popup question-popup">
         <div class="question-popup-content popup-content">
-            <div class="question-popup-content-text"></div>
+          <div class="question-popup-content-text"></div>
         </div>
         <div class="popup-buttons">
-            <button
-                    class="normal-outline-btn popup-button question-popup-button"
-                    onclick="document.querySelector('.question-popup').style.display = 'none'; document.querySelector('#popup').style.display = 'none'"
-                    type="button"
-            >
-                Nein
-            </button>
-            <button
-                    class="
+          <button
+            class="normal-outline-btn popup-button question-popup-button"
+            onclick="document.querySelector('.question-popup').style.display = 'none'; document.querySelector('#popup').style.display = 'none'"
+            type="button"
+          >
+            Nein
+          </button>
+          <button
+            class="
               normal-outline-btn
               popup-button
               question-popup-button question-popup-button-confirm
             "
-                    onclick="document.querySelector('.question-popup').style.display = 'none'; document.querySelector('#popup').style.display = 'none'"
-                    type="button"
-            >
-                Ja
-            </button>
+            onclick="document.querySelector('.question-popup').style.display = 'none'; document.querySelector('#popup').style.display = 'none'"
+            type="button"
+          >
+            Ja
+          </button>
         </div>
+      </div>
     </div>
-</div>
 
-<div id="menuBar"></div>
-<div id="menu"></div>
+    <div id="menuBar"></div>
+    <div id="menu"></div>
 
-<div id="livePreview"></div>
+    <div id="livePreview"></div>
 
-<div id="monaco"></div>
+    <div id="monaco"></div>
 
-<div id="blockly">
-    <div id="blocklyDiv"></div>
-    <xml
-            id="toolbox"
-            style="display: none"
-            xmlns="https://developers.google.com/blockly/xml"
-    >
+    <div id="blockly">
+      <div id="blocklyDiv"></div>
+      <xml
+        id="toolbox"
+        style="display: none"
+        xmlns="https://developers.google.com/blockly/xml"
+      >
         <category colour="210" name="Programm">
-            <block type="start"></block>
+          <block type="start"></block>
         </category>
         <category colour="120" name="Anzeige">
-            <block type="log"></block>
-            <block type="ask"></block>
-            <block type="add_to_screen"></block>
-            <block type="add_to_element"></block>
+          <block type="log"></block>
+          <block type="ask"></block>
+          <block type="add_to_screen"></block>
+          <block type="add_to_element"></block>
         </category>
         <category colour="290" name="Funktionen">
-            <block type="create_method"></block>
-            <block type="call_method"></block>
+          <block type="create_method"></block>
+          <block type="call_method"></block>
         </category>
         <category colour="30" name="Variabeln">
-            <block type="var_create"></block>
-            <block type="var_create_type"></block>
-            <block type="var_set_text"></block>
-            <block type="var_set_color"></block>
-            <block type="var_set_decor_props"></block>
-            <block type="var_set_text_align"></block>
-            <block type="var_set_pos"></block>
-            <block type="var_set_border_style"></block>
-            <block type="var_set_font_weight"></block>
+          <block type="var_create"></block>
+          <block type="var_create_type"></block>
+          <block type="var_set_text"></block>
+          <block type="var_set_color"></block>
+          <block type="var_set_decor_props"></block>
+          <block type="var_set_text_align"></block>
+          <block type="var_set_pos"></block>
+          <block type="var_set_border_style"></block>
+          <block type="var_set_font_weight"></block>
         </category>
         <category colour="210" name="Schleifen">
-            <block type="repeat_x_times"></block>
-            <block type="repeat_while"></block>
-            <block type="repeat_while_number"></block>
+          <block type="repeat_x_times"></block>
+          <block type="repeat_while"></block>
+          <block type="repeat_while_number"></block>
         </category>
         <category colour="#5577EE" name="Abfragen">
-            <block type="if_text"></block>
-            <block type="if_number"></block>
-            <block type="if_event"></block>
-            <block type="else_if_text"></block>
-            <block type="else_if_number"></block>
-            <block type="else"></block>
+          <block type="if_text"></block>
+          <block type="if_number"></block>
+          <block type="if_event"></block>
+          <block type="else_if_text"></block>
+          <block type="else_if_number"></block>
+          <block type="else"></block>
         </category>
-    </xml>
-</div>
-</body>
+      </xml>
+    </div>
+  </body>
 </html>

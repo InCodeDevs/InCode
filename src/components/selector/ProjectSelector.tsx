@@ -4,15 +4,15 @@
  */
 
 import * as React from "react";
-import {IObject} from "../../utils/interface/IObject";
+import { IObject } from "../../utils/interface/IObject";
 import { UIManager } from "../../utils/UIManager";
 import { ProjectManager } from "../../utils/ProjectManager";
 import { SearchScreen } from "../util/SearchScreen";
 import { Entry } from "../../types/SearchScreen";
 import { UserUtil } from "../../utils/UserUtil";
-import {Registry} from "../../utils/Registry";
-import {Language} from "../../utils/international/Language";
-import {WebClient} from "@incodelang/accounts-client";
+import { Registry } from "../../utils/Registry";
+import { Language } from "../../utils/international/Language";
+import { WebClient } from "@incodelang/accounts-client";
 
 type Props = {};
 
@@ -48,7 +48,6 @@ export class ProjectSelector extends React.Component<Props, State> {
   }
 
   render() {
-
     const entries: Entry[] = [];
 
     for (let i = 0; i < localStorage.length; i++) {
@@ -193,7 +192,11 @@ export class ProjectSelector extends React.Component<Props, State> {
                   if (ProjectManager.createProject(pName, pType, pCode)) {
                     UIManager.showComponent(<ProjectSelector />);
                     UIManager.ask(
-                      "<h1 style='text-align:center;'>" + Language.a("menu.success") + "</h1><h4 style='text-align:center;'>" + Language.a("project.import.success") + "</h4>",
+                      "<h1 style='text-align:center;'>" +
+                        Language.a("menu.success") +
+                        "</h1><h4 style='text-align:center;'>" +
+                        Language.a("project.import.success") +
+                        "</h4>",
                       () => {
                         Registry.putRegister(0x10ad, pName);
                         ProjectManager.openProject(pName, pType);
@@ -201,7 +204,11 @@ export class ProjectSelector extends React.Component<Props, State> {
                     );
                   } else {
                     UIManager.alert(
-                      "<h1 style='text-align:center; color: red;'>" + Language.a("menu.failed") + "</h1><h4 style='text-align:center;'>" + Language.a("project.import.failed") + "</h4>"
+                      "<h1 style='text-align:center; color: red;'>" +
+                        Language.a("menu.failed") +
+                        "</h1><h4 style='text-align:center;'>" +
+                        Language.a("project.import.failed") +
+                        "</h4>"
                     );
                   }
                 };
@@ -211,7 +218,11 @@ export class ProjectSelector extends React.Component<Props, State> {
                   pName.length < 4
                 ) {
                   UIManager.prompt(
-                    "<h1 style='text-align:center; color: red;'>" + Language.a("menu.failed") + "</h1><h4 style='text-align:center;'>" + Language.a("project.import.failed.name") + "</h4>",
+                    "<h1 style='text-align:center; color: red;'>" +
+                      Language.a("menu.failed") +
+                      "</h1><h4 style='text-align:center;'>" +
+                      Language.a("project.import.failed.name") +
+                      "</h4>",
                     (value) => {
                       if (
                         ProjectManager.doesProjectExist(value) ||
@@ -228,7 +239,11 @@ export class ProjectSelector extends React.Component<Props, State> {
                 } else c();
               } else {
                 UIManager.alert(
-                  "<h1 style='text-align: center; color: red'>" + Language.a("menu.failed") + "</h1><h4 style='text-align:center;'>" + Language.a("project.import.failed.file") + "</h4>"
+                  "<h1 style='text-align: center; color: red'>" +
+                    Language.a("menu.failed") +
+                    "</h1><h4 style='text-align:center;'>" +
+                    Language.a("project.import.failed.file") +
+                    "</h4>"
                 );
               }
             };
@@ -236,14 +251,22 @@ export class ProjectSelector extends React.Component<Props, State> {
             create();
           } else {
             UIManager.alert(
-              "<h1 style='text-align: center; color: red'>" + Language.a("menu.failed") + "</h1><h4 style='text-align:center;'>" + Language.a("project.import.failed.file") + "</h4>"
+              "<h1 style='text-align: center; color: red'>" +
+                Language.a("menu.failed") +
+                "</h1><h4 style='text-align:center;'>" +
+                Language.a("project.import.failed.file") +
+                "</h4>"
             );
           }
         };
 
         reader.onerror = () => {
           UIManager.alert(
-            "<h1 style='text-align: center; color: red'>" + Language.a("menu.failed") + "</h1><h4 style='text-align:center;'>" + Language.a("project.import.failed.read") + "</h4>"
+            "<h1 style='text-align: center; color: red'>" +
+              Language.a("menu.failed") +
+              "</h1><h4 style='text-align:center;'>" +
+              Language.a("project.import.failed.read") +
+              "</h4>"
           );
         };
       }

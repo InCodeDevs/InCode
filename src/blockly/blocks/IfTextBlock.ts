@@ -34,7 +34,7 @@ export class IfTextBlock {
           {
             type: "field_input",
             name: "VALUE",
-            text: "\"Wert\"",
+            text: '"Wert"',
           },
           {
             type: "input_statement",

@@ -4,13 +4,13 @@
  */
 
 import * as React from "react";
-import {IObject} from "../../utils/interface/IObject";
+import { IObject } from "../../utils/interface/IObject";
 import { UIManager } from "../../utils/UIManager";
 import { ProjectManager } from "../../utils/ProjectManager";
 import { SearchScreen } from "../util/SearchScreen";
 import { Entry } from "../../types/SearchScreen";
 import { CreateProject } from "./CrateProject";
-import {Language} from "../../utils/international/Language";
+import { Language } from "../../utils/international/Language";
 
 export class TemplateSelector extends React.Component {
   /**
@@ -34,8 +34,12 @@ export class TemplateSelector extends React.Component {
           const preUse = () => {
             if (!template.verified) {
               UIManager.ask(
-                "<h1 style='text-align: center'>" + Language.a("menu.attention") + "</h1>" +
-                  "<h4 style='text-align: center; color: red;'>" + Language.a("template.failed.official") + "</h4>",
+                "<h1 style='text-align: center'>" +
+                  Language.a("menu.attention") +
+                  "</h1>" +
+                  "<h4 style='text-align: center; color: red;'>" +
+                  Language.a("template.failed.official") +
+                  "</h4>",
                 () => {
                   use();
                 }
@@ -47,31 +51,37 @@ export class TemplateSelector extends React.Component {
 
           const use = () => {
             UIManager.prompt(
-              "<h1 style='text-align: center'>" + Language.a("project.create") + "</h1>" +
-                "<h4 style='text-align: center'>" + Language.a("project.create.enter.name") + "</h4>",
+              "<h1 style='text-align: center'>" +
+                Language.a("project.create") +
+                "</h1>" +
+                "<h4 style='text-align: center'>" +
+                Language.a("project.create.enter.name") +
+                "</h4>",
               (value: string) => {
                 if (ProjectManager.doesProjectExist(value)) {
                   UIManager.alert(
-                    "<h1 style='text-align: center; color: red'>" + Language.a("menu.failed") + "</h1>" +
-                      "<h4 style='text-align: center;'>" + Language.a("project.create.failed.name.exists") + "</h4>",
+                    "<h1 style='text-align: center; color: red'>" +
+                      Language.a("menu.failed") +
+                      "</h1>" +
+                      "<h4 style='text-align: center;'>" +
+                      Language.a("project.create.failed.name.exists") +
+                      "</h4>",
                     use
                   );
                 } else {
                   if (value.length < 4) {
                     UIManager.alert(
                       "<h1 style='text-align: center; color: red'>Fehler</h1>" +
-                        "<h4 style='text-align: center;'>" + Language.a("project.create.failed.name.length") + "</h4>",
+                        "<h4 style='text-align: center;'>" +
+                        Language.a("project.create.failed.name.length") +
+                        "</h4>",
                       use
                     );
                   } else {
                     UIManager.hideAllPopups();
 
                     const x = new XMLHttpRequest();
-                    x.open(
-                      "GET",
-                      template.directURL,
-                      false
-                    );
+                    x.open("GET", template.directURL, false);
                     x.send(null);
 
                     CreateProject.createProject0(

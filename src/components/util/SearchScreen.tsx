@@ -9,7 +9,7 @@ import { Entry, Props, State } from "../../types/SearchScreen";
 import { Area } from "./SearchScreen/Area";
 import { UIManager } from "../../utils/UIManager";
 import { MainMenu } from "../MainMenu";
-import {Language} from "../../utils/international/Language";
+import { Language } from "../../utils/international/Language";
 
 export class SearchScreen extends React.Component<Props, State> {
   public static entries: Entry[] = [];
@@ -67,9 +67,7 @@ export class SearchScreen extends React.Component<Props, State> {
                   UIManager.showComponent(<MainMenu />);
                 }}
               >
-                  {
-                      Language.a("menu.main")
-                  }
+                {Language.a("menu.main")}
               </Button>
             )}
           </div>

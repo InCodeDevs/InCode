@@ -4,5 +4,5 @@
  */
 
 export interface IObject {
-    [key: string]: any;
+  [key: string]: any;
 }

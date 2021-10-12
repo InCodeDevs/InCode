@@ -3,7 +3,7 @@
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 
-import {IObject} from "../interface/IObject";
+import { IObject } from "../interface/IObject";
 
 export class YouTubeAPI {
   public static readonly API_KEY = "AIzaSyAddGuPMEao5Ngv60cX9iXn3pziHclmLnI";

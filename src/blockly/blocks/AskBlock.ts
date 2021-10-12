@@ -17,7 +17,7 @@ export class AskBlock {
           {
             type: "field_input",
             name: "QUESTION",
-            text: "\"Frage\"",
+            text: '"Frage"',
           },
           {
             type: "field_input",

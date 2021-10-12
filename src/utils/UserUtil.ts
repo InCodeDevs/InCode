@@ -3,7 +3,7 @@
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
 
-import {WebClient} from '@incodelang/accounts-client';
+import { WebClient } from "@incodelang/accounts-client";
 
 const User: WebClient = new WebClient("");
 
@@ -27,12 +27,12 @@ export class UserUtil {
 
   public static getSavedUser(): IUser {
     const user = JSON.parse(
-        sessionStorage.getItem("accounts.actualAccount") as string
+      sessionStorage.getItem("accounts.actualAccount") as string
     );
     return {
       username: user.username,
-      password: user.password
-    }
+      password: user.password,
+    };
   }
 }
 

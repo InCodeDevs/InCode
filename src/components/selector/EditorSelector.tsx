@@ -5,7 +5,7 @@
 
 import * as React from "react";
 import { Registry } from "../../utils/Registry";
-import {Language} from "../../utils/international/Language";
+import { Language } from "../../utils/international/Language";
 
 export class EditorSelector extends React.Component {
   /**
@@ -24,11 +24,14 @@ export class EditorSelector extends React.Component {
             textAlign: "center",
           }}
         >
-          <h1 style={{ color: "#F8F9FAFF" }}>{Language.a("editor.select.name")}</h1>
+          <h1 style={{ color: "#F8F9FAFF" }}>
+            {Language.a("editor.select.name")}
+          </h1>
           <h5 style={{ color: "#F8F9FAFF" }}>
-            {
-              Language.a("editor.select.info").replace("%1", Registry.getRegister(0x10AD))
-            }
+            {Language.a("editor.select.info").replace(
+              "%1",
+              Registry.getRegister(0x10ad)
+            )}
           </h5>
           <div className={"menu-choose-editors-root"}>
             <div className={"menu-choose-editor"} onClick={this.selectBlockly}>
@@ -40,17 +43,13 @@ export class EditorSelector extends React.Component {
                 height={128}
               />
               <p className={"menu-editor-description"}>
-                {
-                  Language.a("editor.block.name")
-                }
+                {Language.a("editor.block.name")}
               </p>
             </div>
             <div className={"menu-choose-editor"} onClick={this.selectMonaco}>
               <img src={"assets/code-editor.png"} width={128} height={128} />
               <p className={"menu-editor-description"}>
-                {
-                  Language.a("editor.code.name")
-                }
+                {Language.a("editor.code.name")}
               </p>
             </div>
           </div>

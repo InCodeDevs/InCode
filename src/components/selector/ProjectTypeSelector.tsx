@@ -6,7 +6,7 @@
 import * as React from "react";
 import { Registry } from "../../utils/Registry";
 import { UIManager } from "../../utils/UIManager";
-import {Language} from "../../utils/international/Language";
+import { Language } from "../../utils/international/Language";
 
 export class ProjectTypeSelector extends React.Component {
   render() {
@@ -21,7 +21,9 @@ export class ProjectTypeSelector extends React.Component {
             textAlign: "center",
           }}
         >
-          <h1 style={{ color: "#F8F9FAFF" }}>{Language.a("project.type.name")}</h1>
+          <h1 style={{ color: "#F8F9FAFF" }}>
+            {Language.a("project.type.name")}
+          </h1>
           <div className={"menu-choose-editors-root"}>
             <div className={"menu-choose-editor"} onClick={this.useWebsite}>
               <img src={"/assets/website.png"} width={128} height={128} />
@@ -100,8 +102,12 @@ export class ProjectTypeSelector extends React.Component {
 
   useGame() {
     UIManager.alert(
-      "<h1 style='text-align: center'>" + Language.a("menu.attention") + "</h1>" +
-        "<h4 style='text-align:center;'>" + Language.a("menu.working") + "</h4>"
+      "<h1 style='text-align: center'>" +
+        Language.a("menu.attention") +
+        "</h1>" +
+        "<h4 style='text-align:center;'>" +
+        Language.a("menu.working") +
+        "</h4>"
     );
   }
 }

@@ -41,7 +41,7 @@ import { SetVarFontWeight } from "../blockly/blocks/SetVarFontWeight";
 import { IObject } from "./interface/IObject";
 import { Themes } from "./Themes";
 import ToolboxDefinition = Blockly.utils.toolbox.ToolboxDefinition;
-import {Language} from "./international/Language";
+import { Language } from "./international/Language";
 
 export class UIManager {
   /**
@@ -62,20 +62,41 @@ export class UIManager {
 
     copyright = copyright.replace("%1", new Date().getFullYear().toString());
 
-    (document.querySelector("#copyright") as HTMLDivElement).innerText = copyright;
+    (document.querySelector("#copyright") as HTMLDivElement).innerText =
+      copyright;
 
-    (document.querySelector('.alert-popup-button-confirm') as HTMLButtonElement).innerText = Language.a("popups.buttons.close");
-    (document.querySelector('#__ic_w_t_about_xx_0') as HTMLButtonElement).innerText = Language.a("popups.buttons.abort");
-    (document.querySelector('.prompt-popup-button-confirm') as HTMLButtonElement).innerText = Language.a("popups.buttons.proceed");
-    (document.querySelector('.prompt-popup-input') as HTMLInputElement).placeholder = Language.a("popups.inputs.prompt.placeholder");
-    (document.querySelectorAll('.question-popup-button')[0] as HTMLButtonElement).innerText = Language.a("popups.buttons.no");
-    (document.querySelectorAll('.question-popup-button')[1] as HTMLButtonElement).innerText = Language.a("popups.buttons.yes");
+    (
+      document.querySelector(".alert-popup-button-confirm") as HTMLButtonElement
+    ).innerText = Language.a("popups.buttons.close");
+    (
+      document.querySelector("#__ic_w_t_about_xx_0") as HTMLButtonElement
+    ).innerText = Language.a("popups.buttons.abort");
+    (
+      document.querySelector(
+        ".prompt-popup-button-confirm"
+      ) as HTMLButtonElement
+    ).innerText = Language.a("popups.buttons.proceed");
+    (
+      document.querySelector(".prompt-popup-input") as HTMLInputElement
+    ).placeholder = Language.a("popups.inputs.prompt.placeholder");
+    (
+      document.querySelectorAll(
+        ".question-popup-button"
+      )[0] as HTMLButtonElement
+    ).innerText = Language.a("popups.buttons.no");
+    (
+      document.querySelectorAll(
+        ".question-popup-button"
+      )[1] as HTMLButtonElement
+    ).innerText = Language.a("popups.buttons.yes");
 
     (document.querySelector("#copyright") as HTMLDivElement).addEventListener(
       "click",
       () => {
         UIManager.alert(
-            "<h1>" + Language.a("product.name") + "</h1>" +
+          "<h1>" +
+            Language.a("product.name") +
+            "</h1>" +
             "<span><strong>By:</strong> <span style='font-family: monospace'>The InCode Developers</span><br>" +
             "<strong>Version:</strong> <span style='font-family: monospace'>" +
             Options.formattedDOMVersion +

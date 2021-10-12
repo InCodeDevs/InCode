@@ -4,7 +4,7 @@
  */
 
 import * as React from "react";
-import {IObject} from "../utils/interface/IObject";
+import { IObject } from "../utils/interface/IObject";
 
 import { UIManager } from "../utils/UIManager";
 import { MainMenu } from "./MainMenu";
@@ -12,7 +12,7 @@ import { Button, Form } from "react-bootstrap";
 import { SettingsScreen } from "./util/SettingsScreen";
 import { Entry } from "../types/SettingsScreen";
 import { Themes } from "../utils/Themes";
-import {Language} from "../utils/international/Language";
+import { Language } from "../utils/international/Language";
 
 export class Settings extends React.Component {
   public static readonly config: IObject = {
@@ -43,7 +43,10 @@ export class Settings extends React.Component {
         });
 
         UIManager.showComponent(
-          <SettingsScreen title={Language.a("settings.theme")} settings={themes} />
+          <SettingsScreen
+            title={Language.a("settings.theme")}
+            settings={themes}
+          />
         );
       },
       icon: "assets/code-editor.png",
@@ -94,8 +97,12 @@ export class Settings extends React.Component {
                 title: Language.a("settings.storage.delete"),
                 callback: () => {
                   UIManager.ask(
-                    "<h1>" + Language.a("menu.continue") + "</h1>" +
-                      "<h4>" + Language.a("settings.storage.delete.confirm") + "</h4>",
+                    "<h1>" +
+                      Language.a("menu.continue") +
+                      "</h1>" +
+                      "<h4>" +
+                      Language.a("settings.storage.delete.confirm") +
+                      "</h4>",
                     () => {
                       for (let i = 0; i < localStorage.length; i++) {
                         localStorage.removeItem(localStorage.key(i) as string);
@@ -110,8 +117,12 @@ export class Settings extends React.Component {
                 title: Language.a("settings.settings.delete"),
                 callback: () => {
                   UIManager.ask(
-                    "<h1>" + Language.a("menu.continue") + "</h1>" +
-                      "<h4>" + Language.a("settings.settings.delete.confirm") + "</h4>",
+                    "<h1>" +
+                      Language.a("menu.continue") +
+                      "</h1>" +
+                      "<h4>" +
+                      Language.a("settings.settings.delete.confirm") +
+                      "</h4>",
                     () => {
                       localStorage.removeItem("incode-editor.theme");
                       localStorage.removeItem("incode-editor.enableAnimations");
@@ -191,10 +202,9 @@ export class Settings extends React.Component {
   }
 
   render() {
-
-    Settings.config.theme.display = Language.a("settings.theme")
-    Settings.config.animations.display = Language.a("settings.animation")
-    Settings.config.storage.display = Language.a("settings.storage")
+    Settings.config.theme.display = Language.a("settings.theme");
+    Settings.config.animations.display = Language.a("settings.animation");
+    Settings.config.storage.display = Language.a("settings.storage");
 
     return (
       <>
@@ -208,9 +218,7 @@ export class Settings extends React.Component {
             }}
           >
             <h1 style={{ color: "#F8F9FAFF", flex: "55%", textAlign: "right" }}>
-              {
-                Language.a("product.name")
-              }
+              {Language.a("product.name")}
             </h1>
             <div style={{ flex: "45%", display: "flex" }}>
               <span style={{ flex: "75%" }} />

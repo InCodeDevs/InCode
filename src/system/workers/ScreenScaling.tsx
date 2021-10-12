@@ -7,10 +7,9 @@ import * as ReactDOM from "react-dom";
 import * as React from "react";
 import { IncompatibleScreen } from "../../components/util/IncompatibleScreen";
 import { UIManager } from "../../utils/UIManager";
-import {Language} from "../../utils/international/Language";
+import { Language } from "../../utils/international/Language";
 
 export class ScreenScaling extends Worker {
-
   protected static enabled = true;
 
   public static enable() {
@@ -37,19 +36,15 @@ export class ScreenScaling extends Worker {
           ).style.display = "block";
           ReactDOM.render(
             <IncompatibleScreen
-              title={
-                Language.a("incompatible.screen.title")
-              }
-              message={
-                Language.a("incompatible.screen.description")
-              }
+              title={Language.a("incompatible.screen.title")}
+              message={Language.a("incompatible.screen.description")}
               ignore={() => {
                 ScreenScaling.disable();
                 (
-                    document.querySelector("#topScreen") as HTMLDivElement
+                  document.querySelector("#topScreen") as HTMLDivElement
                 ).style.display = "none";
                 ReactDOM.unmountComponentAtNode(
-                    document.querySelector("#topScreen") as HTMLDivElement
+                  document.querySelector("#topScreen") as HTMLDivElement
                 );
               }}
             />,

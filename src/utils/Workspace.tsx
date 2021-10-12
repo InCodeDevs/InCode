@@ -17,13 +17,12 @@ import * as React from "react";
 import { ProjectTypeSelector } from "../components/selector/ProjectTypeSelector";
 import { UserUtil } from "./UserUtil";
 import { SelectLoginOption } from "../components/login/SelectLoginOption";
-import {Language} from "./international/Language";
-import {WebClient} from '@incodelang/accounts-client';
+import { Language } from "./international/Language";
+import { WebClient } from "@incodelang/accounts-client";
 
 const User: WebClient = new WebClient("");
 
 export class Workspace {
-
   /**
    * Compiles the current Workspace
    * @param dl If this is true the output will be downloaded as "Programm.js"
@@ -91,7 +90,9 @@ export class Workspace {
         }
 
         UIManager.alert(
-          "<h1 style='text-align: center;'>" + Language.a("menu.failed") + "</h1>" +
+          "<h1 style='text-align: center;'>" +
+            Language.a("menu.failed") +
+            "</h1>" +
             "<iframe src='preview.html?code=" +
             btoa(jsCode) +
             "' width='100%' height='100%'></iframe>"
@@ -126,16 +127,16 @@ export class Workspace {
         );
       }
 
-      if(withFrame) {
+      if (withFrame) {
         const previewFrame = document.createElement("iframe");
-        previewFrame.src = "preview.html?code=" + Workspace.toBinary(Options.currentLiveJS);
+        previewFrame.src =
+          "preview.html?code=" + Workspace.toBinary(Options.currentLiveJS);
         previewFrame.id = "livePreviewFrame";
         (document.getElementById("livePreview") as HTMLDivElement).appendChild(
-            previewFrame
+          previewFrame
         );
       }
     }
-
   };
 
   public static toBinary(s: string) {
@@ -156,7 +157,11 @@ export class Workspace {
     ); // 0x10AD => magic value
     if (showSucceedMessage)
       UIManager.alert(
-        "<h1 style='text-align: center;'>" + Language.a("menu.success") + "</h1><h4 style='text-align: center; color: limegreen'>" + Language.a("project.save") + "</h4>"
+        "<h1 style='text-align: center;'>" +
+          Language.a("menu.success") +
+          "</h1><h4 style='text-align: center; color: limegreen'>" +
+          Language.a("project.save") +
+          "</h4>"
       );
   }
 
@@ -165,8 +170,12 @@ export class Workspace {
    */
   public static delete() {
     UIManager.ask(
-      "<h1 style='text-align: center'>" + Language.a("menu.confirm") + "</h1>" +
-        "<h4>" + Language.a("project.delete") + "</h4>",
+      "<h1 style='text-align: center'>" +
+        Language.a("menu.confirm") +
+        "</h1>" +
+        "<h4>" +
+        Language.a("project.delete") +
+        "</h4>",
       () => {
         if (document.getElementById("livePreviewFrame") != undefined) {
           (
@@ -190,8 +199,12 @@ export class Workspace {
   public static rename() {
     Workspace.save(false);
     UIManager.prompt(
-      "<h1 style='text-align: center;'>" + Language.a("project.rename") + "</h1>" +
-        "<h4 style='text-align: center'>" + Language.a("project.rename.new.name") + "</h4>",
+      "<h1 style='text-align: center;'>" +
+        Language.a("project.rename") +
+        "</h1>" +
+        "<h4 style='text-align: center'>" +
+        Language.a("project.rename.new.name") +
+        "</h4>",
       (value: string) => {
         ProjectManager.renameProject(
           Registry.getRegister(0x10ad),
@@ -226,8 +239,11 @@ export class Workspace {
    */
   public static deployTemplate() {
     UIManager.ask(
-      "<h1 style='text-align: center'>" + Language.a("deploy") + "</h1>" +
-        "<h4 style='text-align: center;'>" + Language.a("deploy.warning") +
+      "<h1 style='text-align: center'>" +
+        Language.a("deploy") +
+        "</h1>" +
+        "<h4 style='text-align: center;'>" +
+        Language.a("deploy.warning") +
         "</h4>",
       () => {
         const x: XMLHttpRequest = new XMLHttpRequest();
@@ -245,13 +261,21 @@ export class Workspace {
         x.send(null);
         if (x.responseText === "Successful") {
           UIManager.alert(
-            "<h1 style='text-align: center'>" + Language.a("menu.success") + "</h1>" +
-              "<h4 style='text-align: center;'>" + Language.a("deploy.success") + "</h4>"
+            "<h1 style='text-align: center'>" +
+              Language.a("menu.success") +
+              "</h1>" +
+              "<h4 style='text-align: center;'>" +
+              Language.a("deploy.success") +
+              "</h4>"
           );
         } else {
           UIManager.alert(
-            "<h1 style='text-align: center; color: red'>" + Language.a("menu.failed") + "</h1>" +
-              "<h4 style='text-align: center;'>" + Language.a("project.create.name.failed.exists") + "</h4>"
+            "<h1 style='text-align: center; color: red'>" +
+              Language.a("menu.failed") +
+              "</h1>" +
+              "<h4 style='text-align: center;'>" +
+              Language.a("project.create.name.failed.exists") +
+              "</h4>"
           );
         }
       }
@@ -259,17 +283,27 @@ export class Workspace {
   }
 
   public static deployProject() {
-
     Workspace.compile(false);
 
     const x: XMLHttpRequest = new XMLHttpRequest();
     x.open("POST", location.href + "api/v1/url/create", false);
     x.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    x.send("{\"target\": \"" + location.href + "preview.html?code=" + Workspace.toBinary(Options.currentLiveJS) + "\"}")
+    x.send(
+      '{"target": "' +
+        location.href +
+        "preview.html?code=" +
+        Workspace.toBinary(Options.currentLiveJS) +
+        '"}'
+    );
 
     UIManager.alert(
-      "<h1>" + Language.a("deploy.project") + "</h1><h4><pre><code><a target='_blank' href='" + JSON.parse(x.responseText).url +
-        "'>" + Language.a("menu.open") + "</a></code></pre></h4>"
+      "<h1>" +
+        Language.a("deploy.project") +
+        "</h1><h4><pre><code><a target='_blank' href='" +
+        JSON.parse(x.responseText).url +
+        "'>" +
+        Language.a("menu.open") +
+        "</a></code></pre></h4>"
     );
   }
 
@@ -309,13 +343,21 @@ export class Workspace {
       ).then((r) => {
         if (r) {
           UIManager.alert(
-            "<h1>" + Language.a("menu.success") + "</h1><h4>" + Language.a("deploy.account.success") + "</h4>"
+            "<h1>" +
+              Language.a("menu.success") +
+              "</h1><h4>" +
+              Language.a("deploy.account.success") +
+              "</h4>"
           );
         }
       });
     } else {
       UIManager.ask(
-        "<h1>" + Language.a("menu.attention") + "</h1><h4>" + Language.a("deploy.account.failed") + "</h4>",
+        "<h1>" +
+          Language.a("menu.attention") +
+          "</h1><h4>" +
+          Language.a("deploy.account.failed") +
+          "</h4>",
         () => {
           Workspace.save(false);
           Registry.putRegister(0x10af, () => {

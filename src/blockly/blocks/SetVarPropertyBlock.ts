@@ -55,7 +55,7 @@ export class SetVarPropertyBlock {
           {
             type: "field_input",
             name: "VALUE",
-            text: "\"Wert\"",
+            text: '"Wert"',
           },
         ],
         previousStatement: null,
