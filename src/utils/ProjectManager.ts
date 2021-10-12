@@ -8,8 +8,7 @@ import {Registry} from "./Registry";
 import {UserUtil} from "./UserUtil";
 import {WebClient} from "@incodelang/accounts-client";
 
-const User = new WebClient();
-User.init("");
+const User: WebClient = new WebClient("");
 
 export class ProjectManager {
 

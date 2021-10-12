@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "@incodelang/accounts": "^1.0.8",
-    "@incodelang/accounts-client": "^1.0.3",
+    "@incodelang/accounts-client": "^1.0.6",
     "@incodelang/language": "^1.0.11",
     "@incodelang/templates": "^1.0.2",
     "@incodelang/urlshorter": "^1.0.2",

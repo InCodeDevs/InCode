@@ -11,12 +11,11 @@ import {MainMenu} from "../MainMenu";
 import {Registry} from "../../utils/Registry";
 import {Language} from "../../utils/international/Language";
 
-const User = new WebClient();
+const User: WebClient = new WebClient("");
 
 export class SelectLoginOption extends React.Component {
 
-    async render() {
-        await User.init("");
+    render() {
         return (
             <>
                 <div

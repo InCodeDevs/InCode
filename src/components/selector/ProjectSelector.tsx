@@ -20,7 +20,7 @@ type State = {
   entries0: Entry[];
 };
 
-const User: WebClient = new WebClient();
+const User: WebClient = new WebClient("");
 
 export class ProjectSelector extends React.Component<Props, State> {
   public static getProjects(): IObject {
@@ -47,8 +47,7 @@ export class ProjectSelector extends React.Component<Props, State> {
     return projects;
   }
 
-  async render() {
-    await User.init("");
+  render() {
 
     const entries: Entry[] = [];
 

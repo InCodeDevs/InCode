@@ -14,13 +14,11 @@ import {ProjectManager} from "../../utils/ProjectManager";
 import {WebClient} from "@incodelang/accounts-client";
 import {UserUtil} from "../../utils/UserUtil";
 
-const User = new WebClient();
+const User: WebClient = new WebClient("");
 
 export class ShareProject extends React.Component<Props, State> {
 
-    async render() {
-
-        await User.init("");
+    render() {
 
         const projectName = Registry.getRegister(0x10AD)
 
@@ -124,7 +122,7 @@ export class ShareProject extends React.Component<Props, State> {
                                                                         ).then(d => {
                                                                             console.log("xxx")
                                                                             let r = [];
-                                                                            if(d !== undefined && d !== null){
+                                                                            if (d !== undefined && d !== null) {
                                                                                 r = d;
                                                                             }
                                                                             r[projectName] = username
@@ -132,7 +130,7 @@ export class ShareProject extends React.Component<Props, State> {
                                                                                 username, password, r, "shared-projects"
                                                                             ).then(() => {
                                                                                 UIManager.alert("<h1>" + Language.a("menu.success") + "</h1><h4>" + Language.a("menu.share.success") + "</h4>", () => {
-                                                                                    UIManager.showComponent(<MainMenu />)
+                                                                                    UIManager.showComponent(<MainMenu/>)
                                                                                 })
                                                                             })
                                                                         })

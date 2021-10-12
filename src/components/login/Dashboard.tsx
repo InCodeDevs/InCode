@@ -11,15 +11,13 @@ import {MainMenu} from "../MainMenu";
 import {UserUtil} from "../../utils/UserUtil";
 import {WebClient} from "@incodelang/accounts-client";
 
-const User = new WebClient();
+const User: WebClient = new WebClient("");
 
 export class Dashboard extends React.Component {
 
-    async render() {
+    render() {
 
         const username: string = UserUtil.getSavedUser().username;
-
-        await User.init("");
 
         return (
             <>

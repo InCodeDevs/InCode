@@ -20,8 +20,7 @@ import { SelectLoginOption } from "../components/login/SelectLoginOption";
 import {Language} from "./international/Language";
 import {WebClient} from '@incodelang/accounts-client';
 
-const User = new WebClient();
-User.init("");
+const User: WebClient = new WebClient("");
 
 export class Workspace {
 

@@ -728,10 +728,10 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@incodelang/accounts-client@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/@incodelang/accounts-client/-/accounts-client-1.0.3.tgz#9db25176c6eb124cb5d164119d1c7c3de8ce76f0"
-  integrity sha512-DmrJ9P0sg+gjnVzX+zq+aaXxaNdq43tVlgfFdyNSVbX+1GW3Nfp5ZmXCBKrslY2A0i5gRpKGjRm4jSVDdjEqag==
+"@incodelang/accounts-client@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.npmjs.org/@incodelang/accounts-client/-/accounts-client-1.0.6.tgz#b3cf159587146b6a00877f7708a2f01c13fcaa08"
+  integrity sha512-iZUNEa/MB1YFYVRUqyKtAfUbWr9SNgpX/Iu5pJO1lrwnh13dF9e917vuVg434c2jpZSr9FnJNvYYhUS6yickew==
 
 "@incodelang/accounts@^1.0.8":
   version "1.0.8"

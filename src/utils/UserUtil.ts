@@ -5,8 +5,7 @@
 
 import {WebClient} from '@incodelang/accounts-client';
 
-const User = new WebClient();
-User.init("");
+const User: WebClient = new WebClient("");
 
 export class UserUtil {
   public static async loginAndSave(
