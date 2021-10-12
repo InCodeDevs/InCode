@@ -57,7 +57,7 @@ export class MainMenu extends React.Component {
         <div id="userIndicator" onClick={MainMenu.checkLogin}>
           <div id="userImage">
             <img
-              src="https://us.123rf.com/450wm/tuktukdesign/tuktukdesign1608/tuktukdesign160800043/61010830-user-icon-mann-profil-gesch%C3%A4ftsmann-avatar-person-glyph-vektor-illustration.jpg"
+              src="assets/icon-5355896_640.png" // //us.123rf.com/450wm/tuktukdesign/tuktukdesign1608/tuktukdesign160800043/61010830-user-icon-mann-profil-gesch%C3%A4ftsmann-avatar-person-glyph-vektor-illustration.jpg
               id={"userIndicatorPicture"}
             />
             <div id={"userIndicatorAs"}>

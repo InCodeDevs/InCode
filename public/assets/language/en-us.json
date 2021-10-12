@@ -114,5 +114,16 @@
   "popups.buttons.proceed": "Proceed",
   "popups.buttons.yes": "Yes",
   "popups.buttons.no": "No",
-  "popups.inputs.prompt.placeholder": "Enter value..."
+  "popups.inputs.prompt.placeholder": "Enter value...",
+
+  "menu.account.title": "Account verwalten",
+  "menu.account.logged-in-as": "Angemeldet als %1",
+  "menu.account.logout.title": "Abmelden?",
+  "menu.account.logout.description": "Willst du dich wirklich abmelden?",
+  "menu.account.delete.title": "Account Löschen?",
+  "menu.account.delete.description": "Willst du deinen Account wirklich löschen?",
+  "menu.account.change.username.title": "Wie heißt du?",
+  "menu.account.change.username.description": "Bitte gib deinen neuen Benutzernamen ein!",
+  "menu.account.change.password.title": "Wie ist dein Passwort?",
+  "menu.account.change.password.description": "Bitte gib dein neues Passwort ein!"
 }

@@ -138,6 +138,11 @@ export class Settings extends React.Component {
       },
       icon: "assets/settings.png",
     },
+    account: {
+      display: Language.a("settings.account"),
+      callback: () => {},
+      icon: "assets/icon-5355896_640.png",
+    },
   };
 
   public static updateSettings(settings: IObject = { ex: true }) {
@@ -205,6 +210,7 @@ export class Settings extends React.Component {
     Settings.config.theme.display = Language.a("settings.theme");
     Settings.config.animations.display = Language.a("settings.animation");
     Settings.config.storage.display = Language.a("settings.storage");
+    Settings.config.account.display = Language.a("settings.account");
 
     return (
       <>

@@ -17,11 +17,11 @@ export class PreInit {
     // Check Config in Local Storage
     new ConfigInit().init();
 
-    // Import themes
-    new ThemeLoader().init();
-
     // Load Language
     new LanguageInit().init();
+
+    // Import themes
+    new ThemeLoader().init();
 
     document.addEventListener("DOMContentLoaded", UIManager.onLoad);
   }
