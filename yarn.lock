@@ -728,15 +728,15 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@incodelang/accounts-client@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.npmjs.org/@incodelang/accounts-client/-/accounts-client-1.0.7.tgz#fc1e31eeee7da8c214c91e48b75a8d5d33687d2d"
-  integrity sha512-deSyRq0A5Vmiz0TZYePf9At7BwnX1er8OJN1KJgHQwibDaYa7Q7bKI0QF6pxm2tGyldoQJf45PbZgi+HW1a6tw==
+"@incodelang/accounts-client@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.npmjs.org/@incodelang/accounts-client/-/accounts-client-1.0.8.tgz#f0bb9a356dabebfdf0a2243204a15b0b626f72eb"
+  integrity sha512-1lDdOnqHBgS7iHdTk0ZOfEbqoUzScC4cPkS8m1ntgkyxipJWq/zy1Asv5wHt3M6FZHtLfOIBcYhRcxi7tFceLQ==
 
-"@incodelang/accounts@^1.0.9":
-  version "1.0.9"
-  resolved "https://registry.npmjs.org/@incodelang/accounts/-/accounts-1.0.9.tgz#5d073cc9123c5e0aecf3d1662ab7555bc096944b"
-  integrity sha512-uZdDBL4yQxZYix7xcLNNqkhgnE4oaPfpTwMNHELPKu3YmCG+k2zyp/j6AzWKOa6CSBldq0whmuTsoDWLHh5GfQ==
+"@incodelang/accounts@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.npmjs.org/@incodelang/accounts/-/accounts-1.0.10.tgz#4dcc5c6d48ffb42b9a2420b98e923a21da0eba5c"
+  integrity sha512-u2SmgyBA+fVBuTba6wwmkJoKNPdsym9Z4Eb9E+FuYEzwoouxKQpIYCQOqqnjdQt7l/7oiwrdNejbGMb0tokKqQ==
   dependencies:
     "@types/node" "^16.10.3"
     body-parser "^1.19.0"

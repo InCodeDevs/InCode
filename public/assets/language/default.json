@@ -132,5 +132,7 @@
   "menu.account.change.username.title": "Wie heißt du?",
   "menu.account.change.username.description": "Bitte gib deinen neuen Benutzernamen ein!",
   "menu.account.change.password.title": "Wie ist dein Passwort?",
-  "menu.account.change.password.description": "Bitte gib dein neues Passwort ein!"
+  "menu.account.change.password.description": "Bitte gib dein neues Passwort ein!",
+  "menu.account.invites.disabled": "Einladungen wurden deaktiviert!",
+  "menu.account.invites.enabled": "Einladungen wurden aktiviert!"
 }

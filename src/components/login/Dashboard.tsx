@@ -7,7 +7,6 @@ import * as React from "react";
 import { Button } from "react-bootstrap";
 import { Language } from "../../utils/international/Language";
 import { UIManager } from "../../utils/UIManager";
-import { MainMenu } from "../MainMenu";
 import { UserUtil } from "../../utils/UserUtil";
 import { WebClient } from "@incodelang/accounts-client";
 import { Registry } from "../../utils/Registry";
@@ -98,8 +97,30 @@ export class Dashboard extends React.Component {
           >
             Namen ändern
           </Button>
+          <br />
+          <Button
+            variant={"outline-flat"}
+            size={"xxl"}
+            style={{ margin: "1.5rem" }}
+            onClick={this.toggleInvites}
+            id={"__acc_btn_toggle_invs"}
+          >
+            Einladungen&nbsp;
+          </Button>
         </div>
       </>
+    );
+  }
+
+  componentDidMount() {
+    User.existsPostBox(UserUtil.getSavedUser().username, "p-invites").then(
+      (x) => {
+        console.log(x);
+        let y = x ? "deaktivieren" : "aktivieren";
+        (
+          document.getElementById("__acc_btn_toggle_invs") as HTMLButtonElement
+        ).innerText += y;
+      }
     );
   }
 
@@ -218,5 +239,43 @@ export class Dashboard extends React.Component {
       );
     };
     x();
+  }
+
+  public async toggleInvites() {
+    if (
+      await User.existsPostBox(UserUtil.getSavedUser().username, "p-invites")
+    ) {
+      await User.deletePostBox(
+        UserUtil.getSavedUser().username,
+        UserUtil.getSavedUser().password,
+        "p-invites"
+      );
+      UIManager.alert(
+        "<h1>" +
+          Language.a("menu.success") +
+          "</h1><h4>" +
+          Language.a("menu.account.invites.disabled") +
+          "</h4>",
+        () => {
+          UIManager.showComponent(<Dashboard />);
+        }
+      );
+    } else {
+      await User.createPostBox(
+        UserUtil.getSavedUser().username,
+        UserUtil.getSavedUser().password,
+        "p-invites"
+      );
+      UIManager.alert(
+        "<h1>" +
+          Language.a("menu.success") +
+          "</h1><h4>" +
+          Language.a("menu.account.invites.enabled") +
+          "</h4>",
+        () => {
+          UIManager.showComponent(<Dashboard />);
+        }
+      );
+    }
   }
 }
