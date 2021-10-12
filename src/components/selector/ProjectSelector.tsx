@@ -10,15 +10,17 @@ import { ProjectManager } from "../../utils/ProjectManager";
 import { SearchScreen } from "../util/SearchScreen";
 import { Entry } from "../../types/SearchScreen";
 import { UserUtil } from "../../utils/UserUtil";
-import { User } from "../../utils/User";
 import {Registry} from "../../utils/Registry";
 import {Language} from "../../utils/international/Language";
+import {WebClient} from "@incodelang/accounts-client";
 
 type Props = {};
 
 type State = {
   entries0: Entry[];
 };
+
+const User: WebClient = new WebClient();
 
 export class ProjectSelector extends React.Component<Props, State> {
   public static getProjects(): IObject {
@@ -45,7 +47,9 @@ export class ProjectSelector extends React.Component<Props, State> {
     return projects;
   }
 
-  render() {
+  async render() {
+    await User.init("");
+
     const entries: Entry[] = [];
 
     for (let i = 0; i < localStorage.length; i++) {

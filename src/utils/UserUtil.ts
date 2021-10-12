@@ -2,7 +2,11 @@
  * @author The InCode Devs
  * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
  */
-import { User } from "./User";
+
+import {WebClient} from '@incodelang/accounts-client';
+
+const User = new WebClient();
+User.init("");
 
 export class UserUtil {
   public static async loginAndSave(
