@@ -13,6 +13,7 @@ import { UserUtil } from "../utils/UserUtil";
 import { CreateProject } from "./selector/CrateProject";
 import { Language } from "../utils/international/Language";
 import { Dashboard } from "./login/Dashboard";
+import { Registry } from "../utils/Registry";
 
 export class MainMenu extends React.Component {
   /**
@@ -39,6 +40,15 @@ export class MainMenu extends React.Component {
   }
 
   public static checkLogin() {
+    Registry.putRegister(0x10af, () => {
+      if (Registry.getRegister(0x10ba)) {
+        UIManager.showComponent(Registry.getRegister(0x10ba));
+        Registry.deleteRegister(0x10ba);
+      } else {
+        UIManager.showComponent(<MainMenu />);
+      }
+    });
+
     // @ts-ignore
     if (UserUtil.getSavedUser().username && UserUtil.getSavedUser().password) {
       UIManager.showComponent(<Dashboard />);
@@ -57,7 +67,7 @@ export class MainMenu extends React.Component {
         <div id="userIndicator" onClick={MainMenu.checkLogin}>
           <div id="userImage">
             <img
-              src="assets/icon-5355896_640.png" // //us.123rf.com/450wm/tuktukdesign/tuktukdesign1608/tuktukdesign160800043/61010830-user-icon-mann-profil-gesch%C3%A4ftsmann-avatar-person-glyph-vektor-illustration.jpg
+              src="assets/icon-5355896_640.png"
               id={"userIndicatorPicture"}
             />
             <div id={"userIndicatorAs"}>

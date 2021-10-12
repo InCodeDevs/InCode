@@ -13,6 +13,8 @@ import { SettingsScreen } from "./util/SettingsScreen";
 import { Entry } from "../types/SettingsScreen";
 import { Themes } from "../utils/Themes";
 import { Language } from "../utils/international/Language";
+import { Registry } from "../utils/Registry";
+import { Dashboard } from "./login/Dashboard";
 
 export class Settings extends React.Component {
   public static readonly config: IObject = {
@@ -140,7 +142,10 @@ export class Settings extends React.Component {
     },
     account: {
       display: Language.a("settings.account"),
-      callback: () => {},
+      callback: () => {
+        Registry.putRegister(0x10ba, <Settings />);
+        MainMenu.checkLogin();
+      },
       icon: "assets/icon-5355896_640.png",
     },
   };

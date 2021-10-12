@@ -10,6 +10,7 @@ import { UserUtil } from "../../utils/UserUtil";
 import { MainMenu } from "../MainMenu";
 import { Registry } from "../../utils/Registry";
 import { Language } from "../../utils/international/Language";
+import { Button } from "react-bootstrap";
 
 const User: WebClient = new WebClient("");
 
@@ -17,6 +18,32 @@ export class SelectLoginOption extends React.Component {
   render() {
     return (
       <>
+        <div
+          style={{
+            display: "flex",
+            width: "100%",
+            marginTop: "2%",
+            marginBottom: "2%",
+          }}
+        >
+          <div style={{ flex: "90%" }}>
+            <span style={{ visibility: "hidden" }}>_</span>
+          </div>
+          <div style={{ flex: "10%" }}>
+            <Button
+              variant={"outline-flat"}
+              size={"xxl"}
+              style={{
+                marginRight: "1.5rem",
+              }}
+              onClick={() => {
+                Registry.getRegister(0x10af)();
+              }}
+            >
+              {Language.a("menu.back")}
+            </Button>
+          </div>
+        </div>
         <div
           style={{
             top: "50%",

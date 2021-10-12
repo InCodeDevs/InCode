@@ -10,6 +10,7 @@ import { UIManager } from "../../utils/UIManager";
 import { MainMenu } from "../MainMenu";
 import { UserUtil } from "../../utils/UserUtil";
 import { WebClient } from "@incodelang/accounts-client";
+import { Registry } from "../../utils/Registry";
 
 const User: WebClient = new WebClient("");
 
@@ -42,10 +43,10 @@ export class Dashboard extends React.Component {
                 marginRight: "1.5rem",
               }}
               onClick={() => {
-                UIManager.showComponent(<MainMenu />);
+                Registry.getRegister(0x10af)();
               }}
             >
-              {Language.a("menu.main")}
+              {Language.a("menu.back")}
             </Button>
           </div>
         </div>
