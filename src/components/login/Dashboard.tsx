@@ -10,6 +10,8 @@ import { UIManager } from "../../utils/UIManager";
 import { UserUtil } from "../../utils/UserUtil";
 import { WebClient } from "@incodelang/accounts-client";
 import { Registry } from "../../utils/Registry";
+import { ProjectSelector } from "../selector/ProjectSelector";
+import { ProjectInvites } from "./ProjectInvites";
 
 const User: WebClient = new WebClient("");
 
@@ -107,6 +109,15 @@ export class Dashboard extends React.Component {
           >
             Einladungen&nbsp;
           </Button>
+          <Button
+            variant={"outline-flat"}
+            size={"xxl"}
+            style={{ margin: "1.5rem", display: "none" }}
+            onClick={this.showInvites}
+            id={"__acc_btn_show_invs"}
+          >
+            Einladungen anzeigen
+          </Button>
         </div>
       </>
     );
@@ -115,11 +126,21 @@ export class Dashboard extends React.Component {
   componentDidMount() {
     User.existsPostBox(UserUtil.getSavedUser().username, "p-invites").then(
       (x) => {
-        console.log(x);
         let y = x ? "deaktivieren" : "aktivieren";
         (
           document.getElementById("__acc_btn_toggle_invs") as HTMLButtonElement
         ).innerText += y;
+        x
+          ? ((
+              document.getElementById(
+                "__acc_btn_show_invs"
+              ) as HTMLButtonElement
+            ).style.display = "inline-block")
+          : ((
+              document.getElementById(
+                "__acc_btn_show_invs"
+              ) as HTMLButtonElement
+            ).style.display = "none");
       }
     );
   }
@@ -277,5 +298,12 @@ export class Dashboard extends React.Component {
         }
       );
     }
+  }
+
+  public showInvites() {
+    Registry.putRegister(0x10af, () => {
+      UIManager.showComponent(<Dashboard />);
+    });
+    UIManager.showComponent(<ProjectInvites />);
   }
 }

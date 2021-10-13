@@ -1,0 +1,66 @@
+/**
+ * @author The InCode Devs
+ * @copyright 2018-2021 The InCode Developers <https://github.com/InCodeDevs>
+ */
+
+.invites-list {
+
+  list-style: none;
+
+  .invites-list-item {
+    color: #FAFAFA;
+    display: flex;
+    padding: 0.75em;
+    background-color: #1e1e1e;
+    transition: background-color 200ms linear;
+
+    &:hover {
+      background-color: #121212;
+    }
+
+    &:nth-child(even) {
+      background-color: #2b2b2b;
+
+      &:hover {
+        background-color: #121212;
+      }
+    }
+
+    .invites-list-item-title {
+      flex: 80%;
+
+      .invites-list-item-author {
+        font-family: monospace;
+        font-size: 1rem;
+      }
+    }
+
+    .invites-list-item-controls {
+
+      flex: 20%;
+      text-align: center;
+
+      .invites-list-item-controls-button {
+        margin: 0.5rem;
+        display: table-cell;
+        vertical-align: middle;
+
+        background-color: transparent;
+        border: none;
+        transition: filter 200ms linear;
+
+        &:hover {
+          filter: brightness(70%);
+        }
+      }
+
+      .invites-list-item-controls-button-accept {
+        background-color: #198754FF;
+      }
+
+      .invites-list-item-controls-button-decline {
+        background-color: #DC3545FF;
+      }
+    }
+  }
+}

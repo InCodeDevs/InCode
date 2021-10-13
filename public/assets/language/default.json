@@ -17,6 +17,8 @@
   "menu.main": "Hauptmenü",
   "menu.deploy": "Veröffentlichen",
   "menu.open": "Öffnen",
+  "menu.accept": "Akzeptieren",
+  "menu.decline": "Ablehnen",
 
   "deploy": "Veröffentlichen",
   "deploy.warning": "Wenn du deine Vorlage veröffentlichsts, kann jeder auf dieses nutzen.",
@@ -134,5 +136,7 @@
   "menu.account.change.password.title": "Wie ist dein Passwort?",
   "menu.account.change.password.description": "Bitte gib dein neues Passwort ein!",
   "menu.account.invites.disabled": "Einladungen wurden deaktiviert!",
-  "menu.account.invites.enabled": "Einladungen wurden aktiviert!"
+  "menu.account.invites.enabled": "Einladungen wurden aktiviert!",
+  "menu.account.invites.title": "Einladungen",
+  "menu.account.invites.empty": "Keine Einladungen"
 }

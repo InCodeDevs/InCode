@@ -55,8 +55,8 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "@incodelang/accounts": "^1.0.10",
-    "@incodelang/accounts-client": "^1.0.8",
+    "@incodelang/accounts": "^1.0.13",
+    "@incodelang/accounts-client": "^1.0.9",
     "@incodelang/language": "^1.0.11",
     "@incodelang/templates": "^1.0.2",
     "@incodelang/urlshorter": "^1.0.2",
