@@ -118,13 +118,13 @@ export class ShareProject extends React.Component<Props, State> {
 
                               User.existsPostBox(value, "p-invites").then(
                                 (x) => {
-                                  if (x) {
+                                  if (!x) {
                                     UIManager.alert(
                                       "<h1>" +
                                         Language.a("menu.failed") +
                                         "</h1><h4>" +
                                         Language.a(
-                                          "menu.share.who.failed.accept"
+                                          "menu.share.who.failed.accepted"
                                         ) +
                                         "</h4>",
                                       () => {
