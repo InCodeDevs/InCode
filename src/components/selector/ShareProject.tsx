@@ -100,7 +100,6 @@ export class ShareProject extends React.Component<Props, State> {
                       (value) => {
                         const username = UserUtil.getSavedUser().username;
                         const password = UserUtil.getSavedUser().password;
-
                         if (value === username) {
                           UIManager.alert(
                             "<h1>" +
@@ -116,49 +115,59 @@ export class ShareProject extends React.Component<Props, State> {
                           User.existsUser(value).then((x) => {
                             if (x) {
                               projectConfig.save = "shared";
-                              User.storeData(
-                                username,
-                                password,
-                                projectConfig,
-                                username + "_projects-" + projectName
-                              ).then(() => {
-                                User.allowDataAccess(
-                                  username,
-                                  password,
-                                  username + "_projects-" + projectName,
-                                  value
-                                ).then(() => {
-                                  User.getData_u(
-                                    username,
-                                    password,
-                                    "shared-projects"
-                                  ).then((d) => {
-                                    console.log("xxx");
-                                    let r = [];
-                                    if (d !== undefined && d !== null) {
-                                      r = d;
-                                    }
-                                    r[projectName] = username;
-                                    User.storeData_u(
+
+                              User.existsPostBox(value, "p-invites").then(
+                                (x) => {
+                                  if (x) {
+                                    UIManager.alert(
+                                      "<h1>" +
+                                        Language.a("menu.failed") +
+                                        "</h1><h4>" +
+                                        Language.a(
+                                          "menu.share.who.failed.accept"
+                                        ) +
+                                        "</h4>",
+                                      () => {
+                                        __btn__on_click();
+                                      }
+                                    );
+                                  } else {
+                                    User.storeData(
                                       username,
                                       password,
-                                      r,
-                                      "shared-projects"
-                                    ).then(() => {
-                                      UIManager.alert(
-                                        "<h1>" +
-                                          Language.a("menu.success") +
-                                          "</h1><h4>" +
-                                          Language.a("menu.share.success") +
-                                          "</h4>",
-                                        () => {
-                                          UIManager.showComponent(<MainMenu />);
+                                      projectConfig,
+                                      username + "_project_" + projectName
+                                    ).then((x) => {
+                                      User.addToPostBox(
+                                        username,
+                                        password,
+                                        "p-invites",
+                                        value,
+                                        {
+                                          name: projectName,
+                                          public_data:
+                                            username +
+                                            "_project_" +
+                                            projectName,
                                         }
+                                      ).then((x) =>
+                                        UIManager.alert(
+                                          "<h1>" +
+                                            Language.a("menu.success") +
+                                            "</h1><h4>" +
+                                            Language.a("menu.share.success") +
+                                            "</h4>",
+                                          () => {
+                                            UIManager.showComponent(
+                                              <ShareProject />
+                                            );
+                                          }
+                                        )
                                       );
                                     });
-                                  });
-                                });
-                              });
+                                  }
+                                }
+                              );
                             } else {
                               UIManager.alert(
                                 "<h1>" +

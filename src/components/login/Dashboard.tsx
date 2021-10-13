@@ -301,8 +301,11 @@ export class Dashboard extends React.Component {
   }
 
   public showInvites() {
+    let origRegister10AF = Registry.getRegister(0x10af);
+
     Registry.putRegister(0x10af, () => {
       UIManager.showComponent(<Dashboard />);
+      Registry.putRegister(0x10af, origRegister10AF);
     });
     UIManager.showComponent(<ProjectInvites />);
   }

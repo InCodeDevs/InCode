@@ -49,54 +49,7 @@ export class ProjectInvites extends React.Component {
           </div>
         </div>
         <div style={{ margin: "10%", width: "80%", height: "100%" }}>
-          <ul className={"invites-list"} id={"invites-list"}>
-            <li className={"invites-list-item"}>
-              <h4 className={"invites-list-item-title"}>
-                Test Projekt
-                <br />
-                <span className={"invites-list-item-author"}>mctzock</span>
-              </h4>
-              <div className={"invites-list-item-controls"}>
-                <button
-                  className={
-                    "invites-list-item-controls-button invites-list-item-controls-button-accept"
-                  }
-                >
-                  Annehmen
-                </button>
-                <button
-                  className={
-                    "invites-list-item-controls-button invites-list-item-controls-button-decline"
-                  }
-                >
-                  Ablehnen
-                </button>
-              </div>
-            </li>
-            <li className={"invites-list-item"}>
-              <h4 className={"invites-list-item-title"}>
-                Test Projekt
-                <br />
-                <span className={"invites-list-item-author"}>mctzock</span>
-              </h4>
-              <div className={"invites-list-item-controls"}>
-                <button
-                  className={
-                    "invites-list-item-controls-button invites-list-item-controls-button-accept"
-                  }
-                >
-                  Annehmen
-                </button>
-                <button
-                  className={
-                    "invites-list-item-controls-button invites-list-item-controls-button-decline"
-                  }
-                >
-                  Ablehnen
-                </button>
-              </div>
-            </li>
-          </ul>
+          <ul className={"invites-list"} id={"invites-list"} />
         </div>
       </>
     );
