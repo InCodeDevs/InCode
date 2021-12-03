@@ -4,7 +4,6 @@
  */
 
 import * as React from "react";
-import l18n from "../util/l18n";
 import Container from "../components/Container";
 import Title from "../components/Title";
 import MenuItem from "../components/Menu/MenuItem";
@@ -15,12 +14,9 @@ import {
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import MenuItemList from "../components/Menu/MenuItemList";
-import UIManager from "../util/UIManager";
-import Popup from "../components/Popup";
 import PopupManager from "../util/PopupManager";
 
 export default function MainMenu() {
-  // @ts-ignore
   return (
     <>
       <Container centered={true}>
@@ -30,9 +26,9 @@ export default function MainMenu() {
             icon={faPlus}
             onclick={() => {
               PopupManager.showPopup(
-                "Alert",
+                "Question",
                 "Test Alert",
-                "Test Description",
+                "Test Alert LOL 123",
                 () => {
                   console.log("Test");
                 }
@@ -52,7 +48,9 @@ export default function MainMenu() {
           />
           <MenuItem
             icon={faBook}
-            onclick={() => {}}
+            onclick={() => {
+              window.open("https://docs.incodelang.de/", "_blank");
+            }}
             title={"menu.main.open.documentation"}
           />
         </MenuItemList>

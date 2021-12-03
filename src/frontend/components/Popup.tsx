@@ -6,6 +6,8 @@
 import React, { ReactElement } from "react";
 import Title from "./Title";
 import Text from "./Text";
+import PopupManager from "../util/PopupManager";
+import l18n from "../util/l18n";
 
 interface Props {
   type: "Alert" | "Question" | "Confirm";
@@ -19,6 +21,58 @@ export default function Popup(props: Props) {
     <div className={"popup"}>
       <Title className={"popup-title"} size={1} title={props.title} centered />
       <Text nol18n>{props.description}</Text>
+      <br />
+      {props.type === "Question" ? (
+        <div className={"popup-input-wrapper"}>
+          <input
+            type={"text"}
+            id={"question_popup-input"}
+            className={"input popup-input"}
+          />
+        </div>
+      ) : (
+        ""
+      )}
+      <div className={"popup-buttons"}>
+        {props.type === "Alert" ? (
+          <button
+            className={"popup-button"}
+            onClick={() => {
+              PopupManager.disposeAll();
+              if (props.callback) {
+                props.callback();
+              }
+            }}
+          >
+            {l18n.translate("close")}
+          </button>
+        ) : (
+          <>
+            <button
+              className={"popup-button"}
+              onClick={() => {
+                PopupManager.disposeAll();
+                if (props.callback) {
+                  props.callback();
+                }
+              }}
+            >
+              {l18n.translate("no")}
+            </button>
+            <button
+              className={"popup-button"}
+              onClick={() => {
+                PopupManager.disposeAll();
+                if (props.callback) {
+                  props.callback();
+                }
+              }}
+            >
+              {l18n.translate("yes")}
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 }

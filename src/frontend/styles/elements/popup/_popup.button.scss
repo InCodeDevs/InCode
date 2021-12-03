@@ -1,0 +1,39 @@
+/**
+ * @author Ben Siebert <ben@mctzock.de>
+ * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
+ */
+
+@import "../../var";
+
+.popup-buttons {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  min-height: 25%;
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+
+  .popup-button {
+    flex: 100%;
+    background: darken($stdBackground, 4%);
+    border-radius: 0 0 24px 24px;
+    border-top: 2px solid;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    cursor: pointer;
+    border-top-color: $stdAccent;
+    color: #FAFAFA;
+    font-size: large;
+    transition: background-color 320ms ease;
+
+    &:hover {
+      background: darken($stdBackground, 8%);
+    }
+
+    &:active {
+      background: darken($stdBackground, 10%);
+    }
+  }
+}

@@ -3,7 +3,7 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 
-$mobView: 900px;
-
-$stdBackground: #282C34;
-$stdAccent: #00adff;
+.input {
+  outline: none;
+  font-size: large;
+}

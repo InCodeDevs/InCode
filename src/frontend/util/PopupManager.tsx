@@ -5,13 +5,13 @@
 import { JSONObject } from "../types/JSONObject";
 import UIManager from "./UIManager";
 import Popup from "../components/Popup";
-import React from "react";
+import React, { ReactElement } from "react";
 
 export default class PopupManager {
   public static showPopup(
     type: "Alert" | "Question" | "Confirm",
     title: string,
-    description: string,
+    description: string | ReactElement | ReactElement[],
     callback?: (result?: JSONObject) => void
   ) {
     (document.querySelector("#popupWrapper") as HTMLElement).classList.add(
