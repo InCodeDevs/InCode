@@ -1,3 +1,7 @@
 {
-  "name": "InCode Editor"
+  "name": "InCode Editor",
+  "menu.main.create.project": "Projekt erstellen",
+  "menu.main.open.project": "Projekt öffnen",
+  "menu.main.open.settings": "Einstellungen öffnen",
+  "menu.main.open.documentation": "Dokumentation öffnen"
 }

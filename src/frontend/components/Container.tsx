@@ -6,7 +6,7 @@
 import React from "react";
 
 interface Props {
-  children: React.ReactElement;
+  children: React.ReactElement | React.ReactElement[];
   centered?: boolean;
 }
 

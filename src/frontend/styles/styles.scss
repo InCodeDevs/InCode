@@ -7,6 +7,10 @@
 @import "var";
 @import "elements/title";
 @import "elements/container";
+@import "elements/menu/menu.item";
+@import "elements/menu/menu.item.list";
+@import "elements/text";
+@import "elements/popup/popup";
 @import "util/layout";
 @import "util/text";
 
@@ -14,4 +18,8 @@
 
 body, html {
   background: $stdBackground;
+}
+
+* {
+  font-family: sans-serif;
 }

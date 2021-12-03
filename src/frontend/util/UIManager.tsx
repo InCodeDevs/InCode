@@ -16,4 +16,10 @@ export default class UIManager {
     );
     ReactDOM.render(component, document.querySelector("#" + containerID));
   }
+
+  public static unmountAt(containerID: string) {
+    ReactDOM.unmountComponentAtNode(
+      document.querySelector("#" + containerID) as HTMLElement
+    );
+  }
 }

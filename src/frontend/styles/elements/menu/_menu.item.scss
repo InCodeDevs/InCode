@@ -1,0 +1,32 @@
+/**
+ * @author Ben Siebert <ben@mctzock.de>
+ * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
+ */
+
+@import "../../var";
+
+.menu-item {
+  background: darken($stdBackground, 4%);
+  border: 2px solid darken($stdBackground, 10%);
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+  border-radius: 4px;
+  margin: .5rem;
+  width: 60%;
+  cursor: pointer;
+  transition: background-color 320ms ease;
+
+  &:hover {
+    background: darken($stdBackground, 8%);
+  }
+
+  :nth-child(1) {
+    flex: 10%;
+  }
+
+  :nth-child(2) {
+    flex: 90%;
+    font-weight: normal;
+  }
+}

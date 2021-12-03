@@ -4,11 +4,14 @@
  */
 
 import React from "react";
+import l18n from "../util/l18n";
 
 interface Props {
-  children: React.ReactElement | string;
   size: 1 | 2 | 3 | 4 | 5 | 6;
   centered?: boolean;
+  title: string;
+  className?: string;
+  nol18n?: boolean;
 }
 
 export default function Title(props: Props) {
@@ -18,10 +21,12 @@ export default function Title(props: Props) {
         "title title-" +
         props.size +
         " " +
-        (props.centered ? "text-centered" : "")
+        (props.centered ? "text-centered" : "") +
+        " " +
+        props.className
       }
     >
-      {props.children}
+      {props.nol18n ? props.title : l18n.translate(props.title)}
     </h1>
   );
 }

@@ -15,3 +15,18 @@ body, html {
   position: fixed;
   transform: translate(-50%, -50%);
 }
+
+.copyright-notice {
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  margin: .4rem;
+  transition: color 320ms ease;
+  color: #6c6c6c;
+  cursor: pointer;
+  z-index: 99;
+
+  &:hover {
+    color: #FAFAFA;
+  }
+}
