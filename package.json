@@ -71,7 +71,6 @@
     "express": "^4.17.1",
     "jsdom": "^19.0.0",
     "jszip": "^3.7.1",
-    "kill-port": "^1.6.1",
     "monaco-editor": "^0.30.1",
     "react": "^17.0.2",
     "react-bulma-components": "^4.0.7",

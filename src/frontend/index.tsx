@@ -5,5 +5,6 @@
 
 import * as ReactDOM from "react-dom";
 import * as React from "react";
+import "./styles/styles.scss";
 
-ReactDOM.render(<h1>Hello World</h1>, document.getElementById("root"))
+import "./bootstrap";
