@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Component, ReactElement } from "react";
 
 export default class UIManager {
   public static showComponent(
@@ -13,8 +12,8 @@ export default class UIManager {
     containerID: string = "root"
   ) {
     ReactDOM.unmountComponentAtNode(
-      document.querySelector(containerID) as HTMLElement
+      document.querySelector("#" + containerID) as HTMLElement
     );
-    ReactDOM.render(component, document.querySelector(containerID));
+    ReactDOM.render(component, document.querySelector("#" + containerID));
   }
 }

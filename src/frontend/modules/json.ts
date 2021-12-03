@@ -3,5 +3,7 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 
-import "./styles/styles.scss";
-import "./bootstrap";
+declare module "*.json" {
+  const value: any;
+  export default value;
+}
