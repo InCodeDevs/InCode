@@ -11,7 +11,7 @@ const git = require('./plugins/webpack/git')
 const pkg = require('./plugins/webpack/package');
 
 const config = {
-  entry: './src/index.tsx',
+  entry: './src/frontend/index.tsx',
   mode: 'development',
   devtool: false,
   output: {
@@ -94,7 +94,7 @@ const config = {
     new HtmlWebpackPlugin({
       appMountId: 'app',
       filename: 'index.html',
-      template: './src/index.html',
+      template: './src/frontend/index.html',
       title: "InCode Editor",
 
       meta: {

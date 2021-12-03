@@ -3,7 +3,19 @@
   "version": "4.0.0",
   "description": "The next generation of the InCode Editor",
   "main": "",
-  "scripts": {},
+  "scripts": {
+    "webpack:build-dev": "webpack --mode development",
+    "webpack:build-prod": "webpack --mode production",
+    "express:dev-start": "yarn webpack:build-dev && node ./src/backend/server.js",
+    "express:prod-start": "yarn webpack:build-dev && node ./src/backend/server.js",
+    "express:only-start": "node ./src/backend/server.js",
+    "express:live-start": "concurrently \"yarn webpack --watch\" \"yarn express:only-start\"",
+    "lint": "eslint --ext .ts,.tsx,.js",
+    "prettier:check": "prettier --check src",
+    "prettier:write": "prettier --write src",
+    "docker:build": "docker build . -t\"mctzock/incode-editor\"",
+    "docker:deploy": "docker push mctzock/incode-editor"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/InCodeDevs/Editor.git"
