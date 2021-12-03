@@ -1,0 +1,28 @@
+{
+  "name": "@incodelang/editor",
+  "version": "4.0.0",
+  "description": "The next generation of the InCode Editor",
+  "main": "",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InCodeDevs/Editor.git"
+  },
+  "keywords": [
+    "Editor",
+    "InCode",
+    "InCode",
+    "Language",
+    "Programming"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "The InCode Developers",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/InCodeDevs/Editor/issues"
+  },
+  "homepage": "https://github.com/InCodeDevs/Editor#readme"
+}
