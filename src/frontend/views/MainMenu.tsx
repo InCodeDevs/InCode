@@ -15,6 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import MenuItemList from "../components/Menu/MenuItemList";
 import PopupManager from "../util/PopupManager";
+import UserIndicator from "../components/UserIndicator";
 
 export default function MainMenu() {
   return (
@@ -55,6 +56,7 @@ export default function MainMenu() {
           />
         </MenuItemList>
       </Container>
+      <UserIndicator />
     </>
   );
 }

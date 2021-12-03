@@ -1,0 +1,26 @@
+/**
+ * @author Ben Siebert <ben@mctzock.de>
+ * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
+ */
+
+.userindicator {
+  top: 0;
+  right: 0;
+  margin: 1.5rem;
+  position: fixed;
+  z-index: 98;
+  padding: 1rem 1.2rem;
+  background-color: #FAFAFA;
+  border-radius: 100%;
+  font-size: large;
+  cursor: pointer;
+
+  transition: background-color 320ms ease;
+
+  &:hover {
+    background-color: darken(#FAFAFA, 10%);
+  }
+  &:active {
+    background-color: darken(#FAFAFA, 30%);
+  }
+}
