@@ -103,6 +103,8 @@ export class ProjectInvites extends React.Component {
           acceptButton.innerText = Language.a("menu.accept");
           declineButton.innerText = Language.a("menu.decline");
 
+          acceptButton.addEventListener("click", () => {});
+
           declineButton.addEventListener("click", () => {
             User.removeFromPostBox(
               UserUtil.getSavedUser().username,
