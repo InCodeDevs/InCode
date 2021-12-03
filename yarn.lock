@@ -23,6 +23,11 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
+"@craftions/bulma-dark@^0.1.0-beta.1":
+  version "0.1.0-beta.1"
+  resolved "https://registry.npmjs.org/@craftions/bulma-dark/-/bulma-dark-0.1.0-beta.1.tgz#dd91493579712f6138c1dc27bf94badc6a283a70"
+  integrity sha512-FC083/9zwlUvUcIvbHIA/ck1efAHgKN5zjl/AXuTezQYuwzlya33Wm0MSM1d2KAStPej335VqHeoU/4G+Hc/lQ==
+
 "@discoveryjs/json-ext@^0.5.0":
   version "0.5.6"
   resolved "https://registry.npmjs.org/@discoveryjs/json-ext/-/json-ext-0.5.6.tgz#d5e0706cf8c6acd8c6032f8d54070af261bbbb2f"
@@ -784,6 +789,11 @@ buffer-from@^1.0.0:
   resolved "https://registry.npmjs.org/buffer-from/-/buffer-from-1.1.2.tgz#2b146a6fd72e80b4f55d255f35ed59a3a9a41bd5"
   integrity sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==
 
+bulma@^0.9.3:
+  version "0.9.3"
+  resolved "https://registry.npmjs.org/bulma/-/bulma-0.9.3.tgz#ddccb7436ebe3e21bf47afe01d3c43a296b70243"
+  integrity sha512-0d7GNW1PY4ud8TWxdNcP6Cc8Bu7MxcntD/RRLGWuiw/s0a9P+XlH/6QoOIrmbj6o8WWJzJYhytiu9nFjTszk1g==
+
 bytes@3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/bytes/-/bytes-3.1.0.tgz#f6cf7933a360e0588fa9fde85651cdc7f805d1f6"
@@ -883,6 +893,11 @@ chrome-trace-event@^1.0.2:
   version "1.0.3"
   resolved "https://registry.npmjs.org/chrome-trace-event/-/chrome-trace-event-1.0.3.tgz#1015eced4741e15d06664a957dbbf50d041e26ac"
   integrity sha512-p3KULyQg4S7NIHixdwbGX+nFHkoBiA4YQmyWtjb8XngSKV124nJmRysgAeujbUVb15vh+RvFUfCPqU7rXk+hZg==
+
+classnames@2.3.1:
+  version "2.3.1"
+  resolved "https://registry.npmjs.org/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
+  integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
 
 clean-css@^5.2.2:
   version "5.2.2"
@@ -3308,6 +3323,13 @@ raw-body@2.4.0:
     http-errors "1.7.2"
     iconv-lite "0.4.24"
     unpipe "1.0.0"
+
+react-bulma-components@^4.0.7:
+  version "4.0.7"
+  resolved "https://registry.npmjs.org/react-bulma-components/-/react-bulma-components-4.0.7.tgz#b50b2f02b4332d3debf7a974fcae679aa49157d1"
+  integrity sha512-F6dsnkKWQU+dtaLO2gB+0RSbPBQAPIhzjn5C3SvUab7qJXlCM3mqy8+Rqc4j5UZdvfRjqwl4MKpkYSTAX6Z2ag==
+  dependencies:
+    classnames "2.3.1"
 
 react-dom@^17.0.2:
   version "17.0.2"
