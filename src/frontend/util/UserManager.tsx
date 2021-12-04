@@ -11,4 +11,9 @@ export default class UserManager {
       BrowserStorage.get("accessName") != ""
     );
   }
+
+  public static login(username: string, token: string) {
+    BrowserStorage.store("accessName", username);
+    BrowserStorage.store("accessToken", token);
+  }
 }

@@ -21,6 +21,7 @@ import PopupManager from "../../util/PopupManager";
 import UIManager from "../../util/UIManager";
 import MainMenu from "../MainMenu";
 import BrowserStorage from "../../util/BrowserStorage";
+import UserManager from "../../util/UserManager";
 
 const client = new WebClient("");
 
@@ -95,8 +96,7 @@ export default function AccountLogin() {
                       UIManager.unmountAt("root");
                       client.create(username, password).then((x) => {
                         client.createToken(username, password).then((token) => {
-                          BrowserStorage.store("accessName", username);
-                          BrowserStorage.store("accessToken", token);
+                          UserManager.login(username, token);
                           UIManager.showComponent(<MainMenu />);
                         });
                       });

@@ -16,6 +16,13 @@ import {
 import l18n from "../../util/l18n";
 import MainMenuItem from "../../components/Menu/MainMenuItem";
 import MenuItem from "../../components/Menu/MenuItem";
+import { WebClient } from "@incodelang/accounts-client";
+import PopupManager from "../../util/PopupManager";
+import UIManager from "../../util/UIManager";
+import UserManager from "../../util/UserManager";
+import MainMenu from "../MainMenu";
+
+const client = new WebClient("");
 
 export default function AccountLogin() {
   return (
@@ -44,7 +51,32 @@ export default function AccountLogin() {
         />
         <MenuItem
           icon={faSignInAlt}
-          onclick={() => {}}
+          onclick={async () => {
+            const username = (
+              document.getElementById("login-username") as HTMLInputElement
+            ).value;
+            const password = (
+              document.getElementById("login-password") as HTMLInputElement
+            ).value;
+
+            client.login(username, password).then((r) => {
+              if (r) {
+                UIManager.unmountAt("root");
+                client.createToken(username, password).then((token) => {
+                  UserManager.login(username, token);
+                  UIManager.showComponent(<MainMenu />);
+                });
+              } else {
+                PopupManager.showPopup(
+                  "Alert",
+                  "error",
+                  l18n.translate("error.login.credentials"),
+                  () => {},
+                  true
+                );
+              }
+            });
+          }}
           title={"menu.login.login"}
         />
         <MainMenuItem />
