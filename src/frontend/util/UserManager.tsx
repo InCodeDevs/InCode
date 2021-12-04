@@ -3,6 +3,9 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 import BrowserStorage from "./BrowserStorage";
+import { WebClient } from "@incodelang/accounts-client";
+
+const client = new WebClient("");
 
 export default class UserManager {
   public static isLoggedIn(): boolean {
@@ -28,5 +31,15 @@ export default class UserManager {
 
   public static getToken(): string {
     return BrowserStorage.get("accessToken");
+  }
+
+  public static async deleteAccount(password: string): Promise<boolean> {
+    const success = await client.delete(this.getUsername(), password);
+    if (success) {
+      this.logout();
+      return true;
+    } else {
+      return false;
+    }
   }
 }

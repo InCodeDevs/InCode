@@ -23,5 +23,13 @@
   "error.not.logged-in": "Du bist nicht angemeldet!",
   "error.please-login": "Bitte melde dich an, um fortzufahren.",
   "menu.manage-account.title-template": "Willkommen, ",
-  "menu.manage-account.logout": "Abmelden"
+  "menu.manage-account.logout": "Abmelden",
+  "menu.manage-account.delete-account": "Konto löschen",
+  "menu.manage-account.delete-account.enter-password": "Gib dein Passwort ein, um dein Konto zu löschen",
+  "menu.manage-account.delete-account.wrong-password": "Das Passwort ist falsch!",
+  "menu.manage-account.delete-account.wrong-password.description": "Das eingegebene Passwort ist falsch. Bitte versuche es erneut.",
+  "menu.manage-account.delete-account.success": "Konto gelöscht!",
+  "menu.manage-account.delete-account.success.description": "Dein Konto wurde erfolgreich gelöscht!",
+  "menu.manage-account.change-name": "Benutzername ändern",
+  "menu.manage-account.change-password": "Passwort ändern"
 }

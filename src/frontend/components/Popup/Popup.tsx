@@ -64,9 +64,6 @@ export default function Popup(props: Props) {
               className={"popup-button"}
               onClick={() => {
                 PopupManager.disposeAll();
-                if (props.callback) {
-                  props.callback();
-                }
               }}
             >
               {l18n.translate("no")}
@@ -74,10 +71,20 @@ export default function Popup(props: Props) {
             <button
               className={"popup-button"}
               onClick={() => {
-                PopupManager.disposeAll();
                 if (props.callback) {
-                  props.callback();
+                  if (props.type === "Question") {
+                    props.callback(
+                      (
+                        document.querySelector(
+                          "#question_popup-input"
+                        ) as HTMLInputElement
+                      ).value
+                    );
+                  } else {
+                    props.callback();
+                  }
                 }
+                PopupManager.disposeAll();
               }}
             >
               {l18n.translate("yes")}

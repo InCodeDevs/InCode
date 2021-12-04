@@ -2,7 +2,6 @@
  * @author Ben Siebert <ben@mctzock.de>
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
-import { JSONObject } from "../types/JSONObject";
 import UIManager from "./UIManager";
 import Popup from "../components/Popup/Popup";
 import React, { ReactElement } from "react";
@@ -12,7 +11,7 @@ export default class PopupManager {
     type: "Alert" | "Question" | "Confirm",
     title: string,
     description: string | ReactElement | ReactElement[],
-    callback?: (result?: JSONObject) => void,
+    callback?: (result?: string) => void,
     useTitleAsText?: boolean
   ) {
     (document.querySelector("#popupWrapper") as HTMLElement).classList.add(
