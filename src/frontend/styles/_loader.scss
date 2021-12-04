@@ -3,6 +3,23 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 
+@import "var";
+
+#fake_loader_wrapper {
+  z-index: 99999;
+  position: fixed;
+  background: darken($stdBackground, 4%);
+
+  width: 100%;
+  height: 100%;
+  &:has(.active){
+    display: block;
+  }
+  &:not(.active){
+    display: none;
+  }
+}
+
 .loader:empty {
   position: absolute;
   top: calc(50% - 4em);
