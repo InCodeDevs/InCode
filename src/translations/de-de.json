@@ -30,6 +30,13 @@
   "menu.manage-account.delete-account.wrong-password.description": "Das eingegebene Passwort ist falsch. Bitte versuche es erneut.",
   "menu.manage-account.delete-account.success": "Konto gelöscht!",
   "menu.manage-account.delete-account.success.description": "Dein Konto wurde erfolgreich gelöscht!",
-  "menu.manage-account.change-name": "Benutzername ändern",
-  "menu.manage-account.change-password": "Passwort ändern"
+  "menu.manage-account.change-username": "Benutzername ändern",
+  "menu.manage-account.change-username.enter-username": "Gib deinen neuen Benutzernamen ein",
+  "menu.manage-account.change-username.success": "Benutzername geändert!",
+  "menu.manage-account.change-username.success.description": "Dein Benutzername wurde erfolgreich geändert!",
+  "menu.manage-account.change-password": "Passwort ändern",
+  "menu.manage-account.change-password.enter-current-password": "Gib dein Passwort ein",
+  "menu.manage-account.change-password.enter-new-password": "Gib dein neues Passwort ein",
+  "menu.manage-account.change-password.success": "Passwort geändert!",
+  "menu.manage-account.change-password.success.description": "Dein Passwort wurde erfolgreich geändert!"
 }

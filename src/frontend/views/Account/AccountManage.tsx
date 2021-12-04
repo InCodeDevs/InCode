@@ -19,6 +19,7 @@ import UIManager from "../../util/UIManager";
 import MainMenu from "../MainMenu";
 import l18n from "../../util/l18n";
 import PopupManager from "../../util/PopupManager";
+import FakeLoader from "../../util/FakeLoader";
 
 export default function AccountManage() {
   return (
@@ -85,12 +86,105 @@ export default function AccountManage() {
         />
         <MenuItem
           icon={faPencilAlt}
-          onclick={() => {}}
-          title={"menu.manage-account.change-name"}
+          onclick={() => {
+            PopupManager.showPopup(
+              "Question",
+              "menu.manage-account.change-username",
+              l18n.translate(
+                "menu.manage-account.change-username.enter-username"
+              ),
+              async (username) => {
+                FakeLoader.show();
+
+                if (await UserManager.accountExists(username as string)) {
+                  PopupManager.showPopup(
+                    "Alert",
+                    "error",
+                    l18n.translate("error.username.exists"),
+                    () => {},
+                    true
+                  );
+                } else {
+                  await UserManager.updateUsername(username as string);
+                  PopupManager.showPopup(
+                    "Alert",
+                    "menu.manage-account.change-username.success",
+                    l18n.translate(
+                      "menu.manage-account.change-username.success.description"
+                    ),
+                    () => {
+                      UIManager.unmountAt("root");
+                      UIManager.showComponent(<AccountManage />, "root");
+                    },
+                    true
+                  );
+                }
+
+                FakeLoader.hide();
+              },
+              true
+            );
+          }}
+          title={"menu.manage-account.change-username"}
         />
         <MenuItem
           icon={faPencilAlt}
-          onclick={() => {}}
+          onclick={() => {
+            PopupManager.showPopup(
+              "Question",
+              "menu.manage-account.change-password",
+              l18n.translate(
+                "menu.manage-account.change-password.enter-current-password"
+              ),
+              (password) => {
+                PopupManager.showPopup(
+                  "Question",
+                  "menu.manage-account.change-password",
+                  l18n.translate(
+                    "menu.manage-account.change-password.enter-new-password"
+                  ),
+                  async (newPassword) => {
+                    if (UserManager.isPasswordSafe(newPassword as string)) {
+                      if (
+                        await UserManager.updatePassword(
+                          password as string,
+                          newPassword as string
+                        )
+                      ) {
+                        PopupManager.showPopup(
+                          "Alert",
+                          "menu.manage-account.change-password.success",
+                          l18n.translate(
+                            "menu.manage-account.change-password.success.description"
+                          ),
+                          () => {},
+                          true
+                        );
+                      } else {
+                        PopupManager.showPopup(
+                          "Alert",
+                          "error",
+                          l18n.translate("error.password.wrong"),
+                          () => {},
+                          true
+                        );
+                      }
+                    } else {
+                      PopupManager.showPopup(
+                        "Alert",
+                        "error",
+                        l18n.translate("error.password.too.weak"),
+                        () => {},
+                        true
+                      );
+                    }
+                  },
+                  true
+                );
+              },
+              true
+            );
+          }}
           title={"menu.manage-account.change-password"}
         />
         <MainMenuItem />

@@ -42,4 +42,35 @@ export default class UserManager {
       return false;
     }
   }
+
+  public static async updatePassword(
+    password: string,
+    newPassword: string
+  ): Promise<boolean> {
+    return await client.updatePassword(
+      this.getUsername(),
+      password,
+      newPassword
+    );
+  }
+
+  public static async updateUsername(newUsername: string): Promise<boolean> {
+    const oldUsername = this.getUsername();
+    BrowserStorage.store("accessName", newUsername);
+    return await client.updateUsername(
+      oldUsername,
+      this.getToken(),
+      newUsername
+    );
+  }
+
+  public static async accountExists(username: string): Promise<boolean> {
+    return await client.existsUser(username);
+  }
+
+  public static isPasswordSafe(password: string) {
+    return password.match(
+      /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{10,})/g
+    );
+  }
 }

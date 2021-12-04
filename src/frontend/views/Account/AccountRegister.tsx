@@ -78,11 +78,7 @@ export default function AccountLogin() {
 
             if (username.length >= 4) {
               if (password === passwordConfirm) {
-                if (
-                  password.match(
-                    /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{10,})/g
-                  )
-                ) {
+                if (UserManager.isPasswordSafe(password)) {
                   client.existsUser(username).then((r) => {
                     if (r) {
                       PopupManager.showPopup(
