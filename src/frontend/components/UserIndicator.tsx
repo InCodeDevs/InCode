@@ -9,6 +9,7 @@ import { faUserTimes, faUserCheck } from "@fortawesome/free-solid-svg-icons";
 import UserManager from "../util/UserManager";
 import UIManager from "../util/UIManager";
 import Login from "../views/Login";
+import AccountManage from "../views/Account/AccountManage";
 
 export default function UserIndicator() {
   return (
@@ -16,6 +17,7 @@ export default function UserIndicator() {
       className={"userindicator"}
       onClick={() => {
         if (UserManager.isLoggedIn()) {
+          UIManager.showComponent(<AccountManage />, "root");
         } else {
           UIManager.showComponent(<Login />, "root");
         }

@@ -16,4 +16,9 @@ export default class UserManager {
     BrowserStorage.store("accessName", username);
     BrowserStorage.store("accessToken", token);
   }
+
+  public static logout() {
+    BrowserStorage.delete("accessName");
+    BrowserStorage.delete("accessToken");
+  }
 }

@@ -10,6 +10,10 @@ export default class BrowserStorage {
     storage.setItem(key, value);
   }
 
+  public static delete(key: string) {
+    storage.removeItem(key);
+  }
+
   public static getStorage(): typeof storage {
     return storage;
   }

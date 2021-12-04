@@ -19,5 +19,7 @@
   "error.username.exists": "Der Benutzername ist bereits vergeben!",
   "error.password.not.match": "Die Passwörter stimmen nicht überein.",
   "error.password.too.weak": "Dein Passwort ist nicht stark genug! Es muss mindestens 10 Zeichen lang sein, einen Großbuchstaben, eine Zahl und ein Sonderzeichen enthalten!",
-  "error.login.credentials": "Der Benutzername und/oder das Passwort stimmen/stimmt nicht überein!"
+  "error.login.credentials": "Der Benutzername und/oder das Passwort stimmen/stimmt nicht überein!",
+  "menu.manage-account.title": "Account verwalten",
+  "menu.manage-account.logout": "Abmelden"
 }
