@@ -14,8 +14,10 @@ import {
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import MenuItemList from "../components/Menu/MenuItemList";
-import PopupManager from "../util/PopupManager";
 import UserIndicator from "../components/UserIndicator";
+import UserManager from "../util/UserManager";
+import PopupManager from "../util/PopupManager";
+import l18n from "../util/l18n";
 
 export default function MainMenu() {
   return (
@@ -26,14 +28,16 @@ export default function MainMenu() {
           <MenuItem
             icon={faPlus}
             onclick={() => {
-              PopupManager.showPopup(
-                "Question",
-                "Test Alert",
-                "Test Alert LOL 123",
-                () => {
-                  console.log("Test");
-                }
-              );
+              if (UserManager.isLoggedIn()) {
+              } else {
+                PopupManager.showPopup(
+                  "Alert",
+                  "error.not.logged-in",
+                  l18n.translate("error.please-login"),
+                  () => {},
+                  true
+                );
+              }
             }}
             title={"menu.main.create.project"}
           />
