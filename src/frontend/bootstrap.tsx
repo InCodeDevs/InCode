@@ -8,6 +8,11 @@ import UIManager from "./util/UIManager";
 import MainMenu from "./views/MainMenu";
 import KeyManager from "./util/KeyManager";
 import InteractionManager from "./util/InteractionManager";
+import Settings from "./util/Settings";
+
+if (!Settings.isValid()) {
+  Settings.reset();
+}
 
 window.onload = () => {
   new KeyManager();

@@ -4,8 +4,14 @@
  */
 
 import React from "react";
+import MonacoEditor from "../components/Editor/MonacoEditor";
+import PlaygroundPreview from "../components/Editor/PlaygroundPreview";
 
 export default function Playground() {
-
-  return <></>
+  return (
+    <>
+      <MonacoEditor mode={"playground"} />
+      <PlaygroundPreview />
+    </>
+  );
 }
