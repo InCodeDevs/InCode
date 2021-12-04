@@ -4,8 +4,19 @@
   "menu.main.open.project": "Projekt öffnen",
   "menu.main.open.settings": "Einstellungen öffnen",
   "menu.main.open.documentation": "Dokumentation öffnen",
-
+  "menu.back.main": "Zurück zum Hauptmenü",
   "yes": "Ja",
   "no": "Nein",
-  "close": "Schließen"
+  "close": "Schließen",
+  "menu.login.title": "Anmelden",
+  "menu.login.login": "Anmelden",
+  "menu.login.register": "Registrieren",
+  "menu.login.login.placeholder.username": "Benutzername",
+  "menu.login.login.placeholder.password": "Passwort",
+  "menu.login.login.placeholder.password-confirm": "Passwort bestätigen",
+  "error": "Fehler",
+  "error.username.too.short": "Der Benutzername ist zu kurz! Er muss mindestens 4 Zeichen lang sein.",
+  "error.username.exists": "Der Benutzername ist bereits vergeben!",
+  "error.password.not.match": "Die Passwörter stimmen nicht überein.",
+  "error.password.too.weak": "Dein Passwort ist nicht stark genug! Es muss mindestens 10 Zeichen lang sein, einen Großbuchstaben, eine Zahl und ein Sonderzeichen enthalten!"
 }

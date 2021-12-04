@@ -5,14 +5,25 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { faUser as fasUser } from "@fortawesome/free-solid-svg-icons";
-import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
+import { faUserTimes, faUserCheck } from "@fortawesome/free-solid-svg-icons";
 import UserManager from "../util/UserManager";
+import UIManager from "../util/UIManager";
+import Login from "../views/Login";
 
 export default function UserIndicator() {
   return (
-    <div className={"userindicator"} onClick={() => {}}>
-      <FontAwesomeIcon icon={UserManager.isLoggedIn() ? fasUser : farUser} />
+    <div
+      className={"userindicator"}
+      onClick={() => {
+        if (UserManager.isLoggedIn()) {
+        } else {
+          UIManager.showComponent(<Login />, "root");
+        }
+      }}
+    >
+      <FontAwesomeIcon
+        icon={UserManager.isLoggedIn() ? faUserCheck : faUserTimes}
+      />
     </div>
   );
 }

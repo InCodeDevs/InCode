@@ -6,20 +6,18 @@
 import React from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Text from "../Text";
+import Input, { InputProps } from "../Input";
 
 interface Props {
   children?: string | React.ReactElement | React.ReactElement[];
   icon: IconDefinition;
-  onclick: () => void;
-  title: string;
 }
 
-export default function MenuItem(props: Props) {
+export default function MenuItemBare(props: Props) {
   return (
-    <div className={"menu-item"} onClick={props.onclick}>
+    <div className={"menu-item bare-menu-item"}>
       <FontAwesomeIcon icon={props.icon} color={"#FAFAFA"} />
-      <Text>{props.title}</Text>
+      {props.children}
     </div>
   );
 }

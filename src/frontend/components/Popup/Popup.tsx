@@ -4,23 +4,35 @@
  */
 
 import React, { ReactElement } from "react";
-import Title from "./Title";
-import Text from "./Text";
-import PopupManager from "../util/PopupManager";
-import l18n from "../util/l18n";
+import Title from "../Title";
+import Text from "../Text";
+import PopupManager from "../../util/PopupManager";
+import l18n from "../../util/l18n";
 
 interface Props {
   type: "Alert" | "Question" | "Confirm";
   title: string;
   description: ReactElement | ReactElement[] | string;
   callback?: (result?: any) => void;
+  useTitleAsText?: boolean;
 }
 
 export default function Popup(props: Props) {
   return (
     <div className={"popup"}>
       <Title className={"popup-title"} size={1} title={props.title} centered />
-      <Text nol18n>{props.description}</Text>
+      {props.useTitleAsText ? (
+        <Title
+          size={4}
+          title={props.description as string}
+          nol18n
+          className={"text"}
+          centered
+        />
+      ) : (
+        <Text nol18n>{props.description}</Text>
+      )}
+
       <br />
       {props.type === "Question" ? (
         <div className={"popup-input-wrapper"}>

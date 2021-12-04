@@ -3,7 +3,16 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 
+@import "../var";
 .input {
   outline: none;
-  font-size: large;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: box-shadow 320ms ease;
+  border: none;
+  padding: .5rem;
+
+  &:focus, &:active {
+  // box-shadow: 0 0 0 2px $stdAccent;
+  }
 }

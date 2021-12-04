@@ -30,3 +30,10 @@
     font-weight: normal;
   }
 }
+
+.bare-menu-item {
+  cursor: default !important;
+  &:hover {
+    background-color: darken($stdBackground, 4%) !important;
+  }
+}

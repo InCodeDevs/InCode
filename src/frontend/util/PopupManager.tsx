@@ -4,7 +4,7 @@
  */
 import { JSONObject } from "../types/JSONObject";
 import UIManager from "./UIManager";
-import Popup from "../components/Popup";
+import Popup from "../components/Popup/Popup";
 import React, { ReactElement } from "react";
 
 export default class PopupManager {
@@ -12,7 +12,8 @@ export default class PopupManager {
     type: "Alert" | "Question" | "Confirm",
     title: string,
     description: string | ReactElement | ReactElement[],
-    callback?: (result?: JSONObject) => void
+    callback?: (result?: JSONObject) => void,
+    useTitleAsText?: boolean
   ) {
     (document.querySelector("#popupWrapper") as HTMLElement).classList.add(
       "active"
@@ -22,6 +23,7 @@ export default class PopupManager {
         type={type}
         title={title}
         description={description}
+        useTitleAsText={useTitleAsText}
         callback={callback}
       />,
       "popup"
