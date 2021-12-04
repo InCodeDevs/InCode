@@ -21,4 +21,12 @@ export default class UserManager {
     BrowserStorage.delete("accessName");
     BrowserStorage.delete("accessToken");
   }
+
+  public static getUsername(): string {
+    return BrowserStorage.get("accessName");
+  }
+
+  public static getToken(): string {
+    return BrowserStorage.get("accessToken");
+  }
 }

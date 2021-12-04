@@ -13,11 +13,21 @@ import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import UserManager from "../../util/UserManager";
 import UIManager from "../../util/UIManager";
 import MainMenu from "../MainMenu";
+import l18n from "../../util/l18n";
 
 export default function AccountManage() {
   return (
     <Container centered>
-      <Title size={1} title={"menu.manage-account.title"} centered />
+      <Title
+        size={1}
+        title={
+          l18n.translate("menu.manage-account.title-template") +
+          UserManager.getUsername() +
+          "!"
+        }
+        centered
+        nol18n
+      />
       <MenuItemList>
         <MenuItem
           icon={faSignOutAlt}
