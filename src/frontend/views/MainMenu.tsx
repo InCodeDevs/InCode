@@ -21,6 +21,7 @@ import PopupManager from "../util/PopupManager";
 import l18n from "../util/l18n";
 import UIManager from "../util/UIManager";
 import Playground from "./Playground";
+import CreateProject from "./Project/CreateProject";
 
 export default function MainMenu() {
   return (
@@ -32,6 +33,7 @@ export default function MainMenu() {
             icon={faPlus}
             onclick={() => {
               if (UserManager.isLoggedIn()) {
+                UIManager.showComponent(<CreateProject />);
               } else {
                 PopupManager.showPopup(
                   "Alert",
