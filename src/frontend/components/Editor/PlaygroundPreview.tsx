@@ -37,7 +37,7 @@ Setze die Farbe von x auf weiß\nSetze die Schriftart von x auf sans-serif\nSetz
     <div
       style={{
         width: "50%",
-        height: "100vh",
+        height: "96vh",
         position: "fixed",
         right: "0",
         bottom: "0",
