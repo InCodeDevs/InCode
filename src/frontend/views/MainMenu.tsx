@@ -11,6 +11,7 @@ import {
   faBook,
   faCogs,
   faFolderOpen,
+  faPlay,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import MenuItemList from "../components/Menu/MenuItemList";
@@ -18,6 +19,8 @@ import UserIndicator from "../components/UserIndicator";
 import UserManager from "../util/UserManager";
 import PopupManager from "../util/PopupManager";
 import l18n from "../util/l18n";
+import UIManager from "../util/UIManager";
+import Playground from "./Playground";
 
 export default function MainMenu() {
   return (
@@ -50,6 +53,13 @@ export default function MainMenu() {
             icon={faCogs}
             onclick={() => {}}
             title={"menu.main.open.settings"}
+          />
+          <MenuItem
+            icon={faPlay}
+            onclick={() => {
+              UIManager.showComponent(<Playground />, "root");
+            }}
+            title={"menu.main.open.playground"}
           />
           <MenuItem
             icon={faBook}
