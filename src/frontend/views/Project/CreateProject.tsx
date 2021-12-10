@@ -14,6 +14,7 @@ import MainMenuItem from "../../components/Menu/MainMenuItem";
 import MenuItem from "../../components/Menu/MenuItem";
 import PopupManager from "../../util/PopupManager";
 import ProjectManager from "../../util/ProjectManager";
+import { ProjectConfig } from "../../types/ProjectConfig";
 
 export default function CreateProject() {
   return (
@@ -40,10 +41,39 @@ export default function CreateProject() {
                     .value
                 )
               ) {
-                const projectConfig = {
+                const projectConfig: ProjectConfig = {
+                  name: (
+                    document.getElementById("project-name") as HTMLInputElement
+                  ).value,
                   code: "",
                   type: "code",
                 };
+                ProjectManager.createProject(
+                  projectConfig,
+                  (success: boolean) => {
+                    if (!success) {
+                      PopupManager.showPopup(
+                        "Alert",
+                        "error.project.exists",
+                        l18n.translate("error.project.exists.description"),
+                        () => {},
+                        true
+                      );
+                    } else {
+                      PopupManager.showPopup(
+                        "Alert",
+                        "menu.create-project.success",
+                        l18n.translate(
+                          "menu.create-project.success.description"
+                        ),
+                        () => {},
+                        true
+                      );
+                    }
+                  }
+                ).then(() => {
+                  ProjectManager.openProject(projectConfig);
+                });
               }
             }}
             title={"menu.create-project.code"}

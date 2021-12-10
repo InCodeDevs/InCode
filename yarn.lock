@@ -102,10 +102,10 @@
   resolved "https://registry.npmjs.org/@incodelang/accounts-client/-/accounts-client-1.0.11.tgz#847689ce270b67d5e3305acbaee83fac94389984"
   integrity sha512-MEuwezemT6iNcnMcQfpVn6r3VFtEx9Aop3+5hqoLLqd6kVq+dgM4dZGyrxWJXUjC90gIGoTETVOUxI7dW0D3jg==
 
-"@incodelang/accounts@^1.0.17":
-  version "1.0.17"
-  resolved "https://registry.npmjs.org/@incodelang/accounts/-/accounts-1.0.17.tgz#99b496ad600cefa996410fb28250223c289c0753"
-  integrity sha512-Er9ha7W/S1ewdijZrY4hrCH49HZ1in9Ip00TO+w1Ueyrrms5O9m7+5WQdw8LqWBu7FVKmGpjuQZvViFB4YiFMQ==
+"@incodelang/accounts@^1.0.18":
+  version "1.0.18"
+  resolved "https://registry.npmjs.org/@incodelang/accounts/-/accounts-1.0.18.tgz#1407f686290ba9e0286f8f87176e4c485fe50da9"
+  integrity sha512-tQqHEn7bBBfDUdNo+vsEd4wds9P12eFAmifOw2x6NIjoct3a31xuDV2WH0ltatxjT8GOl18tQqwb0kFFhM40+Q==
   dependencies:
     "@types/node" "^16.10.3"
     body-parser "^1.19.0"

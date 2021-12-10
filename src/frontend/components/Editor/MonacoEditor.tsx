@@ -10,10 +10,15 @@ import { Registry } from "../../util/Registry";
 
 interface Props {
   mode: "playground" | "project";
+  code?: string;
 }
 
 export default function MonacoEditor(props: Props) {
   const [code, setCode] = useState("");
+
+  if (props.code) {
+    setCode(props.code);
+  }
 
   loader.init().then((monaco) => {
     Registry.putRegister(0x01, monaco);
@@ -192,7 +197,7 @@ export default function MonacoEditor(props: Props) {
 
   return (
     <Editor
-      height={props.mode === "playground" ? "100vh" : "90vh"}
+      height={"100vh"}
       width={"50%"}
       language={"incode"}
       className={"incode-monaco-editor"}

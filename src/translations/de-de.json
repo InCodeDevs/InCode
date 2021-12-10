@@ -25,6 +25,8 @@
   "error.not.logged-in": "Du bist nicht angemeldet!",
   "error.please-login": "Bitte melde dich an, um fortzufahren.",
   "error.project.name.too.short": "Der Projektname ist zu kurz! Er muss mindestens 4 Zeichen lang sein.",
+  "error.project.exists": "Projekt existiert!",
+  "error.project.exists.description": "Ein Projekt mit diesem Namen existiert bereits!",
   "menu.manage-account.title-template": "Willkommen, ",
   "menu.manage-account.logout": "Abmelden",
   "menu.manage-account.delete-account": "Konto löschen",
@@ -45,5 +47,7 @@
   "menu.create-project.title": "Projekt erstellen",
   "menu.create-project.name.placeholder": "Projektname",
   "menu.create-project.code": "Code Projekt erstellen",
-  "menu.create-project.blocks": "Block Projekt erstellen"
+  "menu.create-project.blocks": "Block Projekt erstellen",
+  "menu.create-project.success": "Projekt erstellt!",
+  "menu.create-project.success.description": "Dein Projekt wurde erfolgreich erstellt!"
 }
