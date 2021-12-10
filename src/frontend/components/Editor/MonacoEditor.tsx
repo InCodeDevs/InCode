@@ -8,12 +8,12 @@ import Editor, { loader } from "@monaco-editor/react";
 import Settings from "../../util/Settings";
 import { Registry } from "../../util/Registry";
 
-interface Props {
+export interface MonacoProps {
   mode: "playground" | "project";
   code?: string;
 }
 
-export default function MonacoEditor(props: Props) {
+export default function MonacoEditor(props: MonacoProps) {
   const [code, setCode] = useState("");
 
   if (props.code) {

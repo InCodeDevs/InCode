@@ -4,7 +4,14 @@
  */
 
 import React from "react";
+import { MonacoProps } from "../../components/Editor/MonacoEditor";
+import { ProjectConfig } from "../../types/ProjectConfig";
+
+interface Props {
+  monaco?: MonacoProps;
+  project: ProjectConfig;
+}
 
 export default function ProjectEditor() {
-  return <></>
+  return <></>;
 }
