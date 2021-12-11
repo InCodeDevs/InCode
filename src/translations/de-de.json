@@ -49,5 +49,6 @@
   "menu.create-project.code": "Code Projekt erstellen",
   "menu.create-project.blocks": "Block Projekt erstellen",
   "menu.create-project.success": "Projekt erstellt!",
-  "menu.create-project.success.description": "Dein Projekt wurde erfolgreich erstellt!"
+  "menu.create-project.success.description": "Dein Projekt wurde erfolgreich erstellt!",
+  "menu.open-project.title": "Projekt öffnen"
 }

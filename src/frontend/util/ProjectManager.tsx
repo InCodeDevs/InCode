@@ -94,6 +94,32 @@ export default class ProjectManager {
     );
   }
 
+  public static async getProjectList(): Promise<string[]> {
+    const data = await client.getData_u(
+      UserManager.getUsername(),
+      UserManager.getToken(),
+      "projects"
+    );
+    if (this.isEmptyResponse(data)) {
+      return [];
+    }
+    return data;
+  }
+
+  public static async getProjects(): Promise<ProjectConfig[]> {
+    const projects = await this.getProjectList();
+    let projectConfigs: ProjectConfig[] = [];
+    for (let i = 0; i < projects.length; i++) {
+      const project = await client.getData_u(
+        UserManager.getUsername(),
+        UserManager.getToken(),
+        "projects." + projects[i]
+      );
+      projectConfigs.push(project);
+    }
+    return projectConfigs;
+  }
+
   public static isEmptyResponse(response: any): boolean {
     return (
       response === {} ||

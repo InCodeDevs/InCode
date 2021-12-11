@@ -22,6 +22,7 @@ import l18n from "../util/l18n";
 import UIManager from "../util/UIManager";
 import Playground from "./Playground";
 import CreateProject from "./Project/CreateProject";
+import OpenProject from "./Project/OpenProject";
 
 export default function MainMenu() {
   return (
@@ -48,7 +49,19 @@ export default function MainMenu() {
           />
           <MenuItem
             icon={faFolderOpen}
-            onclick={() => {}}
+            onclick={() => {
+              if (UserManager.isLoggedIn()) {
+                UIManager.showComponent(<OpenProject />);
+              } else {
+                PopupManager.showPopup(
+                  "Alert",
+                  "error.not.logged-in",
+                  l18n.translate("error.please-login"),
+                  () => {},
+                  true
+                );
+              }
+            }}
             title={"menu.main.open.project"}
           />
           <MenuItem
