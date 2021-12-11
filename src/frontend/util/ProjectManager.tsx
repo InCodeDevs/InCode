@@ -146,9 +146,11 @@ export default class ProjectManager {
     newName: string
   ) {
     const projects = await this.getProjectList();
+    const origName = projectConfig.name;
+    projectConfig.name = newName;
     let newProjects: string[] = [];
     for (let i = 0; i < projects.length; i++) {
-      if (projects[i] !== projectConfig.name) {
+      if (projects[i] !== origName) {
         newProjects.push(projects[i]);
       }
     }
@@ -168,7 +170,7 @@ export default class ProjectManager {
     await client.deleteData_u(
       UserManager.getUsername(),
       UserManager.getToken(),
-      "projects." + projectConfig.name
+      "projects." + origName
     );
   }
 

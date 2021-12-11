@@ -52,7 +52,10 @@
   "menu.create-project.success.description": "Dein Projekt wurde erfolgreich erstellt!",
   "menu.open-project.title": "Projekt öffnen",
   "menu.open-project.rename": "Projekt umbenennen",
+  "menu.open-project.rename.title": "Projekt umbenennen",
+  "menu.open-project.rename.description": "Gib einen neuen Namen für dein Projekt ein",
   "menu.open-project.delete": "Projekt löschen",
   "menu.open-project.delete.title": "Projekt löschen?",
-  "menu.open-project.delete.description": "Bist du sicher, dass du dieses Projekt löschen möchtest?"
+  "menu.open-project.delete.description": "Bist du sicher, dass du dieses Projekt löschen möchtest?",
+  "menu.open-project.no-projects": "Keine Projekte vorhanden!"
 }

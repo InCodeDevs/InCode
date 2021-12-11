@@ -4,7 +4,7 @@
  */
 
 import * as React from "react";
-import { ReactElement, useEffect } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import Container from "../../components/Container";
 import MenuItemList from "../../components/Menu/MenuItemList";
 import ProjectManager from "../../util/ProjectManager";
@@ -12,6 +12,7 @@ import {
   faCode,
   faCubes,
   faPen,
+  faPlus,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import Title from "../../components/Title";
@@ -20,9 +21,12 @@ import MenuItemControls from "../../components/Menu/MenuItemControls";
 import PopupManager from "../../util/PopupManager";
 import UIManager from "../../util/UIManager";
 import l18n from "../../util/l18n";
+import MenuItem from "../../components/Menu/MenuItem";
+import CreateProject from "./CreateProject";
 
 export default function OpenProject() {
-  const [container, setContainer] = React.useState<ReactElement | null>(null);
+  const [container, setContainer] = useState<ReactElement | null>(null);
+  let noProjects = false;
 
   useEffect(() => {
     ProjectManager.getProjects().then((projects) => {
@@ -59,7 +63,20 @@ export default function OpenProject() {
                 icon: faPen,
                 color: "lime",
                 onclick: () => {
-                  alert("hLÖloe world");
+                  PopupManager.showPopup(
+                    "Question",
+                    "menu.open-project.rename.title",
+                    l18n.translate("menu.open-project.rename.description"),
+                    (value) => {
+                      ProjectManager.renameProject(
+                        project,
+                        value as string
+                      ).then(() => {
+                        UIManager.showComponent(<OpenProject />);
+                      });
+                    },
+                    true
+                  );
                 },
                 name: "menu.open-project.rename",
               },
@@ -67,12 +84,27 @@ export default function OpenProject() {
           />
         );
       });
+      if (menuItems.length === 0) {
+        menuItems.push(
+          <MenuItem
+            icon={faPlus}
+            onclick={() => {
+              UIManager.showComponent(<CreateProject />);
+            }}
+            title={"menu.main.create.project"}
+          />
+        );
+        noProjects = true;
+      }
 
       menuItems.push(<MainMenuItem />);
 
       setContainer(
         <Container centered>
           <Title size={1} title={"menu.open-project.title"} centered />
+          <div style={{ display: noProjects ? "block" : "none" }}>
+            <Title size={3} title={"menu.open-project.no-projects"} centered />
+          </div>
           <div className={"project-list-scroll"}>
             <MenuItemList>{menuItems}</MenuItemList>
           </div>
