@@ -174,6 +174,15 @@ export default class ProjectManager {
     );
   }
 
+  public static async saveProject(projectConfig: ProjectConfig) {
+    await client.storeData_u(
+      UserManager.getUsername(),
+      UserManager.getToken(),
+      projectConfig,
+      "projects." + projectConfig.name
+    );
+  }
+
   public static isEmptyResponse(response: any): boolean {
     return (
       response === {} ||

@@ -10,6 +10,7 @@ import MonacoEditor, {
 import { ProjectConfig } from "../../types/ProjectConfig";
 import PlaygroundPreview from "../../components/Editor/PlaygroundPreview";
 import PlaygroundMenuBar from "../../components/Editor/PlaygroundMenuBar";
+import EditorMenuBar from "../../components/Editor/EditorMenuBar";
 
 interface Props {
   monaco?: MonacoProps;
@@ -19,7 +20,7 @@ interface Props {
 export default function ProjectEditor(props: Props) {
   return (
     <>
-      <PlaygroundMenuBar />
+      <EditorMenuBar projectConfig={props.project} />
       {props.project.type === "code" ? (
         <MonacoEditor
           mode={props.monaco?.mode || "project"}
