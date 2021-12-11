@@ -47,7 +47,7 @@ export default function EditorMenuBar(props: Props) {
           {
             label: l18n.translate("menu.project.export"),
             onClick: () => {
-              UIManager.showComponent(<MainMenu />, "root");
+              ProjectManager.export(props.projectConfig);
             },
           },
         ]}

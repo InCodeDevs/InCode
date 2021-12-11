@@ -11,6 +11,8 @@ import UserManager from "./UserManager";
 import UIManager from "./UIManager";
 import ProjectEditor from "../views/Project/ProjectEditor";
 import React from "react";
+import * as JSZip from "jszip";
+import { Networking } from "./Networking";
 
 const client = new WebClient("");
 
@@ -181,6 +183,46 @@ export default class ProjectManager {
       projectConfig,
       "projects." + projectConfig.name
     );
+  }
+
+  public static async export(projectConfig: ProjectConfig) {
+    const zip = new JSZip();
+    // @ts-ignore
+    const currentCode = window.editor.getValue();
+
+    const response = (
+      await fetch("https://http-compiler-api.incodelang.de/compiled", {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify({
+          code: currentCode,
+        }),
+      })
+    ).text();
+    zip.file(
+      "index.html",
+      "<!doctype html><html lang='de'><body><script src='code.js' defer async></script></body></html>"
+    );
+    zip.file("code.js", response);
+    zip.file("code.ic", currentCode);
+    zip
+      .generateAsync({
+        type: "base64",
+        compressionOptions: {
+          level: 6,
+        },
+      })
+      .then((content) => {
+        Networking.downloadCustom(
+          "data:application/zip; base64," + content,
+          projectConfig.name + ".zip"
+        );
+      });
   }
 
   public static isEmptyResponse(response: any): boolean {
