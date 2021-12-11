@@ -8,6 +8,9 @@ import l18n from "./l18n";
 import { WebClient } from "@incodelang/accounts-client";
 import { ProjectConfig } from "../types/ProjectConfig";
 import UserManager from "./UserManager";
+import UIManager from "./UIManager";
+import ProjectEditor from "../views/Project/ProjectEditor";
+import React from "react";
 
 const client = new WebClient("");
 
@@ -41,14 +44,17 @@ export default class ProjectManager {
         "projects"
       );
 
-      let projects: any[];
+      let projects: any[] = [];
 
       try {
         projects = JSON.parse(currentProjects);
       } catch (e) {
-        projects = currentProjects;
-        console.log(e);
-        projects = [];
+        if (currentProjects === "The data was not found.") {
+          projects = [];
+        } else {
+          projects = currentProjects;
+        }
+        console.log(projects);
       }
 
       projects.push(config.name);
@@ -77,7 +83,15 @@ export default class ProjectManager {
       UserManager.getToken(),
       "projects." + config.name
     );
-    console.log(data);
+    UIManager.showComponent(
+      <ProjectEditor
+        project={data}
+        monaco={{
+          mode: "project",
+          code: data.code,
+        }}
+      />
+    );
   }
 
   public static isEmptyResponse(response: any): boolean {

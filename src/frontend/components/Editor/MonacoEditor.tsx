@@ -14,11 +14,7 @@ export interface MonacoProps {
 }
 
 export default function MonacoEditor(props: MonacoProps) {
-  const [code, setCode] = useState("");
-
-  if (props.code) {
-    setCode(props.code);
-  }
+  const [code, setCode] = useState(props.code || "");
 
   loader.init().then((monaco) => {
     Registry.putRegister(0x01, monaco);

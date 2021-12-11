@@ -3,13 +3,24 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 import React from "react";
-import MenuItem from "../Menu/MenuItem";
-import { faRunning } from "@fortawesome/free-solid-svg-icons";
+import l18n from "../../util/l18n";
+import UIManager from "../../util/UIManager";
+import MainMenu from "../../views/MainMenu";
+import MenuBar from "../MenuBar/MenuBar";
 
 export default function PlaygroundMenuBar() {
   return (
     <>
-      <MenuItem icon={faRunning} onclick={() => {}} title={"Run"} />
+      <MenuBar
+        menuItems={[
+          {
+            label: l18n.translate("menu.main"),
+            onClick: () => {
+              UIManager.showComponent(<MainMenu />, "root");
+            },
+          },
+        ]}
+      />
     </>
   );
 }

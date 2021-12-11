@@ -45,7 +45,7 @@ export default function CreateProject() {
                   name: (
                     document.getElementById("project-name") as HTMLInputElement
                   ).value,
-                  code: "",
+                  code: 'Gib "Hallo Welt" in der Konsole aus',
                   type: "code",
                 };
                 ProjectManager.createProject(
@@ -66,14 +66,14 @@ export default function CreateProject() {
                         l18n.translate(
                           "menu.create-project.success.description"
                         ),
-                        () => {},
+                        () => {
+                          ProjectManager.openProject(projectConfig);
+                        },
                         true
                       );
                     }
                   }
-                ).then(() => {
-                  ProjectManager.openProject(projectConfig);
-                });
+                );
               }
             }}
             title={"menu.create-project.code"}
