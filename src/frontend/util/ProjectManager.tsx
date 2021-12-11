@@ -120,6 +120,58 @@ export default class ProjectManager {
     return projectConfigs;
   }
 
+  public static async deleteProject(projectConfig: ProjectConfig) {
+    const projects = await this.getProjectList();
+    let newProjects: string[] = [];
+    for (let i = 0; i < projects.length; i++) {
+      if (projects[i] !== projectConfig.name) {
+        newProjects.push(projects[i]);
+      }
+    }
+    await client.storeData_u(
+      UserManager.getUsername(),
+      UserManager.getToken(),
+      newProjects,
+      "projects"
+    );
+    await client.deleteData_u(
+      UserManager.getUsername(),
+      UserManager.getToken(),
+      "projects." + projectConfig.name
+    );
+  }
+
+  public static async renameProject(
+    projectConfig: ProjectConfig,
+    newName: string
+  ) {
+    const projects = await this.getProjectList();
+    let newProjects: string[] = [];
+    for (let i = 0; i < projects.length; i++) {
+      if (projects[i] !== projectConfig.name) {
+        newProjects.push(projects[i]);
+      }
+    }
+    newProjects.push(newName);
+    await client.storeData_u(
+      UserManager.getUsername(),
+      UserManager.getToken(),
+      newProjects,
+      "projects"
+    );
+    await client.storeData_u(
+      UserManager.getUsername(),
+      UserManager.getToken(),
+      projectConfig,
+      "projects." + newName
+    );
+    await client.deleteData_u(
+      UserManager.getUsername(),
+      UserManager.getToken(),
+      "projects." + projectConfig.name
+    );
+  }
+
   public static isEmptyResponse(response: any): boolean {
     return (
       response === {} ||

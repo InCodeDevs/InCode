@@ -1,0 +1,28 @@
+/**
+ * @author Ben Siebert <ben@mctzock.de>
+ * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
+ */
+
+@import "../../var";
+
+.controls-menu-item {
+
+  :nth-child(2) {
+    flex: 70% !important;
+  }
+
+  .menu-item-widgets {
+    flex: 20% !important;
+    display: flex;
+    flex-direction: row;
+
+    .menu-item-widget {
+      flex: 100%;
+      text-align: center;
+      transition: filter 320ms ease;
+      &:hover {
+        filter: brightness(0.5);
+      }
+    }
+  }
+}

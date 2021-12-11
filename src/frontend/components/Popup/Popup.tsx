@@ -72,13 +72,13 @@ export default function Popup(props: Props) {
               className={"popup-button"}
               onClick={() => {
                 if (props.callback) {
-                  const value = (
-                    document.querySelector(
-                      "#question_popup-input"
-                    ) as HTMLInputElement
-                  ).value;
                   PopupManager.disposeAll();
                   if (props.type === "Question") {
+                    const value = (
+                      document.querySelector(
+                        "#question_popup-input"
+                      ) as HTMLInputElement
+                    ).value;
                     props.callback(value);
                   } else {
                     props.callback();
