@@ -50,6 +50,12 @@ export default function EditorMenuBar(props: Props) {
               ProjectManager.export(props.projectConfig);
             },
           },
+          {
+            label: l18n.translate("menu.project.share"),
+            onClick: () => {
+              ProjectManager.export(props.projectConfig);
+            },
+          },
         ]}
       />
     </>
