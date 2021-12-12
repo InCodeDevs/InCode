@@ -21,6 +21,7 @@ if (
 }
 
 let config = {};
+reload();
 
 function save() {
   fs.writeFileSync(
@@ -83,9 +84,15 @@ function deleteTemplate(username, name) {
 }
 
 function getAllTemplates() {
+  let templates = [];
+  Object.keys(config).forEach((key) => {
+    let template = config[key];
+    template.id = key;
+    templates.push(template);
+  });
   return {
     error: false,
-    templates: config,
+    templates: templates,
   };
 }
 
