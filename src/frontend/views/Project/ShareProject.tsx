@@ -9,8 +9,11 @@ import Title from "../../components/Title";
 import { ProjectConfig } from "../../types/ProjectConfig";
 import MenuItemList from "../../components/Menu/MenuItemList";
 import MenuItem from "../../components/Menu/MenuItem";
-import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-import ProjectManager from "../../util/ProjectManager";
+import {
+  faPuzzlePiece,
+  faScroll,
+  faTimesCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import MainMenuItem from "../../components/Menu/MainMenuItem";
 import UIManager from "../../util/UIManager";
 import OpenProject from "./OpenProject";
@@ -24,6 +27,16 @@ export default function ShareProject(props: Props) {
     <Container centered>
       <Title title={"menu.share-project.title"} size={1} centered />
       <MenuItemList>
+        <MenuItem
+          icon={faScroll}
+          onclick={() => {}}
+          title={"menu.share-project.share-template"}
+        />
+        <MenuItem
+          icon={faPuzzlePiece}
+          onclick={() => {}}
+          title={"menu.share-project.share-project"}
+        />
         <MenuItem
           icon={faTimesCircle}
           onclick={() => {
