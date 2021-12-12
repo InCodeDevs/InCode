@@ -7,9 +7,10 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const serveIndex = require("serve-index");
-const { accountServer } = require("@incodelang/accounts");
+const { accountServer, data, postboxes } = require("@incodelang/accounts");
+const { users } = require("@incodelang/accounts");
 const { urlServer } = require("@incodelang/urlshorter");
-const { templateServer } = require("@incodelang/templates");
+const template = require("./module/template");
 const fs = require("fs");
 const path = require("path");
 
@@ -21,11 +22,82 @@ app.use(bodyParser());
 
 accountServer({ app: app, disable: {} });
 urlServer({ app: app, prefix: "app" });
-templateServer({ app: app });
+
+app.post("/api/v1/templates", (req, res) => {
+  if (
+    !req.body.username ||
+    !req.body.token ||
+    !req.body.name ||
+    !req.body.code ||
+    !req.body.type ||
+    !req.body.description
+  ) {
+    res.status(400);
+    res.end(
+      JSON.stringify({
+        error: true,
+        message: "Invalid Request body.",
+      })
+    );
+    return;
+  }
+  const { username, token, name, code, type, description } = req.body;
+  if (users.login(username, token).error === false) {
+    res.status(200);
+    res.end(
+      JSON.stringify(
+        template.createTemplate(username, name, code, type, description)
+      )
+    );
+  } else {
+    res.status(401);
+    res.end(JSON.stringify(users.login(username, token)));
+  }
+});
+
+app.get("/api/v1/templates", (req, res) => {
+  if (req.body.id) {
+    res.status(200);
+    res.end(JSON.stringify(template.getTemplate(req.body.id)));
+  } else {
+    res.status(400);
+    res.end(
+      JSON.stringify({
+        error: true,
+        message: "Invalid Request body.",
+      })
+    );
+  }
+});
+
+app.get("/api/v1/templates/all", (req, res) => {
+  res.status(200);
+  res.end(JSON.stringify(template.getAllTemplates()));
+});
+
+app.delete("/api/v1/templates", (req, res) => {
+  if (!req.body.username || !req.body.token || !req.body.name) {
+    res.status(400);
+    res.end(
+      JSON.stringify({
+        error: true,
+        message: "Invalid Request body.",
+      })
+    );
+    return;
+  }
+  const { username, token, name } = req.body;
+  if (users.login(username, token).error === false) {
+    res.status(200);
+    res.end(JSON.stringify(template.deleteTemplate(username, name)));
+  } else {
+    res.status(401);
+    res.end(JSON.stringify(users.login(username, token)));
+  }
+});
 
 app.use((req, res, next) => {
   res.status(404);
-
   res.end(
     generateErrorTemplate(
       404,
