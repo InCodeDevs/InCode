@@ -58,6 +58,7 @@
   "menu.open-project.delete.title": "Projekt löschen?",
   "menu.open-project.delete.description": "Bist du sicher, dass du dieses Projekt löschen möchtest?",
   "menu.open-project.no-projects": "Keine Projekte vorhanden!",
+  "menu.open-project.share": "Projekt teilen",
   "menu.project.save": "Speichern",
   "menu.project.export": "Exportieren",
   "menu.project.saved": "Gespeichert",

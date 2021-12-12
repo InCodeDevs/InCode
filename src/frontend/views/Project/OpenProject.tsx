@@ -12,6 +12,7 @@ import {
   faCubes,
   faPen,
   faPlus,
+  faShareSquare,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import Title from "../../components/Title";
@@ -23,6 +24,7 @@ import l18n from "../../util/l18n";
 import MenuItem from "../../components/Menu/MenuItem";
 import CreateProject from "./CreateProject";
 import MenuItemListScroll from "../../components/Menu/MenuItemListScroll";
+import ShareProject from "./ShareProject";
 
 export default function OpenProject() {
   const [container, setContainer] = useState<ReactElement | null>(null);
@@ -80,6 +82,16 @@ export default function OpenProject() {
                   );
                 },
                 name: "menu.open-project.rename",
+              },
+              {
+                icon: faShareSquare,
+                color: "#3390ff",
+                name: "menu.open-project.share",
+                onclick: () => {
+                  UIManager.showComponent(
+                    <ShareProject projectConfig={project} />
+                  );
+                },
               },
             ]}
           />

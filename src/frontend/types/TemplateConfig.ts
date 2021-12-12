@@ -7,5 +7,4 @@ export interface TemplateConfig {
   name: string;
   type: "code" | "blocks";
   code: string;
-  xw;
 }

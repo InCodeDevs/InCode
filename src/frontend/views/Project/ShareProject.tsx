@@ -12,6 +12,8 @@ import MenuItem from "../../components/Menu/MenuItem";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import ProjectManager from "../../util/ProjectManager";
 import MainMenuItem from "../../components/Menu/MainMenuItem";
+import UIManager from "../../util/UIManager";
+import OpenProject from "./OpenProject";
 
 interface Props {
   projectConfig: ProjectConfig;
@@ -25,7 +27,7 @@ export default function ShareProject(props: Props) {
         <MenuItem
           icon={faTimesCircle}
           onclick={() => {
-            ProjectManager.openProject(props.projectConfig);
+            UIManager.showComponent(<OpenProject />);
           }}
           title={"menu.share-project.back"}
         />
