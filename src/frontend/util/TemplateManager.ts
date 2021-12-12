@@ -8,12 +8,11 @@ import {
   TemplateResponse,
   TemplateResponseConfig,
 } from "../types/TemplateResponse";
-import { TemplateConfig } from "../types/TemplateConfig";
 
 export default class TemplateManager {
   public static async shareTemplate(
     projectConfig: ProjectConfig,
-    description: string
+    description: string = ""
   ): Promise<TemplateResponse> {
     const response = await (
       await fetch("/api/v1/templates", {
@@ -92,5 +91,23 @@ export default class TemplateManager {
         author: response.author,
       };
     }
+  }
+
+  public static async deleteTemplate(id: string): Promise<boolean> {
+    const response = await (
+      await fetch(`/api/v1/templates`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: id,
+          username: UserManager.getUsername(),
+          token: UserManager.getToken(),
+        }),
+      })
+    ).json();
+
+    return response.error === true;
   }
 }

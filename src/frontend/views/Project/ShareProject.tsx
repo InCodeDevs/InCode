@@ -17,6 +17,9 @@ import {
 import MainMenuItem from "../../components/Menu/MainMenuItem";
 import UIManager from "../../util/UIManager";
 import OpenProject from "./OpenProject";
+import TemplateManager from "../../util/TemplateManager";
+import PopupManager from "../../util/PopupManager";
+import l18n from "../../util/l18n";
 
 interface Props {
   projectConfig: ProjectConfig;
@@ -29,7 +32,31 @@ export default function ShareProject(props: Props) {
       <MenuItemList>
         <MenuItem
           icon={faScroll}
-          onclick={() => {}}
+          onclick={() => {
+            TemplateManager.shareTemplate(props.projectConfig).then((obj) => {
+              if (obj.error) {
+                PopupManager.showPopup(
+                  "Alert",
+                  "menu.share-project.failed.template.title",
+                  l18n.translate(
+                    "menu.share-project.failed.template.description"
+                  ),
+                  () => {},
+                  true
+                );
+              } else {
+                PopupManager.showPopup(
+                  "Alert",
+                  "menu.share-project.success.template.title",
+                  l18n.translate(
+                    "menu.share-project.success.template.description"
+                  ),
+                  () => {},
+                  true
+                );
+              }
+            });
+          }}
           title={"menu.share-project.share-template"}
         />
         <MenuItem

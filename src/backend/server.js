@@ -25,13 +25,27 @@ urlServer({ app: app, prefix: "app" });
 
 app.post("/api/v1/templates", (req, res) => {
   if (
-    !req.body.username ||
-    !req.body.token ||
-    !req.body.name ||
-    !req.body.code ||
-    !req.body.type ||
-    !req.body.description
+    req.body.username !== undefined &&
+    req.body.token !== undefined &&
+    req.body.name !== undefined &&
+    req.body.code !== undefined &&
+    req.body.type !== undefined &&
+    req.body.description !== undefined
   ) {
+    const { username, token, name, code, type, description } = req.body;
+    if (users.login(username, token).error === false) {
+      res.status(200);
+      res.end(
+        JSON.stringify(
+          template.createTemplate(username, name, code, type, description)
+        )
+      );
+    } else {
+      res.status(401);
+      res.end(JSON.stringify(users.login(username, token)));
+    }
+    return;
+  } else {
     res.status(400);
     res.end(
       JSON.stringify({
@@ -39,19 +53,6 @@ app.post("/api/v1/templates", (req, res) => {
         message: "Invalid Request body.",
       })
     );
-    return;
-  }
-  const { username, token, name, code, type, description } = req.body;
-  if (users.login(username, token).error === false) {
-    res.status(200);
-    res.end(
-      JSON.stringify(
-        template.createTemplate(username, name, code, type, description)
-      )
-    );
-  } else {
-    res.status(401);
-    res.end(JSON.stringify(users.login(username, token)));
   }
 });
 
