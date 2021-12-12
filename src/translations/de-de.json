@@ -62,5 +62,7 @@
   "menu.project.export": "Exportieren",
   "menu.project.saved": "Gespeichert",
   "menu.project.saved.description": "Dein Projekt wurde erfolgreich gespeichert!",
-  "menu.project.share": "Teilen"
+  "menu.project.share": "Teilen",
+  "menu.share-project.title": "Projekt teilen",
+  "menu.share-project.back": "Zurück"
 }

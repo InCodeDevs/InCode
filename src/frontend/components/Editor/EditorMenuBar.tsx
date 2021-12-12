@@ -10,6 +10,7 @@ import MenuBar from "../MenuBar/MenuBar";
 import { ProjectConfig } from "../../types/ProjectConfig";
 import ProjectManager from "../../util/ProjectManager";
 import PopupManager from "../../util/PopupManager";
+import ShareProject from "../../views/Project/ShareProject";
 
 interface Props {
   projectConfig: ProjectConfig;
@@ -53,7 +54,11 @@ export default function EditorMenuBar(props: Props) {
           {
             label: l18n.translate("menu.project.share"),
             onClick: () => {
-              ProjectManager.export(props.projectConfig);
+              ProjectManager.saveProject(props.projectConfig).then(() => {
+                UIManager.showComponent(
+                  <ShareProject projectConfig={props.projectConfig} />
+                );
+              });
             },
           },
         ]}

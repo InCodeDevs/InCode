@@ -6,7 +6,6 @@
 import * as React from "react";
 import { ReactElement, useEffect, useState } from "react";
 import Container from "../../components/Container";
-import MenuItemList from "../../components/Menu/MenuItemList";
 import ProjectManager from "../../util/ProjectManager";
 import {
   faCode,
@@ -23,6 +22,7 @@ import UIManager from "../../util/UIManager";
 import l18n from "../../util/l18n";
 import MenuItem from "../../components/Menu/MenuItem";
 import CreateProject from "./CreateProject";
+import MenuItemListScroll from "../../components/Menu/MenuItemListScroll";
 
 export default function OpenProject() {
   const [container, setContainer] = useState<ReactElement | null>(null);
@@ -31,6 +31,7 @@ export default function OpenProject() {
   useEffect(() => {
     ProjectManager.getProjects().then((projects) => {
       let menuItems: ReactElement[] = [];
+      menuItems.push(<MainMenuItem />);
       projects.map((project) => {
         menuItems.push(
           <MenuItemControls
@@ -84,7 +85,7 @@ export default function OpenProject() {
           />
         );
       });
-      if (menuItems.length === 0) {
+      if (menuItems.length === 1) {
         menuItems.push(
           <MenuItem
             icon={faPlus}
@@ -97,17 +98,13 @@ export default function OpenProject() {
         noProjects = true;
       }
 
-      menuItems.push(<MainMenuItem />);
-
       setContainer(
         <Container centered>
           <Title size={1} title={"menu.open-project.title"} centered />
           <div style={{ display: noProjects ? "block" : "none" }}>
             <Title size={3} title={"menu.open-project.no-projects"} centered />
           </div>
-          <div className={"project-list-scroll"}>
-            <MenuItemList>{menuItems}</MenuItemList>
-          </div>
+          <MenuItemListScroll>{menuItems}</MenuItemListScroll>
         </Container>
       );
     });
