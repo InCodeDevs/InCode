@@ -71,7 +71,7 @@
   "menu.share-project.success.template.title": "Template veröffentlicht!",
   "menu.share-project.success.template.description": "Dein Template wurde erfolgreich veröffentlicht!",
   "menu.share-project.success.project.title": "Projekt veröffentlicht!",
-  "menu.share-project.success.project.description": "Dein Projekt wurde erfolgreich veröffentlicht!",
+  "menu.share-project.success.project.description": "Dein Projekt wurde erfolgreich veröffentlicht: ",
   "menu.share-project.failed.template.title": "Fehler!",
   "menu.share-project.failed.template.description": "Template konnte nicht veröffentlicht werden!"
 }

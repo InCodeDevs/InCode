@@ -61,7 +61,37 @@ export default function ShareProject(props: Props) {
         />
         <MenuItem
           icon={faPuzzlePiece}
-          onclick={() => {}}
+          onclick={() => {
+            const code = props.projectConfig.code;
+            fetch("/api/v1/url/create", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                target:
+                  "https://http-compiler-api.incodelang.de/view?code=" + code,
+              }),
+            })
+              .then((r) => r.json())
+              .then((t) => {
+                const url = t.url;
+                PopupManager.showPopup(
+                  "Alert",
+                  "menu.share-project.success.project.title",
+                  <>
+                    <h3 style={{ textAlign: "center" }}>
+                      {l18n.translate(
+                        "menu.share-project.success.project.description"
+                      )}
+                      <a href={url} target="_blank" rel="noopener noreferrer">
+                        {location.protocol + "//" + location.host + url}
+                      </a>
+                    </h3>
+                  </>
+                );
+              });
+          }}
           title={"menu.share-project.share-project"}
         />
         <MenuItem
