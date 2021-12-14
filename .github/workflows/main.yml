@@ -1,0 +1,52 @@
+name: DevOps
+
+on:
+  push:
+    branches:
+      - dev-v4.0.0
+jobs:
+  install:
+    name: Install Dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Install dependencies
+        run: |
+          yarn install
+  lint:
+    name: Linting
+    runs-on: ubuntu-latest
+    needs: [ install ]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Lint
+        run: |
+          yarn lint
+  prettier:
+    name: Prettier
+    runs-on: ubuntu-latest
+    needs: [ install, lint ]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Prettier
+        run: |
+          yarn prettier:check
+  build:
+    name: Build Webpack Bundle
+    runs-on: ubuntu-latest
+    needs: [ install, lint, prettier ]
+    strategy:
+      matrix:
+        node-version: [ 12.x, 14.x, 16.x ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Build
+        run: |
+          yarn webpack:build-prod
