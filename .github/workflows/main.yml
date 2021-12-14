@@ -54,17 +54,17 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ lint, prettier, build ]
     steps:
+      - uses: actions/checkout@v2
       - name: Install Dependencies
-      uses: actions/checkout@v2
-      run: |
-        yarn install
+        run: |
+          yarn install
       - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: 16.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
       - name: Build
-      run: |
-        yarn webpack:build-prod
+        run: |
+          yarn webpack:build-prod
       - name: Log in to Docker Hub
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
