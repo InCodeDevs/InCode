@@ -23,6 +23,7 @@ import UIManager from "../util/UIManager";
 import Playground from "./Playground";
 import CreateProject from "./Project/CreateProject";
 import OpenProject from "./Project/OpenProject";
+import Settings from "./Settings/Settings";
 
 export default function MainMenu() {
   return (
@@ -66,7 +67,9 @@ export default function MainMenu() {
           />
           <MenuItem
             icon={faCogs}
-            onclick={() => {}}
+            onclick={() => {
+              UIManager.showComponent(<Settings />, "root");
+            }}
             title={"menu.main.open.settings"}
           />
           <MenuItem
