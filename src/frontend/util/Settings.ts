@@ -22,6 +22,7 @@ export default class Settings {
     settings["codeEditor.fontSize"] = 21;
     settings["codeEditor.theme"] = "incode-dark";
     settings["codeEditor.lineNumbers"] = true;
+    settings["language"] = "de";
     BrowserStorage.store("settings", JSON.stringify(settings));
   }
 

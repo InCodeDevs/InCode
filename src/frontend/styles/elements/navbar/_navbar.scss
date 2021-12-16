@@ -11,9 +11,9 @@
 
   .nav-bar {
     padding: 2rem;
-    max-width: 10%;
+    max-width: 25%;
     height: 100%;
-    width: 10%;
+    width: 25%;
     display: flex;
     background: darken($stdBackground, 4%);
     flex-direction: column;
@@ -36,6 +36,7 @@
         flex-direction: row;
         cursor: pointer;
         transition: background-color 320ms ease;
+        margin: 0;
 
         &:hover {
           background: darken($stdBackground, 8%);
@@ -45,6 +46,7 @@
           font-size: 1.2rem;
           color: white;
           padding: 1rem;
+          margin: 0;
         }
 
         .nbe-icon {
