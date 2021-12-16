@@ -25,7 +25,7 @@ import UserManager from "../../util/UserManager";
 
 const client = new WebClient("");
 
-export default function AccountLogin() {
+export default function AccountRegister() {
   return (
     <Container centered>
       <Title size={1} title={"menu.login.register"} centered />

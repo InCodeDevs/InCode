@@ -50,6 +50,7 @@ Setze die Farbe von x auf weiß\nSetze die Schriftart von x auf sans-serif\nSetz
         height={window.innerHeight}
         style={{
           border: "none",
+          background: "#FFF",
         }}
       />
     </div>

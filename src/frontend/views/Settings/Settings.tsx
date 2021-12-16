@@ -5,9 +5,16 @@
 
 import * as React from "react";
 import NavigationBar from "../../components/NavigationBar";
-import { faCode, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faCode, faCog, faHome } from "@fortawesome/free-solid-svg-icons";
+import UIManager from "../../util/UIManager";
+import MainMenu from "../MainMenu";
+import { useEffect } from "react";
+import General from "./views/General";
 
 export default function Settings() {
+  useEffect(() => {
+    UIManager.showComponent(<General />, "settings-current-view");
+  }, []);
   return (
     <>
       <NavigationBar
@@ -16,15 +23,23 @@ export default function Settings() {
           {
             title: "menu.settings.menu.item.general",
             onclick: () => {},
-            icon: faHome,
+            icon: faCog,
           },
           {
             title: "menu.settings.menu.item.code-editor",
             onclick: () => {},
             icon: faCode,
           },
+          {
+            title: "menu.main",
+            onclick: () => {
+              UIManager.showComponent(<MainMenu />);
+            },
+            icon: faHome,
+          },
         ]}
       />
+      <div id={"settings-current-view"} />
     </>
   );
 }

@@ -20,14 +20,12 @@
 @import "elements/menubar/menubar";
 @import "elements/menubar/menubar.button";
 @import "elements/navbar/navbar";
+@import "elements/settings.view";
 @import "util/layout";
 @import "util/text";
+@import "stars";
 
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Permanent+Marker&display=swap');
-
-body, html {
-  background: $stdBackground;
-}
 
 * {
   font-family: sans-serif;

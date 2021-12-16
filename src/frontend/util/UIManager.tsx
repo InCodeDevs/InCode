@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import StarAnimation from "./StarAnimation";
 
 export default class UIManager {
   public static showComponent(
@@ -15,6 +16,9 @@ export default class UIManager {
       document.querySelector("#" + containerID) as HTMLElement
     );
     ReactDOM.render(component, document.querySelector("#" + containerID));
+    if (containerID === "root") {
+      StarAnimation.update(component);
+    }
   }
 
   public static unmountAt(containerID: string) {

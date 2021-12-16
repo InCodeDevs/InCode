@@ -8,11 +8,18 @@ import React from "react";
 interface Props {
   children: React.ReactElement | React.ReactElement[];
   centered?: boolean;
+  centeredRelative?: boolean;
 }
 
 export default function Container(props: Props) {
   return (
-    <div className={"container " + (props.centered ? "is-centered" : "")}>
+    <div
+      className={
+        "container " +
+        (props.centered || props.centeredRelative ? "is-centered" : "")
+      }
+      style={props.centeredRelative ? { position: "relative" } : {}}
+    >
       {props.children}
     </div>
   );

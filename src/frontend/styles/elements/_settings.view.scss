@@ -1,0 +1,17 @@
+/**
+ * @author Ben Siebert <ben@mctzock.de>
+ * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
+ */
+
+@import "../var";
+
+#settings-current-view {
+  width: 75%;
+  max-width: 75%;
+  height: 100vh;
+  min-height: 100vh;
+  background-color: darken($stdBackground, 12%);
+  right: 0;
+  top: 0;
+  position: fixed;
+}
