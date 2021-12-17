@@ -9,6 +9,8 @@ import Settings from "../../views/Settings/Settings";
 import OpenProject from "../../views/Project/OpenProject";
 import Playground from "../../views/Playground";
 import MainMenu from "../../views/MainMenu";
+import CreateProject from "../../views/Project/CreateProject";
+import ProjectManager from "../ProjectManager";
 
 export default class OpenCommand implements Command {
   execute(args: string[]): void {
@@ -29,10 +31,10 @@ export default class OpenCommand implements Command {
         case "ext:docs":
           window.open("https://docs.incodelang.de/", "_blank");
           break;
+        case "create":
+          UIManager.showComponent(<CreateProject />, "root");
+          break;
         default:
-          if (args[0].startsWith("https://")) {
-            window.open(args[0], "_blank");
-          }
           break;
       }
     }
