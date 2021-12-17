@@ -1,4 +1,5 @@
 import PopupManager from "./PopupManager";
+import CommandPaletteManager from "./CommandPaletteManager";
 
 /**
  * @author Ben Siebert <ben@mctzock.de>
@@ -8,10 +9,17 @@ import PopupManager from "./PopupManager";
 export default class KeyManager {
   constructor() {
     document.addEventListener("keydown", (e) => {
+      let preventDefault = false;
       if (e.keyCode === 27) {
         PopupManager.disposeAll();
+        CommandPaletteManager.dispose();
+        preventDefault = true;
       } else if (e.keyCode === 112) {
-        alert("Command Palate");
+        CommandPaletteManager.show();
+        preventDefault = true;
+      }
+      if (preventDefault) {
+        e.preventDefault();
       }
     });
   }
