@@ -1,5 +1,6 @@
 import PopupManager from "./PopupManager";
 import * as React from "react";
+import CommandPaletteManager from "./CommandPaletteManager";
 
 /**
  * @author Ben Siebert <ben@mctzock.de>
@@ -9,6 +10,7 @@ import * as React from "react";
 export default class InteractionManager {
   constructor() {
     this.trackCopyright();
+    this.trackCommandPalette();
   }
 
   private trackCopyright() {
@@ -66,6 +68,21 @@ export default class InteractionManager {
           </ul>
         </>
       );
+    });
+  }
+
+  private trackCommandPalette() {
+    (
+      document.getElementById("command-palette-input") as HTMLInputElement
+    ).addEventListener("keydown", (e) => {
+      if (e.keyCode === 13) {
+        const command = (
+          document.getElementById("command-palette-input") as HTMLInputElement
+        ).value;
+        if (command.length > 0 && command.startsWith(":")) {
+          CommandPaletteManager.executeCommand(command);
+        }
+      }
     });
   }
 }

@@ -9,10 +9,14 @@ import MainMenu from "./views/MainMenu";
 import KeyManager from "./util/KeyManager";
 import InteractionManager from "./util/InteractionManager";
 import Settings from "./util/Settings";
+import CommandPaletteManager from "./util/CommandPaletteManager";
+import OpenCommand from "./util/commands/OpenCommand";
 
 if (!Settings.isValid()) {
   Settings.reset();
 }
+
+CommandPaletteManager.registerCommand(new OpenCommand());
 
 window.onload = () => {
   new KeyManager();
