@@ -7,7 +7,12 @@ import * as React from "react";
 import Container from "../../components/Container";
 import Title from "../../components/Title";
 import MenuItemList from "../../components/Menu/MenuItemList";
-import { faCode, faCubes, faPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBookOpen,
+  faCode,
+  faCubes,
+  faPlus,
+} from "@fortawesome/free-solid-svg-icons";
 import MenuItemInput from "../../components/Menu/MenuItemInput";
 import l18n from "../../util/l18n";
 import MainMenuItem from "../../components/Menu/MainMenuItem";
@@ -91,6 +96,11 @@ export default function CreateProject() {
               }
             }}
             title={"menu.create-project.blocks"}
+          />
+          <MenuItem
+            icon={faBookOpen}
+            onclick={() => {}}
+            title={"menu.create-project.template"}
           />
           <MainMenuItem />
         </MenuItemList>
