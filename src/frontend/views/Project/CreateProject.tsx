@@ -20,6 +20,8 @@ import MenuItem from "../../components/Menu/MenuItem";
 import PopupManager from "../../util/PopupManager";
 import ProjectManager from "../../util/ProjectManager";
 import { ProjectConfig } from "../../types/ProjectConfig";
+import UIManager from "../../util/UIManager";
+import CreateProjectTemplate from "./CreateProjectTemplate";
 
 export default function CreateProject() {
   return (
@@ -99,7 +101,26 @@ export default function CreateProject() {
           />
           <MenuItem
             icon={faBookOpen}
-            onclick={() => {}}
+            onclick={() => {
+              if (
+                ProjectManager.checkProjectName(
+                  (document.getElementById("project-name") as HTMLInputElement)
+                    .value
+                )
+              ) {
+                UIManager.showComponent(
+                  <CreateProjectTemplate
+                    projectName={
+                      (
+                        document.getElementById(
+                          "project-name"
+                        ) as HTMLInputElement
+                      ).value
+                    }
+                  />
+                );
+              }
+            }}
             title={"menu.create-project.template"}
           />
           <MainMenuItem />

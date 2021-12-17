@@ -67,15 +67,16 @@
   "menu.project.share": "Teilen",
   "menu.share-project.title": "Projekt teilen",
   "menu.share-project.back": "Zurück",
-  "menu.share-project.share-template": "Template veröffentlichen",
+  "menu.share-project.share-template": "Vorlage veröffentlichen",
   "menu.share-project.share-project": "Projekt veröffentlichen",
-  "menu.share-project.success.template.title": "Template veröffentlicht!",
-  "menu.share-project.success.template.description": "Dein Template wurde erfolgreich veröffentlicht!",
+  "menu.share-project.success.template.title": "Vorlage veröffentlicht!",
+  "menu.share-project.success.template.description": "Deine Vorlage wurde erfolgreich veröffentlicht!",
   "menu.share-project.success.project.title": "Projekt veröffentlicht!",
   "menu.share-project.success.project.description": "Dein Projekt wurde erfolgreich veröffentlicht: ",
   "menu.share-project.failed.template.title": "Fehler!",
-  "menu.share-project.failed.template.description": "Template konnte nicht veröffentlicht werden!",
+  "menu.share-project.failed.template.description": "Vorlage konnte nicht veröffentlicht werden!",
   "menu.settings.menu.title": "Einstellungen",
   "menu.settings.menu.item.general": "Allgemein",
-  "menu.settings.menu.item.code-editor": "Code Editor"
+  "menu.settings.menu.item.code-editor": "Code Editor",
+  "menu.select-project-template.title": "Vorlage auswählen"
 }
