@@ -7,6 +7,8 @@ import UIManager from "../UIManager";
 import * as React from "react";
 import Settings from "../../views/Settings/Settings";
 import OpenProject from "../../views/Project/OpenProject";
+import Playground from "../../views/Playground";
+import MainMenu from "../../views/MainMenu";
 
 export default class OpenCommand implements Command {
   execute(args: string[]): void {
@@ -18,7 +20,19 @@ export default class OpenCommand implements Command {
         case "project":
           UIManager.showComponent(<OpenProject />, "root");
           break;
+        case "playground":
+          UIManager.showComponent(<Playground />, "root");
+          break;
+        case "main":
+          UIManager.showComponent(<MainMenu />, "root");
+          break;
+        case "ext:docs":
+          window.open("https://docs.incodelang.de/", "_blank");
+          break;
         default:
+          if (args[0].startsWith("https://")) {
+            window.open(args[0], "_blank");
+          }
           break;
       }
     }
