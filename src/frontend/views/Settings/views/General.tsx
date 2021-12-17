@@ -4,15 +4,12 @@
  */
 
 import * as React from "react";
-import Container from "../../../components/Container";
-import Title from "../../../components/Title";
+import SettingsView from "../../../components/Settings/SettingsView";
 
 export default function General() {
   return (
     <>
-      <Container centeredRelative>
-        <Title size={1} title={"name"} />
-      </Container>
+      <SettingsView title={"menu.settings.menu.item.general"} />
     </>
   );
 }

@@ -3,7 +3,7 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 
-@import "../var";
+@import "../../var";
 
 #settings-current-view {
   width: 75%;
@@ -14,4 +14,8 @@
   right: 0;
   top: 0;
   position: fixed;
+}
+
+.settings-view {
+  overflow: auto;
 }

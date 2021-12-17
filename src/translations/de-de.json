@@ -78,5 +78,9 @@
   "menu.settings.menu.title": "Einstellungen",
   "menu.settings.menu.item.general": "Allgemein",
   "menu.settings.menu.item.code-editor": "Code Editor",
+  "menu.settings.menu.item.code-editor.font-size": "Schriftgröße",
+  "menu.settings.menu.item.code-editor.font-size.description": "Verändere die Schriftgröße des Code Editors",
+  "menu.settings.menu.item.code-editor.line-numbers": "Zeilennummern",
+  "menu.settings.menu.item.code-editor.line-numbers.description": "Zeige oder verstecke die Zeilennummern im Code Editor",
   "menu.select-project-template.title": "Vorlage auswählen"
 }

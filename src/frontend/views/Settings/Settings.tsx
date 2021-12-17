@@ -10,11 +10,13 @@ import UIManager from "../../util/UIManager";
 import MainMenu from "../MainMenu";
 import { useEffect } from "react";
 import General from "./views/General";
+import CodeEditor from "./views/CodeEditor";
 
 export default function Settings() {
   useEffect(() => {
     UIManager.showComponent(<General />, "settings-current-view");
   }, []);
+
   return (
     <>
       <NavigationBar
@@ -22,12 +24,16 @@ export default function Settings() {
         items={[
           {
             title: "menu.settings.menu.item.general",
-            onclick: () => {},
+            onclick: () => {
+              UIManager.showComponent(<General />, "settings-current-view");
+            },
             icon: faCog,
           },
           {
             title: "menu.settings.menu.item.code-editor",
-            onclick: () => {},
+            onclick: () => {
+              UIManager.showComponent(<CodeEditor />, "settings-current-view");
+            },
             icon: faCode,
           },
           {
