@@ -94,7 +94,39 @@ export default function CreateProject() {
                     .value
                 )
               ) {
-                alert("This feature will be implemented soon.");
+                const projectConfig: ProjectConfig = {
+                  name: (
+                    document.getElementById("project-name") as HTMLInputElement
+                  ).value,
+                  code: '<xml><block type="start" id="|(^9%DCME)E4UEoWv~G]" x="134" y="70"></block></xml>',
+                  type: "blockly",
+                };
+                ProjectManager.createProject(
+                  projectConfig,
+                  (success: boolean) => {
+                    if (!success) {
+                      PopupManager.showPopup(
+                        "Alert",
+                        "error.project.exists",
+                        l18n.translate("error.project.exists.description"),
+                        () => {},
+                        true
+                      );
+                    } else {
+                      PopupManager.showPopup(
+                        "Alert",
+                        "menu.create-project.success",
+                        l18n.translate(
+                          "menu.create-project.success.description"
+                        ),
+                        () => {
+                          ProjectManager.openProject(projectConfig);
+                        },
+                        true
+                      );
+                    }
+                  }
+                );
               }
             }}
             title={"menu.create-project.blocks"}

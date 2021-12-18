@@ -97,7 +97,15 @@ export default class ProjectManager {
         />
       );
     } else {
-      UIManager.showComponent(<ProjectEditor project={data} />);
+      console.log(data.code);
+      UIManager.showComponent(
+        <ProjectEditor
+          project={data}
+          blockly={{
+            initialXml: data.code,
+          }}
+        />
+      );
     }
   }
 

@@ -10,7 +10,9 @@ import * as DarkTheme from "./blockly/theme/BlocklyThemeDark";
 import Blocks from "./blockly/Blocks";
 import * as DE from "blockly/msg/de";
 
-export interface BlocklyProps {}
+export interface BlocklyProps {
+  initialXml: string;
+}
 
 export default function BlocklyEditor(props: BlocklyProps) {
   useEffect(() => {
@@ -24,6 +26,10 @@ export default function BlocklyEditor(props: BlocklyProps) {
         controls: true,
       },
     });
+    Blockly.Xml.domToWorkspace(
+      Blockly.Xml.textToDom(props.initialXml),
+      Blockly.getMainWorkspace()
+    );
   }, []);
 
   return (
@@ -37,7 +43,6 @@ export default function BlocklyEditor(props: BlocklyProps) {
 }
 
 const defaultToolbox = `
-<?xml version="1.0" encoding="UTF-8"?>
 <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
    <category colour="210" name="Programm">
       <block type="start" />

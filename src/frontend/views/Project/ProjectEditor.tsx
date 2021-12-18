@@ -9,12 +9,15 @@ import MonacoEditor, {
 } from "../../components/Editor/MonacoEditor";
 import { ProjectConfig } from "../../types/ProjectConfig";
 import PlaygroundPreview from "../../components/Editor/PlaygroundPreview";
-import PlaygroundMenuBar from "../../components/Editor/PlaygroundMenuBar";
 import EditorMenuBar from "../../components/Editor/EditorMenuBar";
+import BlocklyEditor, {
+  BlocklyProps,
+} from "../../components/Editor/BlocklyEditor";
 
 interface Props {
   monaco?: MonacoProps;
   project: ProjectConfig;
+  blockly?: BlocklyProps;
 }
 
 export default function ProjectEditor(props: Props) {
@@ -27,7 +30,7 @@ export default function ProjectEditor(props: Props) {
           code={props.monaco?.code}
         />
       ) : (
-        ""
+        <BlocklyEditor initialXml={props.blockly?.initialXml || ""} />
       )}
       <PlaygroundPreview />
     </>
