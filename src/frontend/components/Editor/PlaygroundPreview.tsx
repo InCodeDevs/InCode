@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import { useEffect } from "react";
+import Workspace from "../../util/Workspace";
 
 export default function PlaygroundPreview() {
   const [code, setCode] = React.useState(
@@ -21,12 +22,12 @@ Setze die Farbe von x auf weiß\nSetze die Schriftart von x auf sans-serif\nSetz
       if (window.editor) {
         if (
           // @ts-ignore
-          window.editor.getValue() !== code &&
+          Workspace.getCode(false) !== code &&
           // @ts-ignore
-          window.editor.getValue() !== ""
+          Workspace.getCode(false) !== ""
         ) {
           // @ts-ignore
-          setCode(encodeURIComponent(window.editor.getValue()));
+          setCode(encodeURIComponent(Workspace.getCode(false)));
         }
       }
     }, 3000);

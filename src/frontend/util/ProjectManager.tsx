@@ -13,6 +13,7 @@ import ProjectEditor from "../views/Project/ProjectEditor";
 import React from "react";
 import * as JSZip from "jszip";
 import { Networking } from "./Networking";
+import Workspace from "./Workspace";
 
 const client = new WebClient("");
 
@@ -192,7 +193,7 @@ export default class ProjectManager {
   public static async export(projectConfig: ProjectConfig) {
     const zip = new JSZip();
     // @ts-ignore
-    const currentCode = window.editor.getValue();
+    const currentCode = Workspace.getCode();
 
     const response = (
       await fetch("https://http-compiler-api.incodelang.de/compiled", {

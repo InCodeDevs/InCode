@@ -11,6 +11,7 @@ import { ProjectConfig } from "../../types/ProjectConfig";
 import ProjectManager from "../../util/ProjectManager";
 import PopupManager from "../../util/PopupManager";
 import ShareProject from "../../views/Project/ShareProject";
+import Workspace from "../../util/Workspace";
 
 interface Props {
   projectConfig: ProjectConfig;
@@ -32,9 +33,9 @@ export default function EditorMenuBar(props: Props) {
           {
             label: l18n.translate("menu.project.save"),
             onClick: () => {
+              // @ts-ignore
+              props.projectConfig.code = Workspace.getCode();
               ProjectManager.saveProject(props.projectConfig).then(() => {
-                // @ts-ignore
-                props.projectConfig.code = window.editor.getValue();
                 PopupManager.showPopup(
                   "Alert",
                   "menu.project.saved",
