@@ -85,15 +85,19 @@ export default class ProjectManager {
       UserManager.getToken(),
       "projects." + config.name
     );
-    UIManager.showComponent(
-      <ProjectEditor
-        project={data}
-        monaco={{
-          mode: "project",
-          code: data.code,
-        }}
-      />
-    );
+    if (data.type === "code") {
+      UIManager.showComponent(
+        <ProjectEditor
+          project={data}
+          monaco={{
+            mode: "project",
+            code: data.code,
+          }}
+        />
+      );
+    } else {
+      UIManager.showComponent(<ProjectEditor project={data} />);
+    }
   }
 
   public static async getProjectList(): Promise<string[]> {

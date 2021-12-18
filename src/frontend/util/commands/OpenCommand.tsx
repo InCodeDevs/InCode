@@ -11,11 +11,15 @@ import Playground from "../../views/Playground";
 import MainMenu from "../../views/MainMenu";
 import CreateProject from "../../views/Project/CreateProject";
 import ProjectManager from "../ProjectManager";
+import BlocklyEditor from "../../components/Editor/BlocklyEditor";
 
 export default class OpenCommand implements Command {
   execute(args: string[]): void {
     if (args.length > 0) {
       switch (args[0].toLowerCase()) {
+        case "blockly":
+          UIManager.showComponent(<BlocklyEditor />, "root");
+          break;
         case "settings":
           UIManager.showComponent(<Settings />, "root");
           break;
