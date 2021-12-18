@@ -25,6 +25,7 @@ export default function EditorMenuBar(props: Props) {
           {
             label: l18n.translate("menu.main"),
             onClick: () => {
+              props.projectConfig.code = Workspace.getCode();
               ProjectManager.saveProject(props.projectConfig).then(() => {
                 UIManager.showComponent(<MainMenu />, "root");
               });

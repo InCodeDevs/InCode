@@ -18,17 +18,14 @@ Setze die Farbe von x auf weiß\nSetze die Schriftart von x auf sans-serif\nSetz
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // @ts-ignore
-      if (window.editor) {
-        if (
-          // @ts-ignore
-          Workspace.getCode(false) !== code &&
-          // @ts-ignore
-          Workspace.getCode(false) !== ""
-        ) {
-          // @ts-ignore
-          setCode(encodeURIComponent(Workspace.getCode(false)));
-        }
+      if (
+        // @ts-ignore
+        Workspace.getCode(false) !== code &&
+        // @ts-ignore
+        Workspace.getCode(false) !== ""
+      ) {
+        // @ts-ignore
+        setCode(encodeURIComponent(Workspace.getCode(false)));
       }
     }, 3000);
     return () => clearInterval(interval);
