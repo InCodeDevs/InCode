@@ -9,6 +9,7 @@ import Title from "../../components/Title";
 import MenuItemList from "../../components/Menu/MenuItemList";
 import MenuItemInput from "../../components/Menu/MenuItemInput";
 import {
+  faKey,
   faSignInAlt,
   faUnlockAlt,
   faUser,
@@ -22,6 +23,7 @@ import UIManager from "../../util/UIManager";
 import MainMenu from "../MainMenu";
 import BrowserStorage from "../../util/BrowserStorage";
 import UserManager from "../../util/UserManager";
+import String from "../../util/String";
 
 const client = new WebClient("");
 
@@ -60,6 +62,35 @@ export default function AccountRegister() {
               "menu.login.login.placeholder.password-confirm"
             ),
           }}
+        />
+        <MenuItem
+          icon={faKey}
+          onclick={() => {
+            const generated = String.random(
+              16,
+              "@#$%!&?+-:,.;=Â§1234567890abcdefghijklmnopqrstuvwxyz" +
+                "abcdefghijklmnopqrstuvwxyz".toUpperCase() +
+                "{}[]()/|><*~"
+            );
+            (
+              document.getElementById("register-password") as HTMLInputElement
+            ).type = "text";
+            (
+              document.getElementById(
+                "register-password-confirm"
+              ) as HTMLInputElement
+            ).type = "text";
+
+            (
+              document.getElementById("register-password") as HTMLInputElement
+            ).value = generated;
+            (
+              document.getElementById(
+                "register-password-confirm"
+              ) as HTMLInputElement
+            ).value = generated;
+          }}
+          title={"menu.login.generate"}
         />
         <MenuItem
           icon={faSignInAlt}

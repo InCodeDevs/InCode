@@ -16,6 +16,7 @@
   "menu.login.login.placeholder.username": "Benutzername",
   "menu.login.login.placeholder.password": "Passwort",
   "menu.login.login.placeholder.password-confirm": "Passwort bestätigen",
+  "menu.login.generate": "Passwort generieren",
   "error": "Fehler",
   "error.username.too.short": "Der Benutzername ist zu kurz! Er muss mindestens 4 Zeichen lang sein.",
   "error.username.exists": "Der Benutzername ist bereits vergeben!",
