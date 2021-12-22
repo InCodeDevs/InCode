@@ -16,6 +16,14 @@ function getLines() {
   return lines;
 }
 
+function getChars() {
+  let chars = 0;
+  paths.forEach((p) => {
+    chars += fs.readFileSync(p).toString().length;
+  });
+  return chars;
+}
+
 function getFileCount() {
   return paths.length;
 }
@@ -35,4 +43,4 @@ function getFilePaths(path0) {
   return paths;
 }
 
-module.exports = { getLines, getFileCount };
+module.exports = { getLines, getFileCount, getChars };

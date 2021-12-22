@@ -59,7 +59,9 @@ export default class InteractionManager {
             <li>
               License:&nbsp;
               <a
-                href={"https://choosealicense.com/licenses/gpl-3.0"}
+                href={
+                  "https://choosealicense.com/licenses/gpl-3.0#license-text"
+                }
                 target={"_blank"}
               >
                 GNU Genral Public License version 3.0
@@ -80,6 +82,15 @@ export default class InteractionManager {
                 {
                   // @ts-ignore
                   _LINE_COUNT
+                }
+              </a>
+            </li>
+            <li>
+              Total Characters:&nbsp;
+              <a>
+                {
+                  // @ts-ignore
+                  _CHAR_COUNT
                 }
               </a>
             </li>
