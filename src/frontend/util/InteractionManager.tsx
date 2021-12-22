@@ -65,6 +65,24 @@ export default class InteractionManager {
                 GNU Genral Public License version 3.0
               </a>
             </li>
+            <li>
+              Total Files:&nbsp;
+              <a>
+                {
+                  // @ts-ignore
+                  _FILE_COUNT
+                }
+              </a>
+            </li>
+            <li>
+              Total Lines:&nbsp;
+              <a>
+                {
+                  // @ts-ignore
+                  _LINE_COUNT
+                }
+              </a>
+            </li>
           </ul>
         </>
       );

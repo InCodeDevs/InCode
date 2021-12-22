@@ -9,6 +9,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const git = require("./plugins/webpack/git");
 const pkg = require("./plugins/webpack/package");
+const stats = require("./plugins/webpack/stats");
 
 const config = {
   entry: "./src/frontend/index.tsx",
@@ -80,6 +81,10 @@ const config = {
     }),
     new webpack.DefinePlugin({
       _VERSION: JSON.stringify(pkg.version),
+    }),
+    new webpack.DefinePlugin({
+      _FILE_COUNT: JSON.stringify(stats.getFileCount()),
+      _LINE_COUNT: JSON.stringify(stats.getLines()),
     }),
     new HtmlWebpackPlugin({
       appMountId: "app",
