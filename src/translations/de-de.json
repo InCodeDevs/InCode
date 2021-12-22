@@ -45,6 +45,7 @@
   "menu.manage-account.change-password.enter-new-password": "Gib dein neues Passwort ein",
   "menu.manage-account.change-password.success": "Passwort geändert!",
   "menu.manage-account.change-password.success.description": "Dein Passwort wurde erfolgreich geändert!",
+  "menu.manage-account.manage-invites": "Einladungen verwalten",
   "menu.create-project.title": "Projekt erstellen",
   "menu.create-project.name.placeholder": "Projektname",
   "menu.create-project.code": "Code Projekt erstellen",

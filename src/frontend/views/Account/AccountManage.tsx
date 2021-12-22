@@ -13,6 +13,7 @@ import {
   faPencilAlt,
   faSignOutAlt,
   faTrashAlt,
+  faUsersCog,
 } from "@fortawesome/free-solid-svg-icons";
 import UserManager from "../../util/UserManager";
 import UIManager from "../../util/UIManager";
@@ -20,6 +21,7 @@ import MainMenu from "../MainMenu";
 import l18n from "../../util/l18n";
 import PopupManager from "../../util/PopupManager";
 import FakeLoader from "../../util/FakeLoader";
+import InviteManager from "./InviteManager";
 
 export default function AccountManage() {
   return (
@@ -186,6 +188,13 @@ export default function AccountManage() {
             );
           }}
           title={"menu.manage-account.change-password"}
+        />
+        <MenuItem
+          icon={faUsersCog}
+          onclick={() => {
+            UIManager.showComponent(<InviteManager />);
+          }}
+          title={"menu.manage-account.manage-invites"}
         />
         <MainMenuItem />
       </MenuItemList>
