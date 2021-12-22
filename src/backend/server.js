@@ -16,6 +16,14 @@ const path = require("path");
 
 const app = express();
 
+app.get("/", (req, res) => {
+  res.redirect("/app");
+});
+
+app.get(["/app*", "/docs*"], (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "..", "dist", "index.html"));
+});
+
 app.use(express.static(path.join(__dirname, "..", "..", "dist")));
 app.use(cors());
 app.use(bodyParser());

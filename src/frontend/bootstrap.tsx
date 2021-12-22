@@ -21,8 +21,12 @@ CommandPaletteManager.registerCommand(new OpenCommand());
 CommandPaletteManager.registerCommand(new CreateCommand());
 
 window.onload = () => {
-  new KeyManager();
   new InteractionManager();
+  if (location.pathname.startsWith("/app")) {
+    new KeyManager();
 
-  UIManager.showComponent(<MainMenu />);
+    UIManager.showComponent(<MainMenu />);
+  } else {
+    UIManager.showComponent(<h1>Hello World</h1>);
+  }
 };
