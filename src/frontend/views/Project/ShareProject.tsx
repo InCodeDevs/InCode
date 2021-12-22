@@ -13,6 +13,7 @@ import {
   faPuzzlePiece,
   faScroll,
   faTimesCircle,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import MainMenuItem from "../../components/Menu/MainMenuItem";
 import UIManager from "../../util/UIManager";
@@ -30,6 +31,11 @@ export default function ShareProject(props: Props) {
     <Container centered>
       <Title title={"menu.share-project.title"} size={1} centered />
       <MenuItemList>
+        <MenuItem
+          icon={faUser}
+          onclick={() => {}}
+          title={"menu.share-project.share-with-others"}
+        />
         <MenuItem
           icon={faScroll}
           onclick={() => {

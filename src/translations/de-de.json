@@ -79,6 +79,7 @@
   "menu.share-project.success.project.description": "Dein Projekt wurde erfolgreich veröffentlicht: ",
   "menu.share-project.failed.template.title": "Fehler!",
   "menu.share-project.failed.template.description": "Vorlage konnte nicht veröffentlicht werden!",
+  "menu.share-project.share-with-others": "Mit anderen teilen",
   "menu.settings.menu.title": "Einstellungen",
   "menu.settings.menu.item.general": "Allgemein",
   "menu.settings.menu.item.code-editor": "Code Editor",
