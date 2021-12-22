@@ -46,6 +46,8 @@
   "menu.manage-account.change-password.success": "Passwort geändert!",
   "menu.manage-account.change-password.success.description": "Dein Passwort wurde erfolgreich geändert!",
   "menu.manage-account.manage-invites": "Einladungen verwalten",
+  "menu.manage-account.manage-invites.activate": "Einladung aktivieren",
+  "menu.manage-account.manage-invites.deactivate": "Einladung deaktivieren",
   "menu.create-project.title": "Projekt erstellen",
   "menu.create-project.name.placeholder": "Projektname",
   "menu.create-project.code": "Code Projekt erstellen",

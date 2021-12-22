@@ -4,6 +4,7 @@
  */
 import BrowserStorage from "./BrowserStorage";
 import { WebClient } from "@incodelang/accounts-client";
+import { Invite } from "../types/Invite";
 
 const client = new WebClient("");
 
@@ -72,5 +73,27 @@ export default class UserManager {
     return password.match(
       /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{10,})/g
     );
+  }
+
+  public static async allowsInvites(): Promise<boolean> {
+    return await client.existsPostBox(this.getUsername(), "invites");
+  }
+
+  public static async getInvites(): Promise<Invite[]> {
+    const x = await client.readPostBox(
+      this.getUsername(),
+      this.getToken(),
+      "invites"
+    );
+    console.log(x);
+    return [];
+  }
+
+  public static async allowInvites() {
+    await client.createPostBox(this.getUsername(), this.getToken(), "invites");
+  }
+
+  public static async disallowInvites() {
+    await client.deletePostBox(this.getUsername(), this.getToken(), "invites");
   }
 }
