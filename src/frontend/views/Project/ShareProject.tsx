@@ -20,7 +20,7 @@ import UIManager from "../../util/UIManager";
 import OpenProject from "./OpenProject";
 import TemplateManager from "../../util/TemplateManager";
 import PopupManager from "../../util/PopupManager";
-import l18n from "../../util/l18n";
+import i18n from "../../util/i18n";
 import ProjectInviteManager from "./ProjectInviteManager";
 
 interface Props {
@@ -49,7 +49,7 @@ export default function ShareProject(props: Props) {
                 PopupManager.showPopup(
                   "Alert",
                   "menu.share-project.failed.template.title",
-                  l18n.translate(
+                  i18n.translate(
                     "menu.share-project.failed.template.description"
                   ),
                   () => {},
@@ -59,7 +59,7 @@ export default function ShareProject(props: Props) {
                 PopupManager.showPopup(
                   "Alert",
                   "menu.share-project.success.template.title",
-                  l18n.translate(
+                  i18n.translate(
                     "menu.share-project.success.template.description"
                   ),
                   () => {},
@@ -92,7 +92,7 @@ export default function ShareProject(props: Props) {
                   "menu.share-project.success.project.title",
                   <>
                     <h3 style={{ textAlign: "center" }}>
-                      {l18n.translate(
+                      {i18n.translate(
                         "menu.share-project.success.project.description"
                       )}
                       <a href={url} target="_blank" rel="noopener noreferrer">

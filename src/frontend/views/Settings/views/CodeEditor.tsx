@@ -8,7 +8,7 @@ import SettingsView from "../../../components/Settings/SettingsView";
 import SettingsControls from "../../../components/Settings/SettingsControls";
 import { faHashtag, faTextHeight } from "@fortawesome/free-solid-svg-icons";
 import SettingsNumberController from "../../../components/Settings/SettingsNumberController";
-import l18n from "../../../util/l18n";
+import i18n from "../../../util/i18n";
 import SettingsBooleanController from "../../../components/Settings/SettingsBooleanController";
 
 export default function CodeEditor() {
@@ -18,7 +18,7 @@ export default function CodeEditor() {
         <SettingsControls>
           <SettingsNumberController
             setting={"codeEditor.fontSize"}
-            description={l18n.translate(
+            description={i18n.translate(
               "menu.settings.menu.item.code-editor.font-size.description"
             )}
             title={"menu.settings.menu.item.code-editor.font-size"}
@@ -28,7 +28,7 @@ export default function CodeEditor() {
           />
           <SettingsBooleanController
             setting={"codeEditor.lineNumbers"}
-            description={l18n.translate(
+            description={i18n.translate(
               "menu.settings.menu.item.code-editor.line-numbers.description"
             )}
             icon={faHashtag}

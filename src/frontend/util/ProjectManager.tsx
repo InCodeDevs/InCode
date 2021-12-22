@@ -4,7 +4,7 @@
  */
 
 import PopupManager from "./PopupManager";
-import l18n from "./l18n";
+import i18n from "./i18n";
 import { WebClient } from "@incodelang/accounts-client";
 import { ProjectConfig } from "../types/ProjectConfig";
 import UserManager from "./UserManager";
@@ -23,7 +23,7 @@ export default class ProjectManager {
       PopupManager.showPopup(
         "Alert",
         "error",
-        l18n.translate("error.project.name.too.short"),
+        i18n.translate("error.project.name.too.short"),
         () => {},
         true
       );

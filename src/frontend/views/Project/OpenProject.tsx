@@ -20,7 +20,7 @@ import MainMenuItem from "../../components/Menu/MainMenuItem";
 import MenuItemControls from "../../components/Menu/MenuItemControls";
 import PopupManager from "../../util/PopupManager";
 import UIManager from "../../util/UIManager";
-import l18n from "../../util/l18n";
+import i18n from "../../util/i18n";
 import MenuItem from "../../components/Menu/MenuItem";
 import CreateProject from "./CreateProject";
 import MenuItemListScroll from "../../components/Menu/MenuItemListScroll";
@@ -51,7 +51,7 @@ export default function OpenProject() {
                   PopupManager.showPopup(
                     "Confirm",
                     "menu.open-project.delete.title",
-                    l18n.translate("menu.open-project.delete.description"),
+                    i18n.translate("menu.open-project.delete.description"),
                     () => {
                       ProjectManager.deleteProject(project).then(() => {
                         UIManager.showComponent(<OpenProject />);
@@ -69,7 +69,7 @@ export default function OpenProject() {
                   PopupManager.showPopup(
                     "Question",
                     "menu.open-project.rename.title",
-                    l18n.translate("menu.open-project.rename.description"),
+                    i18n.translate("menu.open-project.rename.description"),
                     (value) => {
                       ProjectManager.renameProject(
                         project,

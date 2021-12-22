@@ -14,7 +14,7 @@ import {
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import MenuItemInput from "../../components/Menu/MenuItemInput";
-import l18n from "../../util/l18n";
+import i18n from "../../util/i18n";
 import MainMenuItem from "../../components/Menu/MainMenuItem";
 import MenuItem from "../../components/Menu/MenuItem";
 import PopupManager from "../../util/PopupManager";
@@ -34,7 +34,7 @@ export default function CreateProject() {
             input={{
               type: "text",
               id: "project-name",
-              placeholder: l18n.translate(
+              placeholder: i18n.translate(
                 "menu.create-project.name.placeholder"
               ),
             }}
@@ -62,7 +62,7 @@ export default function CreateProject() {
                       PopupManager.showPopup(
                         "Alert",
                         "error.project.exists",
-                        l18n.translate("error.project.exists.description"),
+                        i18n.translate("error.project.exists.description"),
                         () => {},
                         true
                       );
@@ -70,7 +70,7 @@ export default function CreateProject() {
                       PopupManager.showPopup(
                         "Alert",
                         "menu.create-project.success",
-                        l18n.translate(
+                        i18n.translate(
                           "menu.create-project.success.description"
                         ),
                         () => {
@@ -108,7 +108,7 @@ export default function CreateProject() {
                       PopupManager.showPopup(
                         "Alert",
                         "error.project.exists",
-                        l18n.translate("error.project.exists.description"),
+                        i18n.translate("error.project.exists.description"),
                         () => {},
                         true
                       );
@@ -116,7 +116,7 @@ export default function CreateProject() {
                       PopupManager.showPopup(
                         "Alert",
                         "menu.create-project.success",
-                        l18n.translate(
+                        i18n.translate(
                           "menu.create-project.success.description"
                         ),
                         () => {

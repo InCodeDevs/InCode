@@ -18,7 +18,7 @@ import {
 import UserManager from "../../util/UserManager";
 import UIManager from "../../util/UIManager";
 import MainMenu from "../MainMenu";
-import l18n from "../../util/l18n";
+import i18n from "../../util/i18n";
 import PopupManager from "../../util/PopupManager";
 import FakeLoader from "../../util/FakeLoader";
 import InviteManager from "./InviteManager";
@@ -29,7 +29,7 @@ export default function AccountManage() {
       <Title
         size={1}
         title={
-          l18n.translate("menu.manage-account.title-template") +
+          i18n.translate("menu.manage-account.title-template") +
           UserManager.getUsername() +
           "!"
         }
@@ -51,7 +51,7 @@ export default function AccountManage() {
             PopupManager.showPopup(
               "Question",
               "menu.manage-account.delete-account",
-              l18n.translate(
+              i18n.translate(
                 "menu.manage-account.delete-account.enter-password"
               ),
               (password) => {
@@ -60,7 +60,7 @@ export default function AccountManage() {
                     PopupManager.showPopup(
                       "Alert",
                       "menu.manage-account.delete-account.success",
-                      l18n.translate(
+                      i18n.translate(
                         "menu.manage-account.delete-account.success.description"
                       ),
                       () => {
@@ -72,7 +72,7 @@ export default function AccountManage() {
                     PopupManager.showPopup(
                       "Alert",
                       "menu.manage-account.delete-account.wrong-password",
-                      l18n.translate(
+                      i18n.translate(
                         "menu.manage-account.delete-account.wrong-password.description"
                       ),
                       () => {},
@@ -92,7 +92,7 @@ export default function AccountManage() {
             PopupManager.showPopup(
               "Question",
               "menu.manage-account.change-username",
-              l18n.translate(
+              i18n.translate(
                 "menu.manage-account.change-username.enter-username"
               ),
               async (username) => {
@@ -102,7 +102,7 @@ export default function AccountManage() {
                   PopupManager.showPopup(
                     "Alert",
                     "error",
-                    l18n.translate("error.username.exists"),
+                    i18n.translate("error.username.exists"),
                     () => {},
                     true
                   );
@@ -111,7 +111,7 @@ export default function AccountManage() {
                   PopupManager.showPopup(
                     "Alert",
                     "menu.manage-account.change-username.success",
-                    l18n.translate(
+                    i18n.translate(
                       "menu.manage-account.change-username.success.description"
                     ),
                     () => {
@@ -135,14 +135,14 @@ export default function AccountManage() {
             PopupManager.showPopup(
               "Question",
               "menu.manage-account.change-password",
-              l18n.translate(
+              i18n.translate(
                 "menu.manage-account.change-password.enter-current-password"
               ),
               (password) => {
                 PopupManager.showPopup(
                   "Question",
                   "menu.manage-account.change-password",
-                  l18n.translate(
+                  i18n.translate(
                     "menu.manage-account.change-password.enter-new-password"
                   ),
                   async (newPassword) => {
@@ -156,7 +156,7 @@ export default function AccountManage() {
                         PopupManager.showPopup(
                           "Alert",
                           "menu.manage-account.change-password.success",
-                          l18n.translate(
+                          i18n.translate(
                             "menu.manage-account.change-password.success.description"
                           ),
                           () => {},
@@ -166,7 +166,7 @@ export default function AccountManage() {
                         PopupManager.showPopup(
                           "Alert",
                           "error",
-                          l18n.translate("error.password.wrong"),
+                          i18n.translate("error.password.wrong"),
                           () => {},
                           true
                         );
@@ -175,7 +175,7 @@ export default function AccountManage() {
                       PopupManager.showPopup(
                         "Alert",
                         "error",
-                        l18n.translate("error.password.too.weak"),
+                        i18n.translate("error.password.too.weak"),
                         () => {},
                         true
                       );

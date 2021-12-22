@@ -7,7 +7,7 @@ import React, { ReactElement } from "react";
 import Title from "../Title";
 import Text from "../Text";
 import PopupManager from "../../util/PopupManager";
-import l18n from "../../util/l18n";
+import i18n from "../../util/i18n";
 
 interface Props {
   type: "Alert" | "Question" | "Confirm";
@@ -56,7 +56,7 @@ export default function Popup(props: Props) {
               }
             }}
           >
-            {l18n.translate("close")}
+            {i18n.translate("close")}
           </button>
         ) : (
           <>
@@ -66,7 +66,7 @@ export default function Popup(props: Props) {
                 PopupManager.disposeAll();
               }}
             >
-              {l18n.translate("no")}
+              {i18n.translate("no")}
             </button>
             <button
               className={"popup-button"}
@@ -87,7 +87,7 @@ export default function Popup(props: Props) {
                 }
               }}
             >
-              {l18n.translate("yes")}
+              {i18n.translate("yes")}
             </button>
           </>
         )}

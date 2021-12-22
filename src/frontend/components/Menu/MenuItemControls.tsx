@@ -8,7 +8,7 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Text from "../Text";
 import { MenuItemWidget } from "../../types/MenuItemWidget";
-import l18n from "../../util/l18n";
+import i18n from "../../util/i18n";
 
 interface Props {
   children?: string | React.ReactElement | React.ReactElement[];
@@ -45,7 +45,7 @@ export default function MenuItemControls(props: Props) {
               className={"menu-item-widget"}
               style={{ color: widget.color }}
               onClick={widget.onclick}
-              title={l18n.translate(widget.name)}
+              title={i18n.translate(widget.name)}
             >
               <FontAwesomeIcon icon={widget.icon} />
             </div>

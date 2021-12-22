@@ -25,7 +25,6 @@ window.onload = () => {
   new InteractionManager();
   if (location.pathname.startsWith("/app")) {
     new KeyManager();
-
     UIManager.showComponent(<MainMenu />);
   } else if (location.pathname.startsWith("/docs")) {
     UIManager.showComponent(<h1>Hello World</h1>);

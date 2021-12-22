@@ -7,7 +7,7 @@ import * as de_de from "../../translations/de-de.json";
 import { JSONObject } from "../types/JSONObject";
 import BrowserStorage from "./BrowserStorage";
 
-export default class l18n {
+export default class i18n {
   public static translate(code: string): string {
     if (!JSON.parse(BrowserStorage.get("settings")).language) {
       if (navigator.language.includes("de") && (de_de as JSONObject)[code]) {

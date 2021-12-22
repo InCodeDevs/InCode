@@ -10,7 +10,7 @@ import { SettingsBooleanController } from "../../types/SettingsController";
 import Settings from "../../util/Settings";
 import Title from "../Title";
 import String from "../../util/String";
-import l18n from "../../util/l18n";
+import i18n from "../../util/i18n";
 
 export default function SettingsBooleanController(
   props: SettingsBooleanController
@@ -58,8 +58,8 @@ export default function SettingsBooleanController(
           }
         }}
       >
-        <option value="true">{l18n.translate("yes")}</option>
-        <option value="false">{l18n.translate("no")}</option>
+        <option value="true">{i18n.translate("yes")}</option>
+        <option value="false">{i18n.translate("no")}</option>
       </select>
     </div>
   );

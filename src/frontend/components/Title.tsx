@@ -4,7 +4,7 @@
  */
 
 import React from "react";
-import l18n from "../util/l18n";
+import i18n from "../util/i18n";
 
 interface Props {
   size: 1 | 2 | 3 | 4 | 5 | 6;
@@ -26,7 +26,7 @@ export default function Title(props: Props) {
         props.className
       }
     >
-      {props.nol18n ? props.title : l18n.translate(props.title)}
+      {props.nol18n ? props.title : i18n.translate(props.title)}
     </h1>
   );
 }

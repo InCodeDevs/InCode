@@ -15,7 +15,7 @@ import MenuItem from "../../components/Menu/MenuItem";
 import { faCode, faCubes } from "@fortawesome/free-solid-svg-icons";
 import ProjectManager from "../../util/ProjectManager";
 import PopupManager from "../../util/PopupManager";
-import l18n from "../../util/l18n";
+import i18n from "../../util/i18n";
 import { ProjectConfig } from "../../types/ProjectConfig";
 
 interface Props {
@@ -49,7 +49,7 @@ export default function CreateProjectTemplate(props: Props) {
                     PopupManager.showPopup(
                       "Alert",
                       "error.project.exists",
-                      l18n.translate("error.project.exists.description"),
+                      i18n.translate("error.project.exists.description"),
                       () => {},
                       true
                     );
@@ -57,7 +57,7 @@ export default function CreateProjectTemplate(props: Props) {
                     PopupManager.showPopup(
                       "Alert",
                       "menu.create-project.success",
-                      l18n.translate("menu.create-project.success.description"),
+                      i18n.translate("menu.create-project.success.description"),
                       () => {
                         ProjectManager.openProject(projectConfig);
                       },

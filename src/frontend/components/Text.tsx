@@ -4,7 +4,7 @@
  */
 
 import React, { ReactElement } from "react";
-import l18n from "../util/l18n";
+import i18n from "../util/i18n";
 
 interface Props {
   children: string | ReactElement | ReactElement[];
@@ -17,7 +17,7 @@ export default function Text(props: Props) {
     return <span className={"text"}>{props.children}</span>;
   } else {
     return (
-      <span className={"text"}>{l18n.translate(props.children as string)}</span>
+      <span className={"text"}>{i18n.translate(props.children as string)}</span>
     );
   }
 }

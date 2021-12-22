@@ -18,7 +18,7 @@ import MenuItemList from "../components/Menu/MenuItemList";
 import UserIndicator from "../components/UserIndicator";
 import UserManager from "../util/UserManager";
 import PopupManager from "../util/PopupManager";
-import l18n from "../util/l18n";
+import i18n from "../util/i18n";
 import UIManager from "../util/UIManager";
 import Playground from "./Playground";
 import CreateProject from "./Project/CreateProject";
@@ -40,7 +40,7 @@ export default function MainMenu() {
                 PopupManager.showPopup(
                   "Alert",
                   "error.not.logged-in",
-                  l18n.translate("error.please-login"),
+                  i18n.translate("error.please-login"),
                   () => {},
                   true
                 );
@@ -57,7 +57,7 @@ export default function MainMenu() {
                 PopupManager.showPopup(
                   "Alert",
                   "error.not.logged-in",
-                  l18n.translate("error.please-login"),
+                  i18n.translate("error.please-login"),
                   () => {},
                   true
                 );

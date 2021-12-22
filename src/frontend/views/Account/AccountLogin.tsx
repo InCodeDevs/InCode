@@ -13,7 +13,7 @@ import {
   faUnlockAlt,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import l18n from "../../util/l18n";
+import i18n from "../../util/i18n";
 import MainMenuItem from "../../components/Menu/MainMenuItem";
 import MenuItem from "../../components/Menu/MenuItem";
 import { WebClient } from "@incodelang/accounts-client";
@@ -34,7 +34,7 @@ export default function AccountLogin() {
           input={{
             type: "text",
             id: "login-username",
-            placeholder: l18n.translate(
+            placeholder: i18n.translate(
               "menu.login.login.placeholder.username"
             ),
           }}
@@ -44,7 +44,7 @@ export default function AccountLogin() {
           input={{
             type: "password",
             id: "login-password",
-            placeholder: l18n.translate(
+            placeholder: i18n.translate(
               "menu.login.login.placeholder.password"
             ),
           }}
@@ -70,7 +70,7 @@ export default function AccountLogin() {
                 PopupManager.showPopup(
                   "Alert",
                   "error",
-                  l18n.translate("error.login.credentials"),
+                  i18n.translate("error.login.credentials"),
                   () => {},
                   true
                 );

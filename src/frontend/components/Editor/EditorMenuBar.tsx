@@ -3,7 +3,7 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 import React from "react";
-import l18n from "../../util/l18n";
+import i18n from "../../util/i18n";
 import UIManager from "../../util/UIManager";
 import MainMenu from "../../views/MainMenu";
 import MenuBar from "../MenuBar/MenuBar";
@@ -23,7 +23,7 @@ export default function EditorMenuBar(props: Props) {
       <MenuBar
         menuItems={[
           {
-            label: l18n.translate("menu.main"),
+            label: i18n.translate("menu.main"),
             onClick: () => {
               props.projectConfig.code = Workspace.getCode();
               ProjectManager.saveProject(props.projectConfig).then(() => {
@@ -32,7 +32,7 @@ export default function EditorMenuBar(props: Props) {
             },
           },
           {
-            label: l18n.translate("menu.project.save"),
+            label: i18n.translate("menu.project.save"),
             onClick: () => {
               // @ts-ignore
               props.projectConfig.code = Workspace.getCode();
@@ -40,7 +40,7 @@ export default function EditorMenuBar(props: Props) {
                 PopupManager.showPopup(
                   "Alert",
                   "menu.project.saved",
-                  l18n.translate("menu.project.saved.description"),
+                  i18n.translate("menu.project.saved.description"),
                   () => {},
                   true
                 );
@@ -48,7 +48,7 @@ export default function EditorMenuBar(props: Props) {
             },
           },
           {
-            label: l18n.translate("menu.project.export"),
+            label: i18n.translate("menu.project.export"),
             onClick: () => {
               ProjectManager.export(props.projectConfig);
             },
