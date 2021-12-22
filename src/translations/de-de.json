@@ -1,5 +1,7 @@
 {
   "name": "InCode Editor",
+  "menu.select-app.editor": "Editor",
+  "menu.select-app.docs": "Dokumentation",
   "menu.main.create.project": "Projekt erstellen",
   "menu.main.open.project": "Projekt öffnen",
   "menu.main.open.settings": "Einstellungen",

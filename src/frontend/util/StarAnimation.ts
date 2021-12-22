@@ -16,6 +16,7 @@ export default class StarAnimation {
     "AccountRegister",
     "CreateProjectTemplate",
     "InviteManager",
+    "SelectApp",
   ];
 
   public static update(element: React.ReactElement) {

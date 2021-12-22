@@ -12,6 +12,7 @@ import Settings from "./util/Settings";
 import CommandPaletteManager from "./util/CommandPaletteManager";
 import OpenCommand from "./util/commands/OpenCommand";
 import CreateCommand from "./util/commands/CreateCommand";
+import SelectApp from "./views/SelectApp";
 
 if (!Settings.isValid()) {
   Settings.reset();
@@ -26,7 +27,9 @@ window.onload = () => {
     new KeyManager();
 
     UIManager.showComponent(<MainMenu />);
-  } else {
+  } else if (location.pathname.startsWith("/docs")) {
     UIManager.showComponent(<h1>Hello World</h1>);
+  } else {
+    UIManager.showComponent(<SelectApp />);
   }
 };
