@@ -21,6 +21,7 @@ import OpenProject from "./OpenProject";
 import TemplateManager from "../../util/TemplateManager";
 import PopupManager from "../../util/PopupManager";
 import l18n from "../../util/l18n";
+import ProjectInviteManager from "./ProjectInviteManager";
 
 interface Props {
   projectConfig: ProjectConfig;
@@ -33,7 +34,11 @@ export default function ShareProject(props: Props) {
       <MenuItemList>
         <MenuItem
           icon={faUser}
-          onclick={() => {}}
+          onclick={() => {
+            UIManager.showComponent(
+              <ProjectInviteManager projectConfig={props.projectConfig} />
+            );
+          }}
           title={"menu.share-project.share-with-others"}
         />
         <MenuItem
