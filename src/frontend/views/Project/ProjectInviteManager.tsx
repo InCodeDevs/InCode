@@ -13,6 +13,10 @@ import MainMenuItem from "../../components/Menu/MainMenuItem";
 import MenuItem from "../../components/Menu/MenuItem";
 import MenuItemList from "../../components/Menu/MenuItemList";
 import i18n from "../../util/i18n";
+import UserManager from "../../util/UserManager";
+import PopupManager from "../../util/PopupManager";
+import ProjectManager from "../../util/ProjectManager";
+import { WebClient } from "@incodelang/accounts-client";
 
 interface Props {
   projectConfig: ProjectConfig;
@@ -40,7 +44,75 @@ export default function ProjectInviteManager(props: Props) {
           />
           <MenuItem
             icon={faShare}
-            onclick={() => {}}
+            onclick={() => {
+              const username = (
+                document.getElementById(
+                  "share-with-others-name"
+                ) as HTMLInputElement
+              ).value;
+              UserManager.accountExists(username).then((exists) => {
+                if (exists) {
+                  let pConfig = props.projectConfig;
+                  pConfig.publicData =
+                    UserManager.getUsername() + ":" + pConfig.name;
+                  ProjectManager.inviteUser(username, pConfig).then(
+                    (success) => {
+                      if (success) {
+                        const client = new WebClient("");
+                        client
+                          .storeData(
+                            UserManager.getUsername(),
+                            UserManager.getToken(),
+                            JSON.stringify(pConfig),
+                            pConfig.publicData
+                          )
+                          .then((x) => {
+                            client
+                              .allowDataAccess(
+                                UserManager.getUsername(),
+                                UserManager.getToken(),
+                                pConfig.publicData,
+                                username
+                              )
+                              .then(() => {
+                                console.log(pConfig.publicData);
+                                ProjectManager.saveProject(pConfig, true).then(
+                                  () => {
+                                    PopupManager.showPopup(
+                                      "Alert",
+                                      "menu.share-project.share-with-others.invited.success",
+                                      i18n.translate(
+                                        "menu.share-project.share-with-others.invited.success.description"
+                                      ),
+                                      () => {},
+                                      true
+                                    );
+                                  }
+                                );
+                              });
+                          });
+                      } else {
+                        PopupManager.showPopup(
+                          "Alert",
+                          "error",
+                          i18n.translate("error.user.invites-disabled"),
+                          () => {},
+                          true
+                        );
+                      }
+                    }
+                  );
+                } else {
+                  PopupManager.showPopup(
+                    "Alert",
+                    "error",
+                    i18n.translate("error.user.not-exists"),
+                    () => {},
+                    true
+                  );
+                }
+              });
+            }}
             title={"menu.share-project.share-with-others.invite"}
           />
           <MainMenuItem />

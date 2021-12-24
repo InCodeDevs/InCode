@@ -81,30 +81,16 @@ export default class ProjectManager {
   }
 
   public static async openProject(config: ProjectConfig) {
-    const data = await client.getData_u(
-      UserManager.getUsername(),
-      UserManager.getToken(),
-      "projects." + config.name
-    );
-    if (data.type === "code") {
+    if (config.type === "code") {
       UIManager.showComponent(
         <ProjectEditor
-          project={data}
-          monaco={{
-            mode: "project",
-            code: data.code,
-          }}
+          project={config}
+          monaco={{ mode: "project", code: config.code }}
         />
       );
     } else {
-      console.log(data.code);
       UIManager.showComponent(
-        <ProjectEditor
-          project={data}
-          blockly={{
-            initialXml: data.code,
-          }}
-        />
+        <ProjectEditor project={config} blockly={{ initialXml: config.code }} />
       );
     }
   }
@@ -125,12 +111,34 @@ export default class ProjectManager {
     const projects = await this.getProjectList();
     let projectConfigs: ProjectConfig[] = [];
     for (let i = 0; i < projects.length; i++) {
-      const project = await client.getData_u(
-        UserManager.getUsername(),
-        UserManager.getToken(),
-        "projects." + projects[i]
+      const project = JSON.parse(
+        await client.getData_u(
+          UserManager.getUsername(),
+          UserManager.getToken(),
+          "projects." + projects[i]
+        )
       );
-      projectConfigs.push(project);
+      if (!project.publicData) {
+        console.log(1);
+        projectConfigs.push(project);
+      } else {
+        const data = await client.getData(
+          UserManager.getUsername(),
+          UserManager.getToken(),
+          project.publicData
+        );
+
+        console.log(data);
+        console.log(typeof data);
+        console.log(JSON.parse(data));
+        console.log(typeof JSON.parse(data));
+
+        projectConfigs.push(JSON.parse(data));
+
+        console.log(typeof projectConfigs[projectConfigs.length - 1]);
+
+        // projectConfigs.push();
+      }
     }
     return projectConfigs;
   }
@@ -149,11 +157,19 @@ export default class ProjectManager {
       newProjects,
       "projects"
     );
-    await client.deleteData_u(
-      UserManager.getUsername(),
-      UserManager.getToken(),
-      "projects." + projectConfig.name
-    );
+    if (projectConfig.publicData) {
+      await client.deleteData(
+        UserManager.getUsername(),
+        UserManager.getToken(),
+        projectConfig.publicData
+      );
+    } else {
+      await client.deleteData_u(
+        UserManager.getUsername(),
+        UserManager.getToken(),
+        "projects." + projectConfig.name
+      );
+    }
   }
 
   public static async renameProject(
@@ -176,26 +192,55 @@ export default class ProjectManager {
       newProjects,
       "projects"
     );
-    await client.storeData_u(
-      UserManager.getUsername(),
-      UserManager.getToken(),
-      projectConfig,
-      "projects." + newName
-    );
-    await client.deleteData_u(
-      UserManager.getUsername(),
-      UserManager.getToken(),
-      "projects." + origName
-    );
+    if (projectConfig.publicData) {
+      await client.storeData(
+        UserManager.getUsername(),
+        UserManager.getToken(),
+        projectConfig,
+        projectConfig.publicData.split(":")[0] + ":" + newName
+      );
+      await client.deleteData(
+        UserManager.getUsername(),
+        UserManager.getToken(),
+        "projects." + origName
+      );
+    } else {
+      await client.storeData_u(
+        UserManager.getUsername(),
+        UserManager.getToken(),
+        projectConfig,
+        "projects." + newName
+      );
+      await client.deleteData_u(
+        UserManager.getUsername(),
+        UserManager.getToken(),
+        "projects." + origName
+      );
+    }
   }
 
-  public static async saveProject(projectConfig: ProjectConfig) {
-    await client.storeData_u(
-      UserManager.getUsername(),
-      UserManager.getToken(),
-      projectConfig,
-      "projects." + projectConfig.name
-    );
+  public static async saveProject(
+    projectConfig: ProjectConfig,
+    forceAccount = false
+  ) {
+    console.log(projectConfig);
+    if (forceAccount || !projectConfig.publicData) {
+      console.log(1);
+      await client.storeData_u(
+        UserManager.getUsername(),
+        UserManager.getToken(),
+        JSON.stringify(projectConfig),
+        "projects." + projectConfig.name
+      );
+    } else {
+      console.log(2);
+      await client.storeData(
+        UserManager.getUsername(),
+        UserManager.getToken(),
+        JSON.stringify(projectConfig),
+        projectConfig.publicData
+      );
+    }
   }
 
   public static async export(projectConfig: ProjectConfig) {
@@ -247,5 +292,28 @@ export default class ProjectManager {
       response == "The data was not found." ||
       response.toString().includes("Error 500 Internal Server Error!")
     );
+  }
+
+  public static async inviteUser(
+    username: string,
+    projectConfig: ProjectConfig
+  ): Promise<boolean> {
+    if (await client.existsPostBox(username, "invites")) {
+      await client.addToPostBox(
+        UserManager.getUsername(),
+        UserManager.getToken(),
+        "invites",
+        username,
+        JSON.stringify({
+          from: UserManager.getUsername(),
+          project_name: projectConfig.name,
+          project_type: projectConfig.type,
+          public_data: projectConfig.publicData,
+        })
+      );
+      return true;
+    } else {
+      return false;
+    }
   }
 }

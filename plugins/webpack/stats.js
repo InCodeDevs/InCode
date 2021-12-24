@@ -24,6 +24,14 @@ function getChars() {
   return chars;
 }
 
+function getWords() {
+  let words = 0;
+  paths.forEach((p) => {
+    words += fs.readFileSync(p).toString().split(" ").length;
+  });
+  return words;
+}
+
 function getFileCount() {
   return paths.length;
 }
@@ -43,4 +51,4 @@ function getFilePaths(path0) {
   return paths;
 }
 
-module.exports = { getLines, getFileCount, getChars };
+module.exports = { getLines, getFileCount, getChars, getWords };

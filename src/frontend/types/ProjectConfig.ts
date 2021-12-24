@@ -7,4 +7,5 @@ export interface ProjectConfig {
   name: string;
   code: string;
   type: "code" | "blockly";
+  publicData?: string;
 }

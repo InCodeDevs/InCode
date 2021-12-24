@@ -86,6 +86,15 @@ export default class InteractionManager {
               </a>
             </li>
             <li>
+              Total Words:&nbsp;
+              <a>
+                {
+                  // @ts-ignore
+                  _WORD_COUNT
+                }
+              </a>
+            </li>
+            <li>
               Total Characters:&nbsp;
               <a>
                 {

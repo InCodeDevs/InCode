@@ -7,4 +7,5 @@ export interface Invite {
   from: string;
   project_name: string;
   project_type: "code" | "blockly";
+  public_data: string;
 }

@@ -86,6 +86,7 @@ const config = {
       _FILE_COUNT: JSON.stringify(stats.getFileCount()),
       _LINE_COUNT: JSON.stringify(stats.getLines()),
       _CHAR_COUNT: JSON.stringify(stats.getChars()),
+      _WORD_COUNT: JSON.stringify(stats.getWords()),
     }),
     new HtmlWebpackPlugin({
       appMountId: "app",

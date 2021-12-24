@@ -16,6 +16,8 @@ export interface BlocklyProps {
 
 export default function BlocklyEditor(props: BlocklyProps) {
   useEffect(() => {
+    // @ts-ignore
+    window.editor = undefined;
     Blocks.register();
     Blockly.setLocale(DE);
     Blockly.inject("blockly", {

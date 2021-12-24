@@ -12,9 +12,6 @@ export default class UIManager {
     component: React.ReactElement,
     containerID: string = "root"
   ) {
-    // @ts-ignore
-    window.editor = undefined;
-
     ReactDOM.unmountComponentAtNode(
       document.querySelector("#" + containerID) as HTMLElement
     );

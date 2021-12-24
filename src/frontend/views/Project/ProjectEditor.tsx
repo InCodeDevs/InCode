@@ -21,10 +21,14 @@ interface Props {
 }
 
 export default function ProjectEditor(props: Props) {
+  let project = props.project;
+  if (typeof project === "string") {
+    project = JSON.parse(project);
+  }
   return (
     <>
-      <EditorMenuBar projectConfig={props.project} />
-      {props.project.type === "code" ? (
+      <EditorMenuBar projectConfig={project} />
+      {project.type === "code" ? (
         <MonacoEditor
           mode={props.monaco?.mode || "project"}
           code={props.monaco?.code}
