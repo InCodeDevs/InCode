@@ -5,6 +5,9 @@
 import BrowserStorage from "./BrowserStorage";
 import { WebClient } from "@incodelang/accounts-client";
 import { Invite } from "../types/Invite";
+import { JSONObject } from "../types/JSONObject";
+import UIManager from "./UIManager";
+import * as React from "react";
 
 const client = new WebClient("");
 
@@ -85,8 +88,19 @@ export default class UserManager {
       this.getToken(),
       "invites"
     );
-    console.log(x);
-    return [];
+    const invites: Invite[] = [];
+    x.forEach((obj: JSONObject) => {
+      const invite = JSON.parse(obj.entry);
+      let inviteObject: Invite = {
+        from: invite.from,
+        project_name: invite.project_name,
+        project_type: invite.project_type,
+        public_data: invite.public_data,
+        timestamp: obj.at,
+      };
+      invites.push(inviteObject);
+    });
+    return invites;
   }
 
   public static async allowInvites() {
@@ -95,5 +109,14 @@ export default class UserManager {
 
   public static async disallowInvites() {
     await client.deletePostBox(this.getUsername(), this.getToken(), "invites");
+  }
+
+  public static async removeInvite(at: string) {
+    await client.removeFromPostBox(
+      UserManager.getUsername(),
+      UserManager.getToken(),
+      "invites",
+      at
+    );
   }
 }

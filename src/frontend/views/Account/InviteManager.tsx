@@ -8,11 +8,22 @@ import { useEffect } from "react";
 import UserManager from "../../util/UserManager";
 import { Invite } from "../../types/Invite";
 import Container from "../../components/Container";
-import MenuItemList from "../../components/Menu/MenuItemListScroll";
+import MenuItemListScroll from "../../components/Menu/MenuItemListScroll";
 import MenuItem from "../../components/Menu/MenuItem";
-import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheck,
+  faCode,
+  faCubes,
+  faTimes,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 import MainMenuItem from "../../components/Menu/MainMenuItem";
 import Title from "../../components/Title";
+import MenuItemControls from "../../components/Menu/MenuItemControls";
+import UIManager from "../../util/UIManager";
+import { ProjectConfig } from "../../types/ProjectConfig";
+import { WebClient } from "@incodelang/accounts-client";
+import ProjectManager from "../../util/ProjectManager";
 
 export default function InviteManager() {
   const [invitesActive, setInvitesActive] = React.useState(false);
@@ -33,8 +44,7 @@ export default function InviteManager() {
     <>
       <Container centered>
         <Title size={1} title={"menu.manage-account.manage-invites"} centered />
-        <span>{invites.toString()}</span>
-        <MenuItemList>
+        <MenuItemListScroll>
           {invitesActive ? (
             <>
               <MenuItem
@@ -48,6 +58,56 @@ export default function InviteManager() {
                 title={"menu.manage-account.manage-invites.deactivate"}
               />
               <MainMenuItem />
+              {invites.map((invite) => {
+                return (
+                  <MenuItemControls
+                    icon={invite.project_type === "code" ? faCode : faCubes}
+                    onclick={() => {}}
+                    widgets={[
+                      {
+                        icon: faCheck,
+                        onclick: () => {
+                          UserManager.removeInvite(invite.timestamp).then(
+                            async () => {
+                              const projectConfig: ProjectConfig = {
+                                type: invite.project_type,
+                                name: invite.project_name,
+                                code: JSON.parse(
+                                  await new WebClient("").getData(
+                                    UserManager.getUsername(),
+                                    UserManager.getToken(),
+                                    invite.public_data
+                                  )
+                                ).code,
+                                publicData: invite.public_data,
+                              };
+                              await ProjectManager.saveProject(projectConfig);
+                              ProjectManager.openProject(projectConfig);
+                            }
+                          );
+                        },
+                        name: "",
+                        color: "lime",
+                      },
+                      {
+                        icon: faTrash,
+                        color: "red",
+                        name: "",
+                        onclick: () => {
+                          UserManager.removeInvite(invite.timestamp).then(
+                            () => {
+                              UIManager.unmountAt("root");
+                              UIManager.showComponent(<InviteManager />);
+                            }
+                          );
+                        },
+                      },
+                    ]}
+                    title={invite.from + ":" + invite.project_name}
+                    nol18n={true}
+                  />
+                );
+              })}
             </>
           ) : (
             <>
@@ -66,7 +126,7 @@ export default function InviteManager() {
               <MainMenuItem />
             </>
           )}
-        </MenuItemList>
+        </MenuItemListScroll>
       </Container>
     </>
   );

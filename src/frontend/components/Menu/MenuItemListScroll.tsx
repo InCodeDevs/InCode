@@ -9,7 +9,7 @@ interface Props {
   children?: ReactElement[] | ReactElement;
 }
 
-export default function MenuItemList(props: Props) {
+export default function MenuItemListScroll(props: Props) {
   return (
     <div className="menu-item-list-scroll">
       <div className={"menu-item-list"}>{props.children}</div>

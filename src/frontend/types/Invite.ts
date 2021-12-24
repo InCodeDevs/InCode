@@ -8,4 +8,5 @@ export interface Invite {
   project_name: string;
   project_type: "code" | "blockly";
   public_data: string;
+  timestamp: string;
 }
