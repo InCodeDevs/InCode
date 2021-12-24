@@ -17,6 +17,8 @@ import UserManager from "../../util/UserManager";
 import PopupManager from "../../util/PopupManager";
 import ProjectManager from "../../util/ProjectManager";
 import { WebClient } from "@incodelang/accounts-client";
+import UIManager from "../../util/UIManager";
+import ShareProject from "./ShareProject";
 
 interface Props {
   projectConfig: ProjectConfig;
@@ -84,7 +86,13 @@ export default function ProjectInviteManager(props: Props) {
                                       i18n.translate(
                                         "menu.share-project.share-with-others.invited.success.description"
                                       ),
-                                      () => {},
+                                      () => {
+                                        UIManager.showComponent(
+                                          <ShareProject
+                                            projectConfig={pConfig}
+                                          />
+                                        );
+                                      },
                                       true
                                     );
                                   }
