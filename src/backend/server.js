@@ -7,7 +7,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const serveIndex = require("serve-index");
-const { accountServer, data, postboxes } = require("@incodelang/accounts");
+const { accountServer } = require("@incodelang/accounts");
 const { users } = require("@incodelang/accounts");
 const { urlServer } = require("@incodelang/urlshorter");
 const template = require("./module/template");
@@ -16,7 +16,7 @@ const path = require("path");
 
 const app = express();
 
-app.get(["/app*", "/docs*"], (req, res) => {
+app.get(["/editor*", "/docs*", "/playground*"], (req, res) => {
   res.sendFile(path.join(__dirname, "..", "..", "dist", "index.html"));
 });
 

@@ -24,6 +24,7 @@ import Playground from "./Playground";
 import CreateProject from "./Project/CreateProject";
 import OpenProject from "./Project/OpenProject";
 import Settings from "./Settings/Settings";
+import Docs from "./Docs/Docs";
 
 export default function MainMenu() {
   return (
@@ -73,16 +74,9 @@ export default function MainMenu() {
             title={"menu.main.open.settings"}
           />
           <MenuItem
-            icon={faPlay}
-            onclick={() => {
-              UIManager.showComponent(<Playground />, "root");
-            }}
-            title={"menu.main.open.playground"}
-          />
-          <MenuItem
             icon={faBook}
             onclick={() => {
-              window.open("https://docs.incodelang.de/", "_blank");
+              UIManager.showComponent(<Docs />);
             }}
             title={"menu.main.open.documentation"}
           />

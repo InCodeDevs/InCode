@@ -7,8 +7,12 @@ import * as React from "react";
 import Container from "../components/Container";
 import MenuItemList from "../components/Menu/MenuItemList";
 import MenuItem from "../components/Menu/MenuItem";
-import { faFile, faTools } from "@fortawesome/free-solid-svg-icons";
+import { faFile, faPlay, faTools } from "@fortawesome/free-solid-svg-icons";
 import Title from "../components/Title";
+import UIManager from "../util/UIManager";
+import Docs from "./Docs/Docs";
+import Playground from "./Playground";
+import MainMenu from "./MainMenu";
 
 export default function SelectApp() {
   return (
@@ -19,14 +23,21 @@ export default function SelectApp() {
           <MenuItem
             icon={faTools}
             onclick={() => {
-              window.location.assign("/app");
+              UIManager.showComponentWithURL(<MainMenu />, "/editor");
             }}
             title={"menu.select-app.editor"}
           />
           <MenuItem
+            icon={faPlay}
+            onclick={() => {
+              UIManager.showComponentWithURL(<Playground />, "/playground");
+            }}
+            title={"menu.select-app.playground"}
+          />
+          <MenuItem
             icon={faFile}
             onclick={() => {
-              window.location.assign("/docs");
+              UIManager.showComponentWithURL(<Docs />, "/docs");
             }}
             title={"menu.select-app.docs"}
           />

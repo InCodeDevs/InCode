@@ -21,6 +21,15 @@ export default class UIManager {
     }
   }
 
+  public static showComponentWithURL(
+    component: React.ReactElement,
+    url: string,
+    containerID: string = "root"
+  ) {
+    UIManager.showComponent(component, containerID);
+    window.history.pushState({}, "", url);
+  }
+
   public static unmountAt(containerID: string) {
     ReactDOM.unmountComponentAtNode(
       document.querySelector("#" + containerID) as HTMLElement
