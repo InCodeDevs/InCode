@@ -18,7 +18,7 @@ export default class RouteManager {
       if (lastPathname !== location.pathname) {
         lastPathname = location.pathname;
 
-        if (location.pathname.startsWith("/app")) {
+        if (location.pathname.startsWith("/editor")) {
           new KeyManager();
           UIManager.showComponent(<MainMenu />);
         } else if (location.pathname.startsWith("/docs")) {

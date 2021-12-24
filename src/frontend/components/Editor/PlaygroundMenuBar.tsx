@@ -15,7 +15,7 @@ export default function PlaygroundMenuBar() {
       <MenuBar
         menuItems={[
           {
-            label: i18n.translate("menu.main"),
+            label: i18n.translate("menu.back.select-app"),
             onClick: () => {
               UIManager.showComponentWithURL(<SelectApp />, "/");
             },

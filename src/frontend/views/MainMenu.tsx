@@ -25,6 +25,7 @@ import CreateProject from "./Project/CreateProject";
 import OpenProject from "./Project/OpenProject";
 import Settings from "./Settings/Settings";
 import Docs from "./Docs/Docs";
+import SelectAppMenuItem from "../components/Menu/SelectAppMenuItem";
 
 export default function MainMenu() {
   return (
@@ -73,13 +74,7 @@ export default function MainMenu() {
             }}
             title={"menu.main.open.settings"}
           />
-          <MenuItem
-            icon={faBook}
-            onclick={() => {
-              UIManager.showComponent(<Docs />);
-            }}
-            title={"menu.main.open.documentation"}
-          />
+          <SelectAppMenuItem />
         </MenuItemList>
       </Container>
       <UserIndicator />

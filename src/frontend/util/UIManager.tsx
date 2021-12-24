@@ -30,6 +30,10 @@ export default class UIManager {
     window.history.pushState({}, "", url);
   }
 
+  public static silentRedirect(url: string) {
+    window.history.pushState({}, "", url);
+  }
+
   public static unmountAt(containerID: string) {
     ReactDOM.unmountComponentAtNode(
       document.querySelector("#" + containerID) as HTMLElement

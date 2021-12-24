@@ -6,7 +6,6 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const serveIndex = require("serve-index");
 const { accountServer } = require("@incodelang/accounts");
 const { users } = require("@incodelang/accounts");
 const { urlServer } = require("@incodelang/urlshorter");
