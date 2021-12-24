@@ -81,8 +81,22 @@ export default function InviteManager() {
                                 ).code,
                                 publicData: invite.public_data,
                               };
-                              await ProjectManager.saveProject(projectConfig);
-                              ProjectManager.openProject(projectConfig);
+
+                              await ProjectManager.addToProjectList(
+                                invite.project_name
+                              );
+                              await new WebClient("").storeData_u(
+                                UserManager.getUsername(),
+                                UserManager.getToken(),
+                                JSON.stringify({
+                                  type: "code",
+                                  name: invite.project_name,
+                                  code: "",
+                                  publicData: invite.public_data,
+                                }),
+                                "projects." + invite.project_name
+                              );
+                              await ProjectManager.openProject(projectConfig);
                             }
                           );
                         },

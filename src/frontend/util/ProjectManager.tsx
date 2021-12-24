@@ -283,6 +283,35 @@ export default class ProjectManager {
       });
   }
 
+  public static async addToProjectList(projectName: string) {
+    let currentProjects = await client.getData_u(
+      UserManager.getUsername(),
+      UserManager.getToken(),
+      "projects"
+    );
+
+    let projects: any[] = [];
+
+    try {
+      projects = JSON.parse(currentProjects);
+    } catch (e) {
+      if (currentProjects === "The data was not found.") {
+        projects = [];
+      } else {
+        projects = currentProjects;
+      }
+      console.log(projects);
+    }
+
+    projects.push(projectName);
+    await client.storeData_u(
+      UserManager.getUsername(),
+      UserManager.getToken(),
+      projects,
+      "projects"
+    );
+  }
+
   public static isEmptyResponse(response: any): boolean {
     return (
       response === {} ||
