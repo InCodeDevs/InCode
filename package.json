@@ -14,7 +14,8 @@
     "prettier:check": "yarn prettier --check src/**/*.{ts,tsx,js}",
     "prettier:write": "yarn prettier --write src/**/*.{ts,tsx,js}",
     "docker:build": "docker build . -t\"mctzock/incode-editor\"",
-    "docker:deploy": "docker push mctzock/incode-editor"
+    "docker:deploy": "docker push mctzock/incode-editor",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -47,6 +48,7 @@
     "eslint": "^8.3.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^7.0.4",
     "node-sass": "^6.0.1",
     "prettier": "^2.5.0",
     "sass-loader": "^12.3.0",
