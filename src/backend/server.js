@@ -25,7 +25,7 @@ app.use(cors());
 app.use(bodyParser());
 
 accountServer({ app: app, disable: {} });
-urlServer({ app: app, prefix: "app" });
+urlServer({ app: app, prefix: "project" });
 
 app.post("/api/v1/templates", (req, res) => {
   if (
