@@ -2,6 +2,7 @@
  * @author Ben Siebert <ben@mctzock.de>
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
+import UserManager from "./UserManager";
 
 export default class PushNotificationManager {
   public static applicationServerKey =
@@ -13,6 +14,16 @@ export default class PushNotificationManager {
       userVisibleOnly: true,
       applicationServerKey: PushNotificationManager.applicationServerKey,
     });
-    console.log(JSON.stringify(push));
+    await fetch("/api/v1/push/subscription", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: UserManager.getUsername(),
+        token: UserManager.getToken(),
+        subscription: push,
+      }),
+    });
   }
 }

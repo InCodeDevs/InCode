@@ -76,26 +76,34 @@ export default function ProjectInviteManager(props: Props) {
                                 pConfig.publicData,
                                 username
                               )
-                              .then(() => {
-                                console.log(pConfig.publicData);
-                                ProjectManager.saveProject(pConfig, true).then(
+                              .then(async () => {
+                                await fetch("/api/v1/push/send", {
+                                  method: "POST",
+                                  headers: {
+                                    "Content-Type": "application/json",
+                                  },
+                                  body: JSON.stringify({
+                                    username: username,
+                                    message:
+                                      "Einladung von " +
+                                      UserManager.getUsername() +
+                                      " zum Projekt " +
+                                      pConfig.name,
+                                  }),
+                                });
+                                await ProjectManager.saveProject(pConfig, true);
+                                PopupManager.showPopup(
+                                  "Alert",
+                                  "menu.share-project.share-with-others.invited.success",
+                                  i18n.translate(
+                                    "menu.share-project.share-with-others.invited.success.description"
+                                  ),
                                   () => {
-                                    PopupManager.showPopup(
-                                      "Alert",
-                                      "menu.share-project.share-with-others.invited.success",
-                                      i18n.translate(
-                                        "menu.share-project.share-with-others.invited.success.description"
-                                      ),
-                                      () => {
-                                        UIManager.showComponent(
-                                          <ShareProject
-                                            projectConfig={pConfig}
-                                          />
-                                        );
-                                      },
-                                      true
+                                    UIManager.showComponent(
+                                      <ShareProject projectConfig={pConfig} />
                                     );
-                                  }
+                                  },
+                                  true
                                 );
                               });
                           });

@@ -3,15 +3,19 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
+const fs = require("fs");
+const path = require("path");
 const bodyParser = require("body-parser");
 const { accountServer } = require("@incodelang/accounts");
 const { users } = require("@incodelang/accounts");
 const { urlServer } = require("@incodelang/urlshorter");
+
 const template = require("./module/template");
-const fs = require("fs");
-const path = require("path");
+const push = require("./module/pushNotifications");
 
 const app = express();
 
@@ -47,7 +51,6 @@ app.post("/api/v1/templates", (req, res) => {
       res.status(401);
       res.end(JSON.stringify(users.login(username, token)));
     }
-    return;
   } else {
     res.status(400);
     res.end(
@@ -98,6 +101,46 @@ app.delete("/api/v1/templates", (req, res) => {
     res.status(401);
     res.end(JSON.stringify(users.login(username, token)));
   }
+});
+
+app.post("/api/v1/push/subscription", (req, res) => {
+  if (!req.body.username || !req.body.token || !req.body.subscription) {
+    res.status(400);
+    res.end(
+      JSON.stringify({
+        error: true,
+        message: "Invalid Request body.",
+      })
+    );
+    return;
+  }
+  res.status(200);
+  res.end(
+    JSON.stringify(
+      push.setSubscription(
+        req.body.username,
+        req.body.token,
+        req.body.subscription
+      )
+    )
+  );
+});
+
+app.post("/api/v1/push/send", (req, res) => {
+  if (!req.body.username || !req.body.message) {
+    res.status(400);
+    res.end(
+      JSON.stringify({
+        error: true,
+        message: "Invalid Request body.",
+      })
+    );
+    return;
+  }
+  res.status(200);
+  res.end(
+    JSON.stringify(push.sendNotification(req.body.username, req.body.message))
+  );
 });
 
 app.use((req, res, next) => {
