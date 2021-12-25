@@ -10,6 +10,7 @@ import CommandPaletteManager from "./util/CommandPaletteManager";
 import OpenCommand from "./util/commands/OpenCommand";
 import CreateCommand from "./util/commands/CreateCommand";
 import RouteManager from "./util/RouteManager";
+import ServiceWorker from "./util/ServiceWorker";
 
 if (!Settings.isValid()) {
   Settings.reset();
@@ -21,4 +22,6 @@ CommandPaletteManager.registerCommand(new CreateCommand());
 window.onload = () => {
   new InteractionManager();
   RouteManager.manage();
+
+  ServiceWorker.register();
 };

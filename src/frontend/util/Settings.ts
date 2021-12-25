@@ -23,6 +23,7 @@ export default class Settings {
     settings["codeEditor.theme"] = "incode-dark";
     settings["codeEditor.lineNumbers"] = true;
     settings["language"] = "de";
+    settings["pushNotifications"] = false;
     BrowserStorage.store("settings", JSON.stringify(settings));
   }
 
