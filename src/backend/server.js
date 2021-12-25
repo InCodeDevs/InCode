@@ -16,12 +16,15 @@ const { urlServer } = require("@incodelang/urlshorter");
 
 const template = require("./module/template");
 const push = require("./module/pushNotifications");
+const chalk = require("chalk");
 
 const app = express();
 
 app.get(["/editor*", "/docs*", "/playground*"], (req, res) => {
   res.sendFile(path.join(__dirname, "..", "..", "dist", "index.html"));
 });
+
+require("./module/logger")(app);
 
 app.use(express.static(path.join(__dirname, "..", "..", "dist")));
 app.use(cors());
