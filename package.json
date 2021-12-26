@@ -60,6 +60,7 @@
     "webpack-cli": "^4.9.1"
   },
   "dependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.16.5",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
@@ -69,7 +70,13 @@
     "@incodelang/accounts-client": "^1.0.11",
     "@incodelang/templates": "^1.0.2",
     "@incodelang/urlshorter": "^1.0.2",
+    "@mdx-js/loader": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
     "@monaco-editor/react": "^4.3.1",
+    "@types/mdx": "^2.0.1",
+    "@types/mdx-js__react": "^1.5.5",
+    "@types/react-router-dom": "^5.3.2",
+    "babel-loader": "^8.2.3",
     "blockly": "^6.20210701.0",
     "body-parser": "^1.19.0",
     "chalk": "^4.1.2",

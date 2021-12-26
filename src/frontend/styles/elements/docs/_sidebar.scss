@@ -1,0 +1,35 @@
+/**
+ * @author Ben Siebert <ben@mctzock.de>
+ * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
+ */
+
+@import "../../var";
+
+.docs-sidebar {
+  margin: 0;
+  padding: 2rem;
+  flex: 20%;
+  min-height: 100%;
+  background: darken($stdBackground, 4%);
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  li {
+    flex: 100%;
+    padding: 2rem;
+  }
+
+  a {
+    color: $stdAccent;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-family: monospace;
+    &:hover {
+      background-color: black;
+    }
+  }
+}

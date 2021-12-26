@@ -22,7 +22,15 @@ export default class RouteManager {
           new KeyManager();
           UIManager.showComponent(<MainMenu />);
         } else if (location.pathname.startsWith("/docs")) {
-          UIManager.showComponent(<Docs />);
+          if (location.pathname === "/docs" || location.pathname === "/docs/") {
+            if (navigator.language.includes("de")) {
+              location.pathname = "/docs/de/intro";
+            } else {
+              location.pathname = "/docs/en/intro";
+            }
+          } else {
+            UIManager.showComponent(<Docs />);
+          }
         } else if (location.pathname.startsWith("/playground")) {
           UIManager.showComponent(<Playground />);
         } else if (location.pathname === "/") {
