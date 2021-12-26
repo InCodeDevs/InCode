@@ -3,14 +3,36 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 
+@import "../../var";
+
 .docs {
   display: flex;
   width: 100%;
   min-height: 100vh;
+  overflow: auto;
 }
 
 .docs-md {
   flex: 80%;
-  height: 100%;
   padding: 2rem;
+  background: darken($stdBackground, 10%);
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: scroll;
+  * {
+    color: #FAFAFA;
+  }
+
+  pre {
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    background: rgb(22, 27, 34);
+    border-radius: 6px;
+    width: min-content;
+    * {
+      font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+    }
+  }
 }

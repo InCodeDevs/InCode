@@ -8,6 +8,7 @@ import Sidebar from "../../components/Docs/Sidebar";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Intro_EN from "../../../docs/intro.mdx";
 import Intro_DE from "../../../docs/de/intro.mdx";
+import OpenSource_DE from "../../../docs/de/open-source.mdx";
 
 const languages = {
   en: "English",
@@ -38,6 +39,13 @@ export default function Docs() {
               exact
               component={Intro_DE}
             />
+
+            <Route
+              path={["/docs/de", "/docs/de/open-source"]}
+              exact
+              component={OpenSource_DE}
+            />
+
             <Route
               path={["/docs/en", "/docs/en/intro"]}
               exact
