@@ -35,4 +35,13 @@
       font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
     }
   }
+  .fw {
+    width: 100%;
+  }
+
+  .fw-child {
+   * {
+     width: 100%;
+   }
+  }
 }
