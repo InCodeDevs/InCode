@@ -3,7 +3,7 @@ name: DevOps
 on:
   push:
     branches:
-      - dev-v4.0.0
+      - v4.x
 jobs:
   lint:
     name: ESLint
