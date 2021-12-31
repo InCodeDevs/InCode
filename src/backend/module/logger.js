@@ -76,7 +76,6 @@ module.exports = (app) => {
   process.on("SIGINT", exitHandler);
   process.on("SIGUSR1", exitHandler);
   process.on("SIGUSR2", exitHandler);
-  process.on("SIGKILL", exitHandler);
 };
 
 function exitHandler() {
