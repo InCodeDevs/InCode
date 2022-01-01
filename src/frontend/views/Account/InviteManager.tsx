@@ -145,3 +145,5 @@ export default function InviteManager() {
     </>
   );
 }
+
+InviteManager.displayName = "InviteManager";

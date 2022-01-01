@@ -124,3 +124,5 @@ export default function OpenProject() {
 
   return <>{container}</>;
 }
+
+OpenProject.displayName = "OpenProject";

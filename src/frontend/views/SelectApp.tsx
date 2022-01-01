@@ -46,3 +46,5 @@ export default function SelectApp() {
     </>
   );
 }
+
+SelectApp.displayName = "SelectApp";

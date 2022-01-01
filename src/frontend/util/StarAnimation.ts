@@ -22,9 +22,9 @@ export default class StarAnimation {
 
   public static update(element: React.ReactElement) {
     // @ts-ignore
-    console.log(element.type.name);
+    console.log(element.type);
     // @ts-ignore
-    if (StarAnimation.enabled.includes(element.type.name)) {
+    if (StarAnimation.enabled.includes(element.type.displayName)) {
       (document.getElementById("stars") as HTMLDivElement).style.visibility =
         "visible";
       (document.getElementById("stars2") as HTMLDivElement).style.visibility =

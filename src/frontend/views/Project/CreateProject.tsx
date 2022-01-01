@@ -161,3 +161,5 @@ export default function CreateProject() {
     </>
   );
 }
+
+CreateProject.displayName = "CreateProject";

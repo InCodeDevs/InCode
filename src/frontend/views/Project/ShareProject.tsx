@@ -117,3 +117,5 @@ export default function ShareProject(props: Props) {
     </Container>
   );
 }
+
+ShareProject.displayName = "ShareProject";

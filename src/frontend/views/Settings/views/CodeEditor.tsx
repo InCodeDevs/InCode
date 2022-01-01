@@ -39,3 +39,5 @@ export default function CodeEditor() {
     </>
   );
 }
+
+CodeEditor.displayName = "Settings.CodeEditor";

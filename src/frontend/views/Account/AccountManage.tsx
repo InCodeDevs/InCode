@@ -201,3 +201,5 @@ export default function AccountManage() {
     </Container>
   );
 }
+
+AccountManage.displayName = "AccountManage";

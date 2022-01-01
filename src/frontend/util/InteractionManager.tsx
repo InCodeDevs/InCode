@@ -37,9 +37,7 @@ export default class InteractionManager {
             <li>
               Version:&nbsp;
               <a
-                href={
-                  "https://github.com/InCodeDevs/Editor/tree/dev-v" + version
-                }
+                href={"https://github.com/InCodeDevs/Editor/tree/v4.x"}
                 target={"_blank"}
               >
                 {version}

@@ -137,3 +137,5 @@ export default function ProjectInviteManager(props: Props) {
     </>
   );
 }
+
+ProjectInviteManager.displayName = "ProjectInviteManager";

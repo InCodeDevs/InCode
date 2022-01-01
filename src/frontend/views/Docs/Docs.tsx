@@ -60,3 +60,5 @@ export default function Docs() {
     </div>
   );
 }
+
+Docs.displayName = "Docs";

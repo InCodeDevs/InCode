@@ -83,3 +83,5 @@ export default function CreateProjectTemplate(props: Props) {
     </>
   );
 }
+
+CreateProjectTemplate.displayName = "CreateProjectTemplate";

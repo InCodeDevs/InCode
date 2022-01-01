@@ -38,3 +38,5 @@ export default function Login() {
     </Container>
   );
 }
+
+Login.displayName = "Login";

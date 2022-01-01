@@ -164,3 +164,5 @@ export default function AccountRegister() {
     </Container>
   );
 }
+
+AccountRegister.displayName = "AccountRegister";

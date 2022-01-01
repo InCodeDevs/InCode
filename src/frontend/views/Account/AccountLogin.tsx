@@ -84,3 +84,5 @@ export default function AccountLogin() {
     </Container>
   );
 }
+
+AccountLogin.displayName = "AccountLogin";

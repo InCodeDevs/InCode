@@ -17,3 +17,5 @@ export default function Playground() {
     </>
   );
 }
+
+Playground.displayName = "Playground";

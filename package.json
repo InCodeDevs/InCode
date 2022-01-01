@@ -10,6 +10,7 @@
     "express:prod-start": "yarn webpack:build-dev && node ./src/backend/server.js",
     "express:only-start": "node ./src/backend/server.js",
     "express:live-start": "yarn concurrently \"yarn webpack --watch\" \"yarn express:only-start\"",
+    "express:live-start:prod": "yarn concurrently \"yarn webpack --watch --mode production\" \"yarn express:only-start\"",
     "lint": "yarn eslint --ext .ts,.tsx,.js",
     "prettier:check": "yarn prettier --check src/**/*.{ts,tsx,js}",
     "prettier:write": "yarn prettier --write src/**/*.{ts,tsx,js}",

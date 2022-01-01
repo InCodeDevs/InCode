@@ -40,3 +40,5 @@ export default function ProjectEditor(props: Props) {
     </>
   );
 }
+
+ProjectEditor.displayName = "ProjectEditor";
