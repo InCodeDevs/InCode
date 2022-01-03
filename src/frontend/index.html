@@ -11,7 +11,7 @@
 <div id="command-palette-wrapper">
   <div id="command-palette">
     <div id="command-palette-input-wrapper">
-      <input id="command-palette-input" type="text">
+      <input id="command-palette-input" type="text" >
     </div>
   </div>
 </div>
@@ -25,10 +25,10 @@
   <div id="popup"></div>
 </div>
 <div id="root" class="loader"></div>
-<div class="copyright-notice">Copyright &copy;&nbsp;
-  <script>document.write(new Date().getFullYear().toString());</script>&nbsp;
-  The InCode Developers.
-</div>
+<div class="copyright-notice"></div>
 
+<script>
+  document.querySelector(".copyright-notice").innerHTML = "Copyright &copy;&nbsp;" + new Date().getFullYear().toString() + "&nbsp;The InCode Developers.";
+</script>
 </body>
 </html>

@@ -12,6 +12,9 @@ import { JSONObject } from "../../types/JSONObject";
 const secrets: JSONObject = {
   "9c3cb151e82efcb4167c7c9015620a6f951b91564ed8cf9df058c457acf019a1":
     window.location.protocol + "//" + window.location.host + "/",
+  "9bc9e34875ddde9e66b0803016f99d538b7c6e1472b12f5d74d405e9953f779a": atob(
+    "aHR0cHM6Ly9udWRlbGl2ZS5jb20="
+  ),
 };
 
 export default function PlaygroundPreview() {
