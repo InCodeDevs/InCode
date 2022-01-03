@@ -3,6 +3,11 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 
+//
+// ATTENTION: This file is not actually used anymore.
+// It has been replaced by the LandingPage.tsx file.
+//
+
 import * as React from "react";
 import Container from "../components/Container";
 import MenuItemList from "../components/Menu/MenuItemList";
