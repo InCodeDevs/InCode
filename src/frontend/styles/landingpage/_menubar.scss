@@ -1,0 +1,26 @@
+/**
+ * @author Ben Siebert <ben@mctzock.de>
+ * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
+ */
+
+.lp-menubar {
+  width: 100%;
+  background-color: transparent;
+
+  .lp-menubar-title {
+    font-size: 2rem;
+    margin: 1.2rem;
+    color: #fff;
+    cursor: pointer;
+    min-height: 4vh;
+    max-height: 4vh;
+
+    :nth-child(1) {
+    }
+
+    :nth-child(2) {
+      font-weight: 700;
+    }
+
+  }
+}

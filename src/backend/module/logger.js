@@ -65,7 +65,7 @@ module.exports = (app) => {
     __old(
       "[" +
         method(req.method) +
-        "] " +
+        "]\t" +
         chalk.yellow(req.socket.remoteAddress) +
         "\t" +
         req.path

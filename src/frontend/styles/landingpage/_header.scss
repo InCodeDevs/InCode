@@ -1,0 +1,25 @@
+/**
+ * @author Ben Siebert <ben@mctzock.de>
+ * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
+ */
+
+.lp-header {
+  height: 96vh;
+  width: 100%;
+}
+
+.lp-header-title {
+  color: #fff;
+  font-size: 7rem;
+  font-weight: 700;
+  padding: 0;
+  text-align: center;
+
+  @media (max-width: 900px) {
+    font-size: 4rem;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 2.5rem;
+  }
+}

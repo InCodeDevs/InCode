@@ -10,6 +10,7 @@ import Docs from "../views/Docs/Docs";
 import Playground from "../views/Playground";
 import SelectApp from "../views/SelectApp";
 import * as React from "react";
+import LandingPage from "../views/LandingPage";
 
 export default class RouteManager {
   public static async manage() {
@@ -34,7 +35,8 @@ export default class RouteManager {
         } else if (location.pathname.startsWith("/playground")) {
           UIManager.showComponent(<Playground />);
         } else if (location.pathname === "/") {
-          UIManager.showComponent(<SelectApp />);
+          UIManager.showComponent(<LandingPage />);
+          // UIManager.showComponent(<SelectApp />);
         }
       }
     }, 250);

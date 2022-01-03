@@ -1,0 +1,21 @@
+/**
+ * @author Ben Siebert <ben@mctzock.de>
+ * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
+ */
+
+@import "menubar";
+@import "header";
+@import "buttons";
+
+.lp {
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  background: #090909;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  overflow: auto;
+  display: flex;
+}

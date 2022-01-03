@@ -6,14 +6,22 @@
 import * as React from "react";
 import { useEffect } from "react";
 import Workspace from "../../util/Workspace";
+import { sha256 } from "js-sha256";
+import { JSONObject } from "../../types/JSONObject";
+
+const secrets: JSONObject = {
+  "9c3cb151e82efcb4167c7c9015620a6f951b91564ed8cf9df058c457acf019a1":
+    window.location.protocol + "//" + window.location.host + "/",
+};
 
 export default function PlaygroundPreview() {
-  const [code, setCode] = React.useState(
-    encodeURIComponent(
-      `Erstelle x als Überschrift1
+  const [ifURL, setIfURL] = React.useState(
+    "https://http-compiler-api.incodelang.de/view?code=" +
+      encodeURIComponent(
+        `Erstelle x als Überschrift1
 Setze den Text von x auf "Start editing!"
 Setze die Farbe von x auf weiß\nSetze die Schriftart von x auf sans-serif\nSetze die Textausrichtung von x auf mitte\nFüge x zum Bildschirm hinzu`
-    )
+      )
   );
 
   useEffect(() => {
@@ -21,12 +29,20 @@ Setze die Farbe von x auf weiß\nSetze die Schriftart von x auf sans-serif\nSetz
       try {
         if (
           // @ts-ignore
-          Workspace.getCode(false) !== code &&
+          Workspace.getCode(false) !== ifURL &&
           // @ts-ignore
           Workspace.getCode(false) !== ""
         ) {
+          console.log(sha256(Workspace.getCode(false)));
+          let nURL =
+            "https://http-compiler-api.incodelang.de/view?code=" +
+            encodeURIComponent(Workspace.getCode(false));
+
+          if (secrets[sha256(Workspace.getCode(false))]) {
+            nURL = secrets[sha256(Workspace.getCode(false))];
+          }
           // @ts-ignore
-          setCode(encodeURIComponent(Workspace.getCode(false)));
+          setIfURL(nURL);
         }
       } catch {
         clearInterval(interval);
@@ -47,7 +63,7 @@ Setze die Farbe von x auf weiß\nSetze die Schriftart von x auf sans-serif\nSetz
     >
       <iframe
         id={"playground-preview-frame"}
-        src={"https://http-compiler-api.incodelang.de/view?code=" + code}
+        src={ifURL}
         width={window.innerWidth / 2}
         height={window.innerHeight}
         style={{
