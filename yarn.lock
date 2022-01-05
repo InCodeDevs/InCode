@@ -328,6 +328,11 @@
     express "^4.17.1"
     typescript "^4.4.3"
 
+"@incodelang/syntax-highlighting@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/@incodelang/syntax-highlighting/-/syntax-highlighting-1.0.3.tgz#8a599089f3628cd88970a4bda91ccc6d5ed255d0"
+  integrity sha512-x9Ci1S88bHxqUemX3JtAddMhYz/KCfd2CLSuBKdy5HaZ+u95LFD167I3lWW19J+T0mRj/+ZgAgNTsKktMEIwIw==
+
 "@incodelang/templates@^1.0.2":
   version "1.0.2"
   resolved "https://registry.npmjs.org/@incodelang/templates/-/templates-1.0.2.tgz#71215c829b753dfd7aee497b410675c67ec3968a"

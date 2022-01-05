@@ -4,8 +4,10 @@
  */
 
 .lp-header {
-  height: 96vh;
-  width: 100%;
+  min-width: 100%;
+  min-height: 100vh;
+  height: 100vh;
+  flex: 90%;
 }
 
 .lp-header-title {
@@ -22,4 +24,10 @@
   @media (max-width: 500px) {
     font-size: 2.5rem;
   }
+}
+
+.lp-header-container {
+  top: 50%;
+  position: relative;
+  transform: translateY(-50%);
 }

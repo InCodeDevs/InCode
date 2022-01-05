@@ -4,8 +4,13 @@
  */
 
 .lp-menubar {
+  flex: 10%;
   width: 100%;
+  margin: 0;
   background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
 
   .lp-menubar-title {
     font-size: 2rem;

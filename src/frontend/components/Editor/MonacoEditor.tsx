@@ -11,6 +11,9 @@ import { Registry } from "../../util/Registry";
 export interface MonacoProps {
   mode: "playground" | "project";
   code?: string;
+  readonly?: boolean;
+  width?: string;
+  height?: string;
 }
 
 export default function MonacoEditor(props: MonacoProps) {
@@ -193,8 +196,8 @@ export default function MonacoEditor(props: MonacoProps) {
 
   return (
     <Editor
-      height={"100vh"}
-      width={"50%"}
+      height={!props.height ? "100vh" : props.height}
+      width={!props.width ? "50%" : props.width}
       language={"incode"}
       className={"incode-monaco-editor"}
       theme={Settings.getSetting("codeEditor.theme")}
@@ -215,6 +218,7 @@ export default function MonacoEditor(props: MonacoProps) {
         minimap: {
           enabled: true,
         },
+        readOnly: props.readonly,
       }}
       onChange={(newValue, e) => {
         setCode(newValue as string);

@@ -8,12 +8,15 @@ import LP from "./LP";
 import Container from "../Container";
 import UIManager from "../../util/UIManager";
 
-export default function Header() {
+interface Props {
+  children: React.ReactNode;
+}
+
+export default function Header(props: Props) {
   return (
     <>
-      <LP.MenuBar />
       <div className="lp-header">
-        <Container centered>
+        <div className={"lp-header-container"}>
           <div className="lp-header-title">
             <span>Einfach Programmieren</span>
           </div>
@@ -40,7 +43,8 @@ export default function Header() {
               }}
             />
           </div>
-        </Container>
+        </div>
+        {props.children}
       </div>
     </>
   );
