@@ -11,6 +11,7 @@ import SyntaxHighlighter from "../../util/SyntaxHighlighter";
 
 interface Props {
   code: string;
+  className?: string;
 }
 
 export default function InCodeBlock(props: Props) {
@@ -23,7 +24,7 @@ export default function InCodeBlock(props: Props) {
   }, []);
   return (
     <>
-      <pre>
+      <pre className={props.className || ""}>
         <code id={id}>{props.code}</code>
       </pre>
     </>

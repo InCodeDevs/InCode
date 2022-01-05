@@ -19,6 +19,7 @@
   min-height: 100vh;
   max-height: 100vh;
   overflow: scroll;
+
   * {
     color: #FAFAFA;
   }
@@ -31,17 +32,23 @@
     background: rgb(22, 27, 34);
     border-radius: 6px;
     width: min-content;
+
     * {
-      font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+      font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
     }
   }
+
   .fw {
     width: 100%;
   }
 
   .fw-child {
-   * {
-     width: 100%;
-   }
+    * {
+      width: 100%;
+    }
   }
+}
+
+ul li ul li {
+  margin-top: .6rem;
 }
