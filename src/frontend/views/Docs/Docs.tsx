@@ -9,7 +9,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Intro_EN from "../../../docs/intro.mdx";
 import Intro_DE from "../../../docs/de/intro.mdx";
 import OpenSource_DE from "../../../docs/de/open-source.mdx";
-import Test_DE from "../../../docs/de/test.mdx";
+import Syntax_DE from "../../../docs/de/syntax.mdx";
+import NF_DE from "../../../docs/de/not-found.mdx";
 
 const languages = {
   en: "English",
@@ -47,13 +48,19 @@ export default function Docs() {
               component={OpenSource_DE}
             />
 
-            <Route path={["/docs/de/test"]} exact component={Test_DE} />
+            <Route
+              path={"/docs/de/language-syntax"}
+              exact
+              component={Syntax_DE}
+            />
 
             <Route
               path={["/docs/en", "/docs/en/intro"]}
               exact
               component={Intro_EN}
             />
+
+            <Route path={"*"} component={NF_DE} />
           </Switch>
         </BrowserRouter>
       </div>
