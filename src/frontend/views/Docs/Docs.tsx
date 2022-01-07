@@ -11,6 +11,10 @@ import Intro_DE from "../../../docs/de/intro.mdx";
 import OpenSource_DE from "../../../docs/de/open-source.mdx";
 import Syntax_DE from "../../../docs/de/syntax.mdx";
 import NF_DE from "../../../docs/de/not-found.mdx";
+import Erstelle_DE from "../../../docs/de/syntax/befehl/erstelle.mdx";
+import Setze_DE from "../../../docs/de/syntax/befehl/setze.mdx";
+import Rufe_DE from "../../../docs/de/syntax/befehl/rufe.mdx";
+import Fuge_DE from "../../../docs/de/syntax/befehl/füge.mdx";
 
 const languages = {
   en: "English",
@@ -48,10 +52,30 @@ export default function Docs() {
               component={OpenSource_DE}
             />
 
+            <Route path={"/docs/de/syntax"} exact component={Syntax_DE} />
+
             <Route
-              path={"/docs/de/language-syntax"}
+              path={"/docs/de/syntax/befehl/erstelle"}
               exact
-              component={Syntax_DE}
+              component={Erstelle_DE}
+            />
+
+            <Route
+              path={"/docs/de/syntax/befehl/setze"}
+              exact
+              component={Setze_DE}
+            />
+
+            <Route
+              path={"/docs/de/syntax/befehl/rufe"}
+              exact
+              component={Rufe_DE}
+            />
+
+            <Route
+              path={"/docs/de/syntax/befehl/füge"}
+              exact
+              component={Fuge_DE}
             />
 
             <Route

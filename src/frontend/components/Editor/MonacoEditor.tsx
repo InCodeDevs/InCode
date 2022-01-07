@@ -82,7 +82,6 @@ export default function MonacoEditor(props: MonacoProps) {
           [/Zeilenumbruch/, "type"],
           [/Zeile/, "type"],
           [/Spalte/, "type"],
-          [/Zeilenumbruch/, "type"],
           [/Video/, "type"],
           [/Ton/, "type"],
           [/Fenster/, "type"],

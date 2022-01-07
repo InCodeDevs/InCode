@@ -1,0 +1,38 @@
+import Title from "../../../../frontend/components/Title";
+import InCodeBlock from "../../../../frontend/components/Landingpage/InCodeBlock";
+
+<Title size={1} title={"Befehl: Setze"} nol18n centered />
+
+## Kurzfassung
+
+Der Setze Befehl dient dazu eine Eigenschaft eines Objekts zu setzen.
+Außerdem kann der Setze Befehl dazu verwendet werden, den Wert einer Variable zu verändern.
+
+## Syntax
+
+| Syntax                                                    | Bedeutung                                                             |
+| --------------------------------------------------------- | --------------------------------------------------------------------- |
+| `Setze [den/die/das] <Eigenschaft> von <Name> auf <Wert>` | `Setzt die <Eigenschaft> von der Variable <Name> auf den Wert <Wert>` |
+
+## Beispiele
+
+Setzt die Variable `name` auf den Wert `"Max"`
+
+<InCodeBlock
+  code={'Setze den Wert von name auf "Max"'}
+  className={"fw fw-child"}
+/>
+
+Setzt die Farbe von der Variable `knopf` auf den Wert `rot`
+
+<InCodeBlock
+  code={"Setze die Farbe von knopf auf rot"}
+  className={"fw fw-child"}
+/>
+
+Setzt den Innenabstand von der Variable `knopf` auf den Wert `10`:
+
+<InCodeBlock
+  code={"Setze den Innerer-Abstand von knopf auf 10"}
+  className={"fw fw-child"}
+/>

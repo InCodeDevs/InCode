@@ -1,0 +1,34 @@
+import Title from "../../../../frontend/components/Title";
+import InCodeBlock from "../../../../frontend/components/Landingpage/InCodeBlock";
+
+<Title size={1} title={"Befehl: Erstelle"} nol18n centered />
+
+## Kurzfassung
+
+Der Erstelle Befehl dient dazu neue Objekte, wie Knöpfe oder Überschriften, zu erstellen.
+Außerdem kann der Erstelle Befehl dazu verwendet werden, eine neue Methode zu definieren.
+
+## Syntax
+
+| Syntax                        | Bedeutung                                      |
+| ----------------------------- | ---------------------------------------------- |
+| `Erstelle <Name>`             | Erstellt eine neue Variable ohne Typ und Wert. |
+| `Erstelle <Name> als <Typ>`   | Erstellt eine neue Variable mit Typ.           |
+| `Erstelle <Name> als Methode` | Erstellt eine neue Methode.                    |
+
+## Beispiele
+
+Erstellt einen neuen Knopf mit dem Namen x
+
+<InCodeBlock code={"Erstelle x als Knopf"} className={"fw fw-child"} />
+
+Erstellt eine neue Tabelle mit dem Namen tab
+
+<InCodeBlock code={"Erstelle tab als Tabelle"} className={"fw fw-child"} />
+
+Erstellt eine neue Methode, welche "Hallo Welt" in der Konsole ausgibt.
+
+<InCodeBlock
+  code={'Erstelle x als Methode\n\tGib"Hallo Welt" in der Konsole aus'}
+  className={"fw fw-child"}
+/>
