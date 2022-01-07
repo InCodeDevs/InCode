@@ -15,6 +15,7 @@ import Erstelle_DE from "../../../docs/de/syntax/befehl/erstelle.mdx";
 import Setze_DE from "../../../docs/de/syntax/befehl/setze.mdx";
 import Rufe_DE from "../../../docs/de/syntax/befehl/rufe.mdx";
 import Fuge_DE from "../../../docs/de/syntax/befehl/füge.mdx";
+import Wiederhole_DE from "../../../docs/de/syntax/befehl/wiederhole.mdx";
 
 const languages = {
   en: "English",
@@ -76,6 +77,12 @@ export default function Docs() {
               path={"/docs/de/syntax/befehl/füge"}
               exact
               component={Fuge_DE}
+            />
+
+            <Route
+              path={"/docs/de/syntax/befehl/wiederhole"}
+              exact
+              component={Wiederhole_DE}
             />
 
             <Route

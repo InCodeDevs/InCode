@@ -1,0 +1,34 @@
+import Title from "../../../../frontend/components/Title";
+import InCodeBlock from "../../../../frontend/components/Landingpage/InCodeBlock";
+
+<Title size={1} title={"Befehl: Wiederhole"} nol18n centered />
+
+## Kurzfassung
+
+Der Wiederhole Befehl dient dazu einen oder mehrere Befehle beliebig mal zu wiederholen.
+Außerdem kann er einen oder mehrere Befehle wiederholen, solange eine Bedingung erfüllt ist.
+
+## Syntax
+
+| Syntax                                                | Bedeutung                                                    |
+| ----------------------------------------------------- | ------------------------------------------------------------ |
+| `Wiederhole <Anzahl> mal`                             | `Wiederholt die Befehlsfolge <Anzahl> mal.`                  |
+| `Wiederhole solange <Variable> <Operator> <Wert> ist` | `Wiederholt die Befehlsfolge solange Bedingung erfüllt ist.` |
+
+## Beispiele
+
+Wiederholt eine Befehlsfolge 3 Mal:
+
+<InCodeBlock
+  code={'Wiederhole 3 mal\n\tGib "Hallo Welt" in der Konsole aus'}
+  className={"fw fw-child"}
+/>
+
+Wiederholt eine Befehlsfolge, solange die Variable `i` kleiner als 10 ist:
+
+<InCodeBlock
+  code={
+    'Wiederhole solange i kleiner 10 ist\n\tGib "Hallo Welt" in der Konsole aus\n\tSetze den Wert von i auf i+1'
+  }
+  className={"fw fw-child"}
+/>
