@@ -20,9 +20,11 @@ export default class RouteManager {
         lastPathname = location.pathname;
 
         if (location.pathname.startsWith("/editor")) {
+          this.show();
           new KeyManager();
           UIManager.showComponent(<MainMenu />);
         } else if (location.pathname.startsWith("/docs")) {
+          this.show();
           if (location.pathname === "/docs" || location.pathname === "/docs/") {
             if (navigator.language.includes("de")) {
               location.pathname = "/docs/de/intro";
@@ -33,12 +35,36 @@ export default class RouteManager {
             UIManager.showComponent(<Docs />);
           }
         } else if (location.pathname.startsWith("/playground")) {
+          this.show();
           UIManager.showComponent(<Playground />);
         } else if (location.pathname === "/") {
+          this.hide();
           UIManager.showComponent(<LandingPage />);
-          // UIManager.showComponent(<SelectApp />);
         }
       }
     }, 250);
+  }
+
+  private static hide() {
+    (document.querySelector("#stars") as HTMLDivElement).style.display = "none";
+    (document.querySelector("#stars2") as HTMLDivElement).style.display =
+      "none";
+    (document.querySelector("#stars3") as HTMLDivElement).style.display =
+      "none";
+    (
+      document.querySelector(".copyright-notice") as HTMLDivElement
+    ).style.display = "none";
+  }
+
+  private static show() {
+    (document.querySelector("#stars") as HTMLDivElement).style.display =
+      "block";
+    (document.querySelector("#stars2") as HTMLDivElement).style.display =
+      "block";
+    (document.querySelector("#stars3") as HTMLDivElement).style.display =
+      "block";
+    (
+      document.querySelector(".copyright-notice") as HTMLDivElement
+    ).style.display = "block";
   }
 }

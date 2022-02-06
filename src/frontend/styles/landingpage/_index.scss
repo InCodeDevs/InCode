@@ -4,23 +4,3 @@
  */
 
 @import "menubar";
-@import "header";
-@import "buttons";
-
-.lp-container {
-  display: flex;
-  width: 100%;
-  min-height: 100vh;
-  overflow: auto;
-  flex-direction: column;
-}
-
-.lp {
-  flex: 100%;
-  margin: 0;
-  width: 100%;
-  min-height: 100vh;
-  max-height: 100vh;
-  overflow-y: scroll;
-  background: #181818;
-}

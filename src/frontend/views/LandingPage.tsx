@@ -4,20 +4,33 @@
  */
 
 import * as React from "react";
-import LP from "../components/Landingpage/LP";
-import MonacoEditor from "../components/Editor/MonacoEditor";
-import MainMenu from "./MainMenu";
-import InCodeBlock from "../components/Landingpage/InCodeBlock";
-
+import { BrowserRouter, Link } from "react-router-dom";
 export default function LandingPage() {
   return (
-    <div className={"lp-container"}>
-      <div className={"lp"}>
-        <LP.MenuBar />
-        <LP.Header />
-        <InCodeBlock code={"Erstelle x als Knopf Erstelle"} />
-      </div>
-    </div>
+    <>
+      <BrowserRouter>
+        <div>
+          <div className={"lp-menubar"}>
+            <div className={"lp-menubar-brand"}>
+              <img
+                src={"/assets/incode-400.png"}
+                width={48}
+                height={48}
+                alt={"Logo"}
+              />
+              <h1>
+                <b>In</b>Code
+              </h1>
+            </div>
+            <div className={"lp-menubar-items"}>
+              <Link to={"/editor"}>Editor</Link>
+              <Link to={"/docs"}>Dokumentation</Link>
+              <Link to={"/playground"}>Playground</Link>
+            </div>
+          </div>
+        </div>
+      </BrowserRouter>
+    </>
   );
 }
 LandingPage.displayName = "LandingPage";
