@@ -6,6 +6,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
 
 .lp-menubar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

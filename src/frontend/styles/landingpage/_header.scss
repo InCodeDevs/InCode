@@ -1,0 +1,66 @@
+/**
+ * @author Ben Siebert <ben@mctzock.de>
+ * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.lp-header {
+  display: flex;
+  height: 105vh;
+  width: 100%;
+  background: #000;
+  color: #FFF;
+  flex-direction: row;
+  align-items: center;
+
+  .lp-header-left {
+    flex: 100%;
+    text-align: center;
+
+    .lp-header-title {
+      font-size: 6rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      font-family: 'Pacifico', cursive;
+    }
+
+    p {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+  }
+  .lp-header-scroll-down {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3.5rem;
+    cursor: pointer;
+    animation: showAfterDraw 4s linear forwards;
+  }
+}
+
+@keyframes showAfterDraw {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.lp-ic-svg {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dashdraw 5.5s linear forwards;
+}
+
+@keyframes dashdraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

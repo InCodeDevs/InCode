@@ -4,3 +4,14 @@
  */
 
 @import "menubar";
+@import "header";
+
+.lp {
+  scroll-behavior: smooth;
+}
+
+#lp-about {
+  height: 105vh;
+  width: 100%;
+  background-color: black;
+}
