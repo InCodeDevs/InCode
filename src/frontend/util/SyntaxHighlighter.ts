@@ -51,7 +51,7 @@ export default class SyntaxHighlighter {
           /Knopf/gi,
           /Absatz/gi,
           /Textdekoration/gi,
-          /Bildschrim/gi,
+          /Bildschirm/gi,
           /Bild/gi,
           /Überschrift/gi,
           /Eingabefeld/gi,
@@ -163,6 +163,7 @@ export default class SyntaxHighlighter {
       {
         name: "subword",
         match: [
+          /hinzu/gi,
           /den/gi,
           /die/gi,
           /das/gi,
@@ -180,7 +181,6 @@ export default class SyntaxHighlighter {
           /in/gi,
           /zum/gi,
           /zu/gi,
-          /hinzu/gi,
         ],
         style: {
           color: "#626161",
