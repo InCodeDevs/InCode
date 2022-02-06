@@ -1,0 +1,31 @@
+/**
+ * @author Ben Siebert <ben@mctzock.de>
+ * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
+ */
+
+.lp-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  max-width: 50%;
+}
+
+.lp-button {
+  border: 1px solid #fff;
+  border-radius: 0.5rem;
+  padding: 1.2rem;
+  background-color: transparent;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 320ms ease, color 320ms ease;
+
+  &:hover {
+    background-color: #FFF;
+    color: #000;
+  }
+}
