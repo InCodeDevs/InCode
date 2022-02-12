@@ -141,8 +141,12 @@ app.post("/api/v1/push/send", (req, res) => {
     return;
   }
   res.status(200);
+  // JSON.stringify(push.sendNotification(req.body.username, req.body.message))
   res.end(
-    JSON.stringify(push.sendNotification(req.body.username, req.body.message))
+    JSON.stringify({
+      error: false,
+      message: "This feature is currently unavailable.",
+    })
   );
 });
 
