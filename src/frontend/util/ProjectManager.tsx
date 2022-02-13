@@ -249,7 +249,7 @@ export default class ProjectManager {
     const currentCode = Workspace.getCode();
 
     const response = (
-      await fetch("https://http-compiler-api.incodelang.de/compiled", {
+      await fetch("/api/v1/compiler/compiled", {
         method: "POST",
         mode: "cors",
         headers: {

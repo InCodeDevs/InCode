@@ -19,7 +19,7 @@ const secrets: JSONObject = {
 
 export default function PlaygroundPreview() {
   const [ifURL, setIfURL] = React.useState(
-    "https://http-compiler-api.incodelang.de/view?code=" +
+    "/api/v1/compiler/view?code=" +
       encodeURIComponent(
         `Erstelle x als Überschrift1
 Setze den Text von x auf "Start editing!"
@@ -38,7 +38,7 @@ Setze die Farbe von x auf weiß\nSetze die Schriftart von x auf sans-serif\nSetz
         ) {
           console.log(sha256(Workspace.getCode(false)));
           let nURL =
-            "https://http-compiler-api.incodelang.de/view?code=" +
+            "/api/v1/compiler/view?code=" +
             encodeURIComponent(Workspace.getCode(false));
 
           if (secrets[sha256(Workspace.getCode(false))]) {

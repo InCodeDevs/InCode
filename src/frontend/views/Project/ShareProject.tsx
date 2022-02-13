@@ -80,8 +80,7 @@ export default function ShareProject(props: Props) {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
-                target:
-                  "https://http-compiler-api.incodelang.de/view?code=" + code,
+                target: "/api/v1/compiler/view?code=" + code,
               }),
             })
               .then((r) => r.json())

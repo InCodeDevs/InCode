@@ -13,6 +13,8 @@ const bodyParser = require("body-parser");
 const { accountServer } = require("@incodelang/accounts");
 const { users } = require("@incodelang/accounts");
 const { urlServer } = require("@incodelang/urlshorter");
+const { Compiler } = require("@incodelang/compiler");
+const url = require("url");
 
 const template = require("./module/template");
 const push = require("./module/pushNotifications");
@@ -148,6 +150,73 @@ app.post("/api/v1/push/send", (req, res) => {
       message: "This feature is currently unavailable.",
     })
   );
+});
+
+app.post("/api/v1/compiler/compiled", (req, res) => {
+  const body = req.body;
+  if (body.code) {
+    res.status(200);
+    res.end(Compiler.compile(body.code));
+  } else {
+    res.status(400);
+    res.end(
+      JSON.stringify({
+        error: true,
+        message: "Invalid Request Body",
+      })
+    );
+  }
+});
+
+app.post("/api/v1/compiler/compiled/ast", (req, res) => {
+  const body = req.body;
+  if (body.ast) {
+    res.status(200);
+    res.end(Compiler.compileAST(body.ast));
+  } else {
+    res.status(400);
+    res.end(
+      JSON.stringify({
+        error: true,
+        message: "Invalid Request Body",
+      })
+    );
+  }
+});
+
+app.post("/api/v1/compiler/generated/ast", (req, res) => {
+  const body = req.body;
+  if (body.code) {
+    res.status(200);
+    res.end(JSON.stringify(Compiler.generateAST(body.code)));
+  } else {
+    res.status(400);
+    res.end(
+      JSON.stringify({
+        error: true,
+        message: "Invalid Request Body",
+      })
+    );
+  }
+});
+
+app.get("/api/v1/compiler/view", (req, res) => {
+  if (req.query.code) {
+    res.status(200);
+    res.end(
+      "<body></body><script>" +
+        Compiler.compile(decodeURIComponent(req.query.code)) +
+        "</script>"
+    );
+  } else {
+    res.status(400);
+    res.end(
+      JSON.stringify({
+        error: true,
+        message: "Invalid Request Body",
+      })
+    );
+  }
 });
 
 app.use((req, res, next) => {
