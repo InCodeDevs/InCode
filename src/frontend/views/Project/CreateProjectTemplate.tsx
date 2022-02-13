@@ -74,7 +74,7 @@ export default function CreateProjectTemplate(props: Props) {
       setTemplates(templatesArr);
       FakeLoader.hide();
     });
-  });
+  }, []);
 
   return (
     <>

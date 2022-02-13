@@ -231,13 +231,23 @@ app.use((req, res, next) => {
 });
 
 app.use(function (err, req, res, next) {
+  if (req.path.startsWith("/compiler")) {
+    res.status(500);
+    res.end(
+      generateErrorTemplate(
+        500,
+        "Internal Server Error",
+        "Internal Server Error"
+      )
+    );
+  }
   console.log(err);
   res.status(500);
   res.end(
     generateErrorTemplate(
       500,
-      "Internal Server Error",
-      "An error occurred processing <code>" + req.path + "</code>"
+      "Programmierfehler",
+      "Dein Programm enthält einen Fehler. Bitte überprüfe deine Eingabe."
     )
   );
 });
