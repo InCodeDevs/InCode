@@ -6,9 +6,9 @@
   "scripts": {
     "webpack:build-dev": "webpack --mode development",
     "webpack:build-prod": "webpack --mode production",
-    "express:dev-start": "yarn webpack:build-dev && node ./src/backend/server.js",
-    "express:prod-start": "yarn webpack:build-dev && node ./src/backend/server.js",
-    "express:only-start": "node ./src/backend/server.js",
+    "express:dev-start": "yarn webpack:build-dev && node ./src/server/server.js",
+    "express:prod-start": "yarn webpack:build-dev && node ./src/server/server.js",
+    "express:only-start": "node ./src/server/server.js",
     "express:live-start": "yarn concurrently \"yarn webpack --watch\" \"yarn express:only-start\"",
     "express:live-start:prod": "yarn concurrently \"yarn webpack --watch --mode production\" \"yarn express:only-start\"",
     "lint": "yarn eslint --ext .ts,.tsx,.js",

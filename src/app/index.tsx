@@ -3,6 +3,7 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 
+import "./styles/styles.scss";
 import * as React from "react";
 import InteractionManager from "./util/InteractionManager";
 import Settings from "./util/Settings";

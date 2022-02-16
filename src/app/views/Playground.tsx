@@ -25,7 +25,7 @@ export default function Playground() {
             },
           },
           {
-            label: i18n.translate("menu.back.switch-playground"),
+            label: i18n.translate("menu.playground.switch-playground"),
             onClick: () => {
               if (editor === "monaco") {
                 setEditor("blockly");

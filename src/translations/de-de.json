@@ -96,5 +96,6 @@
   "menu.settings.menu.item.code-editor.line-numbers": "Zeilennummern",
   "menu.settings.menu.item.code-editor.line-numbers.description": "Zeige oder verstecke die Zeilennummern im Code Editor",
   "menu.select-project-template.title": "Vorlage auswählen",
-  "docs.name": "InCode Dokumentation"
+  "docs.name": "InCode Dokumentation",
+  "menu.playground.switch-playground": "Umgebung wechseln"
 }

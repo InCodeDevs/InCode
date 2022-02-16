@@ -12,7 +12,7 @@ const pkg = require("./plugins/webpack/package");
 const stats = require("./plugins/webpack/stats");
 
 const config = {
-  entry: "./src/frontend/index.tsx",
+  entry: "./src/app/index.tsx",
   mode: "development",
   devtool: false,
   output: {
@@ -107,7 +107,7 @@ const config = {
     new HtmlWebpackPlugin({
       appMountId: "app",
       filename: "index.html",
-      template: "./src/frontend/index.html",
+      template: "./src/app/index.html",
       title: "InCode Editor",
 
       meta: {
