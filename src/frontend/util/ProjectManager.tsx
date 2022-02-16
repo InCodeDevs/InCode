@@ -136,8 +136,6 @@ export default class ProjectManager {
         projectConfigs.push(JSON.parse(data));
 
         console.log(typeof projectConfigs[projectConfigs.length - 1]);
-
-        // projectConfigs.push();
       }
     }
     return projectConfigs;

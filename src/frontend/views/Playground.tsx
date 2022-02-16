@@ -3,15 +3,51 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 
-import React from "react";
+import React, { ReactElement, useState } from "react";
 import MonacoEditor from "../components/Editor/MonacoEditor";
 import PlaygroundPreview from "../components/Editor/PlaygroundPreview";
-import PlaygroundMenuBar from "../components/Editor/PlaygroundMenuBar";
+import MenuBar from "../components/MenuBar/MenuBar";
+import i18n from "../util/i18n";
+import UIManager from "../util/UIManager";
+import BlocklyEditor from "../components/Editor/BlocklyEditor";
 
 export default function Playground() {
+  const [editor, setEditor] = useState("monaco");
+
   return (
     <>
-      <PlaygroundMenuBar />
+      <MenuBar
+        menuItems={[
+          {
+            label: i18n.translate("menu.back.select-app"),
+            onClick: () => {
+              UIManager.silentRedirect("/");
+            },
+          },
+          {
+            label: i18n.translate("menu.back.switch-playground"),
+            onClick: () => {
+              if (editor === "monaco") {
+                setEditor("blockly");
+              } else {
+                setEditor("monaco");
+              }
+            },
+          },
+        ]}
+      />
+      {editor === "monaco" ? (
+        <MonacoEditor
+          mode={"playground"}
+          code={'Gib "Hallo Welt" in der Konsole aus'}
+        />
+      ) : (
+        <BlocklyEditor
+          initialXml={
+            '<xml><block type="start" id="|(^9%DCME)E4UEoWv~G]" x="134" y="70"></block></xml>'
+          }
+        />
+      )}
       <MonacoEditor mode={"playground"} />
       <PlaygroundPreview />
     </>
