@@ -30,6 +30,7 @@ export default function AccountLogin() {
       <Title size={1} title={"menu.login.login"} centered />
       <MenuItemList>
         <MenuItemInput
+          // @ts-ignore
           icon={faUser}
           input={{
             type: "text",
@@ -40,6 +41,7 @@ export default function AccountLogin() {
           }}
         />
         <MenuItemInput
+          // @ts-ignore
           icon={faUnlockAlt}
           input={{
             type: "password",
@@ -50,6 +52,7 @@ export default function AccountLogin() {
           }}
         />
         <MenuItem
+          // @ts-ignore
           icon={faSignInAlt}
           onclick={async () => {
             const username = (

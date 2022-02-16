@@ -34,6 +34,7 @@ export default function MainMenu() {
         <Title size={1} centered title={"name"} />
         <MenuItemList>
           <MenuItem
+            // @ts-ignore
             icon={faPlus}
             onclick={() => {
               if (UserManager.isLoggedIn()) {
@@ -51,6 +52,7 @@ export default function MainMenu() {
             title={"menu.main.create.project"}
           />
           <MenuItem
+            // @ts-ignore
             icon={faFolderOpen}
             onclick={() => {
               if (UserManager.isLoggedIn()) {
@@ -68,6 +70,7 @@ export default function MainMenu() {
             title={"menu.main.open.project"}
           />
           <MenuItem
+            // @ts-ignore
             icon={faCogs}
             onclick={() => {
               UIManager.showComponent(<Settings />, "root");

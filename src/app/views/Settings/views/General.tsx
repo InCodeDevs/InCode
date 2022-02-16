@@ -23,6 +23,7 @@ export default function General() {
             <SettingsBooleanController
               setting={"pushNotifications"}
               description={"null"}
+              // @ts-ignore
               icon={faPushed}
               title={""}
             />

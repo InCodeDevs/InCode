@@ -20,6 +20,7 @@ export default function Login() {
       <Title size={1} title={"menu.login.title"} centered={true} />
       <MenuItemList>
         <MenuItem
+          // @ts-ignore
           icon={faUser}
           onclick={() => {
             UIManager.showComponent(<AccountLogin />);
@@ -27,6 +28,7 @@ export default function Login() {
           title={"menu.login.login"}
         />
         <MenuItem
+          // @ts-ignore
           icon={faUserPlus}
           onclick={() => {
             UIManager.showComponent(<AccountRegister />);

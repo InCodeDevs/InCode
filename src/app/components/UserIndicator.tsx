@@ -24,6 +24,7 @@ export default function UserIndicator() {
       }}
     >
       <FontAwesomeIcon
+        // @ts-ignore
         icon={UserManager.isLoggedIn() ? faUserCheck : faUserTimes}
       />
     </div>

@@ -34,6 +34,7 @@ export default function Settings() {
             onclick: () => {
               UIManager.showComponent(<CodeEditor />, "settings-current-view");
             },
+            // @ts-ignore
             icon: faCode,
           },
           {
@@ -41,6 +42,7 @@ export default function Settings() {
             onclick: () => {
               UIManager.showComponent(<MainMenu />);
             },
+            // @ts-ignore
             icon: faHome,
           },
         ]}

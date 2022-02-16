@@ -35,6 +35,7 @@ export default function ProjectInviteManager(props: Props) {
         />
         <MenuItemList>
           <MenuItemInput
+            // @ts-ignore
             icon={faUser}
             input={{
               type: "text",
@@ -45,6 +46,7 @@ export default function ProjectInviteManager(props: Props) {
             }}
           />
           <MenuItem
+            // @ts-ignore
             icon={faShare}
             onclick={() => {
               const username = (

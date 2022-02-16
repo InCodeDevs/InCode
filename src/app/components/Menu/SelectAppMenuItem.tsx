@@ -12,6 +12,7 @@ import MainMenu from "../../views/MainMenu";
 export default function SelectAppMenuItem() {
   return (
     <MenuItem
+      // @ts-ignore
       icon={faObjectGroup}
       title={"menu.back.select-app"}
       onclick={() => {

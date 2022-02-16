@@ -33,6 +33,7 @@ export default function ShareProject(props: Props) {
       <Title title={"menu.share-project.title"} size={1} centered />
       <MenuItemList>
         <MenuItem
+          // @ts-ignore
           icon={faUser}
           onclick={() => {
             UIManager.showComponent(
@@ -42,6 +43,7 @@ export default function ShareProject(props: Props) {
           title={"menu.share-project.share-with-others"}
         />
         <MenuItem
+          // @ts-ignore
           icon={faScroll}
           onclick={() => {
             TemplateManager.shareTemplate(props.projectConfig).then((obj) => {
@@ -71,6 +73,7 @@ export default function ShareProject(props: Props) {
           title={"menu.share-project.share-template"}
         />
         <MenuItem
+          // @ts-ignore
           icon={faPuzzlePiece}
           onclick={() => {
             const code = props.projectConfig.code;
@@ -105,6 +108,7 @@ export default function ShareProject(props: Props) {
           title={"menu.share-project.share-project"}
         />
         <MenuItem
+          // @ts-ignore
           icon={faTimesCircle}
           onclick={() => {
             UIManager.showComponent(<OpenProject />);

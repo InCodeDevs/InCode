@@ -38,6 +38,7 @@ export default function AccountManage() {
       />
       <MenuItemList>
         <MenuItem
+          // @ts-ignore
           icon={faSignOutAlt}
           onclick={() => {
             UserManager.logout();
@@ -46,6 +47,7 @@ export default function AccountManage() {
           title={"menu.manage-account.logout"}
         />
         <MenuItem
+          // @ts-ignore
           icon={faTrashAlt}
           onclick={() => {
             PopupManager.showPopup(
@@ -87,6 +89,7 @@ export default function AccountManage() {
           title={"menu.manage-account.delete-account"}
         />
         <MenuItem
+          // @ts-ignore
           icon={faPencilAlt}
           onclick={() => {
             PopupManager.showPopup(
@@ -130,6 +133,7 @@ export default function AccountManage() {
           title={"menu.manage-account.change-username"}
         />
         <MenuItem
+          // @ts-ignore
           icon={faPencilAlt}
           onclick={() => {
             PopupManager.showPopup(
@@ -190,6 +194,7 @@ export default function AccountManage() {
           title={"menu.manage-account.change-password"}
         />
         <MenuItem
+          // @ts-ignore
           icon={faUsersCog}
           onclick={() => {
             UIManager.showComponent(<InviteManager />);

@@ -12,6 +12,7 @@ import MainMenu from "../../views/MainMenu";
 export default function MainMenuItem() {
   return (
     <MenuItem
+      // @ts-ignore
       icon={faHome}
       title={"menu.back.main"}
       onclick={() => {

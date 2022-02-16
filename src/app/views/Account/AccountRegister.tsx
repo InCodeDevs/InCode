@@ -33,6 +33,7 @@ export default function AccountRegister() {
       <Title size={1} title={"menu.login.register"} centered />
       <MenuItemList>
         <MenuItemInput
+          // @ts-ignore
           icon={faUser}
           input={{
             type: "text",
@@ -43,6 +44,7 @@ export default function AccountRegister() {
           }}
         />
         <MenuItemInput
+          // @ts-ignore
           icon={faUnlockAlt}
           input={{
             type: "password",
@@ -54,6 +56,7 @@ export default function AccountRegister() {
         />
 
         <MenuItemInput
+          // @ts-ignore
           icon={faUnlockAlt}
           input={{
             type: "password",
@@ -64,6 +67,7 @@ export default function AccountRegister() {
           }}
         />
         <MenuItem
+          // @ts-ignore
           icon={faKey}
           onclick={() => {
             const generated = String.random(
@@ -93,6 +97,7 @@ export default function AccountRegister() {
           title={"menu.login.generate"}
         />
         <MenuItem
+          // @ts-ignore
           icon={faSignInAlt}
           onclick={async () => {
             const username = (

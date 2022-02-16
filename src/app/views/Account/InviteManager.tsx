@@ -48,6 +48,7 @@ export default function InviteManager() {
           {invitesActive ? (
             <>
               <MenuItem
+                // @ts-ignore
                 icon={faTimes}
                 onclick={() => {
                   UserManager.disallowInvites().then(() => {
@@ -61,10 +62,12 @@ export default function InviteManager() {
               {invites.map((invite) => {
                 return (
                   <MenuItemControls
+                    // @ts-ignore
                     icon={invite.project_type === "code" ? faCode : faCubes}
                     onclick={() => {}}
                     widgets={[
                       {
+                        // @ts-ignore
                         icon: faCheck,
                         onclick: () => {
                           UserManager.removeInvite(invite.timestamp).then(
@@ -104,6 +107,7 @@ export default function InviteManager() {
                         color: "lime",
                       },
                       {
+                        // @ts-ignore
                         icon: faTrash,
                         color: "red",
                         name: "",
@@ -126,6 +130,7 @@ export default function InviteManager() {
           ) : (
             <>
               <MenuItem
+                // @ts-ignore
                 icon={faCheck}
                 onclick={() => {
                   UserManager.allowInvites().then(() => {

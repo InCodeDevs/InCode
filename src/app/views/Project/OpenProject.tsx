@@ -37,6 +37,7 @@ export default function OpenProject() {
       projects.map((project) => {
         menuItems.push(
           <MenuItemControls
+            // @ts-ignore
             icon={project.type === "code" ? faCode : faCubes}
             title={project.name}
             nol18n={true}
@@ -45,6 +46,7 @@ export default function OpenProject() {
             }}
             widgets={[
               {
+                // @ts-ignore
                 icon: faTrash,
                 color: "red",
                 onclick: () => {
@@ -63,6 +65,7 @@ export default function OpenProject() {
                 name: "menu.open-project.delete",
               },
               {
+                // @ts-ignore
                 icon: faPen,
                 color: "lime",
                 onclick: () => {
@@ -84,6 +87,7 @@ export default function OpenProject() {
                 name: "menu.open-project.rename",
               },
               {
+                // @ts-ignore
                 icon: faShareSquare,
                 color: "#3390ff",
                 name: "menu.open-project.share",
@@ -100,6 +104,7 @@ export default function OpenProject() {
       if (menuItems.length === 1) {
         menuItems.push(
           <MenuItem
+            // @ts-ignore
             icon={faPlus}
             onclick={() => {
               UIManager.showComponent(<CreateProject />);

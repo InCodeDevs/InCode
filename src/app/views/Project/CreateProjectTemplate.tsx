@@ -34,6 +34,7 @@ export default function CreateProjectTemplate(props: Props) {
       templates.forEach((template) => {
         templatesArr.push(
           <MenuItem
+            // @ts-ignore
             icon={template.type === "code" ? faCode : faCubes}
             title={template.name}
             onclick={() => {
