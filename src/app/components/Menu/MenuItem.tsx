@@ -14,11 +14,12 @@ interface Props {
   onclick: () => void;
   title: string;
   nol18n?: boolean;
+  id?: string;
 }
 
 export default function MenuItem(props: Props) {
   return (
-    <div className={"menu-item"} onClick={props.onclick}>
+    <div className={"menu-item"} onClick={props.onclick} id={props.id}>
       <FontAwesomeIcon icon={props.icon} color={"#FAFAFA"} />
       <Text nol18n={props.nol18n}>{props.title}</Text>
     </div>

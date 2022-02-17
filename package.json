@@ -1,8 +1,8 @@
 {
-  "name": "@incodelang/editor",
+  "name": "incode-editor",
   "version": "4.0.29",
   "description": "The next generation of the InCode Editor",
-  "main": "",
+  "main": "./src/electron/index.js",
   "scripts": {
     "webpack:build-dev": "webpack --mode development",
     "webpack:build-prod": "webpack --mode production",
@@ -16,7 +16,9 @@
     "prettier:write": "yarn prettier --write src/**/*.{ts,tsx,js}",
     "docker:build": "docker build . -t\"mctzock/incode-editor\"",
     "docker:deploy": "docker push mctzock/incode-editor",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "electron:start": "electron-forge start",
+    "electron:make": "electron-forge make"
   },
   "repository": {
     "type": "git",
@@ -47,6 +49,7 @@
     "concurrently": "^6.4.0",
     "copy-webpack-plugin": "^10.0.0",
     "css-loader": "^6.5.1",
+    "electron-prebuilt-compile": "8.2.0",
     "eslint": "^8.3.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
@@ -63,6 +66,11 @@
   },
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.16.5",
+    "@electron-forge/core": "^6.0.0-beta.63",
+    "@electron-forge/maker-deb": "^6.0.0-beta.63",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.63",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
+    "@electron-forge/maker-zip": "^6.0.0-beta.63",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
@@ -97,5 +105,33 @@
     "react-router-dom": "^5.1.2",
     "serve-index": "^1.9.1",
     "web-push": "^3.4.5"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "InCodeEditor"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ],
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
   }
 }

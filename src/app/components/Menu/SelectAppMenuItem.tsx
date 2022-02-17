@@ -18,6 +18,7 @@ export default function SelectAppMenuItem() {
       onclick={() => {
         UIManager.silentRedirect("/");
       }}
+      id={"back-to-homepage"}
     />
   );
 }

@@ -77,7 +77,11 @@ export default function MainMenu() {
             }}
             title={"menu.main.open.settings"}
           />
-          <SelectAppMenuItem />
+          {navigator.userAgent.includes("Electron") === true ? (
+            <></>
+          ) : (
+            <SelectAppMenuItem />
+          )}
         </MenuItemList>
       </Container>
       <UserIndicator />
