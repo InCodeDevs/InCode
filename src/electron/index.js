@@ -2,7 +2,7 @@
  * @author Ben Siebert <ben@mctzock.de>
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, Menu } = require("electron");
 const path = require("path");
 
 const URL = "https://incodelang.de/editor";
@@ -17,9 +17,29 @@ function createWindow() {
     },
   });
 
-  mainWindow.setMenu(null);
+  const menu = Menu.buildFromTemplate([
+    {
+      label: "InCode",
+      submenu: [
+        {
+          label: "Switch Editor",
+          click: () => {
+            mainWindow.loadFile(path.join(__dirname, "./ui/index.html"));
+          },
+        },
+        {
+          label: "Quit",
+          click: () => {
+            app.quit();
+          },
+        },
+      ],
+    },
+  ]);
 
-  mainWindow.loadURL(URL);
+  Menu.setApplicationMenu(menu);
+
+  mainWindow.loadFile(path.join(__dirname, "./ui/index.html"));
 
   // mainWindow.webContents.openDevTools();
 }

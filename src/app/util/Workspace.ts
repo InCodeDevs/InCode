@@ -10,7 +10,7 @@ export default class Workspace {
     // @ts-ignore
     if (window.editor) {
       // @ts-ignore
-      return window.editor.getValue();
+      return window.editor.getValue().replace(/\r\n/g, "\n");
     } else {
       if (blocklyXml) {
         return Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace()).outerHTML;

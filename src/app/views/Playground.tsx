@@ -3,7 +3,7 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 
-import React, { ReactElement, useState } from "react";
+import React, { useState } from "react";
 import MonacoEditor from "../components/Editor/MonacoEditor";
 import PlaygroundPreview from "../components/Editor/PlaygroundPreview";
 import MenuBar from "../components/MenuBar/MenuBar";
@@ -48,7 +48,6 @@ export default function Playground() {
           }
         />
       )}
-      <MonacoEditor mode={"playground"} />
       <PlaygroundPreview />
     </>
   );

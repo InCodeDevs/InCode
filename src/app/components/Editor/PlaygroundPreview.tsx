@@ -22,8 +22,8 @@ export default function PlaygroundPreview() {
     "/api/v1/compiler/view?code=" +
       encodeURIComponent(
         `Erstelle x als Überschrift1
-Setze den Text von x auf "Start editing!"
-Setze die Farbe von x auf weiß\nSetze die Schriftart von x auf sans-serif\nSetze die Textausrichtung von x auf mitte\nFüge x zum Bildschirm hinzu`
+   Setze den Text von x auf "Start editing!"
+   Setze die Farbe von x auf weiß\nSetze die Schriftart von x auf sans-serif\nSetze die Textausrichtung von x auf mitte\nFüge x zum Bildschirm hinzu`
       )
   );
 
@@ -32,8 +32,9 @@ Setze die Farbe von x auf weiß\nSetze die Schriftart von x auf sans-serif\nSetz
       try {
         if (
           // @ts-ignore
-          Workspace.getCode(false) !== ifURL &&
-          // @ts-ignore
+          "/api/v1/compiler/view?code=" +
+            encodeURIComponent(Workspace.getCode(false)) !==
+            ifURL &&
           Workspace.getCode(false) !== ""
         ) {
           console.log(sha256(Workspace.getCode(false)));
@@ -47,7 +48,7 @@ Setze die Farbe von x auf weiß\nSetze die Schriftart von x auf sans-serif\nSetz
           // @ts-ignore
           setIfURL(nURL);
         }
-      } catch {
+      } catch (e) {
         clearInterval(interval);
       }
     }, 3000);

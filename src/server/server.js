@@ -13,12 +13,13 @@ const bodyParser = require("body-parser");
 const { accountServer } = require("@incodelang/accounts");
 const { users } = require("@incodelang/accounts");
 const { urlServer } = require("@incodelang/urlshorter");
-const { Compiler } = require("@incodelang/compiler");
-const url = require("url");
+const {
+  Compiler,
+  AbstractSyntaxTreeGenerator,
+} = require("@incodelang/compiler");
 
 const template = require("./module/template");
 const push = require("./module/pushNotifications");
-const chalk = require("chalk");
 
 const app = express();
 
@@ -172,7 +173,7 @@ app.post("/api/v1/compiler/compiled/ast", (req, res) => {
   const body = req.body;
   if (body.ast) {
     res.status(200);
-    res.end(Compiler.compileAST(body.ast));
+    res.end(AbstractSyntaxTreeGenerator.generate(body.ast));
   } else {
     res.status(400);
     res.end(
@@ -188,7 +189,7 @@ app.post("/api/v1/compiler/generated/ast", (req, res) => {
   const body = req.body;
   if (body.code) {
     res.status(200);
-    res.end(JSON.stringify(Compiler.generateAST(body.code)));
+    res.end(JSON.stringify(AbstractSyntaxTreeGenerator.generate(body.code)));
   } else {
     res.status(400);
     res.end(
