@@ -15,4 +15,20 @@ export default class String {
     }
     return result;
   }
+
+  public static toHex(input: string): string {
+    return Array.from(input)
+      .map((c) =>
+        c.charCodeAt(0) < 128
+          ? c.charCodeAt(0).toString(16)
+          : encodeURIComponent(c).replace(/\%/g, "").toLowerCase()
+      )
+      .join("");
+  }
+
+  public static fromHex(input: string) {
+    return decodeURIComponent(
+      "%" + ((input as string).match(/.{1,2}/g) as string[]).join("%")
+    );
+  }
 }

@@ -10,6 +10,7 @@ import ProjectManager from "../../util/ProjectManager";
 import {
   faCode,
   faCubes,
+  faDownload,
   faPen,
   faPlus,
   faShareSquare,
@@ -95,6 +96,15 @@ export default function OpenProject() {
                   UIManager.showComponent(
                     <ShareProject projectConfig={project} />
                   );
+                },
+              },
+              {
+                // @ts-ignore
+                icon: faDownload,
+                color: "#00FF00",
+                name: "menu.open-project.download",
+                onclick: () => {
+                  ProjectManager.downloadProject(project);
                 },
               },
             ]}

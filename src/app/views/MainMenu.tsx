@@ -13,6 +13,7 @@ import {
   faFolderOpen,
   faPlay,
   faPlus,
+  faUpload,
 } from "@fortawesome/free-solid-svg-icons";
 import MenuItemList from "../components/Menu/MenuItemList";
 import UserIndicator from "../components/UserIndicator";
@@ -26,6 +27,7 @@ import OpenProject from "./Project/OpenProject";
 import Settings from "./Settings/Settings";
 import Docs from "./Docs/Docs";
 import SelectAppMenuItem from "../components/Menu/SelectAppMenuItem";
+import ProjectManager from "../util/ProjectManager";
 
 export default function MainMenu() {
   return (
@@ -68,6 +70,41 @@ export default function MainMenu() {
               }
             }}
             title={"menu.main.open.project"}
+          />
+          <MenuItem
+            // @ts-ignore
+            icon={faUpload}
+            onclick={() => {
+              if (UserManager.isLoggedIn()) {
+                const input = document.createElement("input");
+                input.type = "file";
+                input.style.visibility = "hidden";
+                input.accept = ".icp4";
+
+                document.body.appendChild(input);
+                input.click();
+
+                input.onchange = () => {
+                  if ((input.files as FileList).length > 0) {
+                    console.log("Test");
+                    const file = (input.files as FileList)[0];
+                    file.text().then((text) => {
+                      ProjectManager.createProjectWithBinary(text, true);
+                    });
+                  }
+                  document.body.removeChild(input);
+                };
+              } else {
+                PopupManager.showPopup(
+                  "Alert",
+                  "error.not.logged-in",
+                  i18n.translate("error.please-login"),
+                  () => {},
+                  true
+                );
+              }
+            }}
+            title={"menu.main.import.project"}
           />
           <MenuItem
             // @ts-ignore

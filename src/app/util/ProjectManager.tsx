@@ -14,6 +14,8 @@ import React from "react";
 import * as JSZip from "jszip";
 import { Networking } from "./Networking";
 import Workspace from "./Workspace";
+import String from "./String";
+import { v4 as uuidv4 } from "uuid";
 
 const client = new WebClient("");
 
@@ -341,6 +343,30 @@ export default class ProjectManager {
       return true;
     } else {
       return false;
+    }
+  }
+
+  public static downloadProject(projectConfig: ProjectConfig) {
+    const binary = String.toHex(JSON.stringify(projectConfig));
+    Networking.download(projectConfig.name + ".icp4", binary, "text/plain");
+  }
+
+  public static async createProjectWithBinary(
+    binary: string,
+    open: boolean = false
+  ) {
+    const projectConfig = JSON.parse(String.fromHex(binary));
+    const projectList = await ProjectManager.getProjectList();
+
+    if (projectList.includes(projectConfig.name)) {
+      projectConfig.name = projectConfig.name + "_" + uuidv4().split("-")[0];
+    }
+
+    await ProjectManager.saveProject(projectConfig);
+    await ProjectManager.addToProjectList(projectConfig.name);
+
+    if (open) {
+      ProjectManager.openProject(projectConfig);
     }
   }
 }
