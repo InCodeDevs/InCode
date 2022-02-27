@@ -366,11 +366,8 @@ export default class ProjectManager {
     open: boolean = false
   ) {
     const projectConfig = JSON.parse(String.fromHex(binary));
-    const projectList = await ProjectManager.getProjectList();
 
-    if (projectList.includes(projectConfig.name)) {
-      projectConfig.name = projectConfig.name + "_" + uuidv4().split("-")[0];
-    }
+    projectConfig.name = projectConfig.name + "_" + uuidv4().split("-")[0];
 
     await ProjectManager.saveProject(projectConfig);
     await ProjectManager.addToProjectList(projectConfig.name);
