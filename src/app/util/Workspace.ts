@@ -19,4 +19,13 @@ export default class Workspace {
       }
     }
   }
+
+  public static isBlockly(): boolean {
+    // @ts-ignore
+    if (window.editor) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 }

@@ -1,9 +1,0 @@
-{
-  "appId": "de.incodelang.editor",
-  "productName": "InCode Editor",
-  "copyright": "Copyright © 2022 The InCode Developers",
-  "directories": {
-    "app": ".",
-    "output": "dist-electron/pkg"
-  }
-}

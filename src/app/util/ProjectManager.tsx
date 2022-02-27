@@ -246,7 +246,12 @@ export default class ProjectManager {
   public static async export(projectConfig: ProjectConfig) {
     const zip = new JSZip();
     // @ts-ignore
-    const currentCode = Workspace.getCode();
+    const currentCode = Workspace.getCode(false);
+    let blocklyXML = "";
+
+    if (Workspace.isBlockly()) {
+      blocklyXML = Workspace.getCode(true);
+    }
 
     const response = (
       await fetch("/api/v1/compiler/compiled", {
@@ -267,6 +272,11 @@ export default class ProjectManager {
       "<!doctype html><html lang='de'><body><script src='code.js' defer async></script></body></html>"
     );
     zip.file("code.js", response);
+
+    if (blocklyXML !== "") {
+      zip.file("blockly.xml", blocklyXML);
+    }
+
     zip.file("code.ic", currentCode);
     zip
       .generateAsync({
