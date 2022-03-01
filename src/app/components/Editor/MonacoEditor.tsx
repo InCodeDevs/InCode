@@ -3,10 +3,12 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 
-import React, { useState } from "react";
-import Editor, { loader } from "@monaco-editor/react";
+import React, { useEffect, useState } from "react";
+import Editor, { loader, Monaco } from "@monaco-editor/react";
 import Settings from "../../util/Settings";
 import { Registry } from "../../util/Registry";
+import { editor } from "monaco-editor";
+import IStandaloneCodeEditor = editor.IStandaloneCodeEditor;
 
 export interface MonacoProps {
   mode: "playground" | "project";
@@ -204,7 +206,18 @@ export default function MonacoEditor(props: MonacoProps) {
       onMount={(editor) => {
         // @ts-ignore
         window.editor = editor;
-        console.log(editor);
+        const monaco = Registry.getRegister(0x01) as Monaco;
+        editor.deltaDecorations(
+          [],
+          [
+            {
+              range: new monaco.Range(1, 3, 1, 3),
+              options: {
+                className: "crs",
+              },
+            },
+          ]
+        );
       }}
       options={{
         fontSize: Settings.getSetting("codeEditor.fontSize"),
@@ -221,6 +234,8 @@ export default function MonacoEditor(props: MonacoProps) {
       }}
       onChange={(newValue, e) => {
         setCode(newValue as string);
+        // @ts-ignore
+        console.log((window.editor as IStandaloneCodeEditor).getPosition());
       }}
     />
   );

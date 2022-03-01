@@ -37,3 +37,21 @@
   font-family: sans-serif;
   scroll-behavior: smooth;
 }
+
+.crs {
+  background: #FFF;
+  width: 2px !important;
+  animation: fadeIn infinite 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0
+  }
+}

@@ -83,7 +83,8 @@ export default function ShareProject(props: Props) {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
-                target: "/api/v1/compiler/view?code=" + code,
+                target:
+                  "/api/v1/compiler/view?code=" + encodeURIComponent(code),
               }),
             })
               .then((r) => r.json())
