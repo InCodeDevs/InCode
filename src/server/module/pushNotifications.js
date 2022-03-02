@@ -7,15 +7,13 @@ const fs = require("fs");
 const path = require("path");
 const os = require("os");
 
-if (!fs.existsSync(path.join(os.homedir(), ".incode-push"))) {
-  fs.mkdirSync(path.join(os.homedir(), ".incode-push"));
-}
-
 if (
-  !fs.existsSync(path.join(os.homedir(), ".incode-push", "subscriptions.json"))
+  !fs.existsSync(
+    path.join(os.homedir(), ".incode", "push", "subscriptions.json")
+  )
 ) {
   fs.writeFileSync(
-    path.join(os.homedir(), ".incode-push", "subscriptions.json"),
+    path.join(os.homedir(), ".incode", "push", "subscriptions.json"),
     "{}"
   );
 }
@@ -25,7 +23,7 @@ reload();
 
 function save() {
   fs.writeFileSync(
-    path.join(os.homedir(), ".incode-push", "subscriptions.json"),
+    path.join(os.homedir(), ".incode", "push", "subscriptions.json"),
     JSON.stringify(config)
   );
 }
@@ -34,7 +32,7 @@ function reload() {
   config = JSON.parse(
     fs
       .readFileSync(
-        path.join(os.homedir(), ".incode-push", "subscriptions.json")
+        path.join(os.homedir(), ".incode", "push", "subscriptions.json")
       )
       .toString()
   );

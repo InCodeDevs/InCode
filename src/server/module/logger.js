@@ -10,16 +10,13 @@ const path = require("path");
 
 let log = "";
 
-if (!fs.existsSync(path.join(os.homedir(), ".incode-logs"))) {
-  fs.mkdirSync(path.join(os.homedir(), ".incode-logs"));
-}
-
 function save() {
   console.log("Saving log...");
   fs.writeFileSync(
     path.join(
       os.homedir(),
-      ".incode-logs",
+      ".incode",
+      "logs",
       "incode-" +
         new Date().getDate() +
         "." +

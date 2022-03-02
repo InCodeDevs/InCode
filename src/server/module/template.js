@@ -7,15 +7,13 @@ const fs = require("fs");
 const path = require("path");
 const os = require("os");
 
-if (!fs.existsSync(path.join(os.homedir(), ".incode-templ"))) {
-  fs.mkdirSync(path.join(os.homedir(), ".incode-templ"));
-}
-
 if (
-  !fs.existsSync(path.join(os.homedir(), ".incode-templ", "templates.json"))
+  !fs.existsSync(
+    path.join(os.homedir(), ".incode", "templates", "templates.json")
+  )
 ) {
   fs.writeFileSync(
-    path.join(os.homedir(), ".incode-templ", "templates.json"),
+    path.join(os.homedir(), ".incode", "templates", "templates.json"),
     "{}"
   );
 }
@@ -25,7 +23,7 @@ reload();
 
 function save() {
   fs.writeFileSync(
-    path.join(os.homedir(), ".incode-templ", "templates.json"),
+    path.join(os.homedir(), ".incode", "templates", "templates.json"),
     JSON.stringify(config)
   );
 }
@@ -33,7 +31,9 @@ function save() {
 function reload() {
   config = JSON.parse(
     fs
-      .readFileSync(path.join(os.homedir(), ".incode-templ", "templates.json"))
+      .readFileSync(
+        path.join(os.homedir(), ".incode", "templates", "templates.json")
+      )
       .toString()
   );
 }
