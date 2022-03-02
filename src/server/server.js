@@ -41,6 +41,7 @@ require("./api/compiler")(app);
 require("./api/generator/desktop")(app);
 require("./api/push")(app);
 require("./api/templates")(app);
+require("./api/job")(app);
 require("./api/error/404")(app);
 require("./api/error/500")(app);
 

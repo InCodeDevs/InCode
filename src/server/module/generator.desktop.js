@@ -7,6 +7,7 @@ const fs = require("fs");
 const path = require("path");
 const os = require("os");
 const moment = require("moment");
+const GeneratorStatus = require("./GeneratorStatus");
 
 const LIMIT_PER_DAY = 3;
 const RESET_AFTER = 1000 * 60 * 60 * 24;
@@ -58,7 +59,7 @@ function hasReachedUserRateLimit(username) {
     };
   }
 
-  return limits[username].rateLimit.remaining > 0;
+  return !(limits[username].rateLimit.remaining > 0);
 }
 
 function resetRateLimit(username) {
@@ -89,7 +90,23 @@ function resetRateLimit(username) {
   );
 }
 
-function generateApp(username, project) {}
+function generateApp(username, code, name) {
+  resetRateLimit(username);
+  if (hasReachedUserRateLimit(username)) {
+    return {
+      code: 429,
+      message: `You can only generate ${LIMIT_PER_DAY} desktop apps per day.`,
+    };
+  } else {
+    const job = GeneratorStatus.newJob();
+    require("./worker/desktopBuilder")(code, name, job);
+    return {
+      code: 200,
+      message: "Creating desktop app...",
+      jobId: job.id,
+    };
+  }
+}
 
 module.exports = {
   getUserRateLimit,

@@ -617,6 +617,18 @@
     express "^4.17.1"
     typescript "^4.4.3"
 
+"@kwsites/file-exists@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/@kwsites/file-exists/-/file-exists-1.1.1.tgz#ad1efcac13e1987d8dbaf235ef3be5b0d96faa99"
+  integrity sha512-m9/5YGR18lIwxSFDwfE3oA7bWuq9kdau6ugN4H2rJeyhFQZcG9AgSHkQtSD15a8WvTgfz9aikZMrKPHvbpqFiw==
+  dependencies:
+    debug "^4.1.1"
+
+"@kwsites/promise-deferred@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/@kwsites/promise-deferred/-/promise-deferred-1.1.1.tgz#8ace5259254426ccef57f3175bc64ed7095ed919"
+  integrity sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==
+
 "@malept/cross-spawn-promise@^1.1.0":
   version "1.1.1"
   resolved "https://registry.npmjs.org/@malept/cross-spawn-promise/-/cross-spawn-promise-1.1.1.tgz#504af200af6b98e198bce768bc1730c6936ae01d"
@@ -3752,7 +3764,7 @@ de-indent@^1.0.2:
   resolved "https://registry.npmjs.org/de-indent/-/de-indent-1.0.2.tgz#b2038e846dc33baa5796128d0804b455b8c1e21d"
   integrity sha1-sgOOhG3DO6pXlhKNCAS0VbjB4h0=
 
-debug@*, debug@4, debug@^4.0.0, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2:
+debug@*, debug@4, debug@^4.0.0, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2, debug@^4.3.3:
   version "4.3.3"
   resolved "https://registry.npmjs.org/debug/-/debug-4.3.3.tgz"
   integrity sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==
@@ -4913,11 +4925,6 @@ exact-version@^1.0.1:
   version "1.0.2"
   resolved "https://registry.npmjs.org/exact-version/-/exact-version-1.0.2.tgz#2ac417243c00c5e42418e678c598dbd1393d1d89"
   integrity sha512-s3lu2hhoU8J89M+0dOeeaRbyXhNMs9vpz6pQiZUCVx7WwFw5X+nhLYp8Bq9ERho05LNvidCkZiD3nHKZwCK9nw==
-
-exe-icon-extractor@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.npmjs.org/exe-icon-extractor/-/exe-icon-extractor-1.0.8.tgz#d949683c0c76044c2a48bc6bb9b84370789429fc"
-  integrity sha512-Ww9kDYN3goiWEMovTWV1s0p3we0Xp1jJyJSnW4KH+Z+0KxuhWTSL8f1u5bpPsSunSUeqC+RACbmBk6l5EuBR1g==
 
 execa@^0.4.0:
   version "0.4.0"
@@ -10466,6 +10473,15 @@ signal-exit@^3.0.0, signal-exit@^3.0.2, signal-exit@^3.0.3, signal-exit@^3.0.7:
   version "3.0.7"
   resolved "https://registry.npmjs.org/signal-exit/-/signal-exit-3.0.7.tgz"
   integrity sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==
+
+simple-git@^3.2.6:
+  version "3.2.6"
+  resolved "https://registry.npmjs.org/simple-git/-/simple-git-3.2.6.tgz#2e73ebe11f49b0fb3bf9a4ca1b0527fe4a78efb7"
+  integrity sha512-1AFxwgpFiqpBEKHhRC8lhZxtLPP6iuzw2SUN91gA4+Hi+kSfm/oOiUZ2YiT+sEZPP/77KWG7Ci47P9+OC7Dcaw==
+  dependencies:
+    "@kwsites/file-exists" "^1.1.1"
+    "@kwsites/promise-deferred" "^1.1.1"
+    debug "^4.3.3"
 
 single-line-log@^1.1.2:
   version "1.1.2"
