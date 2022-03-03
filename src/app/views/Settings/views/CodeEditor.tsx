@@ -22,7 +22,6 @@ export default function CodeEditor() {
               "menu.settings.menu.item.code-editor.font-size.description"
             )}
             title={"menu.settings.menu.item.code-editor.font-size"}
-            // @ts-ignore
             icon={faTextHeight}
             min={1}
             max={40}
@@ -32,7 +31,6 @@ export default function CodeEditor() {
             description={i18n.translate(
               "menu.settings.menu.item.code-editor.line-numbers.description"
             )}
-            // @ts-ignore
             icon={faHashtag}
             title={"menu.settings.menu.item.code-editor.line-numbers"}
           />

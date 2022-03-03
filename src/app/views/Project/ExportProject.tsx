@@ -27,19 +27,20 @@ export default function ExportProject(props: Props) {
         <Title title={"menu.project.export.title"} size={1} centered />
         <MenuItemList>
           <MenuItem
-            // @ts-ignore
             icon={faCode}
-            onclick={() => {}}
+            onclick={() => {
+              ProjectManager.export(props.projectConfig).then(() => {
+                ProjectManager.openProject(props.projectConfig);
+              });
+            }}
             title={"menu.project.export.code"}
           />
           <MenuItem
-            // @ts-ignore
             icon={faDesktop}
             onclick={() => {}}
             title={"menu.project.export.desktop"}
           />
           <MenuItem
-            // @ts-ignore
             icon={faBackward}
             onclick={() => {
               ProjectManager.openProject(props.projectConfig);

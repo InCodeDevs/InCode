@@ -26,7 +26,6 @@ export default function SelectApp() {
         <Title size={1} title={"name"} centered />
         <MenuItemList>
           <MenuItem
-            // @ts-ignore
             icon={faTools}
             onclick={() => {
               UIManager.showComponentWithURL(<MainMenu />, "/editor");
@@ -34,7 +33,6 @@ export default function SelectApp() {
             title={"menu.select-app.editor"}
           />
           <MenuItem
-            // @ts-ignore
             icon={faPlay}
             onclick={() => {
               UIManager.showComponentWithURL(<Playground />, "/playground");
@@ -42,7 +40,6 @@ export default function SelectApp() {
             title={"menu.select-app.playground"}
           />
           <MenuItem
-            // @ts-ignore
             icon={faFile}
             onclick={() => {
               UIManager.showComponentWithURL(<Docs />, "/docs");

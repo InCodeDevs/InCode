@@ -38,7 +38,6 @@ export default function OpenProject() {
       projects.map((project) => {
         menuItems.push(
           <MenuItemControls
-            // @ts-ignore
             icon={project.type === "code" ? faCode : faCubes}
             title={project.name}
             nol18n={true}
@@ -114,7 +113,6 @@ export default function OpenProject() {
       if (menuItems.length === 1) {
         menuItems.push(
           <MenuItem
-            // @ts-ignore
             icon={faPlus}
             onclick={() => {
               UIManager.showComponent(<CreateProject />);

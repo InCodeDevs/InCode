@@ -30,7 +30,6 @@ export default function CreateProject() {
         <Title size={1} title={"menu.create-project.title"} centered />
         <MenuItemList>
           <MenuItemInput
-            // @ts-ignore
             icon={faPlus}
             input={{
               type: "text",
@@ -41,7 +40,6 @@ export default function CreateProject() {
             }}
           />
           <MenuItem
-            // @ts-ignore
             icon={faCode}
             onclick={() => {
               if (
@@ -88,7 +86,6 @@ export default function CreateProject() {
             title={"menu.create-project.code"}
           />
           <MenuItem
-            // @ts-ignore
             icon={faCubes}
             onclick={() => {
               if (
@@ -135,7 +132,6 @@ export default function CreateProject() {
             title={"menu.create-project.blocks"}
           />
           <MenuItem
-            // @ts-ignore
             icon={faBookOpen}
             onclick={() => {
               if (
