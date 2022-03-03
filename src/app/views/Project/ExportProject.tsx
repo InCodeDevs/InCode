@@ -40,8 +40,10 @@ export default function ExportProject(props: Props) {
           <MenuItem
             icon={faCode}
             onclick={() => {
-              ProjectManager.export(props.projectConfig).then(() => {
-                ProjectManager.openProject(props.projectConfig);
+              ProjectManager.openProject(props.projectConfig).then(() => {
+                setTimeout(() => {
+                  ProjectManager.export(props.projectConfig);
+                }, 2000);
               });
             }}
             title={"menu.project.export.code"}

@@ -573,10 +573,10 @@
     express "^4.17.1"
     typescript "^4.4.3"
 
-"@incodelang/compiler@^2.0.4":
-  version "2.0.4"
-  resolved "https://registry.npmjs.org/@incodelang/compiler/-/compiler-2.0.4.tgz#9362b2a10fa7ed16ae36876d0b251acb6e6799f8"
-  integrity sha512-OwkfZ51vS8M90ca+bNHqXOJ+HoiHVKuUyor4G2Zfgq8DkliZPKQ1oqrz42lAPH911Iq1LzUysKMuJ+uK829Dkg==
+"@incodelang/compiler@^2.0.5":
+  version "2.0.5"
+  resolved "https://registry.npmjs.org/@incodelang/compiler/-/compiler-2.0.5.tgz#18e703bb29aa6b68e566b6b590d412255e5622de"
+  integrity sha512-PZZ8kbscZwHbmH2XpdHT7cCg1QJal0sQL7yWoyPpl1LfJERxqtt//tMR/JCqEnGlVQTlmGiFhbLNpwcCFg7HZA==
   dependencies:
     "@rollup/plugin-json" "^4.1.0"
     "@types/js-beautify" "^1.13.3"
