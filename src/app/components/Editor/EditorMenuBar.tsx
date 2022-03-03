@@ -12,6 +12,7 @@ import ProjectManager from "../../util/ProjectManager";
 import PopupManager from "../../util/PopupManager";
 import ShareProject from "../../views/Project/ShareProject";
 import Workspace from "../../util/Workspace";
+import ExportProject from "../../views/Project/ExportProject";
 
 interface Props {
   projectConfig: ProjectConfig;
@@ -52,7 +53,14 @@ export default function EditorMenuBar(props: Props) {
           {
             label: i18n.translate("menu.project.export"),
             onClick: () => {
-              ProjectManager.export(props.projectConfig);
+              // @ts-ignore
+              props.projectConfig.code = Workspace.getCode();
+              ProjectManager.saveProject(props.projectConfig).then(() => {
+                UIManager.showComponent(
+                  <ExportProject projectConfig={props.projectConfig} />,
+                  "root"
+                );
+              });
             },
           },
         ]}
