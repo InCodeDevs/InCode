@@ -3,7 +3,7 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "../../components/Container";
 import Title from "../../components/Title";
 import MenuItemList from "../../components/Menu/MenuItemList";
@@ -22,8 +22,23 @@ import i18n from "../../util/i18n";
 import PopupManager from "../../util/PopupManager";
 import FakeLoader from "../../util/FakeLoader";
 import InviteManager from "./InviteManager";
+import Text from "../../components/Text";
 
 export default function AccountManage() {
+  const [desktopExports, setDesktopExports] = React.useState("Loading...");
+  const [resetsAt, setResetsAt] = React.useState("Loading...");
+
+  useEffect(() => {
+    fetch("/api/v1/generator/rate/" + UserManager.getUsername(), {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setDesktopExports(data.remaining);
+        setResetsAt(new Date(data.reset).toLocaleString());
+      });
+  }, []);
+
   return (
     <Container centered>
       <Title
@@ -36,6 +51,19 @@ export default function AccountManage() {
         centered
         nol18n
       />
+      <p style={{ textAlign: "center" }}>
+        <Text nol18n>
+          {i18n.translate("menu.manage-account.generator.exports-left") +
+            " " +
+            desktopExports}
+        </Text>
+        <br />
+        <Text nol18n>
+          {i18n.translate("menu.manage-account.generator.reset-at") +
+            " " +
+            resetsAt}
+        </Text>
+      </p>
       <MenuItemList>
         <MenuItem
           // @ts-ignore

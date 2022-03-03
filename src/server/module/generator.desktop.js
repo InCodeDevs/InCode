@@ -32,14 +32,8 @@ function getUserRateLimit(username) {
       )
       .toString()
   );
-  if (limits[username] === undefined) {
-    limits[username] = {
-      rateLimit: {
-        remaining: LIMIT_PER_DAY,
-        reset: Date.now() + RESET_AFTER,
-      },
-    };
-  }
+  resetRateLimit(username);
+
   return limits[username].rateLimit;
 }
 
@@ -51,14 +45,7 @@ function hasReachedUserRateLimit(username) {
       )
       .toString()
   );
-  if (limits[username] === undefined) {
-    limits[username] = {
-      rateLimit: {
-        remaining: LIMIT_PER_DAY,
-        reset: Date.now() + RESET_AFTER,
-      },
-    };
-  }
+  resetRateLimit(username);
 
   return !(limits[username].rateLimit.remaining > 0);
 }
@@ -71,14 +58,8 @@ function setRateLimit(username, value) {
       )
       .toString()
   );
-  if (limits[username] === undefined) {
-    limits[username] = {
-      rateLimit: {
-        remaining: LIMIT_PER_DAY,
-        reset: Date.now() + RESET_AFTER,
-      },
-    };
-  }
+  resetRateLimit(username);
+
   limits[username].rateLimit.remaining = value;
   fs.writeFileSync(
     path.join(os.homedir(), ".incode", "generator", "desktop.json"),

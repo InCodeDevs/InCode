@@ -8,3 +8,4 @@
 - Redesigned the Landing Page
 - Added Project Export/Import to the Editor
 - Bug Fixes
+- Export Desktop App

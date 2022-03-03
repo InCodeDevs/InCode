@@ -34,6 +34,8 @@
   "error.project.exists": "Projekt existiert!",
   "error.project.exists.description": "Ein Projekt mit diesem Namen existiert bereits!",
   "menu.manage-account.title-template": "Willkommen, ",
+  "menu.manage-account.generator.exports-left": "Verbleibende Desktop-Exporte: ",
+  "menu.manage-account.generator.reset-at": "Zurücksetzen: ",
   "menu.manage-account.logout": "Abmelden",
   "menu.manage-account.delete-account": "Konto löschen",
   "menu.manage-account.delete-account.enter-password": "Gib dein Passwort ein, um dein Konto zu löschen",
