@@ -42,13 +42,14 @@ require("./api/generator/desktop")(app);
 require("./api/push")(app);
 require("./api/templates")(app);
 require("./api/job")(app);
-require("./api/error/404")(app);
-require("./api/error/500")(app);
 
 const { accountServer } = require("@incodelang/accounts");
 const { urlServer } = require("@incodelang/urlshorter");
 
 accountServer({ app: app, disable: {} });
 urlServer({ app: app, prefix: "project" });
+
+require("./api/error/404")(app);
+require("./api/error/500")(app);
 
 app.listen(3000, "0.0.0.0");

@@ -10,7 +10,8 @@ const moment = require("moment");
 const GeneratorStatus = require("./GeneratorStatus");
 
 const LIMIT_PER_DAY = 3;
-const RESET_AFTER = 1000 * 60 * 60 * 24;
+const RESET_AFTER = 1000 * 60 * 60 * 24; // 1 day
+// const RESET_AFTER = 1000 * 60 * 2; // 2 minutes
 
 if (
   !fs.existsSync(
@@ -62,6 +63,29 @@ function hasReachedUserRateLimit(username) {
   return !(limits[username].rateLimit.remaining > 0);
 }
 
+function setRateLimit(username, value) {
+  const limits = JSON.parse(
+    fs
+      .readFileSync(
+        path.join(os.homedir(), ".incode", "generator", "desktop.json")
+      )
+      .toString()
+  );
+  if (limits[username] === undefined) {
+    limits[username] = {
+      rateLimit: {
+        remaining: LIMIT_PER_DAY,
+        reset: Date.now() + RESET_AFTER,
+      },
+    };
+  }
+  limits[username].rateLimit.remaining = value;
+  fs.writeFileSync(
+    path.join(os.homedir(), ".incode", "generator", "desktop.json"),
+    JSON.stringify(limits, null, 2)
+  );
+}
+
 function resetRateLimit(username) {
   const limits = JSON.parse(
     fs
@@ -86,7 +110,7 @@ function resetRateLimit(username) {
 
   fs.writeFileSync(
     path.join(os.homedir(), ".incode", "generator", "desktop.json"),
-    JSON.stringify(limits)
+    JSON.stringify(limits, null, 2)
   );
 }
 
@@ -99,7 +123,7 @@ function generateApp(username, code, name) {
     };
   } else {
     const job = GeneratorStatus.newJob();
-    require("./worker/desktopBuilder")(code, name, job);
+    require("./worker/desktopBuilder")(username, code, name, job);
     return {
       code: 200,
       message: "Creating desktop app...",
@@ -111,5 +135,6 @@ function generateApp(username, code, name) {
 module.exports = {
   getUserRateLimit,
   hasReachedUserRateLimit,
+  setRateLimit,
   generateApp,
 };

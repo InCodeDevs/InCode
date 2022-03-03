@@ -9,8 +9,11 @@ const path = require("path");
 const fs = require("fs");
 const childProcess = require("child_process");
 const GeneratorStatus = require("../GeneratorStatus");
+const { setRateLimit, getUserRateLimit } = require("../generator.desktop");
 
-module.exports = async (code, name, job) => {
+module.exports = async (username, code, name, job) => {
+  setRateLimit(username, getUserRateLimit(username).remaining - 1);
+
   const p0 = path.join(os.tmpdir(), "incode-" + job.id);
 
   await simpleGit().clone(
@@ -79,7 +82,7 @@ module.exports = async (code, name, job) => {
                   GeneratorStatus.updateJobStatus(job.id, "Finished");
                   GeneratorStatus.updateJobMessage(
                     job.id,
-                    "/api/v1/download/" + job.id
+                    "/api/v1/job/" + job.id + "/download"
                   );
                   GeneratorStatus.updateJobLocalPath(
                     job.id,
