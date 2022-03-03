@@ -22,7 +22,11 @@ module.exports = (app) => {
       req.body.projectName
     ) {
       if (users.login(req.body.username, req.body.password).error === false) {
-        const response = generateApp(req.body.username, req.body.code);
+        const response = generateApp(
+          req.body.username,
+          req.body.code,
+          req.body.projectName
+        );
         res.status(response.code);
         res.end(JSON.stringify(response));
       } else {
