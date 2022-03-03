@@ -8,6 +8,8 @@
 #fake_loader_wrapper {
   z-index: 99999;
   position: fixed;
+  top: 0;
+  left: 0;
   background: darken($stdBackground, 4%);
 
   width: 100%;
