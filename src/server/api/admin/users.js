@@ -8,6 +8,11 @@ const {
   overwriteUserConfig,
 } = require("../../module/account_patcher");
 const crypto = require("crypto");
+const fs = require("fs");
+const path = require("path");
+const os = require("os");
+const { existsUser } = require("@incodelang/accounts/src/lib/module/users");
+const { makeDefault } = require("../../module/generator.desktop");
 /**
  * @param {import("express")} app - The express App
  */
@@ -193,6 +198,28 @@ module.exports = (app) => {
         res.status(200).json({
           error: false,
           message: "Data stored",
+        });
+      } else {
+        res.status(404).json({
+          error: true,
+          message: "User not found",
+        });
+      }
+    } else {
+      res.status(403).json({
+        error: true,
+        message: "Forbidden",
+      });
+    }
+  });
+
+  app.post("/api/v1/admin/user/:user/rate/reset", (req, res) => {
+    if (require("../../module/checkAdmin")(req)) {
+      if (existsUser(req.params.user)) {
+        makeDefault(req.params.user);
+        res.status(200).json({
+          error: false,
+          message: "User rate reset",
         });
       } else {
         res.status(404).json({

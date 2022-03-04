@@ -19,11 +19,10 @@ export default class StarAnimation {
     "SelectApp",
     "ProjectInviteManager",
     "ExportProject",
+    "Admin",
   ];
 
   public static update(element: React.ReactElement) {
-    // @ts-ignore
-    console.log(element.type);
     // @ts-ignore
     if (StarAnimation.enabled.includes(element.type.displayName)) {
       (document.getElementById("stars") as HTMLDivElement).style.visibility =

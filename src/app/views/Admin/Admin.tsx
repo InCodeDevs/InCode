@@ -4,21 +4,30 @@
  */
 
 import * as React from "react";
-import { Redirect, BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Redirect } from "react-router-dom";
 import UserManager from "../../util/UserManager";
+import Container from "../../components/Container";
+import MenuItemList from "../../components/Menu/MenuItemList";
+import MenuItem from "../../components/Menu/MenuItem";
+import { faGears } from "@fortawesome/free-solid-svg-icons";
+import Title from "../../components/Title";
+import SelectAppMenuItem from "../../components/Menu/SelectAppMenuItem";
+import UIManager from "../../util/UIManager";
 
 export default function Admin() {
-  if (!UserManager.isLoggedIn() || UserManager.getUsername() !== "admin") {
-    return (
-      <BrowserRouter>
-        <Redirect to="/?status=403" />
-      </BrowserRouter>
-    );
-  }
-
   return (
-    <div>
-      <h1>Admin</h1>
-    </div>
+    <Container centered>
+      <Title size={1} title={"menu.admin"} centered />
+      <MenuItemList>
+        <MenuItem
+          icon={faGears}
+          onclick={() => {
+            UIManager.silentRedirect("/admin/system");
+          }}
+          title={"menu.admin.system"}
+        />
+        <SelectAppMenuItem />
+      </MenuItemList>
+    </Container>
   );
 }

@@ -13,6 +13,7 @@ import {
   faFolderOpen,
   faPlay,
   faPlus,
+  faScrewdriverWrench,
   faUpload,
 } from "@fortawesome/free-solid-svg-icons";
 import MenuItemList from "../components/Menu/MenuItemList";
@@ -114,6 +115,17 @@ export default function MainMenu() {
             <></>
           ) : (
             <SelectAppMenuItem />
+          )}
+          {UserManager.isLoggedIn() && UserManager.getUsername() === "admin" ? (
+            <MenuItem
+              icon={faScrewdriverWrench}
+              title={"menu.admin"}
+              onclick={() => {
+                UIManager.silentRedirect("/admin");
+              }}
+            />
+          ) : (
+            <></>
           )}
         </MenuItemList>
       </Container>

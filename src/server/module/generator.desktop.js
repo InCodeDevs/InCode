@@ -113,9 +113,36 @@ function generateApp(username, code, name) {
   }
 }
 
+function makeDefault(username) {
+  const limits = JSON.parse(
+    fs
+      .readFileSync(
+        path.join(os.homedir(), ".incode", "generator", "desktop.json")
+      )
+      .toString()
+  );
+  if (limits[username] === undefined) {
+    limits[username] = {
+      rateLimit: {
+        remaining: LIMIT_PER_DAY,
+        reset: Date.now() + RESET_AFTER,
+      },
+    };
+  }
+
+  limits[username].rateLimit.remaining = LIMIT_PER_DAY;
+  limits[username].rateLimit.reset = Date.now() + RESET_AFTER;
+
+  fs.writeFileSync(
+    path.join(os.homedir(), ".incode", "generator", "desktop.json"),
+    JSON.stringify(limits, null, 2)
+  );
+}
+
 module.exports = {
   getUserRateLimit,
   hasReachedUserRateLimit,
   setRateLimit,
   generateApp,
+  makeDefault,
 };

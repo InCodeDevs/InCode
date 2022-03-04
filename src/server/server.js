@@ -54,7 +54,12 @@ const {
 } = require("@incodelang/accounts/src/lib/module/users");
 const chalk = require("chalk");
 
-accountServer({ app: app, disable: {} });
+accountServer({
+  app: app,
+  disable: {
+    updateUsername: true,
+  },
+});
 urlServer({ app: app, prefix: "project" });
 
 require("./api/error/404")(app);

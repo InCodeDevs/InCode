@@ -121,6 +121,16 @@ export default function AccountManage() {
           icon={faPencilAlt}
           onclick={() => {
             PopupManager.showPopup(
+              "Alert",
+              "menu.available-soon",
+              i18n.translate("menu.available-soon.description"),
+              () => {},
+              true
+            );
+
+            return;
+
+            PopupManager.showPopup(
               "Question",
               "menu.manage-account.change-username",
               i18n.translate(
