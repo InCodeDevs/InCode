@@ -21,6 +21,8 @@ import PopupManager from "../../util/PopupManager";
 import UIManager from "../../util/UIManager";
 import UserManager from "../../util/UserManager";
 import MainMenu from "../MainMenu";
+import BackMenuItem from "../../components/Menu/BackMenuItem";
+import Login from "../Login";
 
 const client = new WebClient("");
 
@@ -82,7 +84,7 @@ export default function AccountLogin() {
           }}
           title={"menu.login.login"}
         />
-        <MainMenuItem />
+        <BackMenuItem component={<Login />} />
       </MenuItemList>
     </Container>
   );

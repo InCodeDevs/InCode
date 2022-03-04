@@ -96,6 +96,43 @@ export default function IndividualUserAdmin() {
           }}
           title={"menu.admin.user.individual.rename"}
         />
+
+        <MenuItem
+          icon={faPencilAlt}
+          onclick={() => {
+            PopupManager.showPopup(
+              "Question",
+              "menu.admin.user.individual.changePassword",
+              i18n.translate(
+                "menu.admin.user.individual.changePassword.confirm"
+              ),
+              (answer) => {
+                if (answer) {
+                  fetch("/api/v1/admin/user/" + user + "/password", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      username: "admin",
+                      password: UserManager.getToken(),
+                      newPassword: answer,
+                    }),
+                  }).then(() => {
+                    PopupManager.showPopup(
+                      "Alert",
+                      "menu.admin.user.individual.changePassword.success",
+                      i18n.translate(
+                        "menu.admin.user.individual.changePassword.success.description"
+                      )
+                    );
+                  });
+                }
+              }
+            );
+          }}
+          title={"menu.admin.user.individual.changePassword"}
+        />
         <MenuItem
           icon={faBackward}
           onclick={() => {

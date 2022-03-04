@@ -24,6 +24,8 @@ import MainMenu from "../MainMenu";
 import BrowserStorage from "../../util/BrowserStorage";
 import UserManager from "../../util/UserManager";
 import String from "../../util/String";
+import Login from "../Login";
+import BackMenuItem from "../../components/Menu/BackMenuItem";
 
 const client = new WebClient("");
 
@@ -164,7 +166,7 @@ export default function AccountRegister() {
           }}
           title={"menu.login.register"}
         />
-        <MainMenuItem />
+        <BackMenuItem component={<Login />} />
       </MenuItemList>
     </Container>
   );
