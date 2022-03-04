@@ -8,9 +8,9 @@ import UIManager from "./UIManager";
 import MainMenu from "../views/MainMenu";
 import Docs from "../views/Docs/Docs";
 import Playground from "../views/Playground";
-import SelectApp from "../views/SelectApp";
 import * as React from "react";
 import LandingPage from "../views/LandingPage";
+import Admin from "../views/Admin/Admin";
 
 export default class RouteManager {
   public static async manage() {
@@ -37,6 +37,9 @@ export default class RouteManager {
         } else if (location.pathname.startsWith("/playground")) {
           this.show();
           UIManager.showComponent(<Playground />);
+        } else if (location.pathname.startsWith("/admin")) {
+          this.hide();
+          UIManager.showComponent(<Admin />);
         } else if (location.pathname === "/") {
           this.hide();
           UIManager.showComponent(<LandingPage />);
