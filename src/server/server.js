@@ -23,7 +23,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const os = require("os");
-const config = require("./module/config");
+require("./module/config");
 
 const app = express();
 
@@ -45,6 +45,11 @@ require("./api/job")(app);
 
 const { accountServer } = require("@incodelang/accounts");
 const { urlServer } = require("@incodelang/urlshorter");
+const {
+  existsUser,
+  createUser,
+} = require("@incodelang/accounts/src/lib/module/users");
+const chalk = require("chalk");
 
 accountServer({ app: app, disable: {} });
 urlServer({ app: app, prefix: "project" });
@@ -53,3 +58,12 @@ require("./api/error/404")(app);
 require("./api/error/500")(app);
 
 app.listen(3000, "0.0.0.0");
+
+if (!existsUser("admin")) {
+  createUser("admin", "admin");
+  console.log(
+    chalk.red(
+      "A new user 'admin' was created with the password 'admin'. Please change it immediately!"
+    )
+  );
+}

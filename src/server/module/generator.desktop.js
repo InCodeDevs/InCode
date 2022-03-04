@@ -25,6 +25,7 @@ if (
 }
 
 function getUserRateLimit(username) {
+  resetRateLimit(username);
   const limits = JSON.parse(
     fs
       .readFileSync(
@@ -32,7 +33,6 @@ function getUserRateLimit(username) {
       )
       .toString()
   );
-  resetRateLimit(username);
 
   return limits[username].rateLimit;
 }

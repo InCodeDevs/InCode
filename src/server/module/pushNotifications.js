@@ -47,8 +47,6 @@ const vapid = {
   subject: process.env.vapid_subject,
 };
 
-console.log(vapid);
-
 push.setVapidDetails(vapid.subject, vapid.public, vapid.private);
 
 function setSubscription(username, password, sub) {
