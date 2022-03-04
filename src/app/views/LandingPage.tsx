@@ -188,18 +188,43 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-        <div style={{ left: 0, bottom: 0, margin: "2rem", position: "fixed", zIndex: 11 }}>
-          {
-            new URLSearchParams(location.search).has("status") ? (
-              <span style={{ color: 'red' }}>Loading Error - Code: {new URLSearchParams(location.search).get("status")}</span>
-            ) : <></>
-          }
+        <div
+          style={{
+            left: 0,
+            bottom: 0,
+            margin: "2rem",
+            position: "fixed",
+            zIndex: 11,
+          }}
+        >
+          {new URLSearchParams(location.search).has("status") ? (
+            <span style={{ color: "red" }}>
+              Loading Error - Code:{" "}
+              {new URLSearchParams(location.search).get("status")}
+            </span>
+          ) : (
+            <></>
+          )}
         </div>
-        <div style={{ right: 0, bottom: 0, margin: "2rem", position: "fixed", zIndex: 10 }}>
-          <a href={"/admin"} style={{ color: "white" }} onClick={(e) => {
-            e.preventDefault();
-            UIManager.silentRedirect("/admin")
-          }}>Admin</a>
+        <div
+          style={{
+            right: 0,
+            bottom: 0,
+            margin: "2rem",
+            position: "fixed",
+            zIndex: 10,
+          }}
+        >
+          <a
+            href={"/admin"}
+            style={{ color: "white" }}
+            onClick={(e) => {
+              e.preventDefault();
+              UIManager.silentRedirect("/admin");
+            }}
+          >
+            Admin
+          </a>
         </div>
       </BrowserRouter>
     </>

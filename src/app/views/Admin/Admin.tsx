@@ -8,13 +8,17 @@ import { Redirect, BrowserRouter } from "react-router-dom";
 import UserManager from "../../util/UserManager";
 
 export default function Admin() {
-    if(!UserManager.isLoggedIn() || UserManager.getUsername() !== "admin") {
-        return <BrowserRouter><Redirect to="/?status=403"/></BrowserRouter>
-    }
-
+  if (!UserManager.isLoggedIn() || UserManager.getUsername() !== "admin") {
     return (
-        <div>
-            <h1>Admin</h1>
-        </div>
+      <BrowserRouter>
+        <Redirect to="/?status=403" />
+      </BrowserRouter>
     );
+  }
+
+  return (
+    <div>
+      <h1>Admin</h1>
+    </div>
+  );
 }

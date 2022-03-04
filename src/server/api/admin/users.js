@@ -5,7 +5,7 @@
 
 const {
   getFullUserConfig,
-  overwriteUserConfig
+  overwriteUserConfig,
 } = require("../../module/account_patcher");
 const crypto = require("crypto");
 /**
