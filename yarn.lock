@@ -562,10 +562,10 @@
   resolved "https://registry.npmjs.org/@incodelang/accounts-client/-/accounts-client-1.0.11.tgz#847689ce270b67d5e3305acbaee83fac94389984"
   integrity sha512-MEuwezemT6iNcnMcQfpVn6r3VFtEx9Aop3+5hqoLLqd6kVq+dgM4dZGyrxWJXUjC90gIGoTETVOUxI7dW0D3jg==
 
-"@incodelang/accounts@^1.0.19":
-  version "1.0.19"
-  resolved "https://registry.npmjs.org/@incodelang/accounts/-/accounts-1.0.19.tgz#b669997542a1cdc1b78cb8b2d1bf298b96736f5d"
-  integrity sha512-jNXB708gm2wm5/fyLyd9Xlt8fdgubVSowrzwPEpZ4eLcccRWSceKRFLd7LVxMUvSoc/ObjyaBHqDCeTLMoJwIw==
+"@incodelang/accounts@^1.0.20":
+  version "1.0.20"
+  resolved "https://registry.npmjs.org/@incodelang/accounts/-/accounts-1.0.20.tgz#bbba62dde9f7da11ff711e7a2761ff505f0f47a0"
+  integrity sha512-xE56Yrq4lroJGUXDTlk+8YCapeH39OnNczhMQEEvDVXe4zSEwbvsvXuRnwLxRaNO0KAP1T5JSrI7nCQ3B2ufGw==
   dependencies:
     "@types/node" "^16.10.3"
     body-parser "^1.19.0"

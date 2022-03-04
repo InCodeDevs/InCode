@@ -9,6 +9,7 @@ import SystemAdmin from "./SystemAdmin";
 import UserManager from "../../util/UserManager";
 import UserAdmin from "./UserAdmin";
 import StatsAdmin from "./StatsAdmin";
+import IndividualUserAdmin from "./IndividualUserAdmin";
 
 export default function AdminRoute() {
   if (!UserManager.isLoggedIn() || UserManager.getUsername() !== "admin") {
@@ -24,6 +25,11 @@ export default function AdminRoute() {
         <Route exact path={"/admin"} component={Admin} />
         <Route exact path={"/admin/system"} component={SystemAdmin} />
         <Route exact path={"/admin/users"} component={UserAdmin} />
+        <Route
+          exact
+          path={"/admin/users/:user"}
+          component={IndividualUserAdmin}
+        />
         <Route exact path={"/admin/stats"} component={StatsAdmin} />
       </Switch>
     </BrowserRouter>

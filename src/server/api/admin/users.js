@@ -11,7 +11,10 @@ const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 const os = require("os");
-const { existsUser } = require("@incodelang/accounts/src/lib/module/users");
+const {
+  existsUser,
+  reload,
+} = require("@incodelang/accounts/src/lib/module/users");
 const { makeDefault } = require("../../module/generator.desktop");
 /**
  * @param {import("express")} app - The express App
@@ -58,6 +61,7 @@ module.exports = (app) => {
       if (u[req.params.user]) {
         delete u[req.params.user];
         overwriteUserConfig(u);
+        reload();
         res.status(200).json({
           error: false,
           message: "User deleted",
@@ -89,6 +93,7 @@ module.exports = (app) => {
         u[req.params.name] = u[req.params.user];
         delete u[req.params.user];
         overwriteUserConfig(u);
+        reload();
         res.status(200).json({
           error: false,
           message: "User renamed",
@@ -116,6 +121,7 @@ module.exports = (app) => {
             .update(req.body.newPassword)
             .digest("base64");
           overwriteUserConfig(u);
+          reload();
           res.status(200).json({
             error: false,
             message: "Password changed",
@@ -195,6 +201,7 @@ module.exports = (app) => {
       if (u[req.params.user]) {
         u[req.params.user].data[req.params.data] = req.body.data;
         overwriteUserConfig(u);
+        reload();
         res.status(200).json({
           error: false,
           message: "Data stored",
