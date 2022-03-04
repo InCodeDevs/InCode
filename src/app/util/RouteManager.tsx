@@ -18,6 +18,7 @@ export default class RouteManager {
     setInterval(() => {
       if (lastPathname !== location.pathname) {
         lastPathname = location.pathname;
+        document.body.classList.remove("admin");
 
         if (location.pathname.startsWith("/editor")) {
           this.show();
@@ -38,7 +39,7 @@ export default class RouteManager {
           this.show();
           UIManager.showComponent(<Playground />);
         } else if (location.pathname.startsWith("/admin")) {
-          this.hide();
+          this.show();
           UIManager.showComponent(<Admin />);
         } else if (location.pathname === "/") {
           this.hide();
