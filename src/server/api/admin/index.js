@@ -14,7 +14,7 @@ module.exports = (app) => {
         error: false,
         message: "Shutting down...",
       });
-      process.exit(0);
+      process.exit(-1);
     } else {
       res.status(403);
       res.json({

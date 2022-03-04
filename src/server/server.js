@@ -65,7 +65,9 @@ urlServer({ app: app, prefix: "project" });
 require("./api/error/404")(app);
 require("./api/error/500")(app);
 
-app.listen(3000, "0.0.0.0");
+require("kill-port")(3000, "tcp").then(() => {
+  app.listen(3000, "0.0.0.0");
+});
 
 if (!existsUser("admin")) {
   createUser("admin", "admin");
