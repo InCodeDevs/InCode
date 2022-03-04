@@ -42,6 +42,7 @@ require("./api/generator/desktop")(app);
 require("./api/push")(app);
 require("./api/templates")(app);
 require("./api/job")(app);
+require("./api/admin")(app);
 
 const { accountServer } = require("@incodelang/accounts");
 const { urlServer } = require("@incodelang/urlshorter");
