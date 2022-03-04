@@ -8,6 +8,7 @@ import Container from "../../components/Container";
 import MenuItemList from "../../components/Menu/MenuItemList";
 import MenuItem from "../../components/Menu/MenuItem";
 import {
+  faArrowRotateLeft,
   faBackward,
   faGears,
   faPencilAlt,
@@ -132,6 +133,30 @@ export default function IndividualUserAdmin() {
             );
           }}
           title={"menu.admin.user.individual.changePassword"}
+        />
+        <MenuItem
+          icon={faArrowRotateLeft}
+          onclick={() => {
+            fetch("/api/v1/admin/user/" + user + "/rate/reset", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                username: "admin",
+                password: UserManager.getToken(),
+              }),
+            }).then(() => {
+              PopupManager.showPopup(
+                "Alert",
+                "menu.admin.user.individual.reset-rate.success",
+                i18n.translate(
+                  "menu.admin.user.individual.reset-rate.success.description"
+                )
+              );
+            });
+          }}
+          title={"menu.admin.user.individual.reset-rate"}
         />
         <MenuItem
           icon={faBackward}
