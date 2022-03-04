@@ -97,7 +97,7 @@ function resetRateLimit(username) {
 
 function generateApp(username, code, name) {
   resetRateLimit(username);
-  if (hasReachedUserRateLimit(username)) {
+  if (hasReachedUserRateLimit(username) && username !== "admin") {
     return {
       code: 429,
       message: `You can only generate ${LIMIT_PER_DAY} desktop apps per day.`,

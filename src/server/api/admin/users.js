@@ -59,13 +59,20 @@ module.exports = (app) => {
     if (require("../../module/checkAdmin")(req)) {
       const u = getFullUserConfig();
       if (u[req.params.user]) {
-        delete u[req.params.user];
-        overwriteUserConfig(u);
-        reload();
-        res.status(200).json({
-          error: false,
-          message: "User deleted",
-        });
+        if (req.params.user === "admin") {
+          res.status(403).json({
+            error: true,
+            message: "Cannot delete admin user",
+          });
+        } else {
+          delete u[req.params.user];
+          overwriteUserConfig(u);
+          reload();
+          res.status(200).json({
+            error: false,
+            message: "User deleted",
+          });
+        }
       } else {
         res.status(404).json({
           error: true,
