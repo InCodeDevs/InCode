@@ -212,7 +212,6 @@ module.exports = (app) => {
       });
     }
   });
-
   app.post("/api/v1/admin/user/:user/rate/reset", (req, res) => {
     if (require("../../module/checkAdmin")(req)) {
       if (existsUser(req.params.user)) {
