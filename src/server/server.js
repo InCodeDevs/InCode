@@ -44,6 +44,7 @@ require("./api/templates")(app);
 require("./api/job")(app);
 require("./api/admin")(app);
 require("./api/admin/users")(app);
+require("./api/admin/data")(app);
 
 const { accountServer } = require("@incodelang/accounts");
 const { urlServer } = require("@incodelang/urlshorter");
