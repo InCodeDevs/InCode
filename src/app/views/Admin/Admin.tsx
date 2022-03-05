@@ -7,7 +7,11 @@ import * as React from "react";
 import Container from "../../components/Container";
 import MenuItemList from "../../components/Menu/MenuItemList";
 import MenuItem from "../../components/Menu/MenuItem";
-import { faGears, faUsersGear } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChartLine,
+  faGears,
+  faUsersGear,
+} from "@fortawesome/free-solid-svg-icons";
 import Title from "../../components/Title";
 import SelectAppMenuItem from "../../components/Menu/SelectAppMenuItem";
 import UIManager from "../../util/UIManager";
@@ -30,6 +34,13 @@ export default function Admin() {
             UIManager.silentRedirect("/admin/system");
           }}
           title={"menu.admin.system"}
+        />
+        <MenuItem
+          icon={faChartLine}
+          onclick={() => {
+            UIManager.silentRedirect("/admin/stats");
+          }}
+          title={"menu.admin.stats"}
         />
         <SelectAppMenuItem />
       </MenuItemList>

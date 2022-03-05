@@ -31,6 +31,11 @@
   }
 }
 
+.menu-item-disabled {
+  background: darken($stdBackground, 8%) !important;
+  cursor: default !important;
+}
+
 .bare-menu-item {
   cursor: default !important;
   &:hover {

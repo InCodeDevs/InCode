@@ -15,11 +15,18 @@ interface Props {
   title: string;
   nol18n?: boolean;
   id?: string;
+  disabled?: boolean;
 }
 
 export default function MenuItem(props: Props) {
   return (
-    <div className={"menu-item"} onClick={props.onclick} id={props.id}>
+    <div
+      className={
+        "menu-item " + (props.disabled === true ? "menu-item-disabled" : "")
+      }
+      onClick={props.onclick}
+      id={props.id}
+    >
       <FontAwesomeIcon icon={props.icon} color={"#FAFAFA"} />
       <Text nol18n={props.nol18n}>{props.title}</Text>
     </div>

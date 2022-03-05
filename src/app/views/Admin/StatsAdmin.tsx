@@ -90,6 +90,7 @@ export default function StatsAdmin() {
           onclick={() => {}}
           title={i18n.translate("menu.admin.stats.users") + ": " + totalUsers}
           nol18n
+          disabled
         />
         <MenuItem
           icon={faFolderTree}
@@ -98,6 +99,7 @@ export default function StatsAdmin() {
             i18n.translate("menu.admin.stats.projects") + ": " + totalProjects
           }
           nol18n
+          disabled
         />
         <MenuItem
           icon={faCode}
@@ -108,6 +110,7 @@ export default function StatsAdmin() {
             totalCodeProjects
           }
           nol18n
+          disabled
         />
         <MenuItem
           icon={faCubes}
@@ -118,6 +121,7 @@ export default function StatsAdmin() {
             totalBlockProjects
           }
           nol18n
+          disabled
         />
         <MenuItem
           icon={faBackward}
@@ -127,6 +131,15 @@ export default function StatsAdmin() {
           title={"menu.share-project.back"}
         />
       </MenuItemList>
+      <div style={{ textAlign: "center", marginTop: "1rem" }}>
+        <a
+          href={"https://analytics.craftions.net/analyze?host=incodelang.de"}
+          target={"_blank"}
+          style={{ color: "aqua" }}
+        >
+          Web Statistics
+        </a>
+      </div>
     </Container>
   );
 }

@@ -28,10 +28,14 @@ This is the repository for the official editor, documentation and playground for
 - Templates
 - Project publishing
 - Project sharing
-- Integrated Documentation
+- Documentation
 - Playground
 - Code Editor (monaco based)
 - Block Editor (blockly based)
+- Admin Panel
+  - Manage Accounts
+  - View Statistics
+  - Reboot Server
 
 ## Screenshots
 
