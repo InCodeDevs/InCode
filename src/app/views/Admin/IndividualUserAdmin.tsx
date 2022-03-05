@@ -10,6 +10,7 @@ import MenuItem from "../../components/Menu/MenuItem";
 import {
   faArrowRotateLeft,
   faBackward,
+  faFolderTree,
   faGears,
   faPencilAlt,
   faTrashAlt,
@@ -157,6 +158,13 @@ export default function IndividualUserAdmin() {
             });
           }}
           title={"menu.admin.user.individual.reset-rate"}
+        />
+        <MenuItem
+          icon={faFolderTree}
+          onclick={() => {
+            UIManager.silentRedirect("/admin/users/" + user + "/projects");
+          }}
+          title={"menu.admin.user.individual.projects"}
         />
         <MenuItem
           icon={faBackward}

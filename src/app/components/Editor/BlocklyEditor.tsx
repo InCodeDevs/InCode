@@ -12,6 +12,7 @@ import * as DE from "blockly/msg/de";
 
 export interface BlocklyProps {
   initialXml: string;
+  readonly?: boolean;
 }
 
 export default function BlocklyEditor(props: BlocklyProps) {
