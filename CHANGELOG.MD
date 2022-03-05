@@ -9,3 +9,7 @@
 - Added Project Export/Import to the Editor
 - Bug Fixes
 - Export Desktop App
+- Admin Panel
+  - User Management
+  - Statistics
+  - System Management
