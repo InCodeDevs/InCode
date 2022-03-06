@@ -26,15 +26,4 @@ window.onload = () => {
   RouteManager.manage();
 
   ServiceWorker.register();
-
-  PopupManagerReloaded.confirm({
-    title: "Titel",
-    description: "Beschreibung",
-    onAgree: () => {
-      alert("Agree");
-    },
-    onDisagree: () => {
-      alert("Disagree");
-    },
-  });
 };

@@ -12,6 +12,7 @@
   width: 45%;
   position: fixed;
   padding: 2rem;
+  font-size: 1.2rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -20,8 +21,18 @@
     min-height: 100%;
   }
 
+  a {
+    color: $stdAccent;
+    font-family: monospace;
+  }
+
+  li {
+    margin: .25rem;
+  }
+
 
   .popup-reloaded-content {
+    overflow: auto;
     height: 100%;
     width: 100%;
     display: flex;
@@ -32,16 +43,21 @@
       flex: 10%;
       align-items: center;
       justify-content: center;
+
       h1 {
         flex: 80%;
+        color: $stdAccent;
       }
+
       button {
         flex: 20%;
       }
     }
+
     .popup-reloaded-description {
       flex: 80%;
     }
+
     .popup-reloaded-buttons {
       flex: 10%;
       display: flex;

@@ -7,13 +7,24 @@ import UIManager from "./UIManager";
 import ReloadedPopup from "../components/ReloadedPopup/ReloadedPopup";
 import React from "react";
 import { IConfirmPopup } from "../types/IConfirmPopup";
+import { IAlertPopup } from "../types/IAlertPopup";
 
 export default class PopupManagerReloaded {
   public static next_popups: IPopup[] = [];
   public static current_popup: IPopup | null = null;
 
-  public static alert(options: IPopup) {
-    PopupManagerReloaded.showPopup(options);
+  public static alert(options: IAlertPopup) {
+    PopupManagerReloaded.showPopup({
+      buttons: [
+        {
+          text: "OK",
+          onClick: () => {
+            PopupManagerReloaded.disposeCurrentPopup();
+          },
+        },
+      ],
+      ...options,
+    });
   }
 
   public static confirm(options: IConfirmPopup) {
