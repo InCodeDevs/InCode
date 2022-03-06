@@ -131,7 +131,7 @@
   "menu.share-project.failed.template.description": "Vorlage konnte nicht veröffentlicht werden!",
   "menu.share-project.share-with-others": "Mit anderen teilen",
   "menu.share-project.share-with-others.invite": "Einladen",
-  "menu.share-project.share-with-others.input-name": "Benutzernamen eingeben",
+  "menu.share-project.share-with-others.input-name": "Gib den Namen des Benutzers ein",
   "menu.share-project.share-with-others.invited.success": "Einladung erfolgreich!",
   "menu.share-project.share-with-others.invited.success.description": "Der Benutzer wurde erfolgreich eingeladen!",
   "menu.settings.menu.title": "Einstellungen",
