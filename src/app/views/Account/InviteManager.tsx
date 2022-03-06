@@ -24,6 +24,8 @@ import UIManager from "../../util/UIManager";
 import { ProjectConfig } from "../../types/ProjectConfig";
 import { WebClient } from "@incodelang/accounts-client";
 import ProjectManager from "../../util/ProjectManager";
+import AccountManage from "./AccountManage";
+import BackMenuItem from "../../components/Menu/BackMenuItem";
 
 export default function InviteManager() {
   const [invitesActive, setInvitesActive] = React.useState(false);
@@ -58,7 +60,7 @@ export default function InviteManager() {
                 }}
                 title={"menu.manage-account.manage-invites.deactivate"}
               />
-              <MainMenuItem />
+              <BackMenuItem component={<AccountManage />} />
               {invites.map((invite) => {
                 return (
                   <MenuItemControls
@@ -142,7 +144,7 @@ export default function InviteManager() {
                 }}
                 title={"menu.manage-account.manage-invites.activate"}
               />
-              <MainMenuItem />
+              <BackMenuItem component={<AccountManage />} />
             </>
           )}
         </MenuItemListScroll>
