@@ -13,3 +13,4 @@
   - User Management
   - Statistics
   - System Management
+- New 
