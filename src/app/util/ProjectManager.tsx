@@ -16,19 +16,17 @@ import { Networking } from "./Networking";
 import Workspace from "./Workspace";
 import String from "./String";
 import { v4 as uuidv4 } from "uuid";
+import PopupManagerReloaded from "./PopupManagerReloaded";
 
 const client = new WebClient("");
 
 export default class ProjectManager {
   public static checkProjectName(value: string): boolean {
     if (value.length < 4) {
-      PopupManager.showPopup(
-        "Alert",
-        "error",
-        i18n.translate("error.project.name.too.short"),
-        () => {},
-        true
-      );
+      PopupManagerReloaded.alert({
+        title: i18n.translate("error"),
+        description: i18n.translate("error.project.name.too.short"),
+      });
     }
     return value.length >= 4;
   }

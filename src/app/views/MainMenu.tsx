@@ -29,6 +29,9 @@ import Settings from "./Settings/Settings";
 import Docs from "./Docs/Docs";
 import SelectAppMenuItem from "../components/Menu/SelectAppMenuItem";
 import ProjectManager from "../util/ProjectManager";
+import PopupManagerReloaded from "../util/PopupManagerReloaded";
+import Login from "./Login";
+import DefaultPopup from "../util/popups/DefaultPopup";
 
 export default function MainMenu() {
   return (
@@ -42,13 +45,7 @@ export default function MainMenu() {
               if (UserManager.isLoggedIn()) {
                 UIManager.showComponent(<CreateProject />);
               } else {
-                PopupManager.showPopup(
-                  "Alert",
-                  "error.not.logged-in",
-                  i18n.translate("error.please-login"),
-                  () => {},
-                  true
-                );
+                PopupManagerReloaded.alert(DefaultPopup.PLEASE_LOG_IN);
               }
             }}
             title={"menu.main.create.project"}
@@ -59,13 +56,7 @@ export default function MainMenu() {
               if (UserManager.isLoggedIn()) {
                 UIManager.showComponent(<OpenProject />);
               } else {
-                PopupManager.showPopup(
-                  "Alert",
-                  "error.not.logged-in",
-                  i18n.translate("error.please-login"),
-                  () => {},
-                  true
-                );
+                PopupManagerReloaded.alert(DefaultPopup.PLEASE_LOG_IN);
               }
             }}
             title={"menu.main.open.project"}
@@ -93,13 +84,7 @@ export default function MainMenu() {
                   document.body.removeChild(input);
                 };
               } else {
-                PopupManager.showPopup(
-                  "Alert",
-                  "error.not.logged-in",
-                  i18n.translate("error.please-login"),
-                  () => {},
-                  true
-                );
+                PopupManagerReloaded.alert(DefaultPopup.PLEASE_LOG_IN);
               }
             }}
             title={"menu.main.import.project"}
