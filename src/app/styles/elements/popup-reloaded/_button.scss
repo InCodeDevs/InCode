@@ -1,0 +1,54 @@
+/**
+ * @author Ben Siebert <ben@mctzock.de>
+ * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
+ */
+
+@use "sass:map";
+
+$variants: (
+  "standard",
+  "green",
+  "red"
+);
+
+$var_background: (
+  "standard": #f5f5f5, "green": #58d68d, "red": #ff5252
+);
+
+$var_color: (
+  "standard": #000, "green": #fff, "red": #fff
+);
+
+$var_background_hover: (
+  "standard": #e6e6e6, "green": darken(#58d68d, 10%), "red": darken(#ff5252, 10%)
+);
+
+
+.popup-reloaded-button {
+  display: inline-block;
+  padding: 0.5em 1em;
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+@each $variant in $variants {
+  .popup-reloaded-button-#{$variant} {
+    background: map-get($var_background, $variant);
+    color: map-get($var_color, $variant);
+    &:hover {
+      background: map-get($var_background_hover, $variant);
+    }
+  }
+}
+
+.close-button {
+  background-color: #adadad;
+  color: #000;
+  &:hover {
+    background-color: #696969;
+  }
+}

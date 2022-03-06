@@ -12,6 +12,7 @@ import OpenCommand from "./util/commands/OpenCommand";
 import CreateCommand from "./util/commands/CreateCommand";
 import RouteManager from "./util/RouteManager";
 import ServiceWorker from "./util/ServiceWorker";
+import PopupManagerReloaded from "./util/PopupManagerReloaded";
 
 if (!Settings.isValid()) {
   Settings.reset();
@@ -25,4 +26,15 @@ window.onload = () => {
   RouteManager.manage();
 
   ServiceWorker.register();
+
+  PopupManagerReloaded.confirm({
+    title: "Titel",
+    description: "Beschreibung",
+    onAgree: () => {
+      alert("Agree");
+    },
+    onDisagree: () => {
+      alert("Disagree");
+    },
+  });
 };
