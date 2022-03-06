@@ -13,6 +13,7 @@ import UIManager from "../../util/UIManager";
 import UserManager from "../../util/UserManager";
 import PopupManager from "../../util/PopupManager";
 import i18n from "../../util/i18n";
+import PopupManagerReloaded from "../../util/PopupManagerReloaded";
 
 export default function SystemAdmin() {
   return (
@@ -32,11 +33,12 @@ export default function SystemAdmin() {
                 password: UserManager.getToken(),
               }),
             }).then(() => {
-              PopupManager.showPopup(
-                "Alert",
-                "menu.admin.system.shutdown.success",
-                i18n.translate("menu.admin.system.shutdown.success.description")
-              );
+              PopupManagerReloaded.alert({
+                title: i18n.translate("menu.admin.system.shutdown.success"),
+                description: i18n.translate(
+                  "menu.admin.system.shutdown.success.description"
+                ),
+              });
             });
           }}
           title={"menu.admin.system.shutdown"}

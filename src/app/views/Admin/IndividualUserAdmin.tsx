@@ -23,6 +23,7 @@ import { useParams } from "react-router-dom";
 import i18n from "../../util/i18n";
 import PopupManager from "../../util/PopupManager";
 import UserManager from "../../util/UserManager";
+import PopupManagerReloaded from "../../util/PopupManagerReloaded";
 
 export default function IndividualUserAdmin() {
   // @ts-ignore
@@ -46,11 +47,12 @@ export default function IndividualUserAdmin() {
         <MenuItem
           icon={faTrashAlt}
           onclick={() => {
-            PopupManager.showPopup(
-              "Confirm",
-              "menu.continue",
-              i18n.translate("menu.admin.user.individual.delete.confirm"),
-              () => {
+            PopupManagerReloaded.confirm({
+              title: i18n.translate("menu.continue"),
+              description: i18n.translate(
+                "menu.admin.user.individual.delete.confirm"
+              ),
+              onAgree: () => {
                 fetch("/api/v1/admin/user/" + user + "/delete", {
                   method: "POST",
                   headers: {
@@ -63,19 +65,20 @@ export default function IndividualUserAdmin() {
                 }).then(() => {
                   UIManager.silentRedirect("/admin/users");
                 });
-              }
-            );
+              },
+            });
           }}
           title={"menu.admin.user.individual.delete"}
         />
         <MenuItem
           icon={faPencilAlt}
           onclick={() => {
-            PopupManager.showPopup(
-              "Question",
-              "menu.admin.user.individual.rename",
-              i18n.translate("menu.admin.user.individual.rename.confirm"),
-              (answer) => {
+            PopupManagerReloaded.ask({
+              title: i18n.translate("menu.admin.user.individual.rename"),
+              description: i18n.translate(
+                "menu.admin.user.individual.rename.confirm"
+              ),
+              onSubmit: (answer) => {
                 if (answer) {
                   fetch(
                     "/api/v1/admin/user/" + user + "/rename" + "/" + answer,
@@ -93,8 +96,8 @@ export default function IndividualUserAdmin() {
                     UIManager.silentRedirect("/admin/users/" + answer);
                   });
                 }
-              }
-            );
+              },
+            });
           }}
           title={"menu.admin.user.individual.rename"}
         />
@@ -102,13 +105,14 @@ export default function IndividualUserAdmin() {
         <MenuItem
           icon={faPencilAlt}
           onclick={() => {
-            PopupManager.showPopup(
-              "Question",
-              "menu.admin.user.individual.changePassword",
-              i18n.translate(
+            PopupManagerReloaded.ask({
+              title: i18n.translate(
+                "menu.admin.user.individual.changePassword"
+              ),
+              description: i18n.translate(
                 "menu.admin.user.individual.changePassword.confirm"
               ),
-              (answer) => {
+              onSubmit: (answer) => {
                 if (answer) {
                   fetch("/api/v1/admin/user/" + user + "/password", {
                     method: "POST",
@@ -121,17 +125,18 @@ export default function IndividualUserAdmin() {
                       newPassword: answer,
                     }),
                   }).then(() => {
-                    PopupManager.showPopup(
-                      "Alert",
-                      "menu.admin.user.individual.changePassword.success",
-                      i18n.translate(
+                    PopupManagerReloaded.alert({
+                      title: i18n.translate(
+                        "menu.admin.user.individual.changePassword.success"
+                      ),
+                      description: i18n.translate(
                         "menu.admin.user.individual.changePassword.success.description"
-                      )
-                    );
+                      ),
+                    });
                   });
                 }
-              }
-            );
+              },
+            });
           }}
           title={"menu.admin.user.individual.changePassword"}
         />
@@ -148,13 +153,14 @@ export default function IndividualUserAdmin() {
                 password: UserManager.getToken(),
               }),
             }).then(() => {
-              PopupManager.showPopup(
-                "Alert",
-                "menu.admin.user.individual.reset-rate.success",
-                i18n.translate(
+              PopupManagerReloaded.alert({
+                title: i18n.translate(
+                  "menu.admin.user.individual.reset-rate.success"
+                ),
+                description: i18n.translate(
                   "menu.admin.user.individual.reset-rate.success.description"
-                )
-              );
+                ),
+              });
             });
           }}
           title={"menu.admin.user.individual.reset-rate"}

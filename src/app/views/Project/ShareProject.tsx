@@ -10,6 +10,7 @@ import { ProjectConfig } from "../../types/ProjectConfig";
 import MenuItemList from "../../components/Menu/MenuItemList";
 import MenuItem from "../../components/Menu/MenuItem";
 import {
+  faBackward,
   faPuzzlePiece,
   faScroll,
   faTimesCircle,
@@ -22,6 +23,8 @@ import TemplateManager from "../../util/TemplateManager";
 import PopupManager from "../../util/PopupManager";
 import i18n from "../../util/i18n";
 import ProjectInviteManager from "./ProjectInviteManager";
+import PopupManagerReloaded from "../../util/PopupManagerReloaded";
+import BackMenuItem from "../../components/Menu/BackMenuItem";
 
 interface Props {
   projectConfig: ProjectConfig;
@@ -48,25 +51,23 @@ export default function ShareProject(props: Props) {
           onclick={() => {
             TemplateManager.shareTemplate(props.projectConfig).then((obj) => {
               if (obj.error) {
-                PopupManager.showPopup(
-                  "Alert",
-                  "menu.share-project.failed.template.title",
-                  i18n.translate(
+                PopupManagerReloaded.alert({
+                  title: i18n.translate(
+                    "menu.share-project.failed.template.title"
+                  ),
+                  description: i18n.translate(
                     "menu.share-project.failed.template.description"
                   ),
-                  () => {},
-                  true
-                );
+                });
               } else {
-                PopupManager.showPopup(
-                  "Alert",
-                  "menu.share-project.success.template.title",
-                  i18n.translate(
+                PopupManagerReloaded.alert({
+                  title: i18n.translate(
+                    "menu.share-project.success.template.title"
+                  ),
+                  description: i18n.translate(
                     "menu.share-project.success.template.description"
                   ),
-                  () => {},
-                  true
-                );
+                });
               }
             });
           }}
@@ -90,33 +91,35 @@ export default function ShareProject(props: Props) {
               .then((r) => r.json())
               .then((t) => {
                 const url = t.url;
-                PopupManager.showPopup(
-                  "Alert",
-                  "menu.share-project.success.project.title",
-                  <>
-                    <h3 style={{ textAlign: "center" }}>
-                      {i18n.translate(
-                        "menu.share-project.success.project.description"
-                      )}
-                      <a href={url} target="_blank" rel="noopener noreferrer">
-                        {location.protocol + "//" + location.host + url}
-                      </a>
-                    </h3>
-                  </>
-                );
+                PopupManagerReloaded.alert({
+                  title: i18n.translate(
+                    "menu.share-project.success.project.title"
+                  ),
+                  description: (
+                    <>
+                      <h3 style={{ textAlign: "center" }}>
+                        {i18n.translate(
+                          "menu.share-project.success.project.description"
+                        )}
+                        <a href={url} target="_blank" rel="noopener noreferrer">
+                          {location.protocol + "//" + location.host + url}
+                        </a>
+                      </h3>
+                    </>
+                  ),
+                });
               });
           }}
           title={"menu.share-project.share-project"}
         />
         <MenuItem
           // @ts-ignore
-          icon={faTimesCircle}
+          icon={faBackward}
           onclick={() => {
             UIManager.showComponent(<OpenProject />);
           }}
           title={"menu.share-project.back"}
         />
-        <MainMenuItem />
       </MenuItemList>
     </Container>
   );

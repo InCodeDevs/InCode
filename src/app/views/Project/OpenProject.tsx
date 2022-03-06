@@ -26,6 +26,7 @@ import MenuItem from "../../components/Menu/MenuItem";
 import CreateProject from "./CreateProject";
 import MenuItemListScroll from "../../components/Menu/MenuItemListScroll";
 import ShareProject from "./ShareProject";
+import PopupManagerReloaded from "../../util/PopupManagerReloaded";
 
 export default function OpenProject() {
   const [container, setContainer] = useState<ReactElement | null>(null);
@@ -50,17 +51,17 @@ export default function OpenProject() {
                 icon: faTrash,
                 color: "red",
                 onclick: () => {
-                  PopupManager.showPopup(
-                    "Confirm",
-                    "menu.open-project.delete.title",
-                    i18n.translate("menu.open-project.delete.description"),
-                    () => {
+                  PopupManagerReloaded.confirm({
+                    title: i18n.translate("menu.open-project.delete.title"),
+                    description: i18n.translate(
+                      "menu.open-project.delete.description"
+                    ),
+                    onAgree: () => {
                       ProjectManager.deleteProject(project).then(() => {
                         UIManager.showComponent(<OpenProject />);
                       });
                     },
-                    true
-                  );
+                  });
                 },
                 name: "menu.open-project.delete",
               },
@@ -69,11 +70,12 @@ export default function OpenProject() {
                 icon: faPen,
                 color: "lime",
                 onclick: () => {
-                  PopupManager.showPopup(
-                    "Question",
-                    "menu.open-project.rename.title",
-                    i18n.translate("menu.open-project.rename.description"),
-                    (value) => {
+                  PopupManagerReloaded.ask({
+                    title: i18n.translate("menu.open-project.rename.title"),
+                    description: i18n.translate(
+                      "menu.open-project.rename.description"
+                    ),
+                    onSubmit: (value) => {
                       ProjectManager.renameProject(
                         project,
                         value as string
@@ -81,8 +83,7 @@ export default function OpenProject() {
                         UIManager.showComponent(<OpenProject />);
                       });
                     },
-                    true
-                  );
+                  });
                 },
                 name: "menu.open-project.rename",
               },

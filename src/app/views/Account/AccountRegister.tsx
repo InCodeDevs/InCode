@@ -15,17 +15,16 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import i18n from "../../util/i18n";
-import MainMenuItem from "../../components/Menu/MainMenuItem";
 import MenuItem from "../../components/Menu/MenuItem";
 import { WebClient } from "@incodelang/accounts-client";
 import PopupManager from "../../util/PopupManager";
 import UIManager from "../../util/UIManager";
 import MainMenu from "../MainMenu";
-import BrowserStorage from "../../util/BrowserStorage";
 import UserManager from "../../util/UserManager";
 import String from "../../util/String";
 import Login from "../Login";
 import BackMenuItem from "../../components/Menu/BackMenuItem";
+import PopupManagerReloaded from "../../util/PopupManagerReloaded";
 
 const client = new WebClient("");
 
@@ -119,13 +118,10 @@ export default function AccountRegister() {
                 if (UserManager.isPasswordSafe(password)) {
                   client.existsUser(username).then((r) => {
                     if (r) {
-                      PopupManager.showPopup(
-                        "Alert",
-                        "error",
-                        i18n.translate("error.username.exists"),
-                        () => {},
-                        true
-                      );
+                      PopupManagerReloaded.alert({
+                        title: i18n.translate("error"),
+                        description: i18n.translate("error.username.exists"),
+                      });
                     } else {
                       UIManager.unmountAt("root");
                       client.create(username, password).then((x) => {
@@ -137,31 +133,22 @@ export default function AccountRegister() {
                     }
                   });
                 } else {
-                  PopupManager.showPopup(
-                    "Alert",
-                    "error",
-                    i18n.translate("error.password.too.weak"),
-                    () => {},
-                    true
-                  );
+                  PopupManagerReloaded.alert({
+                    title: i18n.translate("error"),
+                    description: i18n.translate("error.password.too.weak"),
+                  });
                 }
               } else {
-                PopupManager.showPopup(
-                  "Alert",
-                  "error",
-                  i18n.translate("error.password.not.match"),
-                  () => {},
-                  true
-                );
+                PopupManagerReloaded.alert({
+                  title: i18n.translate("error"),
+                  description: i18n.translate("error.password.not.match"),
+                });
               }
             } else {
-              PopupManager.showPopup(
-                "Alert",
-                "error",
-                i18n.translate("error.username.too.short"),
-                () => {},
-                true
-              );
+              PopupManagerReloaded.alert({
+                title: i18n.translate("error"),
+                description: i18n.translate("error.username.too.short"),
+              });
             }
           }}
           title={"menu.login.register"}

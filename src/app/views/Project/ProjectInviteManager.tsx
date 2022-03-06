@@ -19,6 +19,8 @@ import ProjectManager from "../../util/ProjectManager";
 import { WebClient } from "@incodelang/accounts-client";
 import UIManager from "../../util/UIManager";
 import ShareProject from "./ShareProject";
+import PopupManagerReloaded from "../../util/PopupManagerReloaded";
+import BackMenuItem from "../../components/Menu/BackMenuItem";
 
 interface Props {
   projectConfig: ProjectConfig;
@@ -92,46 +94,44 @@ export default function ProjectInviteManager(props: Props) {
                                   }),
                                 });
                                 await ProjectManager.saveProject(pConfig, true);
-                                PopupManager.showPopup(
-                                  "Alert",
-                                  "menu.share-project.share-with-others.invited.success",
-                                  i18n.translate(
-                                    "menu.share-project.share-with-others.invited.success.description"
+                                PopupManagerReloaded.alert({
+                                  title: i18n.translate(
+                                    "menu.share-project.share-with-others.invited.success"
                                   ),
-                                  () => {
+                                  description: i18n.translate(
+                                    "menu.share-project.share-with-others.invited.success-description"
+                                  ),
+                                  didClose: () => {
                                     UIManager.showComponent(
                                       <ShareProject projectConfig={pConfig} />
                                     );
                                   },
-                                  true
-                                );
+                                });
                               });
                           });
                       } else {
-                        PopupManager.showPopup(
-                          "Alert",
-                          "error",
-                          i18n.translate("error.user.invites-disabled"),
-                          () => {},
-                          true
-                        );
+                        PopupManagerReloaded.alert({
+                          title: i18n.translate("error"),
+                          description: i18n.translate(
+                            "error.user.invites.disabled"
+                          ),
+                        });
                       }
                     }
                   );
                 } else {
-                  PopupManager.showPopup(
-                    "Alert",
-                    "error",
-                    i18n.translate("error.user.not-exists"),
-                    () => {},
-                    true
-                  );
+                  PopupManagerReloaded.alert({
+                    title: i18n.translate("error"),
+                    description: i18n.translate("error.user.not-exist"),
+                  });
                 }
               });
             }}
             title={"menu.share-project.share-with-others.invite"}
           />
-          <MainMenuItem />
+          <BackMenuItem
+            component={<ShareProject projectConfig={props.projectConfig} />}
+          />
         </MenuItemList>
       </Container>
     </>

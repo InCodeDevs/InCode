@@ -23,6 +23,7 @@ import i18n from "../../util/i18n";
 import PopupManager from "../../util/PopupManager";
 import String from "../../util/String";
 import { Compiler } from "@incodelang/compiler";
+import PopupManagerReloaded from "../../util/PopupManagerReloaded";
 
 interface Props {
   projectConfig: ProjectConfig;
@@ -131,11 +132,12 @@ export default function ExportProject(props: Props) {
                 if (response.status === 429) {
                   UIManager.unmountAt("fake_loader_content");
                   FakeLoader.hide();
-                  PopupManager.showPopup(
-                    "Alert",
-                    "error",
-                    i18n.translate("menu.project.export.limit-reached")
-                  );
+                  PopupManagerReloaded.alert({
+                    title: i18n.translate("error"),
+                    description: i18n.translate(
+                      "menu.project.export.limit-reached"
+                    ),
+                  });
                 } else {
                   response.json().then(async (data0) => {
                     (

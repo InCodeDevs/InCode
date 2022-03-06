@@ -8,6 +8,9 @@ import ReloadedPopup from "../components/ReloadedPopup/ReloadedPopup";
 import React from "react";
 import { IConfirmPopup } from "../types/IConfirmPopup";
 import { IAlertPopup } from "../types/IAlertPopup";
+import { IQuestionPopup } from "../types/IQuestionPopup";
+import { v4 } from "uuid";
+import i18n from "./i18n";
 
 export default class PopupManagerReloaded {
   public static next_popups: IPopup[] = [];
@@ -33,23 +36,23 @@ export default class PopupManagerReloaded {
       description: options.description,
       buttons: [
         {
-          text: "Nein",
+          text: i18n.translate("no"),
           variant: "red",
           onClick: () => {
             if (options.onDisagree) {
-              PopupManagerReloaded.disposeCurrentPopup();
               options.onDisagree();
             }
+            PopupManagerReloaded.disposeCurrentPopup();
           },
         },
         {
-          text: "Ja",
+          text: i18n.translate("yes"),
           variant: "green",
           onClick: () => {
             if (options.onAgree) {
-              PopupManagerReloaded.disposeCurrentPopup();
               options.onAgree();
             }
+            PopupManagerReloaded.disposeCurrentPopup();
           },
         },
       ],
@@ -57,6 +60,50 @@ export default class PopupManagerReloaded {
       didClose: options.didClose,
       willLoad: options.willLoad,
       willClose: options.willClose,
+    });
+  }
+
+  public static ask(popup: IQuestionPopup) {
+    const id = v4();
+    PopupManagerReloaded.showPopup({
+      title: popup.title,
+      description: (
+        <>
+          {popup.description}
+          <div className="popup-reloaded-input-wrapper">
+            <input
+              className={"popup-reloaded-input"}
+              id={id}
+              placeholder={popup.placeholder}
+              type={popup.password ? "password" : "text"}
+            />
+          </div>
+        </>
+      ),
+      buttons: [
+        {
+          text: i18n.translate("menu.cancel"),
+          variant: "red",
+          onClick: () => {
+            if (popup.onCancel) {
+              popup.onCancel();
+            }
+            PopupManagerReloaded.disposeCurrentPopup();
+          },
+        },
+        {
+          text: "OK",
+          variant: "green",
+          onClick: () => {
+            if (popup.onSubmit) {
+              popup.onSubmit(
+                (document.getElementById(id) as HTMLInputElement).value
+              );
+              PopupManagerReloaded.disposeCurrentPopup();
+            }
+          },
+        },
+      ],
     });
   }
 

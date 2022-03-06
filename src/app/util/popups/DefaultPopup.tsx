@@ -24,4 +24,8 @@ export default class DefaultPopup {
       },
     ],
   };
+  public static AVAILABLE_SOON: IAlertPopup = {
+    title: i18n.translate("menu.available-soon"),
+    description: i18n.translate("menu.available-soon.description"),
+  };
 }

@@ -14,7 +14,6 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import i18n from "../../util/i18n";
-import MainMenuItem from "../../components/Menu/MainMenuItem";
 import MenuItem from "../../components/Menu/MenuItem";
 import { WebClient } from "@incodelang/accounts-client";
 import PopupManager from "../../util/PopupManager";
@@ -23,6 +22,7 @@ import UserManager from "../../util/UserManager";
 import MainMenu from "../MainMenu";
 import BackMenuItem from "../../components/Menu/BackMenuItem";
 import Login from "../Login";
+import PopupManagerReloaded from "../../util/PopupManagerReloaded";
 
 const client = new WebClient("");
 
@@ -72,13 +72,10 @@ export default function AccountLogin() {
                   UIManager.showComponent(<MainMenu />);
                 });
               } else {
-                PopupManager.showPopup(
-                  "Alert",
-                  "error",
-                  i18n.translate("error.login.credentials"),
-                  () => {},
-                  true
-                );
+                PopupManagerReloaded.alert({
+                  title: i18n.translate("error"),
+                  description: i18n.translate("error.login.credentials"),
+                });
               }
             });
           }}

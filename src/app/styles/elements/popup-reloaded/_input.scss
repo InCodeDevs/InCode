@@ -1,0 +1,22 @@
+/**
+ * @author Ben Siebert <ben@mctzock.de>
+ * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
+ */
+
+.popup-reloaded-input-wrapper {
+  display: flex;
+  margin-top: 2.5rem;
+
+  .popup-reloaded-input {
+    display: block;
+    flex: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    outline: none;
+    font-size: 1.2rem;
+  }
+}
+

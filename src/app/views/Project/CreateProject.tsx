@@ -22,6 +22,7 @@ import ProjectManager from "../../util/ProjectManager";
 import { ProjectConfig } from "../../types/ProjectConfig";
 import UIManager from "../../util/UIManager";
 import CreateProjectTemplate from "./CreateProjectTemplate";
+import PopupManagerReloaded from "../../util/PopupManagerReloaded";
 
 export default function CreateProject() {
   return (
@@ -59,25 +60,22 @@ export default function CreateProject() {
                   projectConfig,
                   (success: boolean) => {
                     if (!success) {
-                      PopupManager.showPopup(
-                        "Alert",
-                        "error.project.exists",
-                        i18n.translate("error.project.exists.description"),
-                        () => {},
-                        true
-                      );
+                      PopupManagerReloaded.alert({
+                        title: i18n.translate("error.project.exists"),
+                        description: i18n.translate(
+                          "error.project.exists.description"
+                        ),
+                      });
                     } else {
-                      PopupManager.showPopup(
-                        "Alert",
-                        "menu.create-project.success",
-                        i18n.translate(
+                      PopupManagerReloaded.alert({
+                        title: i18n.translate("menu.create-project.success"),
+                        description: i18n.translate(
                           "menu.create-project.success.description"
                         ),
-                        () => {
+                        didClose: () => {
                           ProjectManager.openProject(projectConfig);
                         },
-                        true
-                      );
+                      });
                     }
                   }
                 );
@@ -105,25 +103,22 @@ export default function CreateProject() {
                   projectConfig,
                   (success: boolean) => {
                     if (!success) {
-                      PopupManager.showPopup(
-                        "Alert",
-                        "error.project.exists",
-                        i18n.translate("error.project.exists.description"),
-                        () => {},
-                        true
-                      );
+                      PopupManagerReloaded.alert({
+                        title: i18n.translate("error.project.exists"),
+                        description: i18n.translate(
+                          "error.project.exists.description"
+                        ),
+                      });
                     } else {
-                      PopupManager.showPopup(
-                        "Alert",
-                        "menu.create-project.success",
-                        i18n.translate(
+                      PopupManagerReloaded.alert({
+                        title: i18n.translate("menu.create-project.success"),
+                        description: i18n.translate(
                           "menu.create-project.success.description"
                         ),
-                        () => {
+                        didClose: () => {
                           ProjectManager.openProject(projectConfig);
                         },
-                        true
-                      );
+                      });
                     }
                   }
                 );

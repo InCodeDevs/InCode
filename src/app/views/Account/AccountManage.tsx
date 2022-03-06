@@ -23,6 +23,8 @@ import PopupManager from "../../util/PopupManager";
 import FakeLoader from "../../util/FakeLoader";
 import InviteManager from "./InviteManager";
 import Text from "../../components/Text";
+import PopupManagerReloaded from "../../util/PopupManagerReloaded";
+import DefaultPopup from "../../util/popups/DefaultPopup";
 
 export default function AccountManage() {
   const [desktopExports, setDesktopExports] = React.useState("Loading...");
@@ -78,41 +80,38 @@ export default function AccountManage() {
           // @ts-ignore
           icon={faTrashAlt}
           onclick={() => {
-            PopupManager.showPopup(
-              "Question",
-              "menu.manage-account.delete-account",
-              i18n.translate(
+            PopupManagerReloaded.ask({
+              title: i18n.translate("menu.manage-account.delete-account"),
+              description: i18n.translate(
                 "menu.manage-account.delete-account.enter-password"
               ),
-              (password) => {
+              onSubmit: (password) => {
                 UserManager.deleteAccount(password as string).then((x) => {
                   if (x) {
-                    PopupManager.showPopup(
-                      "Alert",
-                      "menu.manage-account.delete-account.success",
-                      i18n.translate(
+                    PopupManagerReloaded.alert({
+                      title: i18n.translate(
+                        "menu.manage-account.delete-account.success"
+                      ),
+                      description: i18n.translate(
                         "menu.manage-account.delete-account.success.description"
                       ),
-                      () => {
+                      didClose: () => {
                         UIManager.showComponent(<MainMenu />, "root");
                       },
-                      true
-                    );
+                    });
                   } else {
-                    PopupManager.showPopup(
-                      "Alert",
-                      "menu.manage-account.delete-account.wrong-password",
-                      i18n.translate(
+                    PopupManagerReloaded.alert({
+                      title: i18n.translate(
+                        "menu.manage-account.delete-account.wrong-password"
+                      ),
+                      description: i18n.translate(
                         "menu.manage-account.delete-account.wrong-password.description"
                       ),
-                      () => {},
-                      true
-                    );
+                    });
                   }
                 });
               },
-              true
-            );
+            });
           }}
           title={"menu.manage-account.delete-account"}
         />
@@ -120,16 +119,10 @@ export default function AccountManage() {
           // @ts-ignore
           icon={faPencilAlt}
           onclick={() => {
-            PopupManager.showPopup(
-              "Alert",
-              "menu.available-soon",
-              i18n.translate("menu.available-soon.description"),
-              () => {},
-              true
-            );
+            PopupManagerReloaded.alert(DefaultPopup.AVAILABLE_SOON);
 
             return;
-
+            /*
             PopupManager.showPopup(
               "Question",
               "menu.manage-account.change-username",
@@ -167,6 +160,7 @@ export default function AccountManage() {
               },
               true
             );
+             */
           }}
           title={"menu.manage-account.change-username"}
         />
@@ -174,20 +168,20 @@ export default function AccountManage() {
           // @ts-ignore
           icon={faPencilAlt}
           onclick={() => {
-            PopupManager.showPopup(
-              "Question",
-              "menu.manage-account.change-password",
-              i18n.translate(
+            PopupManagerReloaded.ask({
+              title: i18n.translate("menu.manage-account.change-password"),
+              description: i18n.translate(
                 "menu.manage-account.change-password.enter-current-password"
               ),
-              (password) => {
-                PopupManager.showPopup(
-                  "Question",
-                  "menu.manage-account.change-password",
-                  i18n.translate(
-                    "menu.manage-account.change-password.enter-new-password"
+              password: true,
+              onSubmit: (password) => {
+                PopupManagerReloaded.ask({
+                  title: i18n.translate("menu.manage-account.change-password"),
+                  description: i18n.translate(
+                    "menu.manage-account.change-password.enter-current-password"
                   ),
-                  async (newPassword) => {
+                  password: true,
+                  onSubmit: async (newPassword) => {
                     if (UserManager.isPasswordSafe(newPassword as string)) {
                       if (
                         await UserManager.updatePassword(
@@ -195,39 +189,30 @@ export default function AccountManage() {
                           newPassword as string
                         )
                       ) {
-                        PopupManager.showPopup(
-                          "Alert",
-                          "menu.manage-account.change-password.success",
-                          i18n.translate(
+                        PopupManagerReloaded.alert({
+                          title: i18n.translate(
+                            "menu.manage-account.change-password.success"
+                          ),
+                          description: i18n.translate(
                             "menu.manage-account.change-password.success.description"
                           ),
-                          () => {},
-                          true
-                        );
+                        });
                       } else {
-                        PopupManager.showPopup(
-                          "Alert",
-                          "error",
-                          i18n.translate("error.password.wrong"),
-                          () => {},
-                          true
-                        );
+                        PopupManagerReloaded.alert({
+                          title: i18n.translate("error"),
+                          description: i18n.translate("error.password.wrong"),
+                        });
                       }
                     } else {
-                      PopupManager.showPopup(
-                        "Alert",
-                        "error",
-                        i18n.translate("error.password.too.weak"),
-                        () => {},
-                        true
-                      );
+                      PopupManagerReloaded.alert({
+                        title: i18n.translate("error"),
+                        description: i18n.translate("error.password.weak"),
+                      });
                     }
                   },
-                  true
-                );
+                });
               },
-              true
-            );
+            });
           }}
           title={"menu.manage-account.change-password"}
         />
