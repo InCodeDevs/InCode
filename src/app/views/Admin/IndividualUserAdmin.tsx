@@ -13,6 +13,7 @@ import {
   faFolderTree,
   faGears,
   faPencilAlt,
+  faSquarePlus,
   faTrashAlt,
   faUsersGear,
 } from "@fortawesome/free-solid-svg-icons";
@@ -24,6 +25,7 @@ import i18n from "../../util/i18n";
 import PopupManager from "../../util/PopupManager";
 import UserManager from "../../util/UserManager";
 import PopupManagerReloaded from "../../util/PopupManagerReloaded";
+import AdminMessage from "../../util/AdminMessage";
 
 export default function IndividualUserAdmin() {
   // @ts-ignore
@@ -44,6 +46,21 @@ export default function IndividualUserAdmin() {
         centered
       />
       <MenuItemList>
+        <MenuItem
+          icon={faSquarePlus}
+          onclick={() => {
+            PopupManagerReloaded.ask({
+              title: i18n.translate("menu.admin.publishMessage"),
+              description: i18n.translate(
+                "menu.admin.publishMessage.description"
+              ),
+              onSubmit: (message) => {
+                AdminMessage.sendToUser(message, user);
+              },
+            });
+          }}
+          title={"menu.admin.publishMessage"}
+        />
         <MenuItem
           icon={faTrashAlt}
           onclick={() => {

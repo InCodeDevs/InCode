@@ -19,6 +19,7 @@ import UIManager from "../../util/UIManager";
 import PopupManagerReloaded from "../../util/PopupManagerReloaded";
 import i18n from "../../util/i18n";
 import UserManager from "../../util/UserManager";
+import AdminMessage from "../../util/AdminMessage";
 
 export default function Admin() {
   return (
@@ -34,66 +35,7 @@ export default function Admin() {
                 "menu.admin.publishMessage.description"
               ),
               onSubmit: (message) => {
-                fetch("/api/v1/admin/users/list", {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    username: UserManager.getUsername(),
-                    password: UserManager.getToken(),
-                  }),
-                }).then((response) => {
-                  response.json().then((data) => {
-                    data.message.forEach((user: string) => {
-                      if (user !== "admin") {
-                        fetch("/api/v1/user/postboxes/exists", {
-                          method: "POST",
-                          headers: {
-                            "Content-Type": "application/json",
-                          },
-                          body: JSON.stringify({
-                            owner: user,
-                            name: "admin.messages",
-                          }),
-                        }).then((res) => {
-                          res.json().then(async (data0) => {
-                            if (data0.message.includes("not")) {
-                              await fetch(
-                                "/api/v1/admin/postboxes/create/" +
-                                  user +
-                                  "/admin.messages",
-                                {
-                                  method: "POST",
-                                  headers: {
-                                    "Content-Type": "application/json",
-                                  },
-                                  body: JSON.stringify({
-                                    username: "admin",
-                                    password: UserManager.getToken(),
-                                  }),
-                                }
-                              );
-                            }
-                            fetch("/api/v1/user/postboxes/add", {
-                              method: "POST",
-                              headers: {
-                                "Content-Type": "application/json",
-                              },
-                              body: JSON.stringify({
-                                username: "admin",
-                                password: UserManager.getToken(),
-                                name: "admin.messages",
-                                owner: user,
-                                entry: message,
-                              }),
-                            });
-                          });
-                        });
-                      }
-                    });
-                  });
-                });
+                AdminMessage.sendToAllUsers(message);
               },
             });
           }}

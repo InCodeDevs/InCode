@@ -45,7 +45,7 @@
   "menu.admin.stats.projects.code": "Code Projekte insgesamt",
   "menu.admin.stats.projects.block": "Block Projekte insgesamt",
   "menu.admin.publishMessage": "Nachricht veröffentlichen",
-  "menu.admin.publishMessage.description": "Bitte gib die Nachricht ein, die an alle Benutzer gesendet werden soll.",
+  "menu.admin.publishMessage.description": "Bitte gib die Nachricht ein, die versendet werden soll.",
   "menu.admin.message.title": "Nachricht vom Team",
   "menu.available-soon": "Bald verfügbar",
   "menu.available-soon.description": "Diese Funktion ist bald (wieder) verfügbar.",
