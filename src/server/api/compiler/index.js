@@ -80,4 +80,22 @@ module.exports = (app) => {
       );
     }
   });
+  app.post("/api/v1/compiler/view", (req, res) => {
+    if (req.body.code) {
+      res.status(200);
+      res.end(
+        "<body></body><script>" +
+          Compiler.compile(decodeURIComponent(req.body.code)) +
+          "</script>"
+      );
+    } else {
+      res.status(400);
+      res.end(
+        JSON.stringify({
+          error: true,
+          message: "Invalid Request Body",
+        })
+      );
+    }
+  });
 };
