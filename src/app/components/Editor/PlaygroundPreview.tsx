@@ -28,7 +28,21 @@ export default function PlaygroundPreview() {
   );
 
   useEffect(() => {
+    let lastCode = "";
     const interval = setInterval(() => {
+      if (
+        Workspace.getCode(false) !== "" &&
+        lastCode !== Workspace.getCode(false)
+      ) {
+        lastCode = Workspace.getCode();
+        (
+          document.getElementById("playground-preview-code") as HTMLInputElement
+        ).value = lastCode;
+        (
+          document.getElementById("playground-preview-form") as HTMLFormElement
+        ).submit();
+      }
+      /*
       try {
         if (
           // @ts-ignore
@@ -46,11 +60,11 @@ export default function PlaygroundPreview() {
             nURL = secrets[sha256(Workspace.getCode(false))];
           }
           // @ts-ignore
-          setIfURL(nURL);
+          // setIfURL(nURL);
         }
       } catch (e) {
         clearInterval(interval);
-      }
+      }*/
     }, 3000);
     return () => clearInterval(interval);
   }, []);
@@ -65,8 +79,22 @@ export default function PlaygroundPreview() {
         bottom: "0",
       }}
     >
+      <form
+        style={{ display: "none" }}
+        action={"/api/v1/compiler/view"}
+        target={"playground-preview-frame"}
+        id={"playground-preview-form"}
+        method={"POST"}
+      >
+        <input
+          type={"text"}
+          name={"code"}
+          value={""}
+          id={"playground-preview-code"}
+        />
+      </form>
       <iframe
-        id={"playground-preview-frame"}
+        name={"playground-preview-frame"}
         src={ifURL}
         width={window.innerWidth / 2}
         height={window.innerHeight}

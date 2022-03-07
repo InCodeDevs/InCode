@@ -207,6 +207,7 @@ export default function MonacoEditor(props: MonacoProps) {
         // @ts-ignore
         window.editor = editor;
         const monaco = Registry.getRegister(0x01) as Monaco;
+        /*
         editor.deltaDecorations(
           [],
           [
@@ -218,6 +219,7 @@ export default function MonacoEditor(props: MonacoProps) {
             },
           ]
         );
+         */
       }}
       options={{
         fontSize: Settings.getSetting("codeEditor.fontSize"),
