@@ -22,6 +22,14 @@ function getFullDataConfig() {
   );
 }
 
+function getFullPostboxConfig() {
+  return JSON.parse(
+    fs
+      .readFileSync(path.join(process.env.ACC_PRIV_PATH, "postboxes.json"))
+      .toString()
+  );
+}
+
 function overwriteUserConfig(config) {
   fs.writeFileSync(
     path.join(process.env.ACC_PRIV_PATH, "users.json"),
@@ -36,9 +44,18 @@ function overwriteDataConfig(config) {
   );
 }
 
+function overwritePostboxConfig(config) {
+  fs.writeFileSync(
+    path.join(process.env.ACC_PRIV_PATH, "postboxes.json"),
+    JSON.stringify(config, null, 2)
+  );
+}
+
 module.exports = {
   getFullUserConfig,
   getFullDataConfig,
+  getFullPostboxConfig,
   overwriteUserConfig,
   overwriteDataConfig,
+  overwritePostboxConfig,
 };

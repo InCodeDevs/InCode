@@ -8,6 +8,7 @@ import { Invite } from "../types/Invite";
 import { JSONObject } from "../types/JSONObject";
 import UIManager from "./UIManager";
 import * as React from "react";
+import AdminMessage from "./AdminMessage";
 
 const client = new WebClient("");
 
@@ -22,6 +23,7 @@ export default class UserManager {
   public static login(username: string, token: string) {
     BrowserStorage.store("accessName", username);
     BrowserStorage.store("accessToken", token);
+    AdminMessage.download();
   }
 
   public static logout() {

@@ -13,6 +13,8 @@ import CreateCommand from "./util/commands/CreateCommand";
 import RouteManager from "./util/RouteManager";
 import ServiceWorker from "./util/ServiceWorker";
 import PopupManagerReloaded from "./util/PopupManagerReloaded";
+import { WebClient } from "@incodelang/accounts-client";
+import AdminMessage from "./util/AdminMessage";
 
 if (!Settings.isValid()) {
   Settings.reset();
@@ -26,4 +28,8 @@ window.onload = () => {
   RouteManager.manage();
 
   ServiceWorker.register();
+
+  setInterval(() => {
+    AdminMessage.download();
+  }, 10000);
 };
