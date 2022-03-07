@@ -587,10 +587,10 @@
     express "^4.17.1"
     typescript "^4.4.3"
 
-"@incodelang/compiler@^2.0.6":
-  version "2.0.6"
-  resolved "https://registry.npmjs.org/@incodelang/compiler/-/compiler-2.0.6.tgz#8bc2795ff2d335ceee275db7ba9240be1058f1d5"
-  integrity sha512-hf4UIA2fu9G3G7/FGQBQy/LvQ7B/hcVmUrdRQf6CwroKT0aagNsecy6N8a0L4BHCbd7eke2n0YJSVYd3oqQzDw==
+"@incodelang/compiler@^2.0.7":
+  version "2.0.7"
+  resolved "https://registry.npmjs.org/@incodelang/compiler/-/compiler-2.0.7.tgz#7c869422e1830024b6bb657b397111f327a5b87c"
+  integrity sha512-peo655MPgrB7z+FAXHXUoIxseMj9eXdTR+JzdsDuhU1cVG1EpYGGsAy9UK9rdh3JUN+y/1wmjekz7Z1dEZBjew==
   dependencies:
     "@rollup/plugin-json" "^4.1.0"
     "@types/js-beautify" "^1.13.3"

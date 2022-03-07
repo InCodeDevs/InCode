@@ -29,9 +29,9 @@ export default class RouteManager {
           this.show();
           if (location.pathname === "/docs" || location.pathname === "/docs/") {
             if (navigator.language.includes("de")) {
-              location.pathname = "/docs/de/intro";
+              UIManager.silentRedirect("/docs/de/intro");
             } else {
-              location.pathname = "/docs/en/intro";
+              UIManager.silentRedirect("/docs/en/intro");
             }
           } else {
             UIManager.showComponent(<Docs />);

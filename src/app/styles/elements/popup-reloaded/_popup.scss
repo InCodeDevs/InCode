@@ -18,8 +18,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   @media (max-width: $mobView) {
-    width: 100%;
-    min-height: 100%;
+    width: 70%;
+    min-height: 50%;
   }
 
   a {

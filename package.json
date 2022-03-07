@@ -81,7 +81,7 @@
     "@fortawesome/react-fontawesome": "^0.1.17",
     "@incodelang/accounts": "^1.0.20",
     "@incodelang/accounts-client": "^1.0.11",
-    "@incodelang/compiler": "^2.0.6",
+    "@incodelang/compiler": "^2.0.7",
     "@incodelang/syntax-highlighting": "^1.0.3",
     "@incodelang/templates": "^1.0.2",
     "@incodelang/urlshorter": "^1.0.3",
