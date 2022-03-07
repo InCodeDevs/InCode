@@ -9,13 +9,19 @@ import BrowserStorage from "./BrowserStorage";
 
 export default class i18n {
   public static translate(code: string): string {
-    if (!JSON.parse(BrowserStorage.get("settings")).language) {
-      if (navigator.language.includes("de") && (de_de as JSONObject)[code]) {
-        return (de_de as JSONObject)[code] as string;
+    try {
+      if (!JSON.parse(BrowserStorage.get("settings")).language) {
+        if (navigator.language.includes("de") && (de_de as JSONObject)[code]) {
+          return (de_de as JSONObject)[code] as string;
+        }
+      } else {
+        const lang = JSON.parse(BrowserStorage.get("settings")).language;
+        if (lang === "de" && (de_de as JSONObject)[code]) {
+          return (de_de as JSONObject)[code] as string;
+        }
       }
-    } else {
-      const lang = JSON.parse(BrowserStorage.get("settings")).language;
-      if (lang === "de" && (de_de as JSONObject)[code]) {
+    } catch {
+      if ((de_de as JSONObject)[code]) {
         return (de_de as JSONObject)[code] as string;
       }
     }

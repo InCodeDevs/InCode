@@ -23,6 +23,16 @@ export default function LandingPage() {
     ic_svg_strokes[Math.floor(Math.random() * ic_svg_strokes.length)];
 
   useEffect(() => {
+    let timeout = 4000;
+
+    // if the user agent is a safari based browser, we need to set the timeout to 0
+    if (
+      navigator.userAgent.indexOf("Safari") > -1 &&
+      navigator.userAgent.indexOf("Chrome") === -1
+    ) {
+      timeout = 0;
+    }
+
     setTimeout(() => {
       (
         (document.getElementById("lp-header-svg-a") as HTMLDivElement)
@@ -95,7 +105,7 @@ export default function LandingPage() {
         </div>,
         "lp-content"
       );
-    }, 4000);
+    }, timeout);
   }, []);
 
   return (
