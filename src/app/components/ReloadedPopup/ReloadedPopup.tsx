@@ -16,6 +16,7 @@ export default function ReloadedPopup(props: IPopup) {
   const [width, setWidth] = React.useState(0);
 
   React.useEffect(() => {
+    setWidth(window.innerWidth);
     window.addEventListener("resize", () => {
       setWidth(window.innerWidth);
     });
