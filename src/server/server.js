@@ -31,6 +31,12 @@ app.get(["/editor*", "/docs*", "/playground*", "/admin*"], (req, res) => {
   res.sendFile(path.join(__dirname, "..", "..", "dist", "index.html"));
 });
 
+app.get(["*bundle.js.gz", "*bundle.js"], (req, res) => {
+  res
+    .header("Content-Encoding", "gzip")
+    .sendFile(path.join(__dirname, "..", "..", "dist", "bundle.js.gz"));
+});
+
 require("./module/logger")(app);
 
 app.use(express.static(path.join(__dirname, "..", "..", "dist")));

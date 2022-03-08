@@ -10,6 +10,8 @@ const CopyPlugin = require("copy-webpack-plugin");
 const git = require("./plugins/webpack/git");
 const pkg = require("./plugins/webpack/package");
 const stats = require("./plugins/webpack/stats");
+const CompressionPlugin = require("compression-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 const config = {
   entry: "./src/app/index.tsx",
@@ -19,6 +21,17 @@ const config = {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
     publicPath: "/",
+  },
+  optimization: {
+    usedExports: false,
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          ecma: 2020,
+        },
+      }),
+    ],
   },
   module: {
     rules: [
@@ -89,6 +102,10 @@ const config = {
     extensions: [".tsx", ".ts", ".js"],
   },
   plugins: [
+    new CompressionPlugin({
+      test: /bundle\.js$/,
+      filename: "[path][base].gz",
+    }),
     new webpack.DefinePlugin({
       _GIT_SHORT_COMMIT: JSON.stringify(git.commitHash.short),
       _GIT_LONG_COMMIT: JSON.stringify(git.commitHash.long),
