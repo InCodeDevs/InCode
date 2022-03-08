@@ -10,7 +10,6 @@ import Docs from "../views/Docs/Docs";
 import Playground from "../views/Playground";
 import * as React from "react";
 import LandingPage from "../views/LandingPage";
-import Admin from "../views/Admin/Admin";
 import AdminRoute from "../views/Admin/AdminRoute";
 
 export default class RouteManager {
