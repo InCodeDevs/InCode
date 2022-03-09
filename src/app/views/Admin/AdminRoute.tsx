@@ -13,6 +13,7 @@ import IndividualUserAdmin from "./IndividualUserAdmin";
 import ProjectAdmin from "./ProjectAdmin";
 import IndividualProjectAdmin from "./IndividualProjectAdmin";
 import ProjectViewerAdmin from "./ProjectViewerAdmin";
+import WebStatistics from "./WebStatistics";
 
 export default function AdminRoute() {
   if (!UserManager.isLoggedIn() || UserManager.getUsername() !== "admin") {
@@ -44,6 +45,7 @@ export default function AdminRoute() {
           component={IndividualProjectAdmin}
         />
         <Route exact path={"/admin/stats"} component={StatsAdmin} />
+        <Route exact path={"/admin/stats/web"} component={WebStatistics} />
         <Route path={"/admin/*"} component={Admin} />
       </Switch>
     </BrowserRouter>

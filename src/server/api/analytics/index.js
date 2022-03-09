@@ -38,4 +38,44 @@ module.exports = (app) => {
       message: "Analytics successfully sent",
     });
   });
+
+  app.get("/api/v1/analytics/download", (req, res) => {
+    res.status(200).json({
+      error: false,
+      message: JSON.parse(
+        require("fs")
+          .readFileSync(
+            require("path").join(
+              require("os").homedir(),
+              ".incode",
+              "analytics",
+              "analytics.json"
+            )
+          )
+          .toString()
+      ),
+    });
+  });
+
+  app.get("/api/v1/analytics/download/percentage", (req, res) => {
+    const data = JSON.parse(
+      require("fs")
+        .readFileSync(
+          require("path").join(
+            require("os").homedir(),
+            ".incode",
+            "analytics",
+            "analytics.json"
+          )
+        )
+        .toString()
+    );
+
+    let r = {};
+
+    res.status(200).json({
+      error: false,
+      message: r,
+    });
+  });
 };
