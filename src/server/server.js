@@ -21,8 +21,6 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const bodyParser = require("body-parser");
-const fs = require("fs");
-const os = require("os");
 require("./module/config");
 
 const app = express();
@@ -52,6 +50,7 @@ require("./api/admin")(app);
 require("./api/admin/users")(app);
 require("./api/admin/data")(app);
 require("./api/admin/postbox")(app);
+require("./api/analytics")(app);
 
 const { accountServer } = require("@incodelang/accounts");
 const { urlServer } = require("@incodelang/urlshorter");

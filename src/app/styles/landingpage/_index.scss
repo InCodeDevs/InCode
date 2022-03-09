@@ -41,6 +41,10 @@
   width: 75%;
   gap: 4rem;
 
+  @media (max-width: $mobView) {
+    flex-direction: column;
+  }
+
   div {
     height: 50vh;
     border-radius: 12px;

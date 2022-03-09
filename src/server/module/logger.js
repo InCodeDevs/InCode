@@ -50,23 +50,25 @@ module.exports = (app) => {
   };
 
   app.use((req, res, next) => {
-    const methods = {
-      GET: chalk.green,
-      POST: chalk.blue,
-      DELETE: chalk.red,
-    };
-    const method = methods[req.method];
+    if (req.path !== "/api/v1/user/postboxes/read") {
+      const methods = {
+        GET: chalk.green,
+        POST: chalk.blue,
+        DELETE: chalk.red,
+      };
+      const method = methods[req.method];
 
-    add("[" + req.method + "] " + req.socket.remoteAddress + "\t" + req.path);
+      add("[" + req.method + "] " + req.socket.remoteAddress + "\t" + req.path);
 
-    __old(
-      "[" +
-        method(req.method) +
-        "]\t" +
-        chalk.yellow(req.socket.remoteAddress) +
-        "\t" +
-        req.path
-    );
+      __old(
+        "[" +
+          method(req.method) +
+          "]\t" +
+          chalk.yellow(req.socket.remoteAddress) +
+          "\t" +
+          req.path
+      );
+    }
     next();
   });
 
