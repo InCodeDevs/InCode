@@ -33,6 +33,7 @@ export default function AccountRegister() {
     <Container centered>
       <Title size={1} title={"menu.login.register"} centered />
       <MenuItemList>
+        <BackMenuItem component={<Login />} />
         <MenuItemInput
           // @ts-ignore
           icon={faUser}
@@ -153,7 +154,6 @@ export default function AccountRegister() {
           }}
           title={"menu.login.register"}
         />
-        <BackMenuItem component={<Login />} />
       </MenuItemList>
     </Container>
   );

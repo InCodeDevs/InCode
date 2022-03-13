@@ -31,6 +31,7 @@ export default function AccountLogin() {
     <Container centered>
       <Title size={1} title={"menu.login.login"} centered />
       <MenuItemList>
+        <BackMenuItem component={<Login />} />
         <MenuItemInput
           // @ts-ignore
           icon={faUser}
@@ -81,7 +82,6 @@ export default function AccountLogin() {
           }}
           title={"menu.login.login"}
         />
-        <BackMenuItem component={<Login />} />
       </MenuItemList>
     </Container>
   );

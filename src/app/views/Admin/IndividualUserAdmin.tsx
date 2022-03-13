@@ -26,6 +26,7 @@ import PopupManager from "../../util/PopupManager";
 import UserManager from "../../util/UserManager";
 import PopupManagerReloaded from "../../util/PopupManagerReloaded";
 import AdminMessage from "../../util/AdminMessage";
+import BackMenuItem from "../../components/Menu/BackMenuItem";
 
 export default function IndividualUserAdmin() {
   // @ts-ignore
@@ -46,6 +47,7 @@ export default function IndividualUserAdmin() {
         centered
       />
       <MenuItemList>
+        <BackMenuItem url={"/admin/users"} />
         <MenuItem
           icon={faSquarePlus}
           onclick={() => {
@@ -188,13 +190,6 @@ export default function IndividualUserAdmin() {
             UIManager.silentRedirect("/admin/users/" + user + "/projects");
           }}
           title={"menu.admin.user.individual.projects"}
-        />
-        <MenuItem
-          icon={faBackward}
-          onclick={() => {
-            UIManager.silentRedirect("/admin/users");
-          }}
-          title={"menu.share-project.back"}
         />
       </MenuItemList>
     </Container>

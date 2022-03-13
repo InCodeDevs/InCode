@@ -13,6 +13,7 @@ import EditorMenuBar from "../../components/Editor/EditorMenuBar";
 import BlocklyEditor, {
   BlocklyProps,
 } from "../../components/Editor/BlocklyEditor";
+import FileSelector from "../../components/Editor/FileSelector";
 
 interface Props {
   monaco?: MonacoProps;
@@ -28,6 +29,7 @@ export default function ProjectEditor(props: Props) {
   return (
     <>
       <EditorMenuBar projectConfig={project} />
+      <FileSelector />
       {project.type === "code" ? (
         <MonacoEditor
           mode={props.monaco?.mode || "project"}

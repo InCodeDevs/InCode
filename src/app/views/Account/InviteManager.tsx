@@ -131,6 +131,7 @@ export default function InviteManager() {
             </>
           ) : (
             <>
+              <BackMenuItem component={<AccountManage />} />
               <MenuItem
                 // @ts-ignore
                 icon={faCheck}
@@ -144,7 +145,6 @@ export default function InviteManager() {
                 }}
                 title={"menu.manage-account.manage-invites.activate"}
               />
-              <BackMenuItem component={<AccountManage />} />
             </>
           )}
         </MenuItemListScroll>

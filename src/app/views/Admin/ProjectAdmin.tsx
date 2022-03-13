@@ -39,28 +39,30 @@ export default function ProjectAdmin() {
             <BackMenuItem url={"/admin/users/" + user} />,
           ];
 
-          Object.keys(data.message).forEach((key) => {
-            if (key.startsWith("projects.")) {
-              const m = JSON.parse(data.message[key]);
+          if (data.message) {
+            Object.keys(data.message).forEach((key) => {
+              if (key.startsWith("projects.")) {
+                const m = JSON.parse(data.message[key]);
 
-              e.push(
-                <MenuItem
-                  icon={m.type === "code" ? faCode : faCubes}
-                  onclick={() => {
-                    UIManager.silentRedirect(
-                      "/admin/users/" +
-                        user +
-                        "/" +
-                        "projects/" +
-                        key.split("projects.")[1]
-                    );
-                  }}
-                  title={key.split("projects.")[1]}
-                  nol18n
-                />
-              );
-            }
-          });
+                e.push(
+                  <MenuItem
+                    icon={m.type === "code" ? faCode : faCubes}
+                    onclick={() => {
+                      UIManager.silentRedirect(
+                        "/admin/users/" +
+                          user +
+                          "/" +
+                          "projects/" +
+                          key.split("projects.")[1]
+                      );
+                    }}
+                    title={key.split("projects.")[1]}
+                    nol18n
+                  />
+                );
+              }
+            });
+          }
 
           setElements(e);
         });

@@ -39,6 +39,7 @@ export default function IndividualProjectAdmin() {
         centered
       />
       <MenuItemList>
+        <BackMenuItem url={"/admin/users/" + user + "/projects"} />
         <MenuItem
           icon={faEye}
           onclick={() => {
@@ -69,7 +70,6 @@ export default function IndividualProjectAdmin() {
           }}
           title={"menu.admin.user.individual.projects.individual.view"}
         />
-        <BackMenuItem url={"/admin/users/" + user + "/projects"} />
       </MenuItemList>
     </Container>
   );
