@@ -15,7 +15,13 @@ export default function SelectAppMenuItem() {
       icon={faObjectGroup}
       title={"menu.back.select-app"}
       onclick={() => {
-        UIManager.silentRedirect("/");
+        if (
+          new URLSearchParams(window.location.search).get("electron") !== null
+        ) {
+          UIManager.silentRedirect("/electron-select-app");
+        } else {
+          UIManager.silentRedirect("/");
+        }
       }}
       id={"back-to-homepage"}
     />

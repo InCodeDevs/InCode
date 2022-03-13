@@ -96,12 +96,11 @@ export default function MainMenu() {
             }}
             title={"menu.main.open.settings"}
           />
-          {navigator.userAgent.includes("Electron") === true ? (
-            <></>
-          ) : (
-            <SelectAppMenuItem />
-          )}
-          {UserManager.isLoggedIn() && UserManager.getUsername() === "admin" ? (
+          <SelectAppMenuItem />
+          {UserManager.isLoggedIn() &&
+          UserManager.getUsername() === "admin" &&
+          new URLSearchParams(window.location.search).get("electron") ===
+            null ? (
             <MenuItem
               icon={faScrewdriverWrench}
               title={"menu.admin"}

@@ -16,7 +16,11 @@ import ProjectViewerAdmin from "./ProjectViewerAdmin";
 import WebStatistics from "./WebStatistics";
 
 export default function AdminRoute() {
-  if (!UserManager.isLoggedIn() || UserManager.getUsername() !== "admin") {
+  if (
+    !UserManager.isLoggedIn() ||
+    (UserManager.getUsername() !== "admin" &&
+      new URLSearchParams(window.location.search).get("electron") === null)
+  ) {
     return (
       <BrowserRouter>
         <Redirect to="/?status=403" />

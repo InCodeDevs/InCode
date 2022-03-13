@@ -5,28 +5,29 @@
 
 import { app, BrowserWindow } from "electron";
 
-function createWindow() {
+import devServe from "./serve";
+
+const port = devServe(() => {
+  app.on("ready", () => {
+    createWindow(port);
+
+    app.on("activate", function () {
+      if (BrowserWindow.getAllWindows().length === 0) createWindow(port);
+    });
+  });
+
+  app.on("window-all-closed", () => {
+    if (process.platform !== "darwin") {
+      app.quit();
+    }
+  });
+});
+
+function createWindow(port: number) {
   const mainWindow = new BrowserWindow({
     height: 600,
-    webPreferences: {
-      // preload: path.join(__dirname, "preload.js"),
-    },
     width: 800,
   });
 
-  mainWindow.loadURL("https://incodelang.de/editor");
+  mainWindow.loadURL("http://localhost:" + port + "/electron-select-app");
 }
-
-app.on("ready", () => {
-  createWindow();
-
-  app.on("activate", function () {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
-  });
-});
-
-app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
-    app.quit();
-  }
-});

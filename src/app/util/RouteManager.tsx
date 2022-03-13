@@ -11,6 +11,7 @@ import Playground from "../views/Playground";
 import * as React from "react";
 import LandingPage from "../views/LandingPage";
 import AdminRoute from "../views/Admin/AdminRoute";
+import SelectApp from "../views/SelectApp";
 
 export default class RouteManager {
   public static async manage() {
@@ -41,6 +42,9 @@ export default class RouteManager {
         } else if (location.pathname.startsWith("/admin")) {
           this.show();
           UIManager.showComponent(<AdminRoute />);
+        } else if (location.pathname === "/electron-select-app") {
+          this.show();
+          UIManager.showComponent(<SelectApp />);
         } else if (location.pathname === "/") {
           this.hide();
           UIManager.showComponent(<LandingPage />);

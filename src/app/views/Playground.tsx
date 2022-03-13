@@ -21,7 +21,14 @@ export default function Playground() {
           {
             label: i18n.translate("menu.back.select-app"),
             onClick: () => {
-              UIManager.silentRedirect("/");
+              if (
+                new URLSearchParams(window.location.search).get("electron") !==
+                null
+              ) {
+                UIManager.silentRedirect("/electron-select-app");
+              } else {
+                UIManager.silentRedirect("/");
+              }
             },
           },
           {

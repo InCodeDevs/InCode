@@ -5,7 +5,7 @@
 
 //
 // ATTENTION: This file is not actually used anymore.
-// It has been replaced by the LandingPage.tsx file.
+// It is kept for reference and only used in the desktop version.
 //
 
 import * as React from "react";
@@ -28,21 +28,21 @@ export default function SelectApp() {
           <MenuItem
             icon={faTools}
             onclick={() => {
-              UIManager.showComponentWithURL(<MainMenu />, "/editor");
+              UIManager.silentRedirect("/editor?electron=true");
             }}
             title={"menu.select-app.editor"}
           />
           <MenuItem
             icon={faPlay}
             onclick={() => {
-              UIManager.showComponentWithURL(<Playground />, "/playground");
+              UIManager.silentRedirect("/playground?electron=true");
             }}
             title={"menu.select-app.playground"}
           />
           <MenuItem
             icon={faFile}
             onclick={() => {
-              UIManager.showComponentWithURL(<Docs />, "/docs");
+              UIManager.silentRedirect("/docs?electron=true");
             }}
             title={"menu.select-app.docs"}
           />
