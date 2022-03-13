@@ -7,10 +7,11 @@ import { WebClient } from "@incodelang/accounts-client";
 import PopupManagerReloaded from "./PopupManagerReloaded";
 import i18n from "./i18n";
 import Blockly from "blockly";
+import { Networking } from "./Networking";
 
 export default class AdminMessage {
   public static download() {
-    if (UserManager.isLoggedIn()) {
+    if (UserManager.isLoggedIn() && Networking.isOnline()) {
       new WebClient("")
         .readPostBox(
           UserManager.getUsername(),

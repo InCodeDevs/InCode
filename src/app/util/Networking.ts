@@ -42,4 +42,8 @@ export class Networking {
 
     document.body.removeChild(element);
   }
+
+  public static isOnline(): boolean {
+    return window.navigator.onLine;
+  }
 }

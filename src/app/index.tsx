@@ -12,8 +12,6 @@ import OpenCommand from "./util/commands/OpenCommand";
 import CreateCommand from "./util/commands/CreateCommand";
 import RouteManager from "./util/RouteManager";
 import ServiceWorker from "./util/ServiceWorker";
-import PopupManagerReloaded from "./util/PopupManagerReloaded";
-import { WebClient } from "@incodelang/accounts-client";
 import AdminMessage from "./util/AdminMessage";
 
 if (!Settings.isValid()) {

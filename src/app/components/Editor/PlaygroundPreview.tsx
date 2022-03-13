@@ -6,8 +6,8 @@
 import * as React from "react";
 import { useEffect } from "react";
 import Workspace from "../../util/Workspace";
-import { sha256 } from "js-sha256";
 import { JSONObject } from "../../types/JSONObject";
+import { Compiler } from "@incodelang/compiler";
 
 const secrets: JSONObject = {
   "9c3cb151e82efcb4167c7c9015620a6f951b91564ed8cf9df058c457acf019a1":
@@ -34,13 +34,21 @@ export default function PlaygroundPreview() {
         Workspace.getCode(false) !== "" &&
         lastCode !== Workspace.getCode(false)
       ) {
-        lastCode = Workspace.getCode();
+        lastCode = Workspace.getCode(false);
+        let jsCode = Compiler.compile(lastCode);
+        (
+          document.getElementsByName(
+            "playground-preview-frame"
+          )[0] as HTMLIFrameElement
+        ).srcdoc = `<!DOCTYPE html><html lang='de'><head><title>InCode Projekt</title></head><body><script>${jsCode}</script></body></html>`;
+
+        /*
         (
           document.getElementById("playground-preview-code") as HTMLInputElement
         ).value = lastCode;
         (
           document.getElementById("playground-preview-form") as HTMLFormElement
-        ).submit();
+        ).submit();*/
       }
       /*
       try {
