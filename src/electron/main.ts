@@ -21,7 +21,6 @@ app.on("window-all-closed", () => {
   }
 });
 
-
 function createWindow() {
   const mainWindow = new BrowserWindow({
     height: 600,
