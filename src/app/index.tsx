@@ -30,4 +30,6 @@ window.onload = () => {
   setInterval(() => {
     AdminMessage.download();
   }, 10000);
+  console.log(navigator.onLine);
+
 };
