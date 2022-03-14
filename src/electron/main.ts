@@ -7,27 +7,26 @@ import { app, BrowserWindow } from "electron";
 
 import devServe from "./serve";
 
-const port = devServe(() => {
-  app.on("ready", () => {
-    createWindow(port);
+app.on("ready", () => {
+  createWindow();
 
-    app.on("activate", function () {
-      if (BrowserWindow.getAllWindows().length === 0) createWindow(port);
-    });
-  });
-
-  app.on("window-all-closed", () => {
-    if (process.platform !== "darwin") {
-      app.quit();
-    }
+  app.on("activate", function () {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
 });
 
-function createWindow(port: number) {
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
+    app.quit();
+  }
+});
+
+
+function createWindow() {
   const mainWindow = new BrowserWindow({
     height: 600,
     width: 800,
   });
 
-  mainWindow.loadURL("http://localhost:" + port + "/electron-select-app");
+  mainWindow.loadURL("https://incodelang.de/electron-select-app");
 }

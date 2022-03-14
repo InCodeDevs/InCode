@@ -25,7 +25,7 @@ require("./module/config");
 
 const app = express();
 
-app.get(["/editor*", "/docs*", "/playground*", "/admin*"], (req, res) => {
+app.get(["/editor*", "/docs*", "/playground*", "/admin*", "/electron-select-app"], (req, res) => {
   res.sendFile(path.join(__dirname, "..", "..", "dist", "index.html"));
 });
 
