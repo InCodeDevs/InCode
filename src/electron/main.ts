@@ -23,8 +23,9 @@ app.on("window-all-closed", () => {
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
-    height: 600,
-    width: 800,
+    height: 800,
+    width: 1200,
+    fullscreenable: true
   });
   if (process.argv.includes("--dev")) {
     mainWindow.loadURL("http://localhost:3000/electron-select-app");
