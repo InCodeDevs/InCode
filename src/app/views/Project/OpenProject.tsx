@@ -111,7 +111,7 @@ export default function OpenProject() {
               {
                 icon: faSave,
                 color: "#00FFBB",
-                name: "",
+                name: "menu.open-project.make-offline",
                 onclick: () => {
                   let config = [];
                   if(localStorage.getItem("offline.projects")) {
@@ -125,6 +125,10 @@ export default function OpenProject() {
                     }
                   });
                   if(!f) {
+                    PopupManagerReloaded.alert({
+                      title: i18n.translate("menu.open-project.make-offline.title"),
+                      description: i18n.translate("menu.open-project.make-offline.description"),
+                    })
                     config.push(project);
                     localStorage.setItem("offline.projects", JSON.stringify(config));
                   }
