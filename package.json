@@ -1,6 +1,6 @@
 {
   "name": "incode-editor",
-  "version": "4.2.8",
+  "version": "4.2.9",
   "description": "The next generation of the InCode Editor",
   "main": "./dist-electron/js/main.js",
   "scripts": {
