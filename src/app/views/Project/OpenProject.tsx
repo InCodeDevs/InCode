@@ -114,26 +114,35 @@ export default function OpenProject() {
                 name: "menu.open-project.make-offline",
                 onclick: () => {
                   let config = [];
-                  if(localStorage.getItem("offline.projects")) {
-                    config = JSON.parse(localStorage.getItem("offline.projects") as string);
+                  if (localStorage.getItem("offline.projects")) {
+                    config = JSON.parse(
+                      localStorage.getItem("offline.projects") as string
+                    );
                   }
                   let f = false;
                   config.forEach((conf: ProjectConfig) => {
-                    if(conf.name === project.name) {
-                      alert("Found")
+                    if (conf.name === project.name) {
+                      alert("Found");
                       f = true;
                     }
                   });
-                  if(!f) {
+                  if (!f) {
                     PopupManagerReloaded.alert({
-                      title: i18n.translate("menu.open-project.make-offline.title"),
-                      description: i18n.translate("menu.open-project.make-offline.description"),
-                    })
+                      title: i18n.translate(
+                        "menu.open-project.make-offline.title"
+                      ),
+                      description: i18n.translate(
+                        "menu.open-project.make-offline.description"
+                      ),
+                    });
                     config.push(project);
-                    localStorage.setItem("offline.projects", JSON.stringify(config));
+                    localStorage.setItem(
+                      "offline.projects",
+                      JSON.stringify(config)
+                    );
                   }
-                }
-              }
+                },
+              },
             ]}
           />
         );

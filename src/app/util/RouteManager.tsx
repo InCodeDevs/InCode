@@ -45,14 +45,14 @@ export default class RouteManager {
         } else if (location.pathname === "/electron-select-app") {
           this.show();
           UIManager.showComponent(<SelectApp />);
-        } else if(location.pathname === "/choose-platform") {
-          if(navigator.userAgent.includes("Electron")) {
-            UIManager.silentRedirect("/electron-select-app")
+        } else if (location.pathname === "/choose-platform") {
+          if (navigator.userAgent.includes("Electron")) {
+            UIManager.silentRedirect("/electron-select-app");
           } else {
             UIManager.silentRedirect("/");
           }
           this.show();
-        }else if (location.pathname === "/") {
+        } else if (location.pathname === "/") {
           this.hide();
           UIManager.showComponent(<LandingPage />);
         }

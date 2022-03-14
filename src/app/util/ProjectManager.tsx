@@ -107,7 +107,7 @@ export default class ProjectManager {
       }
       return data;
     } catch {
-      return []
+      return [];
     }
   }
 
@@ -121,7 +121,7 @@ export default class ProjectManager {
           UserManager.getToken(),
           "projects." + projects[i]
         );
-        if(!project.name) {
+        if (!project.name) {
           project = JSON.parse(project);
         }
         if (!project.publicData) {
@@ -133,21 +133,22 @@ export default class ProjectManager {
             project.publicData
           );
 
-          if(!data.name) {
+          if (!data.name) {
             data = JSON.parse(data);
           }
 
           projectConfigs.push(data);
-  
         }
       }
       return projectConfigs;
     } catch (e) {
-      if(localStorage.getItem("offline.projects")) {
-        console.log("1")
-        const projects = JSON.parse(localStorage.getItem("offline.projects") as string);
+      if (localStorage.getItem("offline.projects")) {
+        console.log("1");
+        const projects = JSON.parse(
+          localStorage.getItem("offline.projects") as string
+        );
         projects.forEach((project: ProjectConfig) => {
-          projectConfigs.push(project)
+          projectConfigs.push(project);
         });
         return projectConfigs;
       }
