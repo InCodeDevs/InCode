@@ -26,6 +26,9 @@ function createWindow() {
     height: 600,
     width: 800,
   });
-
-  mainWindow.loadURL("https://incodelang.de/electron-select-app");
+  if (process.argv.includes("--dev")) {
+    mainWindow.loadURL("http://localhost:3000/electron-select-app");
+  } else {
+    mainWindow.loadURL("https://incodelang.de/electron-select-app");
+  }
 }

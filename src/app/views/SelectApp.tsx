@@ -15,9 +15,6 @@ import MenuItem from "../components/Menu/MenuItem";
 import { faFile, faPlay, faTools } from "@fortawesome/free-solid-svg-icons";
 import Title from "../components/Title";
 import UIManager from "../util/UIManager";
-import Docs from "./Docs/Docs";
-import Playground from "./Playground";
-import MainMenu from "./MainMenu";
 
 export default function SelectApp() {
   return (

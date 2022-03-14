@@ -19,18 +19,13 @@ import {
 import MenuItemList from "../components/Menu/MenuItemList";
 import UserIndicator from "../components/UserIndicator";
 import UserManager from "../util/UserManager";
-import PopupManager from "../util/PopupManager";
-import i18n from "../util/i18n";
 import UIManager from "../util/UIManager";
-import Playground from "./Playground";
 import CreateProject from "./Project/CreateProject";
 import OpenProject from "./Project/OpenProject";
 import Settings from "./Settings/Settings";
-import Docs from "./Docs/Docs";
 import SelectAppMenuItem from "../components/Menu/SelectAppMenuItem";
 import ProjectManager from "../util/ProjectManager";
 import PopupManagerReloaded from "../util/PopupManagerReloaded";
-import Login from "./Login";
 import DefaultPopup from "../util/popups/DefaultPopup";
 
 export default function MainMenu() {

@@ -33,9 +33,4 @@ export default function Sidebar(props: Props) {
       <BrowserRouter>{sidebar}</BrowserRouter>
     </div>
   );
-  /*return (
-    <div className="docs-sidebar">
-      <Title title={"docs.name"} size={1} className="sidebar-title" />
-    </div>
-  );*/
 }

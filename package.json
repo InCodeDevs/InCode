@@ -18,7 +18,7 @@
     "docker:deploy": "docker push mctzock/incode-editor",
     "prepare": "husky install",
     "electron:build-ts": "tsc --project ./tsconfig.electron.json",
-    "electron:start": "yarn electron:build-ts && electron ./dist-electron/js/main.js",
+    "electron:start": "yarn electron:build-ts && electron ./dist-electron/js/main.js --dev",
     "electron:package": "yarn electron:build-ts && electron-packager . incode.editor --platform=win32 --out=.\\dist-electron\\package",
     "electron:installer": "node ./buildInstaller.js"
   },
