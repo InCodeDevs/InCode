@@ -96,49 +96,63 @@ export default class ProjectManager {
   }
 
   public static async getProjectList(): Promise<string[]> {
-    const data = await client.getData_u(
-      UserManager.getUsername(),
-      UserManager.getToken(),
-      "projects"
-    );
-    if (this.isEmptyResponse(data)) {
-      return [];
+    try {
+      const data = await client.getData_u(
+        UserManager.getUsername(),
+        UserManager.getToken(),
+        "projects"
+      );
+      if (this.isEmptyResponse(data)) {
+        return [];
+      }
+      return data;
+    } catch {
+      return []
     }
-    return data;
   }
 
   public static async getProjects(): Promise<ProjectConfig[]> {
     const projects = await this.getProjectList();
     let projectConfigs: ProjectConfig[] = [];
-    for (let i = 0; i < projects.length; i++) {
-      const project = JSON.parse(
-        await client.getData_u(
+    try {
+      for (let i = 0; i < projects.length; i++) {
+        let project = await client.getData_u(
           UserManager.getUsername(),
           UserManager.getToken(),
           "projects." + projects[i]
-        )
-      );
-      if (!project.publicData) {
-        console.log(1);
-        projectConfigs.push(project);
-      } else {
-        const data = await client.getData(
-          UserManager.getUsername(),
-          UserManager.getToken(),
-          project.publicData
         );
+        if(!project.name) {
+          project = JSON.parse(project);
+        }
+        if (!project.publicData) {
+          projectConfigs.push(project);
+        } else {
+          let data = await client.getData(
+            UserManager.getUsername(),
+            UserManager.getToken(),
+            project.publicData
+          );
 
-        console.log(data);
-        console.log(typeof data);
-        console.log(JSON.parse(data));
-        console.log(typeof JSON.parse(data));
+          if(!data.name) {
+            data = JSON.parse(data);
+          }
 
-        projectConfigs.push(JSON.parse(data));
-
-        console.log(typeof projectConfigs[projectConfigs.length - 1]);
+          projectConfigs.push(data);
+  
+        }
       }
+      return projectConfigs;
+    } catch (e) {
+      if(localStorage.getItem("offline.projects")) {
+        console.log("1")
+        const projects = JSON.parse(localStorage.getItem("offline.projects") as string);
+        projects.forEach((project: ProjectConfig) => {
+          projectConfigs.push(project)
+        });
+        return projectConfigs;
+      }
+      return [];
     }
-    return projectConfigs;
   }
 
   public static async deleteProject(projectConfig: ProjectConfig) {

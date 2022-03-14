@@ -3,7 +3,7 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, Menu, MenuItem } from "electron";
 
 import devServe from "./serve";
 

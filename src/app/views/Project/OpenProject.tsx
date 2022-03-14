@@ -13,6 +13,7 @@ import {
   faDownload,
   faPen,
   faPlus,
+  faSave,
   faShareSquare,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
@@ -27,6 +28,7 @@ import CreateProject from "./CreateProject";
 import MenuItemListScroll from "../../components/Menu/MenuItemListScroll";
 import ShareProject from "./ShareProject";
 import PopupManagerReloaded from "../../util/PopupManagerReloaded";
+import { ProjectConfig } from "../../types/ProjectConfig";
 
 export default function OpenProject() {
   const [container, setContainer] = useState<ReactElement | null>(null);
@@ -99,7 +101,6 @@ export default function OpenProject() {
                 },
               },
               {
-                // @ts-ignore
                 icon: faDownload,
                 color: "#00FF00",
                 name: "menu.open-project.download",
@@ -107,6 +108,28 @@ export default function OpenProject() {
                   ProjectManager.downloadProject(project);
                 },
               },
+              {
+                icon: faSave,
+                color: "#00FFBB",
+                name: "",
+                onclick: () => {
+                  let config = [];
+                  if(localStorage.getItem("offline.projects")) {
+                    config = JSON.parse(localStorage.getItem("offline.projects") as string);
+                  }
+                  let f = false;
+                  config.forEach((conf: ProjectConfig) => {
+                    if(conf.name === project.name) {
+                      alert("Found")
+                      f = true;
+                    }
+                  });
+                  if(!f) {
+                    config.push(project);
+                    localStorage.setItem("offline.projects", JSON.stringify(config));
+                  }
+                }
+              }
             ]}
           />
         );
