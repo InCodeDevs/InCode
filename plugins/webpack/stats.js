@@ -11,7 +11,9 @@ const paths = getFilePaths(path.join(__dirname, "..", "..", "src"));
 function getLines() {
   let lines = 0;
   paths.forEach((p) => {
-    lines += fs.readFileSync(p).toString().split("\n").length;
+    if (!p.includes("monaco-editor")) {
+      lines += fs.readFileSync(p).toString().split("\n").length;
+    }
   });
   return lines;
 }
@@ -19,7 +21,9 @@ function getLines() {
 function getChars() {
   let chars = 0;
   paths.forEach((p) => {
-    chars += fs.readFileSync(p).toString().length;
+    if (!p.includes("monaco-editor")) {
+      chars += fs.readFileSync(p).toString().length;
+    }
   });
   return chars;
 }
@@ -27,7 +31,9 @@ function getChars() {
 function getWords() {
   let words = 0;
   paths.forEach((p) => {
-    words += fs.readFileSync(p).toString().split(" ").length;
+    if (!p.includes("monaco-editor")) {
+      words += fs.readFileSync(p).toString().split(" ").length;
+    }
   });
   return words;
 }
