@@ -6,8 +6,24 @@
 import { app, BrowserWindow, Menu, MenuItem } from "electron";
 
 import devServe from "./serve";
+import { resolve } from "dns/promises";
+import * as isOnline from "is-online";
 
-app.on("ready", () => {
+app.on("ready", async () => {
+  const options = {
+    timeout: 3000,
+  };
+
+  if (process.argv.includes("--dev")) {
+    options.timeout = 1;
+  }
+
+  if (await isOnline(options)) {
+    console.log("online");
+  } else {
+    console.log("offline");
+  }
+
   createWindow();
 
   app.on("activate", function () {

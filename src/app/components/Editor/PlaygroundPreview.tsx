@@ -7,7 +7,7 @@ import * as React from "react";
 import { useEffect } from "react";
 import Workspace from "../../util/Workspace";
 import { JSONObject } from "../../types/JSONObject";
-import { Compiler } from "@incodelang/compiler";
+import { Compiler } from "@incodelang/compiler/dist/esm/module/Compiler";
 
 const secrets: JSONObject = {
   "9c3cb151e82efcb4167c7c9015620a6f951b91564ed8cf9df058c457acf019a1":
@@ -36,43 +36,13 @@ export default function PlaygroundPreview() {
       ) {
         lastCode = Workspace.getCode(false);
         let jsCode = Compiler.compile(lastCode);
+        console.log(jsCode);
         (
           document.getElementsByName(
             "playground-preview-frame"
           )[0] as HTMLIFrameElement
         ).srcdoc = `<!DOCTYPE html><html lang='de'><head><title>InCode Projekt</title></head><body><script>${jsCode}</script></body></html>`;
-
-        /*
-        (
-          document.getElementById("playground-preview-code") as HTMLInputElement
-        ).value = lastCode;
-        (
-          document.getElementById("playground-preview-form") as HTMLFormElement
-        ).submit();*/
       }
-      /*
-      try {
-        if (
-          // @ts-ignore
-          "/api/v1/compiler/view?code=" +
-            encodeURIComponent(Workspace.getCode(false)) !==
-            ifURL &&
-          Workspace.getCode(false) !== ""
-        ) {
-          console.log(sha256(Workspace.getCode(false)));
-          let nURL =
-            "/api/v1/compiler/view?code=" +
-            encodeURIComponent(Workspace.getCode(false));
-
-          if (secrets[sha256(Workspace.getCode(false))]) {
-            nURL = secrets[sha256(Workspace.getCode(false))];
-          }
-          // @ts-ignore
-          // setIfURL(nURL);
-        }
-      } catch (e) {
-        clearInterval(interval);
-      }*/
     }, 3000);
     return () => clearInterval(interval);
   }, []);
