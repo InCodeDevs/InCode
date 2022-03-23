@@ -24,7 +24,7 @@
     "url": "https://github.com/InCodeDevs/Editor/issues"
   },
   "dependencies": {
-    "@incodelang/accounts": "^1.0.21",
+    "@incodelang/accounts": "file:../accounts",
     "@incodelang/compiler": "file:../compiler",
     "@incodelang/urlshorter": "^1.0.3",
     "body-parser": "^1.19.0",
