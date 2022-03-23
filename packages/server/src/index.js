@@ -35,14 +35,18 @@ app.get(
     "/choose-platform",
   ],
   (req, res) => {
-    res.sendFile(path.join(__dirname, "..", "..", "..", "dist", "app", "index.html"));
+    res.sendFile(
+      path.join(__dirname, "..", "..", "..", "dist", "app", "index.html")
+    );
   }
 );
 
 app.get(["*bundle.js.gz", "*bundle.js"], (req, res) => {
   res
     .header("Content-Encoding", "gzip")
-    .sendFile(path.join(__dirname, "..", "..", "..", "dist", "app", "bundle.js.gz"));
+    .sendFile(
+      path.join(__dirname, "..", "..", "..", "dist", "app", "bundle.js.gz")
+    );
 });
 
 require("./module/logger")(app);
