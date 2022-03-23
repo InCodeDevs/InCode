@@ -6,14 +6,14 @@
 const fs = require("fs");
 const path = require("path");
 
-const paths = getFilePaths(path.join(__dirname, "..", "..", "src"));
+const paths = getFilePaths(
+  path.join(__dirname, "..", "..", "..", "..", "packages")
+);
 
 function getLines() {
   let lines = 0;
   paths.forEach((p) => {
-    if (!p.includes("monaco-editor")) {
-      lines += fs.readFileSync(p).toString().split("\n").length;
-    }
+    lines += fs.readFileSync(p).toString().split("\n").length;
   });
   return lines;
 }
@@ -21,9 +21,7 @@ function getLines() {
 function getChars() {
   let chars = 0;
   paths.forEach((p) => {
-    if (!p.includes("monaco-editor")) {
-      chars += fs.readFileSync(p).toString().length;
-    }
+    chars += fs.readFileSync(p).toString().length;
   });
   return chars;
 }
@@ -31,9 +29,7 @@ function getChars() {
 function getWords() {
   let words = 0;
   paths.forEach((p) => {
-    if (!p.includes("monaco-editor")) {
-      words += fs.readFileSync(p).toString().split(" ").length;
-    }
+    words += fs.readFileSync(p).toString().split(" ").length;
   });
   return words;
 }
@@ -47,10 +43,24 @@ function getFilePaths(path0) {
 
   fs.readdirSync(path0).forEach((x) => {
     if (fs.lstatSync(path.join(path0, x)).isFile()) {
-      paths.push(path.join(path0, x));
+      if (
+        !x.includes("monaco-editor") &&
+        !x.includes("node_modules") &&
+        !x.includes(".lock") &&
+        !x.includes(".log")
+      ) {
+        paths.push(path.join(path0, x));
+      }
     } else {
       getFilePaths(path.join(path0, x)).forEach((y) => {
-        paths.push(y);
+        if (
+          !y.includes("monaco-editor") &&
+          !y.includes("node_modules") &&
+          !x.includes(".lock") &&
+          !y.includes(".log")
+        ) {
+          paths.push(y);
+        }
       });
     }
   });
