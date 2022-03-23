@@ -29,7 +29,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
     "@incodelang/accounts-client": "^1.0.11",
-    "@incodelang/compiler": "^2.0.9",
+    "@incodelang/compiler": "file:../compiler",
     "@incodelang/syntax-highlighting": "^1.0.3",
     "@incodelang/templates": "^1.0.2",
     "@mdx-js/loader": "^1.6.22",
