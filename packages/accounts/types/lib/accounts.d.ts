@@ -1,5 +1,2 @@
-declare function _exports(options?: {
-    app: any;
-    disable: {};
-}): void;
+declare function _exports(options?: { app: any; disable: {} }): void;
 export = _exports;
