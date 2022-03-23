@@ -1,0 +1,33 @@
+{
+  "name": "@incodelang/urlshorter",
+  "version": "1.0.3",
+  "description": "A simple URL Shorter",
+  "main": "src/index.js",
+  "typings": "./types",
+  "scripts": {
+    "typescript:createtypes": "tsc"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InCodeDevs/InCode.git"
+  },
+  "keywords": [
+    "URLShorter",
+    "InCode"
+  ],
+  "author": "Ben Siebert",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/InCodeDevs/InCode/issues"
+  },
+  "homepage": "https://github.com/InCodeDevs/InCode#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "typescript": "^4.4.3"
+  }
+}

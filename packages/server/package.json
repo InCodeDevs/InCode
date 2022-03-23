@@ -26,7 +26,7 @@
   "dependencies": {
     "@incodelang/accounts": "file:../accounts",
     "@incodelang/compiler": "file:../compiler",
-    "@incodelang/urlshorter": "^1.0.3",
+    "@incodelang/urlshorter": "file:../urlshorter",
     "body-parser": "^1.19.0",
     "chalk": "^4.1.2",
     "concurrently": "^6.4.0",
