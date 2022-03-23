@@ -16,7 +16,7 @@
 @import "elements/popup/popup";
 @import "elements/popup/popup.button";
 @import "elements/popup/popup.input";
-@import "elements/popup-reloaded";
+@import "elements/popup-reloaded/index";
 @import "elements/userindicator";
 @import "elements/menubar/menubar";
 @import "elements/menubar/menubar.button";
@@ -29,9 +29,9 @@
 @import "elements/docs/table";
 @import "util/layout";
 @import "util/text";
-@import "landingpage";
+@import "landingpage/index";
 @import "stars";
-@import "admin";
+@import "admin/index";
 
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Permanent+Marker&display=swap');
 

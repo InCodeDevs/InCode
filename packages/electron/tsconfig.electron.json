@@ -4,7 +4,7 @@
     "noImplicitAny": true,
     "sourceMap": true,
     "outDir": "./dist-electron/js",
-    "baseUrl": ".",
+    "baseUrl": "../..",
     "paths": {
       "*": ["node_modules/*"]
     },

@@ -10,7 +10,7 @@ const APP_DIR = path.resolve(
   "./dist-electron/package/incode.editor-win32-x64"
 );
 // outputDirectory: "C:\\Users\sdkca\Desktop\windows_installer",
-const OUT_DIR = path.resolve(__dirname, "./dist-electron/package/installer64");
+const OUT_DIR = path.resolve(__dirname, "../../dist/electron/installer64");
 
 // 3. Instantiate the MSICreator
 const msiCreator = new MSICreator({

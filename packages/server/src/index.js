@@ -35,27 +35,25 @@ app.get(
     "/choose-platform",
   ],
   (req, res) => {
-    res.sendFile(path.join(__dirname, "..", "..", "dist", "index.html"));
+    res.sendFile(path.join(__dirname, "..", "..", "..", "dist", "app", "index.html"));
   }
 );
-
-app.use("/api/v1/docs", express.static(path.join(__dirname, "..", "docs")));
 
 app.get(["*bundle.js.gz", "*bundle.js"], (req, res) => {
   res
     .header("Content-Encoding", "gzip")
-    .sendFile(path.join(__dirname, "..", "..", "dist", "bundle.js.gz"));
+    .sendFile(path.join(__dirname, "..", "..", "..", "dist", "app", "bundle.js.gz"));
 });
 
 require("./module/logger")(app);
 
-app.use(express.static(path.join(__dirname, "..", "..", "dist")));
+app.use(express.static(path.join(__dirname, "..", "..", "..", "dist", "app")));
 app.use(cors());
 app.use(bodyParser());
 
 require("./api/compiler")(app);
 require("./api/generator/desktop")(app);
-require("./api/push")(app);
+// require("./api/push")(app);
 require("./api/templates")(app);
 require("./api/job")(app);
 require("./api/admin")(app);

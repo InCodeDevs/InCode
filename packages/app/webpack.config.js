@@ -14,11 +14,11 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
 const config = {
-  entry: "./src/app/index.tsx",
+  entry: "./src/index.tsx",
   mode: "development",
   devtool: false,
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "..", "..", "dist", "app"),
     filename: "bundle.js",
     publicPath: "/",
   },
@@ -124,7 +124,7 @@ const config = {
     new HtmlWebpackPlugin({
       appMountId: "app",
       filename: "index.html",
-      template: "./src/app/index.html",
+      template: "./src/index.html",
       title: "InCode Editor",
 
       meta: {
@@ -147,7 +147,7 @@ const config = {
       },
     }),
     new CopyPlugin({
-      patterns: [{ from: "./src/public", to: "." }],
+      patterns: [{ from: "./public", to: "." }],
     }),
   ],
 };

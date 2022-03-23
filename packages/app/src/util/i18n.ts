@@ -3,7 +3,7 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 
-import * as de_de from "../../translations/de-de.json";
+import * as de_de from "../translations/de-de.json";
 import { JSONObject } from "../types/JSONObject";
 import BrowserStorage from "./BrowserStorage";
 
