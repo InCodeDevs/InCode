@@ -1,0 +1,33 @@
+{
+  "name": "@incodelang/accounts-client",
+  "version": "1.0.11",
+  "description": "A web client for the package @incodelang/accounts",
+  "main": "src/index.js",
+  "scripts": {
+    "typescript:createtypes": "tsc"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "typings": "./types",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InCodeDevs/Accounts-Client.git"
+  },
+  "keywords": [
+    "Accounts",
+    "Web",
+    "Client",
+    "InCode"
+  ],
+  "author": "Ben Siebert",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/InCodeDevs/Accounts-Client/issues"
+  },
+  "homepage": "https://github.com/InCodeDevs/Accounts-Client#readme",
+  "devDependencies": {
+    "@types/node": "^16.10.3",
+    "typescript": "^4.4.3"
+  }
+}
