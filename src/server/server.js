@@ -39,6 +39,8 @@ app.get(
   }
 );
 
+app.use("/api/v1/docs", express.static(path.join(__dirname, "..", "docs")));
+
 app.get(["*bundle.js.gz", "*bundle.js"], (req, res) => {
   res
     .header("Content-Encoding", "gzip")

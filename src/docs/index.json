@@ -1,0 +1,10 @@
+{
+  "languages": [
+    {
+      "name": "Deutsch",
+      "code": "de",
+      "intro": "de/intro.md",
+      "sidebar": "de/sidebar.json"
+    }
+  ]
+}

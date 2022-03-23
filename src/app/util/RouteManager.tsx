@@ -6,12 +6,12 @@
 import KeyManager from "./KeyManager";
 import UIManager from "./UIManager";
 import MainMenu from "../views/MainMenu";
-import Docs from "../views/Docs/Docs";
 import Playground from "../views/Playground";
 import * as React from "react";
 import LandingPage from "../views/LandingPage";
 import AdminRoute from "../views/Admin/AdminRoute";
 import SelectApp from "../views/SelectApp";
+import DocsReloaded from "../views/Docs/DocsReloaded";
 
 export default class RouteManager {
   public static async manage() {
@@ -29,12 +29,12 @@ export default class RouteManager {
           this.show();
           if (location.pathname === "/docs" || location.pathname === "/docs/") {
             if (navigator.language.includes("de")) {
-              UIManager.silentRedirect("/docs/de/intro");
+              UIManager.silentRedirect("/docs/de");
             } else {
-              UIManager.silentRedirect("/docs/en/intro");
+              UIManager.silentRedirect("/docs/en");
             }
           } else {
-            UIManager.showComponent(<Docs />);
+            UIManager.showComponent(<DocsReloaded />);
           }
         } else if (location.pathname.startsWith("/playground")) {
           this.show();

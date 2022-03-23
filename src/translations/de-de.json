@@ -149,5 +149,7 @@
   "menu.settings.menu.item.code-editor.line-numbers.description": "Zeige oder verstecke die Zeilennummern im Code Editor",
   "menu.select-project-template.title": "Vorlage auswählen",
   "docs.name": "InCode Dokumentation",
-  "menu.playground.switch-playground": "Umgebung wechseln"
+  "menu.playground.switch-playground": "Umgebung wechseln",
+  "docs.error.language.not-found.title": "Sprache nicht gefunden",
+  "docs.error.language.not-found.description": "Die Sprache wurde nicht gefunden. Du wirst zur deutschen Version weitergeleitet."
 }
