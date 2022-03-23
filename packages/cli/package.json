@@ -1,0 +1,36 @@
+{
+  "name": "@incodelang/cli",
+  "version": "1.0.0",
+  "description": "The official CLI for the InCode Programming Language",
+  "main": "src/index.js",
+  "bin": {
+    "incode": "./src/index.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InCodeDevs/InCode.git"
+  },
+  "keywords": [
+    "CLI",
+    "InCode",
+    "Command",
+    "Line",
+    "Command",
+    "Line",
+    "Interface"
+  ],
+  "author": "Ben Siebert",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/InCodeDevs/InCode/issues"
+  },
+  "homepage": "https://github.com/InCodeDevs/InCode#readme",
+  "dependencies": {
+    "@incodelang/compiler": "file:../compiler",
+    "chalk": "^4.0.0",
+    "commander": "^8.3.0"
+  }
+}
