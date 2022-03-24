@@ -6,5 +6,5 @@ RUN npm install -g lerna
 WORKDIR /incode-editor
 COPY . /incode-editor
 RUN lerna link && lerna bootstrap
-RUN lerna webpack:build-prod
-ENTRYPOINT yarn express:only-start
+RUN lerna run --scope @incodelang/app webpack:build-prod
+ENTRYPOINT lerna run --scope @incodelang/server express:only-start
