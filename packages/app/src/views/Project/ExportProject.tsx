@@ -20,10 +20,9 @@ import FakeLoader from "../../util/FakeLoader";
 import UIManager from "../../util/UIManager";
 import Text from "../../components/Text";
 import i18n from "../../util/i18n";
-import PopupManager from "../../util/PopupManager";
 import String from "../../util/String";
-import { Compiler } from "@incodelang/compiler/dist/esm";
 import PopupManagerReloaded from "../../util/PopupManagerReloaded";
+import { Compiler } from "../../../../compiler";
 
 interface Props {
   projectConfig: ProjectConfig;
