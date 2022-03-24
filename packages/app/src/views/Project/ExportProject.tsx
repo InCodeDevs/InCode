@@ -23,7 +23,7 @@ import i18n from "../../util/i18n";
 import PopupManager from "../../util/PopupManager";
 import String from "../../util/String";
 // @ts-ignore
-import { Compiler } from "@incodelang/compiler";
+import { Compiler } from "@incodelang/compiler/src/module/Compiler";
 import PopupManagerReloaded from "../../util/PopupManagerReloaded";
 
 interface Props {
