@@ -29,7 +29,6 @@
   },
   "homepage": "https://github.com/InCodeDevs/InCode#readme",
   "dependencies": {
-    "@incodelang/compiler": "file:../compiler",
     "chalk": "^4.0.0",
     "commander": "^8.3.0"
   }

@@ -1,0 +1,11 @@
+0 silly argv {
+0 silly argv   _: [ 'add' ],
+0 silly argv   scope: '@incodelang/cli',
+0 silly argv   globs: [],
+0 silly argv   lernaVersion: '4.0.0',
+0 silly argv   '$0': 'C:\\Program Files\\nodejs\\node_modules\\lerna\\cli.js',
+0 silly argv   pkg: '.\\packages\\compiler\\package.json'
+0 silly argv }
+1 notice cli v4.0.0
+2 verbose rootPath C:\Users\bensi\Desktop\Projects\JuFo\InCode\Editor
+3 error
