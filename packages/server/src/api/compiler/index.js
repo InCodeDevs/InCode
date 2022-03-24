@@ -8,7 +8,7 @@ const template = require("../../module/template");
 const {
   Compiler,
   AbstractSyntaxTreeGenerator,
-} = require("../../../../compiler/dist/cjs");
+} = require("../../../../compiler/dist/cjs/incode.compiler.bundle");
 
 /**
  * @param {import("express")} app - The express App
