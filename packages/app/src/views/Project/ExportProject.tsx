@@ -22,7 +22,7 @@ import Text from "../../components/Text";
 import i18n from "../../util/i18n";
 import String from "../../util/String";
 import PopupManagerReloaded from "../../util/PopupManagerReloaded";
-import { Compiler } from "../../../../compiler";
+import { Compiler } from "../../../../compiler/src";
 
 interface Props {
   projectConfig: ProjectConfig;

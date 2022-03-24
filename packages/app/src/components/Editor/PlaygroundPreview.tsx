@@ -6,7 +6,7 @@
 import * as React from "react";
 import { useEffect } from "react";
 import Workspace from "../../util/Workspace";
-import { Compiler } from "../../../../compiler";
+import { Compiler } from "../../../../compiler/src";
 
 export default function PlaygroundPreview() {
   useEffect(() => {
