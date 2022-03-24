@@ -2,6 +2,8 @@ name: DevOps
 
 on:
   push:
+    paths:
+      - "packages/*"
     branches:
       - v4.x
 jobs:
