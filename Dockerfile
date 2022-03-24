@@ -8,4 +8,4 @@ COPY . /incode-editor
 RUN yarn install
 RUN lerna link --force-local && lerna bootstrap --force-local
 RUN lerna run --scope @incodelang/app webpack:build-prod
-ENTRYPOINT lerna run --scope @incodelang/server express:only-start
+ENTRYPOINT yarn --cwd .\packages\server express:only-start
