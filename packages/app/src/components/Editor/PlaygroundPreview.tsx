@@ -6,6 +6,7 @@
 import * as React from "react";
 import { useEffect } from "react";
 import Workspace from "../../util/Workspace";
+// @ts-ignore
 import { Compiler } from "@incodelang/compiler/dist/cjs/module/Compiler";
 
 export default function PlaygroundPreview() {
