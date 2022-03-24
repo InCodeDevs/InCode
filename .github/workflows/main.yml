@@ -43,7 +43,7 @@ jobs:
         run: |
           yarn install
           npm i -g lerna
-          yarn lerna link && lerna bootstrap
+          yarn lerna link && yarn lerna bootstrap
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -61,7 +61,7 @@ jobs:
         run: |
           yarn install
           npm i -g lerna
-          yarn lerna link && lerna bootstrap
+          yarn lerna link && yarn lerna bootstrap
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
