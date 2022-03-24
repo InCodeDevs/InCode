@@ -22,7 +22,7 @@ import Text from "../../components/Text";
 import i18n from "../../util/i18n";
 import PopupManager from "../../util/PopupManager";
 import String from "../../util/String";
-import { Compiler } from "@incodelang/compiler/src/module/Compiler";
+import { Compiler } from "@incodelang/compiler/dist/esm/module/Compiler";
 import PopupManagerReloaded from "../../util/PopupManagerReloaded";
 
 interface Props {
