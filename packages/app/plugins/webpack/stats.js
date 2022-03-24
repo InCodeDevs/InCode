@@ -41,29 +41,36 @@ function getFileCount() {
 function getFilePaths(path0) {
   let paths = [];
 
-  fs.readdirSync(path0).forEach((x) => {
-    if (fs.lstatSync(path.join(path0, x)).isFile()) {
-      if (
-        !x.includes("monaco-editor") &&
-        !x.includes("node_modules") &&
-        !x.includes(".lock") &&
-        !x.includes(".log")
-      ) {
-        paths.push(path.join(path0, x));
-      }
-    } else {
-      getFilePaths(path.join(path0, x)).forEach((y) => {
+  if (
+    !path0.includes("monaco-editor") &&
+    !path0.includes("node_modules") &&
+    !path0.includes(".lock") &&
+    !path0.includes(".log")
+  ) {
+    fs.readdirSync(path0).forEach((x) => {
+      if (fs.lstatSync(path.join(path0, x)).isFile()) {
         if (
-          !y.includes("monaco-editor") &&
-          !y.includes("node_modules") &&
+          !x.includes("monaco-editor") &&
+          !x.includes("node_modules") &&
           !x.includes(".lock") &&
-          !y.includes(".log")
+          !x.includes(".log")
         ) {
-          paths.push(y);
+          paths.push(path.join(path0, x));
         }
-      });
-    }
-  });
+      } else {
+        getFilePaths(path.join(path0, x)).forEach((y) => {
+          if (
+            !y.includes("monaco-editor") &&
+            !y.includes("node_modules") &&
+            !x.includes(".lock") &&
+            !y.includes(".log")
+          ) {
+            paths.push(y);
+          }
+        });
+      }
+    });
+  }
   return paths;
 }
 
