@@ -32,7 +32,7 @@ jobs:
           yarn prettier:check
   build:
     name: Build Webpack Bundle
-    runs-on: windows-2019
+    runs-on: macos-latest
     needs: [ lint, prettier ]
     strategy:
       matrix:
