@@ -32,7 +32,7 @@ jobs:
           yarn prettier:check
   build:
     name: Build Webpack Bundle
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: [ lint, prettier ]
     strategy:
       matrix:
@@ -43,7 +43,7 @@ jobs:
         run: |
           yarn install
           npm i -g lerna
-          yarn lerna link && yarn lerna bootstrap
+          yarn lerna link --force-local && yarn lerna bootstrap --force-local
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
