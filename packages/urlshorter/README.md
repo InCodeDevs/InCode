@@ -3,7 +3,6 @@
 
 A simple way to short urls
 
-
 ## Installation
 
 Install @incodelang/urlshorter with npm
