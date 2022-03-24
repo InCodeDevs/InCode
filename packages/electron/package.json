@@ -23,11 +23,11 @@
     "url": "https://github.com/InCodeDevs/Editor/issues"
   },
   "dependencies": {
-    "@incodelang/accounts-client": "file:../packages/accounts-client",
-    "@incodelang/compiler": "file:../packages/compiler",
-    "@incodelang/templates": "file:../packages/templates",
-    "@incodelang/accounts": "file:../packages/accounts",
-    "@incodelang/urlshorter": "file:../packages/urlshorter",
+    "@incodelang/accounts-client": "file:../accounts-client",
+    "@incodelang/compiler": "file:../compiler",
+    "@incodelang/templates": "file:../templates",
+    "@incodelang/accounts": "file:../accounts",
+    "@incodelang/urlshorter": "file:../urlshorter",
     "electron": "^17.1.0",
     "electron-forge": "^5.2.4",
     "electron-packager": "^15.4.0",
