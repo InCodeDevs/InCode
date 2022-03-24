@@ -22,4 +22,3 @@ This monorepo contains all code of InCode. The sources are stored in the `packag
 ## Support
 
 For support, join our Discord server at https://discord.gg/9T5JEyXsrA
-
