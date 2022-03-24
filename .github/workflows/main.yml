@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - v4.x
+      - v4.*
 jobs:
   lint:
     name: ESLint
