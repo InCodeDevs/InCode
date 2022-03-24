@@ -24,6 +24,11 @@
     "url": "https://github.com/InCodeDevs/Editor/issues"
   },
   "dependencies": {
+    "@incodelang/accounts-client": "file:../packages/accounts-client",
+    "@incodelang/compiler": "file:../packages/compiler",
+    "@incodelang/templates": "file:../packages/templates",
+    "@incodelang/accounts": "file:../packages/accounts",
+    "@incodelang/urlshorter": "file:../packages/urlshorter",
     "body-parser": "^1.19.0",
     "chalk": "^4.1.2",
     "concurrently": "^6.4.0",

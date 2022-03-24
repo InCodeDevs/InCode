@@ -36,12 +36,5 @@
     "prettier": "^2.6.0"
   },
   "workspaces": ["packages/*"],
-  "private": true,
-  "devDependencies": {
-    "@incodelang/accounts-client": "file:./packages/accounts-client",
-    "@incodelang/compiler": "file:./packages/compiler",
-    "@incodelang/templates": "file:./packages/templates",
-    "@incodelang/accounts": "file:./packages/accounts",
-    "@incodelang/urlshorter": "file:./packages/urlshorter"
-  }
+  "private": true
 }

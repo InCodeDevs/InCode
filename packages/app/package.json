@@ -22,6 +22,11 @@
     "url": "https://github.com/InCodeDevs/Editor/issues"
   },
   "dependencies": {
+    "@incodelang/accounts-client": "file:../packages/accounts-client",
+    "@incodelang/compiler": "file:../packages/compiler",
+    "@incodelang/templates": "file:../packages/templates",
+    "@incodelang/accounts": "file:../packages/accounts",
+    "@incodelang/urlshorter": "file:../packages/urlshorter",
     "@babel/plugin-transform-react-jsx": "^7.16.5",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
