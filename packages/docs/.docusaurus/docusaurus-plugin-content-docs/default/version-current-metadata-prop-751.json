@@ -55,6 +55,30 @@
                 "label": "Frage",
                 "href": "/docs/syntax/befehle/frage",
                 "docId": "syntax/befehle/frage"
+              },
+              {
+                "type": "link",
+                "label": "Füge",
+                "href": "/docs/syntax/befehle/füge",
+                "docId": "syntax/befehle/füge"
+              },
+              {
+                "type": "link",
+                "label": "Gib",
+                "href": "/docs/syntax/befehle/gib",
+                "docId": "syntax/befehle/gib"
+              },
+              {
+                "type": "link",
+                "label": "Rufe",
+                "href": "/docs/syntax/befehle/rufe",
+                "docId": "syntax/befehle/rufe"
+              },
+              {
+                "type": "link",
+                "label": "Warte",
+                "href": "/docs/syntax/befehle/warte",
+                "docId": "syntax/befehle/warte"
               }
             ]
           }
@@ -121,6 +145,18 @@
       "description": "Der frage Befehl zeigt dem Benutzer eine Frage an und speichert optional die Antwort in einer Variable.",
       "sidebar": "tutorialSidebar"
     },
+    "syntax/befehle/füge": {
+      "id": "syntax/befehle/füge",
+      "title": "Füge",
+      "description": "Der füge Befehl fügt ein Element zu einem anderen Element bzw. zu dem Bildschirm hinzu.",
+      "sidebar": "tutorialSidebar"
+    },
+    "syntax/befehle/gib": {
+      "id": "syntax/befehle/gib",
+      "title": "Gib",
+      "description": "Der gib Befehl gibt einen Text oder den Wert einer Variable in der Konsole oder einer Dialogbox aus.",
+      "sidebar": "tutorialSidebar"
+    },
     "syntax/befehle/inline-code": {
       "id": "syntax/befehle/inline-code",
       "title": "@ (Inline-Code)",
@@ -131,6 +167,18 @@
       "id": "syntax/befehle/kommentar",
       "title": "// (Kommentar)",
       "description": "Der `//` Befehl ist ein Kommentar. Dieser Kommentar wird bei der Ausführung des Programms nicht berücksichtigt.",
+      "sidebar": "tutorialSidebar"
+    },
+    "syntax/befehle/rufe": {
+      "id": "syntax/befehle/rufe",
+      "title": "Rufe",
+      "description": "Der rufe Befehl ruft eine Funktion auf. Diese Funktion muss mit InCode definiert werden und kann nicht über den @ (Inline-Code) Befehl erstellt werden.",
+      "sidebar": "tutorialSidebar"
+    },
+    "syntax/befehle/warte": {
+      "id": "syntax/befehle/warte",
+      "title": "Warte",
+      "description": "Der warte Befehl wartet eine bestimmte Zeit in Sekunden, bevor der nächste Befehl ausgeführt wird.",
       "sidebar": "tutorialSidebar"
     },
     "syntax/intro": {

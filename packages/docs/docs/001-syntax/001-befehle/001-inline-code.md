@@ -1,7 +1,3 @@
----
-sidebar-position: 1
----
-
 # @ (Inline-Code)
 
 Der ``@`` Befehl ermöglicht es, JavaScript-Code auszuführen, um die Funktionalität von InCode zu erweitern.

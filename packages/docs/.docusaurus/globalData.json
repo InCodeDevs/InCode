@@ -36,6 +36,16 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "syntax/befehle/füge",
+              "path": "/docs/syntax/befehle/füge",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "syntax/befehle/gib",
+              "path": "/docs/syntax/befehle/gib",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "syntax/befehle/inline-code",
               "path": "/docs/syntax/befehle/inline-code",
               "sidebar": "tutorialSidebar"
@@ -43,6 +53,16 @@
             {
               "id": "syntax/befehle/kommentar",
               "path": "/docs/syntax/befehle/kommentar",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "syntax/befehle/rufe",
+              "path": "/docs/syntax/befehle/rufe",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "syntax/befehle/warte",
+              "path": "/docs/syntax/befehle/warte",
               "sidebar": "tutorialSidebar"
             },
             {

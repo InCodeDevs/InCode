@@ -31,9 +31,7 @@
               "tags": [],
               "version": "current",
               "sidebarPosition": 0,
-              "frontMatter": {
-                "sidebar-position": 1
-              },
+              "frontMatter": {},
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Einleitung",
@@ -53,13 +51,11 @@
               "tags": [],
               "version": "current",
               "sidebarPosition": 0,
-              "frontMatter": {
-                "sidebar-position": 1
-              },
+              "frontMatter": {},
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Frage",
-                "permalink": "/docs/syntax/befehle/frage"
+                "title": "Warte",
+                "permalink": "/docs/syntax/befehle/warte"
               },
               "next": {
                 "title": "Einleitung",
@@ -101,9 +97,7 @@
               "tags": [],
               "version": "current",
               "sidebarPosition": 3,
-              "frontMatter": {
-                "sidebar-position": 3
-              },
+              "frontMatter": {},
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "// (Kommentar)",
@@ -119,25 +113,71 @@
               "id": "syntax/befehle/frage",
               "title": "Frage",
               "description": "Der frage Befehl zeigt dem Benutzer eine Frage an und speichert optional die Antwort in einer Variable.",
-              "source": "@site/docs/001-syntax/001-befehle/004-frage.md",
+              "source": "@site/docs/001-syntax/001-befehle/005-frage.md",
               "sourceDirName": "001-syntax/001-befehle",
               "slug": "/syntax/befehle/frage",
               "permalink": "/docs/syntax/befehle/frage",
-              "editUrl": "https://github.com/incodedevs/incode/tree/v4.x/packages/docs/docs/001-syntax/001-befehle/004-frage.md",
+              "editUrl": "https://github.com/incodedevs/incode/tree/v4.x/packages/docs/docs/001-syntax/001-befehle/005-frage.md",
               "tags": [],
               "version": "current",
-              "sidebarPosition": 4,
-              "frontMatter": {
-                "sidebar-position": 5
-              },
+              "sidebarPosition": 5,
+              "frontMatter": {},
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Entferne",
                 "permalink": "/docs/syntax/befehle/entferne"
               },
               "next": {
-                "title": "Einleitung",
-                "permalink": "/docs/editor/intro"
+                "title": "Füge",
+                "permalink": "/docs/syntax/befehle/füge"
+              }
+            },
+            {
+              "unversionedId": "syntax/befehle/füge",
+              "id": "syntax/befehle/füge",
+              "title": "Füge",
+              "description": "Der füge Befehl fügt ein Element zu einem anderen Element bzw. zu dem Bildschirm hinzu.",
+              "source": "@site/docs\\001-syntax\\001-befehle\\006-füge.md",
+              "sourceDirName": "001-syntax/001-befehle",
+              "slug": "/syntax/befehle/füge",
+              "permalink": "/docs/syntax/befehle/füge",
+              "editUrl": "https://github.com/incodedevs/incode/tree/v4.x/packages/docs/docs/001-syntax/001-befehle/006-füge.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 6,
+              "frontMatter": {},
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Frage",
+                "permalink": "/docs/syntax/befehle/frage"
+              },
+              "next": {
+                "title": "Gib",
+                "permalink": "/docs/syntax/befehle/gib"
+              }
+            },
+            {
+              "unversionedId": "syntax/befehle/gib",
+              "id": "syntax/befehle/gib",
+              "title": "Gib",
+              "description": "Der gib Befehl gibt einen Text oder den Wert einer Variable in der Konsole oder einer Dialogbox aus.",
+              "source": "@site/docs/001-syntax/001-befehle/007-gib.md",
+              "sourceDirName": "001-syntax/001-befehle",
+              "slug": "/syntax/befehle/gib",
+              "permalink": "/docs/syntax/befehle/gib",
+              "editUrl": "https://github.com/incodedevs/incode/tree/v4.x/packages/docs/docs/001-syntax/001-befehle/007-gib.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 7,
+              "frontMatter": {},
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Füge",
+                "permalink": "/docs/syntax/befehle/füge"
+              },
+              "next": {
+                "title": "Rufe",
+                "permalink": "/docs/syntax/befehle/rufe"
               }
             },
             {
@@ -153,9 +193,7 @@
               "tags": [],
               "version": "current",
               "sidebarPosition": 1,
-              "frontMatter": {
-                "sidebar-position": 1
-              },
+              "frontMatter": {},
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Einleitung",
@@ -179,9 +217,7 @@
               "tags": [],
               "version": "current",
               "sidebarPosition": 2,
-              "frontMatter": {
-                "sidebar-position": 2
-              },
+              "frontMatter": {},
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "@ (Inline-Code)",
@@ -190,6 +226,54 @@
               "next": {
                 "title": "Entferne",
                 "permalink": "/docs/syntax/befehle/entferne"
+              }
+            },
+            {
+              "unversionedId": "syntax/befehle/rufe",
+              "id": "syntax/befehle/rufe",
+              "title": "Rufe",
+              "description": "Der rufe Befehl ruft eine Funktion auf. Diese Funktion muss mit InCode definiert werden und kann nicht über den @ (Inline-Code) Befehl erstellt werden.",
+              "source": "@site/docs/001-syntax/001-befehle/008-rufe.md",
+              "sourceDirName": "001-syntax/001-befehle",
+              "slug": "/syntax/befehle/rufe",
+              "permalink": "/docs/syntax/befehle/rufe",
+              "editUrl": "https://github.com/incodedevs/incode/tree/v4.x/packages/docs/docs/001-syntax/001-befehle/008-rufe.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 8,
+              "frontMatter": {},
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Gib",
+                "permalink": "/docs/syntax/befehle/gib"
+              },
+              "next": {
+                "title": "Warte",
+                "permalink": "/docs/syntax/befehle/warte"
+              }
+            },
+            {
+              "unversionedId": "syntax/befehle/warte",
+              "id": "syntax/befehle/warte",
+              "title": "Warte",
+              "description": "Der warte Befehl wartet eine bestimmte Zeit in Sekunden, bevor der nächste Befehl ausgeführt wird.",
+              "source": "@site/docs/001-syntax/001-befehle/011-warte.md",
+              "sourceDirName": "001-syntax/001-befehle",
+              "slug": "/syntax/befehle/warte",
+              "permalink": "/docs/syntax/befehle/warte",
+              "editUrl": "https://github.com/incodedevs/incode/tree/v4.x/packages/docs/docs/001-syntax/001-befehle/011-warte.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 11,
+              "frontMatter": {},
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Rufe",
+                "permalink": "/docs/syntax/befehle/rufe"
+              },
+              "next": {
+                "title": "Einleitung",
+                "permalink": "/docs/editor/intro"
               }
             },
             {
@@ -205,9 +289,7 @@
               "tags": [],
               "version": "current",
               "sidebarPosition": 0,
-              "frontMatter": {
-                "sidebar-position": 1
-              },
+              "frontMatter": {},
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Einleitung",
@@ -256,6 +338,22 @@
                       {
                         "type": "doc",
                         "id": "syntax/befehle/frage"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "syntax/befehle/füge"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "syntax/befehle/gib"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "syntax/befehle/rufe"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "syntax/befehle/warte"
                       }
                     ]
                   }

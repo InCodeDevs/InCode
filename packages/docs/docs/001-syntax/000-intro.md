@@ -1,7 +1,3 @@
----
-sidebar-position: 1
----
-
 # Einleitung
 
 InCode soll verwendet eine (möglichst) grammatikalisch korrekte Syntax.

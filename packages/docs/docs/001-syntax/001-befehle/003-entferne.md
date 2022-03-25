@@ -1,7 +1,3 @@
----
-sidebar-position: 3
----
-
 # Entferne
 
 Der `entferne` Befehl entfernt ein Element vom Bildschirm bzw. einem anderen Element.
@@ -15,9 +11,9 @@ Auf das Schlüsselwort `entferne` folgt der Name des zu entfernenden Elements (z
 | `entferne` | `<element1> von <element2>` |
 | `entferne` | `<element1> vom Bildschirm` |
 
-Im nachfolgenden Beispiel wird ein Kommentar in das Programm eingefügt.
+Im nachfolgenden Beispiel wird das Element `x` vom Element `y` entfernt und das Element `y` vom Bildschirm entfernt. 
 
 ```text
     Entferne x von y
-    Entferne x vom Bildschirm
+    Entferne y vom Bildschirm
 ```

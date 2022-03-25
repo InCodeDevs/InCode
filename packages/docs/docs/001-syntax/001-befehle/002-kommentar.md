@@ -1,7 +1,3 @@
----
-sidebar-position: 2
----
-
 # // (Kommentar)
 
 Der ```//``` Befehl ist ein Kommentar. Dieser Kommentar wird bei der Ausführung des Programms nicht berücksichtigt.
