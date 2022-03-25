@@ -10,129 +10,133 @@
     "tutorialSidebar": [
       {
         "type": "link",
-        "label": "Tutorial Intro",
+        "label": "Einleitung",
         "href": "/docs/intro",
         "docId": "intro"
       },
       {
         "type": "category",
-        "label": "Tutorial - Basics",
+        "label": "Syntax",
         "collapsible": true,
         "collapsed": true,
         "items": [
           {
             "type": "link",
-            "label": "Create a Page",
-            "href": "/docs/tutorial-basics/create-a-page",
-            "docId": "tutorial-basics/create-a-page"
+            "label": "Einleitung",
+            "href": "/docs/syntax/intro",
+            "docId": "syntax/intro"
           },
           {
-            "type": "link",
-            "label": "Create a Document",
-            "href": "/docs/tutorial-basics/create-a-document",
-            "docId": "tutorial-basics/create-a-document"
-          },
-          {
-            "type": "link",
-            "label": "Create a Blog Post",
-            "href": "/docs/tutorial-basics/create-a-blog-post",
-            "docId": "tutorial-basics/create-a-blog-post"
-          },
-          {
-            "type": "link",
-            "label": "Markdown Features",
-            "href": "/docs/tutorial-basics/markdown-features",
-            "docId": "tutorial-basics/markdown-features"
-          },
-          {
-            "type": "link",
-            "label": "Deploy your site",
-            "href": "/docs/tutorial-basics/deploy-your-site",
-            "docId": "tutorial-basics/deploy-your-site"
-          },
-          {
-            "type": "link",
-            "label": "Congratulations!",
-            "href": "/docs/tutorial-basics/congratulations",
-            "docId": "tutorial-basics/congratulations"
+            "type": "category",
+            "label": "Befehle",
+            "collapsible": true,
+            "collapsed": true,
+            "items": [
+              {
+                "type": "link",
+                "label": "@ (Inline-Code)",
+                "href": "/docs/syntax/befehle/inline-code",
+                "docId": "syntax/befehle/inline-code"
+              },
+              {
+                "type": "link",
+                "label": "// (Kommentar)",
+                "href": "/docs/syntax/befehle/kommentar",
+                "docId": "syntax/befehle/kommentar"
+              },
+              {
+                "type": "link",
+                "label": "Entferne",
+                "href": "/docs/syntax/befehle/entferne",
+                "docId": "syntax/befehle/entferne"
+              },
+              {
+                "type": "link",
+                "label": "Frage",
+                "href": "/docs/syntax/befehle/frage",
+                "docId": "syntax/befehle/frage"
+              }
+            ]
           }
         ]
       },
       {
         "type": "category",
-        "label": "Tutorial - Extras",
+        "label": "Editor",
         "collapsible": true,
         "collapsed": true,
         "items": [
           {
             "type": "link",
-            "label": "Manage Docs Versions",
-            "href": "/docs/tutorial-extras/manage-docs-versions",
-            "docId": "tutorial-extras/manage-docs-versions"
-          },
+            "label": "Einleitung",
+            "href": "/docs/editor/intro",
+            "docId": "editor/intro"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Beispiele",
+        "collapsible": true,
+        "collapsed": true,
+        "items": [
           {
             "type": "link",
-            "label": "Translate your site",
-            "href": "/docs/tutorial-extras/translate-your-site",
-            "docId": "tutorial-extras/translate-your-site"
+            "label": "Einleitung",
+            "href": "/docs/beispiele/intro",
+            "docId": "beispiele/intro"
           }
         ]
       }
     ]
   },
   "docs": {
+    "beispiele/intro": {
+      "id": "beispiele/intro",
+      "title": "Einleitung",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "editor/intro": {
+      "id": "editor/intro",
+      "title": "Einleitung",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
     "intro": {
       "id": "intro",
-      "title": "Tutorial Intro",
-      "description": "Let's discover Docusaurus in less than 5 minutes.",
+      "title": "Einleitung",
+      "description": "Willkommen in der offiziellen Dokumentation von InCode. Hier finden Sie eine Übersicht über die Funktionen und Funktionalitäten von InCode.",
       "sidebar": "tutorialSidebar"
     },
-    "tutorial-basics/congratulations": {
-      "id": "tutorial-basics/congratulations",
-      "title": "Congratulations!",
-      "description": "You have just learned the basics of Docusaurus and made some changes to the initial template.",
+    "syntax/befehle/entferne": {
+      "id": "syntax/befehle/entferne",
+      "title": "Entferne",
+      "description": "Der entferne Befehl entfernt ein Element vom Bildschirm bzw. einem anderen Element.",
       "sidebar": "tutorialSidebar"
     },
-    "tutorial-basics/create-a-blog-post": {
-      "id": "tutorial-basics/create-a-blog-post",
-      "title": "Create a Blog Post",
-      "description": "Docusaurus creates a page for each blog post, but also a blog index page, a tag system, an RSS feed...",
+    "syntax/befehle/frage": {
+      "id": "syntax/befehle/frage",
+      "title": "Frage",
+      "description": "Der frage Befehl zeigt dem Benutzer eine Frage an und speichert optional die Antwort in einer Variable.",
       "sidebar": "tutorialSidebar"
     },
-    "tutorial-basics/create-a-document": {
-      "id": "tutorial-basics/create-a-document",
-      "title": "Create a Document",
-      "description": "Documents are groups of pages connected through:",
+    "syntax/befehle/inline-code": {
+      "id": "syntax/befehle/inline-code",
+      "title": "@ (Inline-Code)",
+      "description": "Der `@` Befehl ermöglicht es, JavaScript-Code auszuführen, um die Funktionalität von InCode zu erweitern.",
       "sidebar": "tutorialSidebar"
     },
-    "tutorial-basics/create-a-page": {
-      "id": "tutorial-basics/create-a-page",
-      "title": "Create a Page",
-      "description": "Add Markdown or React files to src/pages to create a standalone page:",
+    "syntax/befehle/kommentar": {
+      "id": "syntax/befehle/kommentar",
+      "title": "// (Kommentar)",
+      "description": "Der `//` Befehl ist ein Kommentar. Dieser Kommentar wird bei der Ausführung des Programms nicht berücksichtigt.",
       "sidebar": "tutorialSidebar"
     },
-    "tutorial-basics/deploy-your-site": {
-      "id": "tutorial-basics/deploy-your-site",
-      "title": "Deploy your site",
-      "description": "Docusaurus is a static-site-generator (also called Jamstack).",
-      "sidebar": "tutorialSidebar"
-    },
-    "tutorial-basics/markdown-features": {
-      "id": "tutorial-basics/markdown-features",
-      "title": "Markdown Features",
-      "description": "Docusaurus supports Markdown and a few additional features.",
-      "sidebar": "tutorialSidebar"
-    },
-    "tutorial-extras/manage-docs-versions": {
-      "id": "tutorial-extras/manage-docs-versions",
-      "title": "Manage Docs Versions",
-      "description": "Docusaurus can manage multiple versions of your docs.",
-      "sidebar": "tutorialSidebar"
-    },
-    "tutorial-extras/translate-your-site": {
-      "id": "tutorial-extras/translate-your-site",
-      "title": "Translate your site",
-      "description": "Let's translate docs/intro.md to French.",
+    "syntax/intro": {
+      "id": "syntax/intro",
+      "title": "Einleitung",
+      "description": "InCode soll verwendet eine (möglichst) grammatikalisch korrekte Syntax.",
       "sidebar": "tutorialSidebar"
     }
   }

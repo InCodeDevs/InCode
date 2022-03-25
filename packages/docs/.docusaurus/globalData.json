@@ -11,48 +11,43 @@
           "mainDocId": "intro",
           "docs": [
             {
+              "id": "beispiele/intro",
+              "path": "/docs/beispiele/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "editor/intro",
+              "path": "/docs/editor/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "intro",
               "path": "/docs/intro",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "tutorial-basics/congratulations",
-              "path": "/docs/tutorial-basics/congratulations",
+              "id": "syntax/befehle/entferne",
+              "path": "/docs/syntax/befehle/entferne",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "tutorial-basics/create-a-blog-post",
-              "path": "/docs/tutorial-basics/create-a-blog-post",
+              "id": "syntax/befehle/frage",
+              "path": "/docs/syntax/befehle/frage",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "tutorial-basics/create-a-document",
-              "path": "/docs/tutorial-basics/create-a-document",
+              "id": "syntax/befehle/inline-code",
+              "path": "/docs/syntax/befehle/inline-code",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "tutorial-basics/create-a-page",
-              "path": "/docs/tutorial-basics/create-a-page",
+              "id": "syntax/befehle/kommentar",
+              "path": "/docs/syntax/befehle/kommentar",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "tutorial-basics/deploy-your-site",
-              "path": "/docs/tutorial-basics/deploy-your-site",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "tutorial-basics/markdown-features",
-              "path": "/docs/tutorial-basics/markdown-features",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "tutorial-extras/manage-docs-versions",
-              "path": "/docs/tutorial-extras/manage-docs-versions",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "tutorial-extras/translate-your-site",
-              "path": "/docs/tutorial-extras/translate-your-site",
+              "id": "syntax/intro",
+              "path": "/docs/syntax/intro",
               "sidebar": "tutorialSidebar"
             }
           ],

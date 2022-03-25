@@ -40,8 +40,8 @@ const config = {
       navbar: {
         title: "InCode",
         logo: {
-          alt: "My Site Logo",
-          src: "img/logo.svg",
+          alt: "InCode Logo",
+          src: "img/incode-400.png",
         },
         items: [
           {

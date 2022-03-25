@@ -1,8 +1,8 @@
 {
   "unversionedId": "intro",
   "id": "intro",
-  "title": "Tutorial Intro",
-  "description": "Let's discover Docusaurus in less than 5 minutes.",
+  "title": "Einleitung",
+  "description": "Willkommen in der offiziellen Dokumentation von InCode. Hier finden Sie eine Übersicht über die Funktionen und Funktionalitäten von InCode.",
   "source": "@site/docs/intro.md",
   "sourceDirName": ".",
   "slug": "/intro",
@@ -10,13 +10,12 @@
   "editUrl": "https://github.com/incodedevs/incode/tree/v4.x/packages/docs/docs/intro.md",
   "tags": [],
   "version": "current",
-  "sidebarPosition": 1,
   "frontMatter": {
-    "sidebar_position": 1
+    "sidebar-position": 0
   },
   "sidebar": "tutorialSidebar",
-  "next": {
-    "title": "Create a Page",
-    "permalink": "/docs/tutorial-basics/create-a-page"
+  "previous": {
+    "title": "Einleitung",
+    "permalink": "/docs/syntax/intro"
   }
 }
