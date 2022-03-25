@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/tsc",
+    "sourceMap": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "target": "ESNext",
+    "allowJs": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "**/*.test.ts",
+  ]
+}

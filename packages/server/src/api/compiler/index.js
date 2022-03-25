@@ -5,10 +5,15 @@
 
 const { users } = require("@incodelang/accounts");
 const template = require("../../module/template");
-const {
-  Compiler,
-  AbstractSyntaxTreeGenerator,
-} = require("../../../../compiler");
+const path = require("path");
+const { Compiler, AbstractSyntaxTreeGenerator } = require(path.join(
+  __dirname,
+  "..",
+  "..",
+  "..",
+  "..",
+  "compiler"
+));
 
 /**
  * @param {import("express")} app - The express App

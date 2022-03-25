@@ -1,11 +1,10 @@
 FROM node:16
 EXPOSE 3000
-RUN apt-get -y update
-RUN apt-get -y install git
-RUN npm install -g --force lerna yarn
-WORKDIR /incode-editor
-COPY . /incode-editor
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+COPY . /usr/src/app
+VOLUME /root
 RUN yarn install
-RUN lerna link --force-local && lerna bootstrap --force-local
-RUN lerna run --scope @incodelang/app webpack:build-prod
-ENTRYPOINT cd packages/server/src && node index.js
+RUN yarn lerna bootstrap
+RUN cd /usr/src/app/packages/app && yarn webpack:build-prod
+ENTRYPOINT cd /usr/src/app/packages/server && yarn express:only-start
