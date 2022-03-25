@@ -31,6 +31,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "syntax/befehle/erstelle",
+              "path": "/docs/syntax/befehle/erstelle",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "syntax/befehle/frage",
               "path": "/docs/syntax/befehle/frage",
               "sidebar": "tutorialSidebar"
@@ -61,8 +66,28 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "syntax/befehle/setze",
+              "path": "/docs/syntax/befehle/setze",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "syntax/befehle/sonst",
+              "path": "/docs/syntax/befehle/sonst",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "syntax/befehle/warte",
               "path": "/docs/syntax/befehle/warte",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "syntax/befehle/wenn",
+              "path": "/docs/syntax/befehle/wenn",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "syntax/befehle/wiederhole",
+              "path": "/docs/syntax/befehle/wiederhole",
               "sidebar": "tutorialSidebar"
             },
             {

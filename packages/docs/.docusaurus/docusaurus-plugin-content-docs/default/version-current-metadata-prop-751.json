@@ -52,6 +52,12 @@
               },
               {
                 "type": "link",
+                "label": "Erstelle",
+                "href": "/docs/syntax/befehle/erstelle",
+                "docId": "syntax/befehle/erstelle"
+              },
+              {
+                "type": "link",
                 "label": "Frage",
                 "href": "/docs/syntax/befehle/frage",
                 "docId": "syntax/befehle/frage"
@@ -76,9 +82,33 @@
               },
               {
                 "type": "link",
+                "label": "Setze",
+                "href": "/docs/syntax/befehle/setze",
+                "docId": "syntax/befehle/setze"
+              },
+              {
+                "type": "link",
+                "label": "Sonst",
+                "href": "/docs/syntax/befehle/sonst",
+                "docId": "syntax/befehle/sonst"
+              },
+              {
+                "type": "link",
                 "label": "Warte",
                 "href": "/docs/syntax/befehle/warte",
                 "docId": "syntax/befehle/warte"
+              },
+              {
+                "type": "link",
+                "label": "Setze",
+                "href": "/docs/syntax/befehle/wenn",
+                "docId": "syntax/befehle/wenn"
+              },
+              {
+                "type": "link",
+                "label": "Setze",
+                "href": "/docs/syntax/befehle/wiederhole",
+                "docId": "syntax/befehle/wiederhole"
               }
             ]
           }
@@ -139,6 +169,12 @@
       "description": "Der entferne Befehl entfernt ein Element vom Bildschirm bzw. einem anderen Element.",
       "sidebar": "tutorialSidebar"
     },
+    "syntax/befehle/erstelle": {
+      "id": "syntax/befehle/erstelle",
+      "title": "Erstelle",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
     "syntax/befehle/frage": {
       "id": "syntax/befehle/frage",
       "title": "Frage",
@@ -175,10 +211,34 @@
       "description": "Der rufe Befehl ruft eine Funktion auf. Diese Funktion muss mit InCode definiert werden und kann nicht über den @ (Inline-Code) Befehl erstellt werden.",
       "sidebar": "tutorialSidebar"
     },
+    "syntax/befehle/setze": {
+      "id": "syntax/befehle/setze",
+      "title": "Setze",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "syntax/befehle/sonst": {
+      "id": "syntax/befehle/sonst",
+      "title": "Sonst",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
     "syntax/befehle/warte": {
       "id": "syntax/befehle/warte",
       "title": "Warte",
       "description": "Der warte Befehl wartet eine bestimmte Zeit in Sekunden, bevor der nächste Befehl ausgeführt wird.",
+      "sidebar": "tutorialSidebar"
+    },
+    "syntax/befehle/wenn": {
+      "id": "syntax/befehle/wenn",
+      "title": "Setze",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "syntax/befehle/wiederhole": {
+      "id": "syntax/befehle/wiederhole",
+      "title": "Setze",
+      "description": "",
       "sidebar": "tutorialSidebar"
     },
     "syntax/intro": {

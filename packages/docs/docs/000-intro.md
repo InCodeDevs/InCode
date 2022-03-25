@@ -20,7 +20,7 @@ InCode ist momentan in Deutsch und Englisch verfügbar. Wir arbeiten aber stetig
 
 - Wenn du InCode noch nicht beherrschst, empfehlen wir dir dich mit der [Syntax](/docs/syntax/intro) vertraut zu machen.
 - Um die Funktionen des Editors zu erlernen, empfehlen wir dir mit [dieser](/docs/editor/intro) Lektion fortzufahren.
-- Um Beispiele der InCode Programmiersprache einzusehen, empfehlen wir dir [hier](/docs/examples/intro) zu starten.
+- Um Beispiele der InCode Programmiersprache einzusehen, empfehlen wir dir [hier](/docs/beispiele/intro) zu starten.
 
 ## Credits
 

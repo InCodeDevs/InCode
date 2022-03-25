@@ -107,7 +107,7 @@
     "component": "1f391b9e",
     "content": "393be207"
   },
-  "/docs-b9e": {
+  "/docs-fdb": {
     "component": "1be78505",
     "versionMetadata": "935f2afb"
   },
@@ -126,6 +126,10 @@
   "/docs/syntax/befehle/entferne-502": {
     "component": "17896441",
     "content": "f33a4dcd"
+  },
+  "/docs/syntax/befehle/erstelle-f32": {
+    "component": "17896441",
+    "content": "57017a2c"
   },
   "/docs/syntax/befehle/frage-d24": {
     "component": "17896441",
@@ -151,9 +155,25 @@
     "component": "17896441",
     "content": "d6e90c11"
   },
+  "/docs/syntax/befehle/setze-45c": {
+    "component": "17896441",
+    "content": "9c38c460"
+  },
+  "/docs/syntax/befehle/sonst-d4f": {
+    "component": "17896441",
+    "content": "cee009bc"
+  },
   "/docs/syntax/befehle/warte-9fb": {
     "component": "17896441",
     "content": "f1336a81"
+  },
+  "/docs/syntax/befehle/wenn-bd5": {
+    "component": "17896441",
+    "content": "7663f5fb"
+  },
+  "/docs/syntax/befehle/wiederhole-b59": {
+    "component": "17896441",
+    "content": "98359306"
   },
   "/docs/syntax/intro-28f": {
     "component": "17896441",
