@@ -65,7 +65,7 @@ export default function LandingPage() {
               </div>
               <div
                 onClick={() => {
-                  UIManager.silentRedirect("/docs");
+                  window.open("https://docs.incodelang.de", "_blank");
                 }}
               >
                 <h1>Dokumentation</h1>
@@ -131,7 +131,9 @@ export default function LandingPage() {
             </div>
             <div className={"lp-menubar-items"}>
               <Link to={"/editor"}>Editor</Link>
-              <Link to={"/docs"}>Dokumentation</Link>
+              <a href={"https://docs.incodelang.de"} target={"_blank"}>
+                Dokumentation
+              </a>
               <Link to={"/playground"}>Playground</Link>
             </div>
           </div>

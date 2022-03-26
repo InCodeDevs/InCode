@@ -14,11 +14,11 @@
     "url": "git+https://github.com/InCodeDevs/Editor.git"
   },
   "scripts": {
-    "express:dev-start": "lerna run --scope=@incodelang/app webpack:build-dev && node ./src/index.js",
-    "express:prod-start": "lerna run --scope=@incodelang/app webpack:build-prod && node ./src/index.js",
+    "express:dev-start": "lerna run --stream --scope=@incodelang/app webpack:build-dev && node ./src/index.js",
+    "express:prod-start": "lerna run --stream --scope=@incodelang/app webpack:build-prod && node ./src/index.js",
     "express:only-start": "forever ./src/index.js",
-    "express:live-start": "concurrently \"lerna run webpack:watch-dev\" \"yarn express:only-start\"",
-    "express:live-start:prod": "yarn concurrently \"lerna run --scope=@incodelang/app webpack:watch-dev\" \"yarn express:only-start\""
+    "express:live-start": "concurrently \"lerna run --stream webpack:watch-dev\" \"yarn express:only-start\"",
+    "express:live-start:prod": "yarn concurrently \"lerna run --stream --scope=@incodelang/app webpack:watch-prod\" \"yarn express:only-start\""
   },
   "bugs": {
     "url": "https://github.com/InCodeDevs/Editor/issues"

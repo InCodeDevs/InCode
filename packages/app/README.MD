@@ -80,25 +80,25 @@ Install dependencies
 Build the app for production
 
 ```bash
-  lerna run webpack:build-prod
+  lerna run --stream webpack:build-prod
 ```
 
 Build the app for development
 
 ```bash
-  lerna run webpack:build-dev
+  lerna run --stream webpack:build-dev
 ```
 
 Start the server (without rebuilding the app)
 
 ```bash
-  lerna run express:only-start
+  lerna run --stream express:only-start
 ```
 
 Start the server (with rebuilding the app on changes)
 
 ```bash
-  lerna run express:live-start
+  lerna run --stream express:live-start
 ```
 ## Deployment
 
