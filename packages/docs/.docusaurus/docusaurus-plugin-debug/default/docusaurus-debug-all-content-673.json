@@ -54,8 +54,8 @@
               "frontMatter": {},
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Warte",
-                "permalink": "/docs/syntax/befehle/warte"
+                "title": "Setze",
+                "permalink": "/docs/syntax/befehle/wiederhole"
               },
               "next": {
                 "title": "Einleitung",
@@ -104,6 +104,30 @@
                 "permalink": "/docs/syntax/befehle/kommentar"
               },
               "next": {
+                "title": "Erstelle",
+                "permalink": "/docs/syntax/befehle/erstelle"
+              }
+            },
+            {
+              "unversionedId": "syntax/befehle/erstelle",
+              "id": "syntax/befehle/erstelle",
+              "title": "Erstelle",
+              "description": "",
+              "source": "@site/docs/001-syntax/001-befehle/004-erstelle.md",
+              "sourceDirName": "001-syntax/001-befehle",
+              "slug": "/syntax/befehle/erstelle",
+              "permalink": "/docs/syntax/befehle/erstelle",
+              "editUrl": "https://github.com/incodedevs/incode/tree/v4.x/packages/docs/docs/001-syntax/001-befehle/004-erstelle.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 4,
+              "frontMatter": {},
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Entferne",
+                "permalink": "/docs/syntax/befehle/entferne"
+              },
+              "next": {
                 "title": "Frage",
                 "permalink": "/docs/syntax/befehle/frage"
               }
@@ -124,8 +148,8 @@
               "frontMatter": {},
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Entferne",
-                "permalink": "/docs/syntax/befehle/entferne"
+                "title": "Erstelle",
+                "permalink": "/docs/syntax/befehle/erstelle"
               },
               "next": {
                 "title": "Füge",
@@ -248,6 +272,54 @@
                 "permalink": "/docs/syntax/befehle/gib"
               },
               "next": {
+                "title": "Setze",
+                "permalink": "/docs/syntax/befehle/setze"
+              }
+            },
+            {
+              "unversionedId": "syntax/befehle/setze",
+              "id": "syntax/befehle/setze",
+              "title": "Setze",
+              "description": "",
+              "source": "@site/docs/001-syntax/001-befehle/009-setze.md",
+              "sourceDirName": "001-syntax/001-befehle",
+              "slug": "/syntax/befehle/setze",
+              "permalink": "/docs/syntax/befehle/setze",
+              "editUrl": "https://github.com/incodedevs/incode/tree/v4.x/packages/docs/docs/001-syntax/001-befehle/009-setze.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 9,
+              "frontMatter": {},
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Rufe",
+                "permalink": "/docs/syntax/befehle/rufe"
+              },
+              "next": {
+                "title": "Sonst",
+                "permalink": "/docs/syntax/befehle/sonst"
+              }
+            },
+            {
+              "unversionedId": "syntax/befehle/sonst",
+              "id": "syntax/befehle/sonst",
+              "title": "Sonst",
+              "description": "",
+              "source": "@site/docs/001-syntax/001-befehle/010-sonst.md",
+              "sourceDirName": "001-syntax/001-befehle",
+              "slug": "/syntax/befehle/sonst",
+              "permalink": "/docs/syntax/befehle/sonst",
+              "editUrl": "https://github.com/incodedevs/incode/tree/v4.x/packages/docs/docs/001-syntax/001-befehle/010-sonst.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 10,
+              "frontMatter": {},
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Setze",
+                "permalink": "/docs/syntax/befehle/setze"
+              },
+              "next": {
                 "title": "Warte",
                 "permalink": "/docs/syntax/befehle/warte"
               }
@@ -268,8 +340,56 @@
               "frontMatter": {},
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Rufe",
-                "permalink": "/docs/syntax/befehle/rufe"
+                "title": "Sonst",
+                "permalink": "/docs/syntax/befehle/sonst"
+              },
+              "next": {
+                "title": "Setze",
+                "permalink": "/docs/syntax/befehle/wenn"
+              }
+            },
+            {
+              "unversionedId": "syntax/befehle/wenn",
+              "id": "syntax/befehle/wenn",
+              "title": "Setze",
+              "description": "",
+              "source": "@site/docs/001-syntax/001-befehle/012-wenn.md",
+              "sourceDirName": "001-syntax/001-befehle",
+              "slug": "/syntax/befehle/wenn",
+              "permalink": "/docs/syntax/befehle/wenn",
+              "editUrl": "https://github.com/incodedevs/incode/tree/v4.x/packages/docs/docs/001-syntax/001-befehle/012-wenn.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 12,
+              "frontMatter": {},
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Warte",
+                "permalink": "/docs/syntax/befehle/warte"
+              },
+              "next": {
+                "title": "Setze",
+                "permalink": "/docs/syntax/befehle/wiederhole"
+              }
+            },
+            {
+              "unversionedId": "syntax/befehle/wiederhole",
+              "id": "syntax/befehle/wiederhole",
+              "title": "Setze",
+              "description": "",
+              "source": "@site/docs/001-syntax/001-befehle/013-wiederhole.md",
+              "sourceDirName": "001-syntax/001-befehle",
+              "slug": "/syntax/befehle/wiederhole",
+              "permalink": "/docs/syntax/befehle/wiederhole",
+              "editUrl": "https://github.com/incodedevs/incode/tree/v4.x/packages/docs/docs/001-syntax/001-befehle/013-wiederhole.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 13,
+              "frontMatter": {},
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Setze",
+                "permalink": "/docs/syntax/befehle/wenn"
               },
               "next": {
                 "title": "Einleitung",
@@ -337,6 +457,10 @@
                       },
                       {
                         "type": "doc",
+                        "id": "syntax/befehle/erstelle"
+                      },
+                      {
+                        "type": "doc",
                         "id": "syntax/befehle/frage"
                       },
                       {
@@ -353,7 +477,23 @@
                       },
                       {
                         "type": "doc",
+                        "id": "syntax/befehle/setze"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "syntax/befehle/sonst"
+                      },
+                      {
+                        "type": "doc",
                         "id": "syntax/befehle/warte"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "syntax/befehle/wenn"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "syntax/befehle/wiederhole"
                       }
                     ]
                   }

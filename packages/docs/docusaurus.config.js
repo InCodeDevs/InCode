@@ -12,7 +12,7 @@ const config = {
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
+  favicon: "img/incode-400.png",
   organizationName: "incodedevs", // Usually your GitHub org/user name.
   projectName: "incode", // Usually your repo name.
 
