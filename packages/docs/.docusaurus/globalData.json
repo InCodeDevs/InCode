@@ -94,6 +94,11 @@
               "id": "syntax/intro",
               "path": "/docs/syntax/intro",
               "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "syntax/typen",
+              "path": "/docs/syntax/typen",
+              "sidebar": "tutorialSidebar"
             }
           ],
           "sidebars": {

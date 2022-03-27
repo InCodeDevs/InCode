@@ -9,6 +9,7 @@ import { JSONObject } from "../types/JSONObject";
 import UIManager from "./UIManager";
 import * as React from "react";
 import AdminMessage from "./AdminMessage";
+import String from "./String";
 
 const client = new WebClient("");
 
@@ -72,6 +73,20 @@ export default class UserManager {
 
   public static async accountExists(username: string): Promise<boolean> {
     return await client.existsUser(username);
+  }
+
+  public static generateSafePassword(): string {
+    let generated = "";
+
+    while (!UserManager.isPasswordSafe(generated)) {
+      generated = String.random(
+        16,
+        "@#$%!&?+-:,.;=Â§1234567890abcdefghijklmnopqrstuvwxyz" +
+          "abcdefghijklmnopqrstuvwxyz".toUpperCase() +
+          "{}[]()/|><*~"
+      );
+    }
+    return generated;
   }
 
   public static isPasswordSafe(password: string) {

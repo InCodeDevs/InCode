@@ -54,8 +54,8 @@
               "frontMatter": {},
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Setze",
-                "permalink": "/docs/syntax/befehle/wiederhole"
+                "title": "Typen",
+                "permalink": "/docs/syntax/typen"
               },
               "next": {
                 "title": "Einleitung",
@@ -392,8 +392,8 @@
                 "permalink": "/docs/syntax/befehle/wenn"
               },
               "next": {
-                "title": "Einleitung",
-                "permalink": "/docs/editor/intro"
+                "title": "Typen",
+                "permalink": "/docs/syntax/typen"
               }
             },
             {
@@ -418,6 +418,30 @@
               "next": {
                 "title": "@ (Inline-Code)",
                 "permalink": "/docs/syntax/befehle/inline-code"
+              }
+            },
+            {
+              "unversionedId": "syntax/typen",
+              "id": "syntax/typen",
+              "title": "Typen",
+              "description": "Typen sind eine Art von Datentypen, die in einer Programmiersprache definiert werden.",
+              "source": "@site/docs/001-syntax/002-typen.md",
+              "sourceDirName": "001-syntax",
+              "slug": "/syntax/typen",
+              "permalink": "/docs/syntax/typen",
+              "editUrl": "https://github.com/incodedevs/incode/tree/v4.x/packages/docs/docs/001-syntax/002-typen.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {},
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Setze",
+                "permalink": "/docs/syntax/befehle/wiederhole"
+              },
+              "next": {
+                "title": "Einleitung",
+                "permalink": "/docs/editor/intro"
               }
             }
           ],
@@ -496,6 +520,10 @@
                         "id": "syntax/befehle/wiederhole"
                       }
                     ]
+                  },
+                  {
+                    "type": "doc",
+                    "id": "syntax/typen"
                   }
                 ]
               },

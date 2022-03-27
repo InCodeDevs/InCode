@@ -48,7 +48,7 @@ const config = {
             type: "doc",
             docId: "intro",
             position: "left",
-            label: "Tutorial",
+            label: "Dokumentation",
           },
           {
             href: "https://github.com/incodedevs/incode",
@@ -64,7 +64,7 @@ const config = {
             title: "Docs",
             items: [
               {
-                label: "Tutorial",
+                label: "Dokumentation",
                 to: "/docs/intro",
               },
             ],

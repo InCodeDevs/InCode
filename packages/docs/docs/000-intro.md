@@ -4,8 +4,6 @@ sidebar-position: 0
 
 # Einleitung
 
-# Einleitung
-
 Willkommen in der offiziellen Dokumentation von InCode. Hier finden Sie eine Übersicht über die Funktionen und Funktionalitäten von InCode.
 An der linken Seite kannst du zwischen den einzelnen Themen navigieren. Diese Dokumentation wird regelmäßig aktualisiert und ist immer auf die
 neusten Funktionen angepasst. Wir wünschen dir viel Spaß beim Lesen und verwenden diese Dokumentation für die Erstellung von InCode-Anwendungen.

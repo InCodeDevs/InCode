@@ -19,12 +19,12 @@ import UserManager from "../../util/UserManager";
 import UIManager from "../../util/UIManager";
 import MainMenu from "../MainMenu";
 import i18n from "../../util/i18n";
-import PopupManager from "../../util/PopupManager";
-import FakeLoader from "../../util/FakeLoader";
+import { v4 } from "uuid";
 import InviteManager from "./InviteManager";
 import Text from "../../components/Text";
 import PopupManagerReloaded from "../../util/PopupManagerReloaded";
 import DefaultPopup from "../../util/popups/DefaultPopup";
+import PopupButton from "../../components/ReloadedPopup/PopupButton";
 
 export default function AccountManage() {
   const [desktopExports, setDesktopExports] = React.useState("Loading...");
@@ -175,42 +175,75 @@ export default function AccountManage() {
               ),
               password: true,
               onSubmit: (password) => {
-                PopupManagerReloaded.ask({
-                  title: i18n.translate("menu.manage-account.change-password"),
-                  description: i18n.translate(
-                    "menu.manage-account.change-password.enter-current-password"
-                  ),
-                  password: true,
-                  onSubmit: async (newPassword) => {
-                    if (UserManager.isPasswordSafe(newPassword as string)) {
-                      if (
-                        await UserManager.updatePassword(
-                          password as string,
-                          newPassword as string
-                        )
-                      ) {
-                        PopupManagerReloaded.alert({
-                          title: i18n.translate(
-                            "menu.manage-account.change-password.success"
-                          ),
-                          description: i18n.translate(
-                            "menu.manage-account.change-password.success.description"
-                          ),
-                        });
+                const id = v4();
+                PopupManagerReloaded.ask(
+                  {
+                    title: i18n.translate(
+                      "menu.manage-account.change-password"
+                    ),
+                    description: (
+                      <>
+                        <br />
+                        <br />
+                        {i18n.translate(
+                          "menu.manage-account.change-password.enter-new-password"
+                        )}
+                        <br />
+                        <br />
+                        <div style={{ display: "flex", width: "100%" }}>
+                          <PopupButton
+                            text={i18n.translate("menu.login.generate")}
+                            onClick={() => {
+                              (
+                                document.getElementById(id) as HTMLInputElement
+                              ).value = UserManager.generateSafePassword();
+                              (
+                                document.getElementById(id) as HTMLInputElement
+                              ).type = "text";
+                            }}
+                            variant={"standard"}
+                          />
+                        </div>
+                      </>
+                    ),
+                    password: true,
+                    onSubmit: async (newPassword) => {
+                      if (UserManager.isPasswordSafe(newPassword as string)) {
+                        if (
+                          await UserManager.updatePassword(
+                            password as string,
+                            newPassword as string
+                          )
+                        ) {
+                          PopupManagerReloaded.alert({
+                            title: i18n.translate(
+                              "menu.manage-account.change-password.success"
+                            ),
+                            description: i18n.translate(
+                              "menu.manage-account.change-password.success.description"
+                            ),
+                          });
+                        } else {
+                          PopupManagerReloaded.alert({
+                            title: i18n.translate("error"),
+                            description: i18n.translate(
+                              "error.password.not.match"
+                            ),
+                          });
+                        }
                       } else {
                         PopupManagerReloaded.alert({
                           title: i18n.translate("error"),
-                          description: i18n.translate("error.password.wrong"),
+                          description: i18n.translate(
+                            "error.password.too.weak"
+                          ),
                         });
                       }
-                    } else {
-                      PopupManagerReloaded.alert({
-                        title: i18n.translate("error"),
-                        description: i18n.translate("error.password.weak"),
-                      });
-                    }
+                    },
                   },
-                });
+                  id,
+                  true
+                );
               },
             });
           }}

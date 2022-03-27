@@ -1,5 +1,6 @@
 import PopupManager from "./PopupManager";
 import CommandPaletteManager from "./CommandPaletteManager";
+import PopupManagerReloaded from "./PopupManagerReloaded";
 
 /**
  * @author Ben Siebert <ben@mctzock.de>
@@ -11,7 +12,7 @@ export default class KeyManager {
     document.addEventListener("keydown", (e) => {
       let preventDefault = false;
       if (e.keyCode === 27) {
-        PopupManager.disposeAll();
+        PopupManagerReloaded.disposeCurrentPopup();
         CommandPaletteManager.dispose();
         preventDefault = true;
       } else if (e.keyCode === 112) {

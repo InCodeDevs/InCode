@@ -129,7 +129,7 @@
     "component": "component---theme-mdx-page-1-f-3-b90",
     "content": "content---markdown-page-393-028"
   },
-  "/docs-fdb": {
+  "/docs-cf7": {
     "component": "component---theme-doc-page-1-be-9be",
     "versionMetadata": "versionMetadata---docs-935-398"
   },
@@ -200,6 +200,10 @@
   "/docs/syntax/intro-28f": {
     "component": "component---theme-doc-item-178-a40",
     "content": "content---docs-syntax-intro-469-afb"
+  },
+  "/docs/syntax/typen-064": {
+    "component": "component---theme-doc-item-178-a40",
+    "content": "content---docs-syntax-typend-7-a-c6b"
   },
   "/-f49": {
     "component": "component---site-src-pages-index-tsx-1-df-d3e",

@@ -25,6 +25,7 @@ import String from "../../util/String";
 import Login from "../Login";
 import BackMenuItem from "../../components/Menu/BackMenuItem";
 import PopupManagerReloaded from "../../util/PopupManagerReloaded";
+import PassGenMenuItem from "../../components/Menu/PassGenMenuItem";
 
 const client = new WebClient("");
 
@@ -68,35 +69,8 @@ export default function AccountRegister() {
             ),
           }}
         />
-        <MenuItem
-          // @ts-ignore
-          icon={faKey}
-          onclick={() => {
-            const generated = String.random(
-              16,
-              "@#$%!&?+-:,.;=Â§1234567890abcdefghijklmnopqrstuvwxyz" +
-                "abcdefghijklmnopqrstuvwxyz".toUpperCase() +
-                "{}[]()/|><*~"
-            );
-            (
-              document.getElementById("register-password") as HTMLInputElement
-            ).type = "text";
-            (
-              document.getElementById(
-                "register-password-confirm"
-              ) as HTMLInputElement
-            ).type = "text";
-
-            (
-              document.getElementById("register-password") as HTMLInputElement
-            ).value = generated;
-            (
-              document.getElementById(
-                "register-password-confirm"
-              ) as HTMLInputElement
-            ).value = generated;
-          }}
-          title={"menu.login.generate"}
+        <PassGenMenuItem
+          input={["register-password", "register-password-confirm"]}
         />
         <MenuItem
           // @ts-ignore

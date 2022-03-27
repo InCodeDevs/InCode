@@ -111,6 +111,12 @@
                 "docId": "syntax/befehle/wiederhole"
               }
             ]
+          },
+          {
+            "type": "link",
+            "label": "Typen",
+            "href": "/docs/syntax/typen",
+            "docId": "syntax/typen"
           }
         ]
       },
@@ -245,6 +251,12 @@
       "id": "syntax/intro",
       "title": "Einleitung",
       "description": "InCode soll verwendet eine (möglichst) grammatikalisch korrekte Syntax.",
+      "sidebar": "tutorialSidebar"
+    },
+    "syntax/typen": {
+      "id": "syntax/typen",
+      "title": "Typen",
+      "description": "Typen sind eine Art von Datentypen, die in einer Programmiersprache definiert werden.",
       "sidebar": "tutorialSidebar"
     }
   }

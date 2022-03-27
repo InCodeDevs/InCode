@@ -63,21 +63,35 @@ export default class PopupManagerReloaded {
     });
   }
 
-  public static ask(popup: IQuestionPopup) {
-    const id = v4();
+  public static ask(
+    popup: IQuestionPopup,
+    id?: string,
+    descriptionAfterWrapper?: boolean
+  ) {
+    if (!id) {
+      id = v4();
+    }
+    if (!descriptionAfterWrapper) {
+      descriptionAfterWrapper = false;
+    }
+
+    let wrapper = (
+      <div className="popup-reloaded-input-wrapper">
+        <input
+          className={"popup-reloaded-input"}
+          id={id}
+          placeholder={popup.placeholder}
+          type={popup.password ? "password" : "text"}
+        />
+      </div>
+    );
+
     PopupManagerReloaded.showPopup({
       title: popup.title,
       description: (
         <>
-          {popup.description}
-          <div className="popup-reloaded-input-wrapper">
-            <input
-              className={"popup-reloaded-input"}
-              id={id}
-              placeholder={popup.placeholder}
-              type={popup.password ? "password" : "text"}
-            />
-          </div>
+          {descriptionAfterWrapper === true ? wrapper : popup.description}
+          {descriptionAfterWrapper === true ? popup.description : wrapper}
         </>
       ),
       buttons: [
@@ -97,7 +111,8 @@ export default class PopupManagerReloaded {
           onClick: () => {
             if (popup.onSubmit) {
               popup.onSubmit(
-                (document.getElementById(id) as HTMLInputElement).value
+                (document.getElementById(id as string) as HTMLInputElement)
+                  .value
               );
               PopupManagerReloaded.disposeCurrentPopup();
             }

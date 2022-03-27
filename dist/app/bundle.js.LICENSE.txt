@@ -85,11 +85,15 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ../../components/Menu/MenuItemListScroll */
 
+/*! ../../components/Menu/PassGenMenuItem */
+
 /*! ../../components/Menu/SelectAppMenuItem */
 
 /*! ../../components/MenuBar/MenuBar */
 
 /*! ../../components/NavigationBar */
+
+/*! ../../components/ReloadedPopup/PopupButton */
 
 /*! ../../components/Text */
 
@@ -98,8 +102,6 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 /*! ../../util/AdminMessage */
 
 /*! ../../util/FakeLoader */
-
-/*! ../../util/PopupManager */
 
 /*! ../../util/PopupManagerReloaded */
 
@@ -186,8 +188,6 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 /*! ../components/Menu/SelectAppMenuItem */
 
 /*! ../components/MenuBar/MenuBar */
-
-/*! ../components/Popup/Popup */
 
 /*! ../components/ReloadedPopup/ReloadedPopup */
 
@@ -332,8 +332,6 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 /*! ./OpenProject */
 
 /*! ./PopupButton */
-
-/*! ./PopupManager */
 
 /*! ./PopupManagerReloaded */
 
@@ -948,10 +946,6 @@ https://github.com/nodeca/pako/blob/master/LICENSE
   \***********************************/
 
 /*!***********************************!*\
-  !*** ./src/util/PopupManager.tsx ***!
-  \***********************************/
-
-/*!***********************************!*\
   !*** ./src/util/RouteManager.tsx ***!
   \***********************************/
 
@@ -1002,10 +996,6 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 /*!***************************************!*\
   !*** ./src/views/Admin/UserAdmin.tsx ***!
   \***************************************/
-
-/*!****************************************!*\
-  !*** ./src/components/Popup/Popup.tsx ***!
-  \****************************************/
 
 /*!****************************************!*\
   !*** ./src/views/Admin/AdminRoute.tsx ***!
@@ -1273,6 +1263,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*!*************************************************!*\
   !*** ./src/components/Editor/blockly/Blocks.ts ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./src/components/Menu/PassGenMenuItem.tsx ***!
   \*************************************************/
 
 /*!*************************************************!*\
