@@ -27,6 +27,8 @@ import SelectAppMenuItem from "../components/Menu/SelectAppMenuItem";
 import ProjectManager from "../util/ProjectManager";
 import PopupManagerReloaded from "../util/PopupManagerReloaded";
 import DefaultPopup from "../util/popups/DefaultPopup";
+import String from "../util/String";
+import i18n from "../util/i18n";
 
 export default function MainMenu() {
   return (
@@ -70,10 +72,19 @@ export default function MainMenu() {
 
                 input.onchange = () => {
                   if ((input.files as FileList).length > 0) {
-                    console.log("Test");
                     const file = (input.files as FileList)[0];
                     file.text().then((text) => {
-                      ProjectManager.createProjectWithBinary(text, true);
+                      try {
+                        JSON.parse(String.fromHex(text));
+                        ProjectManager.createProjectWithBinary(text, true);
+                      } catch {
+                        PopupManagerReloaded.alert({
+                          title: i18n.translate("error"),
+                          description: i18n.translate(
+                            "menu.main.import.project.error.description"
+                          ),
+                        });
+                      }
                     });
                   }
                   document.body.removeChild(input);
