@@ -8,6 +8,7 @@ import { ReactElement, useEffect, useState } from "react";
 import Container from "../../components/Container";
 import ProjectManager from "../../util/ProjectManager";
 import {
+  faClone,
   faCode,
   faCubes,
   faDownload,
@@ -142,6 +143,40 @@ export default function OpenProject() {
                       JSON.stringify(config)
                     );
                   }
+                },
+              },
+              {
+                icon: faClone,
+                name: "menu.open-project.duplicate",
+                color: "#36c1ed",
+                onclick: async () => {
+                  let name = project.name + " - Copy";
+                  const projectList = await ProjectManager.getProjectList();
+                  while (projectList.includes(name)) {
+                    name += " - Copy";
+                  }
+
+                  const projectConfig: ProjectConfig = {
+                    name,
+                    type: project.type,
+                    code: project.code,
+                  };
+
+                  await ProjectManager.createProject(
+                    projectConfig,
+                    (success) => {
+                      UIManager.unmountAt("root");
+                      UIManager.showComponent(<OpenProject />);
+                      PopupManagerReloaded.alert({
+                        title: i18n.translate(
+                          "menu.open-project.duplicated.title"
+                        ),
+                        description: i18n.translate(
+                          "menu.open-project.duplicated.description"
+                        ),
+                      });
+                    }
+                  );
                 },
               },
             ]}
