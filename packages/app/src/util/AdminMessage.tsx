@@ -19,7 +19,7 @@ export default class AdminMessage {
           "admin.messages"
         )
         .then((data) => {
-          if (data.length > 0) {
+          if (data.length > 0 && data.error !== true) {
             data.forEach(
               (message: { author: string; at: string; entry: string }) => {
                 if (message.author === "admin") {

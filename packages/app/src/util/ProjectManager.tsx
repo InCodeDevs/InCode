@@ -387,6 +387,12 @@ export default class ProjectManager {
 
     if (open) {
       ProjectManager.openProject(projectConfig);
+      PopupManagerReloaded.alert({
+        title: i18n.translate("menu.main.import.project.success"),
+        description: i18n.translate(
+          "menu.main.import.project.success.description"
+        ),
+      });
     }
   }
 }

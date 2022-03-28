@@ -223,6 +223,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ../util/ProjectManager */
 
+/*! ../util/String */
+
 /*! ../util/UIManager */
 
 /*! ../util/UserManager */
@@ -643,8 +645,6 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ./util/RouteManager */
 
-/*! ./util/ServiceWorker */
-
 /*! ./util/Settings */
 
 /*! ./util/case-insensitive-transform.js */
@@ -947,10 +947,6 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*!***********************************!*\
   !*** ./src/util/RouteManager.tsx ***!
-  \***********************************/
-
-/*!***********************************!*\
-  !*** ./src/util/ServiceWorker.ts ***!
   \***********************************/
 
 /*!***********************************!*\
