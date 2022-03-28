@@ -29,6 +29,7 @@ import MenuItemListScroll from "../../components/Menu/MenuItemListScroll";
 import ShareProject from "./ShareProject";
 import PopupManagerReloaded from "../../util/PopupManagerReloaded";
 import { ProjectConfig } from "../../types/ProjectConfig";
+import ImportProjectMenuItem from "../../components/Menu/ImportProjectMenuItem";
 
 export default function OpenProject() {
   const [container, setContainer] = useState<ReactElement | null>(null);
@@ -157,6 +158,7 @@ export default function OpenProject() {
             title={"menu.main.create.project"}
           />
         );
+        menuItems.push(<ImportProjectMenuItem />);
         noProjects = true;
       }
 

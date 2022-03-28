@@ -29,6 +29,7 @@ import PopupManagerReloaded from "../util/PopupManagerReloaded";
 import DefaultPopup from "../util/popups/DefaultPopup";
 import String from "../util/String";
 import i18n from "../util/i18n";
+import ImportProjectMenuItem from "../components/Menu/ImportProjectMenuItem";
 
 export default function MainMenu() {
   return (
@@ -58,43 +59,7 @@ export default function MainMenu() {
             }}
             title={"menu.main.open.project"}
           />
-          <MenuItem
-            icon={faUpload}
-            onclick={() => {
-              if (UserManager.isLoggedIn()) {
-                const input = document.createElement("input");
-                input.type = "file";
-                input.style.visibility = "hidden";
-                input.accept = ".icp4";
-
-                document.body.appendChild(input);
-                input.click();
-
-                input.onchange = () => {
-                  if ((input.files as FileList).length > 0) {
-                    const file = (input.files as FileList)[0];
-                    file.text().then((text) => {
-                      try {
-                        JSON.parse(String.fromHex(text));
-                        ProjectManager.createProjectWithBinary(text, true);
-                      } catch {
-                        PopupManagerReloaded.alert({
-                          title: i18n.translate("error"),
-                          description: i18n.translate(
-                            "menu.main.import.project.error.description"
-                          ),
-                        });
-                      }
-                    });
-                  }
-                  document.body.removeChild(input);
-                };
-              } else {
-                PopupManagerReloaded.alert(DefaultPopup.PLEASE_LOG_IN);
-              }
-            }}
-            title={"menu.main.import.project"}
-          />
+          <ImportProjectMenuItem />
           <MenuItem
             icon={faCogs}
             onclick={() => {

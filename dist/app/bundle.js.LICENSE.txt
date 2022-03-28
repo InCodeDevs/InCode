@@ -73,6 +73,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ../../components/Menu/BackMenuItem */
 
+/*! ../../components/Menu/ImportProjectMenuItem */
+
 /*! ../../components/Menu/MainMenuItem */
 
 /*! ../../components/Menu/MenuItem */
@@ -179,6 +181,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ../components/Editor/PlaygroundPreview */
 
+/*! ../components/Menu/ImportProjectMenuItem */
+
 /*! ../components/Menu/MainMenuItem */
 
 /*! ../components/Menu/MenuItem */
@@ -220,10 +224,6 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 /*! ../util/PopupManagerReloaded */
 
 /*! ../util/PreCompiler */
-
-/*! ../util/ProjectManager */
-
-/*! ../util/String */
 
 /*! ../util/UIManager */
 
@@ -1391,6 +1391,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*!*******************************************************!*\
   !*** ../compiler/src/module/commands/PrintCommand.ts ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./src/components/Menu/ImportProjectMenuItem.tsx ***!
   \*******************************************************/
 
 /*!********************************************************!*\
