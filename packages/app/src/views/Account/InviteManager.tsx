@@ -36,7 +36,24 @@ export default function InviteManager() {
       setInvitesActive(success);
       if (success) {
         UserManager.getInvites().then((invites) => {
-          setInvites(invites);
+          let proofedInvites: Invite[] = [];
+          invites.forEach(async (invite) => {
+            let canBeProofed = true;
+            proofedInvites.forEach((proofedInvite) => {
+              if (
+                proofedInvite.from === invite.from &&
+                proofedInvite.project_name === invite.project_name
+              ) {
+                canBeProofed = false;
+              }
+            });
+            if (canBeProofed) {
+              proofedInvites.push(invite);
+            } else {
+              await UserManager.removeInvite(invite.timestamp);
+            }
+          });
+          setInvites(proofedInvites);
         });
       }
     });
@@ -49,6 +66,7 @@ export default function InviteManager() {
         <MenuItemListScroll>
           {invitesActive ? (
             <>
+              <BackMenuItem component={<AccountManage />} />
               <MenuItem
                 // @ts-ignore
                 icon={faTimes}
@@ -60,7 +78,6 @@ export default function InviteManager() {
                 }}
                 title={"menu.manage-account.manage-invites.deactivate"}
               />
-              <BackMenuItem component={<AccountManage />} />
               {invites.map((invite) => {
                 return (
                   <MenuItemControls
