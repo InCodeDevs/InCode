@@ -121,6 +121,7 @@ export default class ProjectManager {
           UserManager.getToken(),
           "projects." + projects[i]
         );
+
         if (!project.name) {
           project = JSON.parse(project);
         }
@@ -133,17 +134,17 @@ export default class ProjectManager {
             project.publicData
           );
 
-          if (!data.name) {
-            data = JSON.parse(data);
+          if (data) {
+            if (!data.name) {
+              data = JSON.parse(data);
+            }
+            projectConfigs.push(data);
           }
-
-          projectConfigs.push(data);
         }
       }
       return projectConfigs;
     } catch (e) {
       if (localStorage.getItem("offline.projects")) {
-        console.log("1");
         const projects = JSON.parse(
           localStorage.getItem("offline.projects") as string
         );
@@ -175,6 +176,11 @@ export default class ProjectManager {
         UserManager.getUsername(),
         UserManager.getToken(),
         projectConfig.publicData
+      );
+      await client.deleteData_u(
+        UserManager.getUsername(),
+        UserManager.getToken(),
+        "projects." + projectConfig.name
       );
     } else {
       await client.deleteData_u(
