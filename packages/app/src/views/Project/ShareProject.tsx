@@ -116,7 +116,7 @@ export default function ShareProject(props: Props) {
                   } else {
                     PopupManagerReloaded.alert({
                       title: i18n.translate("error"),
-                      description: i18n.translate("error.user.not-exist"),
+                      description: i18n.translate("error.user.not-exists"),
                     });
                   }
                 });
