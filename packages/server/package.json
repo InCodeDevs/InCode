@@ -24,10 +24,10 @@
     "url": "https://github.com/InCodeDevs/Editor/issues"
   },
   "dependencies": {
+    "@incodelang/accounts": "file:../accounts",
     "@incodelang/accounts-client": "file:../accounts-client",
     "@incodelang/compiler": "file:../compiler",
     "@incodelang/templates": "file:../templates",
-    "@incodelang/accounts": "file:../accounts",
     "@incodelang/urlshorter": "file:../urlshorter",
     "body-parser": "^1.19.0",
     "chalk": "^4.1.2",
@@ -41,6 +41,7 @@
     "moment": "^2.29.1",
     "serve-index": "^1.9.1",
     "simple-git": "^3.2.6",
+    "uuid": "^8.3.2",
     "web-push": "^3.4.5"
   }
 }

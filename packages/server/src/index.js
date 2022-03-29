@@ -49,6 +49,18 @@ app.get(["*bundle.js.gz", "*bundle.js"], (req, res) => {
     );
 });
 
+app.get("/usercontent*", (req, res) => {
+  res.set("Content-Type", "text/html");
+  res.sendFile(
+    path.join(
+      os.homedir(),
+      ".incode",
+      "usercontent",
+      req.path.replace(/^\/usercontent/, "")
+    )
+  );
+});
+
 require("./module/logger")(app);
 
 app.use(express.static(path.join(__dirname, "..", "..", "..", "dist", "app")));
@@ -57,7 +69,7 @@ app.use(bodyParser());
 
 require("./api/compiler")(app);
 require("./api/generator/desktop")(app);
-// require("./api/push")(app);
+require("./api/publish/project")(app);
 require("./api/templates")(app);
 require("./api/job")(app);
 require("./api/admin")(app);
@@ -73,6 +85,7 @@ const {
   createUser,
 } = require("@incodelang/accounts/src/lib/module/users");
 const chalk = require("chalk");
+const os = require("os");
 
 accountServer({
   app: app,

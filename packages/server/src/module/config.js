@@ -8,7 +8,14 @@ const path = require("path");
 const os = require("os");
 const chalk = require("chalk");
 
-const subDirectories = ["logs", "templates", "push", "generator", "analytics"];
+const subDirectories = [
+  "logs",
+  "templates",
+  "push",
+  "generator",
+  "analytics",
+  "usercontent",
+];
 
 if (!fs.existsSync(path.join(os.homedir(), ".incode"))) {
   console.log(

@@ -23,6 +23,7 @@ import PopupManagerReloaded from "../../../util/PopupManagerReloaded";
 import UserManager from "../../../util/UserManager";
 import ProjectManager from "../../../util/ProjectManager";
 import { WebClient } from "@incodelang/accounts-client";
+import { Compiler } from "@incodelang/compiler";
 
 interface Props {
   projectConfig: ProjectConfig;
@@ -157,16 +158,22 @@ export default function ShareProject(props: Props) {
           // @ts-ignore
           icon={faPuzzlePiece}
           onclick={() => {
-            const code = props.projectConfig.code;
-            fetch("/api/v1/url/create", {
+            if (props.projectConfig.type === "blockly") {
+              PopupManagerReloaded.alert({
+                title: i18n.translate("error"),
+                description: i18n.translate(
+                  "menu.share-project.failed.project.blockly.description"
+                ),
+              });
+              return;
+            }
+            const code = Compiler.compile(props.projectConfig.code);
+            fetch("/api/v1/publish/project", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify({
-                target:
-                  "/api/v1/compiler/view?code=" + encodeURIComponent(code),
-              }),
+              body: JSON.stringify({ code: "<script>" + code + "</script>" }),
             })
               .then((r) => r.json())
               .then((t) => {
