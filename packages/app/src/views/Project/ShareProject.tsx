@@ -93,7 +93,7 @@ export default function ShareProject(props: Props) {
                                       "menu.share-project.share-with-others.invited.success"
                                     ),
                                     description: i18n.translate(
-                                      "menu.share-project.share-with-others.invited.success-description"
+                                      "menu.share-project.share-with-others.invited.success.description"
                                     ),
                                     didClose: () => {
                                       UIManager.showComponent(
