@@ -27,24 +27,30 @@ export default function ReloadedPopup(props: IPopup) {
       <div className="popup-reloaded-content">
         <div className={"popup-reloaded-title"}>
           <h1>{props.title}</h1>
-          {width > 900 ? (
-            <button
-              className={"popup-reloaded-button close-button"}
-              onClick={() => {
-                PopupManagerReloaded.disposeCurrentPopup();
-              }}
-            >
-              {i18n.translate("menu.close")}
-            </button>
+          {!props.noCloseButton ? (
+            <>
+              {width > 900 ? (
+                <button
+                  className={"popup-reloaded-button close-button"}
+                  onClick={() => {
+                    PopupManagerReloaded.disposeCurrentPopup();
+                  }}
+                >
+                  {i18n.translate("menu.close")}
+                </button>
+              ) : (
+                <button
+                  className={"popup-reloaded-button close-button"}
+                  onClick={() => {
+                    PopupManagerReloaded.disposeCurrentPopup();
+                  }}
+                >
+                  <FontAwesomeIcon icon={faClose} />
+                </button>
+              )}
+            </>
           ) : (
-            <button
-              className={"popup-reloaded-button close-button"}
-              onClick={() => {
-                PopupManagerReloaded.disposeCurrentPopup();
-              }}
-            >
-              <FontAwesomeIcon icon={faClose} />
-            </button>
+            <></>
           )}
         </div>
         <div className={"popup-reloaded-description"}>{props.description}</div>

@@ -3,6 +3,9 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 
+// ATTENTION: This file will probably be removed in the future.
+// It has been replaced by the "Automatic Popup Messages" feature.
+
 import * as React from "react";
 import { useEffect } from "react";
 import UserManager from "../../util/UserManager";

@@ -27,7 +27,7 @@ import i18n from "../../util/i18n";
 import MenuItem from "../../components/Menu/MenuItem";
 import CreateProject from "./CreateProject";
 import MenuItemListScroll from "../../components/Menu/MenuItemListScroll";
-import ShareProject from "./ShareProject";
+import ShareProject from "./ShareProject/ShareProject";
 import PopupManagerReloaded from "../../util/PopupManagerReloaded";
 import { ProjectConfig } from "../../types/ProjectConfig";
 import ImportProjectMenuItem from "../../components/Menu/ImportProjectMenuItem";

@@ -10,7 +10,7 @@ import MenuBar from "../MenuBar/MenuBar";
 import { ProjectConfig } from "../../types/ProjectConfig";
 import ProjectManager from "../../util/ProjectManager";
 import PopupManager from "../../util/PopupManager";
-import ShareProject from "../../views/Project/ShareProject";
+import ShareProject from "../../views/Project/ShareProject/ShareProject";
 import Workspace from "../../util/Workspace";
 import ExportProject from "../../views/Project/ExportProject";
 import PopupManagerReloaded from "../../util/PopupManagerReloaded";

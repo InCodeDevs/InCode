@@ -14,7 +14,7 @@ import SelectApp from "../views/SelectApp";
 import DocsReloaded from "../views/Docs/DocsReloaded";
 
 export default class RouteManager {
-  public static async manage() {
+  public static manage() {
     let lastPathname: string;
     setInterval(() => {
       if (lastPathname !== location.pathname) {

@@ -6,10 +6,12 @@ import BrowserStorage from "./BrowserStorage";
 import { WebClient } from "@incodelang/accounts-client";
 import { Invite } from "../types/Invite";
 import { JSONObject } from "../types/JSONObject";
-import UIManager from "./UIManager";
 import * as React from "react";
-import AdminMessage from "./AdminMessage";
 import String from "./String";
+import { ProjectConfig } from "../types/ProjectConfig";
+import ProjectManager from "./ProjectManager";
+import PopupManagerReloaded from "./PopupManagerReloaded";
+import i18n from "./i18n";
 
 const client = new WebClient("");
 
@@ -24,7 +26,6 @@ export default class UserManager {
   public static login(username: string, token: string) {
     BrowserStorage.store("accessName", username);
     BrowserStorage.store("accessToken", token);
-    AdminMessage.download();
   }
 
   public static logout() {
@@ -135,5 +136,47 @@ export default class UserManager {
       "invites",
       at
     );
+  }
+
+  public static async acceptInvite(
+    invite: Invite,
+    config?: { openProject?: boolean; displayMessage?: boolean }
+  ) {
+    UserManager.removeInvite(invite.timestamp).then(async () => {
+      const projectConfig: ProjectConfig = {
+        type: invite.project_type,
+        name: invite.project_name,
+        code: JSON.parse(
+          await new WebClient("").getData(
+            UserManager.getUsername(),
+            UserManager.getToken(),
+            invite.public_data
+          )
+        ).code,
+        publicData: invite.public_data,
+      };
+
+      await ProjectManager.addToProjectList(invite.project_name);
+      await new WebClient("").storeData_u(
+        UserManager.getUsername(),
+        UserManager.getToken(),
+        JSON.stringify({
+          type: "code",
+          name: invite.project_name,
+          code: "",
+          publicData: invite.public_data,
+        }),
+        "projects." + invite.project_name
+      );
+      if (config && config.displayMessage) {
+        PopupManagerReloaded.alert({
+          title: i18n.translate("menu.feed.invite.accepted.title"),
+          description: i18n.translate("menu.feed.invite.accepted.description"),
+        });
+      }
+      if (config && config.openProject) {
+        await ProjectManager.openProject(projectConfig);
+      }
+    });
   }
 }

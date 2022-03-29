@@ -5,9 +5,11 @@
 import { ReactElement } from "react";
 import { IPopupButton } from "./IPopupButton";
 import { IPopupEvents } from "./IPopupEvents";
+import { IPopup } from "./IPopup";
 
 export interface IAlertPopup extends IPopupEvents {
   title: string;
   description: JSX.Element | ReactElement | ReactElement[] | string;
   buttons?: IPopupButton[];
+  noCloseButton?: boolean;
 }

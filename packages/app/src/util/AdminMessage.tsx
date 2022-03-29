@@ -10,39 +10,6 @@ import Blockly from "blockly";
 import { Networking } from "./Networking";
 
 export default class AdminMessage {
-  public static download() {
-    if (UserManager.isLoggedIn() && Networking.isOnline()) {
-      new WebClient("")
-        .readPostBox(
-          UserManager.getUsername(),
-          UserManager.getToken(),
-          "admin.messages"
-        )
-        .then((data) => {
-          if (data.length > 0 && data.error !== true) {
-            data.forEach(
-              (message: { author: string; at: string; entry: string }) => {
-                if (message.author === "admin") {
-                  PopupManagerReloaded.alert({
-                    title: i18n.translate("menu.admin.message.title"),
-                    description: message.entry,
-                    willLoad: async () => {
-                      await new WebClient("").removeFromPostBox(
-                        UserManager.getUsername(),
-                        UserManager.getToken(),
-                        "admin.messages",
-                        message.at
-                      );
-                    },
-                  });
-                }
-              }
-            );
-          }
-        });
-    }
-  }
-
   public static sendToUser(message: string, username: string) {
     if (username !== "admin") {
       fetch("/api/v1/user/postboxes/exists", {

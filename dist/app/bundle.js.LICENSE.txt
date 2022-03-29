@@ -49,6 +49,12 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ../../../../node_modules/css-loader/dist/runtime/noSourceMaps.js */
 
+/*! ../../../components/Container */
+
+/*! ../../../components/Menu/MenuItem */
+
+/*! ../../../components/Menu/MenuItemList */
+
 /*! ../../../components/Settings/SettingsBooleanController */
 
 /*! ../../../components/Settings/SettingsControls */
@@ -56,6 +62,18 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 /*! ../../../components/Settings/SettingsNumberController */
 
 /*! ../../../components/Settings/SettingsView */
+
+/*! ../../../components/Title */
+
+/*! ../../../util/PopupManagerReloaded */
+
+/*! ../../../util/ProjectManager */
+
+/*! ../../../util/TemplateManager */
+
+/*! ../../../util/UIManager */
+
+/*! ../../../util/UserManager */
 
 /*! ../../../util/i18n */
 
@@ -160,6 +178,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 /*! ../MenuBar/MenuBar */
 
 /*! ../MonacoContainer/index.js */
+
+/*! ../OpenProject */
 
 /*! ../PopupManagerReloaded */
 
@@ -279,8 +299,6 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ./Admin */
 
-/*! ./AdminMessage */
-
 /*! ./AskCommand */
 
 /*! ./BlocklyCompiler */
@@ -331,8 +349,6 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ./Networking */
 
-/*! ./OpenProject */
-
 /*! ./PopupButton */
 
 /*! ./PopupManagerReloaded */
@@ -345,6 +361,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ./ProjectAdmin */
 
+/*! ./ProjectManager */
+
 /*! ./ProjectViewerAdmin */
 
 /*! ./RemoveCommand */
@@ -355,7 +373,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ./Settings/Settings */
 
-/*! ./ShareProject */
+/*! ./ShareProject/ShareProject */
 
 /*! ./StarAnimation */
 
@@ -637,9 +655,9 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ./uri-transformer.js */
 
-/*! ./util/AdminMessage */
-
 /*! ./util/CommandPaletteManager */
+
+/*! ./util/Feed */
 
 /*! ./util/InteractionManager */
 
@@ -868,6 +886,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 /*!**************************!*\
   !*** ./src/util/i18n.ts ***!
   \**************************/
+
+/*!***************************!*\
+  !*** ./src/util/Feed.tsx ***!
+  \***************************/
 
 /*!****************************!*\
   !*** ./src/util/String.ts ***!
@@ -1107,10 +1129,6 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*!********************************************!*\
   !*** ./src/views/Account/AccountLogin.tsx ***!
-  \********************************************/
-
-/*!********************************************!*\
-  !*** ./src/views/Project/ShareProject.tsx ***!
   \********************************************/
 
 /*!*********************************************!*\
@@ -1467,6 +1485,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*!*********************************************************!*\
   !*** ./node_modules/uuid/dist/esm-browser/stringify.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./src/views/Project/ShareProject/ShareProject.tsx ***!
   \*********************************************************/
 
 /*!**********************************************************!*\

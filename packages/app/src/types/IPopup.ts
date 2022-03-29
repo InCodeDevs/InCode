@@ -10,4 +10,5 @@ export interface IPopup extends IPopupEvents {
   title: string;
   description: JSX.Element | ReactElement | ReactElement[] | string;
   buttons: IPopupButton[];
+  noCloseButton?: boolean;
 }

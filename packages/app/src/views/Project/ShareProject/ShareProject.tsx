@@ -4,24 +4,24 @@
  */
 
 import * as React from "react";
-import Container from "../../components/Container";
-import Title from "../../components/Title";
-import { ProjectConfig } from "../../types/ProjectConfig";
-import MenuItemList from "../../components/Menu/MenuItemList";
-import MenuItem from "../../components/Menu/MenuItem";
+import Container from "../../../components/Container";
+import Title from "../../../components/Title";
+import { ProjectConfig } from "../../../types/ProjectConfig";
+import MenuItemList from "../../../components/Menu/MenuItemList";
+import MenuItem from "../../../components/Menu/MenuItem";
 import {
   faBackward,
   faPuzzlePiece,
   faScroll,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import UIManager from "../../util/UIManager";
-import OpenProject from "./OpenProject";
-import TemplateManager from "../../util/TemplateManager";
-import i18n from "../../util/i18n";
-import PopupManagerReloaded from "../../util/PopupManagerReloaded";
-import UserManager from "../../util/UserManager";
-import ProjectManager from "../../util/ProjectManager";
+import UIManager from "../../../util/UIManager";
+import OpenProject from "../OpenProject";
+import TemplateManager from "../../../util/TemplateManager";
+import i18n from "../../../util/i18n";
+import PopupManagerReloaded from "../../../util/PopupManagerReloaded";
+import UserManager from "../../../util/UserManager";
+import ProjectManager from "../../../util/ProjectManager";
 import { WebClient } from "@incodelang/accounts-client";
 
 interface Props {
