@@ -77,6 +77,7 @@ require("./api/admin/users")(app);
 require("./api/admin/data")(app);
 require("./api/admin/postbox")(app);
 require("./api/analytics")(app);
+require("./api/live/session")(app);
 
 const { accountServer } = require("@incodelang/accounts");
 const { urlServer } = require("@incodelang/urlshorter");
