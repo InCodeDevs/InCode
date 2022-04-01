@@ -46,7 +46,7 @@ export default function OpenProject() {
             icon={project.type === "code" ? faCode : faCubes}
             title={project.name}
             nol18n={true}
-            onclick={() => {
+            onclick={async () => {
               ProjectManager.openProject(project);
             }}
             widgets={[

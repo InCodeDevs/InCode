@@ -1,0 +1,10 @@
+InCode Socket Protocol v1 (ICSP1)
+
+channel credentials:
+
+request-type: object
+request-field-username: string
+request-field-token: string
+response-type: object
+response-field-success: boolean
+response-field-message: string

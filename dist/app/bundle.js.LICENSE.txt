@@ -381,6 +381,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ./ShareProject/ShareProject */
 
+/*! ./SocketConnection */
+
 /*! ./StarAnimation */
 
 /*! ./StatsAdmin */

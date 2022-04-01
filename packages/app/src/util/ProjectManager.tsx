@@ -17,6 +17,7 @@ import Workspace from "./Workspace";
 import String from "./String";
 import { v4 as uuidv4 } from "uuid";
 import PopupManagerReloaded from "./PopupManagerReloaded";
+import SocketConnection from "./SocketConnection";
 
 const client = new WebClient("");
 
@@ -81,6 +82,10 @@ export default class ProjectManager {
   }
 
   public static async openProject(config: ProjectConfig) {
+    if (config.publicData) {
+      console.log("Hello world");
+      SocketConnection.openProject(config.publicData);
+    }
     if (config.type === "code") {
       UIManager.showComponent(
         <ProjectEditor
@@ -154,6 +159,30 @@ export default class ProjectManager {
         return projectConfigs;
       }
       return [];
+    }
+  }
+
+  public static async getProject(name: string): Promise<ProjectConfig | null> {
+    if ((await this.getProjectList()).includes(name)) {
+      const userData = await client.getData_u(
+        UserManager.getUsername(),
+        UserManager.getToken(),
+        "projects." + name
+      );
+
+      if (userData.publicData) {
+        const data = await client.getData(
+          UserManager.getUsername(),
+          UserManager.getToken(),
+          userData.publicData
+        );
+        if (data) {
+          return data;
+        }
+      }
+      return userData;
+    } else {
+      return null;
     }
   }
 

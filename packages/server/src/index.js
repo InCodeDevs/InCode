@@ -38,12 +38,7 @@ app.use(bodyParser.json());
 
 require("./loader")(app);
 
-io.on("connection", (socket) => {
-  console.log(chalk.green("Client connected"));
-  socket.on("disconnect", () => {
-    console.log(chalk.red("Client disconnected"));
-  });
-});
+require("./module/socket/connection")(io);
 
 const {
   existsUser,
