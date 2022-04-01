@@ -18,6 +18,7 @@ import String from "./String";
 import { v4 as uuidv4 } from "uuid";
 import PopupManagerReloaded from "./PopupManagerReloaded";
 import SocketConnection from "./SocketConnection";
+import { Registry } from "./Registry";
 
 const client = new WebClient("");
 
@@ -82,8 +83,8 @@ export default class ProjectManager {
   }
 
   public static async openProject(config: ProjectConfig) {
+    Registry.putRegister(0x052, config);
     if (config.publicData) {
-      console.log("Hello world");
       SocketConnection.openProject(config.publicData);
     }
     if (config.type === "code") {

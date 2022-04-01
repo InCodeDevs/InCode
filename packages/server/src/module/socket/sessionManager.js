@@ -19,17 +19,20 @@ function createSession(projectAP) {
   return session;
 }
 
-function addUserToSession(sessionId, username) {
+function addUserToSession(sessionId, username, socket) {
   const session = sessions.find((session) => session.sid === sessionId);
   if (session) {
-    session.users.push(username);
+    session.users.push({ username, socket });
   }
 }
 
 function removeUserFromSession(sessionId, username) {
   const session = sessions.find((session) => session.sid === sessionId);
   if (session) {
-    session.users = session.users.filter((user) => user !== username);
+    session.users = session.users.filter((user) => user.username !== username);
+    if (session.users.length === 0) {
+      deleteSession(sessionId);
+    }
   }
 }
 
@@ -54,9 +57,9 @@ function getSession(projectAP) {
   return ret;
 }
 
-function deleteSession(projectAP) {
+function deleteSession(sessionId) {
   sessions.forEach((session, index) => {
-    if (session.projectAP === projectAP) {
+    if (session.sid === sessionId) {
       sessions.splice(index, 1);
     }
   });

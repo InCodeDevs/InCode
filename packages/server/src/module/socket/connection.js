@@ -8,6 +8,7 @@ const { login } = require("@incodelang/accounts/src/lib/module/users");
 const sessionManager = require("./sessionManager");
 const { getData } = require("@incodelang/accounts/src/lib/module/data");
 const { getFullDataConfig } = require("../account_patcher");
+const { setCurrentData } = require("./sessionManager");
 
 /** @param {import('socket.io').Server} [io] */
 module.exports = (io) => {
@@ -60,14 +61,14 @@ module.exports = (io) => {
 
           const session = sessionManager.getSession(projectData);
 
-          if (!session.users.includes(uname)) {
-            session.users.push(uname);
+          if (!session.users.find((user) => user.username === uname)) {
+            sessionManager.addUserToSession(session.sid, uname, socket.id);
           }
 
           if (session.currentData === "") {
             sessionManager.setCurrentData(
               session.sid,
-              JSON.parse(fullDataConfig[projectData].data)
+              JSON.parse(fullDataConfig[projectData].data).code
             );
           }
 
@@ -76,12 +77,52 @@ module.exports = (io) => {
             message: "Session created",
             session,
           });
-          console.log(sessionManager.getAllSessions());
+          console.log(JSON.stringify(sessionManager.getAllSessions(), null, 2));
         }
       });
 
+      socket.on("project change", (data) => {
+        if (!data.sid || !data.secret || !data.newValue) {
+          socket.emit("project change", {
+            success: false,
+            message: "Invalid data",
+          });
+          return;
+        }
+
+        const session = sessionManager
+          .getAllSessions()
+          .find(
+            (session) =>
+              session.sid === data.sid && session.secret === data.secret
+          );
+
+        if (!session) {
+          socket.emit("project change", {
+            success: false,
+            message: "Invalid session",
+          });
+          return;
+        }
+
+        setCurrentData(session.sid, data.newValue);
+
+        const socketIds = session.users.map((user) => user.socket);
+
+        socket.broadcast.to(socketIds).emit("project changed", {
+          success: true,
+          message: "Project changed",
+          newValue: data.newValue,
+          from: uname,
+        });
+      });
+
       socket.on("disconnect", () => {
-        console.log(chalk.red("Client disconnected"));
+        sessionManager.getAllSessions().forEach((session) => {
+          if (session.users.find((user) => user.socket === socket.id)) {
+            sessionManager.removeUserFromSession(session.sid, uname);
+          }
+        });
       });
     }
   );

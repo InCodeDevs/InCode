@@ -131,6 +131,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ../../util/Settings */
 
+/*! ../../util/SocketConnection */
+
 /*! ../../util/String */
 
 /*! ../../util/TemplateManager */
@@ -370,6 +372,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 /*! ./ProjectManager */
 
 /*! ./ProjectViewerAdmin */
+
+/*! ./Registry */
 
 /*! ./RemoveCommand */
 

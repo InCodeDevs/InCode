@@ -9,6 +9,9 @@ import Settings from "../../util/Settings";
 import { Registry } from "../../util/Registry";
 import { editor } from "monaco-editor";
 import IStandaloneCodeEditor = editor.IStandaloneCodeEditor;
+import SocketConnection from "../../util/SocketConnection";
+import Workspace from "../../util/Workspace";
+import ProjectManager from "../../util/ProjectManager";
 
 export interface MonacoProps {
   mode: "playground" | "project";
@@ -210,9 +213,13 @@ export default function MonacoEditor(props: MonacoProps) {
       theme={Settings.getSetting("codeEditor.theme")}
       value={code}
       onMount={(editor) => {
-        // @ts-ignore
+        // @ts-ignore^
         window.editor = editor;
         const monaco = Registry.getRegister(0x01) as Monaco;
+
+        if (SocketConnection.currentSession.currentData !== editor.getValue()) {
+          editor.setValue(SocketConnection.currentSession.currentData);
+        }
         /*
         editor.deltaDecorations(
           [],
@@ -242,8 +249,7 @@ export default function MonacoEditor(props: MonacoProps) {
       }}
       onChange={(newValue, e) => {
         setCode(newValue as string);
-        // @ts-ignore
-        console.log((window.editor as IStandaloneCodeEditor).getPosition());
+        SocketConnection.submitChange(newValue as string);
       }}
     />
   );
