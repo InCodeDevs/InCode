@@ -21,93 +21,44 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const bodyParser = require("body-parser");
-require("./module/config");
-
+const http = require("http");
+const chalk = require("chalk");
+const os = require("os");
 const app = express();
+const server = require("http").Server(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
 
-app.get(
-  [
-    "/editor*",
-    "/docs*",
-    "/playground*",
-    "/admin*",
-    "/electron-select-app",
-    "/choose-platform",
-  ],
-  (req, res) => {
-    res.sendFile(
-      path.join(__dirname, "..", "..", "..", "dist", "app", "index.html")
-    );
-  }
-);
-
-app.get(["*bundle.js.gz", "*bundle.js"], (req, res) => {
-  res
-    .header("Content-Encoding", "gzip")
-    .sendFile(
-      path.join(__dirname, "..", "..", "..", "dist", "app", "bundle.js.gz")
-    );
-});
-
-app.get("/usercontent*", (req, res) => {
-  res.set("Content-Type", "text/html");
-  res.sendFile(
-    path.join(
-      os.homedir(),
-      ".incode",
-      "usercontent",
-      req.path.replace(/^\/usercontent/, "")
-    )
-  );
-});
-
+require("./module/config");
 require("./module/logger")(app);
 
 app.use(express.static(path.join(__dirname, "..", "..", "..", "dist", "app")));
 app.use(cors());
-app.use(bodyParser());
+app.use(bodyParser.json());
 
-require("./api/compiler")(app);
-require("./api/generator/desktop")(app);
-require("./api/publish/project")(app);
-require("./api/templates")(app);
-require("./api/job")(app);
-require("./api/admin")(app);
-require("./api/admin/users")(app);
-require("./api/admin/data")(app);
-require("./api/admin/postbox")(app);
-require("./api/analytics")(app);
-require("./api/live/session")(app);
+require("./loader")(app);
 
-const { accountServer } = require("@incodelang/accounts");
-const { urlServer } = require("@incodelang/urlshorter");
+io.on("connection", (socket) => {
+  console.log(chalk.green("Client connected"));
+  socket.on("disconnect", () => {
+    console.log(chalk.red("Client disconnected"));
+  });
+});
+
 const {
   existsUser,
   createUser,
 } = require("@incodelang/accounts/src/lib/module/users");
-const chalk = require("chalk");
-const os = require("os");
-
-accountServer({
-  app: app,
-  disable: {
-    updateUsername: true,
-  },
-});
-urlServer({ app: app, prefix: "project" });
-
-require("./api/error/404")(app);
-require("./api/error/500")(app);
+const { v4 } = require("uuid");
 
 require("kill-port")(3000, "tcp").then(() => {
-  app.listen(3000, "0.0.0.0");
+  server.listen(3000, "0.0.0.0");
 });
 
 if (!existsUser("admin")) {
-  createUser("admin", "admin");
+  const password = v4();
+  createUser("admin", password);
   console.log(
-    chalk.red(
-      "A new user 'admin' was created with the password 'admin'. Please change it immediately!"
-    )
+    chalk.red(`A new user 'admin' was created with the password '${password}'.`)
   );
 }

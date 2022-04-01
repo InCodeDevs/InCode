@@ -223,6 +223,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ../core */
 
+/*! ../globalThis.js */
+
 /*! ../hooks/useMount/index.js */
 
 /*! ../hooks/usePrevious/index.js */
@@ -237,9 +239,13 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ../translations/de-de.json */
 
+/*! ../transport.js */
+
 /*! ../traverse.js */
 
 /*! ../useMount/index.js */
+
+/*! ../util.js */
 
 /*! ../util/PopupManagerReloaded */
 
@@ -405,6 +411,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ./beautify-css */
 
+/*! ./binary.js */
+
 /*! ./blank-line.js */
 
 /*! ./blockly */
@@ -499,6 +507,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ./common */
 
+/*! ./commons.js */
+
 /*! ./constructs.js */
 
 /*! ./core */
@@ -507,11 +517,15 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ./create-tokenizer.js */
 
+/*! ./decodePacket.js */
+
 /*! ./defined-info.js */
 
 /*! ./delete.js */
 
 /*! ./emphasis.js */
+
+/*! ./encodePacket.js */
 
 /*! ./factoryWithTypeCheckers */
 
@@ -520,6 +534,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 /*! ./footnote-reference.js */
 
 /*! ./footnote.js */
+
+/*! ./globalThis.js */
 
 /*! ./handlers/index.js */
 
@@ -546,6 +562,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 /*! ./initialize/text.js */
 
 /*! ./inline-code.js */
+
+/*! ./is-binary.js */
 
 /*! ./javascript */
 
@@ -599,6 +617,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ./loader/index.js */
 
+/*! ./manager.js */
+
 /*! ./minpath.js */
 
 /*! ./minproc.js */
@@ -621,7 +641,13 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ./normalize.js */
 
+/*! ./on.js */
+
 /*! ./paragraph.js */
+
+/*! ./polling-xhr.js */
+
+/*! ./polling.js */
 
 /*! ./regex.js */
 
@@ -634,6 +660,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 /*! ./schema.js */
 
 /*! ./setPrototypeOf.js */
+
+/*! ./socket.js */
 
 /*! ./stringify.js */
 
@@ -649,11 +677,19 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ./thematic-break.js */
 
+/*! ./transport.js */
+
+/*! ./transports/index.js */
+
 /*! ./traverse.js */
 
 /*! ./types.js */
 
 /*! ./uri-transformer.js */
+
+/*! ./url.js */
+
+/*! ./util.js */
 
 /*! ./util/CommandPaletteManager */
 
@@ -664,6 +700,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 /*! ./util/RouteManager */
 
 /*! ./util/Settings */
+
+/*! ./util/SocketConnection */
 
 /*! ./util/case-insensitive-transform.js */
 
@@ -685,7 +723,13 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ./views/CodeEditor */
 
+/*! ./websocket-constructor.js */
+
+/*! ./websocket.js */
+
 /*! ./wrap.js */
+
+/*! ./xmlhttprequest.js */
 
 /*! @babel/runtime/helpers/esm/extends */
 
@@ -707,6 +751,12 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! @monaco-editor/react */
 
+/*! @socket.io/base64-arraybuffer */
+
+/*! @socket.io/component-emitter */
+
+/*! backo2 */
+
 /*! bail */
 
 /*! blockly */
@@ -725,7 +775,13 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! diff */
 
+/*! engine.io-client */
+
+/*! engine.io-parser */
+
 /*! extend */
+
+/*! has-cors */
 
 /*! hast-util-whitespace */
 
@@ -813,6 +869,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! object-assign */
 
+/*! parseqs */
+
+/*! parseuri */
+
 /*! path-to-regexp */
 
 /*! prop-types */
@@ -840,6 +900,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 /*! scheduler */
 
 /*! scheduler/tracing */
+
+/*! socket.io-client */
+
+/*! socket.io-parser */
 
 /*! space-separated-tokens */
 
@@ -880,6 +944,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 /*! vfile */
 
 /*! vfile-message */
+
+/*! yeast */
 
 /*!***********************!*\
   !*** ./src/index.tsx ***!
@@ -1009,6 +1075,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
   !*** ./src/components/Container.tsx ***!
   \**************************************/
 
+/*!**************************************!*\
+  !*** ./src/util/SocketConnection.ts ***!
+  \**************************************/
+
 /*!***************************************!*\
   !*** ../compiler/src/module/Error.ts ***!
   \***************************************/
@@ -1030,6 +1100,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
   \*****************************************/
 
 /*!*****************************************!*\
+  !*** ../../node_modules/yeast/index.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
   !*** ./src/util/InteractionManager.tsx ***!
   \*****************************************/
 
@@ -1044,6 +1118,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 /*!*****************************************!*\
   !*** ./src/views/Settings/Settings.tsx ***!
   \*****************************************/
+
+/*!******************************************!*\
+  !*** ../../node_modules/backo2/index.js ***!
+  \******************************************/
 
 /*!******************************************!*\
   !*** ../../node_modules/extend/index.js ***!
@@ -1086,6 +1164,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
   \*******************************************/
 
 /*!*******************************************!*\
+  !*** ../../node_modules/parseqs/index.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
   !*** ../compiler/src/util/PreCompiler.ts ***!
   \*******************************************/
 
@@ -1119,6 +1201,14 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*!********************************************!*\
   !*** ../../node_modules/blockly/msg/en.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ../../node_modules/has-cors/index.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ../../node_modules/parseuri/index.js ***!
   \********************************************/
 
 /*!********************************************!*\
@@ -1530,6 +1620,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
   \***********************************************************/
 
 /*!***********************************************************!*\
+  !*** ../../node_modules/socket.io-client/build/esm/on.js ***!
+  \***********************************************************/
+
+/*!***********************************************************!*\
   !*** ../../node_modules/uvu/node_modules/kleur/index.mjs ***!
   \***********************************************************/
 
@@ -1538,12 +1632,20 @@ https://github.com/nodeca/pako/blob/master/LICENSE
   \***********************************************************/
 
 /*!************************************************************!*\
+  !*** ../../node_modules/socket.io-client/build/esm/url.js ***!
+  \************************************************************/
+
+/*!************************************************************!*\
   !*** ../../node_modules/state-local/lib/es/state-local.js ***!
   \************************************************************/
 
 /*!************************************************************!*\
   !*** ./src/components/Editor/blockly/blocks/StartBlock.ts ***!
   \************************************************************/
+
+/*!*************************************************************!*\
+  !*** ../../node_modules/engine.io-client/build/esm/util.js ***!
+  \*************************************************************/
 
 /*!*************************************************************!*\
   !*** ../../node_modules/js-beautify/js/lib/beautify-css.js ***!
@@ -1574,6 +1676,14 @@ https://github.com/nodeca/pako/blob/master/LICENSE
   \*************************************************************/
 
 /*!**************************************************************!*\
+  !*** ../../node_modules/engine.io-client/build/esm/index.js ***!
+  \**************************************************************/
+
+/*!**************************************************************!*\
+  !*** ../../node_modules/engine.io-parser/build/esm/index.js ***!
+  \**************************************************************/
+
+/*!**************************************************************!*\
   !*** ../../node_modules/js-beautify/js/lib/beautify-html.js ***!
   \**************************************************************/
 
@@ -1590,6 +1700,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
   \**************************************************************/
 
 /*!**************************************************************!*\
+  !*** ../../node_modules/socket.io-client/build/esm/index.js ***!
+  \**************************************************************/
+
+/*!**************************************************************!*\
   !*** ./src/components/Editor/blockly/blocks/IfEventBlock.ts ***!
   \**************************************************************/
 
@@ -1599,6 +1713,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*!***************************************************************!*\
   !*** ../../node_modules/@monaco-editor/react/lib/es/index.js ***!
+  \***************************************************************/
+
+/*!***************************************************************!*\
+  !*** ../../node_modules/engine.io-client/build/esm/socket.js ***!
   \***************************************************************/
 
 /*!***************************************************************!*\
@@ -1630,6 +1748,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
   \***************************************************************/
 
 /*!***************************************************************!*\
+  !*** ../../node_modules/socket.io-client/build/esm/socket.js ***!
+  \***************************************************************/
+
+/*!***************************************************************!*\
   !*** ../../node_modules/unified/node_modules/trough/index.js ***!
   \***************************************************************/
 
@@ -1650,6 +1772,14 @@ https://github.com/nodeca/pako/blob/master/LICENSE
   \****************************************************************/
 
 /*!****************************************************************!*\
+  !*** ../../node_modules/@socket.io/component-emitter/index.js ***!
+  \****************************************************************/
+
+/*!****************************************************************!*\
+  !*** ../../node_modules/engine.io-parser/build/esm/commons.js ***!
+  \****************************************************************/
+
+/*!****************************************************************!*\
   !*** ../../node_modules/micromark-util-character/dev/index.js ***!
   \****************************************************************/
 
@@ -1667,6 +1797,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*!****************************************************************!*\
   !*** ../../node_modules/react-markdown/lib/uri-transformer.js ***!
+  \****************************************************************/
+
+/*!****************************************************************!*\
+  !*** ../../node_modules/socket.io-client/build/esm/manager.js ***!
   \****************************************************************/
 
 /*!****************************************************************!*\
@@ -1711,6 +1845,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*!******************************************************************!*\
   !*** ../../node_modules/css-loader/dist/runtime/noSourceMaps.js ***!
+  \******************************************************************/
+
+/*!******************************************************************!*\
+  !*** ../../node_modules/engine.io-client/build/esm/transport.js ***!
   \******************************************************************/
 
 /*!******************************************************************!*\
@@ -1914,6 +2052,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
   \*************************************************************************/
 
 /*!*************************************************************************!*\
+  !*** ../../node_modules/engine.io-client/build/esm/transports/index.js ***!
+  \*************************************************************************/
+
+/*!*************************************************************************!*\
   !*** ../../node_modules/micromark-core-commonmark/dev/lib/attention.js ***!
   \*************************************************************************/
 
@@ -1982,6 +2124,14 @@ https://github.com/nodeca/pako/blob/master/LICENSE
   \***************************************************************************/
 
 /*!***************************************************************************!*\
+  !*** ../../node_modules/engine.io-client/build/esm/globalThis.browser.js ***!
+  \***************************************************************************/
+
+/*!***************************************************************************!*\
+  !*** ../../node_modules/engine.io-client/build/esm/transports/polling.js ***!
+  \***************************************************************************/
+
+/*!***************************************************************************!*\
   !*** ../../node_modules/micromark-core-commonmark/dev/lib/block-quote.js ***!
   \***************************************************************************/
 
@@ -2034,6 +2184,18 @@ https://github.com/nodeca/pako/blob/master/LICENSE
   \****************************************************************************/
 
 /*!*****************************************************************************!*\
+  !*** ../../node_modules/engine.io-client/build/esm/transports/websocket.js ***!
+  \*****************************************************************************/
+
+/*!*****************************************************************************!*\
+  !*** ../../node_modules/engine.io-parser/build/esm/decodePacket.browser.js ***!
+  \*****************************************************************************/
+
+/*!*****************************************************************************!*\
+  !*** ../../node_modules/engine.io-parser/build/esm/encodePacket.browser.js ***!
+  \*****************************************************************************/
+
+/*!*****************************************************************************!*\
   !*** ../../node_modules/micromark-core-commonmark/dev/lib/code-indented.js ***!
   \*****************************************************************************/
 
@@ -2071,6 +2233,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*!*******************************************************************************!*\
   !*** ../../node_modules/@monaco-editor/react/lib/es/hooks/useUpdate/index.js ***!
+  \*******************************************************************************/
+
+/*!*******************************************************************************!*\
+  !*** ../../node_modules/engine.io-client/build/esm/transports/polling-xhr.js ***!
   \*******************************************************************************/
 
 /*!*******************************************************************************!*\
@@ -2202,6 +2368,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
   \**************************************************************************************/
 
 /*!***************************************************************************************!*\
+  !*** ../../node_modules/@socket.io/base64-arraybuffer/dist/base64-arraybuffer.es5.js ***!
+  \***************************************************************************************/
+
+/*!***************************************************************************************!*\
   !*** ../../node_modules/react-markdown/node_modules/property-information/lib/aria.js ***!
   \***************************************************************************************/
 
@@ -2245,6 +2415,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
   !*** ../../node_modules/micromark-util-decode-numeric-character-reference/dev/index.js ***!
   \*****************************************************************************************/
 
+/*!******************************************************************************************!*\
+  !*** ../../node_modules/engine.io-client/build/esm/transports/xmlhttprequest.browser.js ***!
+  \******************************************************************************************/
+
 /*!*******************************************************************************************!*\
   !*** ../../node_modules/react-markdown/node_modules/react-is/cjs/react-is.development.js ***!
   \*******************************************************************************************/
@@ -2259,6 +2433,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*!********************************************************************************************!*\
   !*** ../../node_modules/react-markdown/node_modules/property-information/lib/util/info.js ***!
+  \********************************************************************************************/
+
+/*!********************************************************************************************!*\
+  !*** ../../node_modules/socket.io-client/node_modules/socket.io-parser/build/esm/index.js ***!
   \********************************************************************************************/
 
 /*!*********************************************************************************************!*\
@@ -2295,6 +2473,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*!*********************************************************************************************!*\
   !*** ../../node_modules/remark-rehype/node_modules/mdast-util-to-hast/lib/handlers/text.js ***!
+  \*********************************************************************************************/
+
+/*!*********************************************************************************************!*\
+  !*** ../../node_modules/socket.io-client/node_modules/socket.io-parser/build/esm/binary.js ***!
   \*********************************************************************************************/
 
 /*!**********************************************************************************************!*\
@@ -2348,6 +2530,14 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 /*!************************************************************************************************!*\
   !*** ../../node_modules/remark-rehype/node_modules/mdast-util-to-hast/lib/handlers/heading.js ***!
   \************************************************************************************************/
+
+/*!************************************************************************************************!*\
+  !*** ../../node_modules/socket.io-client/node_modules/socket.io-parser/build/esm/is-binary.js ***!
+  \************************************************************************************************/
+
+/*!*************************************************************************************************!*\
+  !*** ../../node_modules/engine.io-client/build/esm/transports/websocket-constructor.browser.js ***!
+  \*************************************************************************************************/
 
 /*!*************************************************************************************************!*\
   !*** ../../node_modules/remark-rehype/node_modules/mdast-util-to-hast/lib/handlers/emphasis.js ***!

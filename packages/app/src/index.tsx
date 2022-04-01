@@ -10,8 +10,8 @@ import CommandPaletteManager from "./util/CommandPaletteManager";
 import OpenCommand from "./util/commands/OpenCommand";
 import CreateCommand from "./util/commands/CreateCommand";
 import RouteManager from "./util/RouteManager";
-import AdminMessage from "./util/AdminMessage";
 import Feed from "./util/Feed";
+import SocketConnection from "./util/SocketConnection";
 
 if (!Settings.isValid()) {
   Settings.reset();
@@ -24,4 +24,5 @@ window.onload = () => {
   new InteractionManager();
   RouteManager.manage();
   Feed.runTask();
+  SocketConnection.connect();
 };
