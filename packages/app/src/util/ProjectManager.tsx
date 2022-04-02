@@ -84,6 +84,7 @@ export default class ProjectManager {
 
   public static async openProject(config: ProjectConfig) {
     Registry.putRegister(0x052, config);
+    Registry.putRegister(0x053, config.type);
     if (config.publicData) {
       SocketConnection.openProject(config.publicData);
     }

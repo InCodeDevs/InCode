@@ -4,11 +4,13 @@
  */
 
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Blockly from "blockly";
 import * as DarkTheme from "./blockly/theme/BlocklyThemeDark";
 import Blocks from "./blockly/Blocks";
 import * as DE from "blockly/msg/de";
+import SocketConnection from "../../util/SocketConnection";
+import { Registry } from "../../util/Registry";
 
 export interface BlocklyProps {
   initialXml: string;
@@ -21,7 +23,7 @@ export default function BlocklyEditor(props: BlocklyProps) {
     window.editor = undefined;
     Blocks.register();
     Blockly.setLocale(DE);
-    Blockly.inject("blockly", {
+    const ws = Blockly.inject("blockly", {
       toolbox: defaultToolbox,
       renderer: "zelos",
       theme: DarkTheme.default,
@@ -29,10 +31,8 @@ export default function BlocklyEditor(props: BlocklyProps) {
         controls: true,
       },
     });
-    Blockly.Xml.domToWorkspace(
-      Blockly.Xml.textToDom(props.initialXml),
-      Blockly.getMainWorkspace()
-    );
+    Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(props.initialXml), ws);
+    Registry.putRegister(0x064, ws);
   }, []);
 
   return (
