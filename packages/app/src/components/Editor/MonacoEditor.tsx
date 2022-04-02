@@ -19,6 +19,7 @@ export interface MonacoProps {
   readonly?: boolean;
   width?: string;
   height?: string;
+  public: string | undefined;
 }
 
 export default function MonacoEditor(props: MonacoProps) {
@@ -217,22 +218,13 @@ export default function MonacoEditor(props: MonacoProps) {
         window.editor = editor;
         const monaco = Registry.getRegister(0x01) as Monaco;
 
-        if (SocketConnection.currentSession.currentData !== editor.getValue()) {
-          editor.setValue(SocketConnection.currentSession.currentData);
+        if (props.public !== undefined && props.public !== "") {
+          if (
+            SocketConnection.currentSession.currentData !== editor.getValue()
+          ) {
+            editor.setValue(SocketConnection.currentSession.currentData);
+          }
         }
-        /*
-        editor.deltaDecorations(
-          [],
-          [
-            {
-              range: new monaco.Range(1, 3, 1, 3),
-              options: {
-                className: "crs",
-              },
-            },
-          ]
-        );
-         */
       }}
       options={{
         fontSize: Settings.getSetting("codeEditor.fontSize"),
@@ -249,7 +241,9 @@ export default function MonacoEditor(props: MonacoProps) {
       }}
       onChange={(newValue, e) => {
         setCode(newValue as string);
-        SocketConnection.submitChange(newValue as string);
+        if (props.public !== undefined && props.public !== "") {
+          SocketConnection.submitChange(newValue as string);
+        }
       }}
     />
   );

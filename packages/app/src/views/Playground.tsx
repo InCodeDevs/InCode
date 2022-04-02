@@ -46,7 +46,8 @@ export default function Playground() {
       {editor === "monaco" ? (
         <MonacoEditor
           mode={"playground"}
-          code={'Gib "Hallo Welt" in der Konsole aus'}
+          code={'Gib "Hallo Welt" in der Dialogbox aus'}
+          public={undefined}
         />
       ) : (
         <BlocklyEditor

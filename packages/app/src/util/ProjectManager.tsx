@@ -92,7 +92,11 @@ export default class ProjectManager {
       UIManager.showComponent(
         <ProjectEditor
           project={config}
-          monaco={{ mode: "project", code: config.code }}
+          monaco={{
+            mode: "project",
+            code: config.code,
+            public: config.publicData,
+          }}
         />
       );
     } else {

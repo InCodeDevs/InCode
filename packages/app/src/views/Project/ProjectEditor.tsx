@@ -34,6 +34,7 @@ export default function ProjectEditor(props: Props) {
         <MonacoEditor
           mode={props.monaco?.mode || "project"}
           code={props.monaco?.code}
+          public={props.project.publicData}
         />
       ) : (
         <BlocklyEditor initialXml={props.blockly?.initialXml || ""} />

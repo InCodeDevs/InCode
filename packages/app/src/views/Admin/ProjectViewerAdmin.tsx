@@ -33,7 +33,12 @@ export default function ProjectViewerAdmin(props: Props) {
         ]}
       />
       {props.type === "code" ? (
-        <MonacoEditor code={props.code} mode={"playground"} readonly />
+        <MonacoEditor
+          code={props.code}
+          mode={"playground"}
+          public={undefined}
+          readonly
+        />
       ) : (
         <BlocklyEditor initialXml={props.code} />
       )}
