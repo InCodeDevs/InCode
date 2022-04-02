@@ -367,13 +367,15 @@ export default class ProjectManager {
       console.log(projects);
     }
 
-    projects.push(projectName);
-    await client.storeData_u(
-      UserManager.getUsername(),
-      UserManager.getToken(),
-      projects,
-      "projects"
-    );
+    if (!projects.includes(projectName)) {
+      projects.push(projectName);
+      await client.storeData_u(
+        UserManager.getUsername(),
+        UserManager.getToken(),
+        projects,
+        "projects"
+      );
+    }
   }
 
   public static isEmptyResponse(response: any): boolean {

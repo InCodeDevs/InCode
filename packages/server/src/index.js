@@ -12,7 +12,7 @@ console.log(
     "|   |   |  \\     \\___(  <_> ) /_/ \\  ___/ \n" +
     "|___|___|  /\\______  /\\____/\\____ |\\___  >\n" +
     "         \\/        \\/            \\/    \\/ \n" +
-    "\nby Ben Siebert and Lukas Birke\n\n"
+    "\nby Ben Siebert\n\n"
 );
 
 require("dotenv").config();
