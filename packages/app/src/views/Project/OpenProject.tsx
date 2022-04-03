@@ -31,6 +31,7 @@ import ShareProject from "./ShareProject/ShareProject";
 import PopupManagerReloaded from "../../util/PopupManagerReloaded";
 import { ProjectConfig } from "../../types/ProjectConfig";
 import ImportProjectMenuItem from "../../components/Menu/ImportProjectMenuItem";
+import Text from "../../components/Text";
 
 export default function OpenProject() {
   const [container, setContainer] = useState<ReactElement | null>(null);
@@ -201,7 +202,11 @@ export default function OpenProject() {
         <Container centered>
           <Title size={1} title={"menu.open-project.title"} centered />
           <div style={{ display: noProjects ? "block" : "none" }}>
-            <Title size={3} title={"menu.open-project.no-projects"} centered />
+            <p style={{ textAlign: "center" }}>
+              <Text nol18n>
+                {i18n.translate("menu.open-project.no-projects")}
+              </Text>
+            </p>
           </div>
           <MenuItemListScroll>{menuItems}</MenuItemListScroll>
         </Container>
