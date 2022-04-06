@@ -65,7 +65,6 @@ export class BlocklyCompiler {
       neededTabs =
         neededTabs + this.getBlockTabs(block.getParent(), log, true).length;
       if (block.getParent().getInputTargetBlock("STATEMENT")) neededTabs++;
-      console.log(neededTabs);
       for (let i = 0; i < neededTabs; i++) {
         tabs += "\t";
       }

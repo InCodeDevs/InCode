@@ -193,7 +193,7 @@ export default class ProjectManager {
   }
 
   public static async deleteProject(projectConfig: ProjectConfig) {
-    const projects = await this.getProjectList();
+    const projects = await ProjectManager.getProjectList();
     let newProjects: string[] = [];
     for (let i = 0; i < projects.length; i++) {
       if (projects[i] !== projectConfig.name) {
@@ -206,18 +206,7 @@ export default class ProjectManager {
       newProjects,
       "projects"
     );
-    if (projectConfig.publicData) {
-      await client.deleteData(
-        UserManager.getUsername(),
-        UserManager.getToken(),
-        projectConfig.publicData
-      );
-      await client.deleteData_u(
-        UserManager.getUsername(),
-        UserManager.getToken(),
-        "projects." + projectConfig.name
-      );
-    } else {
+    if (!projectConfig.publicData) {
       await client.deleteData_u(
         UserManager.getUsername(),
         UserManager.getToken(),
@@ -277,9 +266,7 @@ export default class ProjectManager {
     projectConfig: ProjectConfig,
     forceAccount = false
   ) {
-    console.log(projectConfig);
     if (forceAccount || !projectConfig.publicData) {
-      console.log(1);
       await client.storeData_u(
         UserManager.getUsername(),
         UserManager.getToken(),
@@ -287,7 +274,6 @@ export default class ProjectManager {
         "projects." + projectConfig.name
       );
     } else {
-      console.log(2);
       await client.storeData(
         UserManager.getUsername(),
         UserManager.getToken(),

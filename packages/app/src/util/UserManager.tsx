@@ -12,6 +12,7 @@ import { ProjectConfig } from "../types/ProjectConfig";
 import ProjectManager from "./ProjectManager";
 import PopupManagerReloaded from "./PopupManagerReloaded";
 import i18n from "./i18n";
+import SocketConnection from "./SocketConnection";
 
 const client = new WebClient("");
 
@@ -26,6 +27,7 @@ export default class UserManager {
   public static login(username: string, token: string) {
     BrowserStorage.store("accessName", username);
     BrowserStorage.store("accessToken", token);
+    SocketConnection.connect();
   }
 
   public static logout() {

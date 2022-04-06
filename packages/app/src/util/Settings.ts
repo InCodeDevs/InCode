@@ -24,6 +24,7 @@ export default class Settings {
     settings["codeEditor.lineNumbers"] = true;
     settings["language"] = "de";
     settings["pushNotifications"] = false;
+    settings["autoSave"] = true;
     BrowserStorage.store("settings", JSON.stringify(settings));
   }
 

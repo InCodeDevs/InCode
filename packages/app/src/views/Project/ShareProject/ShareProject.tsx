@@ -24,6 +24,7 @@ import UserManager from "../../../util/UserManager";
 import ProjectManager from "../../../util/ProjectManager";
 import { WebClient } from "@incodelang/accounts-client";
 import { Compiler } from "@incodelang/compiler";
+import { v4 } from "uuid";
 
 interface Props {
   projectConfig: ProjectConfig;
@@ -50,7 +51,11 @@ export default function ShareProject(props: Props) {
                   if (exists) {
                     let pConfig = props.projectConfig;
                     pConfig.publicData =
-                      UserManager.getUsername() + ":" + pConfig.name;
+                      UserManager.getUsername() +
+                      ":" +
+                      pConfig.name +
+                      "_" +
+                      v4();
                     ProjectManager.inviteUser(username, pConfig).then(
                       (success) => {
                         if (success) {

@@ -205,6 +205,15 @@ export default function MonacoEditor(props: MonacoProps) {
     });
   });
 
+  useEffect(() => {
+    const i = setInterval(async () => {
+      if (Settings.getSetting("autoSave") === true) {
+        await ProjectManager.saveProject(Registry.getRegister(0x052));
+      }
+    }, 1000);
+    return () => clearInterval(i);
+  }, []);
+
   return (
     <Editor
       height={!props.height ? "100vh" : props.height}
