@@ -241,8 +241,17 @@ export default function MonacoEditor(props: MonacoProps) {
       }}
       onChange={(newValue, e) => {
         setCode(newValue as string);
-        if (props.public !== undefined && props.public !== "") {
-          SocketConnection.submitChange(newValue as string);
+
+        if (Registry.getRegister(0x072) !== true) {
+          if (
+            props.public !== undefined &&
+            props.public !== "" &&
+            newValue !== SocketConnection.currentSession.currentData
+          ) {
+            SocketConnection.submitChange(newValue as string);
+          }
+        } else {
+          Registry.putRegister(0x072, false);
         }
       }}
     />

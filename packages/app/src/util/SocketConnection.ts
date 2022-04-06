@@ -40,6 +40,9 @@ export default class SocketConnection {
         if (from === UserManager.getUsername()) {
           return;
         }
+
+        Registry.putRegister(0x072, true);
+
         // @ts-ignore
         const oldPosition = window.editor.getPosition();
         // @ts-ignore

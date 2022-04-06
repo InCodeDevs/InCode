@@ -5,6 +5,10 @@
 
 // Register Set
 // 0x01 : monaco editor instance
+// 0x052: Current Project Config
+// 0x053: Current Project Type
+// 0x064: blockly workspace instance
+// 0x072: boolean if the monaco editor should publish the new code data
 //
 
 import { JSONObject } from "../types/JSONObject";

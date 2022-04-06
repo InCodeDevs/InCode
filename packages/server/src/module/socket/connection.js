@@ -114,6 +114,7 @@ module.exports = (io) => {
           message: "Project changed",
           newValue: data.newValue,
           from: uname,
+          at: new Date().toISOString(),
         });
       });
 
