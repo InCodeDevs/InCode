@@ -19,7 +19,7 @@ module.exports = function (
   }
 ) {
   options.app.use(cors());
-  options.app.use(bodyParser());
+  options.app.use(bodyParser.json());
 
   options.app.get("/api/v1/user*", (req, res) => {
     res.end('{"error": true, "message": "Method not allowed."}');
@@ -424,6 +424,18 @@ module.exports = function (
       }
     });
   }
+
+  options.app.post("/api/v1/user/data/allowed", (req, res) => {
+    if (req.body.username && req.body.password && req.body.key) {
+      res.end(
+        JSON.stringify(
+          data.getAllowed(req.body.username, req.body.password, req.body.key)
+        )
+      );
+    } else {
+      res.end('{"error": true, "message": "Invalid Request body."}');
+    }
+  });
 
   if (!options.disable.getUserData) {
     options.app.post("/api/v1/user/data/get", (req, res) => {

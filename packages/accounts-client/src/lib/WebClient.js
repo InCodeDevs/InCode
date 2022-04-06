@@ -296,6 +296,24 @@ class WebClient {
     }
   }
 
+  async getAllowedUsers(username, password, dataName) {
+    const config = this.#fetchConfig;
+
+    config.body = JSON.stringify({
+      username: username,
+      password: password,
+      key: dataName,
+    });
+
+    const r = await fetch(this.#root + "/api/v1/user/data/allowed", config);
+    try {
+      const j = await r.json();
+      return j.message;
+    } catch {
+      return false;
+    }
+  }
+
   async createPostBox(username, password, name) {
     const config = this.#fetchConfig;
     config.body = JSON.stringify({

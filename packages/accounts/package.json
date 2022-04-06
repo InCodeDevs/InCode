@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "typings": "./types",
   "scripts": {
-    "typescript:createtypes": "../../../Accounts/node_modules/.bin/tsc"
+    "typescript:createtypes": "tsc"
   },
   "publishConfig": {
     "access": "public"

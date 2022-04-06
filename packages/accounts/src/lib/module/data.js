@@ -86,6 +86,11 @@ function getData(username, password, key) {
           message: "Access Denied.",
         };
       }
+    } else {
+      return {
+        error: true,
+        message: "Key not found.",
+      };
     }
   } else {
     return {
@@ -112,6 +117,11 @@ function allow(username, password, key, newUser) {
           message: "Access Denied.",
         };
       }
+    } else {
+      return {
+        error: true,
+        message: "Key not found.",
+      };
     }
   } else {
     return {
@@ -138,6 +148,11 @@ function disallow(username, password, key, newUser) {
           message: "Access Denied.",
         };
       }
+    } else {
+      return {
+        error: true,
+        message: "Key not found.",
+      };
     }
   } else {
     return {
@@ -147,4 +162,32 @@ function disallow(username, password, key, newUser) {
   }
 }
 
-module.exports = { setData, getData, allow, disallow };
+function getAllowed(username, password, key) {
+  if (!login(username, password).error) {
+    if (data[key]) {
+      if (data[key].access.includes(username)) {
+        return {
+          error: false,
+          message: data[key].access,
+        };
+      } else {
+        return {
+          error: true,
+          message: "Access Denied.",
+        };
+      }
+    } else {
+      return {
+        error: true,
+        message: "Key not found.",
+      };
+    }
+  } else {
+    return {
+      error: true,
+      message: "Login Failed.",
+    };
+  }
+}
+
+module.exports = { setData, getData, allow, disallow, getAllowed };

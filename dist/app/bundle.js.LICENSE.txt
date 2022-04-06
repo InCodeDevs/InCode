@@ -665,8 +665,6 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 /*! ./schema.js */
 
-/*! ./setPrototypeOf.js */
-
 /*! ./socket.js */
 
 /*! ./stringify.js */
@@ -2000,10 +1998,6 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 /*!**********************************************************************!*\
   !*** ../../node_modules/unified/node_modules/vfile-message/index.js ***!
   \**********************************************************************/
-
-/*!***********************************************************************!*\
-  !*** ../../node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js ***!
-  \***********************************************************************/
 
 /*!***********************************************************************!*\
   !*** ../../node_modules/@monaco-editor/loader/lib/es/config/index.js ***!
