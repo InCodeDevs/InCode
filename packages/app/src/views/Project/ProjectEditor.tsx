@@ -3,7 +3,7 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 
-import React from "react";
+import React, { useEffect } from "react";
 import MonacoEditor, {
   MonacoProps,
 } from "../../components/Editor/MonacoEditor";
@@ -14,6 +14,10 @@ import BlocklyEditor, {
   BlocklyProps,
 } from "../../components/Editor/BlocklyEditor";
 import FileSelector from "../../components/Editor/FileSelector";
+import ProjectManager from "../../util/ProjectManager";
+import { Registry } from "../../util/Registry";
+import Workspace from "../../util/Workspace";
+import Settings from "../../util/Settings";
 
 interface Props {
   monaco?: MonacoProps;
@@ -26,6 +30,18 @@ export default function ProjectEditor(props: Props) {
   if (typeof project === "string") {
     project = JSON.parse(project);
   }
+
+  useEffect(() => {
+    const i = setInterval(async () => {
+      if (Settings.getSetting("autoSave") === true) {
+        let p = project;
+        p.code = Workspace.getCode();
+        await ProjectManager.saveProject(p);
+      }
+    }, 1000);
+    return () => clearInterval(i);
+  }, []);
+
   return (
     <>
       <EditorMenuBar projectConfig={project} />
