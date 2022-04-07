@@ -155,6 +155,8 @@
   "menu.settings.menu.item.code-editor.font-size.description": "Verändere die Schriftgröße des Code Editors",
   "menu.settings.menu.item.code-editor.line-numbers": "Zeilennummern",
   "menu.settings.menu.item.code-editor.line-numbers.description": "Zeige oder verstecke die Zeilennummern im Code Editor",
+  "menu.settings.menu.item.code-editor.auto-save": "Auto Speicherung",
+  "menu.settings.menu.item.code-editor.auto-save.description": "Projekte automatisch speichern",
   "menu.select-project-template.title": "Vorlage auswählen",
   "menu.feed.invite.title": "Einladung!",
   "menu.feed.invite.description": "Du hast eine neue Einladung erhalten:",

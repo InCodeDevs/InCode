@@ -6,7 +6,11 @@
 import * as React from "react";
 import SettingsView from "../../../components/Settings/SettingsView";
 import SettingsControls from "../../../components/Settings/SettingsControls";
-import { faHashtag, faTextHeight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHashtag,
+  faHourglassStart,
+  faTextHeight,
+} from "@fortawesome/free-solid-svg-icons";
 import SettingsNumberController from "../../../components/Settings/SettingsNumberController";
 import i18n from "../../../util/i18n";
 import SettingsBooleanController from "../../../components/Settings/SettingsBooleanController";
@@ -33,6 +37,14 @@ export default function CodeEditor() {
             )}
             icon={faHashtag}
             title={"menu.settings.menu.item.code-editor.line-numbers"}
+          />
+          <SettingsBooleanController
+            setting={"autoSave"}
+            description={i18n.translate(
+              "menu.settings.menu.item.code-editor.auto-save.description"
+            )}
+            icon={faHourglassStart}
+            title={"menu.settings.menu.item.code-editor.auto-save"}
           />
         </SettingsControls>
       </SettingsView>
