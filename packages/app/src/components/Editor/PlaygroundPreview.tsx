@@ -7,23 +7,20 @@ import * as React from "react";
 import { useEffect } from "react";
 import Workspace from "../../util/Workspace";
 import { Compiler } from "../../../../compiler/src";
+import Settings from "../../util/Settings";
 
 export default function PlaygroundPreview() {
   useEffect(() => {
     let lastCode = "";
     const interval = setInterval(() => {
-      if (
-        Workspace.getCode(false) !== "" &&
-        lastCode !== Workspace.getCode(false)
-      ) {
-        lastCode = Workspace.getCode(false);
-        let jsCode = Compiler.compile(lastCode);
-        console.log(jsCode);
-        (
-          document.getElementsByName(
-            "playground-preview-frame"
-          )[0] as HTMLIFrameElement
-        ).srcdoc = `<!DOCTYPE html><html lang='de'><head><title>InCode Projekt</title></head><body><script>${jsCode}</script></body></html>`;
+      if (Settings.getSetting("enableLiveReload") === true) {
+        if (
+          Workspace.getCode(false) !== "" &&
+          lastCode !== Workspace.getCode(false)
+        ) {
+          lastCode = Workspace.getCode(false);
+          Workspace.reloadLivePreview();
+        }
       }
     }, 3000);
     return () => clearInterval(interval);

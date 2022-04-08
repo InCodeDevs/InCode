@@ -22,13 +22,6 @@ export default function Settings() {
       <NavigationBar
         title={"menu.settings.menu.title"}
         items={[
-          /*{
-            title: "menu.settings.menu.item.general",
-            onclick: () => {
-              UIManager.showComponent(<General />, "settings-current-view");
-            },
-            icon: faCog,
-          },*/
           {
             title: "menu.settings.menu.item.code-editor",
             onclick: () => {

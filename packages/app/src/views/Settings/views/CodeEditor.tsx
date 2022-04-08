@@ -9,6 +9,7 @@ import SettingsControls from "../../../components/Settings/SettingsControls";
 import {
   faHashtag,
   faHourglassStart,
+  faRotate,
   faTextHeight,
 } from "@fortawesome/free-solid-svg-icons";
 import SettingsNumberController from "../../../components/Settings/SettingsNumberController";
@@ -45,6 +46,14 @@ export default function CodeEditor() {
             )}
             icon={faHourglassStart}
             title={"menu.settings.menu.item.code-editor.auto-save"}
+          />
+          <SettingsBooleanController
+            setting={"enableLiveReload"}
+            description={i18n.translate(
+              "menu.settings.menu.item.code-editor.enable-live-preview.description"
+            )}
+            icon={faRotate}
+            title={"menu.settings.menu.item.code-editor.enable-live-preview"}
           />
         </SettingsControls>
       </SettingsView>

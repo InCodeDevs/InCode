@@ -17,19 +17,11 @@
 .settings-controller {
   flex: 100%;
   background-color: darken($stdBackground, 8%);
-  max-height: 20%;
-  height: 20%;
-  margin: 2rem;
-  padding: 2rem;
+  max-height: 15%;
   gap: 1.2rem;
-  transition: background-color 320ms ease;
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  &:hover {
-    background-color: darken($stdBackground, 9%);
-  }
 
   * {
     color: white;
@@ -67,7 +59,8 @@
   }
 
   .settings-controller-text-input {
-    flex: 55%;
+    flex: 25%;
+    margin-right: 2rem;
     outline: none;
     font-size: 1rem;
     padding: .4rem;

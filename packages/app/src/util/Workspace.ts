@@ -4,6 +4,7 @@
  */
 import { BlocklyCompiler } from "./BlocklyCompiler";
 import Blockly from "blockly";
+import { Compiler } from "@incodelang/compiler/dist/esm/module/Compiler";
 
 export default class Workspace {
   public static getCode(blocklyXml: boolean = true): string {
@@ -22,10 +23,15 @@ export default class Workspace {
 
   public static isBlockly(): boolean {
     // @ts-ignore
-    if (window.editor) {
-      return false;
-    } else {
-      return true;
-    }
+    return !window.editor;
+  }
+
+  public static reloadLivePreview(): void {
+    let jsCode = Compiler.compile(Workspace.getCode(false));
+    (
+      document.getElementsByName(
+        "playground-preview-frame"
+      )[0] as HTMLIFrameElement
+    ).srcdoc = `<!DOCTYPE html><html lang='de'><head><title>InCode Projekt</title></head><body><script>${jsCode}</script></body></html>`;
   }
 }

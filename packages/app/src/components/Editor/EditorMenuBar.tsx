@@ -61,6 +61,12 @@ export default function EditorMenuBar(props: Props) {
               });
             },
           },
+          {
+            label: i18n.translate("menu.live-preview.reload"),
+            onClick: () => {
+              Workspace.reloadLivePreview();
+            },
+          },
         ]}
       />
     </>

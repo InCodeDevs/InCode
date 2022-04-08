@@ -7,11 +7,9 @@ import { JSONObject } from "../types/JSONObject";
 
 export default class Settings {
   public static readonly defaults = {
-    codeEditor: {
-      fontSize: 21,
-      theme: "incode-dark",
-      lineNumbers: true,
-    },
+    "codeEditor.fontSize": 21,
+    "codeEditor.theme": "incode-dark",
+    "codeEditor.lineNumbers": true,
     language: "de",
     pushNotifications: false,
     autoSave: true,
