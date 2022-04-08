@@ -17,13 +17,17 @@ interface Props {
   title: string;
   nol18n?: boolean;
   widgets: MenuItemWidget[];
+  disabled?: boolean;
 }
 
 export default function MenuItemControls(props: Props) {
   let iconClicked = false;
   return (
     <div
-      className={"menu-item controls-menu-item"}
+      className={
+        "menu-item controls-menu-item" +
+        (props.disabled === true ? " menu-item-disabled" : "")
+      }
       onClick={() => {
         if (!iconClicked) {
           props.onclick();

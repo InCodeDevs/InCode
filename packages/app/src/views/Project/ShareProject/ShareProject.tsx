@@ -20,11 +20,8 @@ import OpenProject from "../OpenProject";
 import TemplateManager from "../../../util/TemplateManager";
 import i18n from "../../../util/i18n";
 import PopupManagerReloaded from "../../../util/PopupManagerReloaded";
-import UserManager from "../../../util/UserManager";
-import ProjectManager from "../../../util/ProjectManager";
-import { WebClient } from "@incodelang/accounts-client";
 import { Compiler } from "@incodelang/compiler";
-import { v4 } from "uuid";
+import ManageShare from "./ManageShare";
 
 interface Props {
   projectConfig: ProjectConfig;
@@ -39,97 +36,11 @@ export default function ShareProject(props: Props) {
           // @ts-ignore
           icon={faUser}
           onclick={() => {
-            PopupManagerReloaded.ask({
-              title: i18n.translate(
-                "menu.share-project.share-with-others.invite"
-              ),
-              description: i18n.translate(
-                "menu.share-project.share-with-others.input-name"
-              ),
-              onSubmit: (username) => {
-                UserManager.accountExists(username).then((exists) => {
-                  if (exists) {
-                    let pConfig = props.projectConfig;
-                    pConfig.publicData =
-                      UserManager.getUsername() +
-                      ":" +
-                      pConfig.name +
-                      "_" +
-                      v4();
-                    ProjectManager.inviteUser(username, pConfig).then(
-                      (success) => {
-                        if (success) {
-                          const client = new WebClient("");
-                          client
-                            .storeData(
-                              UserManager.getUsername(),
-                              UserManager.getToken(),
-                              JSON.stringify(pConfig),
-                              pConfig.publicData
-                            )
-                            .then((x) => {
-                              client
-                                .allowDataAccess(
-                                  UserManager.getUsername(),
-                                  UserManager.getToken(),
-                                  pConfig.publicData,
-                                  username
-                                )
-                                .then(async () => {
-                                  await fetch("/api/v1/push/send", {
-                                    method: "POST",
-                                    headers: {
-                                      "Content-Type": "application/json",
-                                    },
-                                    body: JSON.stringify({
-                                      username: username,
-                                      message:
-                                        "Einladung von " +
-                                        UserManager.getUsername() +
-                                        " zum Projekt " +
-                                        pConfig.name,
-                                    }),
-                                  });
-                                  await ProjectManager.saveProject(
-                                    pConfig,
-                                    true
-                                  );
-                                  PopupManagerReloaded.alert({
-                                    title: i18n.translate(
-                                      "menu.share-project.share-with-others.invited.success"
-                                    ),
-                                    description: i18n.translate(
-                                      "menu.share-project.share-with-others.invited.success.description"
-                                    ),
-                                    didClose: () => {
-                                      UIManager.showComponent(
-                                        <ShareProject projectConfig={pConfig} />
-                                      );
-                                    },
-                                  });
-                                });
-                            });
-                        } else {
-                          PopupManagerReloaded.alert({
-                            title: i18n.translate("error"),
-                            description: i18n.translate(
-                              "error.user.invites.disabled"
-                            ),
-                          });
-                        }
-                      }
-                    );
-                  } else {
-                    PopupManagerReloaded.alert({
-                      title: i18n.translate("error"),
-                      description: i18n.translate("error.user.not-exists"),
-                    });
-                  }
-                });
-              },
-            });
+            UIManager.showComponent(
+              <ManageShare projectConfig={props.projectConfig} />
+            );
           }}
-          title={"menu.share-project.share-with-others"}
+          title={"menu.share-project.manage"}
         />
         <MenuItem
           // @ts-ignore

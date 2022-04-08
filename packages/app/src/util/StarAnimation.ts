@@ -20,6 +20,8 @@ export default class StarAnimation {
     "ProjectInviteManager",
     "ExportProject",
     "Admin",
+    "ManageShare",
+    "ManageUsers",
   ];
 
   public static update(element: React.ReactElement) {

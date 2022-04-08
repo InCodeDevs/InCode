@@ -10,6 +10,8 @@ import i18n from "./i18n";
 import { Invite } from "../types/Invite";
 import { sha256 } from "js-sha256";
 import React from "react";
+import FeedHandler from "./FeedHandler";
+import { JSONObject } from "../types/JSONObject";
 
 export default class Feed {
   public static runTask() {
@@ -20,7 +22,8 @@ export default class Feed {
 
   public static download() {
     this.downloadAdmin();
-    this.downloadInvites();
+    // this.downloadInvites();
+    this.downloadProjectFeed();
   }
 
   public static downloadAdmin() {
@@ -60,55 +63,54 @@ export default class Feed {
     if (await UserManager.allowsInvites()) {
       const invites: Invite[] = await UserManager.getInvites();
       invites.forEach((invite) => {
-        UserManager.removeInvite(invite.timestamp).then(() => {
-          PopupManagerReloaded.alert({
-            title: i18n.translate("menu.feed.invite.title"),
-            description: (
-              <>
-                {i18n.translate("menu.feed.invite.description")}
-                <br />
-                <br />
-                {i18n.translate("menu.feed.invite.name")}&nbsp;:&nbsp;
-                {invite.from}
-                <br />
-                {i18n.translate("menu.feed.invite.project")}&nbsp;:&nbsp;
-                {invite.project_name}
-                <br />
-                {i18n.translate("menu.feed.invite.project_type")}&nbsp;:&nbsp;
-                {invite.project_type} <br />
-                <br />
-              </>
-            ),
-            buttons: [
-              {
-                text: i18n.translate("menu.feed.invite.decline"),
-                variant: "red",
-                onClick: async () => {
-                  PopupManagerReloaded.disposeCurrentPopup();
-                  PopupManagerReloaded.alert({
-                    title: i18n.translate("menu.feed.invite.declined.title"),
-                    description: i18n.translate(
-                      "menu.feed.invite.declined.description"
-                    ),
-                  });
-                },
-              },
-              {
-                text: i18n.translate("menu.feed.invite.accept"),
-                variant: "green",
-                onClick: () => {
-                  PopupManagerReloaded.disposeCurrentPopup();
-                  UserManager.acceptInvite(invite, {
-                    openProject: false,
-                    displayMessage: true,
-                  });
-                },
-              },
-            ],
-            noCloseButton: true,
-          });
-        });
+        UserManager.removeInvite(invite.timestamp).then(() => {});
       });
+    }
+  }
+
+  public static async downloadProjectFeed() {
+    if (UserManager.isLoggedIn()) {
+      const feed = await new WebClient("").readPostBox(
+        UserManager.getUsername(),
+        UserManager.getToken(),
+        "project.feed"
+      );
+
+      for (const obj of feed) {
+        const action = JSON.parse(obj.entry).protocol_action;
+
+        switch (action) {
+          case 0x00:
+            await new WebClient("").removeFromPostBox(
+              UserManager.getUsername(),
+              UserManager.getToken(),
+              "project.feed",
+              obj.at
+            );
+            FeedHandler.handleNewInvite(obj);
+            break;
+          case 0x01:
+            break;
+          case 0x02:
+            break;
+          case 0x03:
+            break;
+          case 0x04:
+            break;
+          case 0x05:
+            break;
+          case 0x06:
+            break;
+          default:
+            await new WebClient("").removeFromPostBox(
+              UserManager.getUsername(),
+              UserManager.getToken(),
+              "project.feed",
+              feed.at
+            );
+            break;
+        }
+      }
     }
   }
 }

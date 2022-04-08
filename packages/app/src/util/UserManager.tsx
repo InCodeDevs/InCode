@@ -28,6 +28,11 @@ export default class UserManager {
     BrowserStorage.store("accessName", username);
     BrowserStorage.store("accessToken", token);
     SocketConnection.connect();
+    new WebClient("").createPostBox(
+      UserManager.getUsername(),
+      UserManager.getToken(),
+      "project.feed"
+    );
   }
 
   public static logout() {
@@ -135,7 +140,7 @@ export default class UserManager {
     await client.removeFromPostBox(
       UserManager.getUsername(),
       UserManager.getToken(),
-      "invites",
+      "project.feed",
       at
     );
   }
@@ -149,11 +154,22 @@ export default class UserManager {
         type: invite.project_type,
         name: invite.project_name,
         code: JSON.parse(
-          await new WebClient("").getData(
-            UserManager.getUsername(),
-            UserManager.getToken(),
-            invite.public_data
-          )
+          (
+            await (
+              await fetch("/api/v1/user/data/get", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  username: UserManager.getUsername(),
+                  password: UserManager.getToken(),
+                  key: invite.public_data,
+                  hash: false,
+                }),
+              })
+            ).json()
+          ).message
         ).code,
         publicData: invite.public_data,
       };

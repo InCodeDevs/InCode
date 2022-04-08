@@ -15,10 +15,11 @@ import * as JSZip from "jszip";
 import { Networking } from "./Networking";
 import Workspace from "./Workspace";
 import String from "./String";
-import { v4 as uuidv4 } from "uuid";
+import { v4, v4 as uuidv4 } from "uuid";
 import PopupManagerReloaded from "./PopupManagerReloaded";
 import SocketConnection from "./SocketConnection";
 import { Registry } from "./Registry";
+import ShareProject from "../views/Project/ShareProject/ShareProject";
 
 const client = new WebClient("");
 
@@ -379,17 +380,18 @@ export default class ProjectManager {
     username: string,
     projectConfig: ProjectConfig
   ): Promise<boolean> {
-    if (await client.existsPostBox(username, "invites")) {
+    if (await client.existsPostBox(username, "project.feed")) {
       await client.addToPostBox(
         UserManager.getUsername(),
         UserManager.getToken(),
-        "invites",
+        "project.feed",
         username,
         JSON.stringify({
           from: UserManager.getUsername(),
           project_name: projectConfig.name,
           project_type: projectConfig.type,
           public_data: projectConfig.publicData,
+          protocol_action: 0x00,
         })
       );
       return true;
@@ -423,5 +425,20 @@ export default class ProjectManager {
         ),
       });
     }
+  }
+
+  public static async shareProject(pConfig: ProjectConfig): Promise<string> {
+    pConfig.publicData =
+      UserManager.getUsername() + ":" + pConfig.name + "_" + v4();
+
+    const client = new WebClient("");
+    await client.storeData(
+      UserManager.getUsername(),
+      UserManager.getToken(),
+      JSON.stringify(pConfig),
+      pConfig.publicData
+    );
+    await ProjectManager.saveProject(pConfig, true);
+    return pConfig.publicData;
   }
 }

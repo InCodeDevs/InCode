@@ -32,6 +32,7 @@ import PopupManagerReloaded from "../../util/PopupManagerReloaded";
 import { ProjectConfig } from "../../types/ProjectConfig";
 import ImportProjectMenuItem from "../../components/Menu/ImportProjectMenuItem";
 import Text from "../../components/Text";
+import DefaultPopup from "../../util/popups/DefaultPopup";
 
 export default function OpenProject() {
   const [container, setContainer] = useState<ReactElement | null>(null);
@@ -116,6 +117,8 @@ export default function OpenProject() {
                 color: "#00FFBB",
                 name: "menu.open-project.make-offline",
                 onclick: () => {
+                  PopupManagerReloaded.alert(DefaultPopup.AVAILABLE_SOON);
+                  return;
                   let config = [];
                   if (localStorage.getItem("offline.projects")) {
                     config = JSON.parse(

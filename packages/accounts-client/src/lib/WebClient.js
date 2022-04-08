@@ -287,7 +287,7 @@ class WebClient {
       newUser: newUser,
     });
 
-    const r = await fetch(this.#root + "/api/v1/user/data/allow", config);
+    const r = await fetch(this.#root + "/api/v1/user/data/disallow", config);
     try {
       const j = await r.json();
       return !j.error;
