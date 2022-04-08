@@ -6,6 +6,18 @@ import BrowserStorage from "./BrowserStorage";
 import { JSONObject } from "../types/JSONObject";
 
 export default class Settings {
+  public static readonly defaults = {
+    codeEditor: {
+      fontSize: 21,
+      theme: "incode-dark",
+      lineNumbers: true,
+    },
+    language: "de",
+    pushNotifications: false,
+    autoSave: true,
+    enableLiveReload: true,
+  };
+
   public static getSetting(key: string): any {
     return JSON.parse(BrowserStorage.get("settings") || "{}")[key] || "";
   }
@@ -18,14 +30,7 @@ export default class Settings {
 
   public static reset() {
     BrowserStorage.delete("settings");
-    const settings: JSONObject = {};
-    settings["codeEditor.fontSize"] = 21;
-    settings["codeEditor.theme"] = "incode-dark";
-    settings["codeEditor.lineNumbers"] = true;
-    settings["language"] = "de";
-    settings["pushNotifications"] = false;
-    settings["autoSave"] = true;
-    BrowserStorage.store("settings", JSON.stringify(settings));
+    BrowserStorage.store("settings", JSON.stringify(Settings.defaults));
   }
 
   public static getCodeEditorSettings(): JSONObject {
@@ -33,6 +38,15 @@ export default class Settings {
   }
 
   public static isValid() {
-    return BrowserStorage.get("settings") !== "";
+    if (!BrowserStorage.get("settings")) {
+      return false;
+    }
+    let settings = JSON.parse(BrowserStorage.get("settings") || "{}");
+    for (let key in Settings.defaults) {
+      if (!settings[key]) {
+        return false;
+      }
+    }
+    return true;
   }
 }
