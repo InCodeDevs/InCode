@@ -79,29 +79,29 @@ export default class Feed {
       for (const obj of feed) {
         const action = JSON.parse(obj.entry).protocol_action;
 
+        await new WebClient("").removeFromPostBox(
+          UserManager.getUsername(),
+          UserManager.getToken(),
+          "project.feed",
+          obj.at
+        );
+
         switch (action) {
           case 0x00:
-            await new WebClient("").removeFromPostBox(
-              UserManager.getUsername(),
-              UserManager.getToken(),
-              "project.feed",
-              obj.at
-            );
             FeedHandler.handleNewInvite(obj);
             break;
           case 0x01:
-            await new WebClient("").removeFromPostBox(
-              UserManager.getUsername(),
-              UserManager.getToken(),
-              "project.feed",
-              obj.at
-            );
             FeedHandler.handleAcceptInvite(
               obj.author,
               JSON.parse(obj.entry).project_name
             );
             break;
           case 0x02:
+            FeedHandler.handleDeclineInvite(
+              obj.author,
+              JSON.parse(obj.entry).project_name,
+              JSON.parse(obj.entry).public_data
+            );
             break;
           case 0x03:
             break;

@@ -168,6 +168,7 @@
   "menu.share-project.manage.users.remove.description": "Bist du sicher, dass du diesen Benutzer entfernen möchtest?",
   "menu.share-project.manage.users.title": "Benutzer verwalten",
   "menu.share-project.manage.users.accepted": "Einladung angenommen",
+  "menu.share-project.manage.users.declined": "Einladung abgelehnt",
   "menu.share-project.share-project": "Projekt veröffentlichen",
   "menu.share-project.share-template": "Vorlage veröffentlichen",
   "menu.share-project.share-with-others": "Mit anderen teilen",

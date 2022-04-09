@@ -46,6 +46,18 @@ export default class FeedHandler {
           text: i18n.translate("menu.feed.invite.decline"),
           variant: "red",
           onClick: async () => {
+            await new WebClient("").addToPostBox(
+              UserManager.getUsername(),
+              UserManager.getToken(),
+              "project.feed",
+              postboxEntry.author as string,
+              JSON.stringify({
+                protocol_action: 0x02,
+                project_name: invite.project_name,
+                public_data: invite.public_data,
+              })
+            );
+
             PopupManagerReloaded.disposeCurrentPopup();
             PopupManagerReloaded.alert({
               title: i18n.translate("menu.feed.invite.declined.title"),
@@ -92,5 +104,30 @@ export default class FeedHandler {
         </>
       ),
     });
+  }
+
+  public static handleDeclineInvite(
+    username: string,
+    projectName: string,
+    publicData: string
+  ) {
+    new WebClient("")
+      .disallowDataAccess(
+        UserManager.getUsername(),
+        UserManager.getToken(),
+        publicData,
+        username
+      )
+      .then(() => {
+        PopupManagerReloaded.alert({
+          title: i18n.translate("menu.share-project.manage.users.declined"),
+          description: (
+            <>
+              Name:&nbsp;{username} <br />
+              {i18n.translate("menu.feed.invite.project")}:&nbsp;{projectName}
+            </>
+          ),
+        });
+      });
   }
 }
