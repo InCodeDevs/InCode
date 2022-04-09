@@ -213,6 +213,19 @@ export default class ProjectManager {
         UserManager.getToken(),
         "projects." + projectConfig.name
       );
+    } else {
+      console.log(projectConfig);
+      new WebClient("").addToPostBox(
+        UserManager.getUsername(),
+        UserManager.getToken(),
+        "project.feed",
+        projectConfig.publicData.split(":")[0],
+        JSON.stringify({
+          protocol_action: 0x03,
+          project_name: projectConfig.name,
+          public_data: projectConfig.publicData,
+        })
+      );
     }
   }
 

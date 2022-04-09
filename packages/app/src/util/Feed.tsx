@@ -104,6 +104,11 @@ export default class Feed {
             );
             break;
           case 0x03:
+            FeedHandler.handleLeaveProject(
+              obj.author,
+              JSON.parse(obj.entry).project_name,
+              JSON.parse(obj.entry).public_data
+            );
             break;
           case 0x04:
             break;

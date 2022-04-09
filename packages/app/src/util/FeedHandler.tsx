@@ -130,4 +130,26 @@ export default class FeedHandler {
         });
       });
   }
+
+  public static handleLeaveProject(
+    username: string,
+    projectName: string,
+    publicData: string
+  ) {
+    new WebClient("").disallowDataAccess(
+      UserManager.getUsername(),
+      UserManager.getToken(),
+      publicData,
+      username
+    );
+    PopupManagerReloaded.alert({
+      title: i18n.translate("menu.share-project.manage.users.left"),
+      description: (
+        <>
+          Name:&nbsp;{username} <br />
+          {i18n.translate("menu.feed.invite.project")}:&nbsp;{projectName}
+        </>
+      ),
+    });
+  }
 }

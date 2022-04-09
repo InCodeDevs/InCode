@@ -169,6 +169,7 @@
   "menu.share-project.manage.users.title": "Benutzer verwalten",
   "menu.share-project.manage.users.accepted": "Einladung angenommen",
   "menu.share-project.manage.users.declined": "Einladung abgelehnt",
+  "menu.share-project.manage.users.left": "Freigabe verlassen",
   "menu.share-project.share-project": "Projekt veröffentlichen",
   "menu.share-project.share-template": "Vorlage veröffentlichen",
   "menu.share-project.share-with-others": "Mit anderen teilen",
