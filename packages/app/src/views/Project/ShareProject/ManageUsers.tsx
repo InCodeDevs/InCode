@@ -6,7 +6,6 @@
 import * as React from "react";
 import { ProjectConfig } from "../../../types/ProjectConfig";
 import Container from "../../../components/Container";
-import MenuItemList from "../../../components/Menu/MenuItemList";
 import MenuItemListScroll from "../../../components/Menu/MenuItemListScroll";
 import BackMenuItem from "../../../components/Menu/BackMenuItem";
 import ManageShare from "./ManageShare";

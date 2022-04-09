@@ -27,25 +27,16 @@ export default function PlaygroundPreview() {
   }, []);
 
   return (
-    <div
+    <iframe
+      name={"playground-preview-frame"}
+      src={"about:blank"}
+      width={"100%"}
       style={{
-        width: "50%",
+        border: "none",
+        background: "#FFF",
+        pointerEvents: "none",
         height: "96vh",
-        position: "fixed",
-        right: "0",
-        bottom: "0",
       }}
-    >
-      <iframe
-        name={"playground-preview-frame"}
-        src={"about:blank"}
-        width={window.innerWidth / 2}
-        height={window.innerHeight}
-        style={{
-          border: "none",
-          background: "#FFF",
-        }}
-      />
-    </div>
+    />
   );
 }

@@ -207,8 +207,8 @@ export default function MonacoEditor(props: MonacoProps) {
 
   return (
     <Editor
-      height={!props.height ? "100vh" : props.height}
-      width={!props.width ? "50%" : props.width}
+      // height={!props.height ? "100vh" : props.height}
+      // width={!props.width ? "50%" : props.width}
       language={"incode"}
       className={"incode-monaco-editor"}
       theme={Settings.getSetting("codeEditor.theme")}

@@ -39,7 +39,7 @@ export default function BlocklyEditor(props: BlocklyProps) {
     <>
       <div
         id="blockly"
-        style={{ width: "50%", height: "100vh", margin: "0" }}
+        style={{ width: "100%", height: "96vh", margin: "0" }}
       />
     </>
   );
