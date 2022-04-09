@@ -9,6 +9,7 @@ import UserManager from "./UserManager";
 import React from "react";
 import { PostboxEntry } from "../types/PostboxEntry";
 import { Invite } from "../types/Invite";
+import { WebClient } from "@incodelang/accounts-client";
 
 export default class FeedHandler {
   public static handleNewInvite(postboxEntry: PostboxEntry) {
@@ -57,7 +58,18 @@ export default class FeedHandler {
         {
           text: i18n.translate("menu.feed.invite.accept"),
           variant: "green",
-          onClick: () => {
+          onClick: async () => {
+            await new WebClient("").addToPostBox(
+              UserManager.getUsername(),
+              UserManager.getToken(),
+              "project.feed",
+              postboxEntry.author as string,
+              JSON.stringify({
+                protocol_action: 0x01,
+                project_name: invite.project_name,
+              })
+            );
+
             PopupManagerReloaded.disposeCurrentPopup();
             UserManager.acceptInvite(invite, {
               openProject: false,
@@ -67,6 +79,18 @@ export default class FeedHandler {
         },
       ],
       noCloseButton: true,
+    });
+  }
+
+  public static handleAcceptInvite(username: string, projectName: string) {
+    PopupManagerReloaded.alert({
+      title: i18n.translate("menu.share-project.manage.users.accepted"),
+      description: (
+        <>
+          Name:&nbsp;{username} <br />
+          {i18n.translate("menu.feed.invite.project")}:&nbsp;{projectName}
+        </>
+      ),
     });
   }
 }

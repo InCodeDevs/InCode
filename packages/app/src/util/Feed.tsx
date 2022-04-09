@@ -90,6 +90,16 @@ export default class Feed {
             FeedHandler.handleNewInvite(obj);
             break;
           case 0x01:
+            await new WebClient("").removeFromPostBox(
+              UserManager.getUsername(),
+              UserManager.getToken(),
+              "project.feed",
+              obj.at
+            );
+            FeedHandler.handleAcceptInvite(
+              obj.author,
+              JSON.parse(obj.entry).project_name
+            );
             break;
           case 0x02:
             break;
