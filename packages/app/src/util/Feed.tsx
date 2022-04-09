@@ -111,6 +111,10 @@ export default class Feed {
             );
             break;
           case 0x04:
+            FeedHandler.handleKicked(
+              obj.author,
+              JSON.parse(obj.entry).project_name
+            );
             break;
           case 0x05:
             break;

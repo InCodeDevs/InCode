@@ -56,6 +56,16 @@ export default function ManageUsers(props: { projectConfig: ProjectConfig }) {
                     user
                   )
                   .then(() => {
+                    new WebClient("").addToPostBox(
+                      UserManager.getUsername(),
+                      UserManager.getToken(),
+                      "project.feed",
+                      user,
+                      JSON.stringify({
+                        protocol_action: 0x04,
+                        project_name: props.projectConfig.name,
+                      })
+                    );
                     UIManager.unmountAt("root");
                     UIManager.showComponent(
                       <ManageUsers projectConfig={props.projectConfig} />

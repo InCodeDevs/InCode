@@ -378,6 +378,37 @@ export default class ProjectManager {
     }
   }
 
+  public static async removeFromProjectList(projectName: string) {
+    let currentProjects = await client.getData_u(
+      UserManager.getUsername(),
+      UserManager.getToken(),
+      "projects"
+    );
+
+    let projects: any[] = [];
+
+    try {
+      projects = JSON.parse(currentProjects);
+    } catch (e) {
+      if (currentProjects === "The data was not found.") {
+        projects = [];
+      } else {
+        projects = currentProjects;
+      }
+    }
+
+    if (projects.includes(projectName)) {
+      projects = projects.filter((project) => project !== projectName);
+
+      await client.storeData_u(
+        UserManager.getUsername(),
+        UserManager.getToken(),
+        projects,
+        "projects"
+      );
+    }
+  }
+
   public static isEmptyResponse(response: any): boolean {
     return (
       response === {} ||

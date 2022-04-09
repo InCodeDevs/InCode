@@ -152,4 +152,16 @@ export default class FeedHandler {
       ),
     });
   }
+
+  public static handleKicked(username: string, projectName: string) {
+    PopupManagerReloaded.alert({
+      title: i18n.translate("menu.share-project.manage.users.kicked"),
+      description: (
+        <>
+          Name:&nbsp;{username} <br />
+          {i18n.translate("menu.feed.invite.project")}:&nbsp;{projectName}
+        </>
+      ),
+    });
+  }
 }
