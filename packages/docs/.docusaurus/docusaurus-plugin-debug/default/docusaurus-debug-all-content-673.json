@@ -424,7 +424,7 @@
               "unversionedId": "syntax/typen",
               "id": "syntax/typen",
               "title": "Typen",
-              "description": "Typen sind eine Art von Datentypen, die in einer Programmiersprache definiert werden.",
+              "description": "Typen sind eine Art von Datentypen, die in einer Programmiersprache definiert werden. Sie werden verwendet, um Variablen",
               "source": "@site/docs/001-syntax/002-typen.md",
               "sourceDirName": "001-syntax",
               "slug": "/syntax/typen",

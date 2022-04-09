@@ -256,7 +256,7 @@
     "syntax/typen": {
       "id": "syntax/typen",
       "title": "Typen",
-      "description": "Typen sind eine Art von Datentypen, die in einer Programmiersprache definiert werden.",
+      "description": "Typen sind eine Art von Datentypen, die in einer Programmiersprache definiert werden. Sie werden verwendet, um Variablen",
       "sidebar": "tutorialSidebar"
     }
   }
