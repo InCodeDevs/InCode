@@ -18,6 +18,8 @@ import ProjectManager from "../../util/ProjectManager";
 import { Registry } from "../../util/Registry";
 import Workspace from "../../util/Workspace";
 import Settings from "../../util/Settings";
+import Blockly from "blockly";
+import SplitPane from "react-split-pane";
 
 interface Props {
   monaco?: MonacoProps;
@@ -46,16 +48,27 @@ export default function ProjectEditor(props: Props) {
     <>
       <EditorMenuBar projectConfig={project} />
       <FileSelector />
-      {project.type === "code" ? (
-        <MonacoEditor
-          mode={props.monaco?.mode || "project"}
-          code={props.monaco?.code}
-          public={props.project.publicData}
-        />
-      ) : (
-        <BlocklyEditor initialXml={props.blockly?.initialXml || ""} />
-      )}
-      <PlaygroundPreview />
+      <SplitPane
+        split={"vertical"}
+        defaultSize={"50%"}
+        className={"incode-split-pane"}
+        onChange={() => {
+          if (props.project.type === "blockly") {
+            Blockly.svgResize(Registry.getRegister(0x064));
+          }
+        }}
+      >
+        {project.type === "code" ? (
+          <MonacoEditor
+            mode={props.monaco?.mode || "project"}
+            code={props.monaco?.code}
+            public={props.project.publicData}
+          />
+        ) : (
+          <BlocklyEditor initialXml={props.blockly?.initialXml || ""} />
+        )}
+        <PlaygroundPreview />
+      </SplitPane>
     </>
   );
 }
