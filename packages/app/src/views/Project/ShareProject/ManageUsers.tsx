@@ -15,11 +15,12 @@ import { WebClient } from "@incodelang/accounts-client";
 import UserManager from "../../../util/UserManager";
 import MenuItem from "../../../components/Menu/MenuItem";
 import MenuItemControls from "../../../components/Menu/MenuItemControls";
-import { faTrashAlt, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faTrashAlt, faUser } from "@fortawesome/free-solid-svg-icons";
 import i18n from "../../../util/i18n";
 import Title from "../../../components/Title";
 import PopupManagerReloaded from "../../../util/PopupManagerReloaded";
 import UIManager from "../../../util/UIManager";
+import ProjectManager from "../../../util/ProjectManager";
 
 export default function ManageUsers(props: { projectConfig: ProjectConfig }) {
   const [content, setContent] = React.useState<ReactElement[]>();
@@ -28,6 +29,82 @@ export default function ManageUsers(props: { projectConfig: ProjectConfig }) {
     let e: ReactElement[] = [
       <BackMenuItem
         component={<ManageShare projectConfig={props.projectConfig} />}
+      />,
+      <MenuItem
+        icon={faPlus}
+        onclick={() => {
+          PopupManagerReloaded.ask({
+            title: i18n.translate(
+              "menu.share-project.share-with-others.invite"
+            ),
+            description: i18n.translate(
+              "menu.share-project.share-with-others.input-name"
+            ),
+            onSubmit: (username) => {
+              UserManager.accountExists(username).then(async (exists) => {
+                if (exists) {
+                  const id = await ProjectManager.shareProject(
+                    props.projectConfig
+                  );
+                  ProjectManager.inviteUser(username, props.projectConfig).then(
+                    (success) => {
+                      if (success) {
+                        const client = new WebClient("");
+                        client
+                          .storeData(
+                            UserManager.getUsername(),
+                            UserManager.getToken(),
+                            JSON.stringify(props.projectConfig),
+                            id
+                          )
+                          .then((x) => {
+                            client
+                              .allowDataAccess(
+                                UserManager.getUsername(),
+                                UserManager.getToken(),
+                                id,
+                                username
+                              )
+                              .then(async () => {
+                                PopupManagerReloaded.alert({
+                                  title: i18n.translate(
+                                    "menu.share-project.share-with-others.invited.success"
+                                  ),
+                                  description: i18n.translate(
+                                    "menu.share-project.share-with-others.invited.success.description"
+                                  ),
+                                  didClose: () => {
+                                    UIManager.unmountAt("root");
+                                    UIManager.showComponent(
+                                      <ManageShare
+                                        projectConfig={props.projectConfig}
+                                      />
+                                    );
+                                  },
+                                });
+                              });
+                          });
+                      } else {
+                        PopupManagerReloaded.alert({
+                          title: i18n.translate("error"),
+                          description: i18n.translate(
+                            "error.user.invites.disabled"
+                          ),
+                        });
+                      }
+                    }
+                  );
+                } else {
+                  PopupManagerReloaded.alert({
+                    title: i18n.translate("error"),
+                    description: i18n.translate("error.user.not-exists"),
+                  });
+                }
+              });
+            },
+          });
+        }}
+        title={"menu.share-project.share-with-others"}
       />,
     ];
 
