@@ -48,29 +48,31 @@ export default function ManageUsers(props: { projectConfig: ProjectConfig }) {
                 "menu.share-project.manage.users.remove.description"
               ),
               onAgree: () => {
-                new WebClient("")
-                  .disallowDataAccess(
-                    UserManager.getUsername(),
-                    UserManager.getToken(),
-                    props.projectConfig.publicData,
-                    user
-                  )
-                  .then(() => {
-                    new WebClient("").addToPostBox(
+                if (!disabled) {
+                  new WebClient("")
+                    .disallowDataAccess(
                       UserManager.getUsername(),
                       UserManager.getToken(),
-                      "project.feed",
-                      user,
-                      JSON.stringify({
-                        protocol_action: 0x04,
-                        project_name: props.projectConfig.name,
-                      })
-                    );
-                    UIManager.unmountAt("root");
-                    UIManager.showComponent(
-                      <ManageUsers projectConfig={props.projectConfig} />
-                    );
-                  });
+                      props.projectConfig.publicData,
+                      user
+                    )
+                    .then(() => {
+                      new WebClient("").addToPostBox(
+                        UserManager.getUsername(),
+                        UserManager.getToken(),
+                        "project.feed",
+                        user,
+                        JSON.stringify({
+                          protocol_action: 0x04,
+                          project_name: props.projectConfig.name,
+                        })
+                      );
+                      UIManager.unmountAt("root");
+                      UIManager.showComponent(
+                        <ManageUsers projectConfig={props.projectConfig} />
+                      );
+                    });
+                }
               },
             });
           };
