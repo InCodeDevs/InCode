@@ -14,7 +14,7 @@ import SplitPane from "react-split-pane";
 import Blockly from "blockly";
 import { Registry } from "../util/Registry";
 
-export default function Playground() {
+export default function Playground(props: { code?: string }) {
   const [editor, setEditor] = useState("monaco");
 
   return (
@@ -60,7 +60,7 @@ export default function Playground() {
         {editor === "monaco" ? (
           <MonacoEditor
             mode={"playground"}
-            code={'Gib "Hallo Welt" in der Dialogbox aus'}
+            code={props.code || "Gib 'Hallo Welt' in der Dialogbox aus"}
             public={undefined}
           />
         ) : (

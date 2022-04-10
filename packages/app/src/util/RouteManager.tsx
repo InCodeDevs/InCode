@@ -38,6 +38,21 @@ export default class RouteManager {
           }
         } else if (location.pathname.startsWith("/playground")) {
           this.show();
+          if (location.search.includes("fromUrl")) {
+            const fromUrl = location.search.split("fromUrl=")[1];
+
+            (async () => {
+              const code = await (
+                await fetch("/api/v1/content_from_url?url=" + fromUrl, {
+                  method: "GET",
+                })
+              ).text();
+
+              UIManager.showComponent(<Playground code={code} />);
+            })();
+          } else {
+            UIManager.showComponent(<Playground />);
+          }
           UIManager.showComponent(<Playground />);
         } else if (location.pathname.startsWith("/admin")) {
           this.show();
