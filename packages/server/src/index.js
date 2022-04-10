@@ -57,3 +57,11 @@ if (!existsUser("admin")) {
     chalk.red(`A new user 'admin' was created with the password '${password}'.`)
   );
 }
+
+process.on("uncaughtException", (err) => {
+  console.error(err);
+});
+
+process.on("unhandledRejection", (err) => {
+  console.error(err);
+});

@@ -21,6 +21,7 @@ module.exports = (app) => {
   require("./api/admin/data")(app);
   require("./api/admin/postbox")(app);
   require("./api/analytics")(app);
+  require("./api/content")(app);
 
   accountServer({
     app: app,
