@@ -57,6 +57,18 @@ export default function ProjectEditor(props: Props) {
             Blockly.svgResize(Registry.getRegister(0x064));
           }
         }}
+        // @ts-ignore
+        onResizeStart={() => {
+          document.getElementsByName(
+            "playground-preview-frame"
+          )[0].style.pointerEvents = "none";
+        }}
+        // @ts-ignore
+        onResizeEnd={() => {
+          document.getElementsByName(
+            "playground-preview-frame"
+          )[0].style.pointerEvents = "all";
+        }}
       >
         {project.type === "code" ? (
           <MonacoEditor
