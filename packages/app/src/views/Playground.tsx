@@ -56,6 +56,18 @@ export default function Playground(props: { code?: string }) {
             Blockly.svgResize(Registry.getRegister(0x064));
           }
         }}
+        // @ts-ignore
+        onResizeStart={() => {
+          document.getElementsByName(
+            "playground-preview-frame"
+          )[0].style.pointerEvents = "none";
+        }}
+        // @ts-ignore
+        onResizeEnd={() => {
+          document.getElementsByName(
+            "playground-preview-frame"
+          )[0].style.pointerEvents = "all";
+        }}
       >
         {editor === "monaco" ? (
           <MonacoEditor
