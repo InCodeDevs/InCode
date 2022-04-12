@@ -1,5 +1,7 @@
 # Farben
 
+Farben sind experimentell und funktionieren eventuell nicht immer wie erwartet.
+
 | Farbe       | CSS-Farbe     | Hex-Farbe     | Beispiel                                            |
 | ----------- | ------------- | ------------- | --------------------------------------------------- |
 | Blau        | `blue`        | `#0000FF`     | ![](https://singlecolorimage.com/get/0000FF/128x64) |
