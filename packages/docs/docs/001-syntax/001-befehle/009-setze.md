@@ -6,7 +6,7 @@ Der `setze` Befehl setzt eine Eigenschaft eines Elements auf einen Wert. Alterna
 
 Auf das Schlüsselwort `setze` folgt ein Artikel, die zu verändernde Eigenschaft, das Schlüsselwort `auf` und der neue Wert. Dieser muss je nach Eigenschaft in Anführungszeichen stehen.
 
-| Befehl  | Parameter                            |
-|---------|--------------------------------------|
-| `setze` | `<artikel> <eigenschaft> auf <wert>` |
+| Befehl  | Parameter                                                 |
+|---------|-----------------------------------------------------------|
+| `setze` | `<artikel> <eigenschaft> von <variablen name> auf <wert>` |
 

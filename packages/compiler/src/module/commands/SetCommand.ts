@@ -532,6 +532,10 @@ export class SetCommand extends InCodeCommand {
           name: "none",
           aliases: ["invisible", "unsichtbar"],
         },
+        {
+          name: "block",
+          aliases: ["block", "sichtbar"],
+        },
       ],
     },
   ];
