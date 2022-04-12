@@ -16,9 +16,7 @@ const config = {
   organizationName: "incodedevs", // Usually your GitHub org/user name.
   projectName: "incode", // Usually your repo name.
 
-  plugins: [
-    require.resolve("@cmfcmf/docusaurus-search-local")
-  ],
+  plugins: [require.resolve("@cmfcmf/docusaurus-search-local")],
 
   presets: [
     [
