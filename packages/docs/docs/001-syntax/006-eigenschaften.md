@@ -46,4 +46,5 @@ Eigenschaften sind Attribute, die das Aussehen oder den Zustand eines Elements b
 | `umrandungsfarbe-links`         | [`Farbe`](/docs/syntax/farben)                                  |
 | `umrandungsfarbe-rechts`        | [`Farbe`](/docs/syntax/farben)                                  |
 | `umrandungsfarbe`               | [`Farbe`](/docs/syntax/farben)                                  |
-| `sichtbarkeit`                  | [`Sichtbarkeit`](/docs/syntax/eigenschaften/sichtbarkeit)      |
+| `sichtbarkeit`                  | [`Sichtbarkeit`](/docs/syntax/eigenschaften/sichtbarkeit)       |
+| `wert`                          | `Jeder`                                                         |
