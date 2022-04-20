@@ -87,7 +87,10 @@ export default function ManageShare(props: { projectConfig: ProjectConfig }) {
                                   username
                                 )
                                 .then(async () => {
-                                  PopupManagerReloaded.toast("menu.share-project.share-with-others.invited.success.description", "success")
+                                  PopupManagerReloaded.toast(
+                                    "menu.share-project.share-with-others.invited.success.description",
+                                    "success"
+                                  );
                                   UIManager.unmountAt("root");
                                   UIManager.showComponent(
                                     <ManageShare
@@ -97,11 +100,17 @@ export default function ManageShare(props: { projectConfig: ProjectConfig }) {
                                 });
                             });
                         } else {
-                          PopupManagerReloaded.toast("error.user.invites.disabled", "error")
+                          PopupManagerReloaded.toast(
+                            "error.user.invites.disabled",
+                            "error"
+                          );
                         }
                       });
                     } else {
-                      PopupManagerReloaded.toast("error.user.not-exists", "error")
+                      PopupManagerReloaded.toast(
+                        "error.user.not-exists",
+                        "error"
+                      );
                     }
                   });
                 },

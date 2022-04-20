@@ -100,7 +100,10 @@ export default function AccountManage() {
                       },
                     });
                   } else {
-                    PopupManagerReloaded.toast("menu.manage-account.delete-account.wrong-password.description", "error")
+                    PopupManagerReloaded.toast(
+                      "menu.manage-account.delete-account.wrong-password.description",
+                      "error"
+                    );
                   }
                 });
               },
@@ -112,7 +115,10 @@ export default function AccountManage() {
           // @ts-ignore
           icon={faPencilAlt}
           onclick={() => {
-            PopupManagerReloaded.toast("menu.available-soon.description", "error")
+            PopupManagerReloaded.toast(
+              "menu.available-soon.description",
+              "error"
+            );
 
             return;
             /*
@@ -208,12 +214,21 @@ export default function AccountManage() {
                             newPassword as string
                           )
                         ) {
-                          PopupManagerReloaded.toast("menu.manage-account.change-password.success.description", "error")
+                          PopupManagerReloaded.toast(
+                            "menu.manage-account.change-password.success.description",
+                            "error"
+                          );
                         } else {
-                          PopupManagerReloaded.toast("error.password.not.match", "error")
+                          PopupManagerReloaded.toast(
+                            "error.password.not.match",
+                            "error"
+                          );
                         }
                       } else {
-                        PopupManagerReloaded.toast("error.password.too.weak", "error")
+                        PopupManagerReloaded.toast(
+                          "error.password.too.weak",
+                          "error"
+                        );
                       }
                     },
                   },

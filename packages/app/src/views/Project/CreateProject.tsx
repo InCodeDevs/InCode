@@ -60,9 +60,15 @@ export default function CreateProject() {
                   projectConfig,
                   (success: boolean) => {
                     if (!success) {
-                      PopupManagerReloaded.toast("error.project.exists.description", "error");
+                      PopupManagerReloaded.toast(
+                        "error.project.exists.description",
+                        "error"
+                      );
                     } else {
-                      PopupManagerReloaded.toast("menu.create-project.success.description", "success");
+                      PopupManagerReloaded.toast(
+                        "menu.create-project.success.description",
+                        "success"
+                      );
                       ProjectManager.openProject(projectConfig);
                     }
                   }
@@ -91,9 +97,15 @@ export default function CreateProject() {
                   projectConfig,
                   (success: boolean) => {
                     if (!success) {
-                      PopupManagerReloaded.toast("error.project.exists.description", "error");
+                      PopupManagerReloaded.toast(
+                        "error.project.exists.description",
+                        "error"
+                      );
                     } else {
-                      PopupManagerReloaded.toast("error.project.success.description", "success");
+                      PopupManagerReloaded.toast(
+                        "error.project.success.description",
+                        "success"
+                      );
                       ProjectManager.openProject(projectConfig);
                     }
                   }

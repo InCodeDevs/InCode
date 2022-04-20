@@ -117,7 +117,10 @@ export default function OpenProject() {
                 color: "#00FFBB",
                 name: "menu.open-project.make-offline",
                 onclick: () => {
-                  PopupManagerReloaded.toast("menu.available-soon.description", "error")
+                  PopupManagerReloaded.toast(
+                    "menu.available-soon.description",
+                    "error"
+                  );
                   return;
                   let config = [];
                   if (localStorage.getItem("offline.projects")) {
@@ -171,7 +174,10 @@ export default function OpenProject() {
                     (success) => {
                       UIManager.unmountAt("root");
                       UIManager.showComponent(<OpenProject />);
-                      PopupManagerReloaded.toast("menu.open-project.duplicated.description", "success")
+                      PopupManagerReloaded.toast(
+                        "menu.open-project.duplicated.description",
+                        "success"
+                      );
                     }
                   );
                 },

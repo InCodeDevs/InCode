@@ -93,7 +93,10 @@ export default function AccountRegister() {
                 if (UserManager.isPasswordSafe(password)) {
                   client.existsUser(username).then((r) => {
                     if (r) {
-                      PopupManagerReloaded.toast("error.username.exists", "error");
+                      PopupManagerReloaded.toast(
+                        "error.username.exists",
+                        "error"
+                      );
                     } else {
                       UIManager.unmountAt("root");
                       client.create(username, password).then((x) => {
@@ -105,7 +108,10 @@ export default function AccountRegister() {
                     }
                   });
                 } else {
-                  PopupManagerReloaded.toast("error.password.too.weak", "error");
+                  PopupManagerReloaded.toast(
+                    "error.password.too.weak",
+                    "error"
+                  );
                 }
               } else {
                 PopupManagerReloaded.toast("error.password.not.match", "error");

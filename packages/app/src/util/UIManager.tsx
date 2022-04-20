@@ -16,7 +16,13 @@ export default class UIManager {
     ReactDOM.unmountComponentAtNode(
       document.querySelector("#" + containerID) as HTMLElement
     );
-    ReactDOM.render(<><Toaster />{component}</>, document.querySelector("#" + containerID));
+    ReactDOM.render(
+      <>
+        <Toaster />
+        {component}
+      </>,
+      document.querySelector("#" + containerID)
+    );
     if (containerID === "root") {
       StarAnimation.update(component);
     }

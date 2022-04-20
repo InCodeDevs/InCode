@@ -33,7 +33,10 @@ export default function SystemAdmin() {
                 password: UserManager.getToken(),
               }),
             }).then(() => {
-              PopupManagerReloaded.toast("menu.admin.system.shutdown.success.description", "error")
+              PopupManagerReloaded.toast(
+                "menu.admin.system.shutdown.success.description",
+                "error"
+              );
             });
           }}
           title={"menu.admin.system.shutdown"}

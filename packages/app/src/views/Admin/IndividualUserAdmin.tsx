@@ -144,8 +144,10 @@ export default function IndividualUserAdmin() {
                       newPassword: answer,
                     }),
                   }).then(() => {
-                    PopupManagerReloaded.toast("menu.admin.user.individual.changePassword.success.description", "error")
-
+                    PopupManagerReloaded.toast(
+                      "menu.admin.user.individual.changePassword.success.description",
+                      "error"
+                    );
                   });
                 }
               },
@@ -166,7 +168,10 @@ export default function IndividualUserAdmin() {
                 password: UserManager.getToken(),
               }),
             }).then(() => {
-              PopupManagerReloaded.toast("menu.admin.user.individual.reset-rate.success.description", "error")
+              PopupManagerReloaded.toast(
+                "menu.admin.user.individual.reset-rate.success.description",
+                "error"
+              );
             });
           }}
           title={"menu.admin.user.individual.reset-rate"}

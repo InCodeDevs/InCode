@@ -26,7 +26,7 @@ const client = new WebClient("");
 export default class ProjectManager {
   public static checkProjectName(value: string): boolean {
     if (value.length < 4) {
-      PopupManagerReloaded.toast("error.project.name.too.short", "error")
+      PopupManagerReloaded.toast("error.project.name.too.short", "error");
     }
     return value.length >= 4;
   }

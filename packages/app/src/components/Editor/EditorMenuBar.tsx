@@ -42,7 +42,10 @@ export default function EditorMenuBar(props: Props) {
               // @ts-ignore
               props.projectConfig.code = Workspace.getCode();
               ProjectManager.saveProject(props.projectConfig).then(() => {
-                PopupManagerReloaded.toast("menu.project.saved.description", "success");
+                PopupManagerReloaded.toast(
+                  "menu.project.saved.description",
+                  "success"
+                );
               });
             },
           },

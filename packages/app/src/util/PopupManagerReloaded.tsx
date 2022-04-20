@@ -175,9 +175,9 @@ export default class PopupManagerReloaded {
 
     m(i18n.translate(messageCode), {
       style: {
-        borderRadius: '10px',
-        background: '#333',
-        color: '#fff',
+        borderRadius: "10px",
+        background: "#333",
+        color: "#fff",
       },
     });
   }
