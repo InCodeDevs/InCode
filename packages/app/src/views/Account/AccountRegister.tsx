@@ -93,10 +93,7 @@ export default function AccountRegister() {
                 if (UserManager.isPasswordSafe(password)) {
                   client.existsUser(username).then((r) => {
                     if (r) {
-                      PopupManagerReloaded.alert({
-                        title: i18n.translate("error"),
-                        description: i18n.translate("error.username.exists"),
-                      });
+                      PopupManagerReloaded.toast("error.username.exists", "error");
                     } else {
                       UIManager.unmountAt("root");
                       client.create(username, password).then((x) => {
@@ -108,22 +105,13 @@ export default function AccountRegister() {
                     }
                   });
                 } else {
-                  PopupManagerReloaded.alert({
-                    title: i18n.translate("error"),
-                    description: i18n.translate("error.password.too.weak"),
-                  });
+                  PopupManagerReloaded.toast("error.password.too.weak", "error");
                 }
               } else {
-                PopupManagerReloaded.alert({
-                  title: i18n.translate("error"),
-                  description: i18n.translate("error.password.not.match"),
-                });
+                PopupManagerReloaded.toast("error.password.not.match", "error");
               }
             } else {
-              PopupManagerReloaded.alert({
-                title: i18n.translate("error"),
-                description: i18n.translate("error.username.too.short"),
-              });
+              PopupManagerReloaded.toast("error.username.too.short", "error");
             }
           }}
           title={"menu.login.register"}

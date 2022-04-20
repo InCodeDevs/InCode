@@ -10,7 +10,7 @@ import MenuItem from "../../components/Menu/MenuItem";
 import {
   faBackward,
   faCode,
-  faDesktop,
+  faDesktop
 } from "@fortawesome/free-solid-svg-icons";
 import Title from "../../components/Title";
 import Container from "../../components/Container";
@@ -70,7 +70,7 @@ export default function ExportProject(props: Props) {
                       alignItems: "center",
                       justifyContent: "center",
                       flexDirection: "column",
-                      textAlign: "center",
+                      textAlign: "center"
                     }}
                   >
                     <details>
@@ -78,7 +78,7 @@ export default function ExportProject(props: Props) {
                         style={{
                           color: "white",
                           padding: "1.2rem",
-                          fontSize: "1.25rem",
+                          fontSize: "1.25rem"
                         }}
                       >
                         Details
@@ -95,7 +95,7 @@ export default function ExportProject(props: Props) {
                           flex: "100%",
                           fontFamily:
                             "ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace",
-                          textAlign: "left",
+                          textAlign: "left"
                         }}
                       >
                         <code>
@@ -116,7 +116,7 @@ export default function ExportProject(props: Props) {
               fetch("/api/v1/generator/desktop", {
                 method: "POST",
                 headers: {
-                  "Content-Type": "application/json",
+                  "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
                   username: UserManager.getUsername(),
@@ -125,18 +125,13 @@ export default function ExportProject(props: Props) {
                   code:
                     "<script>" +
                     Compiler.compile(props.projectConfig.code) +
-                    "</script>",
-                }),
+                    "</script>"
+                })
               }).then((response) => {
                 if (response.status === 429) {
                   UIManager.unmountAt("fake_loader_content");
                   FakeLoader.hide();
-                  PopupManagerReloaded.alert({
-                    title: i18n.translate("error"),
-                    description: i18n.translate(
-                      "menu.project.export.limit-reached"
-                    ),
-                  });
+                  PopupManagerReloaded.toast("menu.project.export.limit-reached", "error");
                 } else {
                   response.json().then(async (data0) => {
                     (

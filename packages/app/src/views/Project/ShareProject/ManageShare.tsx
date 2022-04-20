@@ -87,38 +87,21 @@ export default function ManageShare(props: { projectConfig: ProjectConfig }) {
                                   username
                                 )
                                 .then(async () => {
-                                  PopupManagerReloaded.alert({
-                                    title: i18n.translate(
-                                      "menu.share-project.share-with-others.invited.success"
-                                    ),
-                                    description: i18n.translate(
-                                      "menu.share-project.share-with-others.invited.success.description"
-                                    ),
-                                    didClose: () => {
-                                      UIManager.unmountAt("root");
-                                      UIManager.showComponent(
-                                        <ManageShare
-                                          projectConfig={props.projectConfig}
-                                        />
-                                      );
-                                    },
-                                  });
+                                  PopupManagerReloaded.toast("menu.share-project.share-with-others.invited.success.description", "success")
+                                  UIManager.unmountAt("root");
+                                  UIManager.showComponent(
+                                    <ManageShare
+                                      projectConfig={props.projectConfig}
+                                    />
+                                  );
                                 });
                             });
                         } else {
-                          PopupManagerReloaded.alert({
-                            title: i18n.translate("error"),
-                            description: i18n.translate(
-                              "error.user.invites.disabled"
-                            ),
-                          });
+                          PopupManagerReloaded.toast("error.user.invites.disabled", "error")
                         }
                       });
                     } else {
-                      PopupManagerReloaded.alert({
-                        title: i18n.translate("error"),
-                        description: i18n.translate("error.user.not-exists"),
-                      });
+                      PopupManagerReloaded.toast("error.user.not-exists", "error")
                     }
                   });
                 },

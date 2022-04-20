@@ -60,22 +60,10 @@ export default function CreateProject() {
                   projectConfig,
                   (success: boolean) => {
                     if (!success) {
-                      PopupManagerReloaded.alert({
-                        title: i18n.translate("error.project.exists"),
-                        description: i18n.translate(
-                          "error.project.exists.description"
-                        ),
-                      });
+                      PopupManagerReloaded.toast("error.project.exists.description", "error");
                     } else {
-                      PopupManagerReloaded.alert({
-                        title: i18n.translate("menu.create-project.success"),
-                        description: i18n.translate(
-                          "menu.create-project.success.description"
-                        ),
-                        didClose: () => {
-                          ProjectManager.openProject(projectConfig);
-                        },
-                      });
+                      PopupManagerReloaded.toast("menu.create-project.success.description", "success");
+                      ProjectManager.openProject(projectConfig);
                     }
                   }
                 );
@@ -103,22 +91,10 @@ export default function CreateProject() {
                   projectConfig,
                   (success: boolean) => {
                     if (!success) {
-                      PopupManagerReloaded.alert({
-                        title: i18n.translate("error.project.exists"),
-                        description: i18n.translate(
-                          "error.project.exists.description"
-                        ),
-                      });
+                      PopupManagerReloaded.toast("error.project.exists.description", "error");
                     } else {
-                      PopupManagerReloaded.alert({
-                        title: i18n.translate("menu.create-project.success"),
-                        description: i18n.translate(
-                          "menu.create-project.success.description"
-                        ),
-                        didClose: () => {
-                          ProjectManager.openProject(projectConfig);
-                        },
-                      });
+                      PopupManagerReloaded.toast("error.project.success.description", "success");
+                      ProjectManager.openProject(projectConfig);
                     }
                   }
                 );

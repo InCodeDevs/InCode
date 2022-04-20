@@ -73,10 +73,7 @@ export default function AccountLogin() {
                   UIManager.showComponent(<MainMenu />);
                 });
               } else {
-                PopupManagerReloaded.alert({
-                  title: i18n.translate("error"),
-                  description: i18n.translate("error.login.credentials"),
-                });
+                PopupManagerReloaded.toast("error.login.credentials", "error");
               }
             });
           }}

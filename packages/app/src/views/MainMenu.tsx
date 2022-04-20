@@ -14,7 +14,7 @@ import {
   faPlay,
   faPlus,
   faScrewdriverWrench,
-  faUpload,
+  faUpload
 } from "@fortawesome/free-solid-svg-icons";
 import MenuItemList from "../components/Menu/MenuItemList";
 import UserIndicator from "../components/UserIndicator";
@@ -43,7 +43,7 @@ export default function MainMenu() {
               if (UserManager.isLoggedIn()) {
                 UIManager.showComponent(<CreateProject />);
               } else {
-                PopupManagerReloaded.alert(DefaultPopup.PLEASE_LOG_IN);
+                PopupManagerReloaded.toast("error.please-login", "error");
               }
             }}
             title={"menu.main.create.project"}
@@ -54,7 +54,7 @@ export default function MainMenu() {
               if (UserManager.isLoggedIn()) {
                 UIManager.showComponent(<OpenProject />);
               } else {
-                PopupManagerReloaded.alert(DefaultPopup.PLEASE_LOG_IN);
+                PopupManagerReloaded.toast("error.please-login", "error");
               }
             }}
             title={"menu.main.open.project"}
@@ -71,7 +71,7 @@ export default function MainMenu() {
           {UserManager.isLoggedIn() &&
           UserManager.getUsername() === "admin" &&
           new URLSearchParams(window.location.search).get("electron") ===
-            null ? (
+          null ? (
             <MenuItem
               icon={faScrewdriverWrench}
               title={"menu.admin"}

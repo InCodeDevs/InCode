@@ -144,14 +144,8 @@ export default function IndividualUserAdmin() {
                       newPassword: answer,
                     }),
                   }).then(() => {
-                    PopupManagerReloaded.alert({
-                      title: i18n.translate(
-                        "menu.admin.user.individual.changePassword.success"
-                      ),
-                      description: i18n.translate(
-                        "menu.admin.user.individual.changePassword.success.description"
-                      ),
-                    });
+                    PopupManagerReloaded.toast("menu.admin.user.individual.changePassword.success.description", "error")
+
                   });
                 }
               },
@@ -172,14 +166,7 @@ export default function IndividualUserAdmin() {
                 password: UserManager.getToken(),
               }),
             }).then(() => {
-              PopupManagerReloaded.alert({
-                title: i18n.translate(
-                  "menu.admin.user.individual.reset-rate.success"
-                ),
-                description: i18n.translate(
-                  "menu.admin.user.individual.reset-rate.success.description"
-                ),
-              });
+              PopupManagerReloaded.toast("menu.admin.user.individual.reset-rate.success.description", "error")
             });
           }}
           title={"menu.admin.user.individual.reset-rate"}

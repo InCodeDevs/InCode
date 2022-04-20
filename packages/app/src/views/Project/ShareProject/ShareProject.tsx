@@ -48,23 +48,9 @@ export default function ShareProject(props: Props) {
           onclick={() => {
             TemplateManager.shareTemplate(props.projectConfig).then((obj) => {
               if (obj.error) {
-                PopupManagerReloaded.alert({
-                  title: i18n.translate(
-                    "menu.share-project.failed.template.title"
-                  ),
-                  description: i18n.translate(
-                    "menu.share-project.failed.template.description"
-                  ),
-                });
+                PopupManagerReloaded.toast("menu.share-project.failed.template.description", "error")
               } else {
-                PopupManagerReloaded.alert({
-                  title: i18n.translate(
-                    "menu.share-project.success.template.title"
-                  ),
-                  description: i18n.translate(
-                    "menu.share-project.success.template.description"
-                  ),
-                });
+                PopupManagerReloaded.toast("menu.share-project.success.template.description", "error")
               }
             });
           }}
@@ -75,12 +61,7 @@ export default function ShareProject(props: Props) {
           icon={faPuzzlePiece}
           onclick={() => {
             if (props.projectConfig.type === "blockly") {
-              PopupManagerReloaded.alert({
-                title: i18n.translate("error"),
-                description: i18n.translate(
-                  "menu.share-project.failed.project.blockly.description"
-                ),
-              });
+              PopupManagerReloaded.toast("menu.share-project.failed.project.blockly.description", "error")
               return;
             }
             const code = Compiler.compile(props.projectConfig.code);

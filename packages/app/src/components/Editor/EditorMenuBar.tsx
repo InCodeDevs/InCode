@@ -14,6 +14,7 @@ import ShareProject from "../../views/Project/ShareProject/ShareProject";
 import Workspace from "../../util/Workspace";
 import ExportProject from "../../views/Project/ExportProject";
 import PopupManagerReloaded from "../../util/PopupManagerReloaded";
+import { toast } from "react-hot-toast";
 
 interface Props {
   projectConfig: ProjectConfig;
@@ -41,10 +42,7 @@ export default function EditorMenuBar(props: Props) {
               // @ts-ignore
               props.projectConfig.code = Workspace.getCode();
               ProjectManager.saveProject(props.projectConfig).then(() => {
-                PopupManagerReloaded.alert({
-                  title: i18n.translate("menu.project.saved"),
-                  description: i18n.translate("menu.project.saved.description"),
-                });
+                PopupManagerReloaded.toast("menu.project.saved.description", "success");
               });
             },
           },

@@ -6,6 +6,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import StarAnimation from "./StarAnimation";
+import { Toaster } from "react-hot-toast";
 
 export default class UIManager {
   public static showComponent(
@@ -15,7 +16,7 @@ export default class UIManager {
     ReactDOM.unmountComponentAtNode(
       document.querySelector("#" + containerID) as HTMLElement
     );
-    ReactDOM.render(component, document.querySelector("#" + containerID));
+    ReactDOM.render(<><Toaster />{component}</>, document.querySelector("#" + containerID));
     if (containerID === "root") {
       StarAnimation.update(component);
     }

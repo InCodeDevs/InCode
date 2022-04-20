@@ -11,6 +11,7 @@ import { IAlertPopup } from "../types/IAlertPopup";
 import { IQuestionPopup } from "../types/IQuestionPopup";
 import { v4 } from "uuid";
 import i18n from "./i18n";
+import { toast } from "react-hot-toast";
 
 export default class PopupManagerReloaded {
   public static next_popups: IPopup[] = [];
@@ -161,5 +162,23 @@ export default class PopupManagerReloaded {
       PopupManagerReloaded.next_popups =
         PopupManagerReloaded.next_popups.slice(1);
     }
+  }
+
+  public static toast(messageCode: string, method: "success" | "error" | "") {
+    let m: any = toast;
+
+    if (method === "error") {
+      m = toast.error;
+    } else if (method === "success") {
+      m = toast.success;
+    }
+
+    m(i18n.translate(messageCode), {
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      },
+    });
   }
 }

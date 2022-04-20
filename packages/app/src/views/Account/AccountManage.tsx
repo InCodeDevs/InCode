@@ -100,14 +100,7 @@ export default function AccountManage() {
                       },
                     });
                   } else {
-                    PopupManagerReloaded.alert({
-                      title: i18n.translate(
-                        "menu.manage-account.delete-account.wrong-password"
-                      ),
-                      description: i18n.translate(
-                        "menu.manage-account.delete-account.wrong-password.description"
-                      ),
-                    });
+                    PopupManagerReloaded.toast("menu.manage-account.delete-account.wrong-password.description", "error")
                   }
                 });
               },
@@ -119,7 +112,7 @@ export default function AccountManage() {
           // @ts-ignore
           icon={faPencilAlt}
           onclick={() => {
-            PopupManagerReloaded.alert(DefaultPopup.AVAILABLE_SOON);
+            PopupManagerReloaded.toast("menu.available-soon.description", "error")
 
             return;
             /*
@@ -215,29 +208,12 @@ export default function AccountManage() {
                             newPassword as string
                           )
                         ) {
-                          PopupManagerReloaded.alert({
-                            title: i18n.translate(
-                              "menu.manage-account.change-password.success"
-                            ),
-                            description: i18n.translate(
-                              "menu.manage-account.change-password.success.description"
-                            ),
-                          });
+                          PopupManagerReloaded.toast("menu.manage-account.change-password.success.description", "error")
                         } else {
-                          PopupManagerReloaded.alert({
-                            title: i18n.translate("error"),
-                            description: i18n.translate(
-                              "error.password.not.match"
-                            ),
-                          });
+                          PopupManagerReloaded.toast("error.password.not.match", "error")
                         }
                       } else {
-                        PopupManagerReloaded.alert({
-                          title: i18n.translate("error"),
-                          description: i18n.translate(
-                            "error.password.too.weak"
-                          ),
-                        });
+                        PopupManagerReloaded.toast("error.password.too.weak", "error")
                       }
                     },
                   },

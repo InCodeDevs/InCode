@@ -101,7 +101,7 @@ export default function ImportProjectMenuItem() {
             ],
           });
         } else {
-          PopupManagerReloaded.alert(DefaultPopup.PLEASE_LOG_IN);
+          PopupManagerReloaded.toast("error.please-login", "error");
         }
       }}
       title={"menu.main.import.project"}
