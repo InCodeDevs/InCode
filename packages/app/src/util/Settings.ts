@@ -14,6 +14,7 @@ export default class Settings {
     pushNotifications: false,
     autoSave: true,
     enableLiveReload: true,
+    offlineMode: false,
   };
 
   public static getSetting(key: string): any {

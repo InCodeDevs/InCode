@@ -161,6 +161,8 @@
   "menu.settings.menu.item.code-editor.line-numbers": "Zeilennummern",
   "menu.settings.menu.item.code-editor.line-numbers.description": "Zeige oder verstecke die Zeilennummern im Code Editor",
   "menu.settings.menu.item.general": "Allgemein",
+  "menu.settings.menu.item.general.offline-mode": "Offline Modus",
+  "menu.settings.menu.item.general.offline-mode.description": "Sollen der Editor nur offline Projekte verwenden?",
   "menu.settings.menu.title": "Einstellungen",
   "menu.share-project.back": "Zurück",
   "menu.share-project.failed.project.blockly.description": "Block-Projekte können momentan nicht veröffentlicht werden!",

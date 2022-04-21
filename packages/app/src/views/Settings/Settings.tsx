@@ -14,7 +14,7 @@ import CodeEditor from "./views/CodeEditor";
 
 export default function Settings() {
   useEffect(() => {
-    UIManager.showComponent(<CodeEditor />, "settings-current-view");
+    UIManager.showComponent(<General />, "settings-current-view");
   }, []);
 
   return (
@@ -22,6 +22,13 @@ export default function Settings() {
       <NavigationBar
         title={"menu.settings.menu.title"}
         items={[
+          {
+            title: "menu.settings.menu.item.general",
+            icon: faCog,
+            onclick: () => {
+              UIManager.showComponent(<General />, "settings-current-view");
+            },
+          },
           {
             title: "menu.settings.menu.item.code-editor",
             onclick: () => {
