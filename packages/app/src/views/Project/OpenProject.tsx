@@ -167,6 +167,7 @@ export default function OpenProject() {
                     name,
                     type: project.type,
                     code: project.code,
+                    updatedAt: project.updatedAt
                   };
 
                   await ProjectManager.createProject(

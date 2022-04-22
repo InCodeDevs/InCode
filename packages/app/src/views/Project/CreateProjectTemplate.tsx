@@ -42,6 +42,7 @@ export default function CreateProjectTemplate(props: Props) {
                 name: props.projectName,
                 type: template.type === "code" ? "code" : "blockly",
                 code: template.code,
+                updatedAt: new Date(),
               };
               ProjectManager.createProject(
                 projectConfig,

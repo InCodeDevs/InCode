@@ -105,6 +105,7 @@ export default function InviteManager() {
                                   )
                                 ).code,
                                 publicData: invite.public_data,
+                                updatedAt: new Date(),
                               };
 
                               await ProjectManager.addToProjectList(

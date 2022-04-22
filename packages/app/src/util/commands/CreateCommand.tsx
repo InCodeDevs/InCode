@@ -26,6 +26,7 @@ export default class CreateCommand implements Command {
                 name,
                 code: "",
                 type: type === "code" ? "code" : "blockly",
+                updatedAt: new Date(),
               },
               () => {
                 UIManager.showComponent(
@@ -34,6 +35,7 @@ export default class CreateCommand implements Command {
                       name,
                       code: "",
                       type: type === "code" ? "code" : "blockly",
+                      updatedAt: new Date(),
                     }}
                   />,
                   "root"

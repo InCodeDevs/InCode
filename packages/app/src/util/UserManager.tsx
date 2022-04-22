@@ -153,6 +153,7 @@ export default class UserManager {
       const projectConfig: ProjectConfig = {
         type: invite.project_type,
         name: invite.project_name,
+        updatedAt: new Date(),
         code: JSON.parse(
           (
             await (

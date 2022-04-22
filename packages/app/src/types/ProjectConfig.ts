@@ -8,4 +8,5 @@ export interface ProjectConfig {
   code: string;
   type: "code" | "blockly";
   publicData?: string;
+  updatedAt: Date;
 }

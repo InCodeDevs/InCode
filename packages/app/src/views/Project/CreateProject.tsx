@@ -55,6 +55,7 @@ export default function CreateProject() {
                   ).value,
                   code: 'Gib "Hallo Welt" in der Konsole aus',
                   type: "code",
+                  updatedAt: new Date(),
                 };
                 ProjectManager.createProject(
                   projectConfig,
@@ -92,6 +93,7 @@ export default function CreateProject() {
                   ).value,
                   code: '<xml><block type="start" id="|(^9%DCME)E4UEoWv~G]" x="134" y="70"></block></xml>',
                   type: "blockly",
+                  updatedAt: new Date(),
                 };
                 ProjectManager.createProject(
                   projectConfig,
