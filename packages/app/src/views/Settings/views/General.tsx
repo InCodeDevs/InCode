@@ -16,7 +16,7 @@ export default function General() {
   return (
     <>
       <SettingsView title={"menu.settings.menu.item.general"}>
-      <SettingsControls>
+        <SettingsControls>
           <SettingsBooleanController
             setting={"offlineMode"}
             description={i18n.translate(
