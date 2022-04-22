@@ -27,8 +27,12 @@ export default class ProjectManager {
   public static checkProjectName(value: string): boolean {
     if (value.length < 4) {
       PopupManagerReloaded.toast("error.project.name.too.short", "error");
+    } else if (value.length > 12) {
+      PopupManagerReloaded.toast("error.project.name.too.long", "error");
+    } else if(value.includes(" ")) {
+      PopupManagerReloaded.toast("error.project.name.no.spaces", "error");
     }
-    return value.length >= 4;
+    return value.length >= 4 && value.length <= 12 && !value.includes(" ");
   }
 
   public static async createProject(
@@ -277,6 +281,9 @@ export default class ProjectManager {
     projectConfig: ProjectConfig,
     forceAccount = false
   ) {
+
+    projectConfig.updatedAt = new Date();
+
     if (forceAccount || !projectConfig.publicData) {
       await client.storeData_u(
         UserManager.getUsername(),

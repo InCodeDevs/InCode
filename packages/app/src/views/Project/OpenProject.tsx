@@ -42,11 +42,16 @@ export default function OpenProject() {
     ProjectManager.getProjects().then((projects) => {
       let menuItems: ReactElement[] = [];
       menuItems.push(<MainMenuItem />);
+      projects.sort(function(a,b){
+        // @ts-ignore
+        return new Date(b.updatedAt) - new Date(a.updatedAt);
+      });
+
       projects.map((project) => {
         menuItems.push(
           <MenuItemControls
             icon={project.type === "code" ? faCode : faCubes}
-            title={project.name}
+            title={project.name + " (" + new Date(project.updatedAt).toLocaleString() + ")"}
             nol18n={true}
             onclick={async () => {
               ProjectManager.openProject(project);
@@ -110,46 +115,6 @@ export default function OpenProject() {
                 name: "menu.open-project.download",
                 onclick: () => {
                   ProjectManager.downloadProject(project);
-                },
-              },
-              {
-                icon: faSave,
-                color: "#00FFBB",
-                name: "menu.open-project.make-offline",
-                onclick: () => {
-                  PopupManagerReloaded.toast(
-                    "menu.available-soon.description",
-                    "error"
-                  );
-                  return;
-                  let config = [];
-                  if (localStorage.getItem("offline.projects")) {
-                    config = JSON.parse(
-                      localStorage.getItem("offline.projects") as string
-                    );
-                  }
-                  let f = false;
-                  config.forEach((conf: ProjectConfig) => {
-                    if (conf.name === project.name) {
-                      alert("Found");
-                      f = true;
-                    }
-                  });
-                  if (!f) {
-                    PopupManagerReloaded.alert({
-                      title: i18n.translate(
-                        "menu.open-project.make-offline.title"
-                      ),
-                      description: i18n.translate(
-                        "menu.open-project.make-offline.description"
-                      ),
-                    });
-                    config.push(project);
-                    localStorage.setItem(
-                      "offline.projects",
-                      JSON.stringify(config)
-                    );
-                  }
                 },
               },
               {
