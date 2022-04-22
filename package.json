@@ -1,6 +1,6 @@
 {
   "name": "incode",
-  "version": "4.4.2",
+  "version": "4.4.3",
   "description": "The next generation of the InCode Editor",
   "scripts": {
     "lint": "yarn eslint --ext .ts,.tsx,.js",
