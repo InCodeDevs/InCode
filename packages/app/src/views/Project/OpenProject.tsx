@@ -42,7 +42,7 @@ export default function OpenProject() {
     ProjectManager.getProjects().then((projects) => {
       let menuItems: ReactElement[] = [];
       menuItems.push(<MainMenuItem />);
-      projects.sort(function(a,b){
+      projects.sort(function (a, b) {
         // @ts-ignore
         return new Date(b.updatedAt) - new Date(a.updatedAt);
       });
@@ -51,7 +51,12 @@ export default function OpenProject() {
         menuItems.push(
           <MenuItemControls
             icon={project.type === "code" ? faCode : faCubes}
-            title={project.name + " (" + new Date(project.updatedAt).toLocaleString() + ")"}
+            title={
+              project.name +
+              " (" +
+              new Date(project.updatedAt).toLocaleString() +
+              ")"
+            }
             nol18n={true}
             onclick={async () => {
               ProjectManager.openProject(project);
