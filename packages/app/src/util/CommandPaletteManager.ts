@@ -3,6 +3,7 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 import { Command } from "../types/Command";
+import Settings from "./Settings";
 
 export default class CommandPaletteManager {
   public static commands: Command[] = [];
@@ -49,6 +50,10 @@ export default class CommandPaletteManager {
     if (name === "quit" || name === "exit" || name === "q") {
       CommandPaletteManager.dispose();
       return;
+    }
+
+    if (name === "offline") {
+      alert(Settings.isOffline());
     }
 
     CommandPaletteManager.commands.forEach((cmd) => {

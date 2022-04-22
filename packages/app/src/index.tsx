@@ -12,6 +12,7 @@ import CreateCommand from "./util/commands/CreateCommand";
 import RouteManager from "./util/RouteManager";
 import Feed from "./util/Feed";
 import SocketConnection from "./util/SocketConnection";
+import Connection from "./util/Connection";
 
 if (!Settings.isValid()) {
   Settings.reset();
@@ -24,5 +25,7 @@ window.onload = () => {
   new InteractionManager();
   RouteManager.manage();
   Feed.runTask();
+  Connection.runTask();
+  Connection.update();
   SocketConnection.connect();
 };

@@ -4,6 +4,7 @@
  */
 import BrowserStorage from "./BrowserStorage";
 import { JSONObject } from "../types/JSONObject";
+import Connection from "./Connection";
 
 export default class Settings {
   public static readonly defaults = {
@@ -42,10 +43,17 @@ export default class Settings {
     }
     let settings = JSON.parse(BrowserStorage.get("settings") || "{}");
     for (let key in Settings.defaults) {
-      if (!settings[key]) {
+      if (settings[key] === undefined) {
         return false;
       }
     }
     return true;
+  }
+
+  public static isOffline(): boolean {
+    if (Settings.getSetting("offlineMode") === true) {
+      return true;
+    }
+    return !Connection.canConnect;
   }
 }

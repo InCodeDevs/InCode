@@ -33,6 +33,9 @@ import { ProjectConfig } from "../../types/ProjectConfig";
 import ImportProjectMenuItem from "../../components/Menu/ImportProjectMenuItem";
 import Text from "../../components/Text";
 import DefaultPopup from "../../util/popups/DefaultPopup";
+import BrowserStorage from "../../util/BrowserStorage";
+import { toast } from "react-hot-toast";
+import Settings from "../../util/Settings";
 
 export default function OpenProject() {
   const [container, setContainer] = useState<ReactElement | null>(null);
@@ -42,10 +45,40 @@ export default function OpenProject() {
     ProjectManager.getProjects().then((projects) => {
       let menuItems: ReactElement[] = [];
       menuItems.push(<MainMenuItem />);
-      projects.sort(function (a, b) {
-        // @ts-ignore
-        return new Date(b.updatedAt) - new Date(a.updatedAt);
-      });
+
+      if (Settings.isOffline()) {
+        PopupManagerReloaded.toast("menu.open-project.cache-loaded", "success");
+      } else {
+        let cache: ProjectConfig[] = JSON.parse(
+          BrowserStorage.get("cache.projects") || "[]"
+        );
+
+        cache.forEach((c) => {
+          if (!projects.find((p) => p.name === c.name)) {
+            projects.push(c);
+          } else {
+            if (
+              new Date(c.updatedAt) >
+              new Date(
+                (
+                  projects.find((p) => p.name === c.name) as ProjectConfig
+                ).updatedAt
+              )
+            ) {
+              (
+                projects.find((p) => p.name === c.name) as ProjectConfig
+              ).updatedAt = c.updatedAt;
+              (projects.find((p) => p.name === c.name) as ProjectConfig).code =
+                c.code;
+              ProjectManager.saveProject(
+                projects.find((p) => p.name === c.name) as ProjectConfig
+              );
+            }
+          }
+        });
+
+        BrowserStorage.store("cache.projects", JSON.stringify(projects));
+      }
 
       projects.map((project) => {
         menuItems.push(

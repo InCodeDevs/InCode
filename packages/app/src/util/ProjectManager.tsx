@@ -19,7 +19,8 @@ import { v4, v4 as uuidv4 } from "uuid";
 import PopupManagerReloaded from "./PopupManagerReloaded";
 import SocketConnection from "./SocketConnection";
 import { Registry } from "./Registry";
-import ShareProject from "../views/Project/ShareProject/ShareProject";
+import BrowserStorage from "./BrowserStorage";
+import Settings from "./Settings";
 
 const client = new WebClient("");
 
@@ -125,6 +126,13 @@ export default class ProjectManager {
   }
 
   public static async getProjects(): Promise<ProjectConfig[]> {
+    if (Settings.isOffline()) {
+      if (BrowserStorage.get("cache.projects")) {
+        return JSON.parse(BrowserStorage.get("cache.projects")) || [];
+      } else {
+        return [];
+      }
+    }
     const projects = await this.getProjectList();
     let projectConfigs: ProjectConfig[] = [];
     try {
@@ -155,6 +163,7 @@ export default class ProjectManager {
           }
         }
       }
+      //PopupManagerReloaded.toast("menu.open-project.cache-updated", "success");
       return projectConfigs;
     } catch (e) {
       if (localStorage.getItem("offline.projects")) {
@@ -282,6 +291,27 @@ export default class ProjectManager {
     forceAccount = false
   ) {
     projectConfig.updatedAt = new Date();
+
+    let currentCache: ProjectConfig[] = JSON.parse(
+      localStorage.getItem("cache.projects") || "[]"
+    );
+
+    let found = false;
+    for (let i = 0; i < currentCache.length; i++) {
+      if (currentCache[i].name === projectConfig.name) {
+        currentCache[i] = projectConfig;
+        found = true;
+        break;
+      }
+    }
+
+    if (!found) {
+      currentCache.push(projectConfig);
+    }
+
+    localStorage.setItem("cache.projects", JSON.stringify(currentCache));
+
+    if (Settings.isOffline()) return;
 
     if (forceAccount || !projectConfig.publicData) {
       await client.storeData_u(
